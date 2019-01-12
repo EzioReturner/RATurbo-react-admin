@@ -1,0 +1,37 @@
+.header {
+    color: #ffffff;
+    height: 60px;
+    width: 100%;
+    background: #ffffff;
+    border-bottom: 1px solid #f5f5f5;
+    z-index: 100;
+    position: fixed;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    right: 0;
+    min-width: 900px;
+    text-align: left;
+    .controlBut {
+        width: 180px;
+        height: 60px;
+        line-height: 60px;
+        border-right: 1px solid #f5f5f5;
+        float: left;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        i {
+            color: #909090;
+            font-size: 20px;
+        }
+    }
+    .title {
+        line-height: 60px;
+        font-size: 18px;
+        font-weight: 700;
+        color: #fb4491;
+        padding: 0 24px;
+    }
+}

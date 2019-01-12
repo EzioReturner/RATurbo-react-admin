@@ -1,0 +1,50 @@
+.navigator {
+    height: 100%;
+    width: 180px;
+    background: #ffffff;
+    position: absolute;
+    left: 0;
+    padding-top: 23px;
+    .myMenu {
+        border: 0;
+        li {
+            margin: 0 !important;
+            text-align: left;
+            &:hover {
+                color: #fc6ca8;
+                .ant-menu-submenu-title {
+                    color: inherit;
+                }
+                .ant-menu-submenu-arrow {
+                    &::before,&::after {
+                        background: linear-gradient(to right, #fc6ca8, #fc6ca8);
+                    }
+                }
+            }
+            &:before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                border-left: 4px solid #fb4491;
+                transform: scaleY(0.0001);
+                opacity: 0;
+                transition: transform 0.15s;
+            }
+            &.ant-menu-item-selected {
+                background-color: #f4f4f4;
+                color: #fc6ca8;
+                position: relative;
+                &:before {
+                    transform:scaleY(1);
+                    opacity: 1;
+                }
+                &:after {
+                    display: none;
+                    border-right: 0;
+                }
+            }
+        }
+    }
+}
