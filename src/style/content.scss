@@ -7,3 +7,20 @@
     background: #f3f3f3;
     padding: 16px;
 }
+
+.titleNanme {
+    position: relative;
+    text-align: left;
+    text-indent: 12px;
+    line-height: 14px;
+    font-weight: normal;
+    font-size: 14px;
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        border-left: 4px solid #fb4491;
+    }
+}

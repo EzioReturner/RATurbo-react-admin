@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "antd": "^3.11.6",
+    "echarts": "^4.2.0-rc.2",
     "node-sass": "^4.11.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
