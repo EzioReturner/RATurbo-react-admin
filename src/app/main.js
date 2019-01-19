@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import 'style/main.scss';
-import Header from './header';
+import Header from './header/index';
 import Navigator from './navigator';
 import Content from './content';
 class Main extends Component {
