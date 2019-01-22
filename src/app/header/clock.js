@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import 'style/clock.scss';
+import {Icon} from 'antd';
 class Clock extends Component {
     constructor(props) {
         super(props);
@@ -20,10 +20,12 @@ class Clock extends Component {
     }
     render() {
         const {date} = this.state;
-        return (<div className="clock">{date.toLocaleTimeString()},
+        return (<div className="clock">{date.toLocaleTimeString()}
             <span style={{
                     marginLeft: '20px'
-                }}>欢迎你 zhev</span>
+                }}>
+                <Icon type="user" className="userIcon"/>
+                zhev</span>
         </div>)
     }
 }
