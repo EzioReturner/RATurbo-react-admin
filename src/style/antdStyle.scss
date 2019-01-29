@@ -1,0 +1,101 @@
+.ant-select-focused .ant-select-selection,
+.ant-select-selection:focus,
+.ant-select-selection:active,
+.ant-input:focus {
+  border-color: #fb4491;
+  box-shadow: 0 0 0 2px rgba($color:#fb4491, $alpha:0.1);
+}
+
+.ant-select-selection:hover,
+.ant-input:hover,
+.ant-calendar-picker:hover .ant-calendar-picker-input:not(.ant-input-disabled) {
+  border-color: #fb4491;
+}
+
+.ant-select-dropdown-menu-item:hover,
+.ant-select-dropdown-menu-item-active,
+.ant-calendar-selected-start-date .ant-calendar-date:hover,
+.ant-calendar-selected-end-date .ant-calendar-date:hover,
+.ant-calendar-selected-day .ant-calendar-date {
+  background-color: rgba($color:#fb4491, $alpha:0.1);
+}
+
+.ant-card-head-title {
+  padding: 12px 0;
+}
+
+.ant-card-head,
+.ant-card-wider-padding .ant-card-head {
+  padding: 0 24px;
+}
+
+.ant-card-wider-padding .ant-card-body,
+.ant-card-body {
+  padding: 12px 24px;
+}
+
+.ant-select {
+  margin-right: 16px;
+  width: 100px;
+  .ant-select-selection {
+    border-radius: 2px;
+  }
+  .ant-select-selection__placeholder {
+    font-size: 12px;
+  }
+}
+
+.ant-input {
+  border-radius: 2px;
+}
+
+.ant-calendar-header a:hover {
+  color: #fb4491;
+}
+
+.ant-calendar-date:hover {
+  background: rgba($color:#fb4491, $alpha:0.1);
+  cursor: pointer;
+}
+
+.ant-calendar-selected-date .ant-calendar-date,
+.ant-calendar-selected-start-date .ant-calendar-date,
+.ant-calendar-selected-end-date .ant-calendar-date,
+.ant-calendar-selected-date .ant-calendar-date:hover {
+  background: rgba($color:#fb4491, $alpha:0.8);
+}
+
+.ant-calendar-today .ant-calendar-date {
+  border-color: rgba($color:#fb4491, $alpha:0.8);
+  color: rgba($color:#fb4491, $alpha:0.8);
+}
+
+.ant-calendar-footer a {
+  color: rgba($color:#fb4491, $alpha:0.8);
+}
+
+.ant-btn-primary {
+  background-color: rgba($color:#fb4491, $alpha:0.8);
+  border-color: rgba($color:#fb4491, $alpha:0.8);
+  border-radius: 2px;
+  font-size: 13px;
+}
+
+.ant-btn-primary:hover,
+.ant-btn-primary:focus {
+  background-color: #fb4491;
+  border-color: #fb4491;
+}
+
+.ant-switch-checked {
+  background-color: rgba($color:#fb4491, $alpha:0.8);
+}
+
+.ant-switch:focus {
+  box-shadow: 0 0 0 2px rgba($color:#fb4491, $alpha:0.1);
+}
+
+[ant-click-animating-without-extra-node]:after,
+.ant-click-animating-node {
+  border: 0 solid rgba($color:#fb4491, $alpha:0.8);
+}

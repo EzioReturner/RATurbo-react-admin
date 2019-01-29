@@ -1,3 +1,9 @@
+@mixin iconStyle {
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.65);
+}
+@import './antdStyle.scss';
+
 .content {
     position: absolute;
     left: 180px;
@@ -6,32 +12,58 @@
     right: 0;
     background: #f3f3f3;
     padding: 16px;
+    overflow: auto;
     .titleNanme {
         position: relative;
         text-align: left;
         text-indent: 12px;
         line-height: 14px;
         font-weight: normal;
-        font-size: 14px;
+        font-size: 13px;
+        margin-top: 5px;
         &::before {
             content: "";
             position: absolute;
             top: 0;
             left: 0;
             height: 100%;
-            border-left: 4px solid #fb4491;
+            border-left: 3px solid #fb4491;
         }
         .iconBar {
             position: absolute;
             right: 10px;
-            top: 0px;
-            font-size: 18px;
-            color: #555555;
+            top: -2px;
+            @include iconStyle;
+            i {
+              transition: color .3s ease;
+              &:hover {
+                cursor: pointer;
+                color: #fb4491;
+              }
+            }
         }
     }
 
     .chartDom {
         height: 300px;
         width: 100%;
+    }
+    .controlHead {
+      margin-bottom: 16px;
+
+      .headerContent {
+        display: flex;
+        align-items: center;
+        &>i {
+          @include iconStyle;
+          margin-right: 8px;
+        }
+        &>span {
+          font-size: 13px;
+          font-weight: normal;
+          color: rgba(0, 0, 0, 0.65);
+          margin-right: 16px;
+        }
+      }
     }
 }
