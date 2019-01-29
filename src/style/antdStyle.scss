@@ -99,3 +99,10 @@
 .ant-click-animating-node {
   border: 0 solid rgba($color:#fb4491, $alpha:0.8);
 }
+
+
+.ant-menu-item-selected > a,
+.ant-menu-item-selected > a:hover,
+.ant-menu-item > a:hover {
+  color: #fc6ca8;
+}
