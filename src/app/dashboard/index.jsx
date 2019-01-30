@@ -33,7 +33,7 @@ class EchartCard extends Component {
   }
 }
 
-class Content extends Component {
+class Dashboard extends Component {
   componentDidMount() {
     const chartArray = [
       {
@@ -86,4 +86,4 @@ class Content extends Component {
   }
 }
 
-export default Content;
+export default Dashboard;

@@ -8,3 +8,25 @@
   padding: 16px;
   overflow: auto;
 }
+
+.fade-enter {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transform: translateX(0px);
+  transition: 800ms ease-out;
+}
+
+.fade-exit{
+  opacity: 1;
+  transform: translateX(0px);
+}
+
+.fade-exit.fade-exit-active{
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: 800ms ease-out;
+}

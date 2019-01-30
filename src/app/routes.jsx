@@ -1,15 +1,24 @@
 import React, {Component} from 'react';
-import {Route, Redirect} from 'react-router-dom';
-import Content from './homepage/index';
+import {Route, Redirect, Switch, withRouter} from 'react-router-dom';
+import Dashboard from './dashboard/index';
 import 'style/routeContent.scss';
+import {TransitionGroup, CSSTransition} from "react-transition-group";
 
 class Routes extends Component {
   render() {
+    const location = this.props.location;
+    console.log(location);
     return (<div className="routeContent">
-      <Route exact={true} path="/" render={() => (<Redirect to="/dashboard"/>)}/>
-      <Route exact={true} path="/dashboard" component={Content}/>
+      <TransitionGroup>
+        <CSSTransition classNames="fade" timeout={800} key={location.key}>
+          <Switch location={location}>
+            <Route exact={true} path="/" render={() => (<Redirect to="/dashboard"/>)}/>
+            <Route exact={true} path="/dashboard" component={Dashboard}/>
+          </Switch>
+        </CSSTransition>
+      </TransitionGroup>
     </div>)
   }
 }
 
-export default Routes;
+export default withRouter(Routes);

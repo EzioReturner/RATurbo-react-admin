@@ -21,3 +21,12 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+.appAppear-appear {
+  opacity: 0;
+}
+
+.appAppear-appear.appAppear-appear-active {
+  opacity: 1;
+  transition: opacity .5s ease-out;
+}
