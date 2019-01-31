@@ -14,10 +14,10 @@
     "react-transition-group": "^2.5.3"
   },
   "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-app-rewired test --env=jsdom"
+    "eject": "react-scripts test"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -28,8 +28,5 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "devDependencies": {
-    "customize-cra": "^0.2.11",
-    "react-app-rewired": "^2.0.3"
-  }
+  "devDependencies": {}
 }
