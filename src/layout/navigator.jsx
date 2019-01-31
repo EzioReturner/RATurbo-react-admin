@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import 'style/navigator.scss';
+import '@style/navigator.scss';
 import {Menu, Icon} from 'antd';
 import {Link} from "react-router-dom";
 

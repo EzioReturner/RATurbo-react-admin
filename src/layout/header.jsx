@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import 'style/header.scss';
+import '@style/header.scss';
 import {Icon} from 'antd';
 import Clock from './clock';
 

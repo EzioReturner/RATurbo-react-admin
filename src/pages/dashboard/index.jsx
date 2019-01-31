@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import {Card, Row, Col, Icon} from 'antd';
 import Controller from './controller';
-import 'style/homepage.scss';
+import '@style/homepage.scss';
 import {circleOption, barOption, cityOption, provinceOption} from './chartOption.js';
-import {initChart} from '../utlis/echartTools';
+import {initChart} from '@utlis/echartTools';
 
 class EchartCard extends Component {
   constructor(props) {

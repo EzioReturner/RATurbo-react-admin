@@ -7,6 +7,10 @@
   background: #f3f3f3;
   padding: 16px;
   overflow: auto;
+  &>div {
+    height: 100%;
+    width: 100%;
+  }
 }
 
 .fade-enter {

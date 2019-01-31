@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {Route, Redirect, Switch, withRouter} from 'react-router-dom';
-import Dashboard from './dashboard/index';
-import 'style/routeContent.scss';
+import Dashboard from '@pages/dashboard/index';
+import Map from '@pages/map/index';
+import '@style/routeContent.scss';
 import {TransitionGroup, CSSTransition} from "react-transition-group";
 
 class Routes extends Component {
@@ -13,6 +14,7 @@ class Routes extends Component {
           <Switch location={location}>
             <Route exact={true} path="/" render={() => (<Redirect to="/dashboard"/>)}/>
             <Route exact={true} path="/dashboard" component={Dashboard}/>
+            <Route exact={true} path="/map" component={Map}/>
           </Switch>
         </CSSTransition>
       </TransitionGroup>
