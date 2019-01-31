@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "antd": "^3.11.6",
+    "babel-plugin-import": "^1.11.0",
     "echarts": "^4.2.0-rc.2",
     "node-sass": "^4.11.0",
     "react": "^16.7.0",
@@ -13,10 +14,10 @@
     "react-transition-group": "^2.5.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-app-rewired test --env=jsdom"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -26,5 +27,9 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "customize-cra": "^0.2.11",
+    "react-app-rewired": "^2.0.3"
+  }
 }

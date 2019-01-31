@@ -7,7 +7,6 @@ import {TransitionGroup, CSSTransition} from "react-transition-group";
 class Routes extends Component {
   render() {
     const location = this.props.location;
-    console.log(location);
     return (<div className="routeContent">
       <TransitionGroup>
         <CSSTransition classNames="fade" timeout={800} key={location.key}>
