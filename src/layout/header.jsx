@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import '@style/header.scss';
+import '@style/layout/header.scss';
 import {Icon} from 'antd';
-import Clock from './clock';
+import Clock from './Clock';
 
 class Header extends Component {
   constructor(props) {

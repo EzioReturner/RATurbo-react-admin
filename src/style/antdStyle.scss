@@ -1,15 +1,17 @@
+@import './color.scss';
+
 .ant-select-focused .ant-select-selection,
 .ant-select-selection:focus,
 .ant-select-selection:active,
 .ant-input:focus {
-  border-color: #fb4491;
-  box-shadow: 0 0 0 2px rgba($color:#fb4491, $alpha:0.1);
+  border-color: $color-primary;
+  box-shadow: 0 0 0 2px rgba($color:$color-primary, $alpha:0.1);
 }
 
 .ant-select-selection:hover,
 .ant-input:hover,
 .ant-calendar-picker:hover .ant-calendar-picker-input:not(.ant-input-disabled) {
-  border-color: #fb4491;
+  border-color: $color-primary;
 }
 
 .ant-select-dropdown-menu-item:hover,
@@ -17,7 +19,7 @@
 .ant-calendar-selected-start-date .ant-calendar-date:hover,
 .ant-calendar-selected-end-date .ant-calendar-date:hover,
 .ant-calendar-selected-day .ant-calendar-date {
-  background-color: rgba($color:#fb4491, $alpha:0.1);
+  background-color: rgba($color:$color-primary, $alpha:0.1);
 }
 
 .ant-card-head-title {
@@ -50,11 +52,11 @@
 }
 
 .ant-calendar-header a:hover {
-  color: #fb4491;
+  color: $color-primary;
 }
 
 .ant-calendar-date:hover {
-  background: rgba($color:#fb4491, $alpha:0.1);
+  background: rgba($color:$color-primary, $alpha:0.1);
   cursor: pointer;
 }
 
@@ -62,42 +64,42 @@
 .ant-calendar-selected-start-date .ant-calendar-date,
 .ant-calendar-selected-end-date .ant-calendar-date,
 .ant-calendar-selected-date .ant-calendar-date:hover {
-  background: rgba($color:#fb4491, $alpha:0.8);
+  background: rgba($color:$color-primary, $alpha:0.8);
 }
 
 .ant-calendar-today .ant-calendar-date {
-  border-color: rgba($color:#fb4491, $alpha:0.8);
-  color: rgba($color:#fb4491, $alpha:0.8);
+  border-color: rgba($color:$color-primary, $alpha:0.8);
+  color: rgba($color:$color-primary, $alpha:0.8);
 }
 
 .ant-calendar-footer a {
-  color: rgba($color:#fb4491, $alpha:0.8);
+  color: rgba($color:$color-primary, $alpha:0.8);
 }
 
 .ant-btn-primary {
-  background-color: rgba($color:#fb4491, $alpha:0.8);
-  border-color: rgba($color:#fb4491, $alpha:0.8);
+  background-color: rgba($color:$color-primary, $alpha:0.8);
+  border-color: rgba($color:$color-primary, $alpha:0.8);
   border-radius: 2px;
   font-size: 13px;
 }
 
 .ant-btn-primary:hover,
 .ant-btn-primary:focus {
-  background-color: #fb4491;
-  border-color: #fb4491;
+  background-color: $color-primary;
+  border-color: $color-primary;
 }
 
 .ant-switch-checked {
-  background-color: rgba($color:#fb4491, $alpha:0.8);
+  background-color: rgba($color:$color-primary, $alpha:0.8);
 }
 
 .ant-switch:focus {
-  box-shadow: 0 0 0 2px rgba($color:#fb4491, $alpha:0.1);
+  box-shadow: 0 0 0 2px rgba($color:$color-primary, $alpha:0.1);
 }
 
 [ant-click-animating-without-extra-node]:after,
 .ant-click-animating-node {
-  border: 0 solid rgba($color:#fb4491, $alpha:0.8);
+  border: 0 solid rgba($color:$color-primary, $alpha:0.8);
 }
 
 

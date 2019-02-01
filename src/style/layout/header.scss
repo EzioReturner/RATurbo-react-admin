@@ -1,8 +1,10 @@
+@import '../color.scss';
+
 .header {
-    color: #ffffff;
+    color: $color-white;
     height: 60px;
     width: 100%;
-    background: #ffffff;
+    background: $color-white;
     border-bottom: 1px solid #f5f5f5;
     z-index: 100;
     position: fixed;
@@ -31,14 +33,14 @@
         line-height: 60px;
         font-size: 18px;
         font-weight: 700;
-        color: rgba($color:#fb4491, $alpha:0.8);
+        color: rgba($color:$color-primary, $alpha:0.8);
         padding: 0 24px;
     }
     .clock {
         position: absolute;
         top: 20px;
         right: 30px;
-        color: rgba($color:#fb4491, $alpha:0.8);
+        color: rgba($color:$color-primary, $alpha:0.8);
         font-weight: bold;
         display: flex;
         font-size: 16px;

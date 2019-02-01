@@ -1,8 +1,9 @@
+@import '../color.scss';
+
 @mixin iconStyle {
   font-size: 18px;
   color: rgba(0, 0, 0, 0.65);
 }
-@import './antdStyle.scss';
 
 .content {
     .titleNanme {
@@ -19,7 +20,7 @@
             top: 0;
             left: 0;
             height: 100%;
-            border-left: 3px solid #fb4491;
+            border-left: 3px solid $color-primary;
         }
         .iconBar {
             position: absolute;
@@ -30,7 +31,7 @@
               transition: color .3s ease;
               &:hover {
                 cursor: pointer;
-                color: #fb4491;
+                color: $color-primary;
               }
             }
         }
@@ -61,7 +62,7 @@
           right: 0;
           i {
             margin-left: 8px;
-            color: #fb4491;
+            color: $color-primary;
             cursor: pointer;
           }
         }

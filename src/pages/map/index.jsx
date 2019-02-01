@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import '@style/myMap.scss';
+import '@style/map/myMap.scss';
 import BMap from 'BMap'
 class Map extends Component {
 

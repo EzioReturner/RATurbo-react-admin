@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import '@style/main.scss';
-import Header from './header';
-import Navigator from './navigator';
-import Routes from './routes';
+import '@style/layout/main.scss';
+import Header from './Header';
+import Navigator from './Navigator';
+import Routes from './Routes';
 import {BrowserRouter as Router} from "react-router-dom";
 
 class Main extends Component {

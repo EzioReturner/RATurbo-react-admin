@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import '@style/index.scss';
-import Main from './layout/main';
+import Main from './layout/Main';
 import * as serviceWorker from './service/serviceWorker';
-import {TransitionGroup, CSSTransition} from "react-transition-group";
 
 ReactDOM.render(<Main/>, document.getElementById('root'));
 

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Card, Row, Col, Icon} from 'antd';
-import Controller from './controller';
-import '@style/homepage.scss';
+import Controller from './Controller';
+import '@style/dashboard/dashboard.scss';
 import {circleOption, barOption, cityOption, provinceOption} from './chartOption.js';
 import {initChart} from '@utlis/echartTools';
 
