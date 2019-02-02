@@ -9,12 +9,12 @@ import {TransitionGroup, CSSTransition} from "react-transition-group";
 
 class Routes extends Component {
   render() {
-    const location = this.props.location;
+    const {location} = this.props;
     return (
       <div className="routeContent">
         <TransitionGroup>
-          <CSSTransition classNames="fade" timeout={800} key={location.key}>
-            <Switch>
+          <CSSTransition classNames="fade" timeout={800} key={location.pathname}>
+            <Switch location={location}>
               <Route exact={true} path="/" render={() => (<Redirect to="/dashboard"/>)}/>
               <Route exact={true} path="/dashboard" component={Dashboard}/>
               <Route exact={true} path="/map" component={Map}/>
@@ -28,4 +28,4 @@ class Routes extends Component {
   }
 }
 
-export default withRouter(Routes);
+export default Routes;

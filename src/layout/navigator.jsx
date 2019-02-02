@@ -1,60 +1,108 @@
-import React, {Component} from 'react';
-import '@style/layout/navigator.scss';
-import {Menu, Icon} from 'antd';
-import {Link} from "react-router-dom";
-import routeConfig from '../config/router.config';
+import React, { Component } from "react";
+import "@style/layout/navigator.scss";
+import { Menu, Icon } from "antd";
+import { Link, withRouter } from "react-router-dom";
+import routeConfig from "../config/router.config";
 
-const {SubMenu} = Menu;
+const { SubMenu } = Menu;
 class Navigater extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			openKeys: []
+		};
+	}
 
-  getMenuTitle(iconType, name) {
-    return (
-      <span>{iconType && <Icon type={iconType}/>}
-        <span>{name}</span>
-      </span>
-    )
-  }
+	componentDidMount() {
+		this.initOpenMenu();
+	}
 
-  getNavMenuItem(menuData) {
-    if (!menuData.length) {
-      return [];
-    }
-    return menuData.filter(menu => !menu.hideMenu).map(
-      res => this.getSubMenuOrItem(res)
-    );
-  }
+	initOpenMenu() {
+		const {
+			location: { pathname }
+		} = this.props;
+		const menuOpen = pathname.split("/").reduce((total, obj) => {
+			obj &&
+				routeConfig.some(route => route.path === "/" + obj) &&
+				total.push("/" + obj);
+			return total;
+		}, []);
+		this.setState({
+			openKeys: [...menuOpen]
+		});
+	}
 
-  getSubMenuOrItem(menu) {
-    if (menu.children && !menu.hideMenu && menu.children.some(child => child.name)) {
-      const {icon, name, path, children} = menu;
-      return (
-        <SubMenu title={this.getMenuTitle(icon, name)} key={path}>
-          {this.getNavMenuItem(children)}
-        </SubMenu>
-      )
-    }
-    return <Menu.Item key={menu.path}>{this.getMenuItem(menu)}</Menu.Item>
-  }
+	getMenuTitle(iconType, name) {
+		return (
+			<span>
+				{iconType && <Icon type={iconType} />}
+				<span>{name}</span>
+			</span>
+		);
+	}
 
-  getMenuItem(menu) {
-    const {icon: iconType, name, path} = menu;
-    return (
-      <Link to={path}>
-        {iconType && <Icon type={iconType}/>}
-        <span>{name}</span>
-      </Link>
-    )
-  }
+	getNavMenuItem(menuData) {
+		if (!menuData.length) {
+			return [];
+		}
+		return menuData
+			.filter(menu => !menu.hideMenu)
+			.map(res => this.getSubMenuOrItem(res));
+	}
 
-  render() {
-    const selectedKeys = ['aahha'];
-    return (
-      <div className="navigator" mode="inline">
-        <Menu className="myMenu" mode="inline" selectedKeys={selectedKeys}>
-          {this.getNavMenuItem(routeConfig)}
-        </Menu>
-      </div>
-    )
-  }
+	getSubMenuOrItem(menu) {
+		if (
+			menu.children &&
+			!menu.hideMenu &&
+			menu.children.some(child => child.name)
+		) {
+			const { icon, name, path, children } = menu;
+			return (
+				<SubMenu title={this.getMenuTitle(icon, name)} key={path}>
+					{this.getNavMenuItem(children)}
+				</SubMenu>
+			);
+		}
+		return <Menu.Item key={menu.path}>{this.getMenuItem(menu)}</Menu.Item>;
+	}
+
+	getMenuItem(menu) {
+		const { icon: iconType, name, path } = menu;
+		return (
+			<Link to={path}>
+				{iconType && <Icon type={iconType} />}
+				<span>{name}</span>
+			</Link>
+		);
+	}
+
+	handleOpenMenu = openKeys => {
+		const moreThanOne =
+			openKeys.filter(key => routeConfig.some(route => route.path === key))
+				.length > 1;
+		this.setState({
+			openKeys: moreThanOne ? [openKeys.pop()] : [...openKeys]
+		});
+	};
+
+	render() {
+		const {
+			location: { pathname }
+		} = this.props;
+		const { openKeys } = this.state;
+		return (
+			<div className="navigator" mode="inline">
+				<Menu
+					className="myMenu"
+					mode="inline"
+					selectedKeys={[pathname]}
+					onOpenChange={this.handleOpenMenu}
+					openKeys={openKeys}
+				>
+					{this.getNavMenuItem(routeConfig)}
+				</Menu>
+			</div>
+		);
+	}
 }
-export default Navigater
+export default Navigater;
