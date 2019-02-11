@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
-import '@style/analysis/platform.scss';
+import React, { Component } from "react";
+import "./platform.scss";
 
 class Platform extends Component {
-  render() {
-    return (<div>platform</div>)
-  }
+	render() {
+		return <div>platform</div>;
+	}
 }
 
 export default Platform;
