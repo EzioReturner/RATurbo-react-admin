@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import { Card, Row, Col, Icon } from "antd";
-import Controller from "./Controller";
-import "./dashboard.scss";
+import React, { Component } from 'react';
+import { Card, Row, Col, Icon } from 'antd';
+import Controller from './Controller';
+import './dashboard.scss';
 import {
 	circleOption,
 	barOption,
 	cityOption,
 	provinceOption
-} from "./chartOption.js";
-import { initChart } from "@utlis/echartTools";
+} from './chartOption.js';
+import { initChart } from '@utlis/echartTools';
 
 class EchartCard extends Component {
 	constructor(props) {
@@ -19,7 +19,7 @@ class EchartCard extends Component {
 
 	render() {
 		const headStyle = {
-			borderBottomColor: "#f5f5f5"
+			borderBottomColor: '#f5f5f5'
 		};
 		const { title, id } = this.props;
 
@@ -31,7 +31,7 @@ class EchartCard extends Component {
 					<Icon
 						type="cloud-download"
 						style={{
-							marginLeft: "10px"
+							marginLeft: '10px'
 						}}
 					/>
 				</div>
@@ -55,20 +55,20 @@ class Dashboard extends Component {
 	componentDidMount() {
 		const chartArray = [
 			{
-				id: "sexChart",
+				id: 'sexChart',
 				option: circleOption
 			},
 			{
-				id: "ageChart",
+				id: 'ageChart',
 				option: barOption
 			},
 			{
-				id: "cityChart",
+				id: 'cityChart',
 				option: barOption,
 				otherOption: cityOption
 			},
 			{
-				id: "provinceChart",
+				id: 'provinceChart',
 				option: barOption,
 				otherOption: provinceOption
 			}
@@ -89,7 +89,7 @@ class Dashboard extends Component {
 				<Row
 					gutter={16}
 					style={{
-						marginBottom: "16px"
+						marginBottom: '16px'
 					}}
 				>
 					<Col className="gutter-row" span={12}>

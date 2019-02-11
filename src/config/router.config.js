@@ -1,38 +1,52 @@
+import Loadable from 'react-loadable';
+import Loading from '@components/Loading/Index';
 const routeConfig = [
 	{
-		path: "/",
-		redirect: "/dashboard",
-		hideMenu: true
+		name: 'Dashboard',
+		icon: 'pie-chart',
+		path: '/dashboard',
+		component: Loadable({
+			loader: () => import('@pages/Dashboard/Index'),
+			loading: Loading
+		})
 	},
 	{
-		name: "Dashboard",
-		icon: "pie-chart",
-		path: "/dashboard",
-		component: "@pages/dashboard/index"
-	},
-	{
-		name: "Analysis",
-		icon: "appstore",
-		path: "/analysis",
+		name: 'Analysis',
+		icon: 'appstore',
+		path: '/analysis',
 		children: [
 			{
-				name: "工作台",
-				path: "/analysis/platform",
-				component: "@pages/analysis/platform"
+				name: '工作台',
+				path: '/analysis/platform',
+				component: Loadable({
+					loader: () => import('@pages/Analysis/Platform'),
+					loading: Loading
+				})
 			},
 			{
-				name: "监控页",
-				path: "/analysis/monitor",
-				component: "@pages/analysis/monitor"
+				name: '监控页',
+				path: '/analysis/monitor',
+				component: Loadable({
+					loader: () => import('@pages/Analysis/Monitor'),
+					loading: Loading
+				})
 			}
 		]
 	},
 	{
-		name: "Map",
-		icon: "heat-map",
-		path: "/map",
-		componet: "@pages/map/index"
+		name: 'Map',
+		icon: 'heat-map',
+		path: '/map',
+		component: Loadable({
+			loader: () => import('@pages/Map/Index'),
+			loading: Loading
+		})
 	}
+	// {
+	// 	path: '/',
+	// 	redirect: '/dashboard',
+	// 	hideMenu: true
+	// }
 ];
 
 export default routeConfig;
