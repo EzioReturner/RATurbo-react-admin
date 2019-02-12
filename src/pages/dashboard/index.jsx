@@ -44,6 +44,7 @@ class EchartCard extends Component {
 				title={CardTitle}
 				headStyle={headStyle}
 				bordered={false}
+				hoverable
 			>
 				<div id={id} className="chartDom" />
 			</Card>
@@ -87,9 +88,9 @@ class Dashboard extends Component {
 			<div className="content">
 				<Controller />
 				<Row
-					gutter={16}
+					gutter={24}
 					style={{
-						marginBottom: '16px'
+						marginBottom: '24px'
 					}}
 				>
 					<Col className="gutter-row" span={12}>
@@ -99,7 +100,7 @@ class Dashboard extends Component {
 						<EchartCard title="年龄" id="ageChart" />
 					</Col>
 				</Row>
-				<Row gutter={16}>
+				<Row gutter={24}>
 					<Col className="gutter-row" span={12}>
 						<EchartCard title="城市" id="cityChart" />
 					</Col>

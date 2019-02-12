@@ -92,6 +92,9 @@ class Navigater extends Component {
 		const { openKeys } = this.state;
 		return (
 			<div className="navigator" mode="inline">
+				<div className="controlBut">
+					<Icon type="bars" />
+				</div>
 				<Menu
 					className="myMenu"
 					mode="inline"

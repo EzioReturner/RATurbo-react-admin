@@ -24,6 +24,11 @@
       background-color: rgba($color:$color-primary, $alpha:0.1);
     }
 
+    .ant-card:hover {
+      box-shadow: 0 2px 28px rgba(0, 0, 0, 0.09);
+      border-color: rgba(0, 0, 0, 0.09);
+    }
+
     .ant-card-head-title {
       padding: 12px 0;
     }

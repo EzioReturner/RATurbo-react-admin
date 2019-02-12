@@ -12,12 +12,10 @@ class Main extends Component {
 			<Router>
 				<Route
 					render={({ location }) => (
-						<div className="main">
+						<div className="container">
 							<Header />
-							<div className="container">
-								<Navigator location={location} />
-								<RoutesComponent location={location} />
-							</div>
+							<Navigator location={location} />
+							<RoutesComponent location={location} />
 						</div>
 					)}
 				/>

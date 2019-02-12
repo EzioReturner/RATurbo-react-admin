@@ -48,9 +48,6 @@ class Header extends Component {
 	render() {
 		return (
 			<div className="header">
-				<div className="controlBut">
-					<Icon type="bars" />
-				</div>
 				<span className="title" onClick={this.handleClick.bind(this, 'hahah')}>
 					REACT-TURBO
 				</span>

@@ -1,23 +1,43 @@
+@import '@style/color.scss';
+
 .navigator {
     height: 100%;
     width: 180px;
     background: #ffffff;
     position: absolute;
     left: 0;
-    padding-top: 23px;
+    box-shadow: 0px 0px 28px $color-primary-low;
+    z-index: 101;
+    .controlBut {
+        width: 180px;
+        height: 60px;
+        line-height: 60px;
+        float: left;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 23px;
+        border-bottom: 1px solid #f5f5f5;
+        box-shadow: 0 1px 9px -3px rgba(0,0,0,.2);
+        i {
+            color: #909090;
+            font-size: 20px;
+        }
+    }
     .myMenu {
         border: 0;
         li {
             margin: 0 !important;
             text-align: left;
             &:hover {
-                color: #fc6ca8;
+                color: $color-primary-sec;
                 .ant-menu-submenu-title {
                     color: inherit;
                 }
                 .ant-menu-submenu-arrow {
                     &::before,&::after {
-                        background: linear-gradient(to right, #fc6ca8, #fc6ca8);
+                        background: linear-gradient(to right, $color-primary-sec, $color-primary-sec);
                     }
                 }
             }
@@ -25,16 +45,16 @@
                 content: "";
                 position: absolute;
                 top: 0;
-                left: 0;
+                right: 0;
                 height: 100%;
-                border-left: 4px solid #fb4491;
+                border-left: 4px solid $color-primary;
                 transform: scaleY(0.0001);
                 opacity: 0;
                 transition: transform 0.15s;
             }
             &.ant-menu-item-selected {
                 background-color: #f4f4f4;
-                color: #fc6ca8;
+                color: $color-primary-sec;
                 position: relative;
                 &:before {
                     transform:scaleY(1);

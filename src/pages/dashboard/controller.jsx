@@ -53,6 +53,7 @@ class Controller extends Component {
 				size="small"
 				title={ControlHead}
 				bordered={false}
+				hoverable
 				className="controlHead"
 				bodyStyle={{
 					display: 'flex',

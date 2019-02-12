@@ -14,21 +14,8 @@
     right: 0;
     min-width: 900px;
     text-align: left;
-    .controlBut {
-        width: 180px;
-        height: 60px;
-        line-height: 60px;
-        border-right: 1px solid #f5f5f5;
-        float: left;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        i {
-            color: #909090;
-            font-size: 20px;
-        }
-    }
+    padding-left: 180px;
+    box-shadow: 4px 4px 40px 0 rgba(0,0,0,.05);
     .title {
         line-height: 60px;
         font-size: 18px;
