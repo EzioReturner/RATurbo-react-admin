@@ -1,10 +1,14 @@
 import React, { Component, Suspense } from 'react';
 import { Route, Redirect, Switch, withRouter } from 'react-router-dom';
-import '@style/layout/routeContent.scss';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import routeConfig from '../config/router.config';
+import './routeContent.scss';
 
 class RouteComponent extends Component {
+	constructor(props) {
+		super(props);
+	}
+
 	generateRoute(route) {
 		const { path, component, children } = route;
 		if (children) {
@@ -28,17 +32,9 @@ class RouteList extends Component {
 		const { location } = this.props;
 		return (
 			<div className="routeContent">
-				<TransitionGroup>
-					<CSSTransition
-						classNames="fade"
-						timeout={800}
-						key={location.pathname}
-					>
-						<Switch location={location}>
-							<RouteComponent />
-						</Switch>
-					</CSSTransition>
-				</TransitionGroup>
+				<Switch location={location}>
+					<RouteComponent {...this.props} />
+				</Switch>
 			</div>
 		);
 	}

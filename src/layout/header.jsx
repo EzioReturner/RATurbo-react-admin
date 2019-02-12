@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import '@style/layout/header.scss';
 import { Icon } from 'antd';
+import './header.scss';
 
 class Clock extends Component {
 	constructor(props) {

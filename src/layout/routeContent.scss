@@ -1,0 +1,14 @@
+.routeContent {
+  position: absolute;
+  left: 180px;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background: #f3f3f3;
+  padding: 16px;
+  overflow: auto;
+  &>div {
+    height: 100%;
+    width: 100%;
+  }
+}

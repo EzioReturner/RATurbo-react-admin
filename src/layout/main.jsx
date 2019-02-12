@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import '@style/layout/main.scss';
 import Header from './Header';
 import Navigator from './Navigator';
-import RoutesComponent from './Routes';
+import RoutesComponent from './RouteContent';
 // import {BrowserRouter as Router, Route} from "react-router-dom";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import './main.scss';
 
 class Main extends Component {
 	render() {

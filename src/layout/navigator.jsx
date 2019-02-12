@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import "@style/layout/navigator.scss";
-import { Menu, Icon } from "antd";
-import { Link, withRouter } from "react-router-dom";
-import routeConfig from "../config/router.config";
+import React, { Component } from 'react';
+import { Menu, Icon } from 'antd';
+import { Link, withRouter } from 'react-router-dom';
+import routeConfig from '../config/router.config';
+import './navigator.scss';
 
 const { SubMenu } = Menu;
 class Navigater extends Component {
@@ -21,10 +21,10 @@ class Navigater extends Component {
 		const {
 			location: { pathname }
 		} = this.props;
-		const menuOpen = pathname.split("/").reduce((total, obj) => {
+		const menuOpen = pathname.split('/').reduce((total, obj) => {
 			obj &&
-				routeConfig.some(route => route.path === "/" + obj) &&
-				total.push("/" + obj);
+				routeConfig.some(route => route.path === '/' + obj) &&
+				total.push('/' + obj);
 			return total;
 		}, []);
 		this.setState({
