@@ -1,0 +1,71 @@
+@import '@style/color.scss';
+
+@mixin iconStyle {
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.content {
+    .titleNanme {
+        position: relative;
+        text-align: left;
+        text-indent: 12px;
+        line-height: 14px;
+        font-weight: normal;
+        font-size: 13px;
+        margin-top: 5px;
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            border-left: 3px solid $color-primary;
+        }
+        .iconBar {
+            position: absolute;
+            right: 10px;
+            top: -2px;
+            @include iconStyle;
+            i {
+              transition: color .3s ease;
+              &:hover {
+                cursor: pointer;
+                color: $color-primary;
+              }
+            }
+        }
+    }
+
+    .chartDom {
+        height: 300px;
+        width: 100%;
+    }
+    .controlHead {
+      margin-bottom: 24px;
+      .headerContent {
+        display: flex;
+        align-items: center;
+        &>i {
+          @include iconStyle;
+          margin-right: 8px;
+        }
+      }
+      .headerTextSpan {
+        font-size: 13px;
+        font-weight: normal;
+        color: rgba(0, 0, 0, 0.65);
+        margin-right: 16px;
+        &.rightSpace {
+          font-size: 12px;
+          position: absolute;
+          right: 0;
+          i {
+            margin-left: 8px;
+            color: $color-primary;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+}
