@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Card, Select, Button, DatePicker, Icon, Switch } from 'antd';
+import { observer } from 'mobx-react';
 const { Option } = Select;
 
+@observer
 class Controller extends Component {
 	constructor(props) {
 		super(props);
@@ -19,6 +21,14 @@ class Controller extends Component {
 					</Option>
 				);
 			});
+	}
+
+	handleSwitch = checked => {
+		this.props.store.changeShowUnDefined(checked);
+	};
+
+	componentWillReact() {
+		// console.log(223333);
 	}
 
 	render() {
@@ -47,7 +57,7 @@ class Controller extends Component {
 				</Button>
 			</div>
 		);
-
+		const { showUnDefined, changeShowUnDefined } = this.props;
 		return (
 			<Card
 				size="small"
@@ -60,7 +70,11 @@ class Controller extends Component {
 					alignItems: 'center'
 				}}
 			>
-				<Switch defaultChecked={true} style={marginRight.et} />
+				<Switch
+					defaultChecked={showUnDefined}
+					style={marginRight.et}
+					onChange={this.handleSwitch}
+				/>
 				<span className="headerTextSpan">未识别</span>
 				<span className="headerTextSpan rightSpace">
 					符合当前筛选条件的总用户数为：21,312,393

@@ -1,22 +1,15 @@
 import React, { Component } from 'react';
 import { Card, Row, Col, Icon } from 'antd';
 import Controller from './Controller';
+import { observer } from 'mobx-react';
+import DashboardState from './model';
 import './dashboard.scss';
-import {
-	circleOption,
-	barOption,
-	cityOption,
-	provinceOption
-} from './chartOption.js';
+
 import { initChart } from '@utlis/echartTools';
 
-class EchartCard extends Component {
-	constructor(props) {
-		super(props);
-		this.circleChart = null;
-		this.barChart = null;
-	}
+const dashboardState = new DashboardState();
 
+class EchartCard extends Component {
 	render() {
 		const headStyle = {
 			borderBottomColor: '#f5f5f5'
@@ -52,9 +45,19 @@ class EchartCard extends Component {
 	}
 }
 
+@observer
 class Dashboard extends Component {
-	componentDidMount() {
-		const chartArray = [
+	constructor(props) {
+		super(props);
+	}
+	paintChart() {
+		const {
+			circleOption,
+			barOption,
+			cityOption,
+			provinceOption
+		} = dashboardState.getChartOption;
+		this.startInitChart([
 			{
 				id: 'sexChart',
 				option: circleOption
@@ -73,8 +76,7 @@ class Dashboard extends Component {
 				option: barOption,
 				otherOption: provinceOption
 			}
-		];
-		this.startInitChart(chartArray);
+		]);
 	}
 
 	startInitChart(chart) {
@@ -83,10 +85,19 @@ class Dashboard extends Component {
 		}
 	}
 
+	componentDidMount() {
+		this.paintChart();
+	}
+
+	componentWillReact() {
+		this.paintChart();
+	}
+
 	render() {
+		const { showUnDefined } = dashboardState;
 		return (
 			<div className="content">
-				<Controller />
+				<Controller showUnDefined={showUnDefined} store={dashboardState} />
 				<Row
 					gutter={24}
 					style={{

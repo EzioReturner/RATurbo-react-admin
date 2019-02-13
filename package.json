@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@babel/core": "7.1.6",
+    "@babel/plugin-proposal-decorators": "^7.3.0",
     "@svgr/webpack": "2.4.1",
     "antd": "^3.11.6",
     "babel-core": "7.0.0-bridge.0",
@@ -35,7 +36,10 @@
     "jest": "23.6.0",
     "jest-pnp-resolver": "1.0.1",
     "jest-resolve": "23.6.0",
+    "lodash": "^4.17.11",
     "mini-css-extract-plugin": "0.4.3",
+    "mobx": "^5.9.0",
+    "mobx-react": "^5.4.3",
     "node-sass": "^4.11.0",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "pnp-webpack-plugin": "1.1.0",

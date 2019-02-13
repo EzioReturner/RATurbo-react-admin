@@ -21,7 +21,16 @@ class RouteComponent extends Component {
 	render() {
 		return routeConfig.reduce((total, route) => {
 			const { redirect, path, component, children } = route;
-			const C = this.generateRoute(route);
+			const C = redirect ? (
+				<Route
+					path="/"
+					exact
+					key={path}
+					render={() => <Redirect to={redirect} />}
+				/>
+			) : (
+				this.generateRoute(route)
+			);
 			return Array.isArray(C) ? [...total, ...C] : [...total, C];
 		}, []);
 	}

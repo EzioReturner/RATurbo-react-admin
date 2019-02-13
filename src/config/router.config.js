@@ -24,6 +24,11 @@ const routeConfig = [
 		})
 	},
 	{
+		path: '/',
+		redirect: '/dashboard',
+		hideMenu: true
+	},
+	{
 		name: 'Analysis',
 		icon: 'appstore',
 		path: '/analysis',
@@ -58,11 +63,6 @@ const routeConfig = [
 			loading: Loading
 		})
 	}
-	// {
-	// 	path: '/',
-	// 	redirect: '/dashboard',
-	// 	hideMenu: true
-	// }
 ];
 
 export default routeConfig;
