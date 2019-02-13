@@ -1,10 +1,12 @@
+@import '@style/color.scss';
+
 .routeContent {
   position: absolute;
   left: 180px;
   top: 60px;
   bottom: 0;
   right: 0;
-  background: #f3f3f3;
+  background: $color-white-dark;
   padding: 24px;
   overflow: auto;
   &>div {

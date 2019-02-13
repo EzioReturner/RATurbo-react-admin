@@ -1,4 +1,4 @@
-import { observable, configure, action, autorun, computed } from 'mobx';
+import { observable, configure, action, computed } from 'mobx';
 import { cloneDeep } from 'lodash';
 import {
 	circleOption,
@@ -60,4 +60,6 @@ class DashboardState {
 	}
 }
 
-export default DashboardState;
+const dashboardState = new DashboardState();
+
+export default dashboardState;

@@ -3,7 +3,7 @@ $color-black: #000 !default;
 
 // White
 $color-white:              #fff !default;
-$color-white-dark:         darken($color-white, 4.5%) !default;
+$color-white-dark:         #f3f3f3 !default;
 $color-white-dark-extra:   darken($color-white, 6.5%) !default;
 $color-white-darker:       darken($color-white, 13.5%) !default;
 $color-white-darker-extra: darken($color-white, 20%) !default;

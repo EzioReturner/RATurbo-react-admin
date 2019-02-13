@@ -2,12 +2,10 @@ import React, { Component } from 'react';
 import { Card, Row, Col, Icon } from 'antd';
 import Controller from './Controller';
 import { observer } from 'mobx-react';
-import DashboardState from './model';
+import dashboardState from './model';
 import './dashboard.scss';
 
 import { initChart } from '@utlis/echartTools';
-
-const dashboardState = new DashboardState();
 
 class EchartCard extends Component {
 	render() {
