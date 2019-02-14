@@ -29,24 +29,24 @@ const routeConfig = [
 		hideMenu: true
 	},
 	{
-		name: 'Analysis',
+		name: 'Program',
 		icon: 'appstore',
-		path: '/analysis',
+		path: '/program',
 		children: [
 			{
 				name: '工作台',
-				path: '/analysis/platform',
+				path: '/program/platform',
 				component: Loadable({
-					loader: () => import('@pages/Analysis/Platform'),
+					loader: () => import('@pages/program/Platform'),
 					render: WarpAnimationRender,
 					loading: Loading
 				})
 			},
 			{
 				name: '监控页',
-				path: '/analysis/monitor',
+				path: '/program/monitor',
 				component: Loadable({
-					loader: () => import('@pages/Analysis/Monitor'),
+					loader: () => import('@pages/program/Monitor'),
 					render: WarpAnimationRender,
 					loading: Loading
 				})

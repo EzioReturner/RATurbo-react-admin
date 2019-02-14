@@ -3,7 +3,7 @@ import ControllerCard from './components/ControllerCard';
 import DistributeCard from './components/DistributeCard';
 import { observer } from 'mobx-react';
 import dashboardState from './model';
-import './platform.scss';
+import './analysis.scss';
 
 class Dashboard extends Component {
 	constructor(props) {

@@ -85,6 +85,7 @@ class DistributeCard extends Component {
 	}
 
 	render() {
+		const { showUnDefined } = this.props.store;
 		return (
 			<Fragment>
 				<Row
@@ -93,7 +94,6 @@ class DistributeCard extends Component {
 						marginBottom: '24px'
 					}}
 				>
-					{console.log(this.props.store.showUnDefined)}
 					<Col className="gutter-row" span={12}>
 						<EchartCard title="性别" id="sexChart" />
 					</Col>

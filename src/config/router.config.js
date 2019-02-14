@@ -19,24 +19,32 @@ const routeConfig = [
 		hideMenu: true
 	},
 	{
-		name: 'Analysis',
+		name: 'Program',
 		icon: 'appstore',
-		path: '/analysis',
+		path: '/program',
 		children: [
 			{
-				name: '工作台',
-				path: '/analysis/platform',
+				name: '分析页',
+				path: '/program/analysis',
 				component: AsyncComponent(() => [
-					import('@pages/Analysis/Platform'),
-					'@pages/Analysis/Platform'
+					import('@pages/Program/Analysis'),
+					'@pages/Program/Analysis'
+				])
+			},
+			{
+				name: '工作台',
+				path: '/program/platform',
+				component: AsyncComponent(() => [
+					import('@pages/Program/Platform'),
+					'@pages/Program/Platform'
 				])
 			},
 			{
 				name: '监控页',
-				path: '/analysis/monitor',
+				path: '/program/monitor',
 				component: AsyncComponent(() => [
-					import('@pages/Analysis/Monitor'),
-					'@pages/Analysis/Monitor'
+					import('@pages/Program/Monitor'),
+					'@pages/Program/Monitor'
 				])
 			}
 		]
