@@ -11,13 +11,13 @@ import './main.scss';
 @observer
 class Main extends Component {
 	render() {
-		const { spinning, fixed } = mainState;
+		const { spinning, fixed, mountLoading } = mainState;
 		return (
 			<Router>
 				<Route
 					render={({ location }) => (
 						<div className="container">
-							{spinning && <Loading spinning={spinning} fixed={fixed} />}
+							{mountLoading && <Loading spinning={spinning} fixed={fixed} />}
 							<Header />
 							<Navigator location={location} />
 							<RoutesComponent location={location} store={mainState} />

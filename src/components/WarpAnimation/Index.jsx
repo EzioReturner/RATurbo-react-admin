@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { CSSTransition } from 'react-transition-group';
+import mainState from '@src/layout/model';
 import './warp.scss';
 
 class WrapComponent extends Component {
@@ -11,6 +12,8 @@ class WrapComponent extends Component {
 		this.setState({
 			animateIn: true
 		});
+		console.log(123);
+		mainState.stopSpinning();
 	}
 
 	render() {

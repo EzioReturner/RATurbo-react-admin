@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import WrapComponent from '@components/WarpAnimation/Index';
+import mainState from '@src/layout/model';
 
-export default function asyncComponent(importComponent) {
+export default function asyncComponent(componentInfo) {
 	class AsyncComponent extends Component {
 		constructor(props) {
 			super(props);
@@ -12,12 +13,12 @@ export default function asyncComponent(importComponent) {
 		}
 
 		async componentDidMount() {
-			this.props.store.startSpinning();
-			const { default: component } = await importComponent();
+			const [asyncComponent, path] = componentInfo();
+			mainState.checkIsInitial(path);
+			const { default: component } = await asyncComponent;
 			this.setState({
 				component: component
 			});
-			this.props.store.stopSpinning();
 		}
 
 		render() {
