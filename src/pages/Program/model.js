@@ -4,7 +4,8 @@ import {
 	circleOption,
 	barOption,
 	cityOption,
-	provinceOption
+	provinceOption,
+	lineOption
 } from '@utlis/chartOption.js';
 
 configure({ enforceActions: 'always' });
@@ -21,14 +22,16 @@ class DashboardState {
 				circleOption,
 				barOption,
 				cityOption,
-				provinceOption
+				provinceOption,
+				lineOption
 			};
 		} else {
 			return this.filterUnDefined({
 				circleOption,
 				barOption,
 				cityOption,
-				provinceOption
+				provinceOption,
+				lineOption
 			});
 		}
 	}
@@ -49,8 +52,13 @@ class DashboardState {
 
 	filterProperty(property) {
 		if (Array.isArray(property)) {
-			property[0].data.shift();
-			property[1].data.shift();
+			if (property.length < 3) {
+				property[0].data.shift();
+				property[1].data.shift();
+			} else {
+				property[0].data = [];
+				console.log(property);
+			}
 		} else {
 			property.data = property.data.filter(res => {
 				return res.name ? res.name !== '未识别' : res !== '未识别';

@@ -46,7 +46,8 @@ class DistributeCard extends Component {
 			circleOption,
 			barOption,
 			cityOption,
-			provinceOption
+			provinceOption,
+			lineOption
 		} = this.props.store.getChartOption;
 		this.startInitChart([
 			{
@@ -66,6 +67,10 @@ class DistributeCard extends Component {
 				id: 'provinceChart',
 				option: barOption,
 				otherOption: provinceOption
+			},
+			{
+				id: 'channelChart',
+				option: lineOption
 			}
 		]);
 	}
@@ -94,18 +99,27 @@ class DistributeCard extends Component {
 						marginBottom: '24px'
 					}}
 				>
-					<Col className="gutter-row" span={12}>
+					<Col span={12}>
 						<EchartCard title="性别" id="sexChart" />
 					</Col>
-					<Col className="gutter-row" span={12}>
+					<Col span={12}>
 						<EchartCard title="年龄" id="ageChart" />
 					</Col>
 				</Row>
+				<Row
+					style={{
+						marginBottom: '24px'
+					}}
+				>
+					<Col>
+						<EchartCard title="渠道" id="channelChart" />
+					</Col>
+				</Row>
 				<Row gutter={24}>
-					<Col className="gutter-row" span={12}>
+					<Col span={12}>
 						<EchartCard title="城市" id="cityChart" />
 					</Col>
-					<Col className="gutter-row" span={12}>
+					<Col span={12}>
 						<EchartCard title="省份" id="provinceChart" />
 					</Col>
 				</Row>

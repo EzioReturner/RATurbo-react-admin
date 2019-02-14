@@ -191,4 +191,114 @@ const provinceOption = {
 	}
 };
 
-export { circleOption, barOption, cityOption, provinceOption };
+const lineOption = {
+	tooltip: {
+		trigger: 'axis',
+		axisPointer: {
+			type: 'cross',
+			label: {
+				backgroundColor: '#6a7985'
+			}
+		}
+	},
+	legend: {
+		data: ['未识别', '邮件营销', '视频广告', '直接访问', '搜索引擎']
+	},
+	grid: {
+		left: '3%',
+		right: '4%',
+		bottom: '3%',
+		containLabel: true
+	},
+	xAxis: {
+		type: 'category',
+		boundaryGap: false,
+		axisLine: {
+			lineStyle: {
+				color: '#efefef'
+			}
+		},
+		axisLabel: {
+			color: 'rgba(0,0,0,0.7)',
+			fontWeight: 'bold'
+		},
+		data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+	},
+	yAxis: [
+		{
+			axisLabel: {
+				color: 'rgba(0,0,0,0.7)',
+				fontWeight: 'bold'
+			},
+			type: 'value',
+			axisLine: {
+				show: false
+			},
+			axisTick: {
+				show: false
+			},
+			splitLine: {
+				lineStyle: {
+					color: '#efefef',
+					type: 'dashed'
+				}
+			}
+		}
+	],
+	series: [
+		{
+			name: '未识别',
+			type: 'line',
+			smooth: true,
+			data: [520, 682, 534, 534, 390, 820, 410],
+			lineStyle: {
+				color: '#efefef'
+			},
+			areaStyle: {
+				color: 'rgba(239,239,239,0.7)'
+			},
+			itemStyle: {
+				color: '#efefef'
+			}
+		},
+		{
+			name: '邮件营销',
+			type: 'line',
+			smooth: true,
+			areaStyle: {},
+			lineStyle: {
+				color: 'rgba(220, 91, 231, 0.4)'
+			},
+			areaStyle: {
+				color: 'rgba(220, 91, 231, 0.4)'
+			},
+			itemStyle: {
+				color: 'rgba(220, 91, 231, 0.4)'
+			},
+			data: [220, 182, 191, 234, 290, 330, 310]
+		},
+		{
+			name: '搜索引擎',
+			type: 'line',
+			label: {
+				normal: {
+					show: true,
+					position: 'top'
+				}
+			},
+			smooth: true,
+			lineStyle: {
+				color: 'rgb(251, 68, 145,0.9)'
+			},
+			areaStyle: {
+				color: 'rgba(251, 68, 145, 0.3)'
+			},
+			itemStyle: {
+				color: 'rgba(251, 68, 145, 1)'
+			},
+			data: [820, 432, 901, 234, 790, 630, 820]
+		}
+	]
+};
+
+export { circleOption, barOption, cityOption, provinceOption, lineOption };

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Card } from 'antd';
+import RowInfoCard from './components/RowInfoCard';
+import './dashboard.scss';
 
 class Dashboard extends Component {
 	constructor(props) {
@@ -7,7 +9,11 @@ class Dashboard extends Component {
 	}
 
 	render() {
-		return <div className="content" />;
+		return (
+			<div className="dashboard">
+				<RowInfoCard />
+			</div>
+		);
 	}
 }
 

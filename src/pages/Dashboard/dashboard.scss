@@ -1,0 +1,37 @@
+.dashboard {
+  background: transparent;
+  .rowInfoCard {
+    .infoCard {
+      .ant-card-body {
+        padding: 29px 31px;
+      }
+      .top {
+        overflow: hidden;
+        i {
+          margin-top: 10px;
+          float: left;
+        }
+        .rightPart {
+          float: right;
+          text-align: right;
+          .title {
+            margin-bottom: 0;
+            font-size: 13px;
+            color: #212529;
+          }
+          .num {
+            font-size: 26px;
+            color: #212529;
+            margin-bottom: 0;
+            line-height: 30px;
+          }
+        }
+      }
+      .tips {
+        margin-bottom: 0;
+        margin-top: 10px;
+        color: #c2c2c2;
+      }
+    }
+  }
+}
