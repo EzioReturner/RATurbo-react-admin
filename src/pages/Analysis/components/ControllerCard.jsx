@@ -57,7 +57,7 @@ class Controller extends Component {
 				</Button>
 			</div>
 		);
-		const { showUnDefined, changeShowUnDefined } = this.props;
+		const { showUnDefined } = this.props.store;
 		return (
 			<Card
 				size="small"

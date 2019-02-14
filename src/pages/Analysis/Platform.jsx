@@ -1,10 +1,23 @@
-import React, { Component } from "react";
-import "./platform.scss";
+import React, { Component } from 'react';
+import ControllerCard from './components/ControllerCard';
+import DistributeCard from './components/DistributeCard';
+import { observer } from 'mobx-react';
+import dashboardState from './model';
+import './platform.scss';
 
-class Platform extends Component {
+class Dashboard extends Component {
+	constructor(props) {
+		super(props);
+	}
+
 	render() {
-		return <div>platform</div>;
+		return (
+			<div className="content">
+				<ControllerCard store={dashboardState} />
+				<DistributeCard store={dashboardState} />
+			</div>
+		);
 	}
 }
 
-export default Platform;
+export default Dashboard;

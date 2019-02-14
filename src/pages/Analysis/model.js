@@ -5,7 +5,7 @@ import {
 	barOption,
 	cityOption,
 	provinceOption
-} from './chartOption.js';
+} from '@utlis/chartOption.js';
 
 configure({ enforceActions: 'always' });
 class DashboardState {

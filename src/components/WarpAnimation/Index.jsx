@@ -12,7 +12,6 @@ class WrapComponent extends Component {
 		this.setState({
 			animateIn: true
 		});
-		console.log(123);
 		mainState.stopSpinning();
 	}
 
