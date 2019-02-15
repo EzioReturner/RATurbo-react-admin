@@ -4,7 +4,7 @@ import { boxSvg, empolyeesSvg, ordersSvg, salesSvg } from './svgIcon';
 
 class InfoCard extends Component {
 	render() {
-		const { icon, tips, title, num } = this.props;
+		const { icon, tips, title, num, tipIcon } = this.props;
 		return (
 			<Card className="infoCard" bordered={false}>
 				<div className="top">
@@ -14,7 +14,10 @@ class InfoCard extends Component {
 						<h3 className="num">{num}</h3>
 					</div>
 				</div>
-				<p className="tips">{tips}</p>
+				<p className="tips">
+					<Icon type={tipIcon} />
+					{tips}
+				</p>
 			</Card>
 		);
 	}
@@ -27,25 +30,29 @@ class RowInfoCard extends Component {
 				icon: boxSvg,
 				tips: '65% lower growth',
 				title: 'Total Revenue',
-				num: '$65,650'
+				num: '$65,650',
+				tipIcon: 'exclamation-circle'
+			},
+			{
+				icon: ordersSvg,
+				tips: 'Product-wise sales',
+				title: 'Orders',
+				num: '3455',
+				tipIcon: 'shake'
+			},
+			{
+				icon: salesSvg,
+				tips: 'Weekly Sales',
+				title: 'Sales',
+				num: '5693',
+				tipIcon: 'fund'
 			},
 			{
 				icon: empolyeesSvg,
 				tips: 'Product-wise sales',
-				title: 'Orders',
-				num: '3455'
-			},
-			{
-				icon: ordersSvg,
-				tips: 'Weekly Sales',
-				title: 'Sales',
-				num: '5693'
-			},
-			{
-				icon: salesSvg,
-				tips: 'Product-wise sales',
 				title: 'Employees',
-				num: '246'
+				num: '246',
+				tipIcon: 'redo'
 			}
 		];
 		return (
