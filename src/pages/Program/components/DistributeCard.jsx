@@ -91,14 +91,12 @@ class DistributeCard extends Component {
 
 	render() {
 		const { showUnDefined } = this.props.store;
+		const style = {
+			marginBottom: '24px'
+		};
 		return (
 			<Fragment>
-				<Row
-					gutter={24}
-					style={{
-						marginBottom: '24px'
-					}}
-				>
+				<Row gutter={24} style={style}>
 					<Col span={12}>
 						<EchartCard title="性别" id="sexChart" />
 					</Col>
@@ -106,11 +104,7 @@ class DistributeCard extends Component {
 						<EchartCard title="年龄" id="ageChart" />
 					</Col>
 				</Row>
-				<Row
-					style={{
-						marginBottom: '24px'
-					}}
-				>
+				<Row style={style}>
 					<Col>
 						<EchartCard title="渠道" id="channelChart" />
 					</Col>

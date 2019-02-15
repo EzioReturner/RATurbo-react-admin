@@ -20,7 +20,7 @@ class Request {
     });
   }
 
-  handleError(error: any): Promise<string> {
+  handleError(error: any): Promise<any> {
     const { message, status } = error;
 
     switch (status) {

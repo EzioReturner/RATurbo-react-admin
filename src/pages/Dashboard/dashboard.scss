@@ -1,38 +1,66 @@
+@import '@style/color.scss';
+
 .dashboard {
   background: transparent;
-  .rowInfoCard {
-    .infoCard {
-      .ant-card-body {
-        padding: 29px 31px;
-      }
-      .top {
-        overflow: hidden;
-        i {
-          margin-top: 10px;
-          float: left;
+  .rowInfoCard .infoCard {
+    .top {
+      overflow: hidden;
+      .rightPart {
+        float: right;
+        text-align: right;
+        .title {
+          margin-bottom: 0;
+          font-size: 13px;
+          color: #212529;
         }
-        .rightPart {
-          float: right;
-          text-align: right;
-          .title {
-            margin-bottom: 0;
-            font-size: 13px;
-            color: #212529;
-          }
-          .num {
-            font-size: 26px;
-            color: #212529;
-            margin-bottom: 0;
-            line-height: 30px;
-          }
+        .num {
+          font-size: 26px;
+          color: #212529;
+          margin-bottom: 0;
+          line-height: 30px;
         }
       }
-      .tips {
-        margin-bottom: 0;
+      i {
         margin-top: 10px;
-        color: #c2c2c2;
-        i {
-          margin-right: 8px;
+        float: left;
+      }
+    }
+    .tips {
+      margin-bottom: 0;
+      margin-top: 10px;
+      color: #c2c2c2;
+      i {
+        margin-right: 8px;
+      }
+    }
+  }
+  .weatherCard {
+    background-image: linear-gradient(to left bottom, #d6eef6, #dff0fa, #e7f3fc, #eff6fe, #f6f9ff);
+    .weatherBody {
+      padding: 31px 29px
+    }
+    .weather-date-location {
+      padding: 0 0 38px;
+    }
+    .weather-data {
+      padding: 0 0 78px;
+    }
+    .weakly-weather {
+      display: flex;
+      background: #ffffff;
+      .weakly-weather-item {
+        flex: 0 0 25%;
+        border-right: 1px solid #f2f2f2;
+        padding: 16px;
+        text-align: center;
+        &:last-child {
+          border-right: 0;
+        }
+        .week {
+          margin-bottom: 4px;
+        }
+        .temp {
+          margin-bottom: 0;
         }
       }
     }
