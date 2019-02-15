@@ -6,7 +6,9 @@
     "@babel/core": "7.1.6",
     "@babel/plugin-proposal-decorators": "^7.3.0",
     "@svgr/webpack": "2.4.1",
-    "antd": "^3.11.6",
+    "@types/react": "^16.8.3",
+    "@types/react-dom": "^16.8.1",
+    "antd": "^3.13.2",
     "axios": "^0.18.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
@@ -81,7 +83,10 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@babel/plugin-syntax-jsx": "^7.2.0"
+    "@babel/plugin-syntax-jsx": "^7.2.0",
+    "awesome-typescript-loader": "^5.2.1",
+    "source-map-loader": "^0.2.4",
+    "typescript": "^3.3.3"
   },
   "jest": {
     "collectCoverageFrom": [

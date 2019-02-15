@@ -38,7 +38,7 @@ const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
-console.log(paths.appSrc, paths.pagesSrc);
+
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
 module.exports = function(webpackEnv) {
@@ -261,14 +261,13 @@ module.exports = function(webpackEnv) {
 			// https://github.com/facebook/create-react-app/issues/290
 			// `web` extension prefixes have been added for better support
 			// for React Native Web.
-			extensions: paths.moduleFileExtensions
-				.map(ext => `.${ext}`)
-				.filter(ext => useTypeScript || !ext.includes('ts')),
+			extensions: ['.js', '.ts', '.tsx', '.json', '.jsx'],
 			alias: {
 				// Support React Native Web
 				// https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
 				'react-native': 'react-native-web',
 				'@src': paths.appSrc,
+				'@api': paths.apiSrc,
 				'@assets': paths.assetsSrc,
 				'@pages': paths.pagesSrc,
 				'@style': paths.styleSrc,
@@ -590,7 +589,6 @@ module.exports = function(webpackEnv) {
 						module: 'esnext',
 						moduleResolution: 'node',
 						resolveJsonModule: true,
-						isolatedModules: true,
 						noEmit: true,
 						jsx: 'preserve'
 					},

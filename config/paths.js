@@ -75,6 +75,7 @@ module.exports = {
 	appIndexJs: resolveModule(resolveApp, 'src/index'),
 	appPackageJson: resolveApp('package.json'),
 	appSrc: resolveApp('src'),
+	apiSrc: resolveApp('src/api'),
 	pagesSrc: resolveApp('src/pages'),
 	styleSrc: resolveApp('src/style'),
 	assetsSrc: resolveApp('src/assets'),
