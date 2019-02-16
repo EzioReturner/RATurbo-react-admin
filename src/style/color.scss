@@ -24,10 +24,6 @@ $color-primary-lighter: lighten($color-primary, 20%) !default;
 $color-primary-low:     lighten($color-primary, 33.5%) !default;
 
 // Secondary color
-$color-secondary:       #6d88ff !default;
+$color-secondary:       #308ee0 !default;
 $color-secondary-dark:  darken($color-secondary, 5%) !default;
 $color-secondary-light: lighten($color-secondary, 5%) !default;
-
-.text-gary {
-  color: #969696
-}

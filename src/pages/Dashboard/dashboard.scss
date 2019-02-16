@@ -10,14 +10,9 @@
         text-align: right;
         .title {
           margin-bottom: 0;
-          font-size: 13px;
-          color: #212529;
         }
         .num {
-          font-size: 26px;
-          color: #212529;
           margin-bottom: 0;
-          line-height: 30px;
         }
       }
       i {
@@ -28,7 +23,6 @@
     .tips {
       margin-bottom: 0;
       margin-top: 10px;
-      color: #c2c2c2;
       i {
         margin-right: 8px;
       }
@@ -37,7 +31,8 @@
   .weatherCard {
     background-image: linear-gradient(to left bottom, #d6eef6, #dff0fa, #e7f3fc, #eff6fe, #f6f9ff);
     .weatherBody {
-      padding: 31px 29px
+      padding: 31px 29px;
+      background: url('../../assets/weather.svg')  center center / cover no-repeat;
     }
     .weather-date-location {
       padding: 0 0 38px;
@@ -51,17 +46,22 @@
       .weakly-weather-item {
         flex: 0 0 25%;
         border-right: 1px solid #f2f2f2;
-        padding: 16px;
         text-align: center;
         &:last-child {
           border-right: 0;
         }
-        .week {
-          margin-bottom: 4px;
-        }
-        .temp {
-          margin-bottom: 0;
-        }
+      }
+    }
+  }
+  .performanceCard {
+    .headerTitle {
+      font-size: 14px;
+      color: $color-secondary;
+      margin-bottom: 38.5px;
+    }
+    .successBar {
+      .ant-progress-bg {
+        background-color: #00ce68;
       }
     }
   }

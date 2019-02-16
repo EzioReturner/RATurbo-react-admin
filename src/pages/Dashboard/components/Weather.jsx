@@ -38,7 +38,6 @@ class Weather extends PureComponent {
 
 	getWeatherIcon(dayweather) {
 		let icon = null;
-		console.log(dayweather.indexOf('云') >= 0);
 		if (dayweather.indexOf('雷') >= 0) {
 			icon = <ThunderSvg />;
 		} else if (dayweather.indexOf('雨') >= 0) {
@@ -56,26 +55,30 @@ class Weather extends PureComponent {
 	render() {
 		const { data, weekName } = this.state;
 		const bodyStyle = {
-			padding: '0',
-			background: `url(${require('@assets/weather.svg')}) center center / cover no-repeat`
+			padding: '0'
 		};
 		const weatherItem = data.map((res, index) => {
 			const { week, daypower, daytemp, dayweather } = res;
 			return (
-				<div className="weakly-weather-item" key={index}>
-					<p className="week">{weekName[Number(week - 1)]}</p>
+				<div className="weakly-weather-item p-3" key={index}>
+					<p className="mb-1">{weekName[Number(week - 1)]}</p>
 					{this.getWeatherIcon(dayweather)}
-					<p className="temp">{daypower + '° - ' + daytemp + '°'}</p>
+					<p className="mb-0">{daypower + '° - ' + daytemp + '°'}</p>
 				</div>
 			);
 		});
 
 		return (
-			<Card bordered={false} className="weatherCard" bodyStyle={bodyStyle}>
+			<Card
+				bordered={false}
+				loading={!data.length}
+				className="weatherCard"
+				bodyStyle={bodyStyle}
+			>
 				<div className="weatherBody">
 					<div className="weather-date-location">
 						<h2>Monday</h2>
-						<p className="text-gary">25 October, 2016 London, UK</p>
+						<p className="text-muted">25 October, 2016 London, UK</p>
 					</div>
 					<div className="weather-data">
 						<h1>21℃</h1>

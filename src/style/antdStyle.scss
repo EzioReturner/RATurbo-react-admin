@@ -24,6 +24,10 @@
       background-color: rgba($color:$color-primary, $alpha:0.1);
     }
 
+    .ant-card {
+      color: #212529;
+    }
+
     .ant-card:hover {
       box-shadow: 0 2px 28px rgba(0, 0, 0, 0.09);
       border-color: rgba(0, 0, 0, 0.09);
@@ -115,5 +119,20 @@
     .ant-menu-item > a:hover {
       color: #fc6ca8;
     }
+
+    .ant-progress-bg {
+      background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+      background-size: 1rem 1rem;
+      animation: progress-bar-stripes 1s linear infinite;
+    }
+  }
+}
+
+@keyframes progress-bar-stripes {
+  0% {
+    background-position: 1rem 0;
+  }
+  100% {
+    background-position: 0 0;
   }
 }

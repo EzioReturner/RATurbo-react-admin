@@ -13,11 +13,11 @@ class InfoCard extends PureComponent {
 				<div className="top">
 					<Icon component={icon} />
 					<div className="rightPart">
-						<p className="title"> {title} </p>
-						<h3 className="num"> {num} </h3>
+						<p className="title">{title}</p>
+						<h3 className="num">{num}</h3>
 					</div>
 				</div>
-				<p className="tips">
+				<p className="mb-0 mt-3 text-muted">
 					<Icon type={tipIcon} />
 					{tips}
 				</p>
