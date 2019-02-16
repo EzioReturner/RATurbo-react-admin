@@ -3,6 +3,7 @@ import { Card, Row, Col } from 'antd';
 import RowInfoCard from './components/RowInfoCard';
 import Weather from './components/Weather';
 import Performance from './components/Performance';
+import SaleTable from './components/SaleTable';
 import './dashboard.scss';
 
 class Dashboard extends Component {
@@ -25,6 +26,11 @@ class Dashboard extends Component {
 					</Col>
 					<Col span={10}>
 						<Performance />
+					</Col>
+				</Row>
+				<Row>
+					<Col span={24}>
+						<SaleTable />
 					</Col>
 				</Row>
 			</div>

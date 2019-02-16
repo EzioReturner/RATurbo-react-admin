@@ -17,7 +17,7 @@
     &::before {
       content: "";
       position: absolute;
-      top: 0;
+      top: -1px;
       left: 0;
       height: 100%;
       border-left: 3px solid $color-primary;
