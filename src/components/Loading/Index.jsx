@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import { observer } from 'mobx-react';
 import classNames from 'classnames';
 import './loading.scss';
 

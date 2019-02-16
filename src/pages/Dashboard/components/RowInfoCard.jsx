@@ -18,7 +18,7 @@ class InfoCard extends PureComponent {
 					</div>
 				</div>
 				<p className="mb-0 mt-3 text-muted">
-					<Icon type={tipIcon} />
+					<Icon type={tipIcon} className="mr-2" />
 					{tips}
 				</p>
 			</Card>

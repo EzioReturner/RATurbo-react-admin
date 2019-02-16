@@ -12,10 +12,13 @@ import {
 import background from '@assets/weather.svg';
 
 class Weather extends PureComponent {
-	state = {
-		data: [],
-		weekName: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-	};
+	constructor(props) {
+		super(props);
+		this.state = {
+			data: [],
+			weekName: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+		};
+	}
 
 	componentDidMount() {
 		getWeather().then(res => {
@@ -69,12 +72,7 @@ class Weather extends PureComponent {
 		});
 
 		return (
-			<Card
-				bordered={false}
-				loading={!data.length}
-				className="weatherCard"
-				bodyStyle={bodyStyle}
-			>
+			<Card bordered={false} className="weatherCard" bodyStyle={bodyStyle}>
 				<div className="weatherBody">
 					<div className="weather-date-location">
 						<h2>Monday</h2>

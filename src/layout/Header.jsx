@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Icon } from 'antd';
+import { inject, observer } from 'mobx-react';
+import classNames from 'classnames';
 import './header.scss';
 
-class Clock extends Component {
+class UserInfo extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -23,8 +25,8 @@ class Clock extends Component {
 	render() {
 		const { date } = this.state;
 		return (
-			<div className="clock">
-				{date.toLocaleTimeString()}
+			<div className="userInfo">
+				<span>{date.toLocaleTimeString()}</span>
 				<span
 					style={{
 						marginLeft: '20px'
@@ -38,6 +40,8 @@ class Clock extends Component {
 	}
 }
 
+@inject('mainStore')
+@observer
 class Header extends Component {
 	constructor(props) {
 		super(props);
@@ -46,12 +50,20 @@ class Header extends Component {
 		// console.log(this, query, e)
 	}
 	render() {
+		const { toggleCollapsed, collapsed } = this.props.mainStore;
+		const iconCollapsed = collapsed ? 'menu-unfold' : 'menu-fold';
 		return (
-			<div className="header">
-				<span className="title" onClick={this.handleClick.bind(this, 'hahah')}>
-					REACT-TURBO
-				</span>
-				<Clock />
+			<div
+				className={classNames('header', {
+					collapsed: collapsed
+				})}
+			>
+				<Icon
+					type={iconCollapsed}
+					className="foldIcon"
+					onClick={() => toggleCollapsed()}
+				/>
+				<UserInfo />
 			</div>
 		);
 	}

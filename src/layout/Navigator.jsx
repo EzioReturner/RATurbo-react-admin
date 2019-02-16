@@ -2,9 +2,15 @@ import React, { Component } from 'react';
 import { Menu, Icon } from 'antd';
 import { Link, withRouter } from 'react-router-dom';
 import routeConfig from '../config/router.config';
+import classNames from 'classnames';
+import { observer } from 'mobx-react';
+import { RLogo } from '@components/SvgIcon';
 import './navigator.scss';
 
 const { SubMenu } = Menu;
+
+@withRouter
+@observer
 class Navigater extends Component {
 	constructor(props) {
 		super(props);
@@ -87,17 +93,27 @@ class Navigater extends Component {
 
 	render() {
 		const {
-			location: { pathname }
+			location: { pathname },
+			collapsed
 		} = this.props;
 		const { openKeys } = this.state;
 		return (
-			<div className="navigator" mode="inline">
+			<div
+				className={classNames('navigator', {
+					collapsed
+				})}
+				mode="inline"
+			>
 				<div className="controlBut">
-					<Icon type="bars" />
+					<div className="rotateIcon">
+						<Icon component={RLogo} className="logoBorder" />
+					</div>
+					<span className="title ml-3">RA-TURBO</span>
 				</div>
 				<Menu
 					className="myMenu"
 					mode="inline"
+					inlineCollapsed={collapsed}
 					selectedKeys={[pathname]}
 					onOpenChange={this.handleOpenMenu}
 					openKeys={openKeys}
