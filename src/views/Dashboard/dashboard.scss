@@ -2,6 +2,7 @@
 
 .dashboard {
   background: transparent;
+  overflow: auto;
   .rowInfoCard .infoCard {
     .top {
       overflow: hidden;
@@ -57,7 +58,7 @@
     .headerTitle {
       font-size: 14px;
       color: $color-secondary;
-      margin-bottom: 38.5px;
+      margin-bottom: 9.5px;
     }
     .successBar {
       .ant-progress-bg {
