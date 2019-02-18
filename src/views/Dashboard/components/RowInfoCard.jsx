@@ -5,11 +5,8 @@ import { BoxSvg, EmpolyeesSvg, OrdersSvg, SalesSvg } from '@components/SvgIcon';
 class InfoCard extends PureComponent {
 	render() {
 		const { icon, tips, title, num, tipIcon } = this.props;
-		const bodyStyle = {
-			padding: '31px 29px'
-		};
 		return (
-			<Card className="infoCard" bordered={false} bodyStyle={bodyStyle}>
+			<Card className="infoCard fat-card" bordered={false}>
 				<div className="top">
 					<Icon component={icon} />
 					<div className="rightPart">

@@ -1,13 +1,10 @@
-import React, { Component, Fragment } from 'react';
-import { Card, Row, Col, Icon } from 'antd';
-import { initChart } from '@utlis/echartTools';
-import { observer } from 'mobx-react';
+import React, { Component, Fragment } from "react";
+import { Card, Row, Col, Icon } from "antd";
+import { initChart } from "@utlis/echartTools";
+import { observer } from "mobx-react";
 
 class EchartCard extends Component {
 	render() {
-		const headStyle = {
-			borderBottomColor: '#f5f5f5'
-		};
 		const { title, id } = this.props;
 
 		const CardTitle = (
@@ -18,7 +15,7 @@ class EchartCard extends Component {
 					<Icon
 						type="cloud-download"
 						style={{
-							marginLeft: '10px'
+							marginLeft: "10px"
 						}}
 					/>
 				</div>
@@ -26,13 +23,7 @@ class EchartCard extends Component {
 		);
 
 		return (
-			<Card
-				size="small"
-				title={CardTitle}
-				headStyle={headStyle}
-				bordered={false}
-				hoverable
-			>
+			<Card title={CardTitle} className="thin-card" bordered={false} hoverable>
 				<div id={id} className="chartDom" />
 			</Card>
 		);
@@ -51,25 +42,25 @@ class DistributeCard extends Component {
 		} = this.props.store.getChartOption;
 		this.startInitChart([
 			{
-				id: 'sexChart',
+				id: "sexChart",
 				option: circleOption
 			},
 			{
-				id: 'ageChart',
+				id: "ageChart",
 				option: barOption
 			},
 			{
-				id: 'cityChart',
+				id: "cityChart",
 				option: barOption,
 				otherOption: cityOption
 			},
 			{
-				id: 'provinceChart',
+				id: "provinceChart",
 				option: barOption,
 				otherOption: provinceOption
 			},
 			{
-				id: 'channelChart',
+				id: "channelChart",
 				option: lineOption
 			}
 		]);
@@ -92,7 +83,7 @@ class DistributeCard extends Component {
 	render() {
 		const { showUnDefined } = this.props.store;
 		const style = {
-			marginBottom: '24px'
+			marginBottom: "24px"
 		};
 		return (
 			<Fragment>

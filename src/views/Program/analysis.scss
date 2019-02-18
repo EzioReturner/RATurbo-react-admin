@@ -11,22 +11,23 @@
     position: relative;
     text-align: left;
     text-indent: 12px;
-    line-height: 14px;
     font-weight: normal;
     font-size: 13px;
     margin-top: 5px;
     &::before {
       content: "";
       position: absolute;
-      top: -1px;
+      top: 1px;
+      bottom: 3px;
+      right: 0;
       left: 0;
-      height: 100%;
       border-left: 3px solid $color-primary;
     }
     .iconBar {
       position: absolute;
       right: 10px;
-      top: -2px;
+      top: 0px;
+      display: flex;
       @include iconStyle;
       i {
         transition: color .3s ease;
