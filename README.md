@@ -32,4 +32,4 @@ yarn install  Or  npm install
 yarn run ra  Or  npm run ra 
 ```
 
-4. After the startup is completed, open a browser and visit [http://localhost:9527](http://localhost:9527), If you need to change the startup port, you can configure it in the `.env` file.
+4. After the startup is completed, open your browser and visit [http://localhost:9527](http://localhost:9527), If you want to change the  port, you can configure it in the `.env` file.
