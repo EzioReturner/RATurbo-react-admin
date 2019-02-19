@@ -1,5 +1,47 @@
-### react后台管理系统模板
+<p align="center">
+  <a href="https://github.com/EzioReturner/ra-turbo">
+    <img alt="antd-admin" height="64" src="./public/favicon.ico">
+  </a>
+</p>
 
-### `yarn start`
+<h1 align="center">RA Turbo</h1>
 
-启动服务 默认端口9527 [http://localhost:9527](http://localhost:9527)
+<div align="center">
+  A front-end solution web applications.
+</div>
+
+
+## Usage
+
+1. Clone project code.
+
+```bash
+git clone https://github.com/EzioReturner/ra-turbo.git my-ra
+cd my-ra
+```
+
+2. Installation dependence.
+
+```bash
+yarn install
+```
+
+Or
+
+```bash
+npm install
+```
+
+3. Start local server.
+
+```bash
+yarn run ra 
+```
+
+Or
+
+```bash
+npm run ra 
+```
+
+4. After the startup is completed, open a browser and visit [http://localhost:9527](http://localhost:9527), If you need to change the startup port, you can configure it in the `.env` file.
