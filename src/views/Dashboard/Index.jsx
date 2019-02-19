@@ -4,6 +4,7 @@ import RowInfoCard from './components/RowInfoCard';
 import Weather from './components/Weather';
 import Performance from './components/Performance';
 import SaleTable from './components/SaleTable';
+import GlobalTrends from './components/GlobalTrends';
 import './dashboard.scss';
 
 class Dashboard extends Component {
@@ -26,6 +27,15 @@ class Dashboard extends Component {
 					</Col>
 					<Col span={10}>
 						<Performance />
+					</Col>
+				</Row>
+				<Row
+					style={{
+						margin: '24px 0'
+					}}
+				>
+					<Col span={24}>
+						<GlobalTrends />
 					</Col>
 				</Row>
 				<Row>

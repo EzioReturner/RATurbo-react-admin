@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Card, Progress } from 'antd';
-class Performance extends Component {
+class Performance extends PureComponent {
 	render() {
 		return (
 			<Card
 				bordered={false}
-				className="performanceCard fat-card"
+				className="performance-card fat-card"
 				title={<p className="headerTitle"> Performance History</p>}
 			>
 				<div className="justify-between warp-flex">

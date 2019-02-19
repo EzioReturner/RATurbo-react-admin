@@ -34,9 +34,11 @@
           border: 0;
           .ant-card-head-title {
             padding: 29px 0 0px 0px;
-            &>p {
-              margin-bottom: 0px;
-            }
+          }
+          .ant-card-head-title,
+          .ant-card-head-title>p {
+            font-size: 14px;
+            font-weight: 500;
           }
         }
         .ant-card-body {

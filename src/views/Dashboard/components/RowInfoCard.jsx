@@ -6,10 +6,10 @@ class InfoCard extends PureComponent {
 	render() {
 		const { icon, tips, title, num, tipIcon } = this.props;
 		return (
-			<Card className="infoCard fat-card" bordered={false}>
+			<Card className="info-card fat-card" bordered={false}>
 				<div className="top">
 					<Icon component={icon} />
-					<div className="rightPart">
+					<div className="right-part">
 						<p className="title">{title}</p>
 						<h3 className="num">{num}</h3>
 					</div>
@@ -56,7 +56,7 @@ class RowInfoCard extends PureComponent {
 			}
 		];
 		return (
-			<Row gutter={24} className="rowInfoCard">
+			<Row gutter={24} className="rowInfo-card">
 				{details.map((dl, index) => (
 					<Col span={6} key={index}>
 						<InfoCard {...dl} />

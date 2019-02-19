@@ -159,7 +159,7 @@ class SaleTable extends Component {
 		const { tableData } = this.state;
 
 		return (
-			<Card bordered={false} className="fat-card" title={<p>Sales</p>}>
+			<Card bordered={false} className="fat-card" title="Sales">
 				<Table
 					pagination={false}
 					className="no-head-border"

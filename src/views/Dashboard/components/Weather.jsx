@@ -72,8 +72,8 @@ class Weather extends PureComponent {
 		});
 
 		return (
-			<Card bordered={false} className="weatherCard" bodyStyle={bodyStyle}>
-				<div className="weatherBody">
+			<Card bordered={false} className="weather-card" bodyStyle={bodyStyle}>
+				<div className="weather-body">
 					<div className="weather-date-location">
 						<h2>Monday</h2>
 						<p className="text-muted">25 October, 2016 London, UK</p>

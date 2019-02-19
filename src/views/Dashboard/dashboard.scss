@@ -3,10 +3,10 @@
 .dashboard {
   background: transparent;
   overflow: auto;
-  .rowInfoCard .infoCard {
+  .rowInfo-card .info-card {
     .top {
       overflow: hidden;
-      .rightPart {
+      .right-part {
         float: right;
         text-align: right;
         .title {
@@ -29,9 +29,9 @@
       }
     }
   }
-  .weatherCard {
+  .weather-card {
     background-image: linear-gradient(to left bottom, #d6eef6, #dff0fa, #e7f3fc, #eff6fe, #f6f9ff);
-    .weatherBody {
+    .weather-body {
       padding: 31px 29px;
       background: url('../../assets/weather.svg')  center center / cover no-repeat;
     }
@@ -54,11 +54,17 @@
       }
     }
   }
-  .performanceCard {
+  .performance-card {
     .headerTitle {
       font-size: 14px;
       color: $color-secondary;
       margin-bottom: 18px !important;
+    }
+  }
+  .global-trends {
+    #chartContaniner {
+      width: 100%;
+      height: 350px;
     }
   }
 }
