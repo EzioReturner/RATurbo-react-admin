@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { Card, Progress } from 'antd';
-
 class Performance extends Component {
 	render() {
 		return (
 			<Card
 				bordered={false}
 				className="performanceCard fat-card"
-				title={<p className="headerTitle">Performance History</p>}
+				title={<p className="headerTitle"> Performance History</p>}
 			>
 				<div className="justify-between warp-flex">
 					<div>
@@ -68,5 +67,4 @@ class Performance extends Component {
 		);
 	}
 }
-
 export default Performance;

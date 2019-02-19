@@ -1,6 +1,6 @@
-import { observable, configure, action, computed, autorun } from 'mobx';
+import { observable, configure, action, computed, autorun } from "mobx";
 
-configure({ enforceActions: 'always' });
+configure({ enforceActions: "always" });
 class MainStore {
   @observable spinning: boolean = true;
   @observable fixed: boolean = false;

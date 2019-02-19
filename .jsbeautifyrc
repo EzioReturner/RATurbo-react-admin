@@ -1,5 +1,5 @@
 {
- "js": {
-  "single_quote": true
- }
+  "js": {
+    singleQuote: true
+  }
 }

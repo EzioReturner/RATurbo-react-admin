@@ -1,12 +1,10 @@
-import React, { Component, Fragment } from "react";
-import { Card, Row, Col, Icon } from "antd";
-import { initChart } from "@utlis/echartTools";
-import { observer } from "mobx-react";
-
+import React, { Component, Fragment } from 'react';
+import { Card, Row, Col, Icon } from 'antd';
+import { initChart } from '@utlis/echartTools';
+import { observer } from 'mobx-react';
 class EchartCard extends Component {
 	render() {
 		const { title, id } = this.props;
-
 		const CardTitle = (
 			<div className="titleNanme">
 				{title}
@@ -15,21 +13,24 @@ class EchartCard extends Component {
 					<Icon
 						type="cloud-download"
 						style={{
-							marginLeft: "10px"
+							marginLeft: '10px'
 						}}
 					/>
 				</div>
 			</div>
 		);
-
 		return (
-			<Card title={CardTitle} className="thin-card" bordered={false} hoverable>
+			<Card
+				title={CardTitle}
+				className="thin-card"
+				bordered={false}
+				hoverable="hoverable"
+			>
 				<div id={id} className="chartDom" />
 			</Card>
 		);
 	}
 }
-
 @observer
 class DistributeCard extends Component {
 	paintChart() {
@@ -42,48 +43,44 @@ class DistributeCard extends Component {
 		} = this.props.store.getChartOption;
 		this.startInitChart([
 			{
-				id: "sexChart",
+				id: 'sexChart',
 				option: circleOption
 			},
 			{
-				id: "ageChart",
+				id: 'ageChart',
 				option: barOption
 			},
 			{
-				id: "cityChart",
+				id: 'cityChart',
 				option: barOption,
 				otherOption: cityOption
 			},
 			{
-				id: "provinceChart",
+				id: 'provinceChart',
 				option: barOption,
 				otherOption: provinceOption
 			},
 			{
-				id: "channelChart",
+				id: 'channelChart',
 				option: lineOption
 			}
 		]);
 	}
-
 	startInitChart(chart) {
 		for (let i = 0; i < chart.length; i++) {
 			initChart(chart[i]);
 		}
 	}
-
 	componentDidMount() {
 		this.paintChart();
 	}
-
 	componentWillReact() {
 		this.paintChart();
 	}
-
 	render() {
 		const { showUnDefined } = this.props.store;
 		const style = {
-			marginBottom: "24px"
+			marginBottom: '24px'
 		};
 		return (
 			<Fragment>
@@ -112,5 +109,4 @@ class DistributeCard extends Component {
 		);
 	}
 }
-
 export default DistributeCard;
