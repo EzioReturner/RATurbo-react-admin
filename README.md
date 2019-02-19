@@ -22,26 +22,14 @@ cd my-ra
 
 2. Installation dependence.
 
-```bash
-yarn install
-```
-
-Or
-
-```bash
-npm install
+```bash 
+yarn install  Or  npm install
 ```
 
 3. Start local server.
 
 ```bash
-yarn run ra 
-```
-
-Or
-
-```bash
-npm run ra 
+yarn run ra  Or  npm run ra 
 ```
 
 4. After the startup is completed, open a browser and visit [http://localhost:9527](http://localhost:9527), If you need to change the startup port, you can configure it in the `.env` file.
