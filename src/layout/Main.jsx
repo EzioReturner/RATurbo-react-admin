@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Navigator from './Navigator';
 import RoutesComponent from './RouteContent';
 import Loading from '@components/Loading/Index';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
 import { Store } from '@store/index';
 import './main.scss';

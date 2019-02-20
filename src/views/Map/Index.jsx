@@ -5,9 +5,11 @@ import { Card } from 'antd';
 class Map extends Component {
 	componentDidMount() {
 		const map = new BMap.Map('mapContainer');
-		map.centerAndZoom(new BMap.Point(118.204, 24.465), 11);
-		map.setCurrentCity('厦门');
+		map.centerAndZoom(new BMap.Point(108.154, 37.495), 5);
 		map.enableScrollWheelZoom(true);
+		import('@assets/custom_map_config.json').then(res => {
+			map.setMapStyle({ styleJson: res });
+		});
 	}
 
 	render() {
@@ -19,11 +21,10 @@ class Map extends Component {
 					}}
 					bordered
 					className="thin-card"
-					title="地图"
 					bodyStyle={{
-						height: 'calc(100% - 48px)',
+						height: '100%',
 						width: '100%',
-						padding: '24px'
+						padding: '4px'
 					}}
 				>
 					<div className="myMapContainer" id="mapContainer" />
