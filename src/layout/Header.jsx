@@ -40,7 +40,7 @@ class UserInfo extends Component {
 	}
 }
 
-@inject('mainStore')
+@inject('layoutStore')
 @observer
 class Header extends Component {
 	constructor(props) {
@@ -50,7 +50,7 @@ class Header extends Component {
 		// console.log(this, query, e)
 	}
 	render() {
-		const { toggleCollapsed, collapsed } = this.props.mainStore;
+		const { toggleCollapsed, collapsed } = this.props.layoutStore;
 		const iconCollapsed = collapsed ? 'menu-unfold' : 'menu-fold';
 		return (
 			<div

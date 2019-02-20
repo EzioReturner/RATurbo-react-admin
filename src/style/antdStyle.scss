@@ -130,13 +130,6 @@
       border: 0 solid rgba($color:$color-primary, $alpha:0.8);
     }
 
-
-    .ant-menu-item-selected > a,
-    .ant-menu-item-selected > a:hover,
-    .ant-menu-item > a:hover {
-      color: #fc6ca8;
-    }
-
     .ant-progress-bg {
       background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
       background-size: 1rem 1rem;
@@ -184,6 +177,7 @@
         background-color: #ffaf00;
       }
     }
+
   }
 }
 

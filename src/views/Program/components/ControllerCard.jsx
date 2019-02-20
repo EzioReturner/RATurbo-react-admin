@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Card, Select, Button, DatePicker, Icon, Switch } from 'antd';
-import { observer } from 'mobx-react';
+import { observer, inject } from 'mobx-react';
 const { Option } = Select;
 
+@inject('programStore')
 @observer
 class Controller extends Component {
 	constructor(props) {
@@ -24,7 +25,7 @@ class Controller extends Component {
 	}
 
 	handleSwitch = checked => {
-		this.props.store.changeShowUnDefined(checked);
+		this.props.programStore.changeShowUnDefined(checked);
 	};
 
 	componentWillReact() {
@@ -57,7 +58,7 @@ class Controller extends Component {
 				</Button>
 			</div>
 		);
-		const { showUnDefined } = this.props.store;
+		const { showUnDefined } = this.props.programStore;
 		return (
 			<Card
 				size="small"

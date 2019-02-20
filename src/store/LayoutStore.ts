@@ -1,12 +1,13 @@
-import { observable, configure, action, computed, autorun } from "mobx";
+import { observable, configure, action, computed, autorun } from 'mobx';
 
-configure({ enforceActions: "always" });
+configure({ enforceActions: 'always' });
 class MainStore {
   @observable spinning: boolean = true;
   @observable fixed: boolean = false;
   @observable mountLoading: boolean = true;
   @observable readyInitializers: Array<string> = [];
   @observable collapsed: boolean = false;
+  @observable openMenus: Array<string> = [];
   timeout: any = null;
   constructor() {
     // autorun(() => this.checkIsInitial(this.componentPath));
@@ -37,8 +38,10 @@ class MainStore {
   @action toggleCollapsed = () => {
     this.collapsed = !this.collapsed;
   };
+
+  @action setOpenMenus(menus: Array<string>): void {
+    this.openMenus = menus;
+  }
 }
 
-const mainStore = new MainStore();
-
-export default mainStore;
+export default MainStore;

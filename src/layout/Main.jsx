@@ -3,32 +3,22 @@ import Navigator from './Navigator';
 import RoutesComponent from './RouteContent';
 import Loading from '@components/Loading/Index';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { observer, Provider } from 'mobx-react';
-import mainStore from './model';
+import { observer, inject } from 'mobx-react';
+import { Store } from '@store/index';
 import './main.scss';
 
+@inject('layoutStore')
 @observer
 class Main extends Component {
 	render() {
-		const {
-			spinning,
-			fixed,
-			mountLoading,
-			collapsed,
-			toggleCollapsed
-		} = mainStore;
+		const { mountLoading, collapsed } = this.props.layoutStore;
 		return (
 			<Router>
-				<Provider mainStore={mainStore}>
-					<div className="container">
-						{mountLoading && <Loading spinning={spinning} fixed={fixed} />}
-						<Navigator collapsed={collapsed} />
-						<RoutesComponent
-							collapsed={collapsed}
-							toggleCollapsed={toggleCollapsed}
-						/>
-					</div>
-				</Provider>
+				<div className="container">
+					{mountLoading && <Loading />}
+					<Navigator collapsed={collapsed} />
+					<RoutesComponent collapsed={collapsed} />
+				</div>
 			</Router>
 		);
 	}

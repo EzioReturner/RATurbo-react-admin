@@ -3,19 +3,20 @@ import { Menu, Icon } from 'antd';
 import { Link, withRouter } from 'react-router-dom';
 import routeConfig from '../config/router.config';
 import classNames from 'classnames';
-import { observer } from 'mobx-react';
+import { observer, inject } from 'mobx-react';
 import { RLogo } from '@components/SvgIcon';
 import './navigator.scss';
 
 const { SubMenu } = Menu;
 
+@inject('layoutStore')
 @withRouter
 @observer
 class Navigater extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			openKeys: []
+			openKeys: props.layoutStore.openMenus
 		};
 	}
 
@@ -83,9 +84,13 @@ class Navigater extends Component {
 	}
 
 	handleOpenMenu = openKeys => {
+		console.log(openKeys);
 		const moreThanOne =
 			openKeys.filter(key => routeConfig.some(route => route.path === key))
 				.length > 1;
+		if (this.props.collapsed && !openKeys.length) {
+			return;
+		}
 		this.setState({
 			openKeys: moreThanOne ? [openKeys.pop()] : [...openKeys]
 		});
@@ -96,7 +101,9 @@ class Navigater extends Component {
 			location: { pathname },
 			collapsed
 		} = this.props;
-		const { openKeys } = this.state;
+
+		const menuProps = collapsed ? {} : { openKeys: this.state.openKeys };
+
 		return (
 			<div
 				className={classNames('navigator', {
@@ -116,7 +123,7 @@ class Navigater extends Component {
 					inlineCollapsed={collapsed}
 					selectedKeys={[pathname]}
 					onOpenChange={this.handleOpenMenu}
-					openKeys={openKeys}
+					{...menuProps}
 				>
 					{this.getNavMenuItem(routeConfig)}
 				</Menu>

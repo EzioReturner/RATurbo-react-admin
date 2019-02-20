@@ -1,4 +1,5 @@
 @import './custom.scss';
+@import './color.scss';
 
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
@@ -21,6 +22,16 @@ body {
     -moz-osx-font-smoothing: grayscale;
     --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    .ant-menu-item-selected > a,
+    .ant-menu-item-selected > a:hover,
+    .ant-menu-item > a:hover {
+      color: $color-primary-sec;
+    }
+    .ant-menu-item:active,
+    .ant-menu-submenu-title:active,
+    .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+      background-color: #f4f4f4;
+    }
 }
 
 :root,body {

@@ -53,6 +53,4 @@ class DashboardState {
   }
 }
 
-const dashboardState = new DashboardState();
-
-export default dashboardState;
+export default DashboardState;

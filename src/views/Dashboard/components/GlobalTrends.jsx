@@ -5,9 +5,6 @@ import { initChart } from '@utlis/echartTools';
 class GlobalTrends extends PureComponent {
 	constructor(props) {
 		super(props);
-		this.state = {
-			data: []
-		};
 	}
 
 	componentDidMount() {
@@ -22,8 +19,6 @@ class GlobalTrends extends PureComponent {
 	}
 
 	render() {
-		let { data } = this.state;
-
 		return (
 			<Card
 				bordered={false}

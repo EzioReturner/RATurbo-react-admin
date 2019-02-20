@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import mainState from '@src/layout/model';
+import { inject, observer } from 'mobx-react';
 import './warp.scss';
 
+@inject('layoutStore')
+@observer
 class WrapComponent extends Component {
 	state = {
 		animateIn: false
@@ -12,7 +14,7 @@ class WrapComponent extends Component {
 		this.setState({
 			animateIn: true
 		});
-		mainState.stopSpinning();
+		this.props.layoutStore.stopSpinning();
 	}
 
 	render() {

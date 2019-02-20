@@ -25,7 +25,8 @@
       "@views/*": ["src/views/*"],
       "@style/*": ["src/style/*"],
       "@utlis/*": ["src/utlis/*"],
-      "@components/*": ["src/components/*"]
+      "@components/*": ["src/components/*"],
+      "@store/*":["src/store/*"]
     }
   },
   "include": [

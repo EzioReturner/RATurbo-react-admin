@@ -1,13 +1,37 @@
 import React, { Component } from 'react';
+import { CSSTransition } from 'react-transition-group';
+import { Grid, Button } from 'antd';
+import './monitor.scss';
 
-class Dashboard extends Component {
-	constructor(props) {
-		super(props);
+class Monitor extends Component {
+	state = {
+		name: '',
+		showValidationMessage: false,
+		showValidationButton: true
+	};
+
+	componentDidMount() {
+		this.setState({
+			showValidationMessage: true
+		});
 	}
 
 	render() {
-		return <div className="content" />;
+		const { name, showValidationMessage, showValidationButton } = this.state;
+		return (
+			<div>
+				<CSSTransition
+					in={showValidationMessage}
+					timeout={300}
+					appear
+					classNames="star"
+					unmountOnExit
+				>
+					<div className="star">⭐</div>
+				</CSSTransition>
+			</div>
+		);
 	}
 }
 
-export default Dashboard;
+export default Monitor;

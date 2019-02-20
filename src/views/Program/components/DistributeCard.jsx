@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Card, Row, Col, Icon } from 'antd';
 import { initChart } from '@utlis/echartTools';
-import { observer } from 'mobx-react';
+import { observer, inject } from 'mobx-react';
 class EchartCard extends Component {
 	render() {
 		const { title, id } = this.props;
@@ -31,6 +31,8 @@ class EchartCard extends Component {
 		);
 	}
 }
+
+@inject('programStore')
 @observer
 class DistributeCard extends Component {
 	paintChart() {
@@ -40,7 +42,7 @@ class DistributeCard extends Component {
 			cityOption,
 			provinceOption,
 			lineOption
-		} = this.props.store.getChartOption;
+		} = this.props.programStore.getChartOption;
 		this.startInitChart([
 			{
 				id: 'sexChart',
@@ -78,7 +80,7 @@ class DistributeCard extends Component {
 		this.paintChart();
 	}
 	render() {
-		const { showUnDefined } = this.props.store;
+		const { showUnDefined } = this.props.programStore;
 		const style = {
 			marginBottom: '24px'
 		};

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import WrapComponent from '@components/WarpAnimation/Index';
-import mainState from '@src/layout/model';
+import { inject } from 'mobx-react';
 
 export default function asyncComponent(componentInfo) {
+	@inject('layoutStore')
 	class AsyncComponent extends Component {
 		constructor(props) {
 			super(props);
@@ -14,7 +15,7 @@ export default function asyncComponent(componentInfo) {
 
 		async componentDidMount() {
 			const [asyncComponent, path] = componentInfo();
-			mainState.checkIsInitial(path);
+			this.props.layoutStore.checkIsInitial(path);
 			const { default: component } = await asyncComponent;
 			this.setState({
 				component: component
