@@ -1,12 +1,6 @@
 import { observable, configure, action, computed } from 'mobx';
 import { cloneDeep } from 'lodash';
-import {
-  circleOption,
-  barOption,
-  cityOption,
-  provinceOption,
-  lineOption
-} from '@utlis/chartOption.js';
+import { analysisOptions } from '@utlis/chartOption.js';
 
 configure({ enforceActions: 'always' });
 class DashboardState {
@@ -19,19 +13,11 @@ class DashboardState {
   @computed get getChartOption(): object {
     if (this.showUnDefined) {
       return {
-        circleOption,
-        barOption,
-        cityOption,
-        provinceOption,
-        lineOption
+        ...analysisOptions
       };
     } else {
       return this.filterUnDefined({
-        circleOption,
-        barOption,
-        cityOption,
-        provinceOption,
-        lineOption
+        ...analysisOptions
       });
     }
   }

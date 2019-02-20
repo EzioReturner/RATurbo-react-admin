@@ -301,7 +301,7 @@ const lineOption = {
 	]
 };
 
-const globalTrendsOption = {
+export const globalTrendsOption = {
 	tooltip: {
 		trigger: 'axis'
 	},
@@ -375,11 +375,10 @@ const globalTrendsOption = {
 	]
 };
 
-export {
+export const analysisOptions = {
 	circleOption,
 	barOption,
 	cityOption,
 	provinceOption,
-	lineOption,
-	globalTrendsOption
+	lineOption
 };

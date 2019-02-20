@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import { Card } from 'antd';
-import { globalTrendsOption } from '@utlis/chartOption';
 import { initChart } from '@utlis/echartTools';
 
 class GlobalTrends extends PureComponent {
@@ -12,15 +11,13 @@ class GlobalTrends extends PureComponent {
 	}
 
 	componentDidMount() {
-		this.loadChartData();
 		this.createChart();
 	}
 
-	loadChartData = async () => {
-		const data = await import('@assets/global-trends.json');
-	};
-
-	createChart() {
+	async createChart() {
+		const {
+			globalTrendsOption
+		} = await import(/* webpackChunkName: "globalTrendsOption" */ '@utlis/chartOption');
 		initChart({ id: 'chartContaniner', option: globalTrendsOption });
 	}
 

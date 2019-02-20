@@ -9,7 +9,6 @@ import {
 	ThunderSvg,
 	SunSvg
 } from '@components/SvgIcon';
-import background from '@assets/weather.svg';
 
 class Weather extends PureComponent {
 	constructor(props) {
@@ -52,6 +51,7 @@ class Weather extends PureComponent {
 		} else if (dayweather.indexOf('晴') >= 0) {
 			icon = <SunSvg />;
 		}
+
 		return icon;
 	}
 
