@@ -84,7 +84,6 @@ class Navigater extends Component {
 	}
 
 	handleOpenMenu = openKeys => {
-		console.log(openKeys);
 		const moreThanOne =
 			openKeys.filter(key => routeConfig.some(route => route.path === key))
 				.length > 1;

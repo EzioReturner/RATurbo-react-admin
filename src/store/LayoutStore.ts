@@ -1,4 +1,5 @@
 import { observable, configure, action, computed, autorun } from 'mobx';
+import ET from '@utlis/echartTools';
 
 configure({ enforceActions: 'always' });
 class MainStore {
@@ -37,6 +38,7 @@ class MainStore {
 
   @action toggleCollapsed = () => {
     this.collapsed = !this.collapsed;
+    ET.resizeAllDisplayChart();
   };
 
   @action setOpenMenus(menus: Array<string>): void {

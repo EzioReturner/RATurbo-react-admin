@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Card, Row, Col, Icon } from 'antd';
-import { initChart } from '@utlis/echartTools';
+import ET from '@utlis/echartTools';
 import { observer, inject } from 'mobx-react';
 class EchartCard extends Component {
 	render() {
@@ -24,7 +24,7 @@ class EchartCard extends Component {
 				title={CardTitle}
 				className="thin-card"
 				bordered={false}
-				hoverable="hoverable"
+				bodyStyle={{ overflow: 'hidden' }}
 			>
 				<div id={id} className="chartDom" />
 			</Card>
@@ -70,15 +70,30 @@ class DistributeCard extends Component {
 	}
 	startInitChart(chart) {
 		for (let i = 0; i < chart.length; i++) {
-			initChart(chart[i]);
+			ET.initChart(chart[i]);
 		}
 	}
+
 	componentDidMount() {
 		this.paintChart();
 	}
+
 	componentWillReact() {
 		this.paintChart();
 	}
+
+	componentWillUnmount() {
+		[
+			'sexChart',
+			'ageChart',
+			'cityChart',
+			'provinceChart',
+			'channelChart'
+		].forEach(res => {
+			ET.dispose(res);
+		});
+	}
+
 	render() {
 		const { showUnDefined } = this.props.programStore;
 		const style = {

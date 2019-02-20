@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Card } from 'antd';
-import { initChart } from '@utlis/echartTools';
+import ET from '@utlis/echartTools';
 
 class GlobalTrends extends PureComponent {
 	constructor(props) {
@@ -15,7 +15,11 @@ class GlobalTrends extends PureComponent {
 		const {
 			globalTrendsOption
 		} = await import(/* webpackChunkName: "globalTrendsOption" */ '@utlis/chartOption');
-		initChart({ id: 'chartContaniner', option: globalTrendsOption });
+		ET.initChart({ id: 'chartContaniner', option: globalTrendsOption });
+	}
+
+	componentWillUnmount() {
+		ET.dispose('chartContaniner');
 	}
 
 	render() {
@@ -23,6 +27,7 @@ class GlobalTrends extends PureComponent {
 			<Card
 				bordered={false}
 				className="fat-card global-trends"
+				bodyStyle={{ overflow: 'hidden' }}
 				title="Global Trends"
 			>
 				<div id="chartContaniner" />

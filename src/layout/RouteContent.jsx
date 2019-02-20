@@ -51,6 +51,7 @@ class RouteList extends Component {
 		const { location, collapsed } = this.props;
 		return (
 			<div
+				id="mainContainer"
 				className={classNames('routeContent', {
 					collapsed: collapsed
 				})}
