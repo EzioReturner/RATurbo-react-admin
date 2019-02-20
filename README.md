@@ -12,7 +12,7 @@
 
 ## Preview
 
-- <a href="http://ra-turbo.leanapp.cn/dashboard" target="_blank">ra-turbo</a>
+- <a href="http://ra-turbo.leanapp.cn" target="_blank">ra-turbo</a>
 
 
 ## How to start
