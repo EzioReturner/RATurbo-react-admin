@@ -5,6 +5,7 @@ import { observer, Provider } from 'mobx-react';
 import * as serviceWorker from './pwa/serviceWorker';
 import { Store } from '@store/index';
 import RoutesContainer from '@components/RoutesContainer/Index';
+
 ReactDOM.render(
 	<Provider {...Store}>
 		<RoutesContainer />

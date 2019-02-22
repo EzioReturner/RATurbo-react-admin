@@ -9,41 +9,41 @@ import React, { Component } from 'react';
  * @param { 未通过的组件 no pass components } unAuthor
  */
 export const CheckPermission = (
-	authority,
+	routeAuthority,
 	currentAuthority,
 	Target,
 	Unidentified
 ) => {
-	console.log(authority, currentAuthority, Target, Unidentified);
-	if (!authority) {
+	console.log(routeAuthority, currentAuthority, Target, Unidentified);
+	if (!routeAuthority) {
 		return Target;
 	}
-	if (Array.isArray(authority)) {
-		if (authority.indexOf(currentAuthority) >= 0) {
+	if (Array.isArray(routeAuthority)) {
+		if (routeAuthority.indexOf(currentAuthority) >= 0) {
 			return Target;
 		}
 		if (Array.isArray(currentAuthority)) {
 			for (let i = 0; i < currentAuthority.length; i += 1) {
 				const element = currentAuthority[i];
-				if (authority.indexOf(element) >= 0) {
+				if (routeAuthority.indexOf(element) >= 0) {
 					return Target;
 				}
 			}
 		}
 		return Unidentified;
 	}
-	if (typeof authority === 'string') {
-		if (authority === 'all') {
+	if (typeof routeAuthority === 'string') {
+		if (routeAuthority === 'all') {
 			return currentAuthority ? Target : Unidentified;
 		}
 
-		if (authority === currentAuthority) {
+		if (routeAuthority === currentAuthority) {
 			return Target;
 		}
 		if (Array.isArray(currentAuthority)) {
 			for (let i = 0; i < currentAuthority.length; i += 1) {
 				const element = currentAuthority[i];
-				if (authority === element) {
+				if (routeAuthority === element) {
 					return Target;
 				}
 			}

@@ -11,14 +11,25 @@ const routeConfig = [
 			import('../layout/UserLayout'),
 			'../layout/UserLayout',
 			'fade'
-		])
+		]),
+		routes: [
+			{
+				name: 'Login',
+				path: '/user/login',
+				component: AsyncComponent(() => [
+					import('@views/User/Login'),
+					'@views/User/Login'
+				])
+			}
+		]
 	},
 	// app
 	{
 		path: '/',
 		component: AsyncComponent(() => [
 			import('../layout/MainLayout'),
-			'../layout/MainLayout'
+			'../layout/MainLayout',
+			'fade'
 		]),
 		authority: ['admin', 'guest'],
 		routes: [
@@ -36,14 +47,6 @@ const routeConfig = [
 				exact: true,
 				redirect: '/dashboard',
 				hideMenu: true
-			},
-			{
-				path: '/login',
-				hideMenu: true,
-				component: AsyncComponent(() => [
-					import('@views/Login/Index'),
-					'@views/Login/Index'
-				])
 			},
 			{
 				name: 'Program',

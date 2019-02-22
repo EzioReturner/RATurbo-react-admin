@@ -1,0 +1,24 @@
+.login {
+  .login-form {
+    max-width: 300px;
+  }
+  .login-form-forgot {
+    float: right;
+  }
+  .login-form-button {
+    opacity: 0.8;
+    width: 100%;
+  }
+  .ant-input {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-color: transparent;
+    &:focus {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  }
+  .ant-input-prefix {
+    .anticon {
+      color: #ffffff;
+    }
+  }
+}

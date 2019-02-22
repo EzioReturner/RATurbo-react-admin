@@ -22,6 +22,23 @@ class RouteMiddle extends Component {
 	}
 }
 
+// function authorityRoute(route) {
+// 	const authorityRoute = args => {
+// 		const { render, ...rest } = args;
+// 		return (
+// 			<Authorized>
+// 				<RouteMiddle
+// 					{...rest}
+// 					render={props => {
+// 						return <route.component {...props} route={route} render={render} />;
+// 					}}
+// 				/>
+// 			</Authorized>
+// 		);
+// 	};
+// 	return authorityRoute;
+// }
+
 class RenderRoutes extends Component {
 	generateRoute(routes, switchProps) {
 		return routes ? (
@@ -34,7 +51,8 @@ class RenderRoutes extends Component {
 						strict,
 						routes,
 						component: C,
-						key
+						key,
+						withAuthority
 					} = route;
 
 					if (redirect) {

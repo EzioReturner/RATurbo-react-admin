@@ -1,5 +1,6 @@
 @import './custom.scss';
 @import './color.scss';
+@import '@style/antdStyle.scss';
 
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
@@ -32,6 +33,7 @@ body {
     .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
       background-color: #f4f4f4;
     }
+    @include antdStyle;
 }
 
 :root,body {
