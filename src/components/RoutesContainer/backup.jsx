@@ -1,10 +1,7 @@
 import React, { Component, Suspense } from 'react';
 import { Route, Redirect, Switch, withRouter } from 'react-router-dom';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import Header from './Header';
 import classNames from 'classnames';
-import routeConfig from '../config/router.config';
-import './routeContent.scss';
+import routeConfig from '../../config/router.config';
 
 class RouteComponent extends Component {
 	constructor(props) {
@@ -28,7 +25,8 @@ class RouteComponent extends Component {
 	}
 
 	render() {
-		return routeConfig.reduce((total, route) => {
+		const routes = routeConfig[1].routes;
+		return routes.reduce((total, route) => {
 			const { redirect, path, component, children } = route;
 			const C = redirect ? (
 				<Route
@@ -48,19 +46,10 @@ class RouteComponent extends Component {
 @withRouter
 class RouteList extends Component {
 	render() {
-		const { location, collapsed } = this.props;
 		return (
-			<div
-				id="mainContainer"
-				className={classNames('routeContent', {
-					collapsed: collapsed
-				})}
-			>
-				<Header />
-				<Switch>
-					<RouteComponent {...this.props} />
-				</Switch>
-			</div>
+			<Switch>
+				<RouteComponent {...this.props} />
+			</Switch>
 		);
 	}
 }

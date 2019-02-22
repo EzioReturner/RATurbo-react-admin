@@ -8,7 +8,7 @@ import { RLogo } from '@components/SvgIcon';
 import './navigator.scss';
 
 const { SubMenu } = Menu;
-
+const _routes = routeConfig[1].routes;
 @inject('layoutStore')
 @withRouter
 @observer
@@ -30,7 +30,7 @@ class Navigater extends Component {
 		} = this.props;
 		const menuOpen = pathname.split('/').reduce((total, obj) => {
 			obj &&
-				routeConfig.some(route => route.path === '/' + obj) &&
+				_routes.some(route => route.path === '/' + obj) &&
 				total.push('/' + obj);
 			return total;
 		}, []);
@@ -59,14 +59,14 @@ class Navigater extends Component {
 
 	getSubMenuOrItem(menu) {
 		if (
-			menu.children &&
+			menu.routes &&
 			!menu.hideMenu &&
-			menu.children.some(child => child.name)
+			menu.routes.some(child => child.name)
 		) {
-			const { icon, name, path, children } = menu;
+			const { icon, name, path, routes } = menu;
 			return (
 				<SubMenu title={this.getMenuTitle(icon, name)} key={path}>
-					{this.getNavMenuItem(children)}
+					{this.getNavMenuItem(routes)}
 				</SubMenu>
 			);
 		}
@@ -85,8 +85,8 @@ class Navigater extends Component {
 
 	handleOpenMenu = openKeys => {
 		const moreThanOne =
-			openKeys.filter(key => routeConfig.some(route => route.path === key))
-				.length > 1;
+			openKeys.filter(key => _routes.some(route => route.path === key)).length >
+			1;
 		if (this.props.collapsed && !openKeys.length) {
 			return;
 		}
@@ -95,6 +95,10 @@ class Navigater extends Component {
 		});
 	};
 
+	handleLinkGithub() {
+		window.open('https://github.com/EzioReturner/ra-turbo-admin');
+	}
+
 	render() {
 		const {
 			location: { pathname },
@@ -102,7 +106,6 @@ class Navigater extends Component {
 		} = this.props;
 
 		const menuProps = collapsed ? {} : { openKeys: this.state.openKeys };
-
 		return (
 			<div
 				className={classNames('navigator', {
@@ -110,7 +113,7 @@ class Navigater extends Component {
 				})}
 				mode="inline"
 			>
-				<div className="controlBut">
+				<div className="controlBut" onClick={this.handleLinkGithub}>
 					<div className="rotateIcon">
 						<Icon component={RLogo} className="logoBorder" />
 					</div>
@@ -124,7 +127,7 @@ class Navigater extends Component {
 					onOpenChange={this.handleOpenMenu}
 					{...menuProps}
 				>
-					{this.getNavMenuItem(routeConfig)}
+					{this.getNavMenuItem(_routes)}
 				</Menu>
 			</div>
 		);

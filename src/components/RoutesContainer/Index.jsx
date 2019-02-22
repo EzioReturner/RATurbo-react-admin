@@ -1,0 +1,80 @@
+import React, { Component, Fragment } from 'react';
+import {
+	HashRouter as Router,
+	Route,
+	Redirect,
+	Switch
+} from 'react-router-dom';
+import routeConfig from '../../config/router.config';
+
+class RouteMiddle extends Component {
+	render() {
+		const { path, exact, strict, render, location, ...rest } = this.props;
+		return (
+			<Route
+				path={path}
+				exact={exact}
+				strict={strict}
+				location={location}
+				render={props => render({ ...props, ...rest })}
+			/>
+		);
+	}
+}
+
+class RenderRoutes extends Component {
+	generateRoute(routes, switchProps) {
+		return routes ? (
+			<Switch {...switchProps}>
+				{routes.map((route, i) => {
+					const {
+						redirect,
+						path,
+						exact,
+						strict,
+						routes,
+						component: C,
+						key
+					} = route;
+
+					if (redirect) {
+						return (
+							<Redirect
+								key={key || i}
+								from={path}
+								to={redirect}
+								exact={exact}
+								strict={strict}
+							/>
+						);
+					}
+					return (
+						<RouteMiddle
+							key={i}
+							path={path}
+							exact={exact}
+							strict={strict}
+							render={props => {
+								const childRoutes = this.generateRoute(routes, {
+									location: props.location
+								});
+								if (C) {
+									return <C>{childRoutes}</C>;
+								} else {
+									return childRoutes;
+								}
+							}}
+						/>
+					);
+				})}
+			</Switch>
+		) : null;
+	}
+
+	render() {
+		const { location } = this.props;
+		const routes = routeConfig;
+		return <Router>{this.generateRoute(routes)}</Router>;
+	}
+}
+export default RenderRoutes;

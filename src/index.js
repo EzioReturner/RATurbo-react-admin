@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import '@style/index.scss';
-import Main from './layout/Main';
 import { observer, Provider } from 'mobx-react';
-import * as serviceWorker from './service/serviceWorker';
+import * as serviceWorker from './pwa/serviceWorker';
 import { Store } from '@store/index';
+import RoutesContainer from '@components/RoutesContainer/Index';
 ReactDOM.render(
 	<Provider {...Store}>
-		<Main />
+		<RoutesContainer />
 	</Provider>,
 	document.getElementById('root')
 );

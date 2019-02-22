@@ -1,33 +1,35 @@
-import React, { Component } from 'react';
-import WrapComponent from '@components/WarpAnimation/Index';
+import React, { PureComponent } from 'react';
+import WrapAnimation from '@components/WrapAnimation/Index';
 import { inject } from 'mobx-react';
 
 export default function asyncComponent(componentInfo) {
 	@inject('layoutStore')
-	class AsyncComponent extends Component {
+	class AsyncComponent extends PureComponent {
 		constructor(props) {
 			super(props);
 
 			this.state = {
-				component: null
+				component: null,
+				animate: null
 			};
 		}
 
 		async componentDidMount() {
-			const [asyncComponent, path] = componentInfo();
+			const [asyncComponent, path, animate] = componentInfo();
 			this.props.layoutStore.checkIsInitial(path);
 			const { default: component } = await asyncComponent;
 			this.setState({
-				component: component
+				component: component,
+				animate: animate
 			});
 		}
 
 		render() {
-			const C = this.state.component;
+			const { component: C, animate } = this.state;
 			return C ? (
-				<WrapComponent>
+				<WrapAnimation animate={animate}>
 					<C {...this.props} />
-				</WrapComponent>
+				</WrapAnimation>
 			) : null;
 		}
 	}

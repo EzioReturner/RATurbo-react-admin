@@ -18,11 +18,11 @@ class WrapComponent extends Component {
 	}
 
 	render() {
-		const { children } = this.props;
+		const { children, animate } = this.props;
 		return (
 			<CSSTransition
 				in={this.state.animateIn}
-				classNames="fade"
+				classNames={animate || 'slide'}
 				timeout={1000}
 				mountOnEnter
 				unmountOnExit
