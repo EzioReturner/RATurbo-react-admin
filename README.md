@@ -10,12 +10,54 @@
   A front-end solution web applications.
 </div>
 
-## Preview
+## Preview 预览
 
 - <a href="http://ra-turbo.leanapp.cn" target="_blank">ra-turbo</a>
 
+## wiki 文档 （施工中）
 
-## How to start
+## dependencies 依赖模块
+
+项目基于 create-react-app 搭建，相关依赖链接如下
+
+- [react](https://facebook.github.io/react/)
+- [react-router](https://react-guide.github.io/react-router-cn/)(<span style="color: rgb(243,121,52);">react路由，4.x的版本，如果还使用3.x的版本，请切换分支（ps:分支不再维护）</span>)
+- [mobx](https://github.com/mobxjs/mobx)(Mobx是一个功能强大,上手非常容易的状态管理工具)
+- [antd](https://ant.design/index-cn)(<span style="color: rgb(243,121,52);">蚂蚁金服开源的react ui组件框架</span>)
+- [axios](https://github.com/mzabriskie/axios)(<span style="color: rgb(243,121,52);">http请求模块</span>)
+- [echarts](https://github.com/apache/incubator-echarts)(<span style="color: rgb(243,121,52);">百度开源可视化图表工具</span>)
+- [nprogress](https://github.com/rstacruz/nprogress)(<span style="color: rgb(243,121,52);">顶部加载条</span>)
+- [animate.css](http://daneden.me/animate)(<span style="color: rgb(243,121,52);">css动画库</span>)
+- 其余省略
+
+## function module 功能模块
+
+- 首页
+    - 完整布局
+- 导航菜单
+    - 顶部导航(菜单伸缩)
+    - 左边菜单(由路由文件自动渲染)
+- 路由权限
+    - 菜单配合路由权限
+    - route 权限校验 异常处理
+- UI场景
+    - 项目模块
+      - 分析页
+      - 工作台 (施工中)
+      - 监控台 (施工中)
+    - 表单页 (施工中)
+    - 列表页 (施工中)
+    - 详情页 (施工中)
+    - 结果页 (施工中)
+    - 异常页 (施工中)
+    - 个人页 (施工中)
+- 图表
+    - echarts图表
+- 页面
+    - 登录页面(登录功能集成施工中...)
+    - 404页面(施工中)
+
+## How to start 如何启动
 
 1. Clone project code.
 
