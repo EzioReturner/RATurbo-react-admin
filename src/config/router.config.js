@@ -10,7 +10,7 @@ const routeConfig = [
 		component: AsyncComponent(() => [
 			import('../layout/UserLayout'),
 			'../layout/UserLayout',
-			'fade'
+			'fadeRA'
 		]),
 		routes: [
 			{

@@ -30,17 +30,21 @@
   .userInfo {
     margin-right: 30px;
     color: rgba($color:$color-primary, $alpha:0.8);
-    font-weight: bold;
     display: flex;
     font-size: 16px;
     &>span {
-      display: flex;
-      align-items: center;
+      font-weight: bold;
     }
     .userIcon {
       font-size: 18px;
       font-weight: bold;
       margin-right: 8px;
+    }
+    .userDropdown {
+      display: flex;
+      margin-left: 32px;
+      align-items: center;
+      cursor: pointer;
     }
   }
 }

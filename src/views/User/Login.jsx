@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Button, Input, Icon, Checkbox } from 'antd';
 import { withRouter } from 'react-router-dom';
-import { setAuthority } from '@components/Authorized/AuthorityFunc';
+import { setAuthority } from '@utlis/authorityTools';
 import './login.scss';
 
 @withRouter
@@ -23,7 +23,7 @@ class FormContainer extends Component {
 						setAuthority('admin');
 						this.props.history.push('/dashboard');
 						resolve();
-					}, 1500);
+					}, 1000);
 				});
 			}
 		});

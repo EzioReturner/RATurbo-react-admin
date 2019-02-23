@@ -46,7 +46,7 @@
       background: #ffffff;
       .weakly-weather-item {
         flex: 0 0 25%;
-        border-right: 1px solid #f2f2f2;
+        border-right: 1px solid $border-color;
         text-align: center;
         &:last-child {
           border-right: 0;

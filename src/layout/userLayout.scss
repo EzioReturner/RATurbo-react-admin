@@ -3,7 +3,8 @@
 .userLayout {
   overflow: hidden;
   position: absolute;
-  background: url('../assets/loginBackground.jpg');
+  background-color: gray;
+  background: url('../assets/loginBack.png');
   background-size: cover;
   top: 0;
   right: 0;
@@ -16,13 +17,11 @@
     align-items: center;
     margin-top: 64px;
     width: 100%;
-    height: 60px;
     transform: rotate(-40deg);
     border-bottom: 20px solid rgba($color:#000000,$alpha:0.4);
     position: absolute;
     top: 35%;
     left: -15%;
-    padding-bottom: 32px;
     img {
       height: 52px;
       width: 52px;
@@ -30,7 +29,6 @@
     p {
       color: rgba($color:#000000, $alpha:0.8);
       margin: 0;
-      margin-left: 16px;
       font-size: 43px;
       font-weight: bold;
     }
@@ -38,7 +36,7 @@
       color: $color-primary;
     }
   }
-  .container {
+  .userContext {
     position: absolute;
     left: 65%;
     top: 52%;

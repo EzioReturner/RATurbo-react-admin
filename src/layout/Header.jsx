@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
-import { Icon, Menu, Dropdown } from 'antd';
+import { Icon, Menu, Dropdown, Modal } from 'antd';
 import { inject, observer } from 'mobx-react';
+import { withRouter } from 'react-router-dom';
 import classNames from 'classnames';
+import { clearAuthority } from '@utlis/authorityTools';
 import './header.scss';
 
+const confirm = Modal.confirm;
+@withRouter
 class UserInfo extends Component {
 	constructor(props) {
 		super(props);
@@ -19,37 +23,43 @@ class UserInfo extends Component {
 	componentWillUnmount() {
 		clearInterval(this.timerID);
 	}
+
 	tick() {
 		this.setState({ date: new Date() });
 	}
+
+	handleLogout = () => {
+		confirm({
+			maskClosable: true,
+			title: 'confirm to logout',
+			content: 'user info will reset, system cannot auto-login',
+			onOk: () => {
+				return new Promise((resolve, reject) => {
+					setTimeout(() => {
+						clearAuthority();
+						this.props.history.push('/user/login');
+						resolve();
+					}, 1000);
+				}).catch(() => console.log('Oops errors!'));
+			},
+			onCancel() {}
+		});
+	};
+
 	getMenu = () => (
-		<Menu>
+		<Menu className="headerDropdown">
 			<Menu.Item>
-				<a
-					target="_blank"
-					rel="noopener noreferrer"
-					href="http://www.alipay.com/"
-				>
-					1st menu item
-				</a>
+				<Icon type="user" />
+				<span>user info</span>
 			</Menu.Item>
 			<Menu.Item>
-				<a
-					target="_blank"
-					rel="noopener noreferrer"
-					href="http://www.taobao.com/"
-				>
-					2nd menu item
-				</a>
+				<Icon type="setting" />
+				<span>user setting</span>
 			</Menu.Item>
-			<Menu.Item>
-				<a
-					target="_blank"
-					rel="noopener noreferrer"
-					href="http://www.tmall.com/"
-				>
-					3rd menu item
-				</a>
+			<Menu.Divider />
+			<Menu.Item onClick={this.handleLogout}>
+				<Icon type="logout" />
+				<span>logout</span>
 			</Menu.Item>
 		</Menu>
 	);
@@ -57,14 +67,14 @@ class UserInfo extends Component {
 		const { date } = this.state;
 		return (
 			<div className="userInfo">
-				<span>{date.toLocaleTimeString()}</span>
+				<span className="clock">{date.toLocaleTimeString()}</span>
 				<Dropdown
 					style={{
 						marginLeft: '20px'
 					}}
 					overlay={this.getMenu()}
 				>
-					<div>
+					<div className="userDropdown">
 						<Icon type="user" className="userIcon" />
 						<span>zhev</span>
 					</div>

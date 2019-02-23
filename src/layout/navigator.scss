@@ -100,7 +100,7 @@
     }
 
     .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected  {
-      background-color: #f4f4f4;
+      background-color: $menu-item-background;
     }
 
     .ant-menu-item-selected > a,
@@ -116,7 +116,7 @@
     }
 
     .ant-menu-item-selected {
-      background-color: #f4f4f4;
+      background-color: $menu-item-background;
       color: $color-primary-sec;
       position: relative;
       &:before {
@@ -130,7 +130,7 @@
     }
     .ant-menu-item:active,
     .ant-menu-submenu-title:active {
-      background: #f4f4f4;
+      background: $menu-item-background;
     }
 
     li {

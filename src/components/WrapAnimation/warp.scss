@@ -19,20 +19,20 @@
   transition: all 800ms ease-out;
 }
 
-.fade-enter {
+.fadeRA-enter {
   opacity: 0;
 }
 
-.fade-enter-active {
+.fadeRA-enter-active {
   opacity: 1;
   transition: opacity 800ms ease-out;
 }
 
-.fade-exit {
+.fadeRA-exit {
   opacity: 0;
 }
 
-.fade-exit-active {
+.fadeRA-exit-active {
   opacity: 1;
   transition: opacity 800ms ease-out;
 }

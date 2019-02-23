@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import '@style/index.scss';
 import { observer, Provider } from 'mobx-react';
-import * as serviceWorker from './pwa/serviceWorker';
+import * as serviceWorker from '../pwa/serviceWorker';
 import { Store } from '@store/index';
 import RoutesContainer from '@components/RoutesContainer/Index';
 

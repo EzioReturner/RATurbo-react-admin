@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getAuthority } from './AuthorityFunc';
+import { getAuthority } from '@utlis/authorityTools';
 import { CheckPermission } from './CheckPermission';
 
 class Authorized extends Component {
