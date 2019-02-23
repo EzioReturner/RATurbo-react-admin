@@ -36,9 +36,9 @@ class Request {
   }
 
   sendRequest(method: string, data: any): any {
-    let { path, options } = data;
+    let { path, params } = data;
 
-    return this.instance[method](path, options).catch(this.handleError);
+    return this.instance[method](path, params).catch(this.handleError);
   }
 }
 const request = new Request();

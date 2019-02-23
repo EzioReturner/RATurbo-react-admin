@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Form, Button, Input, Icon, Checkbox } from 'antd';
+import { Form, Button, Input, Icon, Checkbox, Alert } from 'antd';
 import { withRouter } from 'react-router-dom';
 import { setAuthority } from '@utlis/authorityTools';
+import { postLogin } from './service';
 import './login.scss';
 
 @withRouter
@@ -10,19 +11,36 @@ class FormContainer extends Component {
 		loading: false
 	};
 
+	handleError() {
+		this.setState({
+			loading: false
+		});
+		this.props.handleError();
+	}
+
 	handleSubmit = e => {
 		e.preventDefault();
 		this.props.form.validateFields((err, values) => {
 			if (!err) {
-				console.log('Received values of form: ', values);
 				this.setState({
 					loading: true
 				});
+				const { userName, password } = this.props.form.getFieldsValue([
+					'userName',
+					'password'
+				]);
 				return new Promise(resolve => {
 					setTimeout(() => {
-						setAuthority('admin');
-						this.props.history.push('/dashboard');
-						resolve();
+						postLogin({ userName, password }).then(res => {
+							const result = res.data.message;
+							if (result === 'ok') {
+								setAuthority('admin');
+								this.props.history.push('/dashboard');
+							} else {
+								this.handleError();
+							}
+							resolve();
+						});
 					}, 1000);
 				});
 			}
@@ -48,7 +66,7 @@ class FormContainer extends Component {
 						<Input
 							prefix={<Icon type="lock" />}
 							type="password"
-							placeholder="Password: 123456"
+							placeholder="Password: 123"
 						/>
 					)}
 				</Form.Item>
@@ -76,11 +94,30 @@ class FormContainer extends Component {
 }
 
 class Login extends Component {
+	state = {
+		apError: false
+	};
+
+	handleError = () => {
+		this.setState({
+			apError: true
+		});
+	};
+
 	render() {
 		const WrapForm = Form.create({ name: 'login' })(FormContainer);
+		const { apError } = this.state;
 		return (
 			<div className="login">
-				<WrapForm />
+				{apError && (
+					<Alert
+						message="账户或者密码错误 a:ra p:123"
+						type="error"
+						showIcon
+						style={{ marginBottom: '16px' }}
+					/>
+				)}
+				<WrapForm handleError={this.handleError} />
 			</div>
 		);
 	}

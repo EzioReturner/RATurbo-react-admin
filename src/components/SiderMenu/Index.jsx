@@ -73,7 +73,7 @@ class SiderMenu extends Component {
 	getMenuItem(menu) {
 		const { icon: iconType, name, path } = menu;
 		return (
-			<Link to={path}>
+			<Link to={path} replace>
 				{iconType && <Icon type={iconType} />}
 				<span>{name}</span>
 			</Link>

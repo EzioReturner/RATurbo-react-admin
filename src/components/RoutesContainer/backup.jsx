@@ -1,5 +1,10 @@
 import React, { Component, Suspense } from 'react';
-import { Route, Redirect, Switch, withRouter } from 'react-router-dom';
+import {
+	HashRouter as Router,
+	Route,
+	Redirect,
+	Switch
+} from 'react-router-dom';
 import classNames from 'classnames';
 import routeConfig from '../../config/router.config';
 
@@ -43,13 +48,14 @@ class RouteComponent extends Component {
 	}
 }
 
-@withRouter
 class RouteList extends Component {
 	render() {
 		return (
-			<Switch>
-				<RouteComponent {...this.props} />
-			</Switch>
+			<Router>
+				<Switch>
+					<RouteComponent {...this.props} />
+				</Switch>
+			</Router>
 		);
 	}
 }

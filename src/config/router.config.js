@@ -29,7 +29,7 @@ const routeConfig = [
 		component: AsyncComponent(() => [
 			import('../layout/MainLayout'),
 			'../layout/MainLayout',
-			'notAnimate'
+			'fadeRA'
 		]),
 		authority: ['admin', 'guest'],
 		routes: [
@@ -54,7 +54,7 @@ const routeConfig = [
 				path: '/program',
 				routes: [
 					{
-						name: '分析页',
+						name: 'Analysis',
 						path: '/program/analysis',
 						component: AsyncComponent(() => [
 							import('@views/Program/Analysis'),
@@ -62,7 +62,7 @@ const routeConfig = [
 						])
 					},
 					{
-						name: '监控页',
+						name: 'Monitor',
 						path: '/program/monitor',
 						component: AsyncComponent(() => [
 							import('@views/Program/Monitor'),
@@ -70,7 +70,7 @@ const routeConfig = [
 						])
 					},
 					{
-						name: '工作台',
+						name: 'Platform',
 						path: '/program/platform',
 						component: AsyncComponent(() => [
 							import('@views/Program/Platform'),

@@ -7,7 +7,7 @@ class EchartsTool {
 
 	initChart({ id, option, otherOption }) {
 		if (!id || !option) return;
-		let myChart = echarts.getInstanceByDom(document.getElementById(id));
+		let myChart = this.getInstance(id);
 
 		if (myChart === undefined) {
 			myChart = echarts.init(document.getElementById(id));
@@ -19,6 +19,10 @@ class EchartsTool {
 		otherOption && myChart.setOption(otherOption);
 
 		return myChart;
+	}
+
+	getInstance(id) {
+		return echarts.getInstanceByDom(document.getElementById(id));
 	}
 
 	// 添加视窗size响应
@@ -39,7 +43,7 @@ class EchartsTool {
 		const ids = [...this.displayChart.keys()];
 		setTimeout(() => {
 			ids.forEach(id => {
-				const _chart = echarts.getInstanceByDom(document.getElementById(id));
+				const _chart = this.getInstance(id);
 				_chart._windowResizeEvent();
 			});
 		}, 700);
@@ -49,6 +53,7 @@ class EchartsTool {
 	dispose(id) {
 		this.removeDisplayChart(id);
 		this.removeResize(id);
+		echarts.dispose(this.getInstance(id));
 	}
 
 	removeDisplayChart(id) {
@@ -56,7 +61,7 @@ class EchartsTool {
 	}
 
 	removeResize(id) {
-		const myChart = echarts.getInstanceByDom(document.getElementById(id));
+		const myChart = this.getInstance(id);
 		window.removeEventListener('resize', myChart._windowResizeEvent);
 	}
 }
