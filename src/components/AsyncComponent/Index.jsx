@@ -26,6 +26,9 @@ export default function asyncComponent(componentInfo) {
 
 		render() {
 			const { component: C, animate } = this.state;
+			if (animate === 'notAnimate') {
+				return <C {...this.props} />;
+			}
 			return C ? (
 				<WrapAnimation animate={animate}>
 					<C {...this.props} />

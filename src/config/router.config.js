@@ -29,7 +29,7 @@ const routeConfig = [
 		component: AsyncComponent(() => [
 			import('../layout/MainLayout'),
 			'../layout/MainLayout',
-			'fade'
+			'notAnimate'
 		]),
 		authority: ['admin', 'guest'],
 		routes: [

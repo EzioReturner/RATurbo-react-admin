@@ -40,10 +40,9 @@ class EchartsTool {
 		setTimeout(() => {
 			ids.forEach(id => {
 				const _chart = echarts.getInstanceByDom(document.getElementById(id));
-				console.log(_chart);
 				_chart._windowResizeEvent();
 			});
-		}, 600);
+		}, 700);
 	}
 
 	// 解除chart

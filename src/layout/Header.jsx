@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Icon } from 'antd';
+import { Icon, Menu, Dropdown } from 'antd';
 import { inject, observer } from 'mobx-react';
 import classNames from 'classnames';
 import './header.scss';
@@ -22,19 +22,53 @@ class UserInfo extends Component {
 	tick() {
 		this.setState({ date: new Date() });
 	}
+	getMenu = () => (
+		<Menu>
+			<Menu.Item>
+				<a
+					target="_blank"
+					rel="noopener noreferrer"
+					href="http://www.alipay.com/"
+				>
+					1st menu item
+				</a>
+			</Menu.Item>
+			<Menu.Item>
+				<a
+					target="_blank"
+					rel="noopener noreferrer"
+					href="http://www.taobao.com/"
+				>
+					2nd menu item
+				</a>
+			</Menu.Item>
+			<Menu.Item>
+				<a
+					target="_blank"
+					rel="noopener noreferrer"
+					href="http://www.tmall.com/"
+				>
+					3rd menu item
+				</a>
+			</Menu.Item>
+		</Menu>
+	);
 	render() {
 		const { date } = this.state;
 		return (
 			<div className="userInfo">
 				<span>{date.toLocaleTimeString()}</span>
-				<span
+				<Dropdown
 					style={{
 						marginLeft: '20px'
 					}}
+					overlay={this.getMenu()}
 				>
-					<Icon type="user" className="userIcon" />
-					zhev
-				</span>
+					<div>
+						<Icon type="user" className="userIcon" />
+						<span>zhev</span>
+					</div>
+				</Dropdown>
 			</div>
 		);
 	}

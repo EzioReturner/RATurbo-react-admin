@@ -18,7 +18,7 @@ class MainLayout extends Component {
 		} = this.props;
 		return (
 			<Authorized
-				routeAuthority="all"
+				routeAuthority={['admin', 'guest']}
 				unidentified={<Redirect to="/user/login" />}
 			>
 				<div className="container">

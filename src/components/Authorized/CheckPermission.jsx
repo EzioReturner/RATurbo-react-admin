@@ -1,5 +1,3 @@
-import React, { Component } from 'react';
-
 /**
  * 权限检查
  * Common check permissions method
@@ -14,7 +12,6 @@ export const CheckPermission = (
 	Target,
 	Unidentified
 ) => {
-	console.log(routeAuthority, currentAuthority, Target, Unidentified);
 	if (!routeAuthority) {
 		return Target;
 	}
