@@ -16,7 +16,7 @@
 
 ## wiki 文档  （施工中）
 
-## dependencies &nbsp;依赖模块
+## dependencies &nbsp; 依赖模块
 
 项目基于 create-react-app 搭建，相关依赖链接如下
 
@@ -30,7 +30,7 @@
 - [animate.css](http://daneden.me/animate)(<span style="color: rgb(243,121,52);">css动画库</span>)
 - 其余省略
 
-## function module &nbsp;功能模块
+## function module &nbsp; 功能模块
 
 - 首页
     - 完整布局
@@ -57,7 +57,7 @@
     - 登录页面(登录功能集成施工中...)
     - 404页面(施工中)
 
-## How to start &nbsp;如何启动
+## How to start &nbsp; 如何启动
 
 1. Clone project code.
 
