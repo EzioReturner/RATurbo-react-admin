@@ -64,7 +64,7 @@
 1. Clone project code.
 
 ```bash
-git clone https://github.com/EzioReturner/ra-turbo.git my-ra
+git clone https://github.com/EzioReturner/RATurbo-react-admin.git my-ra
 cd my-ra
 ```
 
