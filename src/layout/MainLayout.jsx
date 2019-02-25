@@ -1,21 +1,45 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense } from 'react';
 import Navigator from './Navigator';
 import Loading from '@components/Loading/Index';
 import Header from './Header';
 import Authorized from '@components/Authorized/Index';
-import { Redirect } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 import classNames from 'classnames';
 import { observer, inject } from 'mobx-react';
 import './mainLayout.scss';
+import routeConfig from '../config/router.config';
 
+const NotAllowed = React.lazy(() =>
+	import(/* webpackChunkName: "403" */ '@components/Exception/403')
+);
+
+const _routes = routeConfig[1].routes;
 @inject('layoutStore')
 @observer
+@withRouter
 class MainLayout extends Component {
+	getRouteAuthority(pathname) {
+		let routeAuthority = null;
+		const getAuthority = (pathname, routes) => {
+			routes.forEach(route => {
+				if (pathname === route.path) {
+					routeAuthority = route.authority;
+				} else if (route.routes) {
+					routeAuthority = getAuthority(pathname, route.routes);
+				}
+			});
+			return routeAuthority;
+		};
+		return getAuthority(pathname, _routes);
+	}
+
 	render() {
 		const {
 			layoutStore: { mountLoading, collapsed },
-			children
+			children,
+			location: { pathname }
 		} = this.props;
+		const routeAuthority = this.getRouteAuthority(pathname);
 		return (
 			<Authorized
 				routeAuthority={['admin', 'guest']}
@@ -31,7 +55,16 @@ class MainLayout extends Component {
 						})}
 					>
 						<Header />
-						{children}
+						<Authorized
+							routeAuthority={routeAuthority}
+							unidentified={
+								<Suspense fallback={<Loading />}>
+									<NotAllowed />
+								</Suspense>
+							}
+						>
+							{children}
+						</Authorized>
 					</div>
 				</div>
 			</Authorized>

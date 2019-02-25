@@ -20,7 +20,7 @@ class Request {
     });
   }
 
-  handleError(error: any): Promise<any> {
+  handleError = (error: any): Promise<any> => {
     const { message, status } = error;
 
     switch (status) {
@@ -33,12 +33,12 @@ class Request {
         break;
     }
     return Promise.reject(error);
-  }
+  };
 
   sendRequest(method: string, data: any): any {
-    let { path, params } = data;
-
-    return this.instance[method](path, params).catch(this.handleError);
+    let { path, params, options } = data;
+    const _query = options ? { ...options, params } : { params };
+    return this.instance[method](path, _query).catch(this.handleError);
   }
 }
 const request = new Request();

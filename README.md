@@ -37,10 +37,12 @@
 - 导航菜单
     - 顶部导航(菜单伸缩)
     - 左边菜单(由路由文件自动渲染)
-- 路由 && 权限
-    - 菜单配合路由权限
-    - route 权限校验 异常处理
-    - 路由懒加载模块 && 加载loading模块
+- 组件
+    - 路由权限
+      - route 权限校验 异常处理
+    - 路由渲染菜单
+    - 路由懒加载模块
+    - 加载loading模块
 - UI场景
     - 项目模块
       - 分析页
@@ -55,8 +57,7 @@
 - 图表
     - echarts图表
 - 页面
-    - 登录页面(登录功能集成施工中...)
-    - 404页面(施工中)
+    - 登录页面(第三方登录施工中...)
 
 ## How to start &nbsp; 如何启动
 
@@ -69,14 +70,14 @@ cd my-ra
 
 2. Installation dependence.
 
-```bash 
+```bash
 yarn install  Or  npm install
 ```
 
 3. Start local server.
 
 ```bash
-yarn run ra  Or  npm run ra 
+yarn run ra  Or  npm run ra
 ```
 
 4. After the startup is completed, open your browser and visit [http://localhost:9527](http://localhost:9527), If you want to change the  port, you can configure it in the `.env` file.

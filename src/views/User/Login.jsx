@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { Form, Button, Input, Icon, Checkbox, Alert } from 'antd';
+import classNames from 'classnames';
 import { withRouter } from 'react-router-dom';
-import { setAuthority } from '@utlis/authorityTools';
 import { postLogin } from './service';
+import { inject } from 'mobx-react';
 import './login.scss';
+import 'animate.css';
 
 @withRouter
+@inject('userStore')
 class FormContainer extends Component {
 	state = {
 		loading: false
@@ -16,6 +19,10 @@ class FormContainer extends Component {
 			loading: false
 		});
 		this.props.handleError();
+	}
+
+	handleSuccess(data) {
+		this.props.history.push('/dashboard');
 	}
 
 	handleSubmit = e => {
@@ -31,17 +38,26 @@ class FormContainer extends Component {
 				]);
 				return new Promise(resolve => {
 					setTimeout(() => {
-						postLogin({ userName, password }).then(res => {
-							const result = res.data.message;
-							if (result === 'ok') {
-								setAuthority('admin');
-								this.props.history.push('/dashboard');
-							} else {
-								this.handleError();
-							}
-							resolve();
-						});
-					}, 1000);
+						this.props.userStore
+							.handleUserLogin(userName, password)
+							.then(res => {
+								console.log(res);
+								if (res) {
+									this.handleSuccess();
+								} else {
+									this.handleError();
+								}
+							});
+						// postLogin({ userName, password }).then(res => {
+						// 	const { message, data } = res.data;
+						// 	if (message === 'ok') {
+						// 		this.handleSuccess(data.data[0]);
+						// 	} else {
+						// 		this.handleError();
+						// 	}
+						// 	resolve();
+						// });
+					}, 800);
 				});
 			}
 		});
@@ -56,7 +72,11 @@ class FormContainer extends Component {
 					{getFieldDecorator('userName', {
 						rules: [{ required: true, message: 'Please input your username!' }]
 					})(
-						<Input prefix={<Icon type="user" />} placeholder="Username: ra" />
+						<Input
+							prefix={<Icon type="user" />}
+							placeholder="Username: admin | guest"
+							autoComplete="off"
+						/>
 					)}
 				</Form.Item>
 				<Form.Item>
@@ -67,6 +87,7 @@ class FormContainer extends Component {
 							prefix={<Icon type="lock" />}
 							type="password"
 							placeholder="Password: 123"
+							autoComplete="off"
 						/>
 					)}
 				</Form.Item>
@@ -95,27 +116,40 @@ class FormContainer extends Component {
 
 class Login extends Component {
 	state = {
-		apError: false
+		apError: false,
+		shake: false
 	};
 
 	handleError = () => {
 		this.setState({
-			apError: true
+			apError: true,
+			shake: true
+		});
+	};
+
+	handleAnimationEnd = () => {
+		this.setState({
+			shake: false
 		});
 	};
 
 	render() {
 		const WrapForm = Form.create({ name: 'login' })(FormContainer);
-		const { apError } = this.state;
+		const { apError, shake } = this.state;
 		return (
 			<div className="login">
 				{apError && (
-					<Alert
-						message="账户或者密码错误 a:ra p:123"
-						type="error"
-						showIcon
-						style={{ marginBottom: '16px' }}
-					/>
+					<div
+						className={shake ? 'animated shake' : ''}
+						onAnimationEnd={this.handleAnimationEnd}
+					>
+						<Alert
+							message="账户或者密码错误 a:ra  p:123"
+							type="error"
+							showIcon
+							style={{ marginBottom: '16px' }}
+						/>
+					</div>
 				)}
 				<WrapForm handleError={this.handleError} />
 			</div>

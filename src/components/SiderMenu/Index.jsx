@@ -3,10 +3,11 @@ import { Menu, Icon } from 'antd';
 import { Link, withRouter } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
 import routeConfig from '../../config/router.config';
+import { intersection } from 'lodash';
 
 const { SubMenu } = Menu;
 const _routes = routeConfig[1].routes;
-@inject('layoutStore')
+@inject('layoutStore', 'userStore')
 @withRouter
 @observer
 class SiderMenu extends Component {
@@ -49,8 +50,17 @@ class SiderMenu extends Component {
 		if (!menuData.length) {
 			return [];
 		}
+		const { authority: currentAuthority } = this.props.userStore;
 		return menuData
-			.filter(menu => !menu.hideMenu)
+			.filter(menu => {
+				const { authority, hideMenu } = menu;
+				if (!hideMenu) {
+					if (!authority) return true;
+					const allowed = intersection(currentAuthority, authority);
+					return allowed.length > 0;
+				}
+				return false;
+			})
 			.map(res => this.getSubMenuOrItem(res));
 	}
 
@@ -91,6 +101,7 @@ class SiderMenu extends Component {
 			openKeys: moreThanOne ? [openKeys.pop()] : [...openKeys]
 		});
 	};
+
 	render() {
 		const {
 			location: { pathname }

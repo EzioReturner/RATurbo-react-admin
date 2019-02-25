@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { getAuthority } from '@utlis/authorityTools';
 import { CheckPermission } from './CheckPermission';
+import { inject } from 'mobx-react';
 
+@inject('userStore')
 class Authorized extends Component {
 	render() {
-		const { children, routeAuthority, unidentified } = this.props;
+		const { children, routeAuthority, unidentified, userStore } = this.props;
 		const _children = typeof children === 'undefined' ? null : children;
-		const currentAuthority = getAuthority();
+		const currentAuthority = userStore.authority;
 		return CheckPermission(
 			routeAuthority,
 			currentAuthority,

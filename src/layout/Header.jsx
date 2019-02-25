@@ -3,11 +3,12 @@ import { Icon, Menu, Dropdown, Modal } from 'antd';
 import { inject, observer } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
 import classNames from 'classnames';
-import { clearAuthority } from '@utlis/authorityTools';
 import './header.scss';
 
 const confirm = Modal.confirm;
 @withRouter
+@inject('userStore')
+@observer
 class UserInfo extends Component {
 	constructor(props) {
 		super(props);
@@ -15,11 +16,17 @@ class UserInfo extends Component {
 			date: new Date()
 		};
 	}
+
 	componentDidMount() {
 		this.timerID = setInterval(() => {
 			this.tick();
 		}, 1000);
+		const { userInfo, reloadUserInfo } = this.props.userStore;
+		if (JSON.stringify(userInfo) === '{}') {
+			reloadUserInfo();
+		}
 	}
+
 	componentWillUnmount() {
 		clearInterval(this.timerID);
 	}
@@ -35,11 +42,12 @@ class UserInfo extends Component {
 			content: 'user info will reset, system cannot auto-login',
 			onOk: () => {
 				return new Promise((resolve, reject) => {
+					const { history, userStore } = this.props;
 					setTimeout(() => {
-						clearAuthority();
-						this.props.history.push('/user/login');
+						userStore.userLogout();
+						history.push('/user/login');
 						resolve();
-					}, 1000);
+					}, 800);
 				}).catch(() => console.log('Oops errors!'));
 			},
 			onCancel() {}
@@ -65,6 +73,7 @@ class UserInfo extends Component {
 	);
 	render() {
 		const { date } = this.state;
+		const { name } = this.props.userStore.userInfo;
 		return (
 			<div className="userInfo">
 				<span className="clock">{date.toLocaleTimeString()}</span>
@@ -76,7 +85,7 @@ class UserInfo extends Component {
 				>
 					<div className="userDropdown">
 						<Icon type="user" className="userIcon" />
-						<span>zhev</span>
+						<span>{name}</span>
 					</div>
 				</Dropdown>
 			</div>

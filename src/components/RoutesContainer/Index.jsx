@@ -6,21 +6,7 @@ import {
 	Switch
 } from 'react-router-dom';
 import routeConfig from '../../config/router.config';
-
-class RouteMiddle extends Component {
-	render() {
-		const { path, exact, strict, render, location, ...rest } = this.props;
-		return (
-			<Route
-				path={path}
-				exact={exact}
-				strict={strict}
-				location={location}
-				render={props => render({ ...props, ...rest })}
-			/>
-		);
-	}
-}
+import { inject } from 'mobx-react';
 
 // function authorityRoute(route) {
 // 	const authorityRoute = args => {
@@ -39,6 +25,22 @@ class RouteMiddle extends Component {
 // 	return authorityRoute;
 // }
 
+class RouteMiddle extends Component {
+	render() {
+		const { path, exact, strict, render, location, ...rest } = this.props;
+		return (
+			<Route
+				path={path}
+				exact={exact}
+				strict={strict}
+				location={location}
+				render={props => render({ ...props, ...rest })}
+			/>
+		);
+	}
+}
+
+@inject('userStore')
 class RenderRoutes extends Component {
 	generateRoute(routes, switchProps) {
 		return routes ? (
@@ -52,9 +54,9 @@ class RenderRoutes extends Component {
 						routes,
 						component: C,
 						key,
-						withAuthority
+						withAuthority,
+						authority
 					} = route;
-
 					if (redirect) {
 						return (
 							<Redirect

@@ -59,7 +59,8 @@ const routeConfig = [
 						component: AsyncComponent(() => [
 							import('@views/Program/Analysis'),
 							'@views/Program/Analysis'
-						])
+						]),
+						authority: ['admin']
 					},
 					{
 						name: 'Monitor',
@@ -86,7 +87,8 @@ const routeConfig = [
 				component: AsyncComponent(() => [
 					import('@views/Map/Index'),
 					'@views/Map/Index'
-				])
+				]),
+				authority: ['admin']
 			}
 		]
 	}
