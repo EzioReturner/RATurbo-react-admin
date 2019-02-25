@@ -38,6 +38,8 @@ class MainStore {
 
   @action toggleCollapsed = () => {
     this.collapsed = !this.collapsed;
+    console.log(this.collapsed);
+
     ET.resizeAllDisplayChart();
   };
 
