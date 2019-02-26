@@ -2,6 +2,7 @@
 @import './color.scss';
 @import './antdStyle.scss';
 @import './popStyle.scss';
+@import './nprogress.scss';
 
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
@@ -27,6 +28,7 @@ body {
 
     @include antdStyle;
     @include popStyle;
+    @include nprogress;
 }
 
 :root,body {

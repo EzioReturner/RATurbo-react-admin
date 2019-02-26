@@ -1,4 +1,4 @@
-import request from '@api/io';
+import request from '@utlis/io';
 
 function getWeather() {
 	return request.sendRequest('get', {

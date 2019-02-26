@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Card } from 'antd';
-import { getWeather } from '../service';
+import { getWeather } from '@api/dashboard';
 import {
 	RainSvg,
 	SnowSvg,

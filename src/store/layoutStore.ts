@@ -1,5 +1,6 @@
-import { observable, configure, action, computed, autorun } from 'mobx';
+import { observable, configure, action } from 'mobx';
 import ET from '@utlis/echartTools';
+import NProgress from 'nprogress';
 
 configure({ enforceActions: 'always' });
 class MainStore {
@@ -24,12 +25,14 @@ class MainStore {
 
   @action unMountLoading(): void {
     this.mountLoading = false;
+    NProgress.done(true);
   }
 
   @action addInitializer(initializer: string): void {
     this.readyInitializers.push(initializer);
     this.mountLoading = true;
     this.spinning = true;
+    NProgress.start();
   }
 
   @action checkIsInitial(path: string): void {

@@ -48,6 +48,7 @@
     "mobx-react": "^5.4.3",
     "mockjs": "^1.0.1-beta3",
     "node-sass": "^4.11.0",
+    "nprogress": "^0.2.0",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "pnp-webpack-plugin": "1.1.0",
     "postcss-flexbugs-fixes": "4.1.0",

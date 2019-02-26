@@ -7,9 +7,9 @@ class Map extends Component {
 		const map = new BMap.Map('mapContainer');
 		map.centerAndZoom(new BMap.Point(108.154, 37.495), 5);
 		map.enableScrollWheelZoom(true);
-		import('@assets/custom_map_config.json').then(res => {
-			map.setMapStyle({ styleJson: res });
-		});
+		// import('@assets/json/custom_map_config.json').then(res => {
+		// 	map.setMapStyle({ styleJson: res });
+		// });
 	}
 
 	render() {

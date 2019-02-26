@@ -1,83 +1,80 @@
 import { observable, configure, action, autorun } from 'mobx';
-import { getUserInfo, postLogin } from '@views/User/service';
+import { getUserInfo, postLogin } from '@api/user';
 
-interface UserInfo {}
 configure({ enforceActions: 'always' });
 class UserStore {
-	@observable userInfo: object = {};
-	@observable authority: Array<string> = [];
+  @observable userInfo: object = {};
+  @observable authority: Array<string> = [];
 
-	constructor() {
-		autorun(() => {
-			const au: any = this.getAuthority();
-			this.setAuthority(au);
-		});
-	}
+  constructor() {
+    autorun(() => {
+      const au: any = this.getAuthority();
+      this.setAuthority(au);
+    });
+  }
 
-	getAuthority(str?: any): any {
-		// return localStorage.getItem('antd-pro-authority') || ['admin', 'user'];
-		const authorityString =
-			typeof str === 'undefined' ? localStorage.getItem('ra-authority') : str;
-		// authorityString could be admin, "admin", ["admin"]
-		let authority;
-		try {
-			authority = JSON.parse(authorityString);
-		} catch (e) {
-			authority = authorityString;
-		}
-		if (typeof authority === 'string') {
-			return [authority];
-		}
-		return authority;
-	}
+  getAuthority(str?: any): any {
+    // return localStorage.getItem('antd-pro-authority') || ['admin', 'user'];
+    const authorityString = typeof str === 'undefined' ? localStorage.getItem('ra-authority') : str;
+    // authorityString could be admin, "admin", ["admin"]
+    let authority;
+    try {
+      authority = JSON.parse(authorityString);
+    } catch (e) {
+      authority = authorityString;
+    }
+    if (typeof authority === 'string') {
+      return [authority];
+    }
+    return authority;
+  }
 
-	@action setAuthority(authority: any): void {
-		const proAuthority =
-			typeof authority === 'string' ? [authority] : authority;
-		localStorage.setItem('ra-authority', JSON.stringify(proAuthority));
-		this.authority = proAuthority;
-	}
+  @action setAuthority(authority: any): void {
+    const proAuthority = typeof authority === 'string' ? [authority] : authority;
+    localStorage.setItem('ra-authority', JSON.stringify(proAuthority));
+    this.authority = proAuthority;
+  }
 
-	@action handleUserLogin(name: string, password: number): Promise<boolean> {
-		return postLogin(name, password).then((res: any) => {
-			console.log(res);
-			const { message, userInfo } = res.data;
-			if (message === 'ok') {
-				const data = userInfo.data[0];
-				this.setUserInfo(data);
-				const ui = this.getAuthority(name);
-				this.setAuthority(name);
-				return true;
-			}
-			return false;
-		});
-	}
+  @action handleUserLogin(name: string, password: number): Promise<boolean> {
+    return postLogin(name, password).then((res: any) => {
+      console.log(res);
+      const { message, userInfo } = res.data;
+      if (message === 'ok') {
+        const data = userInfo.data[0];
+        this.setUserInfo(data);
+        const ui = this.getAuthority(name);
+        this.setAuthority(name);
+        return true;
+      }
+      return false;
+    });
+  }
 
-	@action setUserInfo(userInfo: object): void {
-		this.userInfo = userInfo;
-		localStorage.setItem('ra-user', JSON.stringify(userInfo));
-	}
+  @action setUserInfo(userInfo: object): void {
+    this.userInfo = userInfo;
+    localStorage.setItem('ra-user', JSON.stringify(userInfo));
+  }
 
-	@action userLogout(): void {
-		this.userInfo = {};
-		this.authority = [];
-		localStorage.removeItem('ra-authority');
-		localStorage.removeItem('ra-user');
-	}
+  @action userLogout(): void {
+    this.userInfo = {};
+    this.authority = [];
+    localStorage.removeItem('ra-authority');
+    localStorage.removeItem('ra-user');
+  }
 
-	@action reloadUserInfo = async (): Promise<any> => {
-		const ls: any = localStorage.getItem('ra-user');
-		const au: any = this.getAuthority();
-		let _ui: object = {};
-		if (ls) {
-			_ui = JSON.parse(ls);
-		} else {
-			const data = await getUserInfo();
-			_ui = data.data[0];
-		}
-		this.setUserInfo(_ui);
-		this.setAuthority(au);
-	};
+  @action reloadUserInfo = async (): Promise<any> => {
+    const ls: any = localStorage.getItem('ra-user');
+    const au: any = this.getAuthority();
+    let _ui: object = {};
+    if (ls) {
+      _ui = JSON.parse(ls);
+    } else {
+      const data = await getUserInfo();
+      _ui = data.data[0];
+    }
+    this.setUserInfo(_ui);
+    this.setAuthority(au);
+  };
 }
 
 export default UserStore;

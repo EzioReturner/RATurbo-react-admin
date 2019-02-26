@@ -11,6 +11,7 @@ module.exports = {
 		'no-useless-constructor': 'off',
 		quotes: [1, 'single'],
 		'no-duplicate-case': 1,
-		'no-unused-expressions': 1
+		'no-undef': 1,
+		'no-unused-vars': 1
 	}
 };

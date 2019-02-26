@@ -2,17 +2,17 @@ import axios from 'axios';
 import { notification } from 'antd';
 
 class Request {
-  instance: any;
+  instance;
 
   constructor() {
     this.instance = axios.create();
   }
 
-  setHeader = (key: 'stirng', val: any): void => {
+  setHeader = (key, val) => {
     this.instance.defaults.headers.common[key] = val;
   };
 
-  notify(message: 'string'): void {
+  notify(message) {
     notification.error({
       message: '请求错误',
       description: `${message ||
@@ -20,7 +20,7 @@ class Request {
     });
   }
 
-  handleError = (error: any): Promise<any> => {
+  handleError = error => {
     const { message, status } = error;
 
     switch (status) {
@@ -35,7 +35,7 @@ class Request {
     return Promise.reject(error);
   };
 
-  sendRequest(method: string, data: any): any {
+  sendRequest(method, data) {
     let { path, params, options } = data;
     const _query = options ? { ...options, params } : { params };
     return this.instance[method](path, _query).catch(this.handleError);

@@ -40,7 +40,6 @@ class MainLayout extends Component {
 			location: { pathname }
 		} = this.props;
 		const routeAuthority = this.getRouteAuthority(pathname);
-
 		return (
 			<Authorized
 				routeAuthority={['admin', 'guest']}
