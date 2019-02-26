@@ -89,8 +89,8 @@ class DistributeCard extends Component {
 			'cityChart',
 			'provinceChart',
 			'channelChart'
-		].forEach(res => {
-			ET.dispose(res);
+		].forEach(id => {
+			ET.dispose(id);
 		});
 	}
 

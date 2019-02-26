@@ -25,6 +25,10 @@ class EchartsTool {
 		return echarts.getInstanceByDom(document.getElementById(id));
 	}
 
+	registerMap(name, data) {
+		echarts.registerMap(name, data);
+	}
+
 	// 添加视窗size响应
 	addResize(myChart) {
 		myChart._windowResizeEvent = () => {
