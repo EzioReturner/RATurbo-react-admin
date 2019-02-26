@@ -33,6 +33,7 @@
     background-image: linear-gradient(to left bottom, #d6eef6, #dff0fa, #e7f3fc, #eff6fe, #f6f9ff);
     .weather-body {
       padding: 31px 29px;
+      height: 340px;
       background: url('../../assets/weather.svg')  center center / cover no-repeat;
     }
     .weather-date-location {
