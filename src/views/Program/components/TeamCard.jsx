@@ -7,9 +7,9 @@ class TeamCard extends PureComponent {
 		return (
 			<Card title="Team Card" className="fat-card" bordered={false}>
 				<div className="team-card">
-					{data.map(res => {
+					{data.map((res, index) => {
 						return (
-							<div className="team-card-detail">
+							<div className="team-card-detail" key={index}>
 								<p>{res}</p>
 								<span>project:{Math.floor(Math.random() * -9 + 10)}</span>
 							</div>

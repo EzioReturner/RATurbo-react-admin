@@ -9,7 +9,6 @@ class QuickStart extends PureComponent {
 
 	componentDidMount() {
 		getContact().then(res => {
-			console.log(res);
 			this.setState({
 				contact: res.data.results
 			});
@@ -19,7 +18,12 @@ class QuickStart extends PureComponent {
 	render() {
 		const { contact } = this.state;
 		return (
-			<Card title="Quick Contact" className="fat-card" bordered={false}>
+			<Card
+				title="Quick Contact"
+				className="fat-card"
+				bordered={false}
+				loading={!contact.length}
+			>
 				<div className="quick-start">
 					{contact.map((res, index) => {
 						return (
