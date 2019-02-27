@@ -385,6 +385,7 @@ export function popularOption(mapData, topData) {
 			center: [104.114129, 37.550339],
 			zoom: 5,
 			roam: true,
+			disableDragging: true,
 			mapStyle: {
 				styleJson: [
 					{
@@ -604,6 +605,133 @@ export const monitorListOption = {
 			itemStyle: {
 				color: '#e3e3e3'
 			}
+		}
+	]
+};
+
+export function wordCloudChart(data) {
+	require('echarts-wordcloud');
+	const colors = [
+		'rgb(218,112,214)',
+		'rgb(199,21,133)',
+		'rgb(255,20,147)',
+		'rgb(255,105,180)',
+		'rgb(219,112,147)',
+		'rgb(255,240,245)',
+		'rgb(220,20,60)',
+		'rgb(255,192,203)',
+		'rgb(255,182,193)',
+		'rgb(255,0,255)'
+	];
+	function createRandomItemStyle() {
+		const index = Math.floor(Math.random() * -9 + 10);
+		return {
+			normal: {
+				color: colors[index]
+			}
+		};
+	}
+	return {
+		tooltip: {
+			show: true
+		},
+		series: [
+			{
+				name: 'Google Trends',
+				type: 'wordCloud',
+				left: 'center',
+				top: 'center',
+				width: '90%',
+				height: '90%',
+				textRotation: [0, 45, 90, -45],
+				textPadding: 0,
+				autoSize: {
+					enable: true,
+					minSize: 14
+				},
+				data: data.map(res => {
+					return {
+						name: res,
+						value: Math.floor(Math.random() * 100),
+						textStyle: createRandomItemStyle()
+					};
+				})
+			}
+		]
+	};
+}
+
+export const guageOption = {
+	tooltip: {
+		formatter: '{a} <br/>{b} : {c}%'
+	},
+	series: [
+		{
+			radius: '100%',
+			name: 'gauge',
+			type: 'gauge',
+			axisLine: {
+				lineStyle: {
+					color: [[0.09, '#e3e3e3'], [0.82, '#fb4491'], [1, '#71669e']],
+					width: 3,
+					shadowColor: '#fff', //默认透明
+					shadowBlur: 10
+				}
+			},
+			axisLabel: {
+				// 坐标轴小标记
+				textStyle: {
+					// 属性lineStyle控制线条样式
+					fontWeight: 'bolder',
+					color: '#fff',
+					shadowColor: '#fff', //默认透明
+					shadowBlur: 10
+				}
+			},
+			axisTick: {
+				// 坐标轴小标记
+				length: 15, // 属性length控制线长
+				lineStyle: {
+					// 属性lineStyle控制线条样式
+					color: 'auto',
+					shadowColor: '#fff', //默认透明
+					shadowBlur: 10
+				}
+			},
+			splitLine: {
+				// 分隔线
+				length: 25, // 属性length控制线长
+				lineStyle: {
+					// 属性lineStyle（详见lineStyle）控制线条样式
+					width: 3,
+					color: '#fff',
+					shadowColor: '#fff', //默认透明
+					shadowBlur: 10
+				}
+			},
+			pointer: {
+				// 分隔线
+				shadowColor: '#fff', //默认透明
+				shadowBlur: 5
+			},
+			title: {
+				textStyle: {
+					fontWeight: 'bolder',
+					fontSize: 20,
+					fontStyle: 'italic',
+					color: '#e3e3e3'
+				}
+			},
+			detail: {
+				offsetCenter: [0, '50%'], // x, y，单位px
+				textStyle: {
+					// 其余属性默认使用全局文本样式，详见TEXTSTYLE
+					fontWeight: 'bolder',
+					color: '#fb4491',
+					fontSize: 20
+				}
+			},
+			data: [{ value: 70.2, name: 'efficiency' }]
 		}
 	]
 };

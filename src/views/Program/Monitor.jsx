@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Row, Col } from 'antd';
 import PopularMap from './components/PopularMap';
 import MonitorList from './components/MonitorList';
+import Proportion from './components/Proportion';
+import Efficiency from './components/Efficiency';
+import Surplus from './components/Surplus';
 import './monitor.scss';
 
 class Monitor extends Component {
@@ -17,9 +20,15 @@ class Monitor extends Component {
 					</Col>
 				</Row>
 				<Row gutter={24}>
-					<Col span={12}>123</Col>
-					<Col span={6}>123</Col>
-					<Col span={6}>123</Col>
+					<Col span={12}>
+						<Proportion />
+					</Col>
+					<Col span={6}>
+						<Efficiency />
+					</Col>
+					<Col span={6}>
+						<Surplus />
+					</Col>
 				</Row>
 			</div>
 		);

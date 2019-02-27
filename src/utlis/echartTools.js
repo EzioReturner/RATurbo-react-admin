@@ -5,8 +5,9 @@ class EchartsTool {
 	displayChart = new Map();
 	constructor() {}
 
-	initChart({ id, option, otherOption }) {
-		if (!id || !option) return;
+	initChart(data) {
+		if (!data || !data.id || !data.option) return;
+		const { id, option, otherOption } = data;
 		let myChart = this.getInstance(id);
 
 		if (myChart === undefined) {
