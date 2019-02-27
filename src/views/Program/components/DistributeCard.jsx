@@ -21,6 +21,7 @@ class EchartCard extends Component {
 		);
 		return (
 			<Card
+				hoverable
 				title={CardTitle}
 				className="thin-card"
 				bordered={false}

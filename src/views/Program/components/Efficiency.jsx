@@ -9,7 +9,7 @@ class Efficiency extends Component {
 	}
 	render() {
 		return (
-			<Card className="fat-card" title="Guage">
+			<Card hoverable bordered={false} className="fat-card" title="Guage">
 				<div id="guageChart" />
 			</Card>
 		);

@@ -736,6 +736,58 @@ export const guageOption = {
 	]
 };
 
+export const multiAnalysisOption = {
+	tooltip: {},
+	legend: {
+		left: 0,
+		width: 80,
+		data: ['Allocated Budget', 'Actual Spending']
+	},
+	radar: {
+		// shape: 'circle',
+		radius: '75%',
+		name: {
+			textStyle: {
+				color: '#fff',
+				backgroundColor: '#999',
+				borderRadius: 3,
+				padding: [3, 5]
+			}
+		},
+		indicator: [
+			{ name: 'sales', max: 6500 },
+			{ name: 'Administration', max: 16000 },
+			{ name: 'Information Techology', max: 30000 },
+			{ name: 'Customer Support', max: 38000 },
+			{ name: 'Development', max: 52000 },
+			{ name: 'Marketing', max: 25000 }
+		]
+	},
+	series: [
+		{
+			name: '预算 vs 开销（Budget vs spending）',
+			type: 'radar',
+			// areaStyle: {normal: {}},
+			data: [
+				{
+					value: [4300, 10000, 28000, 35000, 50000, 19000],
+					name: 'Allocated Budget',
+					itemStyle: {
+						color: '#fb4491'
+					}
+				},
+				{
+					value: [5000, 14000, 28000, 31000, 42000, 21000],
+					name: 'Actual Spending',
+					itemStyle: {
+						color: '#71669e'
+					}
+				}
+			]
+		}
+	]
+};
+
 export const analysisOptions = {
 	circleOption,
 	barOption,

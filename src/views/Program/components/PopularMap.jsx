@@ -20,7 +20,12 @@ class PopularMap extends Component {
 
 	render() {
 		return (
-			<Card className="fat-card poplar-map-card" title="Real-time Trading">
+			<Card
+				hoverable
+				bordered={false}
+				className="fat-card poplar-map-card"
+				title="Real-time Trading"
+			>
 				<div id="poplar-map" />
 			</Card>
 		);

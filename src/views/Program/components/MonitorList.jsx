@@ -10,7 +10,12 @@ class MonitorList extends Component {
 
 	render() {
 		return (
-			<Card title="world trading rank" className="fat-card monitor-list-card">
+			<Card
+				title="world trading rank"
+				className="fat-card monitor-list-card"
+				bordered={false}
+				hoverable
+			>
 				<div id="list-bar" />
 			</Card>
 		);

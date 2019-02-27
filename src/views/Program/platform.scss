@@ -1,0 +1,163 @@
+@import '@style/color.scss';
+
+.platform {
+  padding: 0 !important;
+  overflow: auto;
+  .platform-head {
+    padding-left: 10px;
+    .head-info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .left-part {
+        display: inherit;
+      }
+      .right-part {
+        display: inherit;
+        .ant-col-8 {
+          min-width: 90px;
+          text-align: center;
+        }
+      }
+      p {
+        margin: 0;
+        font-size: 20px;
+        font-weight: normal;
+      }
+      span {
+        color: rgba(0,0,0,.45);
+        font-weight: normal;
+      }
+      .user-photo {
+        height: 50px;
+        width: 50px;
+        margin-right: 16px;
+      }
+    }
+  }
+  .platformContainer {
+    padding: 24px;
+  }
+  .project-list {
+    display: flex;
+    flex-flow: row wrap;
+    min-height: 300px;
+    .projectInfo {
+      flex: 0 1 31%;
+      width: 31%;
+      padding: 16px;
+      display: inherit;
+      flex-flow: inherit;
+      border: 1px solid transparent;
+      transition: border 0.3s;
+      border-radius: 5px;
+      margin: 0 1%;
+      &:hover {
+        border: 1px solid $color-primary-lighter;
+        box-shadow: 0 2px 28px rgba($color:$color-primary-lighter, $alpha:0.29);
+      }
+      .top {
+        margin-bottom: 8px;
+        p {
+          font-weight: bold;
+          margin-bottom: 8px;
+          display: flex;
+          align-items: center;
+          &.triangle::before,
+          &.rect::before {
+            content: "";
+            display: inline-block;
+            margin-right: 8px;
+            height: 20px;
+            width: 20px;
+            background: $color-primary-lighter;
+          }
+          &.triangle::before {
+            border-radius: 50%;
+            background: $color-primary;
+          }
+        }
+        span {
+          color: rgba(0,0,0,.45);
+          display: block;
+          word-break: break-all;
+          height: 40px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          /* autoprefixer: off */
+          -webkit-box-orient: vertical;
+          /* autoprefixer: on */
+          display: -webkit-box;
+          -webkit-line-clamp:2;
+        }
+      }
+      .bottom {
+        align-self: flex-end;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        .time {
+          color: rgba(0,0,0,.25);
+        }
+        .domain {
+          color: rgba(0,0,0,.45);
+        }
+      }
+    }
+  }
+  .quick-start {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    min-height: 150px;
+    .ac {
+      color: rgba(0,0,0,.65);
+      white-space: nowrap;
+      float: left;
+      width: 12%;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      &:hover {
+        color: $color-primary-light;
+        .ant-avatar {
+          transform: scale(1.2);
+        }
+      }
+      .ant-avatar {
+        margin-top: 16px;
+        transition: transform 0.3s;
+      }
+      p {
+        margin-top: 8px;
+        margin-bottom: 0;
+      }
+    }
+  }
+  #multiAnalysis {
+    height: 300px;
+    width: 100%;
+  }
+  .team-card {
+    min-height: 126px;
+    display: flex;
+    .team-card-detail {
+      flex:1 ;
+      text-align: center;
+      &::before {
+        content: "";
+        display: inline-block;
+        margin-bottom: 16px;
+        height: 20px;
+        width: 20px;
+        border-radius: 4px;
+        background: $color-primary-lighter;
+      }
+      span {
+        color: rgba(0,0,0,.65);
+      }
+    }
+  }
+}

@@ -25,6 +25,7 @@ class GlobalTrends extends PureComponent {
 	render() {
 		return (
 			<Card
+				hoverable
 				bordered={false}
 				className="fat-card global-trends"
 				bodyStyle={{ overflow: 'hidden' }}

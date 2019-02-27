@@ -5,6 +5,7 @@ class Performance extends PureComponent {
 		return (
 			<Card
 				bordered={false}
+				hoverable
 				className="performance-card fat-card"
 				title={<p className="headerTitle"> Performance History</p>}
 			>

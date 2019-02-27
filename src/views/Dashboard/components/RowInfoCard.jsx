@@ -6,7 +6,7 @@ class InfoCard extends PureComponent {
 	render() {
 		const { icon, tips, title, num, tipIcon } = this.props;
 		return (
-			<Card className="info-card fat-card" bordered={false}>
+			<Card className="info-card fat-card" bordered={false} hoverable>
 				<div className="top">
 					<Icon component={icon} />
 					<div className="right-part">

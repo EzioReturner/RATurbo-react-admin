@@ -5,6 +5,8 @@ class Surplus extends Component {
 	render() {
 		return (
 			<Card
+				hoverable
+				bordered={false}
 				title="Resource Surplus"
 				className="fat-card"
 				bodyStyle={{

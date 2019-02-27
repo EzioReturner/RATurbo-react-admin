@@ -12,13 +12,17 @@ class Proportion extends Component {
 	async initChart() {
 		const data = await getWordCloud();
 		const option = wordCloudChart(data.data.data);
-		console.log(option);
 		ET.initChart({ id: 'trading-proportion', option });
 	}
 
 	render() {
 		return (
-			<Card title="trading proportion" className="fat-card">
+			<Card
+				hoverable
+				bordered={false}
+				title="trading proportion"
+				className="fat-card"
+			>
 				<div id="trading-proportion" />
 			</Card>
 		);
