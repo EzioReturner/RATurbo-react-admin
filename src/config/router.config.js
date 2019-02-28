@@ -48,6 +48,7 @@ const routeConfig = [
 				redirect: '/dashboard',
 				hideMenu: true
 			},
+
 			{
 				name: 'Program',
 				icon: 'appstore',
@@ -89,6 +90,37 @@ const routeConfig = [
 					'@views/Map/Index'
 				]),
 				authority: ['admin']
+			},
+			{
+				name: 'Exception',
+				icon: 'exclamation-circle',
+				path: '/exception',
+				routes: [
+					{
+						name: '403',
+						path: '/exception/403',
+						component: AsyncComponent(() => [
+							import('@views/Exception/403'),
+							'@views/Exception/403'
+						])
+					},
+					{
+						name: '404',
+						path: '/exception/404',
+						component: AsyncComponent(() => [
+							import('@views/Exception/404'),
+							'@views/Exception/404'
+						])
+					},
+					{
+						name: '500',
+						path: '/exception/500',
+						component: AsyncComponent(() => [
+							import('@views/Exception/500'),
+							'@views/Exception/500'
+						])
+					}
+				]
 			}
 		]
 	}

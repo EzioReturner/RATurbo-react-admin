@@ -9,8 +9,8 @@ import { observer, inject } from 'mobx-react';
 import './mainLayout.scss';
 import routeConfig from '../config/router.config';
 
-const NotAllowed = React.lazy(() =>
-	import(/* webpackChunkName: "403" */ '@components/Exception/403')
+const Exception403 = React.lazy(() =>
+	import(/* webpackChunkName: "403" */ '@views/Exception/403')
 );
 
 const _routes = routeConfig[1].routes;
@@ -59,7 +59,7 @@ class MainLayout extends Component {
 							routeAuthority={routeAuthority}
 							unidentified={
 								<Suspense fallback={<Loading />}>
-									<NotAllowed />
+									<Exception403 />
 								</Suspense>
 							}
 						>

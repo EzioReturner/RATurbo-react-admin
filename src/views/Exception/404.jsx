@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import './exception.scss';
 
 @withRouter
-class Exception403 extends Component {
+class Exception404 extends Component {
 	handleGoHome = () => {
 		this.props.history.push('/dashboard');
 	};
@@ -12,8 +12,8 @@ class Exception403 extends Component {
 	render() {
 		return (
 			<div className="exception403">
-				<h1>403</h1>
-				<p>抱歉，你无权访问该页面</p>
+				<h1>404</h1>
+				<p>好像找不到你要访问的页面哦</p>
 				<div>
 					<span>回首页看看吧~</span>
 					<Button type="primary" onClick={this.handleGoHome}>
@@ -25,4 +25,4 @@ class Exception403 extends Component {
 	}
 }
 
-export default Exception403;
+export default Exception404;
