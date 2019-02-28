@@ -12,7 +12,7 @@ class Exception403 extends Component {
 	render() {
 		return (
 			<div className="exception403">
-				<h1>404</h1>
+				<h1>403</h1>
 				<p>抱歉~你无权访问该页面</p>
 				<div>
 					<span>回首页看看吧~</span>
