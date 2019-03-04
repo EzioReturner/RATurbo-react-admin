@@ -4,15 +4,16 @@ import '@style/index.scss';
 import { observer, Provider } from 'mobx-react';
 // import * as serviceWorker from '../pwa/serviceWorker';
 import { Store } from '@store';
-import RoutesContainer from '@components/RoutesContainer/Index';
+import RenderRoutes from '@components/RenderRoutes/Index';
 
 ReactDOM.render(
 	<Provider {...Store}>
-		<RoutesContainer />
+		<RenderRoutes />
 	</Provider>,
 	document.getElementById('root')
 );
 
+// serviceWorker.register();
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA

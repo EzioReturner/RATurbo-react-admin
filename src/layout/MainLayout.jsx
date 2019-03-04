@@ -1,8 +1,7 @@
 import React, { Component, Suspense } from 'react';
-import Navigator from './Navigator';
 import Loading from '@components/Loading/Index';
-import Header from './Header';
 import Authorized from '@components/Authorized/Index';
+import { Header, Navigator } from '@components/Layout/Index';
 import { Redirect, withRouter } from 'react-router-dom';
 import classNames from 'classnames';
 import { observer, inject } from 'mobx-react';

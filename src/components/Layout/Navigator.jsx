@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Icon } from 'antd';
-import SiderMenu from '@components/SiderMenu/Index';
+import Menu from './Menu';
 import classNames from 'classnames';
 
 import { RLogo } from '@components/SvgIcon';
@@ -26,7 +26,7 @@ class Navigater extends Component {
 					</div>
 					<span className="title ml-3">RA-TURBO</span>
 				</div>
-				<SiderMenu />
+				<Menu />
 			</div>
 		);
 	}

@@ -54,15 +54,19 @@ class UserInfo extends Component {
 		});
 	};
 
+	handleTriggerError = () => {
+		this.props.history.push('/exception/home');
+	};
+
 	getMenu = () => (
 		<Menu className="headerDropdown">
 			<Menu.Item>
 				<Icon type="user" />
 				<span>user info</span>
 			</Menu.Item>
-			<Menu.Item>
+			<Menu.Item onClick={this.handleTriggerError}>
 				<Icon type="setting" />
-				<span>user setting</span>
+				<span>trigger error</span>
 			</Menu.Item>
 			<Menu.Divider />
 			<Menu.Item onClick={this.handleLogout}>

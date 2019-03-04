@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 import routeConfig from '../../config/router.config';
 import { inject } from 'mobx-react';
-
+import Error from '@views/Exception/404';
 // function authorityRoute(route) {
 // 	const authorityRoute = args => {
 // 		const { render, ...rest } = args;
@@ -87,6 +87,7 @@ class RenderRoutes extends Component {
 						/>
 					);
 				})}
+				<Route component={Error} />
 			</Switch>
 		) : null;
 	}

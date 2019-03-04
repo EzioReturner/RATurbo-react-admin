@@ -48,7 +48,6 @@ const routeConfig = [
 				redirect: '/dashboard',
 				hideMenu: true
 			},
-
 			{
 				name: 'Program',
 				icon: 'appstore',
@@ -119,6 +118,15 @@ const routeConfig = [
 							import('@views/Exception/500'),
 							'@views/Exception/500'
 						])
+					},
+					{
+						name: 'index',
+						path: '/exception/home',
+						component: AsyncComponent(() => [
+							import('@views/Exception/Index'),
+							'@views/Exception/Index'
+						]),
+						hideMenu: true
 					}
 				]
 			}
