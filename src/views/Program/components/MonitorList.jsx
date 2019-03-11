@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card } from 'antd';
-import { monitorListOption } from '@utlis/chartOption';
+import { monitorListOption } from '@assets/chartOption';
 import ET from '@utlis/echartTools';
 
 class MonitorList extends Component {

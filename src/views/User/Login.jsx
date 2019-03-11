@@ -41,22 +41,12 @@ class FormContainer extends Component {
 						this.props.userStore
 							.handleUserLogin(userName, password)
 							.then(res => {
-								console.log(res);
 								if (res) {
 									this.handleSuccess();
 								} else {
 									this.handleError();
 								}
 							});
-						// postLogin({ userName, password }).then(res => {
-						// 	const { message, data } = res.data;
-						// 	if (message === 'ok') {
-						// 		this.handleSuccess(data.data[0]);
-						// 	} else {
-						// 		this.handleError();
-						// 	}
-						// 	resolve();
-						// });
 					}, 800);
 				});
 			}

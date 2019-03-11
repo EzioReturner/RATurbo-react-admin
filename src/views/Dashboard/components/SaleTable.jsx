@@ -56,9 +56,7 @@ class SaleTable extends Component {
 		});
 	}
 
-	handleInvite(name, resolve) {
-		console.log(name);
-	}
+	handleInvite(name, resolve) {}
 
 	handleDelete({ key }, e) {
 		const { tableData } = this.state;

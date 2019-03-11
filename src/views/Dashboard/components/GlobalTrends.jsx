@@ -14,7 +14,7 @@ class GlobalTrends extends PureComponent {
 	async createChart() {
 		const {
 			globalTrendsOption
-		} = await import(/* webpackChunkName: "globalTrendsOption" */ '@utlis/chartOption');
+		} = await import(/* webpackChunkName: "globalTrendsOption" */ '@assets/chartOption');
 		ET.initChart({ id: 'chartContaniner', option: globalTrendsOption });
 	}
 

@@ -37,7 +37,6 @@ class UserStore {
 
   @action handleUserLogin(name: string, password: number): Promise<boolean> {
     return postLogin(name, password).then((res: any) => {
-      console.log(res);
       const { message, userInfo } = res.data;
       if (message === 'ok') {
         const data = userInfo.data[0];

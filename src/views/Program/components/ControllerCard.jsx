@@ -28,9 +28,7 @@ class Controller extends Component {
 		this.props.programStore.changeShowUnDefined(checked);
 	};
 
-	componentWillReact() {
-		// console.log(223333);
-	}
+	componentWillReact() {}
 
 	render() {
 		const marginRight = {

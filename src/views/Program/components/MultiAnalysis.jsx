@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card } from 'antd';
-import { multiAnalysisOption } from '@utlis/chartOption';
+import { multiAnalysisOption } from '@assets/chartOption';
 import ET from '@utlis/echartTools';
 
 class MultiAnalysis extends Component {

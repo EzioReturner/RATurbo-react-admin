@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Card } from 'antd';
 import ET from '@utlis/echartTools';
-import { popularOption } from '@utlis/chartOption';
+import { popularOption } from '@assets/chartOption';
 
 class PopularMap extends Component {
 	componentDidMount() {
@@ -9,7 +9,7 @@ class PopularMap extends Component {
 	}
 
 	async initChart() {
-		const { mapData, topData } = await import('@assets/js/popular');
+		const { mapData, topData } = await import('@assets/popular');
 		const option = popularOption(mapData, topData);
 		ET.initChart({ id: 'poplar-map', option });
 	}

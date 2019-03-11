@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Card } from 'antd';
 import ET from '@utlis/echartTools';
-import { guageOption } from '@utlis/chartOption';
+import { guageOption } from '@assets/chartOption';
 
 class Efficiency extends Component {
 	componentDidMount() {

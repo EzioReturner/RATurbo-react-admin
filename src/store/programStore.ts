@@ -1,6 +1,6 @@
 import { observable, configure, action, computed } from 'mobx';
 import { cloneDeep } from 'lodash';
-import { analysisOptions } from '@utlis/chartOption.js';
+import { analysisOptions } from '@assets/chartOption.js';
 
 configure({ enforceActions: 'always' });
 class DashboardState {
@@ -29,8 +29,7 @@ class DashboardState {
     for (let op in _obj) {
       const chartOption: any = _obj[op];
       this.propertyList.forEach(res => {
-        chartOption[res] &&
-          (chartOption[res] = this.filterProperty(chartOption[res]));
+        chartOption[res] && (chartOption[res] = this.filterProperty(chartOption[res]));
       });
     }
     return _obj;

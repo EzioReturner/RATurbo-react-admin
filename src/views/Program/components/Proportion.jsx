@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Card } from 'antd';
 import ET from '@utlis/echartTools';
 import { getWordCloud } from '@api/analysis';
-import { wordCloudChart } from '@utlis/chartOption';
+import { wordCloudChart } from '@assets/chartOption';
 
 class Proportion extends Component {
 	componentDidMount() {
