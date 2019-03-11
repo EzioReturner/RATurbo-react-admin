@@ -91,6 +91,16 @@ const routeConfig = [
 				authority: ['admin']
 			},
 			{
+				name: 'Gallery',
+				icon: 'picture',
+				path: '/gallery',
+				component: AsyncComponent(() => [
+					import('@views/Gallery/Index'),
+					'@views/Gallery/Index'
+				]),
+				authority: ['admin']
+			},
+			{
 				name: 'Exception',
 				icon: 'exclamation-circle',
 				path: '/exception',
