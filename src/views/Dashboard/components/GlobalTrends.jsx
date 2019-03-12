@@ -1,26 +1,17 @@
 import React, { PureComponent } from 'react';
 import { Card } from 'antd';
 import ET from '@utlis/echartTools';
+import EchartsReact from '@components/Echarts/Index';
+import { globalTrendsOption } from '@assets/chartOption';
 
 class GlobalTrends extends PureComponent {
 	constructor(props) {
 		super(props);
 	}
 
-	componentDidMount() {
-		this.createChart();
-	}
+	componentDidMount() {}
 
-	async createChart() {
-		const {
-			globalTrendsOption
-		} = await import(/* webpackChunkName: "globalTrendsOption" */ '@assets/chartOption');
-		ET.initChart({ id: 'chartContaniner', option: globalTrendsOption });
-	}
-
-	componentWillUnmount() {
-		ET.dispose('chartContaniner');
-	}
+	componentWillUnmount() {}
 
 	render() {
 		return (
@@ -31,7 +22,10 @@ class GlobalTrends extends PureComponent {
 				bodyStyle={{ overflow: 'hidden' }}
 				title="Global Trends"
 			>
-				<div id="chartContaniner" />
+				<EchartsReact
+					style={{ height: '350px', width: '100%' }}
+					option={globalTrendsOption}
+				/>
 			</Card>
 		);
 	}

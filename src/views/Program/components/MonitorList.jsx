@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
 import { Card } from 'antd';
 import { monitorListOption } from '@assets/chartOption';
-import ET from '@utlis/echartTools';
+import EchartsReact from '@components/Echarts/Index';
 
 class MonitorList extends Component {
-	componentDidMount() {
-		ET.initChart({ id: 'list-bar', option: monitorListOption });
-	}
-
 	render() {
 		return (
 			<Card
@@ -16,7 +12,7 @@ class MonitorList extends Component {
 				bordered={false}
 				hoverable
 			>
-				<div id="list-bar" />
+				<EchartsReact style={{ height: '490px' }} option={monitorListOption} />
 			</Card>
 		);
 	}

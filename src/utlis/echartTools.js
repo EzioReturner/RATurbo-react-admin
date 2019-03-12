@@ -33,9 +33,9 @@ class EchartsTool {
 	// 添加视窗size响应
 	addResize(myChart) {
 		myChart._windowResizeEvent = () => {
-			myChart.resize();
+			debounce(myChart.resize());
 		};
-		debounce(window.addEventListener('resize', myChart._windowResizeEvent));
+		window.addEventListener('resize', myChart._windowResizeEvent);
 	}
 
 	// 缓存chart

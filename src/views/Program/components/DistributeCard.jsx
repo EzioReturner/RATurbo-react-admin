@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Card, Row, Col, Icon } from 'antd';
 import ET from '@utlis/echartTools';
 import { observer, inject } from 'mobx-react';
-class EchartCard extends Component {
+class ChartCard extends Component {
 	render() {
 		const { title, id } = this.props;
 		const CardTitle = (
@@ -104,23 +104,23 @@ class DistributeCard extends Component {
 			<Fragment>
 				<Row gutter={24} style={style}>
 					<Col span={12}>
-						<EchartCard title="性别" id="sexChart" />
+						<ChartCard title="性别" id="sexChart" />
 					</Col>
 					<Col span={12}>
-						<EchartCard title="年龄" id="ageChart" />
+						<ChartCard title="年龄" id="ageChart" />
 					</Col>
 				</Row>
 				<Row style={style}>
 					<Col>
-						<EchartCard title="渠道" id="channelChart" />
+						<ChartCard title="渠道" id="channelChart" />
 					</Col>
 				</Row>
 				<Row gutter={24}>
 					<Col span={12}>
-						<EchartCard title="城市" id="cityChart" />
+						<ChartCard title="城市" id="cityChart" />
 					</Col>
 					<Col span={12}>
-						<EchartCard title="省份" id="provinceChart" />
+						<ChartCard title="省份" id="provinceChart" />
 					</Col>
 				</Row>
 			</Fragment>

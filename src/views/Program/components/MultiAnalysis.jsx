@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import { Card } from 'antd';
 import { multiAnalysisOption } from '@assets/chartOption';
-import ET from '@utlis/echartTools';
+import EchartsReact from '@components/Echarts/Index';
 
 class MultiAnalysis extends Component {
-	componentDidMount() {
-		ET.initChart({ id: 'multiAnalysis', option: multiAnalysisOption });
-	}
 	render() {
 		return (
 			<Card
@@ -15,7 +12,7 @@ class MultiAnalysis extends Component {
 				bordered={false}
 				title="Multidimensional Analysis"
 			>
-				<div id="multiAnalysis">123</div>
+				<EchartsReact option={multiAnalysisOption} />
 			</Card>
 		);
 	}

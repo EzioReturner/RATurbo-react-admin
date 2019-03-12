@@ -1,21 +1,28 @@
 import React, { Component } from 'react';
 import { Card } from 'antd';
-import ET from '@utlis/echartTools';
+import EchartsReact from '@components/Echarts/Index';
 import { getWordCloud } from '@api/analysis';
 import { wordCloudChart } from '@assets/chartOption';
 
 class Proportion extends Component {
+	state = {
+		data: wordCloudChart()
+	};
 	componentDidMount() {
-		this.initChart();
+		this.loadData();
 	}
 
-	async initChart() {
+	async loadData() {
 		const data = await getWordCloud();
 		const option = wordCloudChart(data.data.data);
-		ET.initChart({ id: 'trading-proportion', option });
+		this.setState({
+			data: option
+		});
 	}
 
 	render() {
+		const { data } = this.state;
+		console.log(data);
 		return (
 			<Card
 				hoverable
@@ -23,7 +30,7 @@ class Proportion extends Component {
 				title="trading proportion"
 				className="fat-card"
 			>
-				<div id="trading-proportion" />
+				<EchartsReact option={data} style={{ height: '200px' }} />
 			</Card>
 		);
 	}

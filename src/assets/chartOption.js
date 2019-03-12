@@ -609,7 +609,7 @@ export const monitorListOption = {
 	]
 };
 
-export function wordCloudChart(data) {
+export function wordCloudChart(data = []) {
 	require('echarts-wordcloud');
 	const colors = [
 		'rgb(218,112,214)',
