@@ -34,8 +34,8 @@ class MainStore {
   }
 
   // 切换collapsed
-  @action toggleCollapsed = () => {
-    this.collapsed = !this.collapsed;
+  @action toggleCollapsed = (collapsed?: any): void => {
+    this.collapsed = [true, false].includes(collapsed) ? collapsed : !this.collapsed;
   };
 
   // 设置打开的菜单

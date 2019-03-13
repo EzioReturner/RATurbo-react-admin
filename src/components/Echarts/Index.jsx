@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import echarts from 'echarts';
-// import ET from '@utlis/echartTools';
 import { bind, clear } from 'size-sensor';
-import debounce from '@utlis/debounce';
 
 class EchartsReact extends Component {
 	constructor(props) {
