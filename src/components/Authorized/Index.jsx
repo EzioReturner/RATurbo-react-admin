@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { getAuthority } from '@utlis/authorityTools';
 import { CheckPermission } from './CheckPermission';
 import { inject } from 'mobx-react';
 

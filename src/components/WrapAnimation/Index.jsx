@@ -3,6 +3,11 @@ import { CSSTransition } from 'react-transition-group';
 import { inject, observer } from 'mobx-react';
 import './warp.scss';
 
+/**
+ * 动画组件
+ * @param {children} ReactNode
+ * @param {animate} string 动画名称
+ */
 @inject('layoutStore')
 @observer
 class WrapComponent extends Component {

@@ -14,9 +14,7 @@ class UserStore {
   }
 
   getAuthority(str?: any): any {
-    // return localStorage.getItem('antd-pro-authority') || ['admin', 'user'];
     const authorityString = typeof str === 'undefined' ? localStorage.getItem('ra-authority') : str;
-    // authorityString could be admin, "admin", ["admin"]
     let authority;
     try {
       authority = JSON.parse(authorityString);

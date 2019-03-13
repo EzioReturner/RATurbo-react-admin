@@ -16,13 +16,13 @@ class Monitor extends Component {
 				<PlatformHead />
 				<div className="platformContainer">
 					<Row gutter={24}>
-						<Col span={16}>
+						<Col xl={16} lg={24} md={24} sm={24} xs={24}>
 							<QuickStart />
 							<Row style={{ marginTop: '24px' }}>
 								<PlatformProject />
 							</Row>
 						</Col>
-						<Col span={8}>
+						<Col xl={8} lg={24} md={24} sm={24} xs={24}>
 							<MultiAnalysis />
 							<Row style={{ marginTop: '24px' }}>
 								<TeamCard />

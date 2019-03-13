@@ -11,23 +11,16 @@ class MainStore {
   @observable collapsed: boolean = false;
   @observable openMenus: Array<string> = [];
   timeout: any = null;
-  constructor() {
-    // autorun(() => this.checkIsInitial(this.componentPath));
-  }
+  constructor() {}
 
+  // 停止loading
   @action stopSpinning(): void {
     this.spinning = false;
     this.timeout && clearTimeout(this.timeout);
-    this.timeout = setTimeout(() => {
-      this.unMountLoading();
-    }, 600);
-  }
-
-  @action unMountLoading(): void {
-    this.mountLoading = false;
     NProgress.done(true);
   }
 
+  // 记录懒加载模块并开启loading
   @action addInitializer(initializer: string): void {
     this.readyInitializers.push(initializer);
     this.mountLoading = true;
@@ -35,15 +28,17 @@ class MainStore {
     NProgress.start();
   }
 
+  // 检查是否已加载过
   @action checkIsInitial(path: string): void {
     !this.readyInitializers.includes(path) && this.addInitializer(path);
   }
 
+  // 切换collapsed
   @action toggleCollapsed = () => {
     this.collapsed = !this.collapsed;
-    ET.resizeAllDisplayChart();
   };
 
+  // 设置打开的菜单
   @action setOpenMenus(menus: Array<string>): void {
     this.openMenus = menus;
   }

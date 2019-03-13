@@ -2,6 +2,14 @@ import React, { PureComponent } from 'react';
 import WrapAnimation from '@components/WrapAnimation/Index';
 import { inject } from 'mobx-react';
 
+/**
+ * 懒加载模块
+ * @param {componentInfo} object 懒加载模块信息
+ * componentInfo 内部参数
+ * {asyncComponent} 动态import的方法
+ * {animate} 动画名称
+ * {path} 校验路径
+ */
 export default function asyncComponent(componentInfo) {
 	@inject('layoutStore')
 	class AsyncComponent extends PureComponent {
@@ -16,6 +24,7 @@ export default function asyncComponent(componentInfo) {
 
 		async componentDidMount() {
 			const [asyncComponent, path, animate] = componentInfo();
+			// 检查路径是否已加载 判断是否显示loading
 			this.props.layoutStore.checkIsInitial(path);
 			const { default: component } = await asyncComponent;
 			this.setState({

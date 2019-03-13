@@ -8,22 +8,6 @@ import {
 import routeConfig from '../../config/router.config';
 import { inject } from 'mobx-react';
 import Error from '@views/Exception/404';
-// function authorityRoute(route) {
-// 	const authorityRoute = args => {
-// 		const { render, ...rest } = args;
-// 		return (
-// 			<Authorized>
-// 				<RouteMiddle
-// 					{...rest}
-// 					render={props => {
-// 						return <route.component {...props} route={route} render={render} />;
-// 					}}
-// 				/>
-// 			</Authorized>
-// 		);
-// 	};
-// 	return authorityRoute;
-// }
 
 class RouteMiddle extends Component {
 	render() {
@@ -40,6 +24,10 @@ class RouteMiddle extends Component {
 	}
 }
 
+/**
+ * 路由生成组件
+ * 遍历路由表 生成多级路由
+ */
 @inject('userStore')
 class RenderRoutes extends Component {
 	generateRoute(routes, switchProps) {

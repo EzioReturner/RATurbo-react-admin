@@ -4,6 +4,11 @@ import classNames from 'classnames';
 import { observer, inject } from 'mobx-react';
 import './loading.scss';
 
+/**
+ * loading组件
+ * @param {spinning} boolean 是否启用
+ * @param {fixed} boolean 是否fixed覆盖全局
+ */
 @inject('layoutStore')
 @observer
 class Loading extends Component {
