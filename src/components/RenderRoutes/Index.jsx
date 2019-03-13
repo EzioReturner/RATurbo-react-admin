@@ -5,6 +5,7 @@ import {
 	Redirect,
 	Switch
 } from 'react-router-dom';
+import AsyncComponent from '@components/AsyncComponent/Index';
 import routeConfig from '../../config/router.config';
 import { inject } from 'mobx-react';
 import Error from '@views/Exception/404';
@@ -40,7 +41,7 @@ class RenderRoutes extends Component {
 						exact,
 						strict,
 						routes,
-						component: C,
+						component,
 						key,
 						withAuthority,
 						authority
@@ -66,8 +67,12 @@ class RenderRoutes extends Component {
 								const childRoutes = this.generateRoute(routes, {
 									location: props.location
 								});
-								if (C) {
-									return <C>{childRoutes}</C>;
+								if (component) {
+									return (
+										<AsyncComponent componentInfo={component}>
+											{childRoutes}
+										</AsyncComponent>
+									);
 								} else {
 									return childRoutes;
 								}
