@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { Icon, Menu, Dropdown, Modal } from 'antd';
 import { inject, observer } from 'mobx-react';
 import classNames from 'classnames';
+import { withRouter } from 'react-router-dom';
 import './header.scss';
 
 const confirm = Modal.confirm;
+@withRouter
 @inject('userStore')
 @observer
 class UserInfo extends Component {

@@ -1,3 +1,5 @@
+@import '@style/color.scss';
+
 .login {
   .login-form {
     max-width: 300px;
@@ -19,6 +21,20 @@
   .ant-input-prefix {
     .anticon {
       color: #ffffff;
+    }
+  }
+  .loginTitle {
+    font-size: 18px;
+    margin-bottom: 8px;
+    span {
+      color: $color-primary;
+    }
+    @media screen and (min-width: 1400px) {
+      position: absolute;
+      font-size: 38px;
+      font-weight: bold;
+      transform: rotate(-30deg);
+      left: -400px;
     }
   }
 }

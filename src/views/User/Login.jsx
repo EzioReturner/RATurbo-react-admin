@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Form, Button, Input, Icon, Checkbox, Alert } from 'antd';
 import classNames from 'classnames';
 import { withRouter } from 'react-router-dom';
@@ -57,49 +57,58 @@ class FormContainer extends Component {
 		const { getFieldDecorator } = this.props.form;
 		const { loading } = this.state;
 		return (
-			<Form onSubmit={this.handleSubmit} className="login-form">
-				<Form.Item>
-					{getFieldDecorator('userName', {
-						rules: [{ required: true, message: 'Please input your username!' }]
-					})(
-						<Input
-							prefix={<Icon type="user" />}
-							placeholder="Username: admin | guest"
-							autoComplete="off"
-						/>
-					)}
-				</Form.Item>
-				<Form.Item>
-					{getFieldDecorator('password', {
-						rules: [{ required: true, message: 'Please input your Password!' }]
-					})(
-						<Input
-							prefix={<Icon type="lock" />}
-							type="password"
-							placeholder="Password: 123"
-							autoComplete="off"
-						/>
-					)}
-				</Form.Item>
-				<Form.Item>
-					{getFieldDecorator('remember', {
-						valuePropName: 'checked',
-						initialValue: true
-					})(<Checkbox>Remember me</Checkbox>)}
-					<a className="login-form-forgot" href="">
-						Forgot password
-					</a>
-					<Button
-						type="primary"
-						htmlType="submit"
-						className="login-form-button"
-						loading={loading}
-					>
-						Log in
-					</Button>
-					Or <a href="">register now!</a>
-				</Form.Item>
-			</Form>
+			<Fragment>
+				<div className="loginTitle">
+					R<span>A</span>-TORBO
+				</div>
+				<Form onSubmit={this.handleSubmit} className="login-form">
+					<Form.Item>
+						{getFieldDecorator('userName', {
+							rules: [
+								{ required: true, message: 'Please input your username!' }
+							]
+						})(
+							<Input
+								prefix={<Icon type="user" />}
+								placeholder="Username: admin | guest"
+								autoComplete="off"
+							/>
+						)}
+					</Form.Item>
+					<Form.Item>
+						{getFieldDecorator('password', {
+							rules: [
+								{ required: true, message: 'Please input your Password!' }
+							]
+						})(
+							<Input
+								prefix={<Icon type="lock" />}
+								type="password"
+								placeholder="Password: 123"
+								autoComplete="off"
+							/>
+						)}
+					</Form.Item>
+					<Form.Item>
+						{getFieldDecorator('remember', {
+							valuePropName: 'checked',
+							initialValue: true
+						})(<Checkbox>Remember me</Checkbox>)}
+						<a className="login-form-forgot" href="">
+							Forgot password
+						</a>
+						<Button
+							type="primary"
+							htmlType="submit"
+							className="login-form-button"
+							loading={loading}
+						>
+							Log in
+						</Button>
+						Or <a href="">register now!</a>
+					</Form.Item>
+				</Form>
+			</Fragment>
 		);
 	}
 }

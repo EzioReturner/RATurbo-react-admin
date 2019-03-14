@@ -4,7 +4,7 @@
   overflow: hidden;
   position: absolute;
   background-color: gray;
-  background: url('../assets/image/loginBack.png');
+  background: url('../assets/image/loginBackground.jpg');
   background-size: cover;
   top: 0;
   right: 0;
@@ -41,5 +41,9 @@
     left: 70%;
     top: 55%;
     transform: translate(-50%,-50%);
+    @media screen and (max-width: 1400px) {
+      left: 50%;
+      top: 50%;
+    }
   }
 }
