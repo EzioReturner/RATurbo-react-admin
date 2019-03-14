@@ -48,5 +48,36 @@
       align-items: center;
       cursor: pointer;
     }
+    .clock .text,
+    .userDropdown .text{
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .clock {
+      display: flex;
+      align-items: center;
+      .text {
+        display: inline-block;
+        margin-left: 8px;
+        transition: all 0.3s;
+      }
+      .showTime {
+        width: 100px !important;
+      }
+    }
+    @media screen and (max-width:600px) {
+      font-size: 14px;
+      .clock .text {
+        width: 0px;
+        overflow: hidden;
+      }
+      .userDropdown .text {
+        width: 50px;
+      }
+      .userDropdown {
+        margin-left: 16px;
+      }
+    }
   }
 }

@@ -13,7 +13,8 @@ class UserInfo extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			date: new Date()
+			date: new Date(),
+			showTime: false
 		};
 	}
 
@@ -75,21 +76,31 @@ class UserInfo extends Component {
 			</Menu.Item>
 		</Menu>
 	);
+
+	handleShowTime = () => {
+		this.setState({
+			showTime: !this.state.showTime
+		});
+		setTimeout(() => {
+			this.state.showTime && this.handleShowTime();
+		}, 3000);
+	};
+
 	render() {
-		const { date } = this.state;
+		const { date, showTime } = this.state;
 		const { name } = this.props.userStore.userInfo;
 		return (
 			<div className="userInfo">
-				<span className="clock">{date.toLocaleTimeString()}</span>
-				<Dropdown
-					style={{
-						marginLeft: '20px'
-					}}
-					overlay={this.getMenu()}
-				>
+				<span className="clock">
+					<Icon type="clock-circle" onClick={this.handleShowTime} />
+					<span className={classNames('text', { showTime })}>
+						{date.toLocaleTimeString()}
+					</span>
+				</span>
+				<Dropdown className="drop-down" overlay={this.getMenu()}>
 					<div className="userDropdown">
 						<Icon type="user" className="userIcon" />
-						<span>{name}</span>
+						<span className="text">{name}</span>
 					</div>
 				</Dropdown>
 			</div>
@@ -103,9 +114,7 @@ class Header extends Component {
 	constructor(props) {
 		super(props);
 	}
-	handleClick(query, e) {
-		// console.log(this, query, e)
-	}
+
 	render() {
 		const { toggleCollapsed, collapsed, isMobile } = this.props.layoutStore;
 		const iconCollapsed = collapsed ? 'menu-unfold' : 'menu-fold';
