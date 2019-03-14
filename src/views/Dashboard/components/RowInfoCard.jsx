@@ -58,7 +58,15 @@ class RowInfoCard extends PureComponent {
 		return (
 			<Row gutter={24} className="rowInfo-card">
 				{details.map((dl, index) => (
-					<Col span={6} key={index}>
+					<Col
+						xl={6}
+						lg={12}
+						md={12}
+						sm={24}
+						xs={24}
+						key={index}
+						style={{ marginBottom: '24px' }}
+					>
 						<InfoCard {...dl} />
 					</Col>
 				))}

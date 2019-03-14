@@ -10,7 +10,6 @@
   top: 0;
   right: 0;
   left: 255px;
-  min-width: 900px;
   text-align: left;
   box-shadow: 4px 4px 40px 0 rgba(0,0,0,.05);
   z-index: 2;
@@ -20,6 +19,9 @@
   transition: all 0.3s;
   &.collapsed {
     left: 80px;
+  }
+  &.isMobile {
+    left: 0;
   }
   .foldIcon {
     font-size: 18px;

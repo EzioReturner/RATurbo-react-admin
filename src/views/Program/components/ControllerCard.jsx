@@ -66,15 +66,19 @@ class Controller extends Component {
 				className="controlHead"
 				bodyStyle={{
 					display: 'flex',
-					alignItems: 'center'
+					alignItems: 'center',
+					minWidth: '580px',
+					justifyContent: 'space-between'
 				}}
 			>
-				<Switch
-					defaultChecked={showUnDefined}
-					style={marginRight.et}
-					onChange={this.handleSwitch}
-				/>
-				<span className="headerTextSpan">未识别</span>
+				<div style={{ flex: 1, marginLeft: '16px' }}>
+					<Switch
+						defaultChecked={showUnDefined}
+						style={marginRight.et}
+						onChange={this.handleSwitch}
+					/>
+					<span className="headerTextSpan">未识别</span>
+				</div>
 				<span className="headerTextSpan rightSpace">
 					符合当前筛选条件的总用户数为：21,312,393
 					<Icon type="question-circle" />

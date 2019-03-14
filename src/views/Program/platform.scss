@@ -6,17 +6,15 @@
   .platform-head {
     padding-left: 10px;
     .head-info {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
       .left-part {
-        display: inherit;
+        display: flex;
       }
-      .right-part {
-        display: inherit;
-        .ant-col-8 {
-          min-width: 90px;
+      .right-part .ant-col-8 {
           text-align: center;
+      }
+      @media screen and (max-width: 768px) {
+        .left-part {
+          margin-bottom: 24px;
         }
       }
       p {
@@ -32,6 +30,7 @@
         height: 50px;
         width: 50px;
         margin-right: 16px;
+        flex: 0 1;
       }
     }
   }
@@ -109,20 +108,16 @@
     }
   }
   .quick-start {
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
     min-height: 150px;
     .ac {
       color: rgba(0,0,0,.65);
-      white-space: nowrap;
-      float: left;
-      width: 12%;
       cursor: pointer;
       transition: all 0.3s;
       display: flex;
       flex-flow: column;
       align-items: center;
+      justify-content: center;
+      min-height: 75px;
       &:hover {
         color: $color-primary-light;
         .ant-avatar {

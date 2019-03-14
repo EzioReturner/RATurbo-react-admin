@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import { Card } from 'antd';
-import ET from '@utlis/echartTools';
 import EchartsReact from '@components/Echarts/Index';
 import { globalTrendsOption } from '@assets/chartOption';
 

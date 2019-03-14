@@ -2,6 +2,10 @@
 
 .monitor {
   overflow: auto;
+  .poplar-map-card,
+  .monitor-list-card {
+    margin-bottom: 24px;
+  }
   #poplar-map {
     height: 490px;
     width: 100%;

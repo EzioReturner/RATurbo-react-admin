@@ -4,6 +4,8 @@ import { Link, withRouter } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
 import routeConfig from '../../config/router.config';
 import { intersection } from 'lodash';
+import { RLogo } from '@components/SvgIcon';
+import classNames from 'classnames';
 
 const { SubMenu } = Menu;
 const _routes = routeConfig[1].routes;
@@ -101,6 +103,9 @@ class SiderMenu extends Component {
 			openKeys: moreThanOne ? [openKeys.pop()] : [...openKeys]
 		});
 	};
+	handleLinkGithub() {
+		window.open('https://github.com/EzioReturner/RATurbo-react-admin');
+	}
 
 	render() {
 		const {
@@ -109,16 +114,29 @@ class SiderMenu extends Component {
 		const { collapsed } = this.props.layoutStore;
 		const menuProps = collapsed ? {} : { openKeys: this.state.openKeys };
 		return (
-			<Menu
-				className="myMenu"
+			<div
+				className={classNames('navigator', {
+					collapsed
+				})}
 				mode="inline"
-				inlineCollapsed={collapsed}
-				selectedKeys={[pathname]}
-				onOpenChange={this.handleOpenMenu}
-				{...menuProps}
 			>
-				{this.getNavMenuItem(_routes)}
-			</Menu>
+				<div className="controlBut" onClick={this.handleLinkGithub}>
+					<div className="rotateIcon">
+						<Icon component={RLogo} className="logoBorder" />
+					</div>
+					<span className="title ml-3">RA-TURBO</span>
+				</div>
+				<Menu
+					className="myMenu"
+					mode="inline"
+					inlineCollapsed={collapsed}
+					selectedKeys={[pathname]}
+					onOpenChange={this.handleOpenMenu}
+					{...menuProps}
+				>
+					{this.getNavMenuItem(_routes)}
+				</Menu>
+			</div>
 		);
 	}
 }

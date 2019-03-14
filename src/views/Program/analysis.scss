@@ -45,6 +45,10 @@
   }
   .controlHead {
     margin-bottom: 24px;
+    overflow: auto;
+    .ant-card-head {
+      min-width: 580px;
+    }
     .headerContent {
       display: flex;
       align-items: center;
@@ -60,8 +64,6 @@
       margin-right: 16px;
       &.rightSpace {
         font-size: 12px;
-        position: absolute;
-        right: 0;
         i {
           margin-left: 8px;
           color: $color-primary;

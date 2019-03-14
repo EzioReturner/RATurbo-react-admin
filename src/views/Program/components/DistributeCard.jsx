@@ -1,10 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import { Card, Row, Col, Icon } from 'antd';
-import ET from '@utlis/echartTools';
+import EchartsReact from '@components/Echarts/Index';
 import { observer, inject } from 'mobx-react';
 class ChartCard extends Component {
 	render() {
-		const { title, id } = this.props;
+		const style = {
+			marginBottom: '24px'
+		};
+		const { title, option } = this.props;
 		const CardTitle = (
 			<div className="titleNanme">
 				{title}
@@ -25,9 +28,10 @@ class ChartCard extends Component {
 				title={CardTitle}
 				className="thin-card"
 				bordered={false}
+				style={title !== '省份' ? style : null}
 				bodyStyle={{ overflow: 'hidden' }}
 			>
-				<div id={id} className="chartDom" />
+				<EchartsReact option={option} />
 			</Card>
 		);
 	}
@@ -36,91 +40,39 @@ class ChartCard extends Component {
 @inject('programStore')
 @observer
 class DistributeCard extends Component {
-	paintChart() {
-		const {
-			circleOption,
-			barOption,
-			cityOption,
-			provinceOption,
-			lineOption
-		} = this.props.programStore.getChartOption;
-		this.startInitChart([
-			{
-				id: 'sexChart',
-				option: circleOption
-			},
-			{
-				id: 'ageChart',
-				option: barOption
-			},
-			{
-				id: 'cityChart',
-				option: barOption,
-				otherOption: cityOption
-			},
-			{
-				id: 'provinceChart',
-				option: barOption,
-				otherOption: provinceOption
-			},
-			{
-				id: 'channelChart',
-				option: lineOption
-			}
-		]);
-	}
-	startInitChart(chart) {
-		for (let i = 0; i < chart.length; i++) {
-			ET.initChart(chart[i]);
-		}
-	}
-
-	componentDidMount() {
-		this.paintChart();
-	}
-
-	componentWillReact() {
-		this.paintChart();
-	}
-
-	componentWillUnmount() {
-		[
-			'sexChart',
-			'ageChart',
-			'cityChart',
-			'provinceChart',
-			'channelChart'
-		].forEach(id => {
-			ET.dispose(id);
-		});
-	}
-
 	render() {
-		const { showUnDefined } = this.props.programStore;
-		const style = {
-			marginBottom: '24px'
-		};
+		const {
+			showUnDefined,
+			getChartOption: {
+				circleOption,
+				barOption,
+				cityOption,
+				provinceOption,
+				lineOption
+			}
+		} = this.props.programStore;
+
 		return (
 			<Fragment>
-				<Row gutter={24} style={style}>
-					<Col span={12}>
-						<ChartCard title="性别" id="sexChart" />
+				<Row gutter={24}>
+					<Col xl={12} lg={12} md={24} sm={24} xs={24}>
+						<ChartCard title="性别" option={circleOption} />
 					</Col>
-					<Col span={12}>
-						<ChartCard title="年龄" id="ageChart" />
+					<Col xl={12} lg={12} md={24} sm={24} xs={24}>
+						<ChartCard title="年龄" option={barOption} />
 					</Col>
 				</Row>
-				<Row style={style}>
+				<Row>
 					<Col>
-						<ChartCard title="渠道" id="channelChart" />
+						<ChartCard title="渠道" option={lineOption} />
 					</Col>
 				</Row>
 				<Row gutter={24}>
-					<Col span={12}>
-						<ChartCard title="城市" id="cityChart" />
+					<Col xl={12} lg={12} md={24} sm={24} xs={24}>
+						<ChartCard title="城市" option={[barOption, cityOption]} />
 					</Col>
-					<Col span={12}>
-						<ChartCard title="省份" id="provinceChart" />
+					<Col xl={12} lg={12} md={24} sm={24} xs={24}>
+						<ChartCard title="省份" option={[barOption, provinceOption]} />
 					</Col>
 				</Row>
 			</Fragment>

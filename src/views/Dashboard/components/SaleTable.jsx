@@ -157,7 +157,15 @@ class SaleTable extends Component {
 		const { tableData } = this.state;
 
 		return (
-			<Card bordered={false} className="fat-card" title="Sales" hoverable>
+			<Card
+				bordered={false}
+				className="fat-card"
+				title="Sales"
+				hoverable
+				bodyStyle={{
+					overflow: 'auto'
+				}}
+			>
 				<Table
 					pagination={false}
 					className="no-head-border"

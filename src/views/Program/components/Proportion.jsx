@@ -28,6 +28,7 @@ class Proportion extends Component {
 				bordered={false}
 				title="trading proportion"
 				className="fat-card"
+				style={{ marginBottom: '24px' }}
 			>
 				<EchartsReact option={data} style={{ height: '200px' }} />
 			</Card>

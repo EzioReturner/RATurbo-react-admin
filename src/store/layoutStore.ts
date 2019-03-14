@@ -1,22 +1,50 @@
-import { observable, configure, action } from 'mobx';
-import ET from '@utlis/echartTools';
+import { observable, configure, action, autorun } from 'mobx';
+import isMobile from '@utlis/isMobile';
+import debounce from '@utlis/debounce';
 import NProgress from 'nprogress';
 
 configure({ enforceActions: 'always' });
-class MainStore {
+class LayoutStore {
   @observable spinning: boolean = true;
   @observable fixed: boolean = false;
   @observable mountLoading: boolean = true;
   @observable readyInitializers: Array<string> = [];
   @observable collapsed: boolean = false;
   @observable openMenus: Array<string> = [];
-  timeout: any = null;
-  constructor() {}
+  @observable isMobile: boolean = false;
+
+  addWindowEvent(): void {
+    window.addEventListener(
+      'resize',
+      debounce(() => {
+        this.changeStatus();
+      })
+    );
+    this.changeStatus();
+  }
+
+  constructor() {
+    this.addWindowEvent();
+  }
+
+  @action changeStatus(): void {
+    const info: any = isMobile(navigator.userAgent);
+    this.isMobile = info.any;
+    this.isMobile && this.toggleCollapsed(true);
+    const clientWidth = document.body.clientWidth;
+    if (clientWidth < 1000) {
+      this.toggleCollapsed(true);
+    } else {
+      this.toggleCollapsed(false);
+    }
+    if (clientWidth < 600) {
+      this.isMobile = true;
+    }
+  }
 
   // 停止loading
   @action stopSpinning(): void {
     this.spinning = false;
-    this.timeout && clearTimeout(this.timeout);
     NProgress.done(true);
   }
 
@@ -44,4 +72,4 @@ class MainStore {
   }
 }
 
-export default MainStore;
+export default LayoutStore;

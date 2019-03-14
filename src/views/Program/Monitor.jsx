@@ -11,22 +11,22 @@ class Monitor extends Component {
 	render() {
 		return (
 			<div className="monitor">
-				<Row gutter={24} style={{ marginBottom: '24px' }}>
-					<Col span={16}>
+				<Row gutter={24}>
+					<Col xl={16} lg={24} md={24} sm={24} xs={24}>
 						<PopularMap />
 					</Col>
-					<Col span={8}>
+					<Col xl={8} lg={24} md={24} sm={24} xs={24}>
 						<MonitorList />
 					</Col>
 				</Row>
 				<Row gutter={24}>
-					<Col span={12}>
+					<Col xl={12} lg={8} md={24} sm={24} xs={24}>
 						<Proportion />
 					</Col>
-					<Col span={6}>
+					<Col xl={6} lg={8} md={24} sm={24} xs={24}>
 						<Efficiency />
 					</Col>
-					<Col span={6}>
+					<Col xl={6} lg={8} md={24} sm={24} xs={24}>
 						<Surplus />
 					</Col>
 				</Row>

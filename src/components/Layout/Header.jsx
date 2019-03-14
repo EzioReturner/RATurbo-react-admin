@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { Icon, Menu, Dropdown, Modal } from 'antd';
 import { inject, observer } from 'mobx-react';
-import { withRouter } from 'react-router-dom';
 import classNames from 'classnames';
 import './header.scss';
 
 const confirm = Modal.confirm;
-@withRouter
 @inject('userStore')
 @observer
 class UserInfo extends Component {
@@ -107,12 +105,13 @@ class Header extends Component {
 		// console.log(this, query, e)
 	}
 	render() {
-		const { toggleCollapsed, collapsed } = this.props.layoutStore;
+		const { toggleCollapsed, collapsed, isMobile } = this.props.layoutStore;
 		const iconCollapsed = collapsed ? 'menu-unfold' : 'menu-fold';
 		return (
 			<div
 				className={classNames('header', {
-					collapsed: collapsed
+					collapsed,
+					isMobile
 				})}
 			>
 				<Icon

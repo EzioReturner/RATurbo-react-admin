@@ -10,8 +10,10 @@ class EchartsReact extends Component {
 
 	renderChart() {
 		const chartObj = this.getInstance();
-		const { option, notMerge, lazyUpdate } = this.props;
-		chartObj.setOption(option || {}, notMerge || false, lazyUpdate || false);
+		let { option, notMerge, lazyUpdate } = this.props;
+		option = Array.isArray(option) ? option : [option];
+		chartObj.setOption(option[0] || {}, notMerge || false, lazyUpdate || false);
+		option[1] && chartObj.setOption(option[1]);
 		return chartObj;
 	}
 

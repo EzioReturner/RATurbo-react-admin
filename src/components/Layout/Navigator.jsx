@@ -1,33 +1,29 @@
 import React, { Component } from 'react';
-import { Icon } from 'antd';
-import Menu from './Menu';
-import classNames from 'classnames';
-
-import { RLogo } from '@components/SvgIcon';
+import { Drawer } from 'antd';
+import SiderMenu from './SiderMenu';
 import './navigator.scss';
 
 class Navigater extends Component {
-	handleLinkGithub() {
-		window.open('https://github.com/EzioReturner/RATurbo-react-admin');
-	}
 	render() {
-		const { collapsed } = this.props;
-
-		return (
-			<div
-				className={classNames('navigator', {
-					collapsed
-				})}
-				mode="inline"
+		const { isMobile, collapsed, toggleCollapsed } = this.props;
+		return isMobile ? (
+			<Drawer
+				visible={!collapsed}
+				placement="left"
+				closable={false}
+				onClose={() => toggleCollapsed()}
+				style={{
+					padding: 0,
+					height: '100vh'
+				}}
+				bodyStyle={{
+					padding: 0
+				}}
 			>
-				<div className="controlBut" onClick={this.handleLinkGithub}>
-					<div className="rotateIcon">
-						<Icon component={RLogo} className="logoBorder" />
-					</div>
-					<span className="title ml-3">RA-TURBO</span>
-				</div>
-				<Menu />
-			</div>
+				<SiderMenu />
+			</Drawer>
+		) : (
+			<SiderMenu />
 		);
 	}
 }

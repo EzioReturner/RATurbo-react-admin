@@ -6,7 +6,6 @@ import { Redirect, withRouter } from 'react-router-dom';
 import { getRouteAuthority } from '@utlis/authorityTools';
 import classNames from 'classnames';
 import { observer, inject } from 'mobx-react';
-import debounce from '@utlis/debounce';
 import './mainLayout.scss';
 
 const Exception403 = React.lazy(() =>
@@ -17,22 +16,11 @@ const Exception403 = React.lazy(() =>
 @inject('layoutStore')
 @observer
 class MainLayout extends Component {
-	componentDidMount() {
-		window.addEventListener(
-			'resize',
-			debounce(e => {
-				if (document.body.clientWidth < 1000) {
-					this.props.layoutStore.toggleCollapsed(true);
-				} else {
-					this.props.layoutStore.toggleCollapsed(false);
-				}
-			})
-		);
-	}
+	componentDidMount() {}
 
 	render() {
 		const {
-			layoutStore: { mountLoading, collapsed },
+			layoutStore: { mountLoading, collapsed, isMobile, toggleCollapsed },
 			children,
 			location: { pathname }
 		} = this.props;
@@ -44,11 +32,16 @@ class MainLayout extends Component {
 			>
 				<div className="container">
 					<Loading />
-					<Navigator collapsed={collapsed} />
+					<Navigator
+						collapsed={collapsed}
+						isMobile={isMobile}
+						toggleCollapsed={toggleCollapsed}
+					/>
 					<div
 						id="mainContainer"
 						className={classNames('routeContent', {
-							collapsed: collapsed
+							collapsed,
+							isMobile
 						})}
 					>
 						<Header />

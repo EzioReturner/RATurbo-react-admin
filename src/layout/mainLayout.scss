@@ -19,6 +19,9 @@
       &.collapsed {
         left: 80px;
       }
+      &.isMobile {
+        left: 0;
+      }
       &>div:not(.header) {
         height: 100%;
         width: 100%;

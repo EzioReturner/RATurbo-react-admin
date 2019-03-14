@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Card, Button, Avatar } from 'antd';
+import { Card, Button, Avatar, Row, Col } from 'antd';
 import { getContact } from '@api/platform';
 
 class QuickStart extends PureComponent {
@@ -24,21 +24,29 @@ class QuickStart extends PureComponent {
 				bordered={false}
 				loading={!contact.length}
 			>
-				<div className="quick-start">
+				<Row className="quick-start">
 					{contact.map((res, index) => {
 						return (
-							<div className="ac" key={index}>
+							<Col
+								className="ac"
+								key={index}
+								xl={2}
+								lg={4}
+								md={4}
+								sm={4}
+								xs={6}
+							>
 								<Avatar src={res.picture.thumbnail} />
 								<p>{res.name.first}</p>
-							</div>
+							</Col>
 						);
 					})}
-					<div className="ac">
+					<Col className="ac" xl={2} lg={4} md={4} sm={4} xs={6}>
 						<Button type="primary" size="small" icon="plus">
 							add
 						</Button>
-					</div>
-				</div>
+					</Col>
+				</Row>
 			</Card>
 		);
 	}

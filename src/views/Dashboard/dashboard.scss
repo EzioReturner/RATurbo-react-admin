@@ -31,6 +31,7 @@
   }
   .weather-card {
     background-image: linear-gradient(to left bottom, #d6eef6, #dff0fa, #e7f3fc, #eff6fe, #f6f9ff);
+    margin-bottom: 24px;
     .weather-body {
       padding: 31px 29px;
       height: 340px;
@@ -56,6 +57,7 @@
     }
   }
   .performance-card {
+    margin-bottom: 24px;
     .headerTitle {
       font-size: 14px;
       color: $color-secondary;
@@ -63,6 +65,7 @@
     }
   }
   .global-trends {
+    margin-bottom: 24px;
     #chartContaniner {
       width: 100%;
       height: 350px;

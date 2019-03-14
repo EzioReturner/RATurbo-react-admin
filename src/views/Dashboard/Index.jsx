@@ -16,24 +16,15 @@ class Dashboard extends Component {
 		return (
 			<div className="dashboard">
 				<RowInfoCard />
-				<Row
-					gutter={24}
-					style={{
-						margin: '24px -12px'
-					}}
-				>
-					<Col span={14}>
+				<Row gutter={24}>
+					<Col xl={14} lg={14} md={24} sm={24} xs={24}>
 						<Weather />
 					</Col>
-					<Col span={10}>
+					<Col xl={10} lg={10} md={24} sm={24} xs={24}>
 						<Performance />
 					</Col>
 				</Row>
-				<Row
-					style={{
-						margin: '24px 0'
-					}}
-				>
+				<Row>
 					<Col span={24}>
 						<GlobalTrends />
 					</Col>
