@@ -84,8 +84,9 @@ class SiderMenu extends Component {
 
 	getMenuItem(menu) {
 		const { icon: iconType, name, path } = menu;
+		const { isMobile, toggleCollapsed } = this.props.layoutStore;
 		return (
-			<Link to={path} replace onClick={this.props.layoutStore.toggleCollapsed}>
+			<Link to={path} replace onClick={isMobile ? toggleCollapsed : null}>
 				{iconType && <Icon type={iconType} />}
 				<span>{name}</span>
 			</Link>

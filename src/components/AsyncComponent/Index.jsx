@@ -22,7 +22,10 @@ class AsyncComponent extends PureComponent {
 	}
 
 	async componentDidMount() {
-		const [asyncComponent, path, animate] = this.props.componentInfo;
+		const {
+			componentInfo: [asyncComponent, animate],
+			path
+		} = this.props;
 		// 检查路径是否已加载 判断是否显示loading
 		this.props.layoutStore.checkIsInitial(path);
 		const { default: component } = await asyncComponent;
@@ -45,42 +48,3 @@ class AsyncComponent extends PureComponent {
 	}
 }
 export default AsyncComponent;
-//
-// export default function asyncComponent(componentInfo) {
-// 	@inject('layoutStore')
-// 	class AsyncComponent extends PureComponent {
-// 		constructor(props) {
-// 			super(props);
-//
-// 			this.state = {
-// 				component: null,
-// 				animate: null
-// 			};
-// 		}
-//
-// 		async componentDidMount() {
-// 			const [asyncComponent, path, animate] = componentInfo;
-// 			// 检查路径是否已加载 判断是否显示loading
-// 			this.props.layoutStore.checkIsInitial(path);
-// 			const { default: component } = await asyncComponent;
-// 			this.setState({
-// 				component: component,
-// 				animate: animate
-// 			});
-// 		}
-//
-// 		render() {
-// 			const { component: C, animate } = this.state;
-// 			if (animate === 'notAnimate') {
-// 				return <C {...this.props} />;
-// 			}
-// 			return C ? (
-// 				<WrapAnimation animate={animate}>
-// 					<C {...this.props} />
-// 				</WrapAnimation>
-// 			) : null;
-// 		}
-// 	}
-//
-// 	return AsyncComponent;
-// }

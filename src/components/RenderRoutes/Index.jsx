@@ -69,7 +69,7 @@ class RenderRoutes extends Component {
 								});
 								if (component) {
 									return (
-										<AsyncComponent componentInfo={component}>
+										<AsyncComponent componentInfo={component} path={path}>
 											{childRoutes}
 										</AsyncComponent>
 									);
