@@ -85,7 +85,7 @@ class SiderMenu extends Component {
 	getMenuItem(menu) {
 		const { icon: iconType, name, path } = menu;
 		return (
-			<Link to={path} replace>
+			<Link to={path} replace onClick={this.props.layoutStore.toggleCollapsed}>
 				{iconType && <Icon type={iconType} />}
 				<span>{name}</span>
 			</Link>
@@ -96,7 +96,7 @@ class SiderMenu extends Component {
 		const moreThanOne =
 			openKeys.filter(key => _routes.some(route => route.path === key)).length >
 			1;
-		if (this.props.collapsed && !openKeys.length) {
+		if (this.props.layoutStore.collapsed && !openKeys.length) {
 			return;
 		}
 		this.setState({

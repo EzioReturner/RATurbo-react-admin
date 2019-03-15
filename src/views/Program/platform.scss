@@ -96,6 +96,7 @@
         justify-content: space-between;
         width: 100%;
         align-items: center;
+        flex-flow: row wrap;
         .time {
           color: rgba(0,0,0,.25);
           font-size: 12px;
@@ -131,6 +132,11 @@
       p {
         margin-top: 8px;
         margin-bottom: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-align: center;
       }
     }
   }
