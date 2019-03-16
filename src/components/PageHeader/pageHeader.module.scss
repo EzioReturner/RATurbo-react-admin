@@ -5,3 +5,9 @@
   background: $color-white;
   padding: 16px 32px 0;
 }
+
+.breadcrumb {
+  display: flex;
+  flex-flow: row;
+  margin-bottom: 16px;
+}

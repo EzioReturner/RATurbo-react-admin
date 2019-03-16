@@ -6,7 +6,7 @@ import styles from './pageHeader.module.scss';
 @observer
 class BreadCrumb extends Component {
 	render() {
-		return <div>BreadCrumb</div>;
+		return <div className={styles.breadcrumb}>BreadCrumb</div>;
 	}
 }
 

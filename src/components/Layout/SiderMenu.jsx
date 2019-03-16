@@ -5,7 +5,7 @@ import { observer, inject } from 'mobx-react';
 import routeConfig from '../../config/router.config';
 import { intersection } from 'lodash';
 import { RLogo } from '@components/SvgIcon';
-import './siderMenu.scss';
+import styles from './siderMenu.module.scss';
 
 import classNames from 'classnames';
 
@@ -18,7 +18,7 @@ class SiderMenu extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			openKeys: props.layoutStore.openMenus
+			openKeys: []
 		};
 	}
 
@@ -26,14 +26,26 @@ class SiderMenu extends Component {
 		this.initOpenMenu();
 	}
 
+	// 检查路由是否匹配信息表
+	checkRoute(routeInfo, path) {
+		const isArr = Array.isArray(routeInfo);
+		const arr = isArr ? routeInfo : routeInfo.routes;
+		return arr.find(
+			route => route.path === (isArr ? '' : routeInfo.path) + '/' + path
+		);
+	}
+
+	// 初始化开启的菜单
 	initOpenMenu() {
 		const {
 			location: { pathname }
 		} = this.props;
-		const menuOpen = pathname.split('/').reduce((total, obj) => {
-			obj &&
-				_routes.some(route => route.path === '/' + obj) &&
-				total.push('/' + obj);
+		let cacheRoute;
+		const menuOpen = pathname.split('/').reduce((total, path) => {
+			if (path) {
+				cacheRoute = this.checkRoute(cacheRoute || _routes, path);
+				cacheRoute && cacheRoute.routes && total.push(cacheRoute.path);
+			}
 			return total;
 		}, []);
 		this.setState({
@@ -85,8 +97,8 @@ class SiderMenu extends Component {
 	}
 
 	handleClickLink(name, path) {
-		const { isMobile, toggleCollapsed, addBreadcrumb } = this.props.layoutStore;
-		addBreadcrumb(name, path);
+		const { isMobile, toggleCollapsed, setOpenMenus } = this.props.layoutStore;
+		// setOpenMenus(name, path);
 		isMobile && toggleCollapsed();
 	}
 
@@ -129,16 +141,17 @@ class SiderMenu extends Component {
 		const menuProps = collapsed ? {} : { openKeys: this.state.openKeys };
 		return (
 			<div
-				className={classNames('navigator', {
-					collapsed
-				})}
+				className={classNames(
+					styles.navigator,
+					collapsed ? styles.collapsed : ''
+				)}
 				mode="inline"
 			>
-				<div className="controlBut" onClick={this.handleLinkGithub}>
-					<div className="rotateIcon">
-						<Icon component={RLogo} className="logoBorder" />
+				<div className={styles.controlBut} onClick={this.handleLinkGithub}>
+					<div className={styles.rotateIcon}>
+						<Icon component={RLogo} className={styles.logoBorder} />
 					</div>
-					<span className="title ml-3">RA-TURBO</span>
+					<span className={`ml-3 ${styles.title}`}>RA-TURBO</span>
 				</div>
 				<Menu
 					className="myMenu"

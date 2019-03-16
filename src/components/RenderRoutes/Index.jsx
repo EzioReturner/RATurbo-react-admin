@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment, PureComponent } from 'react';
 import {
 	HashRouter as Router,
 	Route,
@@ -10,7 +10,7 @@ import routeConfig from '../../config/router.config';
 import { inject } from 'mobx-react';
 import Error from '@views/Exception/404';
 
-class RouteMiddle extends Component {
+class RouteMiddle extends PureComponent {
 	render() {
 		const { path, exact, strict, render, location, ...rest } = this.props;
 		return (
@@ -30,7 +30,7 @@ class RouteMiddle extends Component {
  * 遍历路由表 生成多级路由
  */
 @inject('userStore')
-class RenderRoutes extends Component {
+class RenderRoutes extends PureComponent {
 	generateRoute(routes, switchProps) {
 		return routes ? (
 			<Switch {...switchProps}>

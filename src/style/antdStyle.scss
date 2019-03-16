@@ -206,6 +206,119 @@
     .ant-checkbox-checked:after {
       border: 1px solid $color-primary;;
     }
+
+    .myMenu {
+      border: 0;
+      &.ant-menu-vertical .ant-menu-submenu-selected,
+      &.ant-menu-vertical-left .ant-menu-submenu-selected,
+      &.ant-menu-vertical-right .ant-menu-submenu-selected {
+        color: $color-primary;
+      }
+
+      &>.ant-menu-item {
+        padding-left: 35px !important;
+      }
+      &>.ant-menu-submenu {
+        &>.ant-menu-submenu-title {
+          padding-left: 35px !important;
+        }
+        &>ul>.ant-menu-item {
+          padding-left: 70px !important;
+        }
+      }
+
+      &>.ant-menu-item,
+      &>.ant-menu-submenu>.ant-menu-submenu-title,
+      &>.ant-menu-submenu>ul>.ant-menu-item {
+        font-size: 13px;
+      }
+
+      .ant-menu-item .anticon,
+      .ant-menu-submenu-title .anticon {
+        margin-right: 18px;
+        font-size: 16px;
+      }
+
+      .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected  {
+        background-color: $menu-item-background !important;
+      }
+
+      .ant-menu-submenu-title:hover {
+        .ant-menu-submenu-arrow::before,
+        .ant-menu-submenu-arrow::after {
+            background: linear-gradient(to right, $color-primary-sec, $color-primary-sec) !important;
+        }
+      }
+
+      &>.ant-menu-submenu > .ant-menu {
+        background: rgba($color: $menu-item-background, $alpha: 0.5);
+        .ant-menu-item > a {
+          color: rgba(0, 0, 0, 0.45);
+        }
+        & > .ant-menu-submenu {
+          .ant-menu-submenu-title {
+            color: rgba(0, 0, 0, 0.45);
+            padding-left: 70px !important;
+          }
+          .ant-menu-item {
+            padding-left: 90px !important;
+            background: rgba($color: $menu-item-background, $alpha: 0.5);
+          }
+        }
+      }
+
+      .ant-menu-item-selected > a,
+      .ant-menu-item-selected > a:hover,
+      .ant-menu-item > a:hover,
+      .ant-menu-item:hover,
+      .ant-menu-item-active,
+      .ant-menu:not(.ant-menu-inline)
+      .ant-menu-submenu-open,
+      .ant-menu-submenu-active,
+      .ant-menu-submenu-title:hover {
+        color: $color-primary-sec !important;
+      }
+
+      .ant-menu-item-selected {
+        background-color: $menu-item-background;
+        color: $color-primary-sec;
+        position: relative;
+        &:before {
+          transform: scaleY(1);
+          opacity: 1;
+        }
+        &:after {
+          display: none;
+          border-right: 0;
+        }
+      }
+      .ant-menu-item:active,
+      .ant-menu-submenu-title:active {
+        background: $menu-item-background;
+      }
+
+      li {
+        margin: 0 !important;
+        text-align: left;
+        &:hover {
+          color: $color-primary-sec;
+          .ant-menu-submenu-title {
+            color: inherit;
+          }
+        }
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          right: 0;
+          height: 100%;
+          border-left: 4px solid $color-primary;
+          transform: scaleY(0.0001);
+          opacity: 0;
+          transition: transform 0.15s;
+        }
+      }
+    }
   }
 }
 

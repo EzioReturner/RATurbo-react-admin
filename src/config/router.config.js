@@ -71,6 +71,17 @@ const routeConfig = [
 						name: 'StepForm',
 						path: '/form/stepForm',
 						component: [import('@views/Form/StepForm')]
+					},
+					{
+						name: 'test',
+						path: '/form/test',
+						routes: [
+							{
+								name: 'test',
+								path: '/form/test/test1',
+								component: [import('@views/Form/TestDetail')]
+							}
+						]
 					}
 				]
 			},
