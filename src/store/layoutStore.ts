@@ -12,6 +12,7 @@ class LayoutStore {
   @observable collapsed: boolean = false;
   @observable openMenus: Array<string> = [];
   @observable isMobile: boolean = false;
+  @observable breadcrumbList: Array<object> = [];
 
   addWindowEvent(): void {
     window.addEventListener(
@@ -42,11 +43,14 @@ class LayoutStore {
     }
   }
 
+  // 增加面包屑
+  @action addBreadcrumb = (name: string, path: string): void => {};
+
   // 停止loading
-  @action stopSpinning(): void {
+  @action stopSpinning = (): void => {
     this.spinning = false;
     NProgress.done(true);
-  }
+  };
 
   // 记录懒加载模块并开启loading
   @action addInitializer(initializer: string): void {

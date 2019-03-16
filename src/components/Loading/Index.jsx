@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import classNames from 'classnames';
 import { observer, inject } from 'mobx-react';
-import './loading.scss';
+import styles from './loading.module.scss';
 
 /**
  * loading组件
@@ -16,13 +16,14 @@ class Loading extends Component {
 		const { spinning, fixed } = this.props.layoutStore;
 		return (
 			<div
-				className={classNames('loading', {
-					hide: !spinning,
-					fixed
-				})}
+				className={classNames(
+					styles.loading,
+					!spinning ? styles.hide : '',
+					fixed ? styles.fixed : ''
+				)}
 			>
-				<div className="content">
-					<div className="circle" />
+				<div className={styles.content}>
+					<div className={styles.circle} />
 					<span>LOADING</span>
 				</div>
 			</div>

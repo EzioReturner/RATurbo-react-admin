@@ -44,7 +44,8 @@ class RenderRoutes extends Component {
 						component,
 						key,
 						withAuthority,
-						authority
+						authority,
+						name
 					} = route;
 					if (redirect) {
 						return (

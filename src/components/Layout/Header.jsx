@@ -3,7 +3,7 @@ import { Icon, Menu, Dropdown, Modal } from 'antd';
 import { inject, observer } from 'mobx-react';
 import classNames from 'classnames';
 import { withRouter } from 'react-router-dom';
-import './header.scss';
+import styles from './header.module.scss';
 
 const confirm = Modal.confirm;
 @withRouter
@@ -60,7 +60,7 @@ class UserInfo extends Component {
 	};
 
 	getMenu = () => (
-		<Menu className="headerDropdown">
+		<Menu className={styles.headerDropdown}>
 			<Menu.Item>
 				<Icon type="user" />
 				<span>user info</span>
@@ -90,17 +90,19 @@ class UserInfo extends Component {
 		const { date, showTime } = this.state;
 		const { name } = this.props.userStore.userInfo;
 		return (
-			<div className="userInfo">
-				<span className="clock">
+			<div className={styles.userInfo}>
+				<span className={styles.clock}>
 					<Icon type="clock-circle" onClick={this.handleShowTime} />
-					<span className={classNames('text', { showTime })}>
+					<span
+						className={classNames(styles.text, showTime ? styles.showTime : '')}
+					>
 						{date.toLocaleTimeString()}
 					</span>
 				</span>
-				<Dropdown className="drop-down" overlay={this.getMenu()}>
-					<div className="userDropdown">
-						<Icon type="user" className="userIcon" />
-						<span className="text">{name}</span>
+				<Dropdown className={styles['drop-down']} overlay={this.getMenu()}>
+					<div className={styles.userDropdown}>
+						<Icon type="user" className={styles.userIcon} />
+						<span className={styles.text}>{name}</span>
 					</div>
 				</Dropdown>
 			</div>
@@ -120,14 +122,15 @@ class Header extends Component {
 		const iconCollapsed = collapsed ? 'menu-unfold' : 'menu-fold';
 		return (
 			<div
-				className={classNames('header', {
-					collapsed,
-					isMobile
-				})}
+				className={classNames(
+					styles.header,
+					collapsed ? styles.collapsed : '',
+					isMobile ? styles.isMobile : ''
+				)}
 			>
 				<Icon
 					type={iconCollapsed}
-					className="foldIcon"
+					className={styles.foldIcon}
 					onClick={() => toggleCollapsed()}
 				/>
 				<UserInfo />

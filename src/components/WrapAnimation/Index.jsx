@@ -16,10 +16,11 @@ class WrapComponent extends Component {
 	};
 
 	componentDidMount() {
+		const { stopSpinning } = this.props.layoutStore;
 		this.setState({
 			animateIn: true
 		});
-		this.props.layoutStore.stopSpinning();
+		stopSpinning();
 	}
 
 	render() {

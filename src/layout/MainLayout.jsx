@@ -6,7 +6,7 @@ import { Redirect, withRouter } from 'react-router-dom';
 import { getRouteAuthority } from '@utlis/authorityTools';
 import classNames from 'classnames';
 import { observer, inject } from 'mobx-react';
-import './mainLayout.scss';
+import styles from './mainLayout.module.scss';
 
 const Exception403 = React.lazy(() =>
 	import(/* webpackChunkName: "403" */ '@views/Exception/403')
@@ -30,7 +30,7 @@ class MainLayout extends Component {
 				routeAuthority={['admin', 'guest']}
 				unidentified={<Redirect to="/user/login" />}
 			>
-				<div className="container">
+				<div className={styles.container}>
 					<Loading />
 					<Navigator
 						collapsed={collapsed}
@@ -39,10 +39,11 @@ class MainLayout extends Component {
 					/>
 					<div
 						id="mainContainer"
-						className={classNames('routeContent', {
-							collapsed,
-							isMobile
-						})}
+						className={classNames(
+							styles.routeContent,
+							collapsed ? styles.collapsed : '',
+							isMobile ? styles.isMobile : ''
+						)}
 					>
 						<Header />
 						<Authorized
@@ -53,7 +54,7 @@ class MainLayout extends Component {
 								</Suspense>
 							}
 						>
-							{children}
+							<div className={styles.viewBody}>{children}</div>
 						</Authorized>
 					</div>
 				</div>

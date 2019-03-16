@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button } from 'antd';
 import { withRouter } from 'react-router-dom';
-import './exception.scss';
+import styles from './exception.module.scss';
 
 @withRouter
 class Exception extends Component {
@@ -12,7 +12,7 @@ class Exception extends Component {
 	render() {
 		const { errorCode, title, subTitle } = this.props;
 		return (
-			<div className="exception">
+			<div className={styles.exception}>
 				<h1>{errorCode}</h1>
 				<p>{title}</p>
 				<div>

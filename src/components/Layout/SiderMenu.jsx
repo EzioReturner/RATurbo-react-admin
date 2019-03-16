@@ -5,6 +5,8 @@ import { observer, inject } from 'mobx-react';
 import routeConfig from '../../config/router.config';
 import { intersection } from 'lodash';
 import { RLogo } from '@components/SvgIcon';
+import './siderMenu.scss';
+
 import classNames from 'classnames';
 
 const { SubMenu } = Menu;
@@ -82,11 +84,22 @@ class SiderMenu extends Component {
 		return <Menu.Item key={menu.path}>{this.getMenuItem(menu)}</Menu.Item>;
 	}
 
+	handleClickLink(name, path) {
+		const { isMobile, toggleCollapsed, addBreadcrumb } = this.props.layoutStore;
+		addBreadcrumb(name, path);
+		isMobile && toggleCollapsed();
+	}
+
 	getMenuItem(menu) {
 		const { icon: iconType, name, path } = menu;
-		const { isMobile, toggleCollapsed } = this.props.layoutStore;
 		return (
-			<Link to={path} replace onClick={isMobile ? toggleCollapsed : null}>
+			<Link
+				to={path}
+				replace
+				onClick={() => {
+					this.handleClickLink(name, path);
+				}}
+			>
 				{iconType && <Icon type={iconType} />}
 				<span>{name}</span>
 			</Link>

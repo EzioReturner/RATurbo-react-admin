@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Drawer } from 'antd';
 import SiderMenu from './SiderMenu';
-import './navigator.scss';
 
 class Navigater extends Component {
 	render() {
