@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Menu, Icon } from 'antd';
 import { Link, withRouter } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
-import routeConfig from '../../config/router.config';
 import { intersection } from 'lodash';
 import { RLogo } from '@components/SvgIcon';
 import styles from './siderMenu.module.scss';
@@ -10,7 +9,6 @@ import styles from './siderMenu.module.scss';
 import classNames from 'classnames';
 
 const { SubMenu } = Menu;
-const _routes = routeConfig[1].routes;
 @withRouter
 @inject('layoutStore', 'userStore')
 @observer
@@ -38,12 +36,14 @@ class SiderMenu extends Component {
 	// 初始化开启的菜单
 	initOpenMenu() {
 		const {
-			location: { pathname }
+			location: { pathname },
+			layoutStore: { routeConfig }
 		} = this.props;
+		const routes = routeConfig[1].routes;
 		let cacheRoute;
 		const menuOpen = pathname.split('/').reduce((total, path) => {
 			if (path) {
-				cacheRoute = this.checkRoute(cacheRoute || _routes, path);
+				cacheRoute = this.checkRoute(cacheRoute || routes, path);
 				cacheRoute && cacheRoute.routes && total.push(cacheRoute.path);
 			}
 			return total;
@@ -119,10 +119,11 @@ class SiderMenu extends Component {
 	}
 
 	handleOpenMenu = openKeys => {
+		const { collapsed, routeConfig } = this.props.layoutStore;
 		const moreThanOne =
-			openKeys.filter(key => _routes.some(route => route.path === key)).length >
-			1;
-		if (this.props.layoutStore.collapsed && !openKeys.length) {
+			openKeys.filter(key => routeConfig.some(route => route.path === key))
+				.length > 1;
+		if (collapsed && !openKeys.length) {
 			return;
 		}
 		this.setState({
@@ -135,9 +136,9 @@ class SiderMenu extends Component {
 
 	render() {
 		const {
-			location: { pathname }
+			location: { pathname },
+			layoutStore: { collapsed, routeConfig }
 		} = this.props;
-		const { collapsed } = this.props.layoutStore;
 		const menuProps = collapsed ? {} : { openKeys: this.state.openKeys };
 		return (
 			<div
@@ -161,7 +162,7 @@ class SiderMenu extends Component {
 					onOpenChange={this.handleOpenMenu}
 					{...menuProps}
 				>
-					{this.getNavMenuItem(_routes)}
+					{this.getNavMenuItem(routeConfig[1].routes)}
 				</Menu>
 			</div>
 		);

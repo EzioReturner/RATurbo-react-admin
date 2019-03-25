@@ -6,8 +6,59 @@
   padding: 16px 32px 0;
 }
 
-.breadcrumb {
+.breadcrumbList {
   display: flex;
   flex-flow: row;
   margin-bottom: 16px;
+}
+
+.breadcrumb {
+  transition: all 0.3s;
+  position: relative;
+  padding: 0 10px 0 20px;
+  cursor: pointer;
+  &:hover {
+    padding: 0 40px 0 25px !important;
+    .closeIcon {
+      opacity: 1;
+      right: 8px;
+    }
+  }
+  &::before {
+    content: '';
+    border: 1px solid;
+    transform: rotate(-30deg);
+    position: absolute;
+    height: 15px;
+    left: 5px;
+    top: 3px;
+  }
+  &:last-child {
+    padding: 0 20px;
+    .closeIcon {
+      right: 20px;
+    }
+    &:hover {
+      padding: 0 55px 0 25px !important;
+    }
+    &::after {
+      content: '';
+      border: 1px solid;
+      transform: rotate(-30deg);
+      position: absolute;
+      height: 15px;
+      right: 5px;
+      top: 3px;
+    } 
+  }
+}
+
+.closeIcon {
+  position: absolute;
+  top: 3px;
+  right: 20px;
+  color: $color-primary;
+  opacity: 0;
+  transition-delay: 0.2s;
+  transition: opacity 0.3s;
 }

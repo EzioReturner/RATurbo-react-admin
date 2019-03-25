@@ -2,7 +2,13 @@ import { observable, configure, action, autorun } from 'mobx';
 import isMobile from '@utlis/isMobile';
 import debounce from '@utlis/debounce';
 import NProgress from 'nprogress';
-
+import routeConfig from '../config/router.config';
+import { remove } from 'lodash';
+interface Breadcrumb {
+  name: string;
+  path: string;
+  display: boolean;
+}
 configure({ enforceActions: 'always' });
 class LayoutStore {
   @observable spinning: boolean = true;
@@ -12,7 +18,14 @@ class LayoutStore {
   @observable collapsed: boolean = false;
   @observable openMenus: Array<string> = [];
   @observable isMobile: boolean = false;
-  @observable breadcrumbList: Array<object> = [];
+  @observable breadcrumbList: Array<Breadcrumb> = [];
+  routeConfig: Array<object> = [];
+
+  constructor() {
+    this.addWindowEvent();
+    this.changeStatus();
+    this.routeConfig = routeConfig;
+  }
 
   addWindowEvent(): void {
     window.addEventListener(
@@ -21,11 +34,6 @@ class LayoutStore {
         this.changeStatus();
       })
     );
-    this.changeStatus();
-  }
-
-  constructor() {
-    this.addWindowEvent();
   }
 
   @action changeStatus(): void {
@@ -43,8 +51,25 @@ class LayoutStore {
     }
   }
 
+  @action initBreadcrumb(name: string, path: string): void {
+    this.breadcrumbList.push({
+      name,
+      path,
+      display: false
+    })
+  }
+
   // 增加面包屑
-  @action addBreadcrumb = (name: string, path: string): void => {};
+  @action addBreadcrumb = (path: string): void => {
+    const cache: Breadcrumb | undefined = this.breadcrumbList.find((res: Breadcrumb) => res.path === path);
+    cache && (cache.display = true)
+  };
+
+  @action delBreadcrumb = (name: string): any => {
+    const cache: Breadcrumb | undefined = this.breadcrumbList.find(res => res.name === name);
+    cache && (cache.display = false);
+    return this.breadcrumbList.find(res => res.display);
+  }
 
   // 停止loading
   @action stopSpinning = (): void => {
@@ -61,8 +86,12 @@ class LayoutStore {
   }
 
   // 检查是否已加载过
-  @action checkIsInitial(path: string): void {
-    !this.readyInitializers.includes(path) && this.addInitializer(path);
+  @action checkIsInitial(route: any): void {
+    const { path, name } = route
+    if (!this.readyInitializers.includes(path)) {
+      this.addInitializer(path);
+      name && this.initBreadcrumb(name, path);
+    }
   }
 
   // 切换collapsed

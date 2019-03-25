@@ -24,10 +24,10 @@ class AsyncComponent extends PureComponent {
 	async componentDidMount() {
 		const {
 			componentInfo: [asyncComponent, animate],
-			path
+			route
 		} = this.props;
 		// 检查路径是否已加载 判断是否显示loading
-		this.props.layoutStore.checkIsInitial(path);
+		this.props.layoutStore.checkIsInitial(route);
 		const { default: component } = await asyncComponent;
 		this.setState({
 			component: component,

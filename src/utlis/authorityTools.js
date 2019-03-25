@@ -1,7 +1,3 @@
-import routeConfig from '../config/router.config';
-
-const routes = routeConfig[1].routes;
-
 /**
  * 获取权限
  * @param {str} string 未处理的权限
@@ -41,7 +37,7 @@ export function clearAuthority() {
  * @param {pathname} string 路由路径
  * @return {routeAuthority} {string} 路由对应权限
  */
-export function getRouteAuthority(pathname) {
+export function getRouteAuthority(pathname, routes) {
 	let routeAuthority = null;
 	const _getAuthority = (pathname, _routes) => {
 		_routes.forEach(_route => {

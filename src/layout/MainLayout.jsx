@@ -16,15 +16,14 @@ const Exception403 = React.lazy(() =>
 @inject('layoutStore')
 @observer
 class MainLayout extends Component {
-	componentDidMount() {}
-
 	render() {
 		const {
-			layoutStore: { mountLoading, collapsed, isMobile, toggleCollapsed },
+			layoutStore: { collapsed, isMobile, toggleCollapsed },
 			children,
-			location: { pathname }
+			location: { pathname },
+			route
 		} = this.props;
-		const routeAuthority = getRouteAuthority(pathname);
+		const routeAuthority = getRouteAuthority(pathname, route.routes);
 		return (
 			<Authorized
 				routeAuthority={['admin', 'guest']}
