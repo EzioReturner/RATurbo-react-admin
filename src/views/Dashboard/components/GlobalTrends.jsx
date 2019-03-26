@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Card } from 'antd';
-import EchartsReact from '@components/Echarts/Index';
+import EchartsReact from '@components/Echarts';
 import { globalTrendsOption } from '@assets/chartOption';
 
 class GlobalTrends extends PureComponent {
@@ -8,9 +8,9 @@ class GlobalTrends extends PureComponent {
 		super(props);
 	}
 
-	componentDidMount() {}
+	componentDidMount() { }
 
-	componentWillUnmount() {}
+	componentWillUnmount() { }
 
 	render() {
 		return (

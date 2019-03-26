@@ -73,6 +73,15 @@
       }
     }
 
+    .ant-form-item-children .ant-select {
+      margin-right: auto;
+    }
+
+    .ant-steps-item-process .ant-steps-item-icon {
+      background: $color-primary;
+      border-color: $color-primary;
+    }
+
     .ant-input {
       border-radius: 2px;
     }

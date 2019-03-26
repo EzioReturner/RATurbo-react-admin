@@ -1,7 +1,7 @@
 import React, { Component, Suspense } from 'react';
-import Loading from '@components/Loading/Index';
-import Authorized from '@components/Authorized/Index';
-import { Header, Navigator } from '@components/Layout/Index';
+import Loading from '@components/Loading';
+import Authorized from '@components/Authorized';
+import { Header, Navigator } from '@components/Layout';
 import { Redirect, withRouter } from 'react-router-dom';
 import { getRouteAuthority } from '@utlis/authorityTools';
 import classNames from 'classnames';

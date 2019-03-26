@@ -5,7 +5,7 @@ import {
 	Redirect,
 	Switch
 } from 'react-router-dom';
-import AsyncComponent from '@components/AsyncComponent/Index';
+import AsyncComponent from '@components/AsyncComponent';
 import { inject } from 'mobx-react';
 import Error from '@views/Exception/404';
 

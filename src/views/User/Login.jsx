@@ -1,8 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Form, Button, Input, Icon, Checkbox, Alert } from 'antd';
-import classNames from 'classnames';
 import { withRouter } from 'react-router-dom';
-import { postLogin } from './service';
 import { inject } from 'mobx-react';
 import './login.scss';
 import 'animate.css';

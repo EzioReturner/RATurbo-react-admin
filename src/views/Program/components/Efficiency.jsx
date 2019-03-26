@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card } from 'antd';
-import EchartsReact from '@components/Echarts/Index';
+import EchartsReact from '@components/Echarts';
 import { guageOption } from '@assets/chartOption';
 
 class Efficiency extends Component {

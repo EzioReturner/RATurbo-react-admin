@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Row, Col } from 'antd';
+import { Row, Col } from 'antd';
 import RowInfoCard from './components/RowInfoCard';
 import Weather from './components/Weather';
 import Performance from './components/Performance';

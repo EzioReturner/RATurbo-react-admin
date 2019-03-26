@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Card } from 'antd';
 import { multiAnalysisOption } from '@assets/chartOption';
-import EchartsReact from '@components/Echarts/Index';
+import EchartsReact from '@components/Echarts';
 
 class MultiAnalysis extends Component {
 	render() {

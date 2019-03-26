@@ -1,9 +1,8 @@
-import { observable, configure, action, autorun } from 'mobx';
+import { observable, configure, action } from 'mobx';
 import isMobile from '@utlis/isMobile';
 import debounce from '@utlis/debounce';
 import NProgress from 'nprogress';
 import routeConfig from '../config/router.config';
-import { remove } from 'lodash';
 interface Breadcrumb {
   name: string;
   path: string;

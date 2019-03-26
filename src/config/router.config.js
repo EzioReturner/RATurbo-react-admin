@@ -1,7 +1,3 @@
-import Loadable from 'react-loadable';
-import Loading from '@components/Loading/Index';
-import React, { Fragment } from 'react';
-
 const routeConfig = [
 	// user
 	{
@@ -25,7 +21,7 @@ const routeConfig = [
 				name: 'Dashboard',
 				icon: 'pie-chart',
 				path: '/dashboard',
-				component: [import('@views/Dashboard/Index')]
+				component: [import('@views/Dashboard')]
 			},
 			{
 				path: '/',
@@ -89,14 +85,14 @@ const routeConfig = [
 				name: 'Map',
 				icon: 'heat-map',
 				path: '/map',
-				component: [import('@views/Map/Index')],
+				component: [import('@views/Map')],
 				authority: ['admin']
 			},
 			{
 				name: 'Gallery',
 				icon: 'picture',
 				path: '/gallery',
-				component: [import('@views/Gallery/Index')],
+				component: [import('@views/Gallery')],
 				authority: ['admin']
 			},
 			{
@@ -122,7 +118,7 @@ const routeConfig = [
 					{
 						name: 'index',
 						path: '/exception/home',
-						component: [import('@views/Exception/Index')],
+						component: [import('@views/Exception')],
 						hideMenu: true
 					}
 				]

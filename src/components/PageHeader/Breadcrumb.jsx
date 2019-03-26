@@ -3,7 +3,7 @@ import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
 import styles from './pageHeader.module.scss';
 import { Icon } from 'antd';
-
+import classNames from 'classnames'
 @withRouter
 @inject('layoutStore')
 @observer
@@ -31,13 +31,27 @@ class BreadCrumb extends Component {
 		history.push(path);
 	}
 
+	checkDisplay(path) {
+		const { location: { pathname } } = this.props;
+		return path === pathname
+	}
+
 	render() {
-		const { breadcrumbList } = this.props.layoutStore;
+		const { layoutStore: { breadcrumbList } } = this.props
 		return <div className={styles.breadcrumbList}>
 			{breadcrumbList.map((bread, index) => {
-				return (bread.display ? <div key={index} className={styles.breadcrumb} onClick={this.handleGoBreadPath.bind(this, bread.path)}>{bread.name}
-					<Icon type="close" className={styles.closeIcon} onClick={this.handleDelBreadcrumb.bind(this, bread.name)} />
-				</div> : null)
+				return (bread.display ?
+					<div key={index}
+						className={classNames(
+							styles.breadcrumb,
+							this.checkDisplay(bread.path) ? styles.display : ''
+						)}
+						onClick={this.handleGoBreadPath.bind(this, bread.path)}>
+						{bread.name}
+						<Icon type="close"
+							className={styles.closeIcon}
+							onClick={this.handleDelBreadcrumb.bind(this, bread.name)} />
+					</div> : null)
 			})}
 		</div>;
 	}

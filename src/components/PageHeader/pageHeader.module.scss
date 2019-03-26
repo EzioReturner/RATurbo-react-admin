@@ -3,7 +3,7 @@
 .pageHeader {
   min-height: 100px;
   background: $color-white;
-  padding: 16px 32px 0;
+  padding: 16px 32px 16px;
 }
 
 .breadcrumbList {
@@ -17,6 +17,11 @@
   position: relative;
   padding: 0 10px 0 20px;
   cursor: pointer;
+  color: rgba(0,0,0,.45);
+  font-weight: 400;
+  &.display {
+    color: rgba(0,0,0,.65);
+  }
   &:hover {
     padding: 0 40px 0 25px !important;
     .closeIcon {
@@ -32,6 +37,7 @@
     height: 15px;
     left: 5px;
     top: 3px;
+    color: rgba(0,0,0,.45);
   }
   &:last-child {
     padding: 0 20px;
@@ -49,6 +55,7 @@
       height: 15px;
       right: 5px;
       top: 3px;
+      color: rgba(0,0,0,.45);
     } 
   }
 }
@@ -59,6 +66,51 @@
   right: 20px;
   color: $color-primary;
   opacity: 0;
-  transition-delay: 0.2s;
+  transition-delay: 0.1s;
   transition: opacity 0.3s;
+}
+
+.title {
+  margin-bottom: 16px;
+  color: rgba(0,0,0,.85);
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.subTitle {
+  color: rgba(0,0,0,.65);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.row {
+  display: flex;
+  width: 100%;
+  flex-flow: row wrap;
+}
+
+.title,
+.content {
+  flex: auto;
+}
+
+.title,
+.subTitle {
+  flex: 1 0 100%;
+}
+
+.extraContent,
+.main {
+  flex: 0 1 auto;
+}
+
+.logo,
+.content,
+.extraContent {
+  margin-bottom: 16px;
+}
+
+.extraContent {
+  margin-left: 88px;
+  min-width: 242px;
 }

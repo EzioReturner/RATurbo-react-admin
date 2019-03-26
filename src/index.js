@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import '@style/index.scss';
-import { observer, Provider } from 'mobx-react';
+import { Provider } from 'mobx-react';
 // import * as serviceWorker from '../pwa/serviceWorker';
 import { Store } from '@store';
-import RenderRoutes from '@components/RenderRoutes/Index';
+import RenderRoutes from '@src/components/RenderRoutes';
 
 ReactDOM.render(
 	<Provider {...Store}>

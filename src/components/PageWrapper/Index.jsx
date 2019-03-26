@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PageHeader from '@components/PageHeader/Index';
+import PageHeader from '@src/components/PageHeader';
 import styles from './pageWrapper.module.scss';
 
 class PageWrapper extends Component {

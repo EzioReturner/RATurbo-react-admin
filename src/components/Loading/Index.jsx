@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { CSSTransition } from 'react-transition-group';
 import classNames from 'classnames';
 import { observer, inject } from 'mobx-react';
 import styles from './loading.module.scss';
