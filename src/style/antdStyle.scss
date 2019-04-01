@@ -224,6 +224,9 @@
         color: $color-primary;
       }
     }
+    .ant-steps-item-finish > .ant-steps-item-tail::after {
+      background-color: $color-primary;
+    }
 
     .ant-steps-item-finish > .ant-steps-item-content > .ant-steps-item-title::after {
       background-color: $color-primary;

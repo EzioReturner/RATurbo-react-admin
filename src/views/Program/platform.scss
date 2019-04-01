@@ -12,18 +12,27 @@
   }
 }
 
-.left-part,
-.right-part {
+.left-part {
   p {
     margin: 0;
     font-size: 20px;
     font-weight: normal;
   }
   span {
-    color: rgba(0,0,0,.45);
+    color: $text-color-secondary;
     font-weight: normal;
   }
-  
+}
+
+.right-part {
+  p {
+    margin: 0;
+    font-size: 30px;
+    font-weight: normal;
+  }
+  span {
+   margin-bottom: 8px;
+  }
 }
 
 .user-photo {

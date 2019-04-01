@@ -105,12 +105,20 @@
 }
 
 .logo,
-.content,
-.extraContent {
+.content {
   margin-bottom: 16px;
 }
 
 .extraContent {
   margin-left: 88px;
   min-width: 242px;
+}
+
+@media  screen and (max-width:768px) {
+  .row {
+    display: block;
+  }
+  .extraContent {
+    margin-left: 16px;
+  }
 }

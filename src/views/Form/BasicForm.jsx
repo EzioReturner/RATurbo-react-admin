@@ -33,7 +33,10 @@ class BasicForm extends Component {
 			<PageWrapper title='基础表单'
 				subTitle='表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。'>
 				<Card bordered={false} className='fat-header'>
-					<Form {...formItemLayout} onSubmit={this.handleSubmit}>
+					<Form {...formItemLayout} onSubmit={this.handleSubmit} style={{
+						maxWidth: '750px',
+						margin: '15px auto'
+					}}>
 						<Form.Item
 							label='Plain Text'
 						>
@@ -153,7 +156,7 @@ class BasicForm extends Component {
 
 						<Form.Item
 							label='Upload'
-							extra='longgggggggggggggggggggggggggggggggggg'
+							extra='longgggggggggggg'
 						>
 							{getFieldDecorator('upload', {
 								valuePropName: 'fileList',
