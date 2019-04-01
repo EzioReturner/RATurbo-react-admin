@@ -13,9 +13,11 @@
       bottom: 0;
       right: 0;
       background: $color-white-dark;
-      padding-top: 60px;
-      overflow: hidden;
+      margin-top: 60px;
+      overflow: auto;
       transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
       &.collapsed {
         left: 80px;
       }
@@ -23,10 +25,9 @@
         left: 0;
       }
       &>.viewBody {
-        height: 100%;
         width: 100%;
         padding: 24px;
-        overflow: auto;
+        flex: auto;
       }
     }
 }

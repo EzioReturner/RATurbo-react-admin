@@ -5,6 +5,7 @@ import { Header, Navigator } from '@components/Layout';
 import { Redirect, withRouter } from 'react-router-dom';
 import { getRouteAuthority } from '@utlis/authorityTools';
 import classNames from 'classnames';
+import Footer from '@components/Footer';
 import { observer, inject } from 'mobx-react';
 import styles from './mainLayout.module.scss';
 
@@ -55,6 +56,7 @@ class MainLayout extends Component {
 						>
 							<div className={styles.viewBody}>{children}</div>
 						</Authorized>
+						<Footer />
 					</div>
 				</div>
 			</Authorized>
