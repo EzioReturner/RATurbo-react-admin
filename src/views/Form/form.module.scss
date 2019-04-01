@@ -7,3 +7,12 @@
   max-width: 500px;
   margin: 40px auto 0px;
 }
+
+.buttonGroup {
+  display: flex;
+  justify-content: center;
+}
+
+.descript,h3,h4 {
+  color: rgba(0,0,0,.45);
+}

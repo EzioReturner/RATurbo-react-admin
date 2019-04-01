@@ -7,8 +7,21 @@ interface StepObj {
   title: string;
   component: any;
 }
+
+interface StepData {
+  title: string;
+  detail: string;
+  user: string;
+}
+
 class FormStore {
-  @observable current: number = 0;
+  @observable current: number = 2;
+  @observable submitting: boolean = false;
+  @observable data: StepData = {
+    title: '',
+    detail: '',
+    user: ''
+  };
   steps: Array<StepObj>;
 
   constructor() {
@@ -32,6 +45,30 @@ class FormStore {
 
   getStepChild = (): any => {
     return this.steps[this.current].component;
+  }
+
+  @action initStep = (): void => {
+    this.current = 0;
+  }
+
+  @action nextStep(): void {
+    this.current++;
+    this.submitting = false;
+  }
+
+  @action setValue(values: StepData): void {
+    this.data = values
+  }
+
+  @action onPrev(): void {
+    this.current--;
+  }
+
+  @action onSubmit = (): void => {
+    this.submitting = true;
+    setTimeout(() => {
+      this.nextStep();
+    }, 1000);
   }
 }
 

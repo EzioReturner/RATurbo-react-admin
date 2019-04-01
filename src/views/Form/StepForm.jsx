@@ -10,6 +10,10 @@ const Step = Steps.Step;
 
 @observer
 class StepForm extends Component {
+	componentDidMount() {
+		formStore.initStep();
+	}
+
 	render() {
 		const { current, steps, getStepChild } = formStore;
 		const Child = getStepChild();
@@ -20,10 +24,10 @@ class StepForm extends Component {
 						<Steps current={current}>
 							{steps.map(item => <Step key={item.title} title={item.title} />)}
 						</Steps>
-						<Suspense fallback={<Loading fixed />}>
-							<Child />
-						</Suspense>
 					</div>
+					<Suspense fallback={<Loading fixed />}>
+						<Child />
+					</Suspense>
 				</Card>
 			</PageWrapper>
 		);

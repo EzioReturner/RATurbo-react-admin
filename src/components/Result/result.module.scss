@@ -1,0 +1,28 @@
+@import '@style/color.scss';
+.result {
+  text-align: center;
+  width: 72%;
+  margin: 0 auto;
+}
+
+.icon {
+  font-size: 72px;
+  line-height: 72px;
+  margin-bottom: 24px;
+  color: $color-success;
+}
+
+.title {
+  font-size: 24px;
+  color: rgba(0,0,0,.85);
+  font-weight: 500;
+  line-height: 32px;
+  margin-bottom: 16px;
+}
+
+.subTitle {
+  font-size: 14px;
+  line-height: 22px;
+  color: $text-color-secondary;
+  margin-bottom: 24px;
+}

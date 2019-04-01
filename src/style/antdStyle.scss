@@ -208,12 +208,25 @@
     .ant-input-affix-wrapper:hover .ant-input:not(.ant-input-disabled) {
       border-color: $color-primary;
     }
+
     .ant-checkbox-checked .ant-checkbox-inner {
       background-color: $color-primary;
       border-color: $color-primary;
     }
+
     .ant-checkbox-checked:after {
       border: 1px solid $color-primary;;
+    }
+
+    .ant-steps-item-finish .ant-steps-item-icon {
+      border-color: $color-primary;
+      &>.ant-steps-icon {
+        color: $color-primary;
+      }
+    }
+
+    .ant-steps-item-finish > .ant-steps-item-content > .ant-steps-item-title::after {
+      background-color: $color-primary;
     }
 
     .myMenu {
@@ -301,6 +314,7 @@
           border-right: 0;
         }
       }
+
       .ant-menu-item:active,
       .ant-menu-submenu-title:active {
         background: $menu-item-background;
