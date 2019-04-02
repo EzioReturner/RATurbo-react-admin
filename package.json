@@ -95,6 +95,8 @@
   "devDependencies": {
     "@babel/plugin-syntax-jsx": "^7.2.0",
     "awesome-typescript-loader": "^5.2.1",
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
     "source-map-loader": "^0.2.4",
     "typescript": "^3.3.3"
   },

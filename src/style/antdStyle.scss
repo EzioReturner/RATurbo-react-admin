@@ -1,27 +1,5 @@
 @mixin antdStyle {
   :global {
-    .ant-select-focused .ant-select-selection,
-    .ant-select-selection:focus,
-    .ant-select-selection:active,
-    .ant-input:focus {
-      border-color: $color-primary;
-      box-shadow: 0 0 0 2px rgba($color:$color-primary, $alpha:0.1);
-    }
-
-    .ant-select-selection:hover,
-    .ant-input:hover,
-    .ant-calendar-picker:hover .ant-calendar-picker-input:not(.ant-input-disabled) {
-      border-color: $color-primary;
-    }
-
-    .ant-select-dropdown-menu-item:hover,
-    .ant-select-dropdown-menu-item-active,
-    .ant-calendar-selected-start-date .ant-calendar-date:hover,
-    .ant-calendar-selected-end-date .ant-calendar-date:hover,
-    .ant-calendar-selected-day .ant-calendar-date {
-      background-color: rgba($color:$color-primary, $alpha:0.1);
-    }
-
     .ant-card {
       color: #212529;
       .ant-card-head {
@@ -76,74 +54,6 @@
     .ant-form-item-children .ant-select {
       margin-right: auto;
     }
-
-    .ant-steps-item-process .ant-steps-item-icon {
-      background: $color-primary;
-      border-color: $color-primary;
-    }
-
-    .ant-input {
-      border-radius: 2px;
-    }
-
-    .ant-calendar-header a:hover {
-      color: $color-primary;
-    }
-
-    .ant-calendar-date:hover {
-      background: rgba($color:$color-primary, $alpha:0.1);
-      cursor: pointer;
-    }
-
-    .ant-calendar-selected-date .ant-calendar-date,
-    .ant-calendar-selected-start-date .ant-calendar-date,
-    .ant-calendar-selected-end-date .ant-calendar-date,
-    .ant-calendar-selected-date .ant-calendar-date:hover {
-      background: rgba($color:$color-primary, $alpha:0.8);
-    }
-
-    .ant-calendar-today .ant-calendar-date {
-      border-color: rgba($color:$color-primary, $alpha:0.8);
-      color: rgba($color:$color-primary, $alpha:0.8);
-    }
-
-    .ant-calendar-footer a {
-      color: rgba($color:$color-primary, $alpha:0.8);
-    }
-
-    .ant-btn-primary {
-      background-color: rgba($color:$color-primary, $alpha:0.8);
-      border-color: rgba($color:$color-primary, $alpha:0.8);
-      border-radius: 2px;
-      font-size: 13px;
-    }
-
-    .ant-btn:hover,
-    .ant-btn:focus {
-      border-color: $color-primary;
-      color: rgba($color:$color-primary, $alpha:0.8);
-    }
-
-    .ant-btn-primary:hover,
-    .ant-btn-primary:focus {
-      background-color: $color-primary;
-      border-color: $color-primary;
-      color: #ffffff;
-    }
-
-    .ant-switch-checked {
-      background-color: rgba($color:$color-primary, $alpha:0.8);
-    }
-
-    .ant-switch:focus {
-      box-shadow: 0 0 0 2px rgba($color:$color-primary, $alpha:0.1);
-    }
-
-    [ant-click-animating-without-extra-node]:after,
-    .ant-click-animating-node {
-      border: 0 solid rgba($color:$color-primary, $alpha:0.8);
-    }
-
     .ant-progress-bg {
       background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
       background-size: 1rem 1rem;
@@ -191,55 +101,9 @@
         background-color: #ffaf00;
       }
     }
-    a {
-      color: $color-primary;
-    }
-    a:hover {
-      color: $color-primary-lighter;
-    }
-
-    .ant-dropdown-menu-item:hover, .ant-dropdown-menu-submenu-title:hover {
-      background-color: $menu-item-background;
-    }
-
-    .ant-checkbox-wrapper:hover .ant-checkbox-inner,
-    .ant-checkbox:hover .ant-checkbox-inner,
-    .ant-checkbox-input:focus + .ant-checkbox-inner,
-    .ant-input-affix-wrapper:hover .ant-input:not(.ant-input-disabled) {
-      border-color: $color-primary;
-    }
-
-    .ant-checkbox-checked .ant-checkbox-inner {
-      background-color: $color-primary;
-      border-color: $color-primary;
-    }
-
-    .ant-checkbox-checked:after {
-      border: 1px solid $color-primary;;
-    }
-
-    .ant-steps-item-finish .ant-steps-item-icon {
-      border-color: $color-primary;
-      &>.ant-steps-icon {
-        color: $color-primary;
-      }
-    }
-    .ant-steps-item-finish > .ant-steps-item-tail::after {
-      background-color: $color-primary;
-    }
-
-    .ant-steps-item-finish > .ant-steps-item-content > .ant-steps-item-title::after {
-      background-color: $color-primary;
-    }
 
     .myMenu {
       border: 0;
-      &.ant-menu-vertical .ant-menu-submenu-selected,
-      &.ant-menu-vertical-left .ant-menu-submenu-selected,
-      &.ant-menu-vertical-right .ant-menu-submenu-selected {
-        color: $color-primary;
-      }
-
       &>.ant-menu-item {
         padding-left: 35px !important;
       }
@@ -268,12 +132,12 @@
         background-color: $menu-item-background !important;
       }
 
-      .ant-menu-submenu-title:hover {
-        .ant-menu-submenu-arrow::before,
-        .ant-menu-submenu-arrow::after {
-            background: linear-gradient(to right, $color-primary-sec, $color-primary-sec) !important;
-        }
-      }
+      // .ant-menu-submenu-title:hover {
+      //   .ant-menu-submenu-arrow::before,
+      //   .ant-menu-submenu-arrow::after {
+      //       background: linear-gradient(to right, $color-primary-sec, $color-primary-sec) !important;
+      //   }
+      // }
 
       &>.ant-menu-submenu > .ant-menu {
         background: rgba($color: $menu-item-background, $alpha: 0.5);
@@ -306,7 +170,7 @@
 
       .ant-menu-item-selected {
         background-color: $menu-item-background;
-        color: $color-primary-sec;
+        // color: $color-primary-sec;
         position: relative;
         &:before {
           transform: scaleY(1);
@@ -327,7 +191,7 @@
         margin: 0 !important;
         text-align: left;
         &:hover {
-          color: $color-primary-sec;
+          // color: $color-primary-sec;
           .ant-menu-submenu-title {
             color: inherit;
           }

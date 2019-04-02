@@ -38,6 +38,8 @@ const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
+const lessRegex = /\.(less)$/;
+const lessModuleRegex = /\.module\.(less)$/;
 
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
@@ -106,12 +108,25 @@ module.exports = function(webpackEnv) {
 			}
 		].filter(Boolean);
 		if (preProcessor) {
-			loaders.push({
+			const loader = {
 				loader: require.resolve(preProcessor),
 				options: {
-					sourceMap: isEnvProduction && shouldUseSourceMap
+					sourceMap: isEnvProduction && shouldUseSourceMap,
 				}
-			});
+			}
+			if (preProcessor === 'less-loader') {
+				loader.options = {
+					...loader.options,
+					modifyVars: {
+						'primary-color': '#fb4491',
+						'link-color': '#fb4491',
+						'border-radius-base': '2px',
+						'font-size-base': '13px'
+					},
+					javascriptEnabled: true
+				}
+			}
+			loaders.push(loader);
 		}
 		return loaders;
 	};
@@ -457,6 +472,18 @@ module.exports = function(webpackEnv) {
 									getLocalIdent: getCSSModuleLocalIdent
 								},
 								'sass-loader'
+							)
+						},
+						// support for less
+						{
+							test: lessRegex,
+							exclude: lessModuleRegex,
+							use: getStyleLoaders(
+								{
+									importLoaders: 2,
+									sourceMap: isEnvProduction && shouldUseSourceMap
+								},
+								'less-loader'
 							)
 						},
 						// "file" loader makes sure those assets get served by WebpackDevServer.
