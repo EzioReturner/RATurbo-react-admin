@@ -10,7 +10,7 @@ import './platform.scss';
 class Monitor extends Component {
 	render() {
 		const content = <Col xl={16} lg={16} md={16} sm={24} xs={24}>
-			<div className="left-part">
+			<div className="p-left-part">
 				<img
 					src={require('@assets/image/userPhoto.jpg')}
 					className="user-photo"
@@ -21,7 +21,7 @@ class Monitor extends Component {
 				</div>
 			</div>
 		</Col>
-		const extraContent = <div className="right-part">
+		const extraContent = <div className="p-right-part">
 			<Row gutter={24}>
 				<Col xl={8} lg={8} md={8} sm={4} xs={8}>
 					<span>projects</span>

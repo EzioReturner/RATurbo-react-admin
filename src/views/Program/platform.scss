@@ -1,18 +1,18 @@
 @import '@style/color.scss';
 
-.left-part {
+.p-left-part {
   display: flex;
 }
-.right-part .ant-col-8 {
+.p-right-part .ant-col-8 {
     text-align: center;
 }
 @media screen and (max-width: 768px) {
-  .left-part {
+  .p-left-part {
     margin-bottom: 24px;
   }
 }
 
-.left-part {
+.p-left-part {
   p {
     margin: 0;
     font-size: 20px;
@@ -24,7 +24,7 @@
   }
 }
 
-.right-part {
+.p-right-part {
   p {
     margin: 0;
     font-size: 30px;
