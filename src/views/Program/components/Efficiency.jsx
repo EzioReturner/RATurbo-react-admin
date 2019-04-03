@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Card } from 'antd';
 import EchartsReact from '@components/Echarts';
-import { guageOption } from '@assets/chartOption';
+import { gaugeOption } from '@assets/chartOption';
+import FormatterLocale from '@components/FormatterLocale';
 
 class Efficiency extends Component {
 	render() {
@@ -10,10 +11,10 @@ class Efficiency extends Component {
 				hoverable
 				bordered={false}
 				className="fat-card"
-				title="Guage"
+				title={<FormatterLocale id="monitor.gauge" defaultMessage="仪表盘" />}
 				style={{ marginBottom: '24px' }}
 			>
-				<EchartsReact option={guageOption} style={{ height: '200px' }} />
+				<EchartsReact option={gaugeOption} style={{ height: '200px' }} />
 			</Card>
 		);
 	}

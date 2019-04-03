@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import { Card } from 'antd';
 import { getWeather } from '@api/dashboard';
+import Moment from 'moment';
 import {
 	RainSvg,
-	SnowSvg,
 	CloudySvg,
 	OvercastSvg,
 	ThunderSvg,
@@ -60,13 +60,13 @@ class Weather extends PureComponent {
 		const bodyStyle = {
 			padding: '0'
 		};
-		const weatherItem = data.map((res, index) => {
+		const WeatherItem = data.map((res, index) => {
 			const { week, daypower, daytemp, dayweather } = res;
 			return (
 				<div className="weakly-weather-item p-3" key={index}>
 					<p className="mb-1">{weekName[Number(week - 1)]}</p>
 					{this.getWeatherIcon(dayweather)}
-					<p className="mb-0">{daypower + '° - ' + daytemp + '°'}</p>
+					<p className="mb-0">{daypower + '℃ - ' + daytemp + '℃'}</p>
 				</div>
 			);
 		});
@@ -81,14 +81,14 @@ class Weather extends PureComponent {
 				<div className="weather-body">
 					<div className="weather-date-location">
 						<h2>Monday</h2>
-						<p className="text-muted">25 October, 2016 London, UK</p>
+						<p className="text-muted">{Moment().format('DD MMMM, YYYY')} Amoy, China</p>
 					</div>
 					<div className="weather-data">
-						<h1>21℃</h1>
-						<p>Mostly Cloudy</p>
+						<h1>{data[0] ? (data[0].daypower + '℃ - ' + data[0].daytemp + '℃') : ''}</h1>
+						<p>{data[0] ? data[0].dayweather : ''}</p>
 					</div>
 				</div>
-				<div className="weakly-weather">{weatherItem}</div>
+				<div className="weakly-weather">{WeatherItem}</div>
 			</Card>
 		);
 	}

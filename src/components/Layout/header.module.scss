@@ -17,56 +17,79 @@
   align-items: center;
   justify-content: space-between;
   transition: all 0.3s;
+
   &.collapsed {
     left: 80px;
   }
+
   &.isMobile {
     left: 0;
   }
+
   .foldIcon {
     font-size: 18px;
     margin-left: 32px;
     color: #666;
     cursor: pointer;
   }
-  .userInfo {
-    margin-right: 30px;
-    color: rgba($color:$color-primary, $alpha:0.8);
+
+  .rightPart {
     display: flex;
-    font-size: 16px;
+    align-items: center;
+    height: 100%;
+  }
+
+  .userInfo {
+    color: $text-color;
+    display: flex;
+    font-size: 14px;
+    height: 100%;
     &>span {
       font-weight: bold;
     }
+
     .userIcon {
       font-size: 18px;
       font-weight: bold;
       margin-right: 8px;
     }
+
     .userDropdown {
       display: flex;
-      margin-left: 32px;
       align-items: center;
       cursor: pointer;
+      padding: 0 8px;
+      transition: all 0.3s;
+      &:hover {
+        background: rgba(0,0,0,.025);
+        color: $color-primary;
+      }
     }
+    
     .clock .text,
     .userDropdown .text{
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
     }
+
     .clock {
       display: flex;
       align-items: center;
+      padding: 0 8px;
+
       .text {
         display: inline-block;
         margin-left: 8px;
         transition: all 0.3s;
         width: 110px;
       }
+
       .showTime {
         width: 100px !important;
       }
     }
+   
     @media screen and (max-width:600px) {
       font-size: 14px;
       .clock .text {
@@ -75,9 +98,6 @@
       }
       .userDropdown .text {
         width: 50px;
-      }
-      .userDropdown {
-        margin-left: 16px;
       }
     }
   }

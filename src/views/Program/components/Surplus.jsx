@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Card } from 'antd';
+import FormatterLocale from '@components/FormatterLocale';
 
 class Surplus extends Component {
 	render() {
@@ -7,7 +8,7 @@ class Surplus extends Component {
 			<Card
 				hoverable
 				bordered={false}
-				title="Resource Surplus"
+				title={<FormatterLocale id="monitor.surplus" defaultMessage="资源盈余" />}
 				className="fat-card"
 				bodyStyle={{
 					display: 'flex',

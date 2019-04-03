@@ -5,7 +5,7 @@ import {
 	Redirect,
 	Switch
 } from 'react-router-dom';
-import AsyncComponent from '@components/AsyncComponent';
+import AsyncComponent from '../AsyncComponent';
 import { inject } from 'mobx-react';
 import Error from '@views/Exception/404';
 
@@ -87,7 +87,6 @@ class RenderRoutes extends PureComponent {
 
 	render() {
 		const {
-			location,
 			layoutStore: { routeConfig }
 		} = this.props;
 		return <Router>{this.generateRoute(routeConfig)}</Router>;

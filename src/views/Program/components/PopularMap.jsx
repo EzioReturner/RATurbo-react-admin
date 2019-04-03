@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Card } from 'antd';
 import ET from '@utlis/echartTools';
 import { popularOption } from '@assets/chartOption';
+import FormatterLocale from '@components/FormatterLocale';
 
 class PopularMap extends Component {
 	componentDidMount() {
@@ -24,7 +25,7 @@ class PopularMap extends Component {
 				hoverable
 				bordered={false}
 				className="fat-card poplar-map-card"
-				title="Real-time Trading"
+				title={<FormatterLocale id="monitor.realTime" defaultMessage="实时热点分布" />}
 			>
 				<div id="poplar-map" />
 			</Card>

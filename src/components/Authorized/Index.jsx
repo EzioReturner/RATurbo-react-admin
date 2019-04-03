@@ -11,7 +11,7 @@ class Authorized extends PureComponent {
 		return CheckPermission(
 			routeAuthority,
 			currentAuthority,
-			children,
+			_children,
 			unidentified
 		);
 	}

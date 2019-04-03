@@ -3,6 +3,7 @@ import { Icon, Menu, Dropdown, Modal } from 'antd';
 import { inject, observer } from 'mobx-react';
 import classNames from 'classnames';
 import { withRouter } from 'react-router-dom';
+import SelectLang from '../SelectLang';
 import styles from './header.module.scss';
 
 const confirm = Modal.confirm;
@@ -51,7 +52,7 @@ class UserInfo extends Component {
 					}, 800);
 				}).catch(() => console.log('Oops errors!'));
 			},
-			onCancel() {}
+			onCancel() { }
 		});
 	};
 
@@ -60,7 +61,7 @@ class UserInfo extends Component {
 	};
 
 	getMenu = () => (
-		<Menu className={styles.headerDropdown}>
+		<Menu>
 			<Menu.Item>
 				<Icon type="user" />
 				<span>user info</span>
@@ -99,7 +100,7 @@ class UserInfo extends Component {
 						{date.toLocaleTimeString()}
 					</span>
 				</span>
-				<Dropdown className={styles['drop-down']} overlay={this.getMenu()}>
+				<Dropdown overlay={this.getMenu()}>
 					<div className={styles.userDropdown}>
 						<Icon type="user" className={styles.userIcon} />
 						<span className={styles.text}>{name}</span>
@@ -133,7 +134,10 @@ class Header extends Component {
 					className={styles.foldIcon}
 					onClick={() => toggleCollapsed()}
 				/>
-				<UserInfo />
+				<div className={styles.rightPart}>
+					<UserInfo />
+					<SelectLang />
+				</div>
 			</div>
 		);
 	}

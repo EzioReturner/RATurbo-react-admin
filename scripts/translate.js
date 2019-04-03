@@ -15,7 +15,6 @@ const jsonFormat = require('json-format')
 const { languages, defaultLanguage } = require('../src/config/i18n')
 
 const locales = {}
-console.log(languages);
 
 languages.forEach(item => {
   locales[item.key] = require(`../src/locales/${item.key}/messages.json`)
@@ -51,36 +50,37 @@ const youdao = ({ q, from, to }) =>
 const transform = async ({ from, to, locales, outputPath }) => {
   for (const key in locales[from]) {
     if (locales[to][key]) {
-      console.log(`add to skip: ${key}`)
+      console.log(`add to skip: ${key}`);
     } else {
-      let res = key
-      let way = 'youdao'
-      if (key.indexOf('/') !== 0) {
-        const reg = '{([^{}]*)}'
-        const tasks = key
+      let value = locales[from][key];
+      let res = value;
+      let way = 'youdao';
+      const [type, ...rest] = key.split('.');
+      if (to === 'en' && type === 'menu') {
+        res = rest.pop();
+        way = 'maintain menu';
+      } else {
+        const reg = '{([^{}]*)}';
+        const tasks = value
           .match(new RegExp(`${reg}|((?<=(${reg}|^)).*?(?=(${reg}|$)))`, 'g'))
           .map(item => {
             if (new RegExp(reg).test(item)) {
-              return Promise.resolve(item)
+              return Promise.resolve(item);
             }
             return youdao({
-              q: item,
+              q: value,
               from,
               to,
-            })
+            });
           })
-
-        res = (await Promise.all(tasks)).join('')
-      } else {
-        res = `/${to + key}`
-        way = 'link'
+        res = (await Promise.all(tasks)).join('');
       }
-      if (res !== key) {
-        locales[to][key] = res
-        console.log(`${way}: ${from} -> ${to}: ${key} -> ${res}`)
-      } else {
-        console.log(`same: ${from} -> ${to}:  ${key}`)
-      }
+      // if (res !== value) {
+      locales[to][key] = res
+      console.log(`${way}: ${from} -> ${to}: key:${key} : ${value} -> ${res}`)
+      // } else {
+      //   console.log(`${way}: ${from} -> ${to}:  ${value}`)
+      // }
     }
   }
   await fs.writeFileSync(
@@ -98,7 +98,7 @@ const transform = async ({ from, to, locales, outputPath }) => {
       to: item.key,
     }))
     .filter(item => item.from !== item.to)
-
+  
   for (const item of tasks) {
     console.log(`start: ${item.from} -> ${item.to}`)
     await transform({

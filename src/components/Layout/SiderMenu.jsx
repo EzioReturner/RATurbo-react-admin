@@ -10,7 +10,7 @@ import classNames from 'classnames';
 
 const { SubMenu } = Menu;
 @withRouter
-@inject('layoutStore', 'userStore')
+@inject('layoutStore', 'userStore', 'localeStore')
 @observer
 class SiderMenu extends Component {
 	constructor(props) {
@@ -53,16 +53,20 @@ class SiderMenu extends Component {
 		});
 	}
 
-	getMenuTitle(iconType, name) {
+	// 获取菜单标题
+	getMenuTitle(iconType, name, parentName) {
+		const { localeStore: { localeObj } } = this.props;
+		const key = parentName ? `menu.${parentName}.${name}` : `menu.${name}`;
 		return (
 			<span>
 				{iconType && <Icon type={iconType} />}
-				<span>{name}</span>
+				<span>{localeObj[key] || name}</span>
 			</span>
 		);
 	}
 
-	getNavMenuItem(menuData) {
+	// 递归生成菜单项
+	getNavMenuItem(menuData, parentName) {
 		if (!menuData.length) {
 			return [];
 		}
@@ -77,23 +81,24 @@ class SiderMenu extends Component {
 				}
 				return false;
 			})
-			.map(res => this.getSubMenuOrItem(res));
+			.map(res => this.getSubMenuOrItem(res, parentName));
 	}
 
-	getSubMenuOrItem(menu) {
+	// 初始化子级菜单或者菜单枝叶
+	getSubMenuOrItem(menu, parentName) {
 		if (
 			menu.routes &&
 			!menu.hideMenu &&
 			menu.routes.some(child => child.name)
-		) {
+		) { // 菜单父级
 			const { icon, name, path, routes } = menu;
 			return (
-				<SubMenu title={this.getMenuTitle(icon, name)} key={path}>
-					{this.getNavMenuItem(routes)}
+				<SubMenu title={this.getMenuTitle(icon, name, parentName)} key={path}>
+					{this.getNavMenuItem(routes, name)}
 				</SubMenu>
 			);
-		}
-		return <Menu.Item key={menu.path}>{this.getMenuItem(menu)}</Menu.Item>;
+		} // 菜单子级枝叶
+		return <Menu.Item key={menu.path}>{this.getMenuItem(menu, parentName)}</Menu.Item>;
 	}
 
 	handleClickLink(name, path) {
@@ -102,8 +107,11 @@ class SiderMenu extends Component {
 		isMobile && toggleCollapsed();
 	}
 
-	getMenuItem(menu) {
+	// 生成菜单枝叶
+	getMenuItem(menu, parentName = '') {
 		const { icon: iconType, name, path } = menu;
+		const { localeStore: { localeObj } } = this.props;
+		const key = parentName ? `menu.${parentName}.${name}` : `menu.${name}`;
 		return (
 			<Link
 				to={path}
@@ -113,7 +121,7 @@ class SiderMenu extends Component {
 				}}
 			>
 				{iconType && <Icon type={iconType} />}
-				<span>{name}</span>
+				<span>{localeObj[key] || name}</span>
 			</Link>
 		);
 	}
@@ -130,6 +138,7 @@ class SiderMenu extends Component {
 			openKeys: moreThanOne ? [openKeys.pop()] : [...openKeys]
 		});
 	};
+
 	handleLinkGithub() {
 		window.open('https://github.com/EzioReturner/RATurbo-react-admin');
 	}

@@ -13,5 +13,5 @@ module.exports = {
       title: '日本语'
     }
   ],
-  defaultLanguage: 'en',
+  defaultLanguage: 'zh',
 }

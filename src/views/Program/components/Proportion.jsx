@@ -3,6 +3,7 @@ import { Card } from 'antd';
 import EchartsReact from '@components/Echarts';
 import { getWordCloud } from '@api/analysis';
 import { wordCloudChart } from '@assets/chartOption';
+import FormatterLocale from '@components/FormatterLocale';
 
 class Proportion extends Component {
 	state = {
@@ -26,7 +27,7 @@ class Proportion extends Component {
 			<Card
 				hoverable
 				bordered={false}
-				title="trading proportion"
+				title={<FormatterLocale id="monitor.proportion" defaultMessage="热搜词云" />}
 				className="fat-card"
 				style={{ marginBottom: '24px' }}
 			>

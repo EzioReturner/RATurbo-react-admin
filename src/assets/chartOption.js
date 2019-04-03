@@ -661,7 +661,7 @@ export function wordCloudChart(data = []) {
 	};
 }
 
-export const guageOption = {
+export const gaugeOption = {
 	tooltip: {
 		formatter: '{a} <br/>{b} : {c}%'
 	},

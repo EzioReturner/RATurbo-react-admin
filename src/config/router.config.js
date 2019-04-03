@@ -18,7 +18,7 @@ const routeConfig = [
 		authority: ['admin', 'guest'],
 		routes: [
 			{
-				name: 'Dashboard',
+				name: 'dashboard',
 				icon: 'pie-chart',
 				path: '/dashboard',
 				component: [import('@views/Dashboard')]
@@ -30,41 +30,41 @@ const routeConfig = [
 				hideMenu: true
 			},
 			{
-				name: 'Program',
+				name: 'program',
 				icon: 'appstore',
 				path: '/program',
 				routes: [
 					{
-						name: 'Analysis',
+						name: 'analysis',
 						path: '/program/analysis',
 						component: [import('@views/Program/Analysis')],
 						authority: ['admin']
 					},
 					{
-						name: 'Monitor',
+						name: 'monitor',
 						path: '/program/monitor',
 						component: [import('@views/Program/Monitor')]
 					},
 					{
-						name: 'Platform',
+						name: 'platform',
 						path: '/program/platform',
 						component: [import('@views/Program/Platform')]
 					}
 				]
 			},
 			{
-				name: 'Form',
+				name: 'form',
 				icon: 'form',
 				path: '/form',
 				routes: [
 					{
-						name: 'BasicForm',
+						name: 'basicForm',
 						path: '/form/basicForm',
 						component: [import('@views/Form/BasicForm')],
 						authority: ['admin']
 					},
 					{
-						name: 'StepForm',
+						name: 'stepForm',
 						path: '/form/stepForm',
 						component: [import('@views/Form/StepForm')]
 					},
@@ -82,21 +82,21 @@ const routeConfig = [
 				]
 			},
 			{
-				name: 'Map',
+				name: 'map',
 				icon: 'heat-map',
 				path: '/map',
 				component: [import('@views/Map')],
 				authority: ['admin']
 			},
 			{
-				name: 'Gallery',
+				name: 'gallery',
 				icon: 'picture',
 				path: '/gallery',
 				component: [import('@views/Gallery')],
 				authority: ['admin']
 			},
 			{
-				name: 'Exception',
+				name: 'exception',
 				icon: 'exclamation-circle',
 				path: '/exception',
 				routes: [
