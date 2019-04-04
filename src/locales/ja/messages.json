@@ -70,5 +70,10 @@
   "platform.quickContact": "迅速な訪問",
   "platform.MutliAnalysis": "多次元分析",
   "platform.projectList": "プロジェクトリスト",
-  "platform.teamCard": "チームのリスト"
+  "platform.teamCard": "チームのリスト",
+  "button.backHome": "トップページに戻る",
+  "exception.backHome": "トップページにしてみようかな~",
+  "exception.403": "ページにアクセスできなくてごめんなさい",
+  "exception.404": "あなたが訪問するページが見つからないようですよ~",
+  "exception.500": "ごめん~サーバーが破裂したみたい~"
 }

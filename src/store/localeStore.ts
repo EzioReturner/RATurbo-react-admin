@@ -15,7 +15,6 @@ class LocaleStore {
 
   @action setLocale(key: string): void {
     this.locale = key;
-    this.initLocaleList();
     localStorage.setItem('ra-locale', key);
     window.location.reload();
   }

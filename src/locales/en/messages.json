@@ -70,5 +70,10 @@
   "platform.quickContact": "Quick access to",
   "platform.MutliAnalysis": "Multidimensional analysis",
   "platform.projectList": "A list of items",
-  "platform.teamCard": "The team list"
+  "platform.teamCard": "The team list",
+  "button.backHome": "Return to the home page",
+  "exception.backHome": "Go back to the home page",
+  "exception.403": "Sorry ~ you have no access to this page",
+  "exception.404": "It seems that you can't find the page you want to visit",
+  "exception.500": "I'm sorry like Fried ~ ~ server"
 }

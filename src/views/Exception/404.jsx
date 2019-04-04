@@ -1,6 +1,7 @@
 import React from 'react';
 import Exception from '@src/components/Exception';
+import FormatterLocale from '@components/FormatterLocale';
 
 export default () => (
-	<Exception errorCode="404" title="好像找不到你要访问的页面哦~" />
+	<Exception errorCode="404" title={<FormatterLocale id="exception.404" />} />
 );

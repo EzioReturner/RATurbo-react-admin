@@ -13,11 +13,13 @@
   "menu.403": "403",
   "menu.404": "404",
   "menu.500": "500",
+  
   "monitor.gauge": "仪表盘",
   "monitor.surplus": "资源盈余",
   "monitor.proportion": "热搜词云",
   "monitor.rank": "销售排行",
   "monitor.realTime": "实时热点分布",
+
   "form.basicFormTitle": "基础表单",
   "form.basicSubtitle": "表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。",
   "form.stepFormTitle": "分步表单",
@@ -25,9 +27,12 @@
   "form.stepTitle1": "填写信息",  
   "form.stepTitle2": "确认报告",  
   "form.stepTitle3": "完成",  
+
   "button.nextStep": "下一步",
   "button.submit": "提交",
   "button.prevStep": "上一步",
+  "button.backHome": "返回首页",
+
   "step1.title": "起个题目吧",
   "step1.event": "事件",
   "step1.tellWho": "想告诉谁",
@@ -37,11 +42,14 @@
   "step3.soon": "已收到消息，将尽快处理~",
   "step3.oneMore": "再填一单",
   "step3.checkList": "查看记录",
+
   "title": "标题",
   "detail": "详情",
   "person": "人物",
+
   "action.success": "操作成功",
   "action.fail": "操作失败",
+
   "dashboard.trends": "全球趋势",
   "dashboard.bestPerformance": "最优表现",
   "dashboard.worstPerformance": "最劣表现",
@@ -60,6 +68,7 @@
   "dashboard.progress": "进度",
   "dashboard.tag": "标记",
   "dashboard.action": "操作",
+
   "platform.morning": "早上好",
   "platform.greating": "祝你有个美好的一天",
   "platform.job": "技术砖家",
@@ -70,5 +79,10 @@
   "platform.quickContact": "快速访问",
   "platform.MutliAnalysis": "多维分析",
   "platform.projectList": "项目列表",
-  "platform.teamCard": "团队列表"
+  "platform.teamCard": "团队列表",
+
+  "exception.backHome": "回首页看看吧~",
+  "exception.403": "抱歉~你无权访问该页面",
+  "exception.404": "好像找不到你要访问的页面哦~",
+  "exception.500": "抱歉~服务器好像炸了~"
 }
