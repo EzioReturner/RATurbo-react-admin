@@ -1,5 +1,4 @@
-import { observable, configure, action, computed } from 'mobx';
-import SelectLang from '@src/components/SelectLang/index';
+import { observable, configure, action } from 'mobx';
 
 configure({ enforceActions: 'always' });
 class LocaleStore {

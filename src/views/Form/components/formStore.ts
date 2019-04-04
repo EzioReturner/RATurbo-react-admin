@@ -1,9 +1,10 @@
 import { observable, configure, action } from 'mobx';
-import React, { Component } from 'react';
+import React from 'react';
 
 configure({ enforceActions: 'always' });
 
 interface StepObj {
+  id: string,
   title: string;
   component: any;
 }
@@ -26,16 +27,19 @@ class FormStore {
 
   constructor() {
     this.steps = [{
+      id: 'form.stepTitle1',
       title: '填写信息',
       component: React.lazy(() =>
         import(/* webpackChunkName: "403" */ './Step1')
       ),
     }, {
+      id: 'form.stepTitle2',
       title: '确认报告',
       component: React.lazy(() =>
         import(/* webpackChunkName: "403" */ './Step2')
       ),
     }, {
+      id: 'form.stepTitle3',
       title: '完成',
       component: React.lazy(() =>
         import(/* webpackChunkName: "403" */ './Step3')
@@ -60,7 +64,7 @@ class FormStore {
     this.data = values
   }
 
-  @action onPrev(): void {
+  @action onPrev = (): void => {
     this.current--;
   }
 

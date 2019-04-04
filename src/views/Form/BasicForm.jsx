@@ -5,7 +5,9 @@ import {
 	Row, Col, Card
 } from 'antd';
 import PageWrapper from '@components/PageWrapper';
+import FormatterLocale from '@components/FormatterLocale';
 
+const { Option } = Select;
 class BasicForm extends Component {
 	handleSubmit = (e) => {
 		e.preventDefault();
@@ -30,8 +32,8 @@ class BasicForm extends Component {
 			wrapperCol: { span: 14 },
 		};
 		return (
-			<PageWrapper title='基础表单'
-				subTitle='表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。'>
+			<PageWrapper title={<FormatterLocale id="form.basicFormTitle" defaultMessage="基础表单" />}
+				subTitle={<FormatterLocale id="form.basicSubtitle" defaultMessage="表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。" />}>
 				<Card bordered={false} className='fat-header'>
 					<Form {...formItemLayout} onSubmit={this.handleSubmit} style={{
 						maxWidth: '750px',

@@ -3,6 +3,7 @@ import { Form, Button } from 'antd';
 import StepFormStore from './formStore';
 import { observer } from 'mobx-react';
 import styles from '../form.module.scss';
+import FormatterLocale from '@components/FormatterLocale';
 
 @observer
 class StepForm extends Component {
@@ -26,20 +27,24 @@ class StepForm extends Component {
     }
     return <Fragment>
       <Form {...formItemLayout}>
-        <Form.Item {...formItemLayout} label="标题">
+        <Form.Item {...formItemLayout} label={<FormatterLocale id="title" defaultMessage="标题" />}>
           {data.title}
         </Form.Item>
-        <Form.Item {...formItemLayout} label="详情">
+        <Form.Item {...formItemLayout} label={<FormatterLocale id="detail" defaultMessage="详情" />}>
           {data.detail}
         </Form.Item>
-        <Form.Item {...formItemLayout} label="人物">
+        <Form.Item {...formItemLayout} label={<FormatterLocale id="person" defaultMessage="任务" />}>
           {data.user}
         </Form.Item>
         <Form.Item {...tailFormItemLayout}>
-          <Button type="primary" onClick={onSubmit} loading={submitting}>提交</Button>
+          <Button type="primary" onClick={onSubmit} loading={submitting}>
+            <FormatterLocale id="button.submit" defaultMessage="提交" />
+          </Button>
           <Button onClick={onPrev} style={{
             marginLeft: '8px'
-          }}>上一步</Button>
+          }}>
+            <FormatterLocale id="button.prevStep" defaultMessage="上一步" />
+          </Button>
         </Form.Item>
       </Form>
     </Fragment>

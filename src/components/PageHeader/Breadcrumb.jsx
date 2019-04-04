@@ -3,9 +3,10 @@ import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
 import styles from './pageHeader.module.scss';
 import { Icon } from 'antd';
-import classNames from 'classnames'
+import classNames from 'classnames';
+
 @withRouter
-@inject('layoutStore')
+@inject('layoutStore', 'localeStore')
 @observer
 class BreadCrumb extends Component {
 	componentDidMount() {
@@ -37,20 +38,23 @@ class BreadCrumb extends Component {
 	}
 
 	render() {
-		const { layoutStore: { breadcrumbList } } = this.props
+		const { layoutStore: { breadcrumbList }, localeStore: { localeObj } } = this.props
 		return <div className={styles.breadcrumbList}>
 			{breadcrumbList.map((bread, index) => {
-				return (bread.display ?
+				const { display, path, name } = bread;
+				const key = path.split('/').slice(1).join('.');
+
+				return (display ?
 					<div key={index}
 						className={classNames(
 							styles.breadcrumb,
-							this.checkDisplay(bread.path) ? styles.display : ''
+							this.checkDisplay(path) ? styles.display : ''
 						)}
-						onClick={this.handleGoBreadPath.bind(this, bread.path)}>
-						{bread.name}
+						onClick={this.handleGoBreadPath.bind(this, path)}>
+						{localeObj[`menu.${key}`]}
 						<Icon type="close"
 							className={styles.closeIcon}
-							onClick={this.handleDelBreadcrumb.bind(this, bread.name)} />
+							onClick={this.handleDelBreadcrumb.bind(this, name)} />
 					</div> : null)
 			})}
 		</div>;

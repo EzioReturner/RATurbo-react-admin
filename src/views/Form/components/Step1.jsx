@@ -2,6 +2,7 @@ import React, { PureComponent, Fragment } from 'react';
 import { Form, Button, Select, Input, Divider } from 'antd';
 import StepFormStore from './formStore';
 import styles from '../form.module.scss';
+import FormatterLocale from '@components/FormatterLocale';
 
 class StepForm extends PureComponent {
   handleSubmit = (e) => {
@@ -17,8 +18,8 @@ class StepForm extends PureComponent {
   render() {
     const { getFieldDecorator } = this.props.form;
     const formItemLayout = {
-      labelCol: { span: 6 },
-      wrapperCol: { span: 14 },
+      labelCol: { span: 8 },
+      wrapperCol: { span: 16 },
     };
     const tailFormItemLayout = {
       wrapperCol: {
@@ -27,14 +28,14 @@ class StepForm extends PureComponent {
           offset: 0,
         },
         sm: {
-          span: 18,
-          offset: 6,
+          span: 16,
+          offset: 8,
         },
       }
     }
     return <Fragment>
       <Form {...formItemLayout} onSubmit={this.handleSubmit}>
-        <Form.Item label="起个题目把">
+        <Form.Item label={<FormatterLocale id="step1.title" defaultMessage="起个题目吧" />}>
           {getFieldDecorator('title', {
             initialValue: '好嗨哦',
             rules: [
@@ -47,7 +48,7 @@ class StepForm extends PureComponent {
             />
           )}
         </Form.Item>
-        <Form.Item label="事件">
+        <Form.Item label={<FormatterLocale id="step1.event" defaultMessage="事件" />}>
           {getFieldDecorator('detail', {
             initialValue: '那天我在海边看到一条鱼，它的头特别的大',
             rules: [
@@ -60,7 +61,7 @@ class StepForm extends PureComponent {
             />
           )}
         </Form.Item>
-        <Form.Item label="想告诉谁">
+        <Form.Item label={<FormatterLocale id="step1.tellWho" defaultMessage="想告诉谁" />}>
           {getFieldDecorator('user', {
             initialValue: 'noOne',
             rules: [
@@ -74,7 +75,7 @@ class StepForm extends PureComponent {
           )}
         </Form.Item>
         <Form.Item {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit">下一步</Button>
+          <Button type="primary" htmlType="submit"><FormatterLocale id="button.nextStep" defaultMessage="下一步" /></Button>
         </Form.Item>
       </Form>
     </Fragment>
@@ -88,9 +89,9 @@ class Step1 extends PureComponent {
       <div className={styles.step}><Form /></div>
       <Divider style={{ margin: '40px 0 24px' }} />
       <div className={styles.descript}>
-        <h3>请注意</h3>
-        <h4>这里是分割线</h4>
-        <p>其实没啥想说的，其实没啥想说的，其实没啥想说的，其实没啥想说的，其实没啥想说的</p>
+        <h3><FormatterLocale id="step1.attention" defaultMessage="请注意" /></h3>
+        <h4><FormatterLocale id="step1.divider" defaultMessage="这里是分割线" /></h4>
+        <p><FormatterLocale id="step1.nothing" defaultMessage="其实没啥想说的，其实没啥想说的，其实没啥想说的，其实没啥想说的，其实没啥想说的" /></p>
       </div>
     </div>
   }
