@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Card, Button, Avatar, Row, Col } from 'antd';
 import { getContact } from '@api/platform';
+import FormatterLocale from '@components/FormatterLocale';
 
 class QuickStart extends PureComponent {
 	state = {
@@ -19,7 +20,7 @@ class QuickStart extends PureComponent {
 		const { contact } = this.state;
 		return (
 			<Card
-				title="Quick Contact"
+				title={<FormatterLocale id="platform.quickContact" />}
 				className="fat-card"
 				bordered={false}
 				loading={!contact.length}

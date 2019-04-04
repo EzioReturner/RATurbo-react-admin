@@ -33,7 +33,7 @@
     margin-bottom: 24px;
     .weather-body {
       padding: 31px 29px;
-      height: 340px;
+      height: 336px;
       background: url('../../assets/image/weather.svg')  center center / cover no-repeat;
     }
     .weather-date-location {
@@ -45,10 +45,13 @@
     .weakly-weather {
       display: flex;
       background: #ffffff;
+      min-height: 100px;
+      width: 100%;
       .weakly-weather-item {
         flex: 0 0 25%;
         border-right: 1px solid $border-color;
         text-align: center;
+        min-height: 100px;
         &:last-child {
           border-right: 0;
         }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Table, Divider, Tag, Progress, Modal } from 'antd';
-
+import FormatterLocale from '@components/FormatterLocale';
 const confirm = Modal.confirm;
 
 class SaleTable extends Component {
@@ -52,11 +52,11 @@ class SaleTable extends Component {
 					}, 2000);
 				}).catch(() => console.log('Oops errors!'));
 			},
-			onCancel() {}
+			onCancel() { }
 		});
 	}
 
-	handleInvite(name, resolve) {}
+	handleInvite(name, resolve) { }
 
 	handleDelete({ key }, e) {
 		const { tableData } = this.state;
@@ -129,26 +129,26 @@ class SaleTable extends Component {
 				dataIndex: 'key'
 			},
 			{
-				title: 'Name',
+				title: <FormatterLocale id="dashboard.name" defaultMessage="名称" />,
 				dataIndex: 'name',
 				render: _renderText
 			},
 			{
-				title: 'Amount',
+				title: <FormatterLocale id="dashboard.amount" defaultMessage="数额" />,
 				dataIndex: 'amount'
 			},
 			{
-				title: 'Progress',
+				title: <FormatterLocale id="dashboard.progress" defaultMessage="进度" />,
 				dataIndex: 'progress',
 				render: _renderProgress
 			},
 			{
-				title: 'Tags',
+				title: <FormatterLocale id="dashboard.tag" defaultMessage="标记" />,
 				dataIndex: 'tags',
 				render: _renderTags
 			},
 			{
-				title: 'Action',
+				title: <FormatterLocale id="dashboard.action" defaultMessage="操作" />,
 				key: 'action',
 				render: _renderAction
 			}
@@ -160,7 +160,7 @@ class SaleTable extends Component {
 			<Card
 				bordered={false}
 				className="fat-card"
-				title="Sales"
+				title={<FormatterLocale id="dashboard.sales" defaultMessage="销售表单" />}
 				hoverable
 				bodyStyle={{
 					overflow: 'auto'

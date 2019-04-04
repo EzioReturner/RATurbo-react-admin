@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Card } from 'antd';
 import { getProjectList } from '@api/platform';
+import FormatterLocale from '@components/FormatterLocale';
 
 class PlatformProject extends PureComponent {
 	state = {
@@ -23,7 +24,7 @@ class PlatformProject extends PureComponent {
 		const { projectList } = this.state;
 		return (
 			<Card
-				title="Project List"
+				title={<FormatterLocale id="platform.projectList" />}
 				className="fat-card"
 				bordered={false}
 				bodyStyle={{

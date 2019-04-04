@@ -14,11 +14,11 @@
 
 .p-left-part {
   p {
-    margin: 0;
+    margin-bottom: 4px;
     font-size: 20px;
     font-weight: normal;
   }
-  span {
+  span.subText {
     color: $text-color-secondary;
     font-weight: normal;
   }

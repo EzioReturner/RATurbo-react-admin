@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Card, Row, Col, Icon } from 'antd';
 import EchartsReact from '@components/Echarts';
 import { observer, inject } from 'mobx-react';
+
 class ChartCard extends Component {
 	render() {
 		const style = {

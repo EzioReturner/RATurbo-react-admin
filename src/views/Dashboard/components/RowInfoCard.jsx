@@ -1,22 +1,23 @@
 import React, { PureComponent } from 'react';
 import { Row, Col, Card, Icon } from 'antd';
 import { BoxSvg, EmpolyeesSvg, OrdersSvg, SalesSvg } from '@components/SvgIcon';
+import FormatterLocale from '@components/FormatterLocale';
 
 class InfoCard extends PureComponent {
 	render() {
-		const { icon, tips, title, num, tipIcon } = this.props;
+		const { icon, tips, title, num, tipIcon, index } = this.props;
 		return (
 			<Card className="info-card fat-card" bordered={false} hoverable>
 				<div className="top">
 					<Icon component={icon} />
 					<div className="right-part">
-						<p className="title">{title}</p>
+						<p className="title">{<FormatterLocale id={`dashboard.rowInfo${index}.title`} defaultMessage={title} />}</p>
 						<h3 className="num">{num}</h3>
 					</div>
 				</div>
 				<p className="mb-0 mt-3 text-muted">
 					<Icon type={tipIcon} className="mr-2" />
-					{tips}
+					{<FormatterLocale id={`dashboard.rowInfo${index}.tips`} defaultMessage={tips} />}
 				</p>
 			</Card>
 		);
@@ -67,7 +68,7 @@ class RowInfoCard extends PureComponent {
 						key={index}
 						style={{ marginBottom: '24px' }}
 					>
-						<InfoCard {...dl} />
+						<InfoCard {...dl} index={index} />
 					</Col>
 				))}
 			</Row>

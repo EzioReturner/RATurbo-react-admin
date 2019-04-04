@@ -1,11 +1,12 @@
 import React, { PureComponent } from 'react';
 import { Card } from 'antd';
+import FormatterLocale from '@components/FormatterLocale';
 
 class TeamCard extends PureComponent {
 	render() {
 		const data = ['amoy avenger', 'soul tango', 'we are Groot'];
 		return (
-			<Card title="Team Card" className="fat-card" bordered={false}>
+			<Card title={<FormatterLocale id="platform.teamCard" />} className="fat-card" bordered={false}>
 				<div className="team-card">
 					{data.map((res, index) => {
 						return (

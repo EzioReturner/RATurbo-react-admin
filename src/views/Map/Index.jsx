@@ -11,7 +11,7 @@ class Map extends Component {
 
 	render() {
 		return (
-			<div style={{ height: '100%' }}>
+			<div style={{ height: '100%', minHeight: '500px' }}>
 				<Card
 					style={{
 						height: '100%'
