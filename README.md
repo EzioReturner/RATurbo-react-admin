@@ -20,7 +20,7 @@
 
 项目基于 create-react-app 搭建，相关依赖链接如下
 
-- [react](https://facebook.github.io/react/)
+- [react](https://facebook.github.io/react/) (我就不多说了吧~...)
 - [react-router](https://react-guide.github.io/react-router-cn/)(<span style="color: rgb(243,121,52);">react路由，4.x的版本，如果还使用3.x的版本，请切换分支（ps:分支不再维护）</span>)
 - [mobx](https://github.com/mobxjs/mobx)(Mobx是一个功能强大,上手非常容易的状态管理工具)
 - [antd](https://ant.design/index-cn)(<span style="color: rgb(243,121,52);">蚂蚁金服开源的react ui组件框架</span>)
