@@ -28,6 +28,7 @@
 - [echarts](https://github.com/apache/incubator-echarts)(<span style="color: rgb(243,121,52);">百度开源可视化图表工具</span>)
 - [nprogress](https://github.com/rstacruz/nprogress)(<span style="color: rgb(243,121,52);">顶部加载条</span>)
 - [animate.css](http://daneden.me/animate)(<span style="color: rgb(243,121,52);">css动画库</span>)
+- [moment](http://momentjs.cn/)(<span style="color: rgb(243,121,52);">时间工具库</span>)
 - 其余省略
 
 ## function module &nbsp; 功能模块
@@ -38,18 +39,22 @@
     - 顶部导航(菜单伸缩)
     - 左边菜单(由路由文件自动渲染)
 - 组件
-    - 路由权限
-      - route 权限校验 异常处理
-    - 路由渲染菜单
-    - 路由懒加载模块
-    - 加载loading模块
-- UI场景
-    - 项目模块
+    - 路由
+      - route 权限校验
+      - 异常处理
+      - 路由配置渲染route
+      - 路由配置渲染菜单
+    - 异步懒加载模块
+    - loading遮罩模块
+    - i18n 国际化
+      - 支持多语言翻译
+- UI组件
+    - 场景
       - 分析页
       - 工作台
       - 监控台
     - 画廊
-    - 表单页 (施工中)
+    - 表单页 
     - 列表页 (施工中)
     - 详情页 (施工中)
     - 结果页 (施工中)
@@ -58,8 +63,9 @@
 - 图表
     - echarts图表
 - 页面
-    - 登录页面(第三方登录施工中...)
-- 多分辨率 & 移动端适配
+    - 登录页面
+    - 第三方登录 (施工中)
+- 多分辨率 & 移动端适配 
 
 ## How to start &nbsp; 如何启动
 

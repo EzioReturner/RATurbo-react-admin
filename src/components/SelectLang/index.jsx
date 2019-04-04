@@ -29,7 +29,9 @@ class SelectLang extends Component {
       <Menu selectedKeys={[selectedLang]}>
         {locales.map(locale =>
           <Menu.Item key={locale} onClick={this.changeLang}>
-            <span>
+            <span style={{
+              marginRight: '5px'
+            }}>
               {languageIcons[locale]}
             </span>
             {languageLabels[locale]}
