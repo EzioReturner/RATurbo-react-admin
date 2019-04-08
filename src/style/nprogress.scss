@@ -42,10 +42,7 @@
         border-top-color: $color-primary-light;
         border-left-color: $color-primary-light;
         border-radius: 50%;
-
-        :local {
-          animation: nprogress-spinner 400ms linear infinite;
-        }
+        animation: nprogress-spinner 400ms linear infinite;
       }
     }
 

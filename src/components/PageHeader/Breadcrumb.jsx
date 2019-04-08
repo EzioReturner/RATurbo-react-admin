@@ -51,7 +51,7 @@ class BreadCrumb extends Component {
 							this.checkDisplay(path) ? styles.display : ''
 						)}
 						onClick={this.handleGoBreadPath.bind(this, path)}>
-						{localeObj[`menu.${key}`]}
+						{localeObj[`menu.${key}`] || name}
 						<Icon type="close"
 							className={styles.closeIcon}
 							onClick={this.handleDelBreadcrumb.bind(this, name)} />

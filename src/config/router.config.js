@@ -82,6 +82,18 @@ const routeConfig = [
 				]
 			},
 			{
+				name: 'list',
+				icon: 'ordered-list',
+				path: '/list',
+				routes: [
+					{
+						name: 'cardList',
+						path: '/list/cardList',
+						component: [import('@views/List/CardList')],
+					}
+				]
+			},
+			{
 				name: 'map',
 				icon: 'heat-map',
 				path: '/map',
