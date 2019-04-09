@@ -24,8 +24,8 @@ export function getProjectList() {
 	});
 }
 
-export function getContact() {
+export function getContact(num = 15) {
 	return request.sendRequest('get', {
-		path: 'https://randomuser.me/api/?inc=picture,name&results=15'
+		path: `https://randomuser.me/api/?inc=picture,name&results=${num}`
 	});
 }
