@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import PlatformProject from './components/PlatformProject';
-import QuickStart from './components/QuickStart';
-import MultiAnalysis from './components/MultiAnalysis';
-import TeamCard from './components/TeamCard';
+import PlatformProject from './PlatformProject';
+import QuickStart from './QuickStart';
+import MultiAnalysis from './MultiAnalysis';
+import TeamCard from './TeamCard';
 import PageWrapper from '@components/PageWrapper';
 import { Row, Col } from 'antd';
 import FormatterLocale from '@components/FormatterLocale';

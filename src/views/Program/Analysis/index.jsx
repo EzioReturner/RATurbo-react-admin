@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import ControllerCard from './components/ControllerCard';
-import DistributeCard from './components/DistributeCard';
+import ControllerCard from './ControllerCard';
+import DistributeCard from './DistributeCard';
 import './analysis.scss';
 
 class Dashboard extends Component {

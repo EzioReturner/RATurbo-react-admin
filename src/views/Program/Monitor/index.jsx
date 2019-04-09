@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'antd';
-import PopularMap from './components/PopularMap';
-import MonitorList from './components/MonitorList';
-import Proportion from './components/Proportion';
-import Efficiency from './components/Efficiency';
-import Surplus from './components/Surplus';
+import PopularMap from './PopularMap';
+import MonitorList from './MonitorList';
+import Proportion from './Proportion';
+import Efficiency from './Efficiency';
+import Surplus from './Surplus';
 import './monitor.scss';
 
 class Monitor extends Component {

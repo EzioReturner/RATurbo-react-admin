@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'antd';
-import RowInfoCard from './components/RowInfoCard';
-import Weather from './components/Weather';
-import Performance from './components/Performance';
-import SaleTable from './components/SaleTable';
-import GlobalTrends from './components/GlobalTrends';
+import RowInfoCard from './RowInfoCard';
+import Weather from './Weather';
+import Performance from './Performance';
+import SaleTable from './SaleTable';
+import GlobalTrends from './GlobalTrends';
 import './dashboard.scss';
 
 class Dashboard extends Component {
