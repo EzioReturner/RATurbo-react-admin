@@ -5,3 +5,11 @@
   margin-bottom: 16px;
   text-align: center;
 }
+
+.link {
+  color: $text-color-secondary;
+  cursor: pointer;
+  &:hover {
+    color: $color-primary;
+  }
+}

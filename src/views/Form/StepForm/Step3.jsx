@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import Result from '@components/Result';
 import { Button } from 'antd';
 import StepFormStore from './formStore';
-import styles from '../form.module.scss';
+import styles from './form.module.scss';
 import FormatterLocale from '@components/FormatterLocale';
 
 class Step3 extends PureComponent {

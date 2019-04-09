@@ -2,7 +2,7 @@ import React, { PureComponent, Fragment, Component } from 'react';
 import { Form, Button } from 'antd';
 import StepFormStore from './formStore';
 import { observer } from 'mobx-react';
-import styles from '../form.module.scss';
+import styles from './form.module.scss';
 import FormatterLocale from '@components/FormatterLocale';
 
 @observer
