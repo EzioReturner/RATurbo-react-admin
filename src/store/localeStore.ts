@@ -9,7 +9,7 @@ class LocaleStore {
   }
 
   async initLocaleList(): Promise<any> {
-    const json = await import(`../locales/${this.locale}/messages.json`);
+    const json = await import(`../locales/${this.locale}/mapping.json`);
     this.setLocaleObj(json);
   }
 

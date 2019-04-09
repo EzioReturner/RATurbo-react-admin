@@ -9,6 +9,7 @@
   "menu.form.stepForm": "分步表单",
   "menu.list": "列表",
   "menu.list.cardList": "卡片列表",
+  "menu.list.basicList": "标准列表",
   "menu.map": "地图",
   "menu.gallery": "画廊",
   "menu.exception": "异常页",
@@ -61,6 +62,7 @@
 
   "cardList.title": "卡片列表",
   "cardList.subtitle": "以卡片的形式展示列表数据，可展示主要信息，更方便的进行操作",
+  "basicList.title": "标准列表",
 
   "action.success": "操作成功",
   "action.fail": "操作失败",

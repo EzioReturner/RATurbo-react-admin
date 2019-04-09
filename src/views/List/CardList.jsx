@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PageWrapper from '@components/PageWrapper';
 import FormatterLocale from '@components/FormatterLocale';
-import styles from './cardList.module.scss';
+import styles from './list.module.scss';
 import { Icon, Card, List, Button } from 'antd';
 import { getListData } from '@api/list';
 import { getContact } from '@api/platform';

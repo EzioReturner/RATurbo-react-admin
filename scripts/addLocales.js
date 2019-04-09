@@ -13,7 +13,7 @@ async function mkdirs(outputDir, callback) {
     } else {  
       await fs.mkdir(outputDir, callback);  
       console.log(`file dir create success`);
-      await fs.writeFileSync(`${outputDir}/messages.json`, '{}');
+      await fs.writeFileSync(`${outputDir}/mapping.json`, '{}');
       console.log('language json create success');
     }  
   });  

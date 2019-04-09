@@ -43,7 +43,6 @@ class ChartCard extends Component {
 class DistributeCard extends Component {
 	render() {
 		const {
-			showUnDefined,
 			getChartOption: {
 				circleOption,
 				barOption,

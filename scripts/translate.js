@@ -17,7 +17,7 @@ const { languages, defaultLanguage } = require('../src/config/i18n')
 const locales = {}
 
 languages.forEach(item => {
-  locales[item.key] = require(`../src/locales/${item.key}/messages.json`)
+  locales[item.key] = require(`../src/locales/${item.key}/mapping.json`)
 })
 
 const youdao = ({ q, from, to }) =>
@@ -75,13 +75,9 @@ const transform = async ({ from, to, locales, outputPath }) => {
           })
         res = (await Promise.all(tasks)).join('');
       }
-      // if (res !== value) {
       locales[to][key] = res
       console.log(`${way}: ${from} -> ${to}: key:${key} : ${value} -> ${res}`)
-      // } else {
-      //   console.log(`${way}: ${from} -> ${to}:  ${value}`)
-      // }
-    }
+s    }
   }
   await fs.writeFileSync(
     path.resolve(__dirname, outputPath),
@@ -105,7 +101,7 @@ const transform = async ({ from, to, locales, outputPath }) => {
       from: item.from,
       to: item.to,
       locales,
-      outputPath: `../src/locales/${item.to}/messages.json`,
+      outputPath: `../src/locales/${item.to}/mapping.json`,
     })
     console.log(`completed: ${item.from} -> ${item.to}`)
   }

@@ -1,7 +1,9 @@
+@import '@style/color.scss';
+
 .extraContent {
   width: 195px;
   position: absolute;
-  top: 35px;
+  top: 30px;
   right: 70px;
   @media screen and (max-width: 768px) {
     display: none;
@@ -13,7 +15,6 @@
 
 .content {
   margin-top: 16px;
-  margin-bottom: -8px;
   a {
     margin-right: 16px;
     font-size: 14px;
@@ -38,4 +39,21 @@
 
 .images {
   border-radius: 4px;
+}
+
+.colTitle {
+  color: $text-color-secondary;
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.colNum {
+  color: $text-color;
+  font-size: 22px;
+  display: block;
+}
+
+.colNum,
+.colTitle {
+  text-align: center;
 }
