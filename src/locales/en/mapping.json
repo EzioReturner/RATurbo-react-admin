@@ -75,5 +75,11 @@
   "exception.backHome": "Go back to the home page",
   "exception.403": "Sorry ~ you have no access to this page",
   "exception.404": "It seems that you can't find the page you want to visit",
-  "exception.500": "I'm sorry like Fried ~ ~ server"
+  "exception.500": "I'm sorry like Fried ~ ~ server",
+  "menu.list": "list",
+  "menu.list.cardList": "cardList",
+  "menu.list.basicList": "basicList",
+  "cardList.title": "Card list",
+  "cardList.subtitle": "Display the list data in the form of CARDS, which can display the main information and facilitate the operation",
+  "basicList.title": "Standard list"
 }

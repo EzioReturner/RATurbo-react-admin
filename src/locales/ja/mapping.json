@@ -75,5 +75,11 @@
   "exception.backHome": "トップページにしてみようかな~",
   "exception.403": "ページにアクセスできなくてごめんなさい",
   "exception.404": "あなたが訪問するページが見つからないようですよ~",
-  "exception.500": "ごめん~サーバーが破裂したみたい~"
+  "exception.500": "ごめん~サーバーが破裂したみたい~",
+  "menu.list": "一覧",
+  "menu.list.cardList": "カードの一覧",
+  "menu.list.basicList": "標準リスト",
+  "cardList.title": "カードの一覧",
+  "cardList.subtitle": "リストデータはカード形式で表示され、主な情报が表示され、より简単に操作できる",
+  "basicList.title": "標準リスト"
 }

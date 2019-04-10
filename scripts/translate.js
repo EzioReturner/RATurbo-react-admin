@@ -6,28 +6,28 @@
  */
 
 /* eslint-disable */
-const md5 = require('md5')
-const qs = require('qs')
-const fs = require('fs')
-const path = require('path')
-const axios = require('axios')
-const jsonFormat = require('json-format')
-const { languages, defaultLanguage } = require('../src/config/i18n')
+const md5 = require('md5');
+const qs = require('qs');
+const fs = require('fs');
+const path = require('path');
+const axios = require('axios');
+const jsonFormat = require('json-format');
+const { languages, defaultLanguage } = require('../src/config/i18n');
 
-const locales = {}
+const locales = {};
 
 languages.forEach(item => {
-  locales[item.key] = require(`../src/locales/${item.key}/mapping.json`)
+  locales[item.key] = require(`../src/locales/${item.key}/mapping.json`);
 })
 
 const youdao = ({ q, from, to }) =>
   new Promise((resolve, reject) => {
     {
-      const appid = '055c2d71f9a05214'
-      const appse = 'ZcpuQxQW3NkQeKVkqrXIKQYXH57g2KuN'
-      const salt = Date.now()
+      const appid = '055c2d71f9a05214';
+      const appse = 'ZcpuQxQW3NkQeKVkqrXIKQYXH57g2KuN';
+      const salt = Date.now();
 
-      const sign = md5(appid + q + salt + appse)
+      const sign = md5(appid + q + salt + appse);
       const query = qs.stringify({
         q,
         from,
@@ -35,13 +35,13 @@ const youdao = ({ q, from, to }) =>
         appKey: appid,
         salt,
         sign,
-      })
+      });
 
       axios.get(`http://openapi.youdao.com/api?${query}`).then(({ data }) => {
         if (data.query && data.translation[0]) {
-          resolve(data.translation[0])
+          resolve(data.translation[0]);
         } else {
-          resolve(q)
+          resolve(q);
         }
       })
     }
@@ -75,9 +75,9 @@ const transform = async ({ from, to, locales, outputPath }) => {
           })
         res = (await Promise.all(tasks)).join('');
       }
-      locales[to][key] = res
-      console.log(`${way}: ${from} -> ${to}: key:${key} : ${value} -> ${res}`)
-s    }
+      locales[to][key] = res;
+      console.log(`${way}: ${from} -> ${to}: key:${key} : ${value} -> ${res}`);
+    }
   }
   await fs.writeFileSync(
     path.resolve(__dirname, outputPath),
@@ -93,18 +93,18 @@ s    }
       from: defaultLanguage,
       to: item.key,
     }))
-    .filter(item => item.from !== item.to)
+    .filter(item => item.from !== item.to);
   
   for (const item of tasks) {
-    console.log(`start: ${item.from} -> ${item.to}`)
+    console.log(`start: ${item.from} -> ${item.to}`);
     await transform({
       from: item.from,
       to: item.to,
       locales,
       outputPath: `../src/locales/${item.to}/mapping.json`,
-    })
-    console.log(`completed: ${item.from} -> ${item.to}`)
+    });
+    console.log(`completed: ${item.from} -> ${item.to}`);
   }
 
-  console.log('All translations have been completed.')
+  console.log('All translations have been completed.');
 })()
