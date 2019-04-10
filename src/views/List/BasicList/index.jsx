@@ -4,7 +4,10 @@ import FormatterLocale from '@components/FormatterLocale';
 import { Row, Col, Card } from 'antd';
 import ListTable from './ListTable';
 import styles from './listTable.module.scss';
+import { inject, observer } from 'mobx-react';
 
+@inject('layoutStore')
+@observer
 class BasicList extends Component {
   render() {
     const list = [{
@@ -29,9 +32,17 @@ class BasicList extends Component {
         })}
       </Row>
     );
+
+    const DontShow = () => (
+      <Card style={{ marginTop: '24px' }} bordered={false}>
+        <div style={{ textAlign: 'center' }}>不给你看</div>
+      </Card>
+    )
+
+    const { isMobile } = this.props.layoutStore;
     return <PageWrapper title={<FormatterLocale id="basicList.title" />}>
       <RowInfo />
-      <ListTable />
+      {isMobile ? <DontShow /> : <ListTable />}
     </PageWrapper>;
   }
 }

@@ -3,7 +3,7 @@
 .pageHeader {
   min-height: 90px;
   background: $color-white;
-  padding: 16px 32px 0px;
+  padding: 16px 32px 16px;
 }
 
 .breadcrumbList {
@@ -102,11 +102,6 @@
 .extraContent,
 .main {
   flex: 0 1 auto;
-}
-
-.logo,
-.content {
-  margin-bottom: 16px;
 }
 
 .extraContent {
