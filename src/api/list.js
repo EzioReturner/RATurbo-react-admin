@@ -6,7 +6,10 @@ const listData = Mock.mock({
 		{
 			id: '@id',
 			detail: '@paragraph(1)',
-			title: '@name'
+			title: '@name',
+			handler: '@cname',
+			date: '@date(yyyy-MM-dd HH:mm:ss)',
+			progress: '@natural(1,100)'
 		}
 	]
 });

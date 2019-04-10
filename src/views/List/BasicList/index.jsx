@@ -2,15 +2,8 @@ import React, { Component } from 'react';
 import PageWrapper from '@components/PageWrapper';
 import FormatterLocale from '@components/FormatterLocale';
 import { Row, Col, Card } from 'antd';
-import styles from './list.module.scss';
-
-class ListTable extends Component {
-  render() {
-    return <Card bordered={false} style={{ marginTop: '24px' }}>
-      123
-    </Card>
-  }
-}
+import ListTable from './ListTable';
+import styles from './listTable.module.scss';
 
 class BasicList extends Component {
   render() {
@@ -24,10 +17,10 @@ class BasicList extends Component {
       title: '平均每周处理事项',
       num: '11个事项'
     }];
-    const RowInfo = (
+    const RowInfo = () => (
       <Row gutter={24}>
         {list.map(col => {
-          return <Col xl={8} sm={24} xs={24}>
+          return <Col xl={8} sm={24} xs={24} key={col.title}>
             <Card bordered={false}>
               <p className={styles.colTitle}>{col.title}</p>
               <span className={styles.colNum}>{col.num}</span>
@@ -37,7 +30,7 @@ class BasicList extends Component {
       </Row>
     );
     return <PageWrapper title={<FormatterLocale id="basicList.title" />}>
-      {RowInfo}
+      <RowInfo />
       <ListTable />
     </PageWrapper>;
   }

@@ -1,0 +1,49 @@
+@import '@style/color.scss';
+
+.colTitle {
+  color: $text-color-secondary;
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.colNum {
+  color: $text-color;
+  font-size: 22px;
+  display: block;
+}
+
+.colNum,
+.colTitle {
+  text-align: center;
+}
+
+.detail {
+  max-width: 500px;
+}
+
+.content {
+  min-width: 450px;
+  color: $text-color-secondary;
+  &>div {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .pText {
+    margin: 4px 0 0;
+  }
+  .handleTime { 
+    margin: 0 48px;
+  }
+  .progress {
+    display: inline-block;
+    width: 140px;
+    margin-right: 16px;
+  }
+  @media screen and (max-width: 1450px){
+    min-width: 380px;
+    margin-left: 32px;
+    .handleTime {
+      margin: 0 24px;
+    }
+  }
+}
