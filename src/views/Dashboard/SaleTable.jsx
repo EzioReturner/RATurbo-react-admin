@@ -89,14 +89,13 @@ class SaleTable extends Component {
 		);
 
 		const _renderAction = (text, record) => {
-			const { name } = record;
 			return (
 				<span>
 					<a
 						href="javascript:;"
 						onClick={this.showConfirm.bind(this, ['invite', record])}
 					>
-						Invite {name}
+						Invite {text}
 					</a>
 					<Divider type="vertical" />
 					<a

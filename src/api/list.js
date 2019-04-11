@@ -16,8 +16,29 @@ const listData = Mock.mock({
 
 Mock.mock('/get/listData', listData);
 
+const tableData = Mock.mock({
+	'data|30-60': [
+		{
+			'key|+1': 1,
+			no: '@string(10)',
+			domain: '@domain',
+			num: '@natural(1,100)',
+			status: '@natural(0,3)',
+			date: '@date(yyyy-MM-dd HH:mm:ss)'
+		}
+	]
+})
+
+Mock.mock('/get/tableData', tableData);
+
 export function getListData() {
 	return request.sendRequest('get', {
 		path: '/get/listData'
 	});
+}
+
+export function getTableData() {
+	return request.sendRequest('get', {
+		path: '/get/tableData'
+	})
 }

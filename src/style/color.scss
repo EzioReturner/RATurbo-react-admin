@@ -28,12 +28,15 @@ $color-secondary:       #71669e !default;
 $color-secondary-dark:  darken($color-secondary, 5%) !default;
 $color-secondary-light: lighten($color-secondary, 5%) !default;
 
-$color-blue:            #308ee0 !default;
 
 $menu-item-background:  #f3f3f3 !default;
 $border-color:          #f2f2f2 !default;
 
 $color-success:         #52c41a !default;
+$color-error:           #f5222d !default;
+$color-warning:         #faad14 !default;
+$color-progress:        #308ee0 !default;
+
 $text-color:            rgba(0,0,0,0.65) !default;
 $text-color-secondary:  rgba(0,0,0,0.45) !default;
 $text-color-dark:       rgba(0,0,0,0.85) !default;

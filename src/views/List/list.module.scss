@@ -40,3 +40,49 @@
 .images {
   border-radius: 4px;
 }
+
+.pointer {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  margin-right: 8px;
+  &.maintain {
+    background: $color-warning;
+  }
+  
+  &.error {
+    background: $color-error;
+  }
+  
+  &.offline {
+    background: #d9d9d9;
+  }
+  &.progress {
+    background: $color-progress;
+    &::after {
+      content: "";
+      background: $color-progress;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      border-radius: 50%;
+      animation: progressing 0.8s ease infinite;
+    }
+  }
+}
+
+@keyframes progressing {
+  50% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
