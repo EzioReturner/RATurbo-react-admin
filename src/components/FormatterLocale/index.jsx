@@ -5,8 +5,8 @@ import { observer, inject } from 'mobx-react';
 @observer
 class FormatterLocale extends Component {
   render() {
-    const { id, defaultMessage, localeStore: { localeObj } } = this.props;
-    return <span>{localeObj[id] || defaultMessage}</span>
+    const { id, defaultMessage, localeStore: { localeObj }, ...rest } = this.props;
+    return <span {...rest}>{localeObj[id] || defaultMessage}</span>
   }
 }
 

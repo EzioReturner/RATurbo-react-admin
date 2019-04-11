@@ -115,9 +115,9 @@ class SaleTable extends Component {
 				status = 'success';
 			}
 			return (
-				<span>
+				<div style={{ 'minWidth': '200px' }}>
 					<Progress showInfo={false} percent={progress} className={status} />
-				</span>
+				</div>
 			);
 		};
 

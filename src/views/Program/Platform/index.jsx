@@ -29,15 +29,15 @@ class Monitor extends Component {
 		const extraContent = <div className="p-right-part">
 			<Row gutter={24}>
 				<Col xl={8} lg={8} md={8} sm={4} xs={8}>
-					<span><FormatterLocale id="platform.projects" /></span>
+					<FormatterLocale id="platform.projects" className="numTitle" />
 					<p>23</p>
 				</Col>
 				<Col xl={8} lg={8} md={8} sm={4} xs={8}>
-					<span><FormatterLocale id="platform.rank" /></span>
+					<FormatterLocale id="platform.rank" className="numTitle" />
 					<p>1/9</p>
 				</Col>
 				<Col xl={8} lg={8} md={8} sm={4} xs={8}>
-					<span><FormatterLocale id="platform.visitors" /></span>
+					<FormatterLocale id="platform.visitors" className="numTitle" />
 					<p>2333</p>
 				</Col>
 			</Row>

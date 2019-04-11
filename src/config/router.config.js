@@ -95,6 +95,11 @@ const routeConfig = [
 						name: 'cardList',
 						path: '/list/cardList',
 						component: [import('@views/List/CardList')],
+					},
+					{
+						name: 'basicTable',
+						path: '/list/basicTable',
+						component: [import('@views/List/BasicTable')],
 					}
 				]
 			},
