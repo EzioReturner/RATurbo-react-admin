@@ -1,13 +1,13 @@
 @import '@style/color.scss';
 
 .footer {
-  color: $text-color-secondary;
+  color: $color-text-secondary;
   margin-bottom: 16px;
   text-align: center;
 }
 
 .link {
-  color: $text-color-secondary;
+  color: $color-text-secondary;
   cursor: pointer;
   &:hover {
     color: $color-primary;

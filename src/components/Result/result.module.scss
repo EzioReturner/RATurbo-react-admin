@@ -7,9 +7,11 @@
 
 .icon {
   font-size: 72px;
-  line-height: 72px;
   margin-bottom: 24px;
   color: $color-success;
+  &.failed {
+    color: $color-error;
+  }
 }
 
 .title {
@@ -23,6 +25,17 @@
 .subTitle {
   font-size: 14px;
   line-height: 22px;
-  color: $text-color-secondary;
+  color: $color-text-secondary;
   margin-bottom: 24px;
+}
+
+.extra {
+  background: #fafafa;
+  padding: 24px 40px;
+  border-radius: 2px;
+  text-align: left;
+}
+
+.actions {
+  margin-top: 32px;
 }

@@ -11,6 +11,9 @@
   "menu.list.cardList": "卡片列表",
   "menu.list.basicList": "基础列表",
   "menu.list.basicTable": "基础表格",
+  "menu.result": "结果页",
+  "menu.result.successResult": "成功",
+  "menu.result.failedResult": "失败",
   "menu.map": "地图",
   "menu.gallery": "画廊",
   "menu.exception": "异常页",
@@ -66,8 +69,18 @@
   "basicList.title": "基础列表",
   "basicTable.title": "基础表格",
 
-  "action.success": "操作成功",
-  "action.fail": "操作失败",
+  "result.success.title": "操作成功",
+  "result.success.subtitle": "提交结果页用于反馈一系列操作任务的处理结果， 如果仅是简单操作，使用 Message 全局提示反馈即可。 本文字区域可以展示简单的补充说明，如果有类似展示 “单据”的需求，下面这个灰色区域可以呈现比较复杂的内容。",
+  "result.success.createProject": "创建项目",
+  "result.success.leaderCheck": "leader审核",
+  "result.success.financeCheck": "财务审核",
+  "result.success.finish": "完成",
+
+  "result.failed.title": "提交失败",
+  "result.failed.subtitle": "请核对并修改以下信息后，再重新提交。",
+  "result.failed.tips": "您提交的内容有如下错误：",
+  "result.failed.reason1": "您的申请权限未符合",
+  "result.failed.reason2": "您的风险等级过低",
 
   "platform.morning": "早上好",
   "platform.greating": "祝你有个美好的一天",
@@ -85,6 +98,9 @@
   "exception.403": "抱歉~你无权访问该页面",
   "exception.404": "好像找不到你要访问的页面哦~",
   "exception.500": "抱歉~服务器好像炸了~",
+
+  "action.success": "操作成功",
+  "action.fail": "操作失败",
 
   "title": "标题",
   "detail": "详情",

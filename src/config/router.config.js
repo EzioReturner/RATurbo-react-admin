@@ -118,6 +118,23 @@ const routeConfig = [
 				authority: ['admin']
 			},
 			{
+				name: 'result',
+				icon: 'info-circle',
+				path: '/result',
+				routes: [
+					{
+						name: 'successResult',
+						path: '/result/successResult',
+						component: [import('@views/Result/SuccessResult')],
+					},
+					{
+						name: 'failedResult',
+						path: '/result/failedResult',
+						component: [import('@views/Result/FailedResult')],
+					}
+				]
+			},
+			{
 				name: 'exception',
 				icon: 'exclamation-circle',
 				path: '/exception',
