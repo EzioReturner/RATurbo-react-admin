@@ -81,5 +81,21 @@
   "menu.list.basicList": "basicList",
   "cardList.title": "Card list",
   "cardList.subtitle": "Display the list data in the form of CARDS, which can display the main information and facilitate the operation",
-  "basicList.title": "Standard list"
+  "basicList.title": "Standard list",
+  "menu.list.basicTable": "basicTable",
+  "menu.result": "result",
+  "menu.result.successResult": "successResult",
+  "menu.result.failedResult": "failedResult",
+  "basicTable.title": "Basic form",
+  "result.success.title": "Operation is successful",
+  "result.success.subtitle": "The submit result page is used to feed back the processing results of a series of operation tasks. If it is only a simple operation, the Message global prompt can be used for feedback. This text area can show simple supplementary instructions. If there is a need to show \"documents\", the gray area below can show more complex contents.",
+  "result.success.createProject": "Create a project",
+  "result.success.leaderCheck": "Leader review",
+  "result.success.financeCheck": "Financial audit",
+  "result.success.finish": "complete",
+  "result.failed.title": "You submit",
+  "result.failed.subtitle": "Please check and modify the following information before resubmitting.",
+  "result.failed.tips": "Your submission contains the following error:",
+  "result.failed.reason1": "Your application permissions do not match",
+  "result.failed.reason2": "Your risk level is too low"
 }

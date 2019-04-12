@@ -81,5 +81,21 @@
   "menu.list.basicList": "標準リスト",
   "cardList.title": "カードの一覧",
   "cardList.subtitle": "リストデータはカード形式で表示され、主な情报が表示され、より简単に操作できる",
-  "basicList.title": "標準リスト"
+  "basicList.title": "標準リスト",
+  "menu.list.basicTable": "基礎表",
+  "menu.result": "結果ページ",
+  "menu.result.successResult": "成功",
+  "menu.result.failedResult": "失敗",
+  "basicTable.title": "基礎表",
+  "result.success.title": "作業が成功する",
+  "result.success.subtitle": "result informationページは、一連の動作タスクの処理結果をフィードバックするためのものであり、単なるアクションのみならばMessageグローバルはフィードバックを促すために使用される。この文字領域は、簡単な補足説明を示すことができるが、「奇数」という表現のような需要があれば、より複雑な内容を下に示すことができる。",
+  "result.success.createProject": "プロジェクトを作成する",
+  "result.success.leaderCheck": "リーダーチェック",
+  "result.success.financeCheck": "財務審査",
+  "result.success.finish": "完成",
+  "result.failed.title": "失敗を提出する",
+  "result.failed.subtitle": "以下の情報をチェックし修正してから、再提出してください。",
+  "result.failed.tips": "ご提出頂いた内容に次のような誤りがございます。",
+  "result.failed.reason1": "あなたの申請権限は該当しません",
+  "result.failed.reason2": "あなたのリスクは低い"
 }
