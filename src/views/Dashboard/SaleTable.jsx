@@ -88,14 +88,14 @@ class SaleTable extends Component {
 			</span>
 		);
 
-		const _renderAction = (text, record) => {
+		const _renderAction = (record) => {
 			return (
 				<span>
 					<a
 						href="javascript:;"
 						onClick={this.showConfirm.bind(this, ['invite', record])}
 					>
-						Invite {text}
+						Invite {record.name}
 					</a>
 					<Divider type="vertical" />
 					<a
@@ -103,9 +103,9 @@ class SaleTable extends Component {
 						onClick={this.showConfirm.bind(this, ['delete', record])}
 					>
 						Delete
-					</a>
+				</a>
 				</span>
-			);
+			)
 		};
 
 		const _renderProgress = progress => {

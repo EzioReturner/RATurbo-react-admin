@@ -16,7 +16,6 @@ class BasicTable extends Component {
 
   componentDidMount() {
     getTableData().then(({ data: { data } }) => {
-      console.log(data);
       this.setState({
         tableData: data
       })
