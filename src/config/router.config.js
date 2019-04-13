@@ -119,7 +119,7 @@ const routeConfig = [
 			},
 			{
 				name: 'result',
-				icon: 'info-circle',
+				icon: 'check-circle',
 				path: '/result',
 				routes: [
 					{
@@ -136,7 +136,7 @@ const routeConfig = [
 			},
 			{
 				name: 'exception',
-				icon: 'exclamation-circle',
+				icon: 'warning',
 				path: '/exception',
 				routes: [
 					{
