@@ -78,6 +78,10 @@
       align-items: center;
       padding: 0 8px;
 
+      .clockIcon {
+        margin-top: -2px;
+      }
+
       .text {
         display: inline-block;
         margin-left: 8px;
@@ -101,4 +105,8 @@
       }
     }
   }
+}
+
+.menuItem {
+  line-height: initial;
 }

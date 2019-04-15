@@ -64,16 +64,16 @@ class UserInfo extends Component {
 		<Menu>
 			<Menu.Item>
 				<Icon type="user" />
-				<span>user info</span>
+				<span className={styles.menuItem}>user info</span>
 			</Menu.Item>
 			<Menu.Item onClick={this.handleTriggerError}>
 				<Icon type="setting" />
-				<span>trigger error</span>
+				<span className={styles.menuItem}>trigger error</span>
 			</Menu.Item>
 			<Menu.Divider />
 			<Menu.Item onClick={this.handleLogout}>
 				<Icon type="logout" />
-				<span>logout</span>
+				<span className={styles.menuItem}>logout</span>
 			</Menu.Item>
 		</Menu>
 	);
@@ -93,14 +93,14 @@ class UserInfo extends Component {
 		return (
 			<div className={styles.userInfo}>
 				<span className={styles.clock}>
-					<Icon type="clock-circle" onClick={this.handleShowTime} />
+					<Icon type="clock-circle" onClick={this.handleShowTime} className={styles.clockIcon} />
 					<span
 						className={classNames(styles.text, showTime ? styles.showTime : '')}
 					>
 						{date.toLocaleTimeString()}
 					</span>
 				</span>
-				<Dropdown overlay={this.getMenu()}>
+				<Dropdown overlay={this.getMenu()} className={styles.userDropdown}>
 					<div className={styles.userDropdown}>
 						<Icon type="user" className={styles.userIcon} />
 						<span className={styles.text}>{name}</span>
