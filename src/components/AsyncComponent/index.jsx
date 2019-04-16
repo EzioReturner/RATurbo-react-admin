@@ -28,7 +28,7 @@ class AsyncComponent extends PureComponent {
 		} = this.props;
 		// 检查路径是否已加载 判断是否显示loading
 		this.props.layoutStore.checkIsInitial(route);
-		const { default: component } = await asyncComponent;
+		const { default: component } = await asyncComponent();
 		this.setState({
 			component: component,
 			animate: animate

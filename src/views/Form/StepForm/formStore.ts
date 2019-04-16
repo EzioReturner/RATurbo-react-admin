@@ -16,7 +16,7 @@ interface StepData {
 }
 
 class FormStore {
-  @observable current: number = 2;
+  @observable current: number = 0;
   @observable submitting: boolean = false;
   @observable data: StepData = {
     title: '',
@@ -30,19 +30,19 @@ class FormStore {
       id: 'form.stepTitle1',
       title: '填写信息',
       component: React.lazy(() =>
-        import(/* webpackChunkName: "403" */ './Step1')
+        import(/* webpackChunkName: "Step1" */ './Step1')
       ),
     }, {
       id: 'form.stepTitle2',
       title: '确认报告',
       component: React.lazy(() =>
-        import(/* webpackChunkName: "403" */ './Step2')
+        import(/* webpackChunkName: "Step2" */ './Step2')
       ),
     }, {
       id: 'form.stepTitle3',
       title: '完成',
       component: React.lazy(() =>
-        import(/* webpackChunkName: "403" */ './Step3')
+        import(/* webpackChunkName: "Step3" */ './Step3')
       ),
     }];
   }

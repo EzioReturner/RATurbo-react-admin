@@ -2,26 +2,26 @@ const routeConfig = [
 	// user
 	{
 		path: '/user',
-		component: [import('../layout/UserLayout'), 'fadeRA'],
+		component: [()=>import(/* webpackChunkName: "UserLayout" */ '../layout/UserLayout'), 'fadeRA'],
 		routes: [
 			{
 				name: 'Login',
 				path: '/user/login',
-				component: [import('@views/User/Login')]
+				component: [()=>import(/* webpackChunkName: "Login" */ '@views/User/Login')]
 			}
 		]
 	},
 	// app
 	{
 		path: '/',
-		component: [import('../layout/MainLayout'), 'fadeRA'],
+		component: [()=>import(/* webpackChunkName: "MainLayout" */ '../layout/MainLayout'), 'fadeRA'],
 		authority: ['admin', 'guest'],
 		routes: [
 			{
 				name: 'dashboard',
 				icon: 'pie-chart',
 				path: '/dashboard',
-				component: [import('@views/Dashboard')]
+				component: [()=>import(/* webpackChunkName: "Dashboard" */ '@views/Dashboard')]
 			},
 			{
 				path: '/',
@@ -37,18 +37,18 @@ const routeConfig = [
 					{
 						name: 'analysis',
 						path: '/program/analysis',
-						component: [import('@views/Program/Analysis')],
+						component: [()=>import(/* webpackChunkName: "Analysis" */ '@views/Program/Analysis')],
 						authority: ['admin']
 					},
 					{
 						name: 'monitor',
 						path: '/program/monitor',
-						component: [import('@views/Program/Monitor')]
+						component: [()=>import(/* webpackChunkName: "Monitor" */ '@views/Program/Monitor')]
 					},
 					{
 						name: 'platform',
 						path: '/program/platform',
-						component: [import('@views/Program/Platform')]
+						component: [()=>import(/* webpackChunkName: "Platform" */ '@views/Program/Platform')]
 					}
 				]
 			},
@@ -60,13 +60,13 @@ const routeConfig = [
 					{
 						name: 'basicForm',
 						path: '/form/basicForm',
-						component: [import('@views/Form/BasicForm')],
+						component: [()=>import(/* webpackChunkName: "BasicForm" */ '@views/Form/BasicForm')],
 						authority: ['admin']
 					},
 					{
 						name: 'stepForm',
 						path: '/form/stepForm',
-						component: [import('@views/Form/StepForm')]
+						component: [()=>import(/* webpackChunkName: "StepForm" */ '@views/Form/StepForm')]
 					},
 					{
 						name: 'test',
@@ -75,7 +75,7 @@ const routeConfig = [
 							{
 								name: 'test',
 								path: '/form/test/test1',
-								component: [import('@views/Form/TestDetail')]
+								component: [()=>import(/* webpackChunkName: "TestDetail" */ '@views/Form/TestDetail')]
 							}
 						]
 					}
@@ -89,17 +89,17 @@ const routeConfig = [
 					{
 						name: 'basicList',
 						path: '/list/basicList',
-						component: [import('@views/List/BasicList')],
+						component: [()=>import(/* webpackChunkName: "BasicList" */ '@views/List/BasicList')],
 					},
 					{
 						name: 'cardList',
 						path: '/list/cardList',
-						component: [import('@views/List/CardList')],
+						component: [()=>import(/* webpackChunkName: "CardList" */ '@views/List/CardList')],
 					},
 					{
 						name: 'basicTable',
 						path: '/list/basicTable',
-						component: [import('@views/List/BasicTable')],
+						component: [()=>import(/* webpackChunkName: "BasicTable" */ '@views/List/BasicTable')],
 					}
 				]
 			},
@@ -107,14 +107,14 @@ const routeConfig = [
 				name: 'map',
 				icon: 'heat-map',
 				path: '/map',
-				component: [import('@views/Map')],
+				component: [()=>import(/* webpackChunkName: "Map" */ '@views/Map')],
 				authority: ['admin']
 			},
 			{
 				name: 'gallery',
 				icon: 'picture',
 				path: '/gallery',
-				component: [import('@views/Gallery')],
+				component: [()=>import(/* webpackChunkName: "Gallery" */ '@views/Gallery')],
 				authority: ['admin']
 			},
 			{
@@ -125,12 +125,12 @@ const routeConfig = [
 					{
 						name: 'successResult',
 						path: '/result/successResult',
-						component: [import('@views/Result/SuccessResult')],
+						component: [()=>import(/* webpackChunkName: "SuccessResult" */ '@views/Result/SuccessResult')],
 					},
 					{
 						name: 'failedResult',
 						path: '/result/failedResult',
-						component: [import('@views/Result/FailedResult')],
+						component: [()=>import(/* webpackChunkName: "FailedResult" */ '@views/Result/FailedResult')],
 					}
 				]
 			},
@@ -142,22 +142,22 @@ const routeConfig = [
 					{
 						name: '403',
 						path: '/exception/403',
-						component: [import('@views/Exception/403')]
+						component: [()=>import(/* webpackChunkName: "403" */ '@views/Exception/403')]
 					},
 					{
 						name: '404',
 						path: '/exception/404',
-						component: [import('@views/Exception/404')]
+						component: [()=>import(/* webpackChunkName: "404" */ '@views/Exception/404')]
 					},
 					{
 						name: '500',
 						path: '/exception/500',
-						component: [import('@views/Exception/500')]
+						component: [()=>import(/* webpackChunkName: "500" */ '@views/Exception/500')]
 					},
 					{
 						name: 'index',
 						path: '/exception/home',
-						component: [import('@views/Exception')],
+						component: [()=>import(/* webpackChunkName: "Exception" */ '@views/Exception')],
 						hideMenu: true
 					}
 				]
