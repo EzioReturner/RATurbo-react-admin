@@ -13,7 +13,6 @@ class StepForm extends Component {
 	componentDidMount() {
 		formStore.initStep();
 	}
-
 	render() {
 		const { current, steps, getStepChild } = formStore;
 		const Child = getStepChild();
