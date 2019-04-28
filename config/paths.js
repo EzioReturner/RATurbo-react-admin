@@ -77,7 +77,7 @@ module.exports = {
 	appSrc: resolveApp('src'),
 	apiSrc: resolveApp('src/api'),
 	storeSrc: resolveApp('src/store'),
-	viewsSrc: resolveApp('src/views'),
+	viewSrc: resolveApp('src/view'),
 	styleSrc: resolveApp('src/style'),
 	assetsSrc: resolveApp('src/assets'),
 	comSrc: resolveApp('src/components'),

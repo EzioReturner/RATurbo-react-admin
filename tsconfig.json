@@ -22,7 +22,7 @@
       "@src/*": ["src/*"],
       "@api/*": ["src/api/*"],
       "@assets/*": ["src/assets/*"],
-      "@views/*": ["src/views/*"],
+      "@view/*": ["src/view/*"],
       "@style/*": ["src/style/*"],
       "@utlis/*": ["src/utlis/*"],
       "@components/*": ["src/components/*"],
