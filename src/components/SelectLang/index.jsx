@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Dropdown, Icon, Menu } from 'antd';
 import { inject, observer } from 'mobx-react';
 import styles from './selectlang.module.scss';
+import { i18n } from '../../config/setting';
 
+const { languages, defaultLanguage } = i18n;
 @inject('localeStore')
 @observer
 class SelectLang extends Component {
@@ -11,30 +13,19 @@ class SelectLang extends Component {
   }
 
   getMenu = () => {
-    const locales = ['zh', 'en', 'ja'];
     const { localeStore: { locale } } = this.props;
-    const selectedLang = locale;
+    const selectedLang = locale || defaultLanguage;
 
-    const languageLabels = {
-      'zh': '简体中文',
-      'en': 'English',
-      'ja': '日本語',
-    };
-    const languageIcons = {
-      'zh': '🇨🇳',
-      'en': '🇬🇧',
-      'ja': '🇯🇵',
-    };
     return (
       <Menu selectedKeys={[selectedLang]}>
-        {locales.map(locale =>
-          <Menu.Item key={locale} onClick={this.changeLang}>
+        {languages.map(({ key, icon, title }) =>
+          <Menu.Item key={key} onClick={this.changeLang}>
             <span style={{
               marginRight: '5px'
             }}>
-              {languageIcons[locale]}
+              {icon}
             </span>
-            {languageLabels[locale]}
+            {title}
           </Menu.Item>
         )}
       </Menu>
@@ -42,6 +33,8 @@ class SelectLang extends Component {
   };
 
   render() {
+    console.log(i18n);
+
     return <Dropdown overlay={this.getMenu()} placement="bottomRight">
       <div className={styles.langIcon}>
         <Icon type="global" className={styles.icon} />

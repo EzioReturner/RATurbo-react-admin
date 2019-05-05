@@ -20,8 +20,8 @@
 
 项目基于 create-react-app 搭建，相关依赖链接如下
 
-- [react](https://facebook.github.io/react/) (我就不多说了吧~...)
-- [react-router](https://react-guide.github.io/react-router-cn/)(<span style="color: rgb(243,121,52);">react路由，4.x的版本，如果还使用3.x的版本，请切换分支（ps:分支不再维护）</span>)
+- [react](https://facebook.github.io/react/)
+- [react-router](https://react-guide.github.io/react-router-cn/)(<span style="color: rgb(243,121,52);">react路由，4.x的版本</span>)
 - [mobx](https://github.com/mobxjs/mobx)(Mobx是一个功能强大,上手非常容易的状态管理工具)
 - [antd](https://ant.design/index-cn)(<span style="color: rgb(243,121,52);">蚂蚁金服开源的react ui组件框架</span>)
 - [axios](https://github.com/mzabriskie/axios)(<span style="color: rgb(243,121,52);">http请求模块</span>)
@@ -29,6 +29,7 @@
 - [nprogress](https://github.com/rstacruz/nprogress)(<span style="color: rgb(243,121,52);">顶部加载条</span>)
 - [animate.css](http://daneden.me/animate)(<span style="color: rgb(243,121,52);">css动画库</span>)
 - [moment](http://momentjs.cn/)(<span style="color: rgb(243,121,52);">时间工具库</span>)
+- [lodash](https://www.lodashjs.com/)(<span style="color: rgb(243,121,52);">是一个一致性、模块化、高性能的 JavaScript 实用工具库。</span>)
 - 其余省略
 
 ## function module &nbsp; 功能模块
@@ -38,16 +39,20 @@
 - 导航菜单
     - 顶部导航
     - 左侧菜单
+      - 菜单伸缩
 - 组件
     - 路由
       - route 权限校验
       - 异常处理
       - 路由配置渲染route
       - 路由配置渲染菜单
+    - 过渡动画
+    - 基础页面布局
     - 异步懒加载模块
     - loading遮罩模块
     - i18n 国际化
       - 支持多语言翻译
+    - 简易封装了echarts
 - UI组件
     - 场景
       - 分析页
@@ -66,26 +71,33 @@
     - 登录页面
     - 第三方登录 (施工中)
 - 多分辨率 & 移动端适配 
+- 支持TypeScript
 
 ## How to start &nbsp; 如何启动
 
-1. Clone project code.
+1. 下载或克隆项目源码
 
 ```bash
 git clone https://github.com/EzioReturner/RATurbo-react-admin.git my-ra
 cd my-ra
 ```
 
-2. Installation dependence.
+2. yarn 或者 npm安装相关包文件
 
 ```bash
 yarn install  Or  npm install
 ```
 
-3. Start local server.
+3. 启动项目
 
 ```bash
 yarn run ra  Or  npm run ra
 ```
 
 4. After the startup is completed, open your browser and visit [http://localhost:9527](http://localhost:9527), If you want to change the  port, you can configure it in the `.env` file.
+
+5. 打包项目
+
+```bash
+yarn build or npm run build
+```
