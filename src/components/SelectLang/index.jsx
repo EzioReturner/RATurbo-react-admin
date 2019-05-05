@@ -33,8 +33,6 @@ class SelectLang extends Component {
   };
 
   render() {
-    console.log(i18n);
-
     return <Dropdown overlay={this.getMenu()} placement="bottomRight">
       <div className={styles.langIcon}>
         <Icon type="global" className={styles.icon} />
