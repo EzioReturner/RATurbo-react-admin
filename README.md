@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/EzioReturner/ra-turbo">
-    <img alt="antd-admin" height="64" src="./public/favicon.ico">
+    <img alt="antd-admin" height="64" src="./media/favicon.ico">
   </a>
 </p>
 
@@ -10,13 +10,15 @@
   A front-end solution web applications.
 </div>
 
-## Preview &nbsp; 预览
+## 在线预览
 
-- <a href="http://ra-turbo.leanapp.cn" target="_blank">ra-turbo</a>
+- [ra-turbo](http://ra-turbo.leanapp.cn)
 
-## wiki 文档  （施工中）
+## 使用文档
 
-## dependencies &nbsp; 依赖模块
+- [wiki](https://ezioreturner.github.io/RATurbo-react-admin/#/)
+
+## 依赖模块
 
 项目基于 create-react-app 搭建，相关依赖链接如下
 
@@ -32,48 +34,7 @@
 - [lodash](https://www.lodashjs.com/)(<span style="color: rgb(243,121,52);">是一个一致性、模块化、高性能的 JavaScript 实用工具库。</span>)
 - 其余省略
 
-## function module &nbsp; 功能模块
-
-- 首页
-    - 完整布局
-- 导航菜单
-    - 顶部导航
-    - 左侧菜单
-      - 菜单伸缩
-- 组件
-    - 路由
-      - route 权限校验
-      - 异常处理
-      - 路由配置渲染route
-      - 路由配置渲染菜单
-    - 过渡动画
-    - 基础页面布局
-    - 异步懒加载模块
-    - loading遮罩模块
-    - i18n 国际化
-      - 支持多语言翻译
-    - 简易封装了echarts
-- UI组件
-    - 场景
-      - 分析页
-      - 工作台
-      - 监控台
-    - 画廊
-    - 表单页 
-    - 列表页
-    - 详情页 (施工中)
-    - 结果页
-    - 异常页
-    - 个人页 (施工中)
-- 图表
-    - echarts图表
-- 页面
-    - 登录页面
-    - 第三方登录 (施工中)
-- 多分辨率 & 移动端适配 
-- 支持TypeScript
-
-## How to start &nbsp; 如何启动
+## 如何启动
 
 1. 下载或克隆项目源码
 
@@ -94,10 +55,18 @@ yarn install  Or  npm install
 yarn run ra  Or  npm run ra
 ```
 
-4. After the startup is completed, open your browser and visit [http://localhost:9527](http://localhost:9527), If you want to change the  port, you can configure it in the `.env` file.
+4. 启动完成后打开浏览器访问 [http://localhost:9527](http://localhost:9527)，如果需要更改启动端口，可在 .env 文件中配置。
 
 5. 打包项目
 
 ```bash
 yarn build or npm run build
 ```
+
+## 支持环境
+
+现代浏览器。
+
+| [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>IE / Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Safari | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png" alt="Opera" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Opera |
+| --------- | --------- | --------- | --------- | --------- | 
+|IE11, Edge| last 2 versions| last 2 versions| last 2 versions| last 2 versions

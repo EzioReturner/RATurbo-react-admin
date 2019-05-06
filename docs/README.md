@@ -16,7 +16,7 @@
 
 ## 使用文档
 
-- [wiki](http://ra-turbo.leanapp.cn)
+- [wiki](https://ezioreturner.github.io/RATurbo-react-admin/#/)
 
 ## 依赖模块
 
