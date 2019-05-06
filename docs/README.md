@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/EzioReturner/ra-turbo">
-    <img alt="antd-admin" height="64" src="./_media/favicon.ico">
+    <img alt="antd-admin" height="64" src="./media/favicon.ico">
   </a>
 </p>
 
