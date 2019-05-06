@@ -13,7 +13,7 @@ const path = require('path');
 const axios = require('axios');
 const jsonFormat = require('json-format');
 const { i18n } = require('../src/config/setting');
-
+const { languages, defaultLanguage } = i18n;
 const locales = {};
 
 languages.forEach(item => {

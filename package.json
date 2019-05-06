@@ -86,7 +86,7 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "translate": "node scripts/translate.js",
-    "add-locales": "node scripts/addLocales.js",
+    "add-locale": "node scripts/addLocale.js",
     "create-view": "node scripts/tools.js"
   },
   "eslintConfig": {
