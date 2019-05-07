@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from 'antd';
+import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom';
 import styles from './exception.module.scss';
 import FormatterLocale from '@components/FormatterLocale';
@@ -25,6 +26,18 @@ class Exception extends Component {
 			</div>
 		);
 	}
+}
+
+Exception.propTypes = {
+	errorCode: PropTypes.oneOfType([
+		PropTypes.string, PropTypes.number
+	]),
+	title: PropTypes.oneOfType([
+		PropTypes.string, PropTypes.object
+	]),
+	subTitle: PropTypes.oneOfType([
+		PropTypes.string, PropTypes.object
+	]),
 }
 
 export default Exception;

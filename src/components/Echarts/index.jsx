@@ -28,7 +28,7 @@ class EchartsReact extends Component {
 		this.renderChart();
 	}
 
-	getInstance(id) {
+	getInstance() {
 		const { opts, theme } = this.props;
 		return (
 			echarts.getInstanceByDom(this.echartsDOM) ||
