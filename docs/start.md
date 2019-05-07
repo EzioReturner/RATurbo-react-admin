@@ -84,23 +84,16 @@ cd ra-turbo
 ```
 
 ## 本地开发
+推荐使用yarn，如npm安装过慢可使用淘宝镜像
 
 1.进入项目目录
 ```bash
-yarn install
-```
-或者
-```bash
-npm install
+yarn install Or npm install
 ```
 
 2.启动本地服务器
 ```bash
-yarn run ra
-```
-或者
-```bash
-npm run start
+yarn run ra Or npm run start
 ```
 
 3.启动完成后打开浏览器访问 [http://localhost:9527](http://localhost:9527)，如果需要更改启动端口，可在 .env 文件中配置。
@@ -108,5 +101,5 @@ npm run start
 4. 打包项目
 
 ```bash
-yarn build or npm run build
+yarn build Or npm run build
 ```

@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { inject } from 'mobx-react';
 import './login.scss';
 import 'animate.css';
+import { siteName } from '@src/config/setting';
 
 @withRouter
 @inject('userStore')
@@ -57,7 +58,9 @@ class FormContainer extends Component {
 		return (
 			<Fragment>
 				<div className="loginTitle">
-					R<span>A</span>-TORBO
+					{
+						siteName === 'RA-Turbo' ? <React.Fragment>R<span>A</span>-TORBO</React.Fragment> : siteName
+					}
 				</div>
 				<Form onSubmit={this.handleSubmit} className="login-form">
 					<Form.Item>

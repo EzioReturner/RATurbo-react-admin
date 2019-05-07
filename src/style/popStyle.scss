@@ -5,15 +5,4 @@
     display: flex;
     align-items: center;
   }
-
-  .ant-menu-item-selected > a,
-  .ant-menu-item-selected > a:hover,
-  .ant-menu-item > a:hover {
-    color: $color-primary-sec;
-  }
-  .ant-menu-item:active,
-  .ant-menu-submenu-title:active,
-  .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
-    background-color: $menu-item-background;
-  }
 }

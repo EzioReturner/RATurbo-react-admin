@@ -3,9 +3,8 @@ import { Menu, Icon } from 'antd';
 import { Link, withRouter } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
 import { intersection } from 'lodash';
-import { RLogo } from '@components/SvgIcon';
 import styles from './siderMenu.module.scss';
-
+import { siteName, logoPath } from '@src/config/setting';
 import classNames from 'classnames';
 
 const { SubMenu } = Menu;
@@ -101,9 +100,8 @@ class SiderMenu extends Component {
 		return <Menu.Item key={menu.path}>{this.getMenuItem(menu, parentName)}</Menu.Item>;
 	}
 
-	handleClickLink(name, path) {
-		const { isMobile, toggleCollapsed, setOpenMenus } = this.props.layoutStore;
-		// setOpenMenus(name, path);
+	handleClickLink() {
+		const { isMobile, toggleCollapsed } = this.props.layoutStore;
 		isMobile && toggleCollapsed();
 	}
 
@@ -117,7 +115,7 @@ class SiderMenu extends Component {
 				to={path}
 				replace
 				onClick={() => {
-					this.handleClickLink(name, path);
+					this.handleClickLink();
 				}}
 			>
 				{iconType && <Icon type={iconType} />}
@@ -158,10 +156,8 @@ class SiderMenu extends Component {
 				mode="inline"
 			>
 				<div className={styles.controlBut} onClick={this.handleLinkGithub}>
-					<div className={styles.rotateIcon}>
-						<Icon component={RLogo} className={styles.logoBorder} />
-					</div>
-					<span className={`ml-3 ${styles.title}`}>RA-TURBO</span>
+					<img src={require('../../assets/image/logo.png')} className={styles.logo} />
+					<span className={`ml-2 ${styles.title}`}>{siteName}</span>
 				</div>
 				<Menu
 					className="myMenu"

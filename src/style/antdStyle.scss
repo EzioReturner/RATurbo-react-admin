@@ -142,21 +142,14 @@
         background-color: $menu-item-background !important;
       }
 
-      // .ant-menu-submenu-title:hover {
-      //   .ant-menu-submenu-arrow::before,
-      //   .ant-menu-submenu-arrow::after {
-      //       background: linear-gradient(to right, $color-primary-sec, $color-primary-sec) !important;
-      //   }
-      // }
-
       &>.ant-menu-submenu > .ant-menu {
         background: rgba($color: $menu-item-background, $alpha: 0.5);
         .ant-menu-item > a {
-          color: rgba(0, 0, 0, 0.45);
+          color: $color-text-secondary;
         }
         & > .ant-menu-submenu {
           .ant-menu-submenu-title {
-            color: rgba(0, 0, 0, 0.45);
+            color: $color-text-secondary;
             padding-left: 70px !important;
           }
           .ant-menu-item {
@@ -180,7 +173,6 @@
 
       .ant-menu-item-selected {
         background-color: $menu-item-background;
-        // color: $color-primary-sec;
         position: relative;
         &:before {
           transform: scaleY(1);
@@ -201,7 +193,6 @@
         margin: 0 !important;
         text-align: left;
         &:hover {
-          // color: $color-primary-sec;
           .ant-menu-submenu-title {
             color: inherit;
           }
