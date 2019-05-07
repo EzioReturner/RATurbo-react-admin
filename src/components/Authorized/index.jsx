@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { CheckPermission } from './CheckPermission';
 import { inject } from 'mobx-react';
+import PropTypes from 'prop-types'
 
 @inject('userStore')
 class Authorized extends PureComponent {
@@ -15,6 +16,14 @@ class Authorized extends PureComponent {
 			unidentified
 		);
 	}
+}
+
+Authorized.propTypes = {
+	routeAuthority: PropTypes.oneOfType([
+		PropTypes.arrayOf(PropTypes.string),
+		PropTypes.string
+	]),
+	unidentified: PropTypes.node,
 }
 
 export default Authorized;

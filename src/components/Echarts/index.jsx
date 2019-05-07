@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import echarts from 'echarts';
 import { bind, clear } from 'size-sensor';
+import PropTypes from 'prop-types'
 
 class EchartsReact extends Component {
 	constructor(props) {
@@ -29,10 +30,11 @@ class EchartsReact extends Component {
 	}
 
 	getInstance() {
-		const { opts, theme } = this.props;
+		const { option, theme } = this.props;
+
 		return (
 			echarts.getInstanceByDom(this.echartsDOM) ||
-			echarts.init(this.echartsDOM, theme, opts)
+			echarts.init(this.echartsDOM, theme, option)
 		);
 	}
 
@@ -65,6 +67,15 @@ class EchartsReact extends Component {
 			/>
 		);
 	}
+}
+
+EchartsReact.propTypes = {
+	style: PropTypes.object,
+	className: PropTypes.string,
+	theme: PropTypes.string,
+	option: PropTypes.object,
+	notMerge: PropTypes.bool,
+	lazyUpdate: PropTypes.bool,
 }
 
 export default EchartsReact;
