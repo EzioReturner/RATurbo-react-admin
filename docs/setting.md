@@ -10,9 +10,9 @@
 
 ## copyright
 
-- 类型： `String`
+- 类型： `String[]`
 
-  配置版权声明，应用到登录页、`Primay`布局底部。
+  配置版权声明，应用到登录页、布局底部。
 
 ## logoPath
 

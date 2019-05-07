@@ -1,4 +1,6 @@
 module.exports = {
+  siteName: 'RA-Turbo',
+  copyright: ['RA-Turbo admin','ezioreturner@gmail.com','https://github.com/EzioReturner'],
   i18n: {
     languages: [
       {
