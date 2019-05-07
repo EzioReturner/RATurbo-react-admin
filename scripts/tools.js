@@ -1,28 +1,49 @@
 const fs = require('fs');
 const path = require('path');
+const TypeSrc = {
+  '-v': 'views',
+  '-c': 'components'
+}
+const ExternalTemplate = {
+  '-page': (upperName) => `import React, { Component } from 'react'; \n` +
+    `import PageWrapper from '@components/PageWrapper'; \n` +
+    `import FormatterLocale from '@components/FormatterLocale'; \n` +
+    '\n' +
+    `class ${upperName} extends Component { \n` +
+      '\n' +
+      'render() {\n' +
+        `return <PageWrapper title={<FormatterLocale defaultMessage="${upperName}" />}> \n` +
+        '\n' +
+        '</PageWrapper>; \n' +
+      '} \n' +
+    '} \n' +
+    '\n' +
+    `export default ${upperName};`,
+}
 
-function getTemplate(fileName) {
+function getTemplate(fileName, externalAction) {
   const upperName = fileName.charAt(0).toUpperCase() + fileName.slice(1);
-  return `import React, { Component } from 'react'; \n` +
+  return ExternalTemplate[externalAction] ? ExternalTemplate[externalAction](fileName) :
+    `import React, { Component } from 'react'; \n` +
     '\n' +
     `class ${upperName} extends Component { \n` +
     '\n' +
     '} \n' +
     '\n' +
-    `export default ${upperName};`
+    `export default ${upperName};`;
 }
 
-async function createFile(createType, fileName) {
+async function createFile(createType, fileName, externalAction) {
   const upperName = fileName.charAt(0).toUpperCase() + fileName.slice(1);
-  const _path = path.resolve(__dirname, `../src/${createType}/${upperName}`);
+  const _path = path.resolve(__dirname, `../src/${TypeSrc[createType]}/${upperName}`);
   fs.exists(_path, async function(exists) { 
     if (exists) {
       throw Error('file path was existed');
     } else {
       await fs.mkdir(_path, () => { }); 
-      await fs.writeFileSync(`${_path}/index.jsx`, getTemplate(fileName));
+      await fs.writeFileSync(`${_path}/index.jsx`, getTemplate(fileName, externalAction));
       await fs.writeFileSync(`${_path}/index.scss`, '');
-      console.log(`${fileName} component created`);
+      console.log(`createType: ···${fileName}··· created`);
     }
   })
 }
@@ -30,11 +51,18 @@ async function createFile(createType, fileName) {
   
 ;(async () => {
   const config_argv = JSON.parse(process.env.npm_config_argv);
-  const [actionName, fileName] = config_argv.original;
-  const [, createType] = actionName.split('-');
-  if (!fileName) {
-    throw Error('create action need file name');
-  } else {
-    createFile(createType, fileName)
+  let original = config_argv.original
+  if (original[0] === 'run') {
+    original = original.slice(1);
   }
+  let [, createType, fileName, externalAction] = original;
+  if (!['-v', '-c'].includes(createType)) {
+    console.log(`\n error---> unsupport create type: >>${createType}<< \n\n support create type---> [-v, -c] \n`);
+    return;
+  }
+  if (!fileName) {
+    console.log('\n error---> raCreate action need file name \n\n like---> yarn raCreate -v example \n');
+    return;
+  } 
+  createFile(createType, fileName, externalAction);
 })();

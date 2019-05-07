@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 import AsyncComponent from '../AsyncComponent';
 import { inject } from 'mobx-react';
-import Error from '@view/Exception/404';
+import Error from '@views/Exception/404';
 
 class RouteMiddle extends PureComponent {
 	render() {

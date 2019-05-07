@@ -88,7 +88,7 @@
     "test": "node scripts/test.js",
     "translate": "node scripts/translate.js",
     "add-locale": "node scripts/addLocale.js",
-    "create-view": "node scripts/tools.js"
+    "raCreate": "node scripts/tools.js"
   },
   "eslintConfig": {
     "extends": "react-app"

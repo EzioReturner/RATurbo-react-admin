@@ -96,10 +96,4 @@ yarn install Or npm install
 yarn run ra Or npm run start
 ```
 
-3.启动完成后打开浏览器访问 [http://localhost:9527](http://localhost:9527)，如果需要更改启动端口，可在 .env 文件中配置。
-
-4. 打包项目
-
-```bash
-yarn build Or npm run build
-```
+> 启动完成后打开浏览器访问 [http://localhost:9527](http://localhost:9527)，如果需要更改启动端口，可在 .env 文件中配置。

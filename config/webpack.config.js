@@ -285,7 +285,7 @@ module.exports = function(webpackEnv) {
 				'@api': paths.apiSrc,
 				'@store': paths.storeSrc,
 				'@assets': paths.assetsSrc,
-				'@view': paths.viewSrc,
+				'@views': paths.viewSrc,
 				'@style': paths.styleSrc,
 				'@utlis': paths.utlisSrc,
 				'@components': paths.comSrc

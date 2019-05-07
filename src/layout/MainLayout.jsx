@@ -10,7 +10,7 @@ import { observer, inject } from 'mobx-react';
 import styles from './mainLayout.module.scss';
 
 const Exception403 = React.lazy(() =>
-	import(/* webpackChunkName: "403" */ '@view/Exception/403')
+	import(/* webpackChunkName: "403" */ '@views/Exception/403')
 );
 
 @withRouter
