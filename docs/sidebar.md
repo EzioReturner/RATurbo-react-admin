@@ -1,12 +1,16 @@
 * 入门
   * [快速上手](/start)
+  * [新增页面](/addPage)
+  * [Http请求](/httpRequest)
 * 配置相关
   * [系统配置](/setting)
   * [国际化](/i18n)
-  * [Http请求](/httpRequest)
   * [路由菜单](/routerMenu)
+* 进阶
+  * [路由与权限](/routerAuthor)
+  * [过渡效果](/transition)
+  * [样式与主题](/cssStyle)
+  * [功能组件](/components)
 * 工程
   * [内置命令](/scripts)
-  * [css & style](/cssStyle)
-  * [typescript](/typescript)
-  * [部署](/deploy)
+  * [构建与发布](/deploy)

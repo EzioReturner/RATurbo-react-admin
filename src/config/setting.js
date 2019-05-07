@@ -1,7 +1,7 @@
 module.exports = {
   siteName: 'RA-Turbo',
   copyright: ['RA-Turbo admin', 'ezioreturner@gmail.com', 'https://github.com/EzioReturner'],
-  logoPath: 'src/assets/image/logo.png',
+  logoPath: '/logo.png',
   i18n: {
     languages: [
       {

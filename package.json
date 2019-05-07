@@ -100,6 +100,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@babel/plugin-proposal-export-default-from": "^7.2.0",
     "@babel/plugin-syntax-jsx": "^7.2.0",
     "awesome-typescript-loader": "^5.2.1",
     "less": "^3.9.0",

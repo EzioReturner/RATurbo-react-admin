@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
 import { intersection } from 'lodash';
 import styles from './siderMenu.module.scss';
-import { siteName, logoPath } from '@src/config/setting';
+import { logoPath, siteName } from '@src/config/setting';
 import classNames from 'classnames';
 
 const { SubMenu } = Menu;
@@ -156,7 +156,7 @@ class SiderMenu extends Component {
 				mode="inline"
 			>
 				<div className={styles.controlBut} onClick={this.handleLinkGithub}>
-					<img src={require('../../assets/image/logo.png')} className={styles.logo} />
+					<img src={logoPath} className={styles.logo} />
 					<span className={`ml-2 ${styles.title}`}>{siteName}</span>
 				</div>
 				<Menu

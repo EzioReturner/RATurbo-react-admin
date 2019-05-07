@@ -10,6 +10,7 @@
       }
     ],
     "@babel/plugin-syntax-jsx",
+    "@babel/plugin-proposal-export-default-from",
     [
       "import", {
         "libraryName": "antd",
