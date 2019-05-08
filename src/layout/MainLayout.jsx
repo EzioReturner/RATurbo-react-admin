@@ -19,7 +19,7 @@ const Exception403 = React.lazy(() =>
 class MainLayout extends Component {
 	render() {
 		const {
-			layoutStore: { collapsed, isMobile, toggleCollapsed },
+			layoutStore: { collapsed, isMobile, toggleCollapsed, spinning, fixed },
 			children,
 			location: { pathname },
 			route
@@ -31,7 +31,7 @@ class MainLayout extends Component {
 				unidentified={<Redirect to="/user/login" />}
 			>
 				<div className={styles.container}>
-					<Loading />
+					<Loading spinning={spinning} fixed={fixed} />
 					<Navigator
 						collapsed={collapsed}
 						isMobile={isMobile}

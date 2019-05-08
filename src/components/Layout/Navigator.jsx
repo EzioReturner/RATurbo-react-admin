@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Drawer } from 'antd';
 import SiderMenu from './SiderMenu';
+import PropTypes from 'prop-types'
 
 class Navigater extends Component {
 	render() {
@@ -22,8 +23,15 @@ class Navigater extends Component {
 				<SiderMenu />
 			</Drawer>
 		) : (
-			<SiderMenu />
-		);
+				<SiderMenu />
+			);
 	}
 }
+
+Navigater.propTypes = {
+	isMobile: PropTypes.bool,
+	collapsed: PropTypes.bool,
+	toggleCollapsed: PropTypes.func,
+}
+
 export default Navigater;

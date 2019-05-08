@@ -9,7 +9,7 @@ class Performance extends PureComponent {
 				bordered={false}
 				hoverable
 				className="performance-card fat-card"
-				title={<p className="headerTitle"> <FormatterLocale id="dashboard.perTitle" defaultMessage="表现历史" /></p>}
+				title={<p className="headerTitle"> <FormatterLocale id="dashboard.perTitle" defaultMessage="历史表现" /></p>}
 			>
 				<div className="justify-between warp-flex">
 					<div>

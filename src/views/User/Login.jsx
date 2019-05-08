@@ -26,7 +26,7 @@ class FormContainer extends Component {
 
 	handleSubmit = e => {
 		e.preventDefault();
-		this.props.form.validateFields((err, values) => {
+		this.props.form.validateFields(err => {
 			if (!err) {
 				this.setState({
 					loading: true
@@ -35,7 +35,7 @@ class FormContainer extends Component {
 					'userName',
 					'password'
 				]);
-				return new Promise(resolve => {
+				return new Promise(() => {
 					setTimeout(() => {
 						this.props.userStore
 							.handleUserLogin(userName, password)

@@ -97,5 +97,6 @@
   "button.nextStep": "次のステップ",
   "button.submit": "提出",
   "button.prevStep": "一歩進む",
-  "button.backHome": "トップページに戻る"
+  "button.backHome": "トップページに戻る",
+  "dashboard.perTitle": "歴史的表現"
 }

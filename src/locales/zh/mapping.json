@@ -26,6 +26,7 @@
   "dashboard.worstPerformance": "最劣表现",
   "dashboard.sales": "销售量",
   "dashboard.visits": "访问量",
+  "dashboard.perTitle": "历史表现",
   "dashboard.rowInfo0.title": "收益总额",
   "dashboard.rowInfo0.tips": "65% 增长放缓",
   "dashboard.rowInfo1.title": "订单数",

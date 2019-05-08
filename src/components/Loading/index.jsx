@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import { observer, inject } from 'mobx-react';
 import styles from './loading.module.scss';
+import PropTypes from 'prop-types'
 
 /**
  * loading组件
@@ -12,7 +13,7 @@ import styles from './loading.module.scss';
 @observer
 class Loading extends Component {
 	render() {
-		const { spinning, fixed } = this.props.layoutStore;
+		const { spinning, fixed } = this.props;
 		return (
 			<div
 				className={classNames(
@@ -28,6 +29,11 @@ class Loading extends Component {
 			</div>
 		);
 	}
+}
+
+Loading.propTypes = {
+	spinning: PropTypes.bool,
+	fixed: PropTypes.bool
 }
 
 export default Loading;

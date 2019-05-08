@@ -8,6 +8,7 @@ const ExternalTemplate = {
   '-page': (upperName) => `import React, { Component } from 'react'; \n` +
     `import PageWrapper from '@components/PageWrapper'; \n` +
     `import FormatterLocale from '@components/FormatterLocale'; \n` +
+    `import style from './index.module.scss'; \n` +
     '\n' +
     `class ${upperName} extends Component { \n` +
       '\n' +
@@ -25,6 +26,7 @@ function getTemplate(fileName, externalAction) {
   const upperName = fileName.charAt(0).toUpperCase() + fileName.slice(1);
   return ExternalTemplate[externalAction] ? ExternalTemplate[externalAction](fileName) :
     `import React, { Component } from 'react'; \n` +
+    `import style from './index.module.scss'; \n` +
     '\n' +
     `class ${upperName} extends Component { \n` +
     '\n' +
@@ -42,7 +44,7 @@ async function createFile(createType, fileName, externalAction) {
     } else {
       await fs.mkdir(_path, () => { }); 
       await fs.writeFileSync(`${_path}/index.jsx`, getTemplate(fileName, externalAction));
-      await fs.writeFileSync(`${_path}/index.scss`, '');
+      await fs.writeFileSync(`${_path}/index.module.scss`, '');
       console.log(`createType: ···${fileName}··· created`);
     }
   })

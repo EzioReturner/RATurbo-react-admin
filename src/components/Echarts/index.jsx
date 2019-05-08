@@ -73,7 +73,10 @@ EchartsReact.propTypes = {
 	style: PropTypes.object,
 	className: PropTypes.string,
 	theme: PropTypes.string,
-	option: PropTypes.object,
+	option: PropTypes.oneOfType([
+		PropTypes.object,
+		PropTypes.arrayOf(PropTypes.object)
+	]),
 	notMerge: PropTypes.bool,
 	lazyUpdate: PropTypes.bool,
 }
