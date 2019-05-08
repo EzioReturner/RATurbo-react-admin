@@ -69,11 +69,11 @@ const routeConfig = [
 						component: [()=>import(/* webpackChunkName: "StepForm" */ '@views/Form/StepForm')]
 					},
 					{
-						name: 'test',
+						name: '三级菜单',
 						path: '/form/test',
 						routes: [
 							{
-								name: 'test',
+								name: '三级菜单',
 								path: '/form/test/test1',
 								component: [()=>import(/* webpackChunkName: "TestDetail" */ '@views/Form/TestDetail')]
 							}

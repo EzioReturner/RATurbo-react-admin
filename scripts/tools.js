@@ -14,7 +14,7 @@ const ExternalTemplate = {
       '\n' +
       'render() {\n' +
         `return <PageWrapper title={<FormatterLocale defaultMessage="${upperName}" />}> \n` +
-        '\n' +
+        `${upperName} is at work \n`+
         '</PageWrapper>; \n' +
       '} \n' +
     '} \n' +

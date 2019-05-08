@@ -19,7 +19,7 @@
   color: rgba(0,0,0,.45);
   font-weight: 400;
   &.display {
-    color: rgba(0,0,0,.65);
+    color: rgba(0,0,0,.85);
   }
   &:hover {
     padding: 0 40px 0 25px !important;
@@ -67,6 +67,9 @@
   opacity: 0;
   transition-delay: 0.1s;
   transition: opacity 0.3s;
+  padding: 8px;
+  margin-top: -8px;
+  margin-right: -8px;
 }
 
 .title {
