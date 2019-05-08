@@ -1,1 +1,36 @@
 # Http 请求
+
+RA使用axios提供http请求服务，RA在其基础之上进行了封装，文件位于 `src/utlis/io.js`
+
+## 自定义Header 
+通过调用 `setHeader` 方法可手动修改Header
+```javascript
+setHeader = (key, val) => {
+  this.instance.defaults.headers.common[key] = val;
+};
+```
+> 例如，我们在头部将缓存策略设置为不缓存 no-cache
+
+```javascript
+import io from '@utlis/io';
+function getSome() {
+  io.setHeader('Cache-Control', 'no-cache');
+  io.sendRequest('get',{url, query});
+}
+```
+
+## 拦截器
+
+RA的io工具提供了拦截器的入口，可以针对不同的接口需要进行拦截设置
+
+```javascript
+this.instance.interceptors.request.use(
+  config => {
+    {do something}
+    return config;
+  },
+  error => {
+    Promise.reject(error);
+  }
+);
+```

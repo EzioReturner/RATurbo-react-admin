@@ -1,7 +1,7 @@
-import request from '@utlis/io';
+import io from '@utlis/io';
 
 function getWeather() {
-	return request.sendRequest('get', {
+	return io.sendRequest('get', {
 		path: 'https://restapi.amap.com/v3/weather/weatherInfo',
 		params: {
 			key: 'cc24ccab0a88c3ee17eb8dee0e07ba61',

@@ -7,7 +7,7 @@
 <h1 align="center">RA Turbo</h1>
 
 <div align="center">
-  A front-end solution web applications.
+  基于react，antd的前端中后台解决方案
 </div>
 
 ## 在线预览
