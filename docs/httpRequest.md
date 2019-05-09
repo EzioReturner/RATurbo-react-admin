@@ -21,7 +21,7 @@ function getSome() {
 
 ## 拦截器
 
-RA的io工具提供了拦截器的入口，可以针对不同的接口需要进行拦截设置
+io工具提供了拦截器的入口，可以针对不同的接口需要进行拦截设置
 
 ```javascript
 this.instance.interceptors.request.use(
@@ -33,4 +33,29 @@ this.instance.interceptors.request.use(
     Promise.reject(error);
   }
 );
+```
+
+## 异常处理
+
+io工具提供了接口请求异常的处理方法，针对restful风格的接口对不同状态码进行异常处理
+
+```javascript
+handleError = error => {
+  const { message, status } = error;
+  switch (status) {
+    case 401:
+      {do something}
+      break;
+    case 404:
+      {do something}
+      break;
+    case 500:
+      {do something}
+      break;
+    default:
+      this.notify(message || error);
+      break;
+  }
+  return Promise.reject(error);
+};
 ```

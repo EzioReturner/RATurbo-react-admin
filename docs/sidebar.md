@@ -4,13 +4,13 @@
   * [Http请求](/httpRequest)
   * [路由与菜单](/router)
 * 进阶
-  * [权限控制](/routerAuthor)
+  * [权限控制](/authority)
   * [过渡效果](/transition)
+  * [国际化](/i18n)
   * [异常处理](/exception)
   * [样式与主题](/cssStyle)
 * 配置相关
   * [系统配置](/setting)
-  * [国际化](/i18n)
 * 工程
   * [使用typescript](/typescript)
   * [内置命令](/scripts)
