@@ -47,7 +47,7 @@ todo...
 
 ### 面包屑
 
-面包屑由 `PageHeader` 的 [Breadcrumb](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/components/PageHeader/Breadcrumb.jsx) 组件实现。挂载 `PageWrapper` 的组件将自动添加面包屑，面包屑不需要传入参数，面包屑的数据 [layoutStore](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/store/layoutStore.ts) 的 `breadcrumbList` 提供。
+面包屑由 `PageHeader` 的 [Breadcrumb](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/components/PageHeader/Breadcrumb.jsx) 组件实现。挂载 `PageWrapper` 的组件将自动添加面包屑，面包屑不需要传入参数，面包屑的数据通过 [layoutStore](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/store/layoutStore.ts) 的 `breadcrumbList` 提供。
 
 `breadcrumbList` 数据格式如下：
 
@@ -59,4 +59,4 @@ todo...
 }
 ```
 
-> 若需要单独使用面包屑组件，在页面中挂载 `Breadcrumb` 组件即可。
+> 如需要单独使用面包屑组件，在页面中挂载 `Breadcrumb` 组件即可。

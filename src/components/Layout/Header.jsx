@@ -13,29 +13,29 @@ const confirm = Modal.confirm;
 class UserInfo extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			date: new Date(),
-			showTime: false
-		};
+		// this.state = {
+		// 	date: new Date(),
+		// 	showTime: false
+		// };
 	}
 
 	componentDidMount() {
-		this.timerID = setInterval(() => {
-			this.tick();
-		}, 1000);
-		const { userInfo, reloadUserInfo } = this.props.userStore;
-		if (JSON.stringify(userInfo) === '{}') {
-			reloadUserInfo();
-		}
+		// this.timerID = setInterval(() => {
+		// 	this.tick();
+		// }, 1000);
+		// const { userInfo, reloadUserInfo } = this.props.userStore;
+		// if (JSON.stringify(userInfo) === '{}') {
+		// 	reloadUserInfo();
+		// }
 	}
 
-	componentWillUnmount() {
-		clearInterval(this.timerID);
-	}
+	// componentWillUnmount() {
+	// 	clearInterval(this.timerID);
+	// }
 
-	tick() {
-		this.setState({ date: new Date() });
-	}
+	// tick() {
+	// 	this.setState({ date: new Date() });
+	// }
 
 	handleLogout = () => {
 		confirm({
@@ -78,29 +78,30 @@ class UserInfo extends Component {
 		</Menu>
 	);
 
-	handleShowTime = () => {
-		this.setState({
-			showTime: !this.state.showTime
-		});
-		setTimeout(() => {
-			this.state.showTime && this.handleShowTime();
-		}, 3000);
-	};
+	// handleShowTime = () => {
+	// 	this.setState({
+	// 		showTime: !this.state.showTime
+	// 	});
+	// 	setTimeout(() => {
+	// 		this.state.showTime && this.handleShowTime();
+	// 	}, 3000);
+	// };
 
 	render() {
-		const { date, showTime } = this.state;
+		// const { date, showTime } = this.state;
+
 		const { name } = this.props.userStore.userInfo;
 		return (
 			<div className={styles.userInfo}>
-				<span className={styles.clock}>
+				{/*  <span className={styles.clock}>
 					<Icon type="clock-circle" onClick={this.handleShowTime} className={styles.clockIcon} />
 					<span
 						className={classNames(styles.text, showTime ? styles.showTime : '')}
 					>
 						{date.toLocaleTimeString()}
 					</span>
-				</span>
-				<Dropdown overlay={this.getMenu()} className={styles.userDropdown}>
+				</span> */}
+				<Dropdown overlay={this.getMenu()} className={styles.userDropdown} placement="bottomRight">
 					<div className={styles.userDropdown}>
 						<Icon type="user" className={styles.userIcon} />
 						<span className={styles.text}>{name}</span>
@@ -120,6 +121,7 @@ class Header extends Component {
 
 	render() {
 		const { toggleCollapsed, collapsed, isMobile } = this.props.layoutStore;
+		console.log('header');
 		const iconCollapsed = collapsed ? 'menu-unfold' : 'menu-fold';
 		return (
 			<div

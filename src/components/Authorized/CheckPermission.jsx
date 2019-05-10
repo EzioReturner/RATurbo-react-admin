@@ -12,6 +12,9 @@ export const CheckPermission = (
 	Target,
 	Unidentified
 ) => {
+	if (!currentAuthority || currentAuthority.length === 0) {
+		return Unidentified
+	}
 	if (!routeAuthority) {
 		return Target;
 	}
