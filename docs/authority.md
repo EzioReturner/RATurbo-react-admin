@@ -47,6 +47,6 @@ ReactDOM.render(
 RA模板中的权限操作实现在 [src/store/userStore](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/store/userStore.ts) 中，系统的权限保存在 `localStorage` 中，实际项目中可能需要从后台获取权限。
 
 
-### 如果动态追加调整页面权限
+### 如何动态追加调整页面权限
 
 todo...
