@@ -50,7 +50,6 @@ async function createFile(createType, fileName, externalAction) {
   })
 }
   
-  
 ;(async () => {
   const config_argv = JSON.parse(process.env.npm_config_argv);
   let original = config_argv.original
