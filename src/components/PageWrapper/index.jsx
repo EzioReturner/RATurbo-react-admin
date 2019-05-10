@@ -4,10 +4,10 @@ import styles from './pageWrapper.module.scss';
 
 class PageWrapper extends Component {
 	render() {
-		const { children, ...restProps } = this.props;
+		const { hideHeader, children, ...restProps } = this.props;
 		return (
 			<div className={styles.pageWrapper}>
-				<PageHeader {...restProps} />
+				{!hideHeader && <PageHeader {...restProps} />}
 				<div className={styles.pageBody}>{children}</div>
 			</div>
 		);

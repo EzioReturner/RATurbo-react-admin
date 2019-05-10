@@ -20,6 +20,12 @@
 
   配置站点 Logo，应用到登录框，侧边栏顶部的 Logo 显示。
 
+## menuLinkUrl
+
+- 类型： `String`
+
+  左侧菜单顶部点击的弹出窗口url地址。
+
 ## fixedHeader
 
 - 类型： `String`

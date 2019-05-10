@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
 import { intersection } from 'lodash';
 import styles from './siderMenu.module.scss';
-import { logoPath, siteName } from '@src/config/setting';
+import { logoPath, siteName, menuLinkUrl } from '@src/config/setting';
 import classNames from 'classnames';
 
 const { SubMenu } = Menu;
@@ -137,10 +137,6 @@ class SiderMenu extends Component {
 		});
 	};
 
-	handleLinkGithub() {
-		window.open('https://github.com/EzioReturner/RATurbo-react-admin');
-	}
-
 	render() {
 		const {
 			location: { pathname },
@@ -155,10 +151,10 @@ class SiderMenu extends Component {
 				)}
 				mode="inline"
 			>
-				<div className={styles.controlBut} onClick={this.handleLinkGithub}>
+				<a className={styles.controlBut} href={menuLinkUrl} target="_blank">
 					<img src={logoPath} className={styles.logo} />
 					<span className={`ml-2 ${styles.title}`}>{siteName}</span>
-				</div>
+				</a>
 				<Menu
 					className="myMenu"
 					mode="inline"
