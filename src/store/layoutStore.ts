@@ -64,10 +64,20 @@ class LayoutStore {
     cache && (cache.display = true)
   };
 
-  @action delBreadcrumb = (name: string): any => {
-    const cache: Breadcrumb | undefined = this.breadcrumbList.find(res => res.name === name);
-    cache && (cache.display = false);
-    return this.breadcrumbList.find(res => res.display);
+  @action delBreadcrumb = (name: string, path: string): any => {
+    // const cache: Breadcrumb | undefined = this.breadcrumbList.find(res => res.name === name);
+    // cache && (cache.display = false);
+    // return this.breadcrumbList.find(res => res.display);
+    let delSelf = false;
+    this.breadcrumbList = this.breadcrumbList.reduce((total: Array<Breadcrumb>, index: Breadcrumb): Array<Breadcrumb> => {
+      if (index.name === name) {
+        index.display = false;
+        delSelf = index.path === path;
+      }
+      total.push(index);
+      return total;
+    }, []);
+    return delSelf ? this.breadcrumbList[0] : null;
   }
 
   // 停止loading

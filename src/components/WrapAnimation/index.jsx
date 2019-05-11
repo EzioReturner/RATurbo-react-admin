@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { inject, observer } from 'mobx-react';
 import 'animate.css';
-import './warpAnimation.scss';
+import './wrapAnimation.scss';
 
 /**
  * 动画组件

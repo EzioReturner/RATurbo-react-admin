@@ -14,13 +14,13 @@ class BreadCrumb extends Component {
 		layoutStore.addBreadcrumb(pathname);
 	}
 
-	handleDelBreadcrumb(name) {
-		const { layoutStore: { delBreadcrumb }, history } = this.props;
-		const existBread = delBreadcrumb(name);
-		if (!existBread) {
-			history.push('/dashboard');
-		} else {
-			history.push(existBread.path);
+	handleDelBreadcrumb(e, name) {
+		e.stopPropagation();
+		const { layoutStore: { delBreadcrumb }, history, location: { pathname } } = this.props;
+
+		const delSelf = delBreadcrumb(name, pathname);
+		if (delSelf) {
+			history.push(delSelf.path);
 		}
 	}
 
@@ -54,7 +54,7 @@ class BreadCrumb extends Component {
 						{localeObj[`menu.${key}`] || name}
 						<Icon type="close"
 							className={styles.closeIcon}
-							onClick={this.handleDelBreadcrumb.bind(this, name)} />
+							onClick={(e) => this.handleDelBreadcrumb(e, name)} />
 					</div> : null)
 			})}
 		</div>;

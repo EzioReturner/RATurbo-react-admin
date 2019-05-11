@@ -35,11 +35,11 @@ class ListTable extends Component {
   }
 
   handleSearch = (value) => {
-    console.log(value);
+    // console.log(value);
   }
 
   handleChange = (e) => {
-    console.log(`radio checked:${e.target.value}`);
+    // console.log(`radio checked:${e.target.value}`);
   }
 
   render() {
