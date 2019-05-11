@@ -30,7 +30,9 @@ class MainLayout extends Component {
 				unidentified={<Redirect to="/user/login" />}
 			>
 				<div className={styles.container}>
-					<Loading spinning={spinning} fixed={fixed} />
+					<Loading spinning={spinning}
+						fixed={fixed}
+						collapsed={collapsed} />
 					<Navigator
 						collapsed={collapsed}
 						isMobile={isMobile}

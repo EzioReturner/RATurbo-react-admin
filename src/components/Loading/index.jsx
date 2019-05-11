@@ -13,14 +13,16 @@ import PropTypes from 'prop-types'
 @observer
 class Loading extends Component {
 	render() {
-		const { spinning, fixed } = this.props;
+		const { spinning, fixed, collapsed, style } = this.props;
 		return (
 			<div
 				className={classNames(
 					styles.loading,
 					!spinning ? styles.hide : '',
-					fixed ? styles.fixed : ''
+					fixed ? styles.fixed : '',
+					collapsed ? styles.collapsed : ''
 				)}
+				style={style}
 			>
 				<div className={styles.content}>
 					<div className={styles.circle} />

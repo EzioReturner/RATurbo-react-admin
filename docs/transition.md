@@ -60,3 +60,11 @@ RA中提供了，两种过渡类组件，分别是 `WrapAnimation` 过渡动画�
 ```
 
 ## loading 过渡遮罩
+
+RA提供了可独立使用的 遮罩组件 `loading` ，接收下列两个参数：
+
+- `spining` 控制是否显示遮罩 
+- `fixed` 控制是否覆盖父级全局，该属性只在 `MainLayout` 文件中挂载生效。
+- `style` 向组件添加额外的样式属性
+
+![loading](/media/loading.gif)

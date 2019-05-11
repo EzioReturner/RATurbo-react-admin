@@ -25,7 +25,7 @@ class StepForm extends Component {
 							{steps.map(item => <Step key={item.id} title={<FormatterLocale id={item.id} defaultMessage={item.title} />} />)}
 						</Steps>
 					</div>
-					<Suspense fallback={<Loading fixed />}>
+					<Suspense fallback={<Loading spinning />}>
 						<Child />
 					</Suspense>
 				</Card>
