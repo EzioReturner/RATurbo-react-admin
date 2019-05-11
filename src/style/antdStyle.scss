@@ -172,7 +172,7 @@
       }
 
       .ant-menu-item-selected {
-        background-color: $menu-item-background;
+        background-color: $menu-item-background !important;
         position: relative;
         &:before {
           transform: scaleY(1);

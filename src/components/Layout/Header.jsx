@@ -121,7 +121,6 @@ class Header extends Component {
 
 	render() {
 		const { toggleCollapsed, collapsed, isMobile } = this.props.layoutStore;
-		console.log('header');
 		const iconCollapsed = collapsed ? 'menu-unfold' : 'menu-fold';
 		return (
 			<div

@@ -142,7 +142,7 @@ const routeConfig = [
 					{
 						name: '403',
 						path: '/exception/403',
-						component: ['/views/Exception/403']
+						component: ['/views/Exception/403','bounceIn-animated']
 					},
 					{
 						name: '404',

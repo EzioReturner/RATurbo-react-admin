@@ -25,8 +25,6 @@ class MainLayout extends Component {
 			route
 		} = this.props;
 		const routeAuthority = getRouteAuthority(pathname, route.routes);
-		console.log('MainLayout');
-
 		return (
 			<Authorized
 				unidentified={<Redirect to="/user/login" />}
