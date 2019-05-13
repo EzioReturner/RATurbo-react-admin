@@ -1,10 +1,47 @@
 # 样式与主题
 
-## 系统样式
+## 样式
+
+### Sass
+
+RA默认使用sass作为样式语言，建议在使用前或者遇到疑问时学习一下 [sass](https://www.sass.hk/) 的相关特性。
+
+### CSS Modules
+
+在样式开发过程中，有两个问题比较突出：
+
+`全局污染`，`选择器复杂` 未解决这两个问题，RA提供了CSS Modules 模块化方案，使用方法如下：
+
+```javascript
+import styles from './style.scss';
+
+<div className={styles.title}>{title}</div>
+```
+
+在上面的样式中，.title只会在本文件生效。如果需要一个全局生效的样式，可以使用 `:global` 。
+
+```css
+/* 定义全局样式 */
+:global(.text) {
+  font-size: 16px;
+}
+
+/* 定义多个全局样式 */
+:global {
+  .footer {
+    color: #ccc;
+  }
+  .sider {
+    background: #ebebeb;
+  }
+}
+```
+
+### 系统样式
 
 我们参考 Ant Design 视觉风格，并在其基础之上对部分样式进行了调整，如果对视觉风格有额外的要求，推荐使用以下的方式进行定制。
 
-### antd样式覆盖
+### Antd样式覆盖
 
 我们在 `src/style/antdStyle.scss` 中对部分 `antd` 的样式进行了重写，使其更贴近RA的整体风格，如需调整可在该文件中修改。
 
@@ -49,7 +86,7 @@ $color-white-darker-extra: darken($color-white, 20%) !default;
 ...
 ```
 
-### 更换主题
+## 主题
 
 我们基于 Ant Design React 进行开发，完全支持官方提供的 less 变量定制功能. 你可以在 `src/config/setting.js` 中对主题进行配置。
 

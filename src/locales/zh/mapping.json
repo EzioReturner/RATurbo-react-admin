@@ -20,6 +20,7 @@
   "menu.403": "403",
   "menu.404": "404",
   "menu.500": "500",
+  "menu.typescript": "使用TypeScript",
 
   "dashboard.trends": "全球趋势",
   "dashboard.bestPerformance": "最优表现",
@@ -106,7 +107,7 @@
   "title": "标题",
   "detail": "详情",
   "person": "人物",
-
+  
   "button.nextStep": "下一步",
   "button.submit": "提交",
   "button.prevStep": "上一步",
