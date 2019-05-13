@@ -34,6 +34,8 @@ const shouldInlineRuntimeChunk = process.env.INLINE_RUNTIME_CHUNK !== 'false';
 // Check if TypeScript is setup
 const useTypeScript = fs.existsSync(paths.appTsConfig);
 
+const setting = require('../src/config/setting');
+
 // style files regexes
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
@@ -118,12 +120,7 @@ module.exports = function(webpackEnv) {
 			if (preProcessor === 'less-loader') {
 				loader.options = {
 					...loader.options,
-					modifyVars: {
-						'primary-color': '#fb4491',
-						'link-color': '#fb4491',
-						'border-radius-base': '2px',
-						'font-size-base': '13px'
-					},
+					modifyVars: setting.theme,
 					javascriptEnabled: true
 				}
 			}

@@ -23,5 +23,11 @@ module.exports = {
       }
     ],
     defaultLanguage: 'zh'
-  }
+  },
+  theme: {
+    'primary-color': '#fb4491',
+    'link-color': '#fb4491',
+    'border-radius-base': '2px',
+    'font-size-base': '13px'
+  },
 }
