@@ -4,7 +4,7 @@
 
 ## 权限组件 Authorized
 
-这是RA权限管理的基础，基本思路是通过比对当前权限与准入权限，决定展示正常渲染内容还是异常内容。其核心实现位于 [src/components/Authorized/CheckPermission.jsx](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/components/Authorized/CheckPermission.jsx) 。
+这是RA权限管理的基础，基本思路是通过比对当前权限与准入权限，决定展示正常渲染内容还是异常内容。其核心实现位于 `CheckPermission.jsx`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/components/Authorized/CheckPermission.jsx) 。
 
 ### 控制菜单和路由权限
 
@@ -44,7 +44,7 @@ ReactDOM.render(
 
 ### RA中的权限
 
-RA模板中的权限操作实现在 [src/store/userStore](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/store/userStore.ts) 中，系统的权限保存在 `localStorage` 中，实际项目中可能需要从后台获取权限。
+RA模板中的权限操作实现在 `src/store/userStore`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/store/userStore.ts) 中，系统的权限保存在 `localStorage` 中，实际项目中可能需要从后台获取权限。
 
 
 ### 如何动态追加调整页面权限

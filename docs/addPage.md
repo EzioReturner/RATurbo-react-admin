@@ -66,7 +66,7 @@ class examplePage extends Component {
 export default examplePage;
 ```
 
->在路由配置项中添加相应的路由信息，配置过程可参考[路由与菜单](/router)，之后输入对应的url，我们可以看到如下页面，一个附带header头部，body，以及面包屑的基础页面已经生成
+>在路由配置项中添加相应的路由信息，配置过程可参考 [路由与菜单](/router)，之后输入对应的url，我们可以看到如下页面，一个附带header头部，body，以及面包屑的基础页面已经生成
 
 ![examplePage](/media/examplePage.png)
 
@@ -105,6 +105,6 @@ yarn raCreate -c exampleComponent
 
 - 类型： `string` 或者 `ReactDOM`
 
-详细对应可参考下图，具体使用代码参考 `src/views/List/CardList.jsx` 文件
+详细对应可参考下图，具体使用代码参考 `src/views/List/CardList.jsx`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/views/List/CardList.jsx) 文件
 
 ![pageHeader](/media/pageHeader.png)

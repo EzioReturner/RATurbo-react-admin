@@ -43,13 +43,13 @@ import styles from './style.scss';
 
 ### Antd样式覆盖
 
-我们在 `src/style/antdStyle.scss` 中对部分 `antd` 的样式进行了重写，使其更贴近RA的整体风格，如需调整可在该文件中修改。
+我们在 `src/style/antdStyle.scss`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/style/antdStyle.scss) 中对部分 `antd` 的样式进行了重写，使其更贴近RA的整体风格，如需调整可在该文件中修改。
 
 ### RA样式
 
 RA中提供了一些全局生效的css样式。例如：
 
-- 颜色值，可在 `src/style/color.scss` 中找到
+- 颜色值，可在 `src/style/color.scss`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/style/color.scss) 中找到
 
 ```css
 ...
@@ -61,7 +61,7 @@ $color-white-darker-extra: darken($color-white, 20%) !default;
 ...
 ```
 
-- 边距 字体 对齐方式，可在 `src/style/custom.scss` 中找到
+- 边距 字体 对齐方式，可在 `src/style/custom.scss`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/style/custom.scss) 中找到
 
 ```css
 ...
@@ -88,7 +88,7 @@ $color-white-darker-extra: darken($color-white, 20%) !default;
 
 ## 主题
 
-我们基于 Ant Design React 进行开发，完全支持官方提供的 less 变量定制功能. 你可以在 `src/config/setting.js` 中对主题进行配置。
+我们基于 Ant Design React 进行开发，完全支持官方提供的 less 变量定制功能. 你可以在 `src/config/setting.js`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/config/setting.js) 中对主题进行配置。
 
 ```javascript
 ...

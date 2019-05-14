@@ -8,7 +8,7 @@ RA中提供了，两种过渡类组件，分别是 `WrapAnimation` 过渡动画�
 
 ### 使用自定义过渡
 
- - 将过渡效果css放置在 `WrapAnimation/wrapAnimation.scss` 中，格式如下：
+ - 将过渡效果css放置在 `WrapAnimation/wrapAnimation.scss`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/tree/master/src/style/wrapAnimation.scss) 中，格式如下：
  ```css
   .my-node-enter {
     opacity: 0;

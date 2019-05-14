@@ -4,7 +4,7 @@ import FormatterLocale from '@components/FormatterLocale';
 const style = require('./index.module.scss');
 
 interface TitleProps {
-  title: string
+  title: string;
 }
 
 class Title extends Component<TitleProps, any> {

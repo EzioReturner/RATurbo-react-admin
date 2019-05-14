@@ -1,6 +1,6 @@
 # Http 请求
 
-RA使用axios提供http请求服务，RA在其基础之上进行了封装，文件位于 `src/utlis/io.js`
+RA使用axios提供http请求服务，RA在其基础之上进行了封装，文件位于 `src/utlis/io.js`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/utlis/io.js)
 
 ## 自定义Header 
 通过调用 `setHeader` 方法可手动修改Header
