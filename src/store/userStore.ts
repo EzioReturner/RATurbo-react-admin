@@ -1,10 +1,10 @@
-import { observable, configure, action, autorun } from 'mobx';
 import { getUserInfo, postLogin } from '@api/user';
+import { action, autorun, configure, observable, } from 'mobx';
 
 configure({ enforceActions: 'always' });
 class UserStore {
-  @observable userInfo: object = {};
-  @observable authority: Array<string> = [];
+  @observable public userInfo: object = {};
+  @observable public authority: string[] = [];
 
   constructor() {
     autorun(() => {
@@ -13,7 +13,7 @@ class UserStore {
     });
   }
 
-  getAuthority(str?: any): any {
+  public getAuthority(str?: any): any {
     const authorityString = typeof str === 'undefined' ? localStorage.getItem('ra-authority') : str;
     let authority;
     try {
@@ -27,13 +27,13 @@ class UserStore {
     return authority;
   }
 
-  @action setAuthority(authority: any): void {
+  @action public setAuthority(authority: any): void {
     const proAuthority = typeof authority === 'string' ? [authority] : authority;
     localStorage.setItem('ra-authority', JSON.stringify(proAuthority));
     this.authority = proAuthority;
   }
 
-  @action handleUserLogin(name: string, password: number): Promise<boolean> {
+  @action public handleUserLogin(name: string, password: number): Promise<boolean> {
     return postLogin(name, password).then((res: any) => {
       const { message, userInfo } = res.data;
       if (message === 'ok') {
@@ -47,29 +47,29 @@ class UserStore {
     });
   }
 
-  @action setUserInfo(userInfo: object): void {
+  @action public setUserInfo(userInfo: object): void {
     this.userInfo = userInfo;
     localStorage.setItem('ra-user', JSON.stringify(userInfo));
   }
 
-  @action userLogout(): void {
+  @action public userLogout(): void {
     this.userInfo = {};
     this.authority = [];
     localStorage.removeItem('ra-authority');
     localStorage.removeItem('ra-user');
   }
 
-  @action reloadUserInfo = async (): Promise<any> => {
+  @action public reloadUserInfo = async (): Promise<any> => {
     const ls: any = localStorage.getItem('ra-user');
     const au: any = this.getAuthority();
-    let _ui: object = {};
+    let ui: object = {};
     if (ls) {
-      _ui = JSON.parse(ls);
+      ui = JSON.parse(ls);
     } else {
       const data = await getUserInfo();
-      _ui = data.data[0];
+      ui = data.data[0];
     }
-    this.setUserInfo(_ui);
+    this.setUserInfo(ui);
     this.setAuthority(au);
   };
 }

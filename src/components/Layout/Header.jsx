@@ -23,10 +23,10 @@ class UserInfo extends Component {
 		// this.timerID = setInterval(() => {
 		// 	this.tick();
 		// }, 1000);
-		// const { userInfo, reloadUserInfo } = this.props.userStore;
-		// if (JSON.stringify(userInfo) === '{}') {
-		// 	reloadUserInfo();
-		// }
+		const { userInfo, reloadUserInfo } = this.props.userStore;
+		if (JSON.stringify(userInfo) === '{}') {
+			reloadUserInfo();
+		}
 	}
 
 	// componentWillUnmount() {
@@ -91,6 +91,8 @@ class UserInfo extends Component {
 		// const { date, showTime } = this.state;
 
 		const { name } = this.props.userStore.userInfo;
+		console.log(name);
+
 		return (
 			<div className={styles.userInfo}>
 				{/*  <span className={styles.clock}>
