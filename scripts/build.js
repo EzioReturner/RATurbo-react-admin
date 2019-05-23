@@ -128,7 +128,7 @@ function build(previousFileSizes) {
   console.log('Creating an optimized production build...');
 
   let compiler = webpack(config);
-
+  
   const progressPlugin = new webpack.ProgressPlugin(
     (percent, msg, addInfo) => {
       percent = Math.floor(percent * 100);

@@ -106,6 +106,7 @@
     "awesome-typescript-loader": "^5.2.1",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
+    "nyan-progress-webpack-plugin": "^1.2.0",
     "source-map-loader": "^0.2.4",
     "tslint": "^5.16.0",
     "tslint-config-prettier": "^1.18.0",

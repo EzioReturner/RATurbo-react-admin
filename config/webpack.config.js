@@ -26,6 +26,7 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin-alt')
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 
 const DashboardPlugin = require('webpack-dashboard/plugin');
+const NyanProgressPlugin = require('nyan-progress-webpack-plugin');
 
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
@@ -510,6 +511,12 @@ module.exports = function(webpackEnv) {
 		},
 		plugins: [
 			new webpack.ProgressPlugin(),
+			new NyanProgressPlugin({
+				debounceInterval: 60,
+				nyanCatSays() {
+					return '呦, 又在写 Bug 了?'
+				}
+			}),
 			new DashboardPlugin(),
 			// Generates an `index.html` file with the <script> injected.
 			new HtmlWebpackPlugin(
