@@ -128,6 +128,22 @@ function build(previousFileSizes) {
   console.log('Creating an optimized production build...');
 
   let compiler = webpack(config);
+
+  const progressPlugin = new webpack.ProgressPlugin(
+    (percent, msg, addInfo) => {
+      percent = Math.floor(percent * 100);
+
+      if (percent === 100) {
+        msg = 'Compilation completed';
+      }
+
+      if (addInfo) {
+        msg = `${msg} (${addInfo})`;
+      }
+    }
+  );
+  progressPlugin.apply(compiler);
+
   return new Promise((resolve, reject) => {
     compiler.run((err, stats) => {
       let messages;

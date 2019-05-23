@@ -91,7 +91,6 @@ class UserInfo extends Component {
 		// const { date, showTime } = this.state;
 
 		const { name } = this.props.userStore.userInfo;
-		console.log(name);
 
 		return (
 			<div className={styles.userInfo}>
