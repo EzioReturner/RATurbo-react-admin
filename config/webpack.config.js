@@ -27,6 +27,7 @@ const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 
 const DashboardPlugin = require('webpack-dashboard/plugin');
 const NyanProgressPlugin = require('nyan-progress-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
@@ -511,6 +512,7 @@ module.exports = function(webpackEnv) {
 		},
 		plugins: [
 			new webpack.ProgressPlugin(),
+			new BundleAnalyzerPlugin(),
 			new NyanProgressPlugin({
 				debounceInterval: 60,
 				nyanCatSays() {
