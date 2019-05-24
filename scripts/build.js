@@ -28,6 +28,11 @@ const printHostingInstructions = require('react-dev-utils/printHostingInstructio
 const FileSizeReporter = require('react-dev-utils/FileSizeReporter');
 const printBuildError = require('react-dev-utils/printBuildError');
 
+const NyanProgressPlugin = require('nyan-progress-webpack-plugin');
+
+const BundleAnalyzerPlugin = require(
+  'webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 const measureFileSizesBeforeBuild =
   FileSizeReporter.measureFileSizesBeforeBuild;
 const printFileSizesAfterBuild = FileSizeReporter.printFileSizesAfterBuild;
@@ -46,7 +51,10 @@ if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
 
 // Process CLI arguments
 const argv = process.argv.slice(2);
+
 const writeStatsJson = argv.indexOf('--stats') !== -1;
+
+const bundleAnalyze = argv.indexOf('--analyze') !== -1;
 
 // Generate configuration
 const config = configFactory('production');
@@ -129,6 +137,7 @@ function build(previousFileSizes) {
 
   let compiler = webpack(config);
   
+  // 打包进度
   const progressPlugin = new webpack.ProgressPlugin(
     (percent, msg, addInfo) => {
       percent = Math.floor(percent * 100);
@@ -143,6 +152,22 @@ function build(previousFileSizes) {
     }
   );
   progressPlugin.apply(compiler);
+
+  // 彩虹猫
+  const nyanProgressPlugin = new NyanProgressPlugin(
+    {
+      debounceInterval: 60,
+      nyanCatSays() {
+        return '呦, 又在写 Bug 了?'
+      }
+    }
+  );
+  nyanProgressPlugin.apply(compiler);
+
+  if (bundleAnalyze) {
+    const bundleAnalyzerPlugin = new BundleAnalyzerPlugin();
+    bundleAnalyzerPlugin.apply(compiler);
+  }
 
   return new Promise((resolve, reject) => {
     compiler.run((err, stats) => {

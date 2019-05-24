@@ -90,7 +90,7 @@
     "translate": "node scripts/translate.js",
     "add-locale": "node scripts/addLocale.js",
     "raCreate": "node scripts/tools.js",
-    "analyze": "NODE_ENV=production npm_config_report=true yarn run build"
+    "analyze": "node scripts/build.js --analyze"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -114,7 +114,6 @@
     "tslint-react": "^4.0.0",
     "typescript": "^3.3.3",
     "webpack-bundle-analyzer": "^3.3.2",
-    "webpack-cli": "^3.3.2",
     "webpack-dashboard": "^3.0.7"
   },
   "jest": {
