@@ -96,6 +96,10 @@ yarn install Or npm install
 yarn run ra Or npm run start
 ```
 
-> 启动完成后打开浏览器访问 [http://localhost:9527](http://localhost:9527)，你看到如下页面就表示成功啦！如果需要更改启动端口，可在 .env 文件中配置。
+> 当看到如下界面，就表示项目已经启动拉。
+
+![terminal](/media/terminal.png)
+
+> 启动完成后打开浏览器访问 [http://localhost:9527](http://localhost:9527)，如果需要更改启动端口，可在 .env 文件中配置。
 
 ![dashboard](/media/dashboard.png)
