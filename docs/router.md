@@ -43,7 +43,19 @@ RA中的路由，通过 `router.config.js` 统一进行管理。我们提供了�
 
 #### 从服务器请求菜单
 
-todo...
+只需在 `store/layoutStore.ts`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/store/layoutStore.ts) 中发起请求，将返回数据处理成类似格式即可。
+
+```javascript
+// 动态设置路由方法
+@action setMenu(): void {
+  const [user, app] = constantRouteConfig;
+  ...
+  获取异步菜单信息 
+  ...
+  app.routes = callbackData; // 在此处赋值
+  this.routeConfig = [user, app];
+}
+```
 
 ### 面包屑
 
