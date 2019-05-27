@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component, PureComponent } from 'react';
 import {
 	HashRouter as Router,
 	Route,
@@ -6,8 +6,8 @@ import {
 	Switch
 } from 'react-router-dom';
 import AsyncComponent from '../AsyncComponent';
-import { inject } from 'mobx-react';
-import Error from '@views/Exception/404';
+import { inject, observer } from 'mobx-react';
+import Error404 from '@views/Exception/404';
 
 class RouteMiddle extends PureComponent {
 	render() {
@@ -29,7 +29,8 @@ class RouteMiddle extends PureComponent {
  * 遍历路由表 生成多级路由
  */
 @inject('userStore', 'layoutStore')
-class RenderRoutes extends PureComponent {
+@observer
+class RenderRoutes extends Component {
 	generateRoute(routes, switchProps) {
 		return routes ? (
 			<Switch {...switchProps}>
@@ -80,7 +81,7 @@ class RenderRoutes extends PureComponent {
 						/>
 					);
 				})}
-				<Route component={Error} />
+				<Route component={Error404} />
 			</Switch>
 		) : null;
 	}
@@ -89,6 +90,8 @@ class RenderRoutes extends PureComponent {
 		const {
 			layoutStore: { routeConfig }
 		} = this.props;
+		console.log(routeConfig);
+
 		return <Router>{this.generateRoute(routeConfig)}</Router>;
 	}
 }

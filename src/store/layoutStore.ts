@@ -2,7 +2,7 @@ import { observable, configure, action } from 'mobx';
 import isMobile from '@utlis/isMobile';
 import debounce from '@utlis/debounce';
 import NProgress from 'nprogress';
-import routeConfig from '../config/router.config';
+import { constantRouteConfig, asyncRouteConfig } from '../config/router.config';
 interface Breadcrumb {
   name: string;
   path: string;
@@ -18,12 +18,12 @@ class LayoutStore {
   @observable openMenus: Array<string> = [];
   @observable isMobile: boolean = false;
   @observable breadcrumbList: Array<Breadcrumb> = [];
-  routeConfig: Array<object> = [];
+  @observable routeConfig: Array<object> = [];
 
   constructor() {
     this.addWindowEvent();
     this.changeStatus();
-    this.routeConfig = routeConfig;
+    this.initMenu();
   }
 
   addWindowEvent(): void {
@@ -35,6 +35,20 @@ class LayoutStore {
     );
   }
 
+  // 初始化菜单
+  @action initMenu(): void {
+    this.routeConfig = constantRouteConfig;
+    this.setMenu();
+  }
+
+  // 动态设置路由方法
+  @action setMenu(): void {
+    const [user, app] = constantRouteConfig;
+    app.routes = asyncRouteConfig;
+    this.routeConfig = [user, app];
+  }
+
+  // 响应分辨率
   @action changeStatus(): void {
     const info: any = isMobile(navigator.userAgent);
     this.isMobile = info.any;
@@ -50,6 +64,7 @@ class LayoutStore {
     }
   }
 
+  // 初始化面包屑
   @action initBreadcrumb(name: string, path: string): void {
     this.breadcrumbList.push({
       name,
@@ -64,6 +79,7 @@ class LayoutStore {
     cache && (cache.display = true)
   };
 
+  // 删除面包屑
   @action delBreadcrumb = (name: string, path: string): any => {
     let delSelf = false;
     this.breadcrumbList = this.breadcrumbList.reduce((total: Array<Breadcrumb>, index: Breadcrumb): Array<Breadcrumb> => {

@@ -13,6 +13,7 @@ class UserStore {
     });
   }
 
+  // 获取用户权限
   getAuthority(str?: any): any {
     const authorityString = typeof str === 'undefined' ? localStorage.getItem('ra-authority') : str;
     let authority;
@@ -27,12 +28,14 @@ class UserStore {
     return authority;
   }
 
+  // 设置用户权限
   @action setAuthority(authority: any): void {
     const proAuthority = typeof authority === 'string' ? [authority] : authority;
     localStorage.setItem('ra-authority', JSON.stringify(proAuthority));
     this.authority = proAuthority;
   }
 
+  // 用户登录事件
   @action handleUserLogin(name: string, password: number): Promise<boolean> {
     return postLogin(name, password).then((res: any) => {
       const { message, userInfo } = res.data;
@@ -47,11 +50,13 @@ class UserStore {
     });
   }
 
+  // 设置用户信息
   @action setUserInfo(userInfo: object): void {
     this.userInfo = userInfo;
     localStorage.setItem('ra-user', JSON.stringify(userInfo));
   }
 
+  // 用户登出，重置信息
   @action userLogout(): void {
     this.userInfo = {};
     this.authority = [];
@@ -59,6 +64,7 @@ class UserStore {
     localStorage.removeItem('ra-user');
   }
 
+  // 重新拉取用户信息
   @action reloadUserInfo = async (): Promise<any> => {
     const ls: any = localStorage.getItem('ra-user');
     const au: any = this.getAuthority();
