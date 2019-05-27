@@ -65,9 +65,6 @@ class LayoutStore {
   };
 
   @action delBreadcrumb = (name: string, path: string): any => {
-    // const cache: Breadcrumb | undefined = this.breadcrumbList.find(res => res.name === name);
-    // cache && (cache.display = false);
-    // return this.breadcrumbList.find(res => res.display);
     let delSelf = false;
     this.breadcrumbList = this.breadcrumbList.reduce((total: Array<Breadcrumb>, index: Breadcrumb): Array<Breadcrumb> => {
       if (index.name === name) {
