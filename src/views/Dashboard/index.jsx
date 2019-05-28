@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Row, Col } from 'antd';
 import RowInfoCard from './RowInfoCard';
 import Weather from './Weather';
@@ -7,36 +7,28 @@ import SaleTable from './SaleTable';
 import GlobalTrends from './GlobalTrends';
 import './dashboard.scss';
 
-class Dashboard extends Component {
-	constructor(props) {
-		super(props);
-	}
-
-	render() {
-		return (
-			<div className="dashboard">
-				<RowInfoCard />
-				<Row gutter={24}>
-					<Col xl={14} lg={14} md={24} sm={24} xs={24}>
-						<Weather />
-					</Col>
-					<Col xl={10} lg={10} md={24} sm={24} xs={24}>
-						<Performance />
-					</Col>
-				</Row>
-				<Row>
-					<Col span={24}>
-						<GlobalTrends />
-					</Col>
-				</Row>
-				<Row>
-					<Col span={24}>
-						<SaleTable />
-					</Col>
-				</Row>
-			</div>
-		);
-	}
-}
+const Dashboard = () => (
+	<div className="dashboard">
+		<RowInfoCard />
+		<Row gutter={24}>
+			<Col xl={14} lg={14} md={24} sm={24} xs={24}>
+				<Weather />
+			</Col>
+			<Col xl={10} lg={10} md={24} sm={24} xs={24}>
+				<Performance />
+			</Col>
+		</Row>
+		<Row>
+			<Col span={24}>
+				<GlobalTrends />
+			</Col>
+		</Row>
+		<Row>
+			<Col span={24}>
+				<SaleTable />
+			</Col>
+		</Row>
+	</div>
+);
 
 export default Dashboard;

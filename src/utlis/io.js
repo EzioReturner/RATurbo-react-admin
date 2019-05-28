@@ -12,10 +12,10 @@ class Request {
   // 初始化拦截器
   initTnterceptors() {
     this.instance.interceptors.request.use(
-      config => {
+      (config) => {
         return config;
       },
-      error => {
+      (error) => {
         Promise.reject(error);
       }
     );

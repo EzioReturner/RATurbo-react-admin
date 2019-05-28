@@ -9,15 +9,6 @@ class EchartsReact extends Component {
 		this.echartsDOM = null; // echarts div element
 	}
 
-	renderChart() {
-		const chartObj = this.getInstance();
-		let { option, notMerge, lazyUpdate } = this.props;
-		option = Array.isArray(option) ? option : [option];
-		chartObj.setOption(option[0] || {}, notMerge || false, lazyUpdate || false);
-		option[1] && chartObj.setOption(option[1]);
-		return chartObj;
-	}
-
 	initChart() {
 		const chartObj = this.renderChart();
 		bind(this.echartsDOM, () => {
@@ -49,6 +40,15 @@ class EchartsReact extends Component {
 	dispose() {
 		clear(this.echartsDOM);
 		this.echartsDOM && echarts.dispose(this.echartsDOM);
+	}
+
+	renderChart() {
+		const chartObj = this.getInstance();
+		const { option, notMerge, lazyUpdate } = this.props;
+		option = Array.isArray(option) ? option : [option];
+		chartObj.setOption(option[0] || {}, notMerge || false, lazyUpdate || false);
+		option[1] && chartObj.setOption(option[1]);
+		return chartObj;
 	}
 
 	render() {
