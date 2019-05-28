@@ -22,12 +22,12 @@ class Result extends PureComponent {
   }
 }
 
-Result.PropTypes = {
+Result.propTypes = {
   title: PropTypes.node,
   subTitle: PropTypes.node,
   extra: PropTypes.node,
   actions: PropTypes.node,
-  type: PropTypes.string,
+  type: PropTypes.oneOf(['failed', 'successed']),
 };
 
 export default Result;

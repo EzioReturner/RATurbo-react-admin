@@ -48,7 +48,7 @@ class SuccessResult extends PureComponent {
     return (
       <PageWrapper>
         <Card bordered={false}>
-          <Result type="success" title={<FormatterLocale id="result.success.title" />}
+          <Result type="successed" title={<FormatterLocale id="result.success.title" />}
             subtitle={<FormatterLocale id="result.success.subtitle" />}
             extra={Extra}
             actions={Actions}
