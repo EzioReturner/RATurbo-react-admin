@@ -90,7 +90,6 @@ class RenderRoutes extends Component {
 		const {
 			layoutStore: { routeConfig }
 		} = this.props;
-		console.log(routeConfig);
 
 		return <Router>{this.generateRoute(routeConfig)}</Router>;
 	}

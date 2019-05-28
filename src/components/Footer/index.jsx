@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Icon } from 'antd';
 import styles from './footer.module.scss';
-import { copyright } from '@src/config/setting'
+import { copyright } from '@src/config/setting';
 
 const [left, right, href] = copyright;
 class Footer extends PureComponent {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import echarts from 'echarts';
 import { bind, clear } from 'size-sensor';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 class EchartsReact extends Component {
 	constructor(props) {
@@ -79,6 +79,6 @@ EchartsReact.propTypes = {
 	]),
 	notMerge: PropTypes.bool,
 	lazyUpdate: PropTypes.bool,
-}
+};
 
 export default EchartsReact;

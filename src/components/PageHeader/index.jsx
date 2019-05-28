@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Breadcrumb from './Breadcrumb';
 import styles from './pageHeader.module.scss';
+import PropTypes from 'prop-types';
 
 class PageHeader extends Component {
 	render() {
@@ -30,5 +31,14 @@ class PageHeader extends Component {
 		);
 	}
 }
+
+PageHeader.propTypes = {
+	hideBreadcrumb: PropTypes.bool,
+	title: PropTypes.node,
+	subTitle: PropTypes.node,
+	content: PropTypes.node,
+	extraContent: PropTypes.node,
+	logo: PropTypes.node,
+};
 
 export default PageHeader;

@@ -38,6 +38,6 @@ Exception.propTypes = {
 	subTitle: PropTypes.oneOfType([
 		PropTypes.string, PropTypes.object
 	]),
-}
+};
 
 export default Exception;
