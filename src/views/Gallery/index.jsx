@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Card, Skeleton } from 'antd';
 import './index.scss';
-const { Meta } = Card;
 
+const { Meta } = Card;
 class Gallery extends Component {
 	state = {
 		data: []
@@ -28,7 +28,7 @@ class Gallery extends Component {
 	}
 
 	setOnload(index, img) {
-		const data = this.state.data;
+		const { data } = this.state;
 		data[index].loading = false;
 		data[index].img = img;
 		this.setState({
@@ -44,16 +44,19 @@ class Gallery extends Component {
 					{data.map((res, i) => {
 						return (
 							<div className="item" key={i}>
-								<Card hoverable cover={
-									<Skeleton loading={res.loading} active avatar>
-										<img alt="example" src={res.img} style={{ minHeight: '250px' }} />
-									</Skeleton>
-								}>
+								<Card hoverable
+									cover={(
+										<Skeleton loading={res.loading} active avatar>
+											<img alt="example" src={res.img} style={{ minHeight: '250px' }} />
+										</Skeleton>
+									)}
+								>
 									<Meta
 										title="RA ADMIN"
 										description={
 											<a
 												href="https://github.com/EzioReturner"
+												rel="noopener noreferrer"
 												target="_blank"
 												style={{ color: 'unset' }}
 											>

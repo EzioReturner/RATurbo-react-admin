@@ -12,7 +12,9 @@ class TeamCard extends PureComponent {
 						return (
 							<div className="team-card-detail" key={index}>
 								<p>{res}</p>
-								<span>project:{Math.floor(Math.random() * -9 + 10)}</span>
+								<span>
+									project:{Math.floor(Math.random() * -9 + 10)}
+								</span>
 							</div>
 						);
 					})}

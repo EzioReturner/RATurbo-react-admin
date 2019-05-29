@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Dropdown, Icon, Menu } from 'antd';
 import { inject, observer } from 'mobx-react';
-import styles from './selectlang.module.scss';
 import { i18n } from '@src/config/setting';
+import styles from './selectlang.module.scss';
 
 const { languages, defaultLanguage } = i18n;
 @inject('localeStore')
@@ -22,7 +22,8 @@ class SelectLang extends Component {
           <Menu.Item key={key} onClick={this.changeLang}>
             <span style={{
               marginRight: '5px'
-            }}>
+            }}
+            >
               {icon}
             </span>
             {title}
@@ -33,11 +34,13 @@ class SelectLang extends Component {
   };
 
   render() {
-    return <Dropdown overlay={this.getMenu()} placement="bottomRight">
-      <div className={styles.langIcon}>
-        <Icon type="global" className={styles.icon} />
-      </div>
-    </Dropdown>
+    return (
+      <Dropdown overlay={this.getMenu()} placement="bottomRight">
+        <div className={styles.langIcon}>
+          <Icon type="global" className={styles.icon} />
+        </div>
+      </Dropdown>
+    )
   }
 }
 

@@ -8,6 +8,7 @@ class GlobalTrends extends PureComponent {
 	constructor(props) {
 		super(props);
 	}
+
 	componentDidMount() { }
 
 	componentWillUnmount() { }
@@ -31,3 +32,4 @@ class GlobalTrends extends PureComponent {
 }
 
 export default GlobalTrends;
+

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
-import styles from './pageHeader.module.scss';
 import { Icon } from 'antd';
 import classNames from 'classnames';
+import styles from './pageHeader.module.scss';
 
 @withRouter
 @inject('layoutStore', 'localeStore')
@@ -39,25 +39,29 @@ class BreadCrumb extends Component {
 
 	render() {
 		const { layoutStore: { breadcrumbList }, localeStore: { localeObj } } = this.props
-		return <div className={styles.breadcrumbList}>
-			{breadcrumbList.map((bread, index) => {
-				const { display, path, name } = bread;
-				const key = path.split('/').slice(1).join('.');
+		return (
+			<div className={styles.breadcrumbList}>
+				{breadcrumbList.map((bread, index) => {
+					const { display, path, name } = bread;
+					const key = path.split('/').slice(1).join('.');
 
-				return (display ?
-					<div key={index}
-						className={classNames(
-							styles.breadcrumb,
-							this.checkDisplay(path) ? styles.display : ''
-						)}
-						onClick={this.handleGoBreadPath.bind(this, path)}>
-						{localeObj[`menu.${key}`] || name}
-						<Icon type="close"
-							className={styles.closeIcon}
-							onClick={(e) => this.handleDelBreadcrumb(e, name)} />
-					</div> : null)
-			})}
-		</div>;
+					return (display ?
+						<div key={index}
+							className={classNames(
+								styles.breadcrumb,
+								this.checkDisplay(path) ? styles.display : ''
+							)}
+							onClick={() => this.handleGoBreadPath(path)}
+						>
+							{localeObj[`menu.${key}`] || name}
+							<Icon type="close"
+								className={styles.closeIcon}
+								onClick={(e) => this.handleDelBreadcrumb(e, name)}
+							/>
+						</div> : null)
+				})}
+			</div>
+		);
 	}
 }
 

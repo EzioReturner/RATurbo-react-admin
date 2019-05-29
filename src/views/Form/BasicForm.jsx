@@ -33,12 +33,16 @@ class BasicForm extends Component {
 		};
 		return (
 			<PageWrapper title={<FormatterLocale id="form.basicFormTitle" defaultMessage="基础表单" />}
-				subTitle={<FormatterLocale id="form.basicSubtitle" defaultMessage="表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。" />}>
+				subTitle={<FormatterLocale id="form.basicSubtitle" defaultMessage="表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。" />}
+			>
 				<Card bordered={false} className='fat-header'>
-					<Form {...formItemLayout} onSubmit={this.handleSubmit} style={{
-						maxWidth: '750px',
-						margin: '15px auto'
-					}}>
+					<Form {...formItemLayout}
+						onSubmit={this.handleSubmit}
+						style={{
+							maxWidth: '750px',
+							margin: '15px auto'
+						}}
+					>
 						<Form.Item
 							label='Plain Text'
 						>
@@ -166,8 +170,9 @@ class BasicForm extends Component {
 							})(
 								<Upload name='logo' action='/upload.do' listType='picture'>
 									<Button>
-										<Icon type='upload' /> Click to upload
-              </Button>
+										<Icon type='upload' />
+										<span>Click to upload</span>
+									</Button>
 								</Upload>
 							)}
 						</Form.Item>

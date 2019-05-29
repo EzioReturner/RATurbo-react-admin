@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PageWrapper from '@components/PageWrapper';
 import FormatterLocale from '@components/FormatterLocale';
-import styles from './list.module.scss';
 import { Icon, Card, List, Button } from 'antd';
 import { getListData } from '@api/list';
 import { getContact } from '@api/platform';
+import styles from './list.module.scss';
 
 class CardList extends Component {
   constructor(props) {
@@ -37,7 +37,7 @@ class CardList extends Component {
 
     const ExtraContent = (
       <div className={styles.extraContent}>
-        <img src={require('@assets/image/cardlist.png')} />
+        <img alt="" src={require('@assets/image/cardlist.png')} />
       </div>
     )
 
@@ -48,40 +48,50 @@ class CardList extends Component {
       </div>
     )
 
-    return <PageWrapper title={<FormatterLocale id="cardList.title" />}
-      subTitle={<FormatterLocale id="cardList.subtitle" />}
-      extraContent={ExtraContent} content={Content}>
-      <List
-        rowKey="id"
-        loading={!list.length}
-        grid={{ gutter: 24, lg: 3, md: 2, sm: 1, xs: 1 }}
-        dataSource={['', ...list]}
-        renderItem={item =>
-          item ? (
-            <List.Item key={item.id}>
-              <Card hoverable
-                actions={[<a><Icon type="setting" /> 操作一</a>, <a><Icon type="edit" /> 操作二</a>]}>
-                <Card.Meta
-                  avatar={<img className={styles.images} alt="" src={item.avatar} />}
-                  title={<a style={{
-                    fontWeight: 'bold'
-                  }}>{item.title}</a>}
-                  description={
-                    <div className={styles.description}>{item.detail}</div>
+    return (
+      <PageWrapper title={<FormatterLocale id="cardList.title" />}
+        subTitle={<FormatterLocale id="cardList.subtitle" />}
+        extraContent={ExtraContent} content={Content}
+      >
+        <List
+          rowKey="id"
+          loading={!list.length}
+          grid={{ gutter: 24, lg: 3, md: 2, sm: 1, xs: 1 }}
+          dataSource={['', ...list]}
+          renderItem={item =>
+            item ? (
+              <List.Item key={item.id}>
+                <Card hoverable
+                  actions={
+                    [<a key={item.id + 1}><Icon type="setting" /> 操作一</a>, <a key={item.id + 2}><Icon type="edit" /> 操作二</a>]
                   }
-                />
-              </Card>
-            </List.Item>
-          ) : (
-              <List.Item>
-                <Button type="dashed" className={styles.createButton}>
-                  <Icon type="plus" /> 新建
-                  </Button>
+                >
+                  <Card.Meta
+                    avatar={<img className={styles.images} alt="" src={item.avatar} />}
+                    title={
+                      <a style={{
+                        fontWeight: 'bold'
+                      }}>
+                        {item.title}
+                      </a>
+                    }
+                    description={
+                      <div className={styles.description}>{item.detail}</div>
+                    }
+                  />
+                </Card>
               </List.Item>
-            )
-        }
-      />
-    </PageWrapper>;
+            ) : (
+                <List.Item>
+                  <Button type="dashed" className={styles.createButton}>
+                    <Icon type="plus" /> 新建
+                  </Button>
+                </List.Item>
+              )
+          }
+        />
+      </PageWrapper>
+    );
   }
 }
 

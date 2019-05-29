@@ -8,7 +8,7 @@ class PlatformProject extends PureComponent {
 		projectList: []
 	};
 
-	randomNumber(min = 2, max = 5) {
+	static randomNumber(min = 2, max = 5) {
 		return Math.floor(Math.random() * (max - min) + min);
 	}
 

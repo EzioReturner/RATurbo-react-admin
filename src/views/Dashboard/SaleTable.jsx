@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Card, Table, Divider, Tag, Progress, Modal } from 'antd';
 import FormatterLocale from '@components/FormatterLocale';
-const confirm = Modal.confirm;
 
+const confirm = Modal.confirm;
 class SaleTable extends Component {
 	constructor(props) {
 		super(props);
@@ -40,11 +40,11 @@ class SaleTable extends Component {
 			title,
 			content: `clicked the OK button, to confirm ${type}d`,
 			onOk: () => {
-				return new Promise((resolve, reject) => {
+				return new Promise((resolve) => {
 					// setTimeout(Math.random() > 0.5 ? resolve : reject, 1000);
 					setTimeout(() => {
 						if (type === 'invite') {
-							this.handleInvite(name);
+							this.handleInvite();
 						} else {
 							this.handleDelete(record);
 						}
@@ -56,9 +56,9 @@ class SaleTable extends Component {
 		});
 	}
 
-	handleInvite(name, resolve) { }
+	handleInvite() { }
 
-	handleDelete({ key }, e) {
+	handleDelete({ key }) {
 		const { tableData } = this.state;
 		tableData.splice(Number(key - 1), 1);
 		this.setState({
@@ -103,7 +103,7 @@ class SaleTable extends Component {
 						onClick={this.showConfirm.bind(this, ['delete', record])}
 					>
 						Delete
-				</a>
+					</a>
 				</span>
 			)
 		};

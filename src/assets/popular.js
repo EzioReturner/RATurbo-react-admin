@@ -1,4 +1,4 @@
-var data = [
+const data = [
 	{ name: '海门', value: 9 },
 	{ name: '鄂尔多斯', value: 12 },
 	{ name: '招远', value: 12 },
@@ -190,7 +190,7 @@ var data = [
 	{ name: '武汉', value: 273 },
 	{ name: '大庆', value: 279 }
 ];
-var geoCoordMap = {
+const geoCoordMap = {
 	海门: [121.15, 31.89],
 	鄂尔多斯: [109.781327, 39.608266],
 	招远: [120.38, 37.35],
@@ -390,9 +390,9 @@ const _data = data
 	.slice(0, 6);
 
 const convertData = function(data) {
-	var res = [];
-	for (var i = 0; i < data.length; i++) {
-		var geoCoord = geoCoordMap[data[i].name];
+	let res = [];
+	for (let i = 0; i < data.length; i++) {
+		let geoCoord = geoCoordMap[data[i].name];
 		if (geoCoord) {
 			res.push({
 				name: data[i].name,

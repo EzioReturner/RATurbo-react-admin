@@ -27,14 +27,19 @@ class FailedResult extends PureComponent {
       <Button type="primary">返回</Button>
     );
 
-    return <PageWrapper>
-      <Card bordered={false}>
-        <Result title={<FormatterLocale id="result.failed.title" />}
-          subtitle={<FormatterLocale id="result.failed.subtitle" />} type="failed" style={{ marginTop: '32px' }}
-          extra={Extra}
-          actions={Actions} />
-      </Card>
-    </PageWrapper>
+    return (
+      <PageWrapper>
+        <Card bordered={false}>
+          <Result title={<FormatterLocale id="result.failed.title" />}
+            subtitle={<FormatterLocale id="result.failed.subtitle" />}
+            type="failed"
+            style={{ marginTop: '32px' }}
+            extra={Extra}
+            actions={Actions}
+          />
+        </Card>
+      </PageWrapper>
+    )
   }
 }
 

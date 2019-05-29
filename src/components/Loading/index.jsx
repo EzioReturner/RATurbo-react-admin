@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import { observer, inject } from 'mobx-react';
-import styles from './loading.module.scss';
 import PropTypes from 'prop-types';
+import styles from './loading.module.scss';
 
 /**
  * loading组件

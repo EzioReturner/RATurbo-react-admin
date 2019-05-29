@@ -1,8 +1,8 @@
 import React, { PureComponent, Fragment } from 'react';
 import { Form, Button, Select, Input, Divider } from 'antd';
+import FormatterLocale from '@components/FormatterLocale';
 import StepFormStore from './formStore';
 import styles from './form.module.scss';
-import FormatterLocale from '@components/FormatterLocale';
 
 class StepForm extends PureComponent {
   handleSubmit = (e) => {

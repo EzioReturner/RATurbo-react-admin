@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Icon } from 'antd';
-import styles from './result.module.scss';
 import PropTypes from 'prop-types';
+import styles from './result.module.scss';
 
 class Result extends PureComponent {
   render() {
@@ -12,13 +12,15 @@ class Result extends PureComponent {
       successed: <Icon className={styles.icon} type="check-circle" theme="filled" />
     };
 
-    return <div className={styles.result} {...restProps}>
-      {_Icon[type]}
-      <p className={styles.title}>{title}</p>
-      <p className={styles.subTitle}>{subtitle}</p>
-      {extra && <div className={styles.extra}>{extra}</div>}
-      {actions && <div className={styles.actions}>{actions}</div>}
-    </div>
+    return (
+      <div className={styles.result} {...restProps}>
+        {_Icon[type]}
+        <p className={styles.title}>{title}</p>
+        <p className={styles.subTitle}>{subtitle}</p>
+        {extra && <div className={styles.extra}>{extra}</div>}
+        {actions && <div className={styles.actions}>{actions}</div>}
+      </div>
+    )
   }
 }
 

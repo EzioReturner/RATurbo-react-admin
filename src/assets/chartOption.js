@@ -265,7 +265,6 @@ const lineOption = {
 			name: '邮件营销',
 			type: 'line',
 			smooth: true,
-			areaStyle: {},
 			lineStyle: {
 				color: 'rgba(220, 91, 231, 0.4)'
 			},

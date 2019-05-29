@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Card, Row, Col } from 'antd';
 import { inject, observer } from 'mobx-react';
 
+const imgUrl = require('@assets/image/userPhoto.jpg');
+
 @inject('userStore')
 @observer
 class PlatformHead extends Component {
@@ -15,7 +17,8 @@ class PlatformHead extends Component {
 							<Col xl={16} lg={16} md={16} sm={24} xs={24}>
 								<div className="left-part">
 									<img
-										src={require('@assets/image/userPhoto.jpg')}
+										alt=""
+										src={imgUrl}
 										className="user-photo"
 									/>
 									<div>

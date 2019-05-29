@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 const RLogo = () => (
 	<svg viewBox="0 0 1024 1024" width="25" height="25">
@@ -276,7 +276,7 @@ const SunSvg = () => (
 	</svg>
 );
 
-const fogSvg = () => (
+const FogSvg = () => (
 	<svg viewBox="0 0 1024 1024" width="20" height="20">
 		<defs>
 			<style type="text/css" />
@@ -301,5 +301,6 @@ export {
 	ThunderSvg,
 	SunSvg,
 	RLogo,
-	RLogo1
+	RLogo1,
+	FogSvg
 };

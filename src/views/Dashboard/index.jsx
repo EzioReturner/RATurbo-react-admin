@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { Row, Col } from 'antd';
 import RowInfoCard from './RowInfoCard';
 import Weather from './Weather';

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import './myMap.scss';
 import BMap from 'BMap';
 import { Card } from 'antd';
+import './myMap.scss';
+
 class Map extends Component {
 	componentDidMount() {
 		const map = new BMap.Map('mapContainer');

@@ -3,9 +3,10 @@ import { Menu, Icon } from 'antd';
 import { Link, withRouter } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
 import { intersection } from 'lodash';
-import styles from './siderMenu.module.scss';
-import { logoPath, siteName, menuLinkUrl } from '@src/config/setting';
 import classNames from 'classnames';
+import { logoPath, siteName, menuLinkUrl } from '@src/config/setting';
+import styles from './siderMenu.module.scss';
+
 
 const { SubMenu } = Menu;
 @withRouter
@@ -151,8 +152,8 @@ class SiderMenu extends Component {
 				)}
 				mode="inline"
 			>
-				<a className={styles.controlBut} href={menuLinkUrl} target="_blank">
-					<img src={logoPath} className={styles.logo} />
+				<a className={styles.controlBut} href={menuLinkUrl} target="_blank" rel="noopener noreferrer">
+					<img alt="" src={logoPath} className={styles.logo} />
 					<span className={`ml-2 ${styles.title}`}>{siteName}</span>
 				</a>
 				<Menu

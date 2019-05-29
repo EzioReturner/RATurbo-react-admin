@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Card, Select, Button, DatePicker, Icon, Switch } from 'antd';
 import { observer, inject } from 'mobx-react';
-const { Option } = Select;
 
+const { Option } = Select;
 @inject('programStore')
 @observer
 class Controller extends Component {
@@ -28,7 +28,7 @@ class Controller extends Component {
 		this.props.programStore.changeShowUnDefined(checked);
 	};
 
-	componentWillReact() {}
+	componentWillReact() { }
 
 	render() {
 		const marginRight = {

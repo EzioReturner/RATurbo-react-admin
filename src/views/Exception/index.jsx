@@ -4,11 +4,16 @@ import { withRouter } from 'react-router-dom';
 
 @withRouter
 class ExceptionHome extends Component {
+	constructor(props) {
+		super(props);
+		this.handleTriggerError = this.handleTriggerError.bind(this);
+	}
+
 	handleTriggerError({ code, description }) {
 		this.props.history.push(`/exception/${code}`);
 		notification.error({
 			message: `请求错误 ${code}`,
-			description: description
+			description
 		});
 	}
 
@@ -17,7 +22,7 @@ class ExceptionHome extends Component {
 			<div>
 				<Button
 					type="primary"
-					onClick={this.handleTriggerError.bind(this, {
+					onClick={this.handleTriggerError({
 						code: 403,
 						description: '用户已授权,但是没有访问页面的权限哦~'
 					})}
@@ -29,7 +34,7 @@ class ExceptionHome extends Component {
 						margin: '0 16px'
 					}}
 					type="primary"
-					onClick={this.handleTriggerError.bind(this, {
+					onClick={this.handleTriggerError({
 						code: 404,
 						description: '抱歉~服务器上没有相应的资源'
 					})}
@@ -38,7 +43,7 @@ class ExceptionHome extends Component {
 				</Button>
 				<Button
 					type="primary"
-					onClick={this.handleTriggerError.bind(this, {
+					onClick={this.handleTriggerError({
 						code: 500,
 						description: '服务器出错了哦'
 					})}

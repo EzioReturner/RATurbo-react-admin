@@ -1,7 +1,9 @@
+/* eslint-disable */
 import React, { PureComponent } from 'react';
-import { CheckPermission } from './CheckPermission';
+/* eslint-disable */
 import { inject } from 'mobx-react';
 import PropTypes from 'prop-types';
+import { CheckPermission } from './CheckPermission';
 
 @inject('userStore')
 class Authorized extends PureComponent {
