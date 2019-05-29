@@ -1,27 +1,25 @@
-import React, { Component, PureComponent } from 'react';
+import React, { Component } from 'react';
 import {
 	HashRouter as Router,
 	Route,
 	Redirect,
 	Switch
 } from 'react-router-dom';
-import AsyncComponent from '../AsyncComponent';
 import { inject, observer } from 'mobx-react';
 import Error404 from '@views/Exception/404';
+import AsyncComponent from '../AsyncComponent';
 
-class RouteMiddle extends PureComponent {
-	render() {
-		const { path, exact, strict, render, location, ...rest } = this.props;
-		return (
-			<Route
-				path={path}
-				exact={exact}
-				strict={strict}
-				location={location}
-				render={props => render({ ...props, ...rest })}
-			/>
-		);
-	}
+const RouteMiddle = (props) => {
+	const { path, exact, strict, render, location, ...rest } = props;
+	return (
+		<Route
+			path={path}
+			exact={exact}
+			strict={strict}
+			location={location}
+			render={props => render({ ...props, ...rest })}
+		/>
+	);
 }
 
 /**
@@ -90,8 +88,8 @@ class RenderRoutes extends Component {
 		const {
 			layoutStore: { routeConfig }
 		} = this.props;
-
 		return <Router>{this.generateRoute(routeConfig)}</Router>;
 	}
 }
+
 export default RenderRoutes;

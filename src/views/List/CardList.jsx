@@ -69,9 +69,11 @@ class CardList extends Component {
                   <Card.Meta
                     avatar={<img className={styles.images} alt="" src={item.avatar} />}
                     title={
-                      <a style={{
-                        fontWeight: 'bold'
-                      }}>
+                      <a
+                        style={{
+                          fontWeight: 'bold'
+                        }}
+                      >
                         {item.title}
                       </a>
                     }

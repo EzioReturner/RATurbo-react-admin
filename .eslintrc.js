@@ -38,8 +38,10 @@ module.exports = {
         'react/jsx-max-props-per-line': [1, {
             "maximum": 2
         }],
+        'react/forbid-prop-types': 'off',
         'jsx-a11y/click-events-have-key-events': 'off',
         'jsx-a11y/no-static-element-interactions': 'off',
+        'import/prefer-default-export': 'off',
         'no-useless-constructor': 'off',
         'quotes': [1, 'single'],
         'no-duplicate-case': 1,

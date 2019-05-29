@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Button } from 'antd';
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom';
-import styles from './exception.module.scss';
 import FormatterLocale from '@components/FormatterLocale';
+import styles from './exception.module.scss';
 
 @withRouter
 class Exception extends Component {

@@ -74,21 +74,29 @@ class ListTable extends Component {
       </div>
     )
 
-    return <Card bordered={false} style={{ marginTop: '24px' }} className="fat-card"
-      extra={Extra} title="标准列表">
-      <List rowKey="id" loading={!list.length} dataSource={list}
-        renderItem={item => (
-          <List.Item actions={[<a >编辑</a>, <a >更多操作</a>]}>
-            <List.Item.Meta
-              avatar={<Avatar src={item.avatar} shape="square" size="large" />}
-              title={<a>{item.title}</a>}
-              description={<div className={styles.detail}>{item.detail}</div>}
-            />
-            <ListContent data={item} />
-          </List.Item>
-        )
-        } />
-    </Card>
+    return (
+      <Card bordered={false}
+        style={{ marginTop: '24px' }}
+        className="fat-card"
+        extra={Extra} title="标准列表"
+      >
+        <List rowKey="id"
+          loading={!list.length}
+          dataSource={list}
+          renderItem={item => (
+            <List.Item actions={[<a key="first">编辑</a>, <a key="second">更多操作</a>]}>
+              <List.Item.Meta
+                avatar={<Avatar src={item.avatar} shape="square" size="large" />}
+                title={<a>{item.title}</a>}
+                description={<div className={styles.detail}>{item.detail}</div>}
+              />
+              <ListContent data={item} />
+            </List.Item>
+          )
+          }
+        />
+      </Card>
+    )
   }
 }
 

@@ -4,37 +4,36 @@ import FormatterLocale from '@components/FormatterLocale';
 import StepFormStore from './formStore';
 import styles from './form.module.scss';
 
-class StepForm extends PureComponent {
-  handleSubmit = (e) => {
+const StepForm = (props) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    this.props.form.validateFieldsAndScroll((err, values) => {
+    props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         StepFormStore.setValue(values);
         StepFormStore.nextStep();
       }
     });
   }
-
-  render() {
-    const { getFieldDecorator } = this.props.form;
-    const formItemLayout = {
-      labelCol: { span: 8 },
-      wrapperCol: { span: 16 },
-    };
-    const tailFormItemLayout = {
-      wrapperCol: {
-        xs: {
-          span: 24,
-          offset: 0,
-        },
-        sm: {
-          span: 16,
-          offset: 8,
-        },
-      }
+  const { getFieldDecorator } = props.form;
+  const formItemLayout = {
+    labelCol: { span: 8 },
+    wrapperCol: { span: 16 },
+  };
+  const tailFormItemLayout = {
+    wrapperCol: {
+      xs: {
+        span: 24,
+        offset: 0,
+      },
+      sm: {
+        span: 16,
+        offset: 8,
+      },
     }
-    return <Fragment>
-      <Form {...formItemLayout} onSubmit={this.handleSubmit}>
+  }
+  return (
+    <Fragment>
+      <Form {...formItemLayout} onSubmit={handleSubmit}>
         <Form.Item label={<FormatterLocale id="step1.title" defaultMessage="起个题目吧" />}>
           {getFieldDecorator('title', {
             initialValue: '好嗨哦',
@@ -69,8 +68,8 @@ class StepForm extends PureComponent {
             ]
           })(
             <Select placeholder="">
-              <Option value="me">我呀</Option>
-              <Option value="noOne">谁也不说</Option>
+              <Select.Option value="me">我呀</Select.Option>
+              <Select.Option value="noOne">谁也不说</Select.Option>
             </Select>
           )}
         </Form.Item>
@@ -79,21 +78,23 @@ class StepForm extends PureComponent {
         </Form.Item>
       </Form>
     </Fragment>
-  }
+  );
 }
 
 class Step1 extends PureComponent {
   render() {
     const Form = Form.create({ name: 'Step1' })(StepForm);
-    return <div>
-      <div className={styles.step}><Form /></div>
-      <Divider style={{ margin: '40px 0 24px' }} />
-      <div className={styles.descript}>
-        <h3><FormatterLocale id="step1.attention" defaultMessage="请注意" /></h3>
-        <h4><FormatterLocale id="step1.divider" defaultMessage="这里是分割线" /></h4>
-        <p><FormatterLocale id="step1.nothing" defaultMessage="其实没啥想说的，其实没啥想说的，其实没啥想说的，其实没啥想说的，其实没啥想说的" /></p>
+    return (
+      <div>
+        <div className={styles.step}><Form /></div>
+        <Divider style={{ margin: '40px 0 24px' }} />
+        <div className={styles.descript}>
+          <h3><FormatterLocale id="step1.attention" defaultMessage="请注意" /></h3>
+          <h4><FormatterLocale id="step1.divider" defaultMessage="这里是分割线" /></h4>
+          <p><FormatterLocale id="step1.nothing" defaultMessage="其实没啥想说的，其实没啥想说的，其实没啥想说的，其实没啥想说的，其实没啥想说的" /></p>
+        </div>
       </div>
-    </div>
+    )
   }
 }
 

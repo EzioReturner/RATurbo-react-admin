@@ -3,39 +3,37 @@ import { Card, Row, Col, Icon } from 'antd';
 import EchartsReact from '@components/Echarts';
 import { observer, inject } from 'mobx-react';
 
-class ChartCard extends Component {
-	render() {
-		const style = {
-			marginBottom: '24px'
-		};
-		const { title, option } = this.props;
-		const CardTitle = (
-			<div className="titleNanme">
-				{title}
-				<div className="iconBar">
-					<Icon type="redo" />
-					<Icon
-						type="cloud-download"
-						style={{
-							marginLeft: '10px'
-						}}
-					/>
-				</div>
+const ChartCard = (props) => {
+	const style = {
+		marginBottom: '24px'
+	};
+	const { title, option } = props;
+	const CardTitle = (
+		<div className="titleNanme">
+			{title}
+			<div className="iconBar">
+				<Icon type="redo" />
+				<Icon
+					type="cloud-download"
+					style={{
+						marginLeft: '10px'
+					}}
+				/>
 			</div>
-		);
-		return (
-			<Card
-				hoverable
-				title={CardTitle}
-				className="thin-card"
-				bordered={false}
-				style={title !== '省份' ? style : null}
-				bodyStyle={{ overflow: 'hidden' }}
-			>
-				<EchartsReact option={option} />
-			</Card>
-		);
-	}
+		</div>
+	);
+	return (
+		<Card
+			hoverable
+			title={CardTitle}
+			className="thin-card"
+			bordered={false}
+			style={title !== '省份' ? style : null}
+			bodyStyle={{ overflow: 'hidden' }}
+		>
+			<EchartsReact option={option} />
+		</Card>
+	);
 }
 
 @inject('programStore')

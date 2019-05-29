@@ -16,6 +16,7 @@ const PageWrapper = (props) => {
 PageWrapper.propTypes = {
 	hideHeader: PropTypes.bool,
 	children: PropTypes.node,
+	title: PropTypes.node,
 };
 
 export default PageWrapper;

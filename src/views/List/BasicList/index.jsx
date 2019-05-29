@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import { Row, Col, Card } from 'antd';
+import { inject, observer } from 'mobx-react';
 import PageWrapper from '@components/PageWrapper';
 import FormatterLocale from '@components/FormatterLocale';
-import { Row, Col, Card } from 'antd';
 import ListTable from './ListTable';
 import styles from './listTable.module.scss';
-import { inject, observer } from 'mobx-react';
 
 @inject('layoutStore')
 @observer
@@ -23,12 +23,14 @@ class BasicList extends Component {
     const RowInfo = () => (
       <Row gutter={24}>
         {list.map(col => {
-          return <Col xl={8} sm={24} xs={24} key={col.title}>
-            <Card bordered={false}>
-              <p className={styles.colTitle}>{col.title}</p>
-              <span className={styles.colNum}>{col.num}</span>
-            </Card>
-          </Col>
+          return (
+            <Col xl={8} sm={24} xs={24} key={col.title}>
+              <Card bordered={false}>
+                <p className={styles.colTitle}>{col.title}</p>
+                <span className={styles.colNum}>{col.num}</span>
+              </Card>
+            </Col>
+          )
         })}
       </Row>
     );
@@ -40,10 +42,12 @@ class BasicList extends Component {
     )
 
     const { isMobile } = this.props.layoutStore;
-    return <PageWrapper title={<FormatterLocale id="basicList.title" />}>
-      <RowInfo />
-      {isMobile ? <DontShow /> : <ListTable />}
-    </PageWrapper>;
+    return (
+      <PageWrapper title={<FormatterLocale id="basicList.title" />}>
+        <RowInfo />
+        {isMobile ? <DontShow /> : <ListTable />}
+      </PageWrapper>
+    );
   }
 }
 

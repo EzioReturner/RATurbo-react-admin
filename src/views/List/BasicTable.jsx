@@ -96,7 +96,10 @@ class BasicTable extends Component {
     return (
       <PageWrapper title={<FormatterLocale id="basicTable.title" />}>
         <Card title={<Button type="primary">新建</Button>}
-          className="fat-card" bordered={false} extra={Extra}>
+          className="fat-card"
+          bordered={false}
+          extra={Extra}
+        >
           <Table
             className="no-head-border"
             bordered

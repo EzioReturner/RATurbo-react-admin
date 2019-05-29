@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
+import { Row, Col } from 'antd';
+import { inject, observer } from 'mobx-react';
+import PageWrapper from '@components/PageWrapper';
+import FormatterLocale from '@components/FormatterLocale';
 import PlatformProject from './PlatformProject';
 import QuickStart from './QuickStart';
 import MultiAnalysis from './MultiAnalysis';
 import TeamCard from './TeamCard';
-import PageWrapper from '@components/PageWrapper';
-import { Row, Col } from 'antd';
-import FormatterLocale from '@components/FormatterLocale';
-import { inject, observer } from 'mobx-react';
 import './platform.scss';
 
 @inject('userStore')
@@ -14,34 +14,39 @@ import './platform.scss';
 class Monitor extends Component {
 	render() {
 		const { userInfo } = this.props.userStore;
-		const content = <Col xl={16} lg={16} md={16} sm={24} xs={24}>
-			<div className="p-left-part">
-				<img
-					src={require('@assets/image/userPhoto.jpg')}
-					className="user-photo"
-				/>
-				<div>
-					<p><FormatterLocale id="platform.morning" />, {userInfo.name}, <FormatterLocale id="platform.greating" /></p>
-					<span className="subText"><FormatterLocale id="platform.job" /> | <FormatterLocale id="platform.department" /></span>
+		const content = (
+			<Col xl={16} lg={16} md={16} sm={24} xs={24}>
+				<div className="p-left-part">
+					<img
+						alt=""
+						src={require('@assets/image/userPhoto.jpg')}
+						className="user-photo"
+					/>
+					<div>
+						<p><FormatterLocale id="platform.morning" />, {userInfo.name}, <FormatterLocale id="platform.greating" /></p>
+						<span className="subText"><FormatterLocale id="platform.job" /> | <FormatterLocale id="platform.department" /></span>
+					</div>
 				</div>
+			</Col>
+		);
+		const extraContent = (
+			<div className="p-right-part">
+				<Row gutter={24}>
+					<Col xl={8} lg={8} md={8} sm={4} xs={8}>
+						<FormatterLocale id="platform.projects" className="numTitle" />
+						<p>23</p>
+					</Col>
+					<Col xl={8} lg={8} md={8} sm={4} xs={8}>
+						<FormatterLocale id="platform.rank" className="numTitle" />
+						<p>1/9</p>
+					</Col>
+					<Col xl={8} lg={8} md={8} sm={4} xs={8}>
+						<FormatterLocale id="platform.visitors" className="numTitle" />
+						<p>2333</p>
+					</Col>
+				</Row>
 			</div>
-		</Col>
-		const extraContent = <div className="p-right-part">
-			<Row gutter={24}>
-				<Col xl={8} lg={8} md={8} sm={4} xs={8}>
-					<FormatterLocale id="platform.projects" className="numTitle" />
-					<p>23</p>
-				</Col>
-				<Col xl={8} lg={8} md={8} sm={4} xs={8}>
-					<FormatterLocale id="platform.rank" className="numTitle" />
-					<p>1/9</p>
-				</Col>
-				<Col xl={8} lg={8} md={8} sm={4} xs={8}>
-					<FormatterLocale id="platform.visitors" className="numTitle" />
-					<p>2333</p>
-				</Col>
-			</Row>
-		</div>
+		);
 		return (
 			<PageWrapper content={content} extraContent={extraContent}>
 				<div className="platform">
