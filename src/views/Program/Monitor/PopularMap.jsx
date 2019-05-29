@@ -9,7 +9,7 @@ class PopularMap extends Component {
 		this.initChart();
 	}
 
-	static async initChart() {
+	async initChart() {
 		const { mapData, topData } = await import('@assets/popular');
 		const option = popularOption(mapData, topData);
 		ET.initChart({ id: 'poplar-map', option });

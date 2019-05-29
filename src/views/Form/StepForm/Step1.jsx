@@ -98,4 +98,4 @@ class Step1 extends PureComponent {
   }
 }
 
-export default Step1
+export default Step1;
