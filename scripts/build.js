@@ -84,13 +84,13 @@ checkBrowsers(paths.appPath, isInteractive)
         console.log(warnings.join('\n\n'));
         console.log(
           '\nSearch for the ' +
-            chalk.underline(chalk.yellow('keywords')) +
-            ' to learn more about each warning.'
+          chalk.underline(chalk.yellow('keywords')) +
+          ' to learn more about each warning.'
         );
         console.log(
           'To ignore, add ' +
-            chalk.cyan('// eslint-disable-next-line') +
-            ' to the line before.\n'
+          chalk.cyan('// eslint-disable-next-line') +
+          ' to the line before.\n'
         );
       } else {
         console.log(chalk.green('Compiled successfully.\n'));
@@ -136,7 +136,7 @@ function build(previousFileSizes) {
   console.log('Creating an optimized production build...');
 
   let compiler = webpack(config);
-  
+
   // 打包进度
   const progressPlugin = new webpack.ProgressPlugin(
     (percent, msg, addInfo) => {
@@ -155,13 +155,12 @@ function build(previousFileSizes) {
 
   // 彩虹猫
   const nyanProgressPlugin = new NyanProgressPlugin(
-    {
-      debounceInterval: 60,
-      nyanCatSays() {
-        return '呦, 又在写 Bug 了?'
-      }
+  {
+    debounceInterval: 60,
+    nyanCatSays() {
+      return '呦, 又在写 Bug 了?'
     }
-  );
+  });
   nyanProgressPlugin.apply(compiler);
 
   if (bundleAnalyze) {
@@ -202,7 +201,7 @@ function build(previousFileSizes) {
         console.log(
           chalk.yellow(
             '\nTreating warnings as errors because process.env.CI = true.\n' +
-              'Most CI servers set it automatically.\n'
+            'Most CI servers set it automatically.\n'
           )
         );
         return reject(new Error(messages.warnings.join('\n\n')));
