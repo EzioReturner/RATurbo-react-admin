@@ -10,15 +10,18 @@ const DashboardPlugin = require('webpack-dashboard/plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const chalk = require('chalk');
 const setting = require('./src/config/setting');
+const workboxPlugin = require('workbox-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const path = require('path');
 
 const Env = process.env.NODE_ENV;
+const IsAnalyze = process.argv.pop().indexOf('analyze') > -1;
 // 自定义修改 webpack 配置项
 const editWebpackConfig = () => config => {
   config.plugins = [
     ...config.plugins,
     new DashboardPlugin(),
-  ]
-
+  ];
   if (Env === 'production') {
     clearConsole();
     config.plugins.push(
@@ -27,6 +30,19 @@ const editWebpackConfig = () => config => {
         clear: false,
         width: 150,
       })
+    );
+    const workboxConfigProd = {
+      swSrc: path.join(__dirname, 'public', 'ra-service-worker.js'),
+      swDest: 'ra-service-worker.js',
+      importWorkboxFrom: 'disabled'
+    };
+    // 删除默认的WorkboxWebpackPlugin配置
+    config = removePreWorkboxWebpackPluginConfig(config);
+    // 加入配置
+    config.plugins.push(new workboxPlugin.InjectManifest(workboxConfigProd));
+
+    IsAnalyze && config.plugins.push(
+      new BundleAnalyzerPlugin()
     )
   }
 
@@ -71,4 +87,15 @@ module.exports = {
     // 编辑 webpack
     editWebpackConfig()
   )
+}
+
+// 此函数用来找出 默认配置中的 WorkboxWebpackPlugin， 并把它删除
+function removePreWorkboxWebpackPluginConfig(config) {
+  const preWorkboxPluginIndex = config.plugins.findIndex((element) => {
+    return Object.getPrototypeOf(element).constructor.name === 'GenerateSW'
+  })
+  if (preWorkboxPluginIndex !== -1) {
+    config.plugins.splice(preWorkboxPluginIndex, 1)
+  }
+  return config
 }
