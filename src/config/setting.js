@@ -1,3 +1,4 @@
+// @ts-ignore
 module.exports = {
   siteName: 'RA-Turbo',
   copyright: ['RA-Turbo admin', 'ezioreturner@gmail.com', 'https://github.com/EzioReturner'],
@@ -5,8 +6,7 @@ module.exports = {
   logoPath: '/logo.png',
   fixedHeader: true,
   i18n: {
-    languages: [
-      {
+    languages: [{
         key: 'zh',
         title: '简体中文',
         icon: '🇨🇳'
@@ -25,9 +25,9 @@ module.exports = {
     defaultLanguage: 'zh'
   },
   theme: {
-    'primary-color': '#fb4491',
-    'link-color': '#fb4491',
-    'border-radius-base': '2px',
-    'font-size-base': '13px'
+    '@primary-color': '#fb4491',
+    '@link-color': '#fb4491',
+    '@border-radius-base': '2px',
+    '@font-size-base': '13px'
   },
 }

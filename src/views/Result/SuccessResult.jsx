@@ -30,7 +30,7 @@ class SuccessResult extends PureComponent {
           />
           <Step title={<FormatterLocale id="result.success.leaderCheck" />}
             description={
-              <Desc name="三傻" extra={<a><Icon type="mail" /> 催一下</a>} />
+              <Desc name="三傻" extra={<Button type="link"><Icon type="mail" /> 催一下</Button>} />
             }
           />
           <Step

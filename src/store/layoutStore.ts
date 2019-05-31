@@ -2,7 +2,7 @@ import { observable, configure, action } from 'mobx';
 import isMobile from 'utlis/isMobile';
 import debounce from 'utlis/debounce';
 import NProgress from 'nprogress';
-import { constantRouteConfig, asyncRouteConfig } from '../config/router.config';
+import { constantRouteConfig, asyncRouteConfig } from 'config/router.config';
 interface Breadcrumb {
   name: string;
   path: string;

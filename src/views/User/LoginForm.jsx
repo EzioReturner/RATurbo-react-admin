@@ -104,7 +104,7 @@ class LoginForm extends Component {
             >
               <span>Log in</span>
             </Button>
-            Or <a href="">register now!</a>
+            Or <a href="/login">register now!</a>
           </Form.Item>
         </Form>
       </Fragment>

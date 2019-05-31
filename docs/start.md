@@ -6,7 +6,7 @@
 
 ```bash
 git clone https://github.com/EzioReturner/RATurbo-react-admin.git
-cd ra-turbo
+cd RATurbo-react-admin
 ```
 
 ## 功能模块
@@ -93,7 +93,7 @@ yarn install Or npm install
 
 2.启动本地服务器
 ```bash
-yarn run ra Or npm run start
+yarn start Or npm run start
 ```
 
 > 当看到如下界面，就表示项目已经启动拉。

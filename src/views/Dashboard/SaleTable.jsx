@@ -115,7 +115,7 @@ class SaleTable extends Component {
 			);
 		};
 
-		const _renderText = text => <a href="javascript:;">{text}</a>;
+		const _renderText = text => <Button type="link">{text}</Button>;
 
 		const columns = [
 			{
