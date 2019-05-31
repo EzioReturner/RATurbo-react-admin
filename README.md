@@ -36,7 +36,6 @@
 - [lodash](https://www.lodashjs.com/)(<span style="color: rgb(243,121,52);">是一个一致性、模块化、高性能的 JavaScript 实用工具库。</span>)
 - 其余省略
 
-
 ## 功能模块
 
 - 首页
