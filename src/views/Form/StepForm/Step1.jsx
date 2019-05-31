@@ -1,6 +1,6 @@
 import React, { PureComponent, Fragment } from 'react';
 import { Form, Button, Select, Input, Divider } from 'antd';
-import FormatterLocale from '@components/FormatterLocale';
+import FormatterLocale from 'components/FormatterLocale';
 import StepFormStore from './formStore';
 import styles from './form.module.scss';
 

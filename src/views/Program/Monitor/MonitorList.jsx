@@ -1,8 +1,8 @@
 import React from 'react';
 import { Card } from 'antd';
-import { monitorListOption } from '@assets/chartOption';
-import EchartsReact from '@components/Echarts';
-import FormatterLocale from '@components/FormatterLocale';
+import { monitorListOption } from 'assets/chartOption';
+import EchartsReact from 'components/Echarts';
+import FormatterLocale from 'components/FormatterLocale';
 
 const MonitorList = () => {
 	return (

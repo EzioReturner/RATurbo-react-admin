@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Row, Col, Card, Icon } from 'antd';
-import { BoxSvg, EmpolyeesSvg, OrdersSvg, SalesSvg } from '@components/SvgIcon';
-import FormatterLocale from '@components/FormatterLocale';
+import { BoxSvg, EmpolyeesSvg, OrdersSvg, SalesSvg } from 'components/SvgIcon';
+import FormatterLocale from 'components/FormatterLocale';
 
 const InfoCard = (props) => {
 	const { icon, tips, title, num, tipIcon, index } = props;

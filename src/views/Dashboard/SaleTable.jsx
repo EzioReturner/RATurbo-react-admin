@@ -1,37 +1,34 @@
 import React, { Component } from 'react';
 import { Card, Table, Divider, Tag, Progress, Modal } from 'antd';
-import FormatterLocale from '@components/FormatterLocale';
+import FormatterLocale from 'components/FormatterLocale';
 
 const confirm = Modal.confirm;
 class SaleTable extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			tableData: [
-				{
-					key: '1',
-					name: 'John Brown',
-					amount: '$ 32.77',
-					progress: 60,
-					tags: ['nice', 'developer']
-				},
-				{
-					key: '2',
-					name: 'Jim Green',
-					amount: '$ 72.11',
-					progress: 82,
-					tags: ['loser']
-				},
-				{
-					key: '3',
-					name: 'Joe Black',
-					amount: '$ 56.21',
-					progress: 30,
-					tags: ['cool', 'teacher']
-				}
-			]
-		};
-	}
+	state = {
+		tableData: [
+			{
+				key: '1',
+				name: 'John Brown',
+				amount: '$ 32.77',
+				progress: 60,
+				tags: ['nice', 'developer']
+			},
+			{
+				key: '2',
+				name: 'Jim Green',
+				amount: '$ 72.11',
+				progress: 82,
+				tags: ['loser']
+			},
+			{
+				key: '3',
+				name: 'Joe Black',
+				amount: '$ 56.21',
+				progress: 30,
+				tags: ['cool', 'teacher']
+			}
+		]
+	};
 
 	showConfirm([type, record]) {
 		const { name } = record;

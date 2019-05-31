@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Card } from 'antd';
-import FormatterLocale from '@components/FormatterLocale';
+import FormatterLocale from 'components/FormatterLocale';
 
 class TeamCard extends PureComponent {
 	render() {

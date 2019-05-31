@@ -6,10 +6,6 @@ const { Option } = Select;
 @inject('programStore')
 @observer
 class Controller extends Component {
-	constructor(props) {
-		super(props);
-	}
-
 	getOptions() {
 		return Array(5)
 			.fill(1)
@@ -27,8 +23,6 @@ class Controller extends Component {
 	handleSwitch = checked => {
 		this.props.programStore.changeShowUnDefined(checked);
 	};
-
-	componentWillReact() { }
 
 	render() {
 		const marginRight = {

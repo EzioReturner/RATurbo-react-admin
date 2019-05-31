@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Dropdown, Icon, Menu } from 'antd';
 import { inject, observer } from 'mobx-react';
-import { i18n } from '@src/config/setting';
+import { i18n } from 'config/setting';
 import styles from './selectlang.module.scss';
 
 const { languages, defaultLanguage } = i18n;

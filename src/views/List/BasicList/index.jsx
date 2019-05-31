@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Row, Col, Card } from 'antd';
 import { inject, observer } from 'mobx-react';
-import PageWrapper from '@components/PageWrapper';
-import FormatterLocale from '@components/FormatterLocale';
+import PageWrapper from 'components/PageWrapper';
+import FormatterLocale from 'components/FormatterLocale';
 import ListTable from './ListTable';
 import styles from './listTable.module.scss';
 

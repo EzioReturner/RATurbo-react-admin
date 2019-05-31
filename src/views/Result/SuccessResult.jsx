@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
-import Result from '@components/Result'
-import PageWrapper from '@components/PageWrapper';
-import FormatterLocale from '@components/FormatterLocale';
+import Result from 'components/Result'
+import PageWrapper from 'components/PageWrapper';
+import FormatterLocale from 'components/FormatterLocale';
 import { Card, Button, Steps, Row, Col, Icon } from 'antd';
 import styles from './styles.module.scss';
 

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Card } from 'antd';
-import getWeather from '@api/dashboard';
+import getWeather from 'api/dashboard';
 import Moment from 'moment';
 import {
 	RainSvg,
@@ -8,7 +8,7 @@ import {
 	OvercastSvg,
 	ThunderSvg,
 	SunSvg
-} from '@components/SvgIcon';
+} from 'components/SvgIcon';
 
 class Weather extends PureComponent {
 	constructor(props) {

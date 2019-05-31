@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'antd';
 import { inject, observer } from 'mobx-react';
-import PageWrapper from '@components/PageWrapper';
-import FormatterLocale from '@components/FormatterLocale';
+import PageWrapper from 'components/PageWrapper';
+import FormatterLocale from 'components/FormatterLocale';
 import PlatformProject from './PlatformProject';
 import QuickStart from './QuickStart';
 import MultiAnalysis from './MultiAnalysis';
@@ -19,7 +19,7 @@ class Monitor extends Component {
 				<div className="p-left-part">
 					<img
 						alt=""
-						src={require('@assets/image/userPhoto.jpg')}
+						src={require('assets/image/userPhoto.jpg')}
 						className="user-photo"
 					/>
 					<div>

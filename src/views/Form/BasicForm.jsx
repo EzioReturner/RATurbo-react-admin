@@ -4,8 +4,8 @@ import {
 	Slider, Button, Upload, Icon, Rate, Checkbox,
 	Row, Col, Card
 } from 'antd';
-import PageWrapper from '@components/PageWrapper';
-import FormatterLocale from '@components/FormatterLocale';
+import PageWrapper from 'components/PageWrapper';
+import FormatterLocale from 'components/FormatterLocale';
 
 const { Option } = Select;
 class BasicForm extends Component {

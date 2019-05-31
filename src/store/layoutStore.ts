@@ -1,6 +1,6 @@
 import { observable, configure, action } from 'mobx';
-import isMobile from '@utlis/isMobile';
-import debounce from '@utlis/debounce';
+import isMobile from 'utlis/isMobile';
+import debounce from 'utlis/debounce';
 import NProgress from 'nprogress';
 import { constantRouteConfig, asyncRouteConfig } from '../config/router.config';
 interface Breadcrumb {
@@ -43,7 +43,8 @@ class LayoutStore {
 
   // 动态设置路由方法
   @action setMenu(): void {
-    const [user, app] = constantRouteConfig;
+    const [user] = constantRouteConfig;
+    const app: any = constantRouteConfig[1];
     app.routes = asyncRouteConfig;
     this.routeConfig = [user, app];
   }

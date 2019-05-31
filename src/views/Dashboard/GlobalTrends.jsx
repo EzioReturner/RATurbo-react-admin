@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import { Card } from 'antd';
-import EchartsReact from '@components/Echarts';
-import { globalTrendsOption } from '@assets/chartOption';
-import FormatterLocale from '@components/FormatterLocale';
+import EchartsReact from 'components/Echarts';
+import { globalTrendsOption } from 'assets/chartOption';
+import FormatterLocale from 'components/FormatterLocale';
 
 class GlobalTrends extends PureComponent {
 	constructor(props) {

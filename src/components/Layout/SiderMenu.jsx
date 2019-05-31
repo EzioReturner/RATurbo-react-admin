@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
 import { intersection } from 'lodash';
 import classNames from 'classnames';
-import { logoPath, siteName, menuLinkUrl } from '@src/config/setting';
+import { logoPath, siteName, menuLinkUrl } from 'config/setting';
 import styles from './siderMenu.module.scss';
 
 

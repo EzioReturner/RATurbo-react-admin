@@ -1,4 +1,4 @@
-import { getUserInfo, postLogin } from '@api/user';
+import { getUserInfo, postLogin } from 'api/user';
 import { action, autorun, configure, observable, } from 'mobx';
 
 configure({ enforceActions: 'always' });

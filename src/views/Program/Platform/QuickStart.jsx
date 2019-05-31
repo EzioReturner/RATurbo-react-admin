@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Card, Button, Avatar, Row, Col } from 'antd';
-import { getContact } from '@api/platform';
-import FormatterLocale from '@components/FormatterLocale';
+import { getContact } from 'api/platform';
+import FormatterLocale from 'components/FormatterLocale';
 
 class QuickStart extends PureComponent {
 	state = {

@@ -1,4 +1,4 @@
-import request from '@utlis/io';
+import request from 'utlis/io';
 import Mock from 'mockjs';
 
 const listData = Mock.mock({

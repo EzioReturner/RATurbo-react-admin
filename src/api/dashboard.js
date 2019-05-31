@@ -1,4 +1,4 @@
-import io from '@utlis/io';
+import io from 'utlis/io';
 
 export default function getWeather() {
     return io.sendRequest('get', {

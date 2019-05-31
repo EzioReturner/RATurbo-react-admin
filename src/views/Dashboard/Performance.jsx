@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Card, Progress } from 'antd';
-import FormatterLocale from '@components/FormatterLocale';
+import FormatterLocale from 'components/FormatterLocale';
 
 class Performance extends PureComponent {
 	render() {

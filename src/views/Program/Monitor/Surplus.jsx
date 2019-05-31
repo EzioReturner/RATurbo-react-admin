@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card } from 'antd';
-import FormatterLocale from '@components/FormatterLocale';
+import FormatterLocale from 'components/FormatterLocale';
 
 const Surplus = () => {
 	return (

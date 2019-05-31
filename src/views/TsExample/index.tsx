@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import PageWrapper from '@components/PageWrapper';
-import FormatterLocale from '@components/FormatterLocale';
+import PageWrapper from 'components/PageWrapper';
+import FormatterLocale from 'components/FormatterLocale';
 const style = require('./index.module.scss');
 
 interface TitleProps {

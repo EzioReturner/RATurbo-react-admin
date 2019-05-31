@@ -1,8 +1,8 @@
 import React from 'react';
 import { Card } from 'antd';
-import EchartsReact from '@components/Echarts';
-import { gaugeOption } from '@assets/chartOption';
-import FormatterLocale from '@components/FormatterLocale';
+import EchartsReact from 'components/Echarts';
+import { gaugeOption } from 'assets/chartOption';
+import FormatterLocale from 'components/FormatterLocale';
 
 const Efficiency = () => {
 	return (

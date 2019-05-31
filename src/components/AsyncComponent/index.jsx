@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import WrapAnimation from '@components/WrapAnimation';
+import WrapAnimation from 'components/WrapAnimation';
 import { inject } from 'mobx-react';
 
 /**

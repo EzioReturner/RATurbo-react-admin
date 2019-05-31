@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Icon } from 'antd';
-import { copyright } from '@src/config/setting';
+import { copyright } from 'config/setting';
 import styles from './footer.module.scss';
 
 const [left, right, href] = copyright;

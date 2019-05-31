@@ -1,16 +1,16 @@
 import React, { Component, Suspense } from 'react';
-import Loading from '@components/Loading';
-import Authorized from '@components/Authorized';
-import { Header, Navigator } from '@components/Layout';
+import Loading from 'components/Loading';
+import Authorized from 'components/Authorized';
+import { Header, Navigator } from 'components/Layout';
 import { Redirect, withRouter } from 'react-router-dom';
-import { getRouteAuthority } from '@utlis/authorityTools';
+import { getRouteAuthority } from 'utlis/authorityTools';
 import classNames from 'classnames';
-import Footer from '@components/Footer';
+import Footer from 'components/Footer';
 import { observer, inject } from 'mobx-react';
 import styles from './mainLayout.module.scss';
 
 const Exception403 = React.lazy(() =>
-	import(/* webpackChunkName: "403" */ '@views/Exception/403')
+	import(/* webpackChunkName: "403" */ 'views/Exception/403')
 );
 
 @withRouter

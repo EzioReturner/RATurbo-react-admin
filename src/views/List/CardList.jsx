@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import PageWrapper from '@components/PageWrapper';
-import FormatterLocale from '@components/FormatterLocale';
+import PageWrapper from 'components/PageWrapper';
+import FormatterLocale from 'components/FormatterLocale';
 import { Icon, Card, List, Button } from 'antd';
-import { getListData } from '@api/list';
-import { getContact } from '@api/platform';
+import { getListData } from 'api/list';
+import { getContact } from 'api/platform';
 import styles from './list.module.scss';
 
 class CardList extends Component {
@@ -37,7 +37,7 @@ class CardList extends Component {
 
     const ExtraContent = (
       <div className={styles.extraContent}>
-        <img alt="" src={require('@assets/image/cardlist.png')} />
+        <img alt="" src={require('assets/image/cardlist.png')} />
       </div>
     )
 

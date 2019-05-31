@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Form, Button, Input, Icon, Checkbox } from 'antd';
 import { withRouter } from 'react-router-dom';
-import { siteName } from '@src/config/setting';
+import { siteName } from 'config/setting';
 import { inject } from 'mobx-react';
 import './login.scss';
 import 'animate.css';
@@ -95,7 +95,7 @@ class LoginForm extends Component {
               valuePropName: 'checked',
               initialValue: true
             })(<Checkbox>Remember me</Checkbox>)}
-            <a className="login-form-forgot" href="">Forgot password</a>
+            <a className="login-form-forgot" href="/login">Forgot password</a>
             <Button
               type="primary"
               htmlType="submit"

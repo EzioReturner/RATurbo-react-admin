@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Card, Row, Col } from 'antd';
 import { inject, observer } from 'mobx-react';
 
-const imgUrl = require('@assets/image/userPhoto.jpg');
+const imgUrl = require('assets/image/userPhoto.jpg');
 
 @inject('userStore')
 @observer

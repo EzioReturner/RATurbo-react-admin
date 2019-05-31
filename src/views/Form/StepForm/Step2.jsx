@@ -1,7 +1,7 @@
 import React, { Fragment, Component } from 'react';
 import { Form, Button } from 'antd';
 import { observer } from 'mobx-react';
-import FormatterLocale from '@components/FormatterLocale';
+import FormatterLocale from 'components/FormatterLocale';
 import StepFormStore from './formStore';
 import styles from './form.module.scss';
 

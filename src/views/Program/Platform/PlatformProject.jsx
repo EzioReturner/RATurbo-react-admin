@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Card } from 'antd';
-import { getProjectList } from '@api/platform';
-import FormatterLocale from '@components/FormatterLocale';
+import { getProjectList } from 'api/platform';
+import FormatterLocale from 'components/FormatterLocale';
 
 class PlatformProject extends PureComponent {
 	state = {

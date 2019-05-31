@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
-import Result from '@components/Result';
+import Result from 'components/Result';
 import { Button } from 'antd';
-import FormatterLocale from '@components/FormatterLocale';
+import FormatterLocale from 'components/FormatterLocale';
 import StepFormStore from './formStore';
 import styles from './form.module.scss';
 

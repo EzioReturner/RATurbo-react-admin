@@ -1,8 +1,8 @@
 import React, { Component, Suspense } from 'react';
 import { Card, Steps } from 'antd';
-import PageWrapper from '@components/PageWrapper';
-import Loading from '@components/Loading';
-import FormatterLocale from '@components/FormatterLocale';
+import PageWrapper from 'components/PageWrapper';
+import Loading from 'components/Loading';
+import FormatterLocale from 'components/FormatterLocale';
 import { observer } from 'mobx-react';
 import styles from './form.module.scss';
 import formStore from './formStore';

@@ -6,7 +6,7 @@ import {
 	Switch
 } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
-import Error404 from '@views/Exception/404';
+import Error404 from 'views/Exception/404';
 import AsyncComponent from '../AsyncComponent';
 
 const RouteMiddle = (props) => {

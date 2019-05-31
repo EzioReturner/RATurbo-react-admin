@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import PageWrapper from '@components/PageWrapper';
-import FormatterLocale from '@components/FormatterLocale';
+import PageWrapper from 'components/PageWrapper';
+import FormatterLocale from 'components/FormatterLocale';
 import { Card, Table, Button, Input, Divider } from 'antd';
-import { getTableData } from '@api/list';
+import { getTableData } from 'api/list';
 import styles from './list.module.scss';
 
 const Search = Input.Search;

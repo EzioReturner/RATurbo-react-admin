@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Card, Input, Radio, List, Avatar, Progress } from 'antd';
-import { getListData } from '@api/list';
-import { getContact } from '@api/platform';
+import { getListData } from 'api/list';
+import { getContact } from 'api/platform';
 import styles from './listTable.module.scss';
 
 const Search = Input.Search;
