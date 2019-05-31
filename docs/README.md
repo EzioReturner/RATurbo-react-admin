@@ -20,12 +20,13 @@
 
 ## 依赖模块
 
-项目基于 create-react-app 搭建，相关依赖链接如下
+项目基于 create-react-app v3.0 搭建，相关依赖链接如下
 
-- [react](https://facebook.github.io/react/)
+- [react](https://facebook.github.io/react/)(搭积木的必备玩具)
+- [create-react-app](https://github.com/facebook/create-react-app)(官方推荐脚手架)
 - [react-router](https://react-guide.github.io/react-router-cn/)(<span style="color: rgb(243,121,52);">react路由，4.x的版本</span>)
-- [react-transition-group](https://github.com/reactjs/react-transition-group)(<span style="color: rgb(243,121,52);">react过渡组件</span>)
-- [mobx](https://github.com/mobxjs/mobx)(<span style="color: rgb(243,121,52);">Mobx是一个功能强大,上手非常容易的状态管理工具</span>)
+- [mobx](https://github.com/mobxjs/mobx)(Mobx是一个功能强大,上手非常容易的状态管理工具)
+- [webpack-dashboard](https://github.com/FormidableLabs/webpack-dashboard)(记住，要是背后有人偷看到这个画面，就假装在为美国国家航天局工作。)
 - [antd](https://ant.design/index-cn)(<span style="color: rgb(243,121,52);">蚂蚁金服开源的react ui组件框架</span>)
 - [axios](https://github.com/mzabriskie/axios)(<span style="color: rgb(243,121,52);">http请求模块</span>)
 - [echarts](https://github.com/apache/incubator-echarts)(<span style="color: rgb(243,121,52);">百度开源可视化图表工具</span>)

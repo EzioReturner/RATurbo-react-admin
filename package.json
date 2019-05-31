@@ -31,14 +31,14 @@
     "size-sensor": "^0.2.4"
   },
   "scripts": {
-    "start": "PORT=9527 webpack-dashboard react-app-rewired start",
+    "start": "webpack-dashboard react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject",
     "translate": "node scripts/translate.js",
     "add-locale": "node scripts/addLocale.js",
     "raCreate": "node scripts/tools.js",
-    "analyze": "node scripts/build.js --analyze"
+    "analyze": "react-app-rewired build --analyze"
   },
   "eslintConfig": {
     "extends": "react-app"

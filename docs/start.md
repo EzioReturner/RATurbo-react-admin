@@ -11,6 +11,7 @@ cd RATurbo-react-admin
 
 ## 功能模块
 
+```bash
 - 首页
     - 完整布局
 - 导航菜单
@@ -49,6 +50,7 @@ cd RATurbo-react-admin
     - 第三方登录 (施工中)
 - 多分辨率 & 移动端适配 
 - 支持TypeScript
+```
 
 ## 目录结构
 

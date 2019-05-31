@@ -9,6 +9,7 @@ const clearConsole = require('react-dev-utils/clearConsole');
 const DashboardPlugin = require('webpack-dashboard/plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const chalk = require('chalk');
+const setting = require('./src/config/setting');
 
 const Env = process.env.NODE_ENV;
 // 自定义修改 webpack 配置项
@@ -63,12 +64,7 @@ module.exports = {
     // 配置 antd 主题色
     addLessLoader({
       javascriptEnabled: true,
-      modifyVars: {
-        '@primary-color': '#fb4491',
-        '@link-color': '#fb4491',
-        '@border-radius-base': '2px',
-        '@font-size-base': '13px'
-      },
+      modifyVars: setting.theme,
     }),
     // 移除 import src路径限制
     removeModuleScopePlugin(),

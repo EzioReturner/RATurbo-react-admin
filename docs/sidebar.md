@@ -11,6 +11,7 @@
   * [样式与主题](/cssStyle)
 * 配置相关
   * [系统配置](/setting)
+  * [Override](/override)
 * 工程
   * [使用typescript](/typescript)
   * [内置命令](/scripts)
