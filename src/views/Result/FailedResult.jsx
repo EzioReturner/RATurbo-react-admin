@@ -13,12 +13,12 @@ class FailedResult extends PureComponent {
         <div className={styles.reason}>
           <Icon type="close-circle" className={styles.icon} />
           <FormatterLocale id="result.failed.reason1" />
-          <a className={styles.aButton}>申请权限</a>
+          <Button type="link" className={styles.aButton}>申请权限</Button>
         </div>
         <div className={styles.reason}>
           <Icon type="close-circle" className={styles.icon} />
           <FormatterLocale id="result.failed.reason2" />
-          <a className={styles.aButton}>重新评估</a>
+          <Button type="link" className={styles.aButton}>重新评估</Button>
         </div>
       </div>
     );

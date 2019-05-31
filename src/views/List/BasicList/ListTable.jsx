@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Input, Radio, List, Avatar, Progress } from 'antd';
+import { Card, Input, Radio, List, Avatar, Progress, Button } from 'antd';
 import { getListData } from 'api/list';
 import { getContact } from 'api/platform';
 import styles from './listTable.module.scss';
@@ -9,11 +9,8 @@ const RadioButton = Radio.Button;
 const RadioGroup = Radio.Group;
 
 class ListTable extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      list: []
-    }
+  state = {
+    list: []
   }
 
   componentDidMount() {
@@ -84,10 +81,10 @@ class ListTable extends Component {
           loading={!list.length}
           dataSource={list}
           renderItem={item => (
-            <List.Item actions={[<a key="first">编辑</a>, <a key="second">更多操作</a>]}>
+            <List.Item actions={[<Button key="first" type="link">编辑</Button>, <Button key="second" type="link">更多操作</Button>]}>
               <List.Item.Meta
                 avatar={<Avatar src={item.avatar} shape="square" size="large" />}
-                title={<a>{item.title}</a>}
+                title={<Button type="link">{item.title}</Button>}
                 description={<div className={styles.detail}>{item.detail}</div>}
               />
               <ListContent data={item} />

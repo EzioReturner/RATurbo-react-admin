@@ -76,6 +76,6 @@ class FormStore {
   }
 }
 
-const formStore = new FormStore;
+const formStore = new FormStore();
 
 export default formStore;

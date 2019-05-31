@@ -56,9 +56,9 @@ class StepForm extends Component {
 }
 
 const Step2 = () => {
-  const Form = Form.create({ name: 'Step2' })(StepForm);
+  const FormContainer = Form.create({ name: 'Step2' })(StepForm);
   return (
-    <div className={styles.step}><Form /></div>
+    <div className={styles.step}><FormContainer /></div>
   );
 }
 

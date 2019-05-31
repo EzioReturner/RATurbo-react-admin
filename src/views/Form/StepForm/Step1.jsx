@@ -83,10 +83,10 @@ const StepForm = (props) => {
 
 class Step1 extends PureComponent {
   render() {
-    const Form = Form.create({ name: 'Step1' })(StepForm);
+    const FormContainer = Form.create({ name: 'Step1' })(StepForm);
     return (
       <div>
-        <div className={styles.step}><Form /></div>
+        <div className={styles.step}><FormContainer /></div>
         <Divider style={{ margin: '40px 0 24px' }} />
         <div className={styles.descript}>
           <h3><FormatterLocale id="step1.attention" defaultMessage="请注意" /></h3>

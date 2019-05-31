@@ -43,8 +43,8 @@ class CardList extends Component {
 
     const Content = (
       <div className={styles.content}>
-        <a><Icon type="thunderbolt" />快速启动</a>
-        <a><Icon type="info-circle" />产品简介</a>
+        <Button type="link"><Icon type="thunderbolt" />快速启动</Button>
+        <Button type="link"><Icon type="info-circle" />产品简介</Button>
       </div>
     )
 
@@ -63,19 +63,20 @@ class CardList extends Component {
               <List.Item key={item.id}>
                 <Card hoverable
                   actions={
-                    [<a key={item.id + 1}><Icon type="setting" /> 操作一</a>, <a key={item.id + 2}><Icon type="edit" /> 操作二</a>]
+                    [<Button type="link" key={item.id + 1}><Icon type="setting" /> 操作一</Button>, <Button type="link" key={item.id + 2}><Icon type="edit" /> 操作二</Button>]
                   }
                 >
                   <Card.Meta
                     avatar={<img className={styles.images} alt="" src={item.avatar} />}
                     title={
-                      <a
+                      <Button
+                        type="link"
                         style={{
                           fontWeight: 'bold'
                         }}
                       >
                         {item.title}
-                      </a>
+                      </Button>
                     }
                     description={
                       <div className={styles.description}>{item.detail}</div>

@@ -5,10 +5,7 @@ import { globalTrendsOption } from 'assets/chartOption';
 import FormatterLocale from 'components/FormatterLocale';
 
 class GlobalTrends extends PureComponent {
-	constructor(props) {
-		super(props);
-	}
-
+	
 	componentDidMount() { }
 
 	componentWillUnmount() { }

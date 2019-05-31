@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Table, Divider, Tag, Progress, Modal } from 'antd';
+import { Card, Table, Divider, Tag, Progress, Modal, Button } from 'antd';
 import FormatterLocale from 'components/FormatterLocale';
 
 const confirm = Modal.confirm;
@@ -88,19 +88,17 @@ class SaleTable extends Component {
 		const _renderAction = (record) => {
 			return (
 				<span>
-					<a
-						href="javascript:;"
-						onClick={this.showConfirm.bind(this, ['invite', record])}
+					<Button type="link"
+						onClick={() => this.showConfirm(['invite', record])}
 					>
 						Invite {record.name}
-					</a>
+					</Button>
 					<Divider type="vertical" />
-					<a
-						href="javascript:;"
-						onClick={this.showConfirm.bind(this, ['delete', record])}
+					<Button type="link"
+						onClick={() => this.showConfirm(['delete', record])}
 					>
 						Delete
-					</a>
+					</Button>
 				</span>
 			)
 		};

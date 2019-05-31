@@ -9,10 +9,6 @@ import UserInfo from './UserInfo';
 @inject('layoutStore')
 @observer
 class Header extends Component {
-	constructor(props) {
-		super(props);
-	}
-
 	render() {
 		const { toggleCollapsed, collapsed, isMobile } = this.props.layoutStore;
 		const iconCollapsed = collapsed ? 'menu-unfold' : 'menu-fold';

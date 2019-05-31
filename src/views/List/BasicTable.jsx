@@ -76,17 +76,17 @@ class BasicTable extends Component {
         render: () => {
           return (
             <span>
-              <a
-                href="javascript:;"
+              <Button
+                type="link"
               >
                 配置
-              </a>
+              </Button>
               <Divider type="vertical" />
-              <a
-                href="javascript:;"
+              <Button
+                type="link"
               >
                 Delete
-              </a>
+              </Button>
             </span>
           );
         }

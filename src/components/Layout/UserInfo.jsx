@@ -10,10 +10,6 @@ const confirm = Modal.confirm;
 @inject('userStore')
 @observer
 class UserInfo extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     const { userInfo, reloadUserInfo } = this.props.userStore;
     if (JSON.stringify(userInfo) === '{}') {
