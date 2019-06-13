@@ -3,7 +3,7 @@
 RA采用的是 `react-app-rewired` + `customize-cra` 的方案来修改 `CRA` 中的配置项。所有项目中的配置项可以在
  `config-overrides.js`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/config-overrides.js) 中找到。
 
-> RA默认提供如下几个参数
+> RA默认提供如下几个参数：
 
 ### antd 按需加载
 
@@ -34,7 +34,7 @@ addBabelPlugin(
 
 ### antd 主题色
 
-其中 `setting.theme` 来自 [主题](cssStyle?id=主题) 中的配置。
+其中 `setting.theme` 来自 [主题](/cssStyle?id=主题) 中的配置。
 
 ```javascript
 ...
@@ -45,7 +45,7 @@ addLessLoader({
 ...
 ```
 
-> 以及开发和部署过程中的展示优化配置
+> 以及开发和部署过程中的展示优化配置：
 
 ```javascript
 ...

@@ -2,7 +2,7 @@
 
 ## 构建
 
-当项目开发完毕，运行下方命令打包应用
+当项目开发完毕，运行下方命令打包应用：
 
 ```bash
 yarn run build
@@ -94,7 +94,7 @@ $ serve ./build
   1) Static Site
   => 1
   ```
-- 之后我们将打包好的 `build/` 目录下的文件拷贝至 `lean init` 初始化后的文件夹内。运行如下命令
+- 之后我们将打包好的 `build/` 目录下的文件拷贝至 `lean init` 初始化后的文件夹内。运行如下命令：
 
   ```bash
   $ lean deploy

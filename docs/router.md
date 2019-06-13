@@ -7,7 +7,7 @@ RA中的路由为了方便管理，使用了中心化的方式，在 `router.con
 RA通过框架中的组件实现了以下几个模块：
 - `路由管理` 按照约定的语法在 `router.config.js` 中配置路由信息。
 - `菜单渲染` RA的菜单组件会根据路由信息生成菜单。
-- `面包屑` 组件 `PageHeader`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/components/PageHeader/Breadcrumb.jsx) 中已完成内置的面包屑组件
+- `面包屑` 组件 `PageHeader`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/components/PageHeader/Breadcrumb.jsx) 中已完成内置的面包屑组件。
 
 ### 路由
 
@@ -39,7 +39,7 @@ RA中的路由，通过 `router.config.js` 统一进行管理。我们提供了�
 
 菜单会根据 `router.config.js` 自动生成，具体实现在 `components/Layout/SiderMenu.jsx`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/components/Layout/SiderMenu.jsx) 。
 
-> 如果你的项目不需要菜单，你可以在 `src/layout/MainLayout`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/layout/MainLayout.jsx) 中移除 `Navigator` 组件的挂载
+> 如果你的项目不需要菜单，你可以在 `src/layout/MainLayout`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/layout/MainLayout.jsx) 中移除 `Navigator` 组件的挂载。
 
 #### 从服务器请求菜单
 

@@ -61,7 +61,7 @@ $color-white-darker-extra: darken($color-white, 20%) !default;
 ...
 ```
 
-- 边距 字体 对齐方式，可在 `src/style/custom.scss`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/style/custom.scss) 中找到
+- 边距 字体 对齐方式，可在 `src/style/custom.scss`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/style/custom.scss) 中找到。
 
 ```css
 ...

@@ -1,9 +1,9 @@
 # Http 请求
 
-RA使用axios提供http请求服务，RA在其基础之上进行了封装，文件位于 `src/utlis/io.js`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/utlis/io.js)
+RA使用axios提供http请求服务，RA在其基础之上进行了封装，文件位于 `src/utlis/io.js`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/utlis/io.js)。
 
 ## 自定义Header 
-通过调用 `setHeader` 方法可手动修改Header
+通过调用 `setHeader` 方法可手动修改Header。
 ```javascript
 setHeader = (key, val) => {
   this.instance.defaults.headers.common[key] = val;
@@ -21,7 +21,7 @@ function getSome() {
 
 ## 拦截器
 
-io工具提供了拦截器的入口，可以针对不同的接口需要进行拦截设置
+io工具提供了拦截器的入口，可以针对不同的接口需要进行拦截设置。
 
 ```javascript
 this.instance.interceptors.request.use(
@@ -37,7 +37,7 @@ this.instance.interceptors.request.use(
 
 ## 异常处理
 
-io工具提供了接口请求异常的处理方法，针对restful风格的接口对不同状态码进行异常处理
+io工具提供了接口请求异常的处理方法，针对restful风格的接口对不同状态码进行异常处理。
 
 ```javascript
 handleError = error => {

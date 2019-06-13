@@ -4,7 +4,7 @@
 
 ## 新增业务组件 
 
-按照RA的约定，我们通常将业务组件放置在`src/views`目录下，我们使用下面的指令创建一个新的业务组件
+按照RA的约定，我们通常将业务组件放置在`src/views`目录下，我们使用下面的指令创建一个新的业务组件：
 
 ```bash
 yarn raCreate -v exampleView
@@ -21,9 +21,9 @@ createType: ···exampleView··· created
 ...
 ```
 
-之后我们前往 `src/views` 目录下，一个基础的页面 `jsx、scss` 文件已生成，样式默认使用 `CSS Module` 详情可参考 [样式与主题](/cssStyle)
+之后我们前往 `src/views` 目录下，一个基础的页面 `jsx、scss` 文件已生成，样式默认使用 `CSS Module` ，可参考 [样式与主题](/cssStyle)
 
-![addView](/media/addView.png)
+![addView](/media/addView.png)。
 
 
 并附带了基础代码
@@ -42,13 +42,14 @@ class ExampleView extends Component {
 export default ExampleView;
 ```
 
-> 在指令中添加额外配置项 `-page` 可以生成附带面包屑以及可定制的header的基础page页面，我们在控制台输入如下代码
+> 在指令中添加额外配置项 `-page` 可以生成附带面包屑以及可定制的header的基础page页面，我们在控制台输入如下代码：
 
 ```bash
 yarn raCreate -v examplePage -page
 ```
 
-打开文件后 `examplePage.jsx` 文件我们将看到如下代码
+打开文件后 `examplePage.jsx` 文件我们将看到如下代码：
+
 ```javascript
 import React, { Component } from 'react'; 
 import PageWrapper from '@components/PageWrapper'; 
@@ -66,14 +67,14 @@ class examplePage extends Component {
 export default examplePage;
 ```
 
->在路由配置项中添加相应的路由信息，配置过程可参考 [路由与菜单](/router)，之后输入对应的url，我们可以看到如下页面，一个附带header头部，body，以及面包屑的基础页面已经生成
+>在路由配置项中添加相应的路由信息，配置过程可参考 [路由与菜单](/router)，之后输入对应的url，我们可以看到如下页面，一个附带header头部，body，以及面包屑的基础页面已经生成。
 
 ![examplePage](/media/examplePage.png)
 
 
 ## 新增公共组件
 
-公共组件新增与业务组件类似，将指令中的 `-v` 改成 `-c` 即可
+公共组件新增与业务组件类似，将指令中的 `-v` 改成 `-c` 即可：
 
 ```bash
 yarn raCreate -c exampleComponent
@@ -81,7 +82,7 @@ yarn raCreate -c exampleComponent
 
 ## PageWrapper组件
 
->上例中，我们引入了PageWrapper组件，该组件接收以下参数
+>上例中，我们引入了PageWrapper组件，该组件接收以下参数：
 
 ### hideBreadcrumb
 
@@ -105,6 +106,6 @@ yarn raCreate -c exampleComponent
 
 - 类型： `string` 或者 `ReactDOM`
 
-详细对应可参考下图，具体使用代码参考 `src/views/List/CardList.jsx`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/views/List/CardList.jsx) 文件
+详细对应可参考下图，具体使用代码参考 `src/views/List/CardList.jsx`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/views/List/CardList.jsx) 文件。
 
 ![pageHeader](/media/pageHeader.png)
