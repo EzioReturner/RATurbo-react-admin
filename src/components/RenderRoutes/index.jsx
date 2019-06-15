@@ -26,7 +26,7 @@ const RouteMiddle = (props) => {
  * 路由生成组件
  * 遍历路由表 生成多级路由
  */
-@inject('userStore', 'layoutStore')
+@inject('layoutStore')
 @observer
 class RenderRoutes extends Component {
 	generateRoute(routes, switchProps) {

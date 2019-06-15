@@ -1,12 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import { Form, Button, Input, Icon, Checkbox } from 'antd';
-import { withRouter } from 'react-router-dom';
 import { siteName } from 'config/setting';
+import { navigate } from '@reach/router';
 import { inject } from 'mobx-react';
 import './login.scss';
 import 'animate.css';
 
-@withRouter
 @inject('userStore')
 class LoginForm extends Component {
   state = {
@@ -21,7 +20,7 @@ class LoginForm extends Component {
   }
 
   handleSuccess() {
-    this.props.history.push('/dashboard');
+    navigate('/dashboard');
   }
 
   handleSubmit = e => {

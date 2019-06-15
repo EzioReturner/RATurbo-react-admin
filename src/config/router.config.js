@@ -5,7 +5,7 @@ export const constantRouteConfig = [
     component: ['/layout/UserLayout', 'fadeRA'],
     routes: [{
       name: 'Login',
-      path: '/user/login',
+      path: '/login',
       component: ['/views/User/Login']
     }]
   },

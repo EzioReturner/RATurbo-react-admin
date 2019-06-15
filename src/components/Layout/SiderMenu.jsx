@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import { Menu, Icon } from 'antd';
-import { Link, withRouter } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
 import { intersection } from 'lodash';
 import classNames from 'classnames';
 import { logoPath, siteName, menuLinkUrl } from 'config/setting';
 import styles from './siderMenu.module.scss';
-
+import { Link, navigate } from "@reach/router";
 
 const { SubMenu } = Menu;
-@withRouter
 @inject('layoutStore', 'userStore', 'localeStore')
 @observer
 class SiderMenu extends Component {
@@ -28,9 +26,9 @@ class SiderMenu extends Component {
 	checkRoute(routeInfo, path) {
 		const isArr = Array.isArray(routeInfo);
 		const arr = isArr ? routeInfo : routeInfo.routes;
-		return arr.find(
+		return arr ? arr.find(
 			route => route.path === (isArr ? '' : routeInfo.path) + '/' + path
-		);
+		) : [];
 	}
 
 	// 初始化开启的菜单
@@ -101,7 +99,9 @@ class SiderMenu extends Component {
 		return <Menu.Item key={menu.path}>{this.getMenuItem(menu, parentName)}</Menu.Item>;
 	}
 
-	handleClickLink() {
+	handleClickLink(path) {
+		console.log(path);
+
 		const { isMobile, toggleCollapsed } = this.props.layoutStore;
 		isMobile && toggleCollapsed();
 	}
@@ -114,9 +114,8 @@ class SiderMenu extends Component {
 		return (
 			<Link
 				to={path}
-				replace
 				onClick={() => {
-					this.handleClickLink();
+					this.handleClickLink(path);
 				}}
 			>
 				{iconType && <Icon type={iconType} />}

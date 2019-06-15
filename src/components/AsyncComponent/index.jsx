@@ -29,6 +29,8 @@ class AsyncComponent extends PureComponent {
 		// 检查路径是否已加载 判断是否显示loading
 		this.props.layoutStore.checkIsInitial(route);
 		const { default: component } = await import('../../../src' + componentPath);
+		console.log(component);
+
 		this.setState({
 			component: component,
 			animate: animate
