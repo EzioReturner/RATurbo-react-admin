@@ -3,12 +3,13 @@ import { Router, Redirect } from "@reach/router";
 import { inject, observer } from 'mobx-react';
 import Error404 from 'views/Exception/404';
 import AsyncComponent from '../AsyncComponent';
+import RelayLayout from 'layout/RelayLayout';
 
 @inject('layoutStore')
 @observer
 class ReachRouter extends Component {
   generateRoute(routes) {
-    return routes ? [...routes, { unMatch: true }].map((route, i) => {
+    return routes ? routes.map((route, i) => {
       const {
         redirect,
         path,
@@ -17,7 +18,7 @@ class ReachRouter extends Component {
         key,
         unMatch
       } = route;
-      const childRoutes = this.generateRoute(routes);
+      const childRoutes = routes ? this.generateRoute(routes) : null;
       if (unMatch) {
         return <Error404 default key={'unMatch' + Math.random().toString(36).slice(2)} />
       }
@@ -40,7 +41,12 @@ class ReachRouter extends Component {
           >
             {childRoutes}
           </AsyncComponent> :
-          childRoutes
+          <RelayLayout
+            path={path}
+            key={key || i}
+          >
+            {childRoutes}
+          </RelayLayout>
       )
     }) : null;
   }
@@ -48,6 +54,7 @@ class ReachRouter extends Component {
     const {
       layoutStore: { routeConfig }
     } = this.props;
+    console.log(this.generateRoute(routeConfig));
     return (
       <Router>
         {this.generateRoute(routeConfig)}

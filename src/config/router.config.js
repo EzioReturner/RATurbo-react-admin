@@ -36,18 +36,18 @@ export const asyncRouteConfig = [{
     path: '/program',
     routes: [{
         name: 'analysis',
-        path: '/program/analysis',
+        path: '/analysis',
         component: ['/views/Program/Analysis'],
         authority: ['admin']
       },
       {
         name: 'monitor',
-        path: '/program/monitor',
+        path: '/monitor',
         component: ['/views/Program/Monitor']
       },
       {
         name: 'platform',
-        path: '/program/platform',
+        path: '/platform',
         component: ['/views/Program/Platform']
       }
     ]
@@ -58,21 +58,21 @@ export const asyncRouteConfig = [{
     path: '/form',
     routes: [{
         name: 'basicForm',
-        path: '/form/basicForm',
+        path: '/basicForm',
         component: ['/views/Form/BasicForm'],
         authority: ['admin']
       },
       {
         name: 'stepForm',
-        path: '/form/stepForm',
+        path: '/stepForm',
         component: ['/views/Form/StepForm']
       },
       {
         name: '三级菜单',
-        path: '/form/test',
+        path: '/test',
         routes: [{
           name: '三级菜单',
-          path: '/form/test/test1',
+          path: '/test1',
           component: ['/views/Form/TestDetail']
         }]
       }
@@ -84,17 +84,17 @@ export const asyncRouteConfig = [{
     path: '/list',
     routes: [{
         name: 'basicList',
-        path: '/list/basicList',
+        path: '/basicList',
         component: ['/views/List/BasicList'],
       },
       {
         name: 'cardList',
-        path: '/list/cardList',
+        path: '/cardList',
         component: ['/views/List/CardList'],
       },
       {
         name: 'basicTable',
-        path: '/list/basicTable',
+        path: '/basicTable',
         component: ['/views/List/BasicTable'],
       }
     ]
@@ -119,12 +119,12 @@ export const asyncRouteConfig = [{
     path: '/result',
     routes: [{
         name: 'successResult',
-        path: '/result/successResult',
+        path: '/successResult',
         component: ['/views/Result/SuccessResult'],
       },
       {
         name: 'failedResult',
-        path: '/result/failedResult',
+        path: '/failedResult',
         component: ['/views/Result/FailedResult'],
       }
     ]
@@ -135,22 +135,22 @@ export const asyncRouteConfig = [{
     path: '/exception',
     routes: [{
         name: '403',
-        path: '/exception/403',
+        path: '/403',
         component: ['/views/Exception/403', 'bounceIn-animated']
       },
       {
         name: '404',
-        path: '/exception/404',
+        path: '/404',
         component: ['/views/Exception/404']
       },
       {
         name: '500',
-        path: '/exception/500',
+        path: '/500',
         component: ['/views/Exception/500']
       },
       {
         name: 'index',
-        path: '/exception/home',
+        path: '/home',
         component: ['/views/Exception'],
         hideMenu: true
       }
