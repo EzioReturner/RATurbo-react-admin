@@ -54,7 +54,6 @@ class ReachRouter extends Component {
     const {
       layoutStore: { routeConfig }
     } = this.props;
-    console.log(this.generateRoute(routeConfig));
     return (
       <Router>
         {this.generateRoute(routeConfig)}

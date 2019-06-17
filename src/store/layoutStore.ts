@@ -100,16 +100,21 @@ class LayoutStore {
     NProgress.done(true);
   };
 
-  // 记录懒加载模块并开启loading
-  @action addInitializer(initializer: string): void {
-    this.readyInitializers.push(initializer);
-    this.mountLoading = true;
+  // 开启loading
+  @action startSpinning = (): void => {
     this.spinning = true;
     NProgress.start();
   }
 
+  // 记录懒加载模块
+  @action addInitializer(initializer: string): void {
+    this.readyInitializers.push(initializer);
+    this.mountLoading = true;
+    this.startSpinning();
+  }
+
   // 检查是否已加载过
-  @action checkIsInitial(route: any): void {
+  @action checkIsInitial = (route: any): void => {
     const { path, name } = route
     if (!this.readyInitializers.includes(path)) {
       this.addInitializer(path);
