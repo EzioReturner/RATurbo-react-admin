@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import { Menu, Icon } from 'antd';
-import { Link, withRouter } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
 import { intersection } from 'lodash';
 import classNames from 'classnames';
 import { logoPath, siteName, menuLinkUrl } from 'config/setting';
 import styles from './siderMenu.module.scss';
-
+import { Link, navigate } from "@reach/router";
 
 const { SubMenu } = Menu;
-@withRouter
 @inject('layoutStore', 'userStore', 'localeStore')
 @observer
 class SiderMenu extends Component {
@@ -26,11 +24,15 @@ class SiderMenu extends Component {
 
 	// 检查路由是否匹配信息表
 	checkRoute(routeInfo, path) {
-		const isArr = Array.isArray(routeInfo);
+		const isArr = Array.isArray(routeInfo)
 		const arr = isArr ? routeInfo : routeInfo.routes;
-		return arr.find(
-			route => route.path === (isArr ? '' : routeInfo.path) + '/' + path
-		);
+
+		return arr ? arr.find(
+			routeChild => {
+				const routePath = routeInfo.path ? routeInfo.path + routeChild.path : routeChild.path;
+				return routePath === path;
+			}
+		) : [];
 	}
 
 	// 初始化开启的菜单
@@ -43,8 +45,9 @@ class SiderMenu extends Component {
 		let cacheRoute;
 		const menuOpen = pathname.split('/').reduce((total, path) => {
 			if (path) {
-				cacheRoute = this.checkRoute(cacheRoute || routes, path);
-				cacheRoute && cacheRoute.routes && total.push(cacheRoute.path);
+				const _path = cacheRoute ? `${cacheRoute.path}/${path}` : `/${path}`;
+				cacheRoute = this.checkRoute(cacheRoute || routes, _path);
+				cacheRoute && cacheRoute.routes && total.push(_path);
 			}
 			return total;
 		}, []);
@@ -66,7 +69,7 @@ class SiderMenu extends Component {
 	}
 
 	// 递归生成菜单项
-	getNavMenuItem(menuData, parentName) {
+	getNavMenuItem(menuData, parentName, parentPath) {
 		if (!menuData.length) {
 			return [];
 		}
@@ -81,24 +84,26 @@ class SiderMenu extends Component {
 				}
 				return false;
 			})
-			.map(res => this.getSubMenuOrItem(res, parentName));
+			.map(res => this.getSubMenuOrItem(res, parentName, parentPath));
 	}
 
 	// 初始化子级菜单或者菜单枝叶
-	getSubMenuOrItem(menu, parentName) {
+	getSubMenuOrItem(menu, parentName, parentPath) {
+		const { icon, name, path, routes, hideMenu } = menu;
+		const _path = parentPath ? `${parentPath}${path}` : path;
+
 		if (
-			menu.routes &&
-			!menu.hideMenu &&
-			menu.routes.some(child => child.name)
+			routes &&
+			!hideMenu &&
+			routes.some(child => child.name)
 		) { // 菜单父级
-			const { icon, name, path, routes } = menu;
 			return (
-				<SubMenu title={this.getMenuTitle(icon, name, parentName)} key={path}>
-					{this.getNavMenuItem(routes, name)}
+				<SubMenu title={this.getMenuTitle(icon, name, parentName)} key={_path}>
+					{this.getNavMenuItem(routes, name, _path)}
 				</SubMenu>
 			);
 		} // 菜单子级枝叶
-		return <Menu.Item key={menu.path}>{this.getMenuItem(menu, parentName)}</Menu.Item>;
+		return <Menu.Item key={_path}>{this.getMenuItem(menu, parentName, parentPath)}</Menu.Item>;
 	}
 
 	handleClickLink() {
@@ -107,14 +112,14 @@ class SiderMenu extends Component {
 	}
 
 	// 生成菜单枝叶
-	getMenuItem(menu, parentName = '') {
+	getMenuItem(menu, parentName = '', parentPath) {
 		const { icon: iconType, name, path } = menu;
 		const { localeStore: { localeObj } } = this.props;
 		const key = parentName ? `menu.${parentName}.${name}` : `menu.${name}`;
+		const _path = parentPath ? `${parentPath}${path}` : path;
 		return (
 			<Link
-				to={path}
-				replace
+				to={_path}
 				onClick={() => {
 					this.handleClickLink();
 				}}

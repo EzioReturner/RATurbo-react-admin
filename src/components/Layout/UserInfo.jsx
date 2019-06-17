@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { Icon, Menu, Dropdown, Modal } from 'antd';
 import { inject, observer } from 'mobx-react';
-import { withRouter } from 'react-router-dom';
 import styles from './header.module.scss';
+import { navigate } from "@reach/router";
 
 const confirm = Modal.confirm;
 
-@withRouter
 @inject('userStore')
 @observer
 class UserInfo extends Component {
@@ -24,10 +23,10 @@ class UserInfo extends Component {
       content: 'user info will reset, system cannot auto-login',
       onOk: () => {
         return new Promise((resolve) => {
-          const { history, userStore } = this.props;
+          const { userStore } = this.props;
           setTimeout(() => {
             userStore.userLogout();
-            history.push('/user/login');
+            navigate('/user/login');
             resolve();
           }, 800);
         }).catch(() => console.log('Oops errors!'));
@@ -37,7 +36,7 @@ class UserInfo extends Component {
   };
 
   handleTriggerError = () => {
-    this.props.history.push('/exception/home');
+    navigate('/exception/home');
   };
 
   getMenu = () => (

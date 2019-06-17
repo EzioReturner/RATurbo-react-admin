@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reach/router": "^1.2.1",
     "@types/jest": "24.0.13",
     "@types/lodash": "^4.14.132",
     "@types/node": "12.0.3",
@@ -25,7 +26,6 @@
     "nprogress": "^0.2.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
     "react-transition-group": "^4.0.1",
     "size-sensor": "^0.2.4"

@@ -5,9 +5,11 @@
   position: absolute;
   top: 30px;
   right: 70px;
+
   @media screen and (max-width: 768px) {
     display: none;
   }
+
   img {
     width: 100%;
   }
@@ -15,10 +17,12 @@
 
 .content {
   margin-top: 16px;
+
   a {
     margin-right: 16px;
     font-size: 14px;
   }
+
   i {
     margin-right: 4px;
   }
@@ -30,7 +34,7 @@
 
 .createButton {
   width: 100%;
-  height: 188px;
+  height: 208px;
 }
 
 .description {
@@ -49,19 +53,22 @@
   vertical-align: middle;
   position: relative;
   margin-right: 8px;
+
   &.maintain {
     background: $color-warning;
   }
-  
+
   &.error {
     background: $color-error;
   }
-  
+
   &.offline {
     background: #d9d9d9;
   }
+
   &.progress {
     background: $color-progress;
+
     &::after {
       content: "";
       background: $color-progress;
@@ -81,6 +88,7 @@
     transform: scale(0.8);
     opacity: 0.5;
   }
+
   100% {
     transform: scale(2.4);
     opacity: 0;
