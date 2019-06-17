@@ -7,7 +7,7 @@ import RelayLayout from 'layout/RelayLayout';
 
 @inject('layoutStore')
 @observer
-class ReachRouter extends Component {
+class RoutesRender extends Component {
   generateRoute(routes) {
     return routes ? routes.map((route, i) => {
       const {
@@ -62,4 +62,4 @@ class ReachRouter extends Component {
   }
 }
 
-export default ReachRouter;
+export default RoutesRender;
