@@ -58,7 +58,13 @@ class RoutesRender extends Component {
     } = this.props;
     return (
       <Router>
-        {this.generateRoute(routeConfig)}
+        {/* {this.generateRoute(routeConfig)} */}
+        <Redirect
+          from="abc"
+          to="dashboard"
+        />
+        <RelayLayout path="dashboard" />
+
       </Router>
     );
   }
