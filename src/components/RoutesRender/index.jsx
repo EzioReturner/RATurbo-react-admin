@@ -23,6 +23,8 @@ class RoutesRender extends Component {
         return <Error404 default key={'unMatch' + Math.random().toString(36).slice(2)} />
       }
       if (redirect) {
+        console.log(123, redirect);
+
         return (
           <Redirect
             key={key || i}
