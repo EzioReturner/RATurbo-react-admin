@@ -64,7 +64,6 @@ class RoutesRender extends Component {
           to="dashboard"
         />
         <RelayLayout path="dashboard" />
-
       </Router>
     );
   }
