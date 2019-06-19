@@ -5,7 +5,7 @@ export const constantRouteConfig = [
     component: ['/layout/UserLayout', 'fadeRA'],
     routes: [{
       name: 'Login',
-      path: '/login',
+      path: '/user/login',
       component: ['/views/User/Login']
     }]
   },
@@ -36,18 +36,18 @@ export const asyncRouteConfig = [{
     path: '/program',
     routes: [{
         name: 'analysis',
-        path: '/analysis',
+        path: '/program/analysis',
         component: ['/views/Program/Analysis'],
         authority: ['admin']
       },
       {
         name: 'monitor',
-        path: '/monitor',
+        path: '/program/monitor',
         component: ['/views/Program/Monitor']
       },
       {
         name: 'platform',
-        path: '/platform',
+        path: '/program/platform',
         component: ['/views/Program/Platform']
       }
     ]
@@ -58,21 +58,21 @@ export const asyncRouteConfig = [{
     path: '/form',
     routes: [{
         name: 'basicForm',
-        path: '/basicForm',
+        path: '/form/basicForm',
         component: ['/views/Form/BasicForm'],
         authority: ['admin']
       },
       {
         name: 'stepForm',
-        path: '/stepForm',
+        path: '/form/stepForm',
         component: ['/views/Form/StepForm']
       },
       {
         name: '三级菜单',
-        path: '/test',
+        path: '/form/test',
         routes: [{
           name: '三级菜单',
-          path: '/test1',
+          path: '/form/test/test1',
           component: ['/views/Form/TestDetail']
         }]
       }
@@ -84,17 +84,17 @@ export const asyncRouteConfig = [{
     path: '/list',
     routes: [{
         name: 'basicList',
-        path: '/basicList',
+        path: '/list/basicList',
         component: ['/views/List/BasicList'],
       },
       {
         name: 'cardList',
-        path: '/cardList',
+        path: '/list/cardList',
         component: ['/views/List/CardList'],
       },
       {
         name: 'basicTable',
-        path: '/basicTable',
+        path: '/list/basicTable',
         component: ['/views/List/BasicTable'],
       }
     ]
@@ -119,12 +119,12 @@ export const asyncRouteConfig = [{
     path: '/result',
     routes: [{
         name: 'successResult',
-        path: '/successResult',
+        path: '/result/successResult',
         component: ['/views/Result/SuccessResult'],
       },
       {
         name: 'failedResult',
-        path: '/failedResult',
+        path: '/result/failedResult',
         component: ['/views/Result/FailedResult'],
       }
     ]
@@ -135,22 +135,22 @@ export const asyncRouteConfig = [{
     path: '/exception',
     routes: [{
         name: '403',
-        path: '/403',
+        path: '/exception/403',
         component: ['/views/Exception/403', 'bounceIn-animated']
       },
       {
         name: '404',
-        path: '/404',
+        path: '/exception/404',
         component: ['/views/Exception/404']
       },
       {
         name: '500',
-        path: '/500',
+        path: '/exception/500',
         component: ['/views/Exception/500']
       },
       {
         name: 'index',
-        path: '/home',
+        path: '/exception/home',
         component: ['/views/Exception'],
         hideMenu: true
       }

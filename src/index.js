@@ -2,13 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'mobx-react';
 import { Store } from 'store';
-import RoutesRender from 'components/RoutesRender';
+import RenderRoutes from 'components/RenderRoutes';
+// import ReachRouter from 'components/ReachRouter';
 import * as serviceWorker from './serviceWorker';
 import 'style/index.scss';
 
 ReactDOM.render(
 	<Provider {...Store}>
-		<RoutesRender />
+		<RenderRoutes />
 	</Provider>,
 	document.getElementById('root')
 );

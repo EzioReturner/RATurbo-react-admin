@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
+import { withRouter } from 'react-router-dom';
 import { Icon } from 'antd';
 import classNames from 'classnames';
 import styles from './pageHeader.module.scss';
-import { navigate } from '@reach/router';
 
+@withRouter
 @inject('layoutStore', 'localeStore')
 @observer
 class BreadCrumb extends Component {
@@ -15,20 +16,20 @@ class BreadCrumb extends Component {
 
 	handleDelBreadcrumb(e, name) {
 		e.stopPropagation();
-		const { layoutStore: { delBreadcrumb }, location: { pathname } } = this.props;
+		const { layoutStore: { delBreadcrumb }, history, location: { pathname } } = this.props;
 
 		const delSelf = delBreadcrumb(name, pathname);
 		if (delSelf) {
-			navigate(delSelf.path);
+			history.push(delSelf.path);
 		}
 	}
 
 	handleGoBreadPath(path) {
-		const { location: { pathname } } = this.props;
+		const { history, location: { pathname } } = this.props;
 		if (pathname === path) {
 			return;
 		}
-		navigate(path);
+		history.push(path);
 	}
 
 	checkDisplay(path) {
