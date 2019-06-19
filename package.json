@@ -8,6 +8,7 @@
     "@types/lodash": "^4.14.132",
     "@types/node": "12.0.3",
     "@types/nprogress": "^0.0.29",
+    "@types/reach__router": "^1.2.4",
     "@types/react": "16.8.19",
     "@types/react-dom": "16.8.4",
     "animate.css": "^3.7.1",

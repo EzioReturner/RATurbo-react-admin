@@ -12,5 +12,5 @@ export const Store = {
   programStore,
   layoutStore,
   userStore,
-  localeStore
+  localeStore,
 };

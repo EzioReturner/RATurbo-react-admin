@@ -3,11 +3,13 @@ import isMobile from 'utlis/isMobile';
 import debounce from 'utlis/debounce';
 import NProgress from 'nprogress';
 import { constantRouteConfig, asyncRouteConfig } from 'config/router.config';
+
 interface Breadcrumb {
   name: string;
   path: string;
   display: boolean;
 }
+
 configure({ enforceActions: 'always' });
 class LayoutStore {
   @observable spinning: boolean = true;

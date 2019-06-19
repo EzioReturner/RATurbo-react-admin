@@ -5,7 +5,7 @@ import { intersection } from 'lodash';
 import classNames from 'classnames';
 import { logoPath, siteName, menuLinkUrl } from 'config/setting';
 import styles from './siderMenu.module.scss';
-import { Link, navigate } from "@reach/router";
+import { Link } from "@reach/router";
 
 const { SubMenu } = Menu;
 @inject('layoutStore', 'userStore', 'localeStore')

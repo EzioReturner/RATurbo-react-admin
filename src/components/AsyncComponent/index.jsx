@@ -30,7 +30,6 @@ class AsyncComponent extends PureComponent {
 		const { checkIsInitial, stopSpinning } = this.props.layoutStore;
 		checkIsInitial(route);
 		const { default: component } = await import('../../../src' + componentPath);
-		console.log(component);
 
 		this.setState({
 			component: component,
