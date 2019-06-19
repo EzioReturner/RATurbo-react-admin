@@ -10,7 +10,8 @@ import Error404 from 'views/Exception/404';
 import AsyncComponent from '../AsyncComponent';
 import RelayLayout from 'layout/RelayLayout';
 
-const history = createHistory(window);
+let history = createHistory(window);
+
 @inject('layoutStore')
 @observer
 class RoutesRender extends Component {
