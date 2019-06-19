@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { Button } from 'antd';
 import PropTypes from 'prop-types'
-import { withRouter } from 'react-router-dom';
 import FormatterLocale from 'components/FormatterLocale';
 import styles from './exception.module.scss';
+import { navigate } from "@reach/router";
 
-@withRouter
 class Exception extends Component {
 	handleGoHome = () => {
-		this.props.history.push('/dashboard');
+		navigate('/dashboard');
 	};
 
 	render() {

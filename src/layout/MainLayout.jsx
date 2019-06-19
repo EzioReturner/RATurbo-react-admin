@@ -2,18 +2,25 @@ import React, { Component, Suspense } from 'react';
 import Loading from 'components/Loading';
 import Authorized from 'components/Authorized';
 import { Header, Navigator } from 'components/Layout';
-import { Redirect, withRouter } from 'react-router-dom';
 import { getRouteAuthority } from 'utlis/authorityTools';
 import classNames from 'classnames';
 import Footer from 'components/Footer';
 import { observer, inject } from 'mobx-react';
 import styles from './mainLayout.module.scss';
 
+/**
+ * 主结构组件
+ * 由：
+ * loading
+ * navigate 侧边栏
+ * header 顶部栏
+ * 组成
+ * 被 Authorized 组件包裹，做权限判断
+ */
 const Exception403 = React.lazy(() =>
 	import(/* webpackChunkName: "403" */ 'views/Exception/403')
 );
 
-@withRouter
 @inject('layoutStore')
 @observer
 class MainLayout extends Component {
@@ -21,13 +28,13 @@ class MainLayout extends Component {
 		const {
 			layoutStore: { collapsed, isMobile, toggleCollapsed, spinning, fixed },
 			children,
-			location: { pathname },
+			location,
 			route
 		} = this.props;
-		const routeAuthority = getRouteAuthority(pathname, route.routes);
+		const routeAuthority = getRouteAuthority(location.pathname, route.routes);
 		return (
 			<Authorized
-				unidentified={<Redirect to="/user/login" />}
+				unidentified={<div>123</div>}
 			>
 				<div className={styles.container}>
 					<Loading
@@ -39,6 +46,7 @@ class MainLayout extends Component {
 						collapsed={collapsed}
 						isMobile={isMobile}
 						toggleCollapsed={toggleCollapsed}
+						location={location}
 					/>
 					<div
 						id="mainContainer"

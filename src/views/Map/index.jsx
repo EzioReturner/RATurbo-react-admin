@@ -12,16 +12,12 @@ class Map extends Component {
 
 	render() {
 		return (
-			<div style={{ height: '100%', minHeight: '500px' }}>
+			<div>
 				<Card
-					style={{
-						height: '100%'
-					}}
 					bordered
 					className="thin-card"
 					bodyStyle={{
-						height: '100%',
-						width: '100%',
+						height: 'calc(100vh - 146px)',
 						padding: '4px'
 					}}
 				>

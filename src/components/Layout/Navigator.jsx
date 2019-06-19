@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import SiderMenu from './SiderMenu';
 
 const Navigater = (props) => {
-	const { isMobile, collapsed, toggleCollapsed } = props;
+	const { isMobile, collapsed, toggleCollapsed, ...restProps } = props;
 	return isMobile ? (
 		<Drawer
 			visible={!collapsed}
@@ -19,10 +19,10 @@ const Navigater = (props) => {
 				padding: 0
 			}}
 		>
-			<SiderMenu />
+			<SiderMenu {...restProps} />
 		</Drawer>
 	) : (
-			<SiderMenu />
+			<SiderMenu {...restProps} />
 		);
 }
 

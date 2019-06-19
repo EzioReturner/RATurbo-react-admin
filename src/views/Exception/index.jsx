@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { Button, notification } from 'antd';
-import { withRouter } from 'react-router-dom';
+import { navigate } from '@reach/router';
 
-@withRouter
 class ExceptionHome extends Component {
 
 	handleTriggerError({ code, description }) {
-		this.props.history.push(`/exception/${code}`);
+		navigate(`/exception/${code}`);
 		notification.error({
 			message: `请求错误 ${code}`,
 			description
