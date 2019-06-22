@@ -60,7 +60,6 @@
     "@babel/plugin-proposal-decorators": "^7.4.4",
     "@babel/plugin-syntax-jsx": "^7.2.0",
     "customize-cra": "^0.2.12",
-    "jest": "^24.8.0",
     "jest-puppeteer": "^4.2.0",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
