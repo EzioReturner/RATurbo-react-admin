@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer');
+const BASE_URL = `http://localhost:${process.env.PORT || 9527}`;
 
 describe('logind', () => {
   let browser;
@@ -10,7 +11,7 @@ describe('logind', () => {
 
   beforeEach(async () => {
     page = await browser.newPage();
-    await page.goto('http://localhost:9527/#/user/login', {
+    await page.goto(`${BASE_URL}/#/user/login`, {
       waitUntil: 'networkidle2',
     });
   });

@@ -23,7 +23,7 @@ createType: ···exampleView··· created
 
 之后我们前往 `src/views` 目录下，一个基础的页面 `jsx、scss` 文件已生成，样式默认使用 `CSS Module` ，可参考 [样式与主题](/cssStyle)
 
-![addView](/media/addView.png)。
+![addView](/media/addview.png)。
 
 
 并附带了基础代码
