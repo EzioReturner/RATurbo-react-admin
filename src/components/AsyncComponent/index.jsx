@@ -37,8 +37,10 @@ class AsyncComponent extends PureComponent {
 
 	render() {
 		const { component: C, animate } = this.state;
+		const { stopSpinning } = this.props.layoutStore;
 
 		if (animate === 'notAnimate') {
+			stopSpinning();
 			return <C {...this.props} />;
 		}
 		return C ? (

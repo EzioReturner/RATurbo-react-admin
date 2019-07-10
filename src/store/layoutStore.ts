@@ -10,14 +10,28 @@ interface Breadcrumb {
 }
 configure({ enforceActions: 'always' });
 class LayoutStore {
+  // loading 是否显示
   @observable spinning: boolean = true;
+
+  // loading 是否覆盖全局
   @observable fixed: boolean = false;
-  @observable mountLoading: boolean = true;
+
+  // 存放已经初始化完毕的页面
   @observable readyInitializers: Array<string> = [];
+
+  // 菜单栏是否展开
   @observable collapsed: boolean = false;
+
+  // 开启的菜单
   @observable openMenus: Array<string> = [];
+
+  // 是否是手机浏览器
   @observable isMobile: boolean = false;
+
+  // 面包屑列表
   @observable breadcrumbList: Array<Breadcrumb> = [];
+
+  // 路由数据
   @observable routeConfig: Array<object> = [];
 
   constructor() {
@@ -103,7 +117,6 @@ class LayoutStore {
   // 记录懒加载模块并开启loading
   @action addInitializer(initializer: string): void {
     this.readyInitializers.push(initializer);
-    this.mountLoading = true;
     this.spinning = true;
     NProgress.start();
   }
@@ -111,6 +124,7 @@ class LayoutStore {
   // 检查是否已加载过
   @action checkIsInitial(route: any): void {
     const { path, name } = route
+
     if (!this.readyInitializers.includes(path)) {
       this.addInitializer(path);
       name && this.initBreadcrumb(name, path);
