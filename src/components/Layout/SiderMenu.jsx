@@ -15,7 +15,7 @@ class SiderMenu extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      openKeys: [],
+      openKeys: []
     };
   }
 
@@ -34,7 +34,7 @@ class SiderMenu extends Component {
   initOpenMenu() {
     const {
       location: { pathname },
-      layoutStore: { routeConfig },
+      layoutStore: { routeConfig }
     } = this.props;
     const routes = routeConfig[1].routes;
     let cacheRoute;
@@ -46,14 +46,14 @@ class SiderMenu extends Component {
       return total;
     }, []);
     this.setState({
-      openKeys: [...menuOpen],
+      openKeys: [...menuOpen]
     });
   }
 
   // 获取菜单标题
   getMenuTitle(iconType, name, parentName) {
     const {
-      localeStore: { localeObj },
+      localeStore: { localeObj }
     } = this.props;
     const key = parentName ? `menu.${parentName}.${name}` : `menu.${name}`;
     return (
@@ -106,7 +106,7 @@ class SiderMenu extends Component {
   getMenuItem(menu, parentName = '') {
     const { icon: iconType, name, path } = menu;
     const {
-      localeStore: { localeObj },
+      localeStore: { localeObj }
     } = this.props;
     const key = parentName ? `menu.${parentName}.${name}` : `menu.${name}`;
     return (
@@ -125,31 +125,47 @@ class SiderMenu extends Component {
 
   handleOpenMenu = openKeys => {
     const { collapsed, routeConfig } = this.props.layoutStore;
-    const moreThanOne = openKeys.filter(key => routeConfig.some(route => route.path === key)).length > 1;
+    const moreThanOne =
+      openKeys.filter(key => routeConfig.some(route => route.path === key)).length > 1;
     if (collapsed && !openKeys.length) {
       return;
     }
     this.setState({
-      openKeys: moreThanOne ? [openKeys.pop()] : [...openKeys],
+      openKeys: moreThanOne ? [openKeys.pop()] : [...openKeys]
     });
   };
 
   render() {
     const {
       location: { pathname },
-      layoutStore: { collapsed, routeConfig },
+      layoutStore: { collapsed, routeConfig }
     } = this.props;
     const menuProps = collapsed ? {} : { openKeys: this.state.openKeys };
     return (
-      <div className={classNames(styles.navigator, collapsed ? styles.collapsed : '')} mode="inline">
-        <a className={styles.controlBut} href={menuLinkUrl} target="_blank" rel="noopener noreferrer">
+      <aside
+        className={classNames(styles.navigator, collapsed ? styles.collapsed : '')}
+        mode="inline"
+      >
+        <a
+          className={styles.controlBut}
+          href={menuLinkUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <img alt="" src={logoPath} className={styles.logo} />
           <span className={`ml-2 ${styles.title}`}>{siteName}</span>
         </a>
-        <Menu className="myMenu" mode="inline" inlineCollapsed={collapsed} selectedKeys={[pathname]} onOpenChange={this.handleOpenMenu} {...menuProps}>
+        <Menu
+          className="myMenu"
+          mode="inline"
+          inlineCollapsed={collapsed}
+          selectedKeys={[pathname]}
+          onOpenChange={this.handleOpenMenu}
+          {...menuProps}
+        >
           {this.getNavMenuItem(routeConfig[1].routes)}
         </Menu>
-      </div>
+      </aside>
     );
   }
 }
