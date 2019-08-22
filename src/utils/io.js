@@ -57,6 +57,26 @@ class Request {
     const _query = options ? { ...options, params } : { params };
     return this.instance[method](path, _query).catch(this.handleError);
   }
+
+  get(path, data) {
+    return this.sendRequest('get', {path, ...data});
+  }
+
+  post(path, data) {
+    return this.sendRequest('post', {path, ...data});
+  }
+
+  put(path, data) {
+    return this.sendRequest('put', {path, ...data});
+  }
+
+  patch(path, data) {
+    return this.sendRequest('patch', {path, ...data});
+  }
+
+  delete(path, data) {
+    return this.sendRequest('delete', {path, ...data});
+  }
 }
 const request = new Request();
 
