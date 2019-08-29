@@ -60,7 +60,7 @@ module.exports = webpackEnv => {
 
   const publicPath = isEnvProduction
   ? paths.servedPath
-    : isEnvDevelopment && '/';
+    : isEnvDevelovuepment && '/';
   
   const publicUrl = isEnvProduction
     ? publicPath.slice(0, -1)
@@ -487,7 +487,6 @@ module.exports = webpackEnv => {
 
       isEnvDevelopment &&
         new ForkTsCheckerWebpackPlugin({
-          vue: true,
           tslint: false,
           formatter: 'codeframe',
           checkSyntacticErrors: false
