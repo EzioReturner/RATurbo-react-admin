@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
     "baseUrl": ".",
     "allowJs": true,
     "skipLibCheck": true,
@@ -23,8 +23,10 @@
       "@utils/*": ["./client/utils/*"],
       "@views/*": ["./client/views/*"],
       "@api/*": ["./client/api/*"],
-      "@store/*": ["./client/store/*"]
+      "@store/*": ["./client/store/*"],
+      "@config/*": ["./client/config/*"]
     }
   },
-  "include": ["./client/**/ts", "./client/**/tsx"]
+  "include": ["./client/**/*.ts", "./client/**/*.tsx"],
+  "exclude": ["node_modules", "tests/*"]
 }
