@@ -1,6 +1,17 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import WrapAnimation from '@components/WrapAnimation';
 import { inject } from 'mobx-react';
+
+interface AsyncProps {
+  componentInfo: any;
+  route: any;
+  layoutStore: any;
+}
+
+interface AsyncState {
+  component: any;
+  animate: string;
+}
 
 /**
  * 懒加载模块
@@ -10,16 +21,13 @@ import { inject } from 'mobx-react';
  * {animate} 动画名称
  * {path} 校验路径
  */
-@inject('layoutStore')
-class AsyncComponent extends PureComponent {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      component: null,
-      animate: null
-    };
-  }
+@inject('layoutStore')
+class AsyncComponent extends React.PureComponent<AsyncProps, AsyncState> {
+  state = {
+    component: '',
+    animate: ''
+  };
 
   async componentDidMount() {
     const {
@@ -36,8 +44,9 @@ class AsyncComponent extends PureComponent {
   }
 
   render() {
-    const { component: C, animate } = this.state;
+    const { component, animate } = this.state;
     const { stopSpinning } = this.props.layoutStore;
+    const C: any = component;
 
     if (animate === 'notAnimate') {
       stopSpinning();

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'mobx-react';
-import { Store } from '@store';
+import { Store } from '@store/index';
 import RenderRoutes from '@components/RenderRoutes';
 import '@styles/index.scss';
 

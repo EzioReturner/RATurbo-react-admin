@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
-import echarts from 'echarts';
+import echarts from './lib';
 import { bind, clear } from 'size-sensor';
-import PropTypes from 'prop-types';
 
-class EchartsReact extends Component {
-  constructor(props) {
-    super(props);
-    this.echartsDOM = null; // echarts div element
-  }
+interface EchartProps {
+  option: Object[] | Object;
+  theme: string;
+  notMerge?: boolean;
+  lazyUpdate?: boolean;
+  style?: Object;
+  className?: string;
+}
+
+class EchartsReact extends Component<EchartProps> {
+  public echartsDOM: any;
 
   initChart() {
     const chartObj = this.renderChart();
@@ -45,9 +50,9 @@ class EchartsReact extends Component {
     const chartObj = this.getInstance();
     let { option } = this.props;
     const { notMerge, lazyUpdate } = this.props;
-    option = Array.isArray(option) ? option : [option];
-    chartObj.setOption(option[0] || {}, notMerge || false, lazyUpdate || false);
-    option[1] && chartObj.setOption(option[1]);
+    const _option: Object[] = Array.isArray(option) ? option : [option];
+    chartObj.setOption(_option[0] || {}, notMerge || false, lazyUpdate || false);
+    _option[1] && chartObj.setOption(_option[1]);
     return chartObj;
   }
 
@@ -68,14 +73,5 @@ class EchartsReact extends Component {
     );
   }
 }
-
-EchartsReact.propTypes = {
-  style: PropTypes.object,
-  className: PropTypes.string,
-  theme: PropTypes.string,
-  option: PropTypes.oneOfType([PropTypes.object, PropTypes.arrayOf(PropTypes.object)]),
-  notMerge: PropTypes.bool,
-  lazyUpdate: PropTypes.bool
-};
 
 export default EchartsReact;

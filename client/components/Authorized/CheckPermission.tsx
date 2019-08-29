@@ -6,7 +6,16 @@
  * @param { 通过的组件 Passing components } target
  * @param { 未通过的组件 no pass components } unAuthor
  */
-export const CheckPermission = (routeAuthority, currentAuthority, Target, Unidentified) => {
+import React from 'react';
+
+export type IAuthorityType = undefined | string | string[];
+
+const CheckPermission = <T, K>(
+  routeAuthority: IAuthorityType,
+  currentAuthority: string | string[],
+  Target: T,
+  Unidentified: K
+): T | K | React.ReactNode => {
   if (!currentAuthority || currentAuthority.length === 0) {
     return Unidentified;
   }
@@ -14,16 +23,12 @@ export const CheckPermission = (routeAuthority, currentAuthority, Target, Uniden
     return Target;
   }
   if (Array.isArray(routeAuthority)) {
-    if (routeAuthority.indexOf(currentAuthority) >= 0) {
-      return Target;
-    }
     if (Array.isArray(currentAuthority)) {
-      for (let i = 0; i < currentAuthority.length; i += 1) {
-        const element = currentAuthority[i];
-        if (routeAuthority.indexOf(element) >= 0) {
-          return Target;
-        }
+      if (currentAuthority.some(item => routeAuthority.includes(item))) {
+        return Target;
       }
+    } else if (routeAuthority.includes(currentAuthority)) {
+      return Target;
     }
     return Unidentified;
   }
@@ -47,3 +52,5 @@ export const CheckPermission = (routeAuthority, currentAuthority, Target, Uniden
   }
   throw new Error('unsupported parameters');
 };
+
+export default CheckPermission;
