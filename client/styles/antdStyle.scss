@@ -1,0 +1,256 @@
+@mixin antdStyle {
+  .ant-card {
+    color: #212529;
+
+    .ant-card-head {
+      padding: 0 31px;
+    }
+
+    &.fat-card {
+      .ant-card-head {
+        border: 0;
+
+        .ant-card-head-title,
+        .ant-card-extra {
+          padding: 20px 0 0;
+        }
+
+        .ant-card-head-title,
+        .ant-card-head-title > p {
+          font-size: 14px;
+          font-weight: 500;
+        }
+      }
+
+      .ant-card-body {
+        padding: 22px 31px 29px 31px;
+      }
+    }
+
+    &.thin-card {
+      .ant-card-head {
+        min-height: 36px;
+        border-bottom-color: #f5f5f5;
+
+        .ant-card-head-title {
+          padding: 6px 0px;
+        }
+      }
+
+      .ant-card-body {
+        padding: 12px 24px;
+      }
+    }
+  }
+
+  .ant-card-hoverable:hover {
+    box-shadow: 0 2px 28px rgba(0, 0, 0, 0.09);
+    border-color: rgba(0, 0, 0, 0.09);
+  }
+
+  .ant-select {
+    margin-right: 16px;
+    width: 100px;
+
+    .ant-select-selection {
+      border-radius: 2px;
+    }
+
+    .ant-select-selection__placeholder {
+      font-size: 12px;
+    }
+  }
+
+  .ant-form-item-children .ant-select {
+    margin-right: auto;
+  }
+
+  .ant-progress-bg {
+    background-image: linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.15) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.15) 50%,
+      rgba(255, 255, 255, 0.15) 75%,
+      transparent 75%,
+      transparent
+    );
+    background-size: 1rem 1rem;
+    animation: progress-bar-stripes 1s linear infinite;
+  }
+
+  .ant-table-bordered.ant-table-empty .ant-table-placeholder {
+    border-right: 1px solid $border-color;
+    border-left: 1px solid $border-color;
+  }
+
+  .ant-table-placeholder {
+    border-bottom: 1px solid $border-color;
+  }
+
+  .ant-table-bordered .ant-table-header > table,
+  .ant-table-bordered .ant-table-body > table,
+  .ant-table-bordered .ant-table-fixed-left table,
+  .ant-table-bordered .ant-table-fixed-right table {
+    border: 1px solid $border-color;
+  }
+
+  .ant-table-bordered .ant-table-thead > tr > th,
+  .ant-table-bordered .ant-table-tbody > tr > td {
+    border-right: 1px solid $border-color;
+  }
+
+  .ant-table-thead > tr > th,
+  .ant-table-tbody > tr > td {
+    border-bottom: 1px solid $border-color;
+    padding: 12px 20px;
+  }
+
+  .ant-table-thead > tr > th {
+    background-color: transparent;
+  }
+
+  .ant-table-wrapper.no-head-border {
+    .ant-table-bordered .ant-table-thead > tr > th {
+      border-right: 0;
+    }
+  }
+
+  .ant-progress {
+    .ant-progress-bg,
+    *.normal .ant-progress-bg {
+      background-color: #308ee0;
+    }
+
+    &.success .ant-progress-bg {
+      background-color: #00ce68;
+    }
+
+    &.danger .ant-progress-bg {
+      background-color: #e65251;
+    }
+
+    &.warning .ant-progress-bg {
+      background-color: #ffaf00;
+    }
+  }
+
+  .myMenu {
+    border: 0;
+
+    & > .ant-menu-item {
+      padding-left: 35px !important;
+    }
+
+    & > .ant-menu-submenu {
+      & > .ant-menu-submenu-title {
+        padding-left: 35px !important;
+      }
+
+      & > ul > .ant-menu-item {
+        padding-left: 70px !important;
+      }
+    }
+
+    & > .ant-menu-item,
+    & > .ant-menu-submenu > .ant-menu-submenu-title,
+    & > .ant-menu-submenu > ul > .ant-menu-item {
+      font-size: 13px;
+    }
+
+    .ant-menu-item .anticon,
+    .ant-menu-submenu-title .anticon {
+      margin-right: 18px;
+      font-size: 16px;
+    }
+
+    .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+      background-color: $menu-item-background !important;
+    }
+
+    & > .ant-menu-submenu > .ant-menu {
+      background: rgba($color: $menu-item-background, $alpha: 0.5);
+
+      .ant-menu-item > a {
+        color: $color-text-secondary;
+      }
+
+      & > .ant-menu-submenu {
+        .ant-menu-submenu-title {
+          color: $color-text-secondary;
+          padding-left: 70px !important;
+        }
+
+        .ant-menu-item {
+          padding-left: 90px !important;
+          background: rgba($color: $menu-item-background, $alpha: 0.5);
+        }
+      }
+    }
+
+    .ant-menu-item-selected > a,
+    .ant-menu-item-selected > a:hover,
+    .ant-menu-item > a:hover,
+    .ant-menu-item:hover,
+    .ant-menu-item-active,
+    .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open,
+    .ant-menu-submenu-active,
+    .ant-menu-submenu-title:hover {
+      color: $color-primary-sec !important;
+    }
+
+    .ant-menu-item-selected {
+      background-color: $menu-item-background !important;
+      position: relative;
+
+      &:before {
+        transform: scaleY(1);
+        opacity: 1;
+      }
+
+      &:after {
+        display: none;
+        border-right: 0;
+      }
+    }
+
+    .ant-menu-item:active,
+    .ant-menu-submenu-title:active {
+      background: $menu-item-background;
+    }
+
+    li {
+      margin: 0 !important;
+      text-align: left;
+
+      &:hover {
+        .ant-menu-submenu-title {
+          color: inherit;
+        }
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        border-left: 4px solid $color-primary;
+        transform: scaleY(0.0001);
+        opacity: 0;
+        transition: transform 0.15s;
+      }
+    }
+  }
+}
+
+@keyframes progress-bar-stripes {
+  0% {
+    background-position: 1rem 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+}

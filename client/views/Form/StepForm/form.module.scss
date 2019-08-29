@@ -1,0 +1,20 @@
+.steps {
+  margin: 15px auto;
+  max-width: 750px;
+}
+
+.step {
+  max-width: 500px;
+  margin: 40px auto 0px;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: center;
+}
+
+.descript,
+.descript h3,
+.descript h4 {
+  color: rgba(0, 0, 0, 0.45);
+}
