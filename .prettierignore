@@ -1,6 +1,0 @@
-*.md
-config/*
-node_modules/*
-public/*
-test/*
-build/*
