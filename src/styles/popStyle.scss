@@ -1,0 +1,8 @@
+@mixin popStyle {
+  .ant-dropdown-menu-item {
+    padding: 5px 12px;
+    min-width: 140px;
+    display: flex;
+    align-items: center;
+  }
+}
