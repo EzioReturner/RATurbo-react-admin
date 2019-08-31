@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import { observer } from 'mobx-react';
 import styles from './loading.module.scss';
@@ -16,27 +16,24 @@ interface LoadingProps {
   style: React.CSSProperties;
 }
 
-@observer
-class Loading extends Component<LoadingProps> {
-  render() {
-    const { spinning, fixed, collapsed, style } = this.props;
-    return (
-      <div
-        className={classNames(
-          styles.loading,
-          !spinning ? styles.hide : '',
-          fixed ? styles.fixed : '',
-          collapsed ? styles.collapsed : ''
-        )}
-        style={style}
-      >
-        <div className={styles.content}>
-          <div className={styles.circle} />
-          <span>LOADING</span>
-        </div>
+const Loading: React.FC<LoadingProps> = props => {
+  const { spinning, fixed, collapsed, style } = props;
+  return (
+    <div
+      className={classNames(
+        styles.loading,
+        !spinning ? styles.hide : '',
+        fixed ? styles.fixed : '',
+        collapsed ? styles.collapsed : ''
+      )}
+      style={style}
+    >
+      <div className={styles.content}>
+        <div className={styles.circle} />
+        <span>LOADING</span>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
-export default Loading;
+export default observer(Loading);

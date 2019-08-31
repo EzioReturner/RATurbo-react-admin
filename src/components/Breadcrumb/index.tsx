@@ -8,16 +8,14 @@ import { Breadcrumb } from '@models/index';
 import LayoutStore from '@store/layoutStore';
 import LocaleStore from '@store/localeStore';
 
-interface BreadCrumbProps extends RouteComponentProps<any> {}
-
-interface InjectedProps extends BreadCrumbProps {
+interface InjectedProps extends RouteComponentProps<any> {
   layoutStore: LayoutStore;
   localeStore: LocaleStore;
 }
 
 @inject('layoutStore', 'localeStore')
 @observer
-class BreadCrumb extends React.Component<BreadCrumbProps> {
+class BreadCrumb extends React.Component<RouteComponentProps> {
   get injected() {
     return this.props as InjectedProps;
   }

@@ -3,7 +3,7 @@ import { observer, inject } from 'mobx-react';
 import LocaleStore from '@store/localeStore';
 
 interface FormatterProps {
-  id: string;
+  id?: string;
   defaultMessage?: React.ReactNode;
   style?: React.CSSProperties;
   className?: string;
@@ -13,25 +13,20 @@ interface InjectedProps extends FormatterProps {
   localeStore: LocaleStore;
 }
 
-@inject('localeStore')
-@observer
-class FormatterLocale extends React.Component<FormatterProps> {
-  get injected() {
-    return this.props as InjectedProps;
-  }
+const FormatterLocale: React.FC<FormatterProps> = props => {
+  const injected = () => {
+    return props as InjectedProps;
+  };
+  const { id, defaultMessage, style, className } = props;
+  const {
+    localeStore: { localeObj }
+  } = injected();
 
-  render() {
-    const { id, defaultMessage, style, className } = this.props;
-    const {
-      localeStore: { localeObj }
-    } = this.injected;
+  return (
+    <span style={style} className={className}>
+      {id ? localeObj[id] : defaultMessage}
+    </span>
+  );
+};
 
-    return (
-      <span style={style} className={className}>
-        {localeObj[id] || defaultMessage}
-      </span>
-    );
-  }
-}
-
-export default FormatterLocale;
+export default inject('localeStore')(observer(FormatterLocale));

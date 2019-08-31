@@ -1,16 +1,20 @@
 import React from 'react';
 import WrapAnimation from '@components/WrapAnimation';
 import { inject } from 'mobx-react';
+import LayoutStore from '@store/layoutStore';
 
 interface AsyncProps {
   componentInfo: any;
   route: any;
-  layoutStore: any;
 }
 
 interface AsyncState {
   component: any;
   animate: string;
+}
+
+interface InjectProps extends AsyncProps {
+  layoutStore: LayoutStore;
 }
 
 /**
@@ -24,6 +28,10 @@ interface AsyncState {
 
 @inject('layoutStore')
 class AsyncComponent extends React.PureComponent<AsyncProps, AsyncState> {
+  get injected() {
+    return this.props as InjectProps;
+  }
+
   state = {
     component: '',
     animate: ''
@@ -34,8 +42,9 @@ class AsyncComponent extends React.PureComponent<AsyncProps, AsyncState> {
       componentInfo: [componentPath, animate],
       route
     } = this.props;
+    const { layoutStore } = this.injected;
     // 检查路径是否已加载 判断是否显示loading
-    this.props.layoutStore.checkIsInitial(route);
+    layoutStore.checkIsInitial(route);
     const { default: component } = await import('../../../src' + componentPath);
     this.setState({
       component: component,
@@ -45,7 +54,9 @@ class AsyncComponent extends React.PureComponent<AsyncProps, AsyncState> {
 
   render() {
     const { component, animate } = this.state;
-    const { stopSpinning } = this.props.layoutStore;
+    const {
+      layoutStore: { stopSpinning }
+    } = this.injected;
     const C: any = component;
 
     if (animate === 'notAnimate') {
