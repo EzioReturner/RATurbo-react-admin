@@ -129,5 +129,28 @@
     "trailingComma": "none",
     "singleQuote": true,
     "jsxBracketSameLine": false
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "libVersion": "1.0.0",
+  "library": {
+    "vuelib": [
+      "vue/dist/vue.esm.js",
+      "vue-router",
+      "vuex-router-sync",
+      "vuex"
+    ],
+    "ant": [
+      "ant-design-vue"
+    ],
+    "tools": [
+      "axios",
+      "lodash",
+      "moment",
+      "nprogress"
+    ]
   }
 }
