@@ -40,7 +40,7 @@ const RenderRoutes: React.FC = props => {
             path,
             exact,
             strict,
-            routes,
+            routes: child,
             component,
             key
             // withAuthority,
@@ -59,7 +59,7 @@ const RenderRoutes: React.FC = props => {
               exact={exact}
               strict={strict}
               render={(props: any) => {
-                const childRoutes = generateRoute(routes, {
+                const childRoutes = generateRoute(child, {
                   location: props.location
                 });
                 if (component) {
