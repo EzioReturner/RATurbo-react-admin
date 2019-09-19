@@ -3,29 +3,28 @@ import { Row, Col, Card, Icon } from 'antd';
 import { BoxSvg, EmpolyeesSvg, OrdersSvg, SalesSvg } from '@components/SvgIcon';
 import FormatterLocale from '@components/FormatterLocale';
 
-const InfoCard = props => {
-  const { icon, tips, title, num, tipIcon, index } = props;
-  return (
-    <Card className="info-card fat-card" bordered={false} hoverable>
-      <div className="top">
-        <Icon component={icon} />
-        <div className="right-part">
-          <p className="title">
-            {<FormatterLocale id={`dashboard.rowInfo${index}.title`} defaultMessage={title} />}
-          </p>
-          <h3 className="num">{num}</h3>
-        </div>
-      </div>
-      <p className="mb-0 mt-3 text-muted">
-        <Icon type={tipIcon} className="mr-2" />
-        {<FormatterLocale id={`dashboard.rowInfo${index}.tips`} defaultMessage={tips} />}
-      </p>
-    </Card>
-  );
-};
-
 class RowInfoCard extends PureComponent {
   render() {
+    const InfoCard = props => {
+      const { icon, tips, title, num, tipIcon, index } = props;
+      return (
+        <Card className="info-card fat-card" bordered={false} hoverable>
+          <div className="top">
+            <Icon component={icon} />
+            <div className="right-part">
+              <p className="title">
+                {<FormatterLocale id={`dashboard.rowInfo${index}.title`} defaultMessage={title} />}
+              </p>
+              <h3 className="num">{num}</h3>
+            </div>
+          </div>
+          <p className="mb-0 mt-3 text-muted">
+            <Icon type={tipIcon} className="mr-2" />
+            {<FormatterLocale id={`dashboard.rowInfo${index}.tips`} defaultMessage={tips} />}
+          </p>
+        </Card>
+      );
+    };
     const details = [
       {
         icon: BoxSvg,
