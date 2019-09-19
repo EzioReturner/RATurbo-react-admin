@@ -3,39 +3,6 @@ import { Card, Row, Col, Icon } from 'antd';
 import EchartsReact from '@components/Echarts';
 import { observer, inject } from 'mobx-react';
 
-const ChartCard = props => {
-  const style = {
-    marginBottom: '24px'
-  };
-  const { title, option } = props;
-  const CardTitle = (
-    <div className="titleNanme">
-      {title}
-      <div className="iconBar">
-        <Icon type="redo" />
-        <Icon
-          type="cloud-download"
-          style={{
-            marginLeft: '10px'
-          }}
-        />
-      </div>
-    </div>
-  );
-  return (
-    <Card
-      hoverable
-      title={CardTitle}
-      className="thin-card"
-      bordered={false}
-      style={title !== '省份' ? style : null}
-      bodyStyle={{ overflow: 'hidden' }}
-    >
-      <EchartsReact option={option} />
-    </Card>
-  );
-};
-
 @inject('programStore')
 @observer
 class DistributeCard extends Component {
@@ -43,6 +10,39 @@ class DistributeCard extends Component {
     const {
       getChartOption: { circleOption, barOption, cityOption, provinceOption, lineOption }
     } = this.props.programStore;
+
+    const ChartCard = props => {
+      const style = {
+        marginBottom: '24px'
+      };
+      const { title, option } = props;
+      const CardTitle = (
+        <div className="titleNanme">
+          {title}
+          <div className="iconBar">
+            <Icon type="redo" />
+            <Icon
+              type="cloud-download"
+              style={{
+                marginLeft: '10px'
+              }}
+            />
+          </div>
+        </div>
+      );
+      return (
+        <Card
+          hoverable
+          title={CardTitle}
+          className="thin-card"
+          bordered={false}
+          style={title !== '省份' ? style : null}
+          bodyStyle={{ overflow: 'hidden' }}
+        >
+          <EchartsReact option={option} />
+        </Card>
+      );
+    };
 
     return (
       <Fragment>
