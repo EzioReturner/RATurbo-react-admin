@@ -92,7 +92,7 @@ yarn install  Or  npm install
 3. 启动项目
 
 ```bash
-yarn run ra  Or  npm run ra
+yarn start  Or  npm run start
 ```
 
 4. 启动完成后打开浏览器访问 [http://localhost:9527](http://localhost:9527)，如果需要更改启动端口，可在 .env 文件中配置。
