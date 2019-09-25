@@ -27,7 +27,8 @@
       "@api/*": ["./src/api/*"],
       "@store/*": ["./src/store/*"],
       "@config/*": ["./src/config/*"],
-      "@models/*": ["./src/models/*"]
+      "@models/*": ["./src/models/*"],
+      "@assets/*": ["./src/assets/*"]
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },

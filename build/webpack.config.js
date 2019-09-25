@@ -129,6 +129,9 @@ module.exports = function(webpackEnv) {
         '@models': _resolve('./src/models')
       }
     },
+    externals: {
+      BMap: 'BMap'
+    },
     module: {
       strictExportPresence: true,
       rules: [

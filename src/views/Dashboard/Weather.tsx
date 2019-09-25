@@ -1,24 +1,35 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { Card } from 'antd';
 import getWeather from '@api/dashboard';
 import Moment from 'moment';
 import { RainSvg, CloudySvg, OvercastSvg, ThunderSvg, SunSvg } from '@components/SvgIcon';
 
-class Weather extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: [],
-      weekName: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    };
-  }
+interface StateData {
+  daypower: string;
+  daytemp: string;
+  dayweather: string;
+  week: number;
+}
+
+interface WeatherState {
+  data: StateData[];
+  weekName: string[];
+}
+
+interface WeatherProps {}
+
+class Weather extends React.PureComponent<WeatherProps, WeatherState> {
+  state: WeatherState = {
+    data: [],
+    weekName: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+  };
 
   componentDidMount() {
-    getWeather().then(res => {
+    getWeather().then((res: any) => {
       const { status, forecasts } = res.data;
       if (Number(status) === 1) {
         this.setState({
-          data: forecasts[0].casts.map(res => {
+          data: forecasts[0].casts.map((res: any) => {
             const { daypower, daytemp, dayweather, week } = res;
             return {
               daypower,
@@ -32,7 +43,7 @@ class Weather extends PureComponent {
     });
   }
 
-  getWeatherIcon(dayweather) {
+  getWeatherIcon(dayweather: string) {
     let icon = null;
     if (dayweather.indexOf('雷') >= 0) {
       icon = <ThunderSvg />;

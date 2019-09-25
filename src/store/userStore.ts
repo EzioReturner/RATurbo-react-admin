@@ -3,7 +3,7 @@ import { action, autorun, configure, observable } from 'mobx';
 
 configure({ enforceActions: 'observed' });
 class UserStore {
-  @observable userInfo: object = {};
+  @observable userInfo: any = {};
   @observable authority: string[] = [];
 
   constructor() {

@@ -2,8 +2,8 @@ import { observable, configure, action } from 'mobx';
 import isMobile from '@utils/isMobile';
 import debounce from '@utils/debounce';
 import NProgress from 'nprogress';
+import { Breadcrumb, RouteConfig } from '@models/index';
 import { constantRouteConfig, asyncRouteConfig } from '@config/router.config';
-import { Breadcrumb } from '@models/index';
 
 configure({ enforceActions: 'observed' });
 class LayoutStore {
@@ -29,7 +29,7 @@ class LayoutStore {
   @observable breadcrumbList: Array<Breadcrumb> = [];
 
   // 路由数据
-  @observable routeConfig: Array<object> = [];
+  @observable routeConfig: Array<RouteConfig> = [];
 
   constructor() {
     this.addWindowEvent();

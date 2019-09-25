@@ -1,87 +1,61 @@
-import Axios from 'axios';
-import { Notification } from 'element-ui';
+import axios from 'axios';
+import { notification } from 'antd';
 
 class Request {
   instance;
 
   constructor() {
-    this.instance = Axios.create({
-      withCredentials: true
-    });
-    this.initInterceptors();
+    this.instance = axios.create();
+    this.initTnterceptors();
   }
 
-  // 拦截器
-  initInterceptors() {
+  // 初始化拦截器
+  initTnterceptors() {
     this.instance.interceptors.request.use(
       config => {
         return config;
       },
       error => {
-        return Promise.reject(error);
-      }
-    );
-    this.instance.interceptors.response.use(
-      response => {
-        return response;
-      },
-      error => {
-        return Promise.reject(error.response);
+        Promise.reject(error);
       }
     );
   }
 
+  // 设置自定义头部
   setHeader = (key, val) => {
     this.instance.defaults.headers.common[key] = val;
   };
 
+  // 错误notify
   notify(message) {
-    Notification({
-      type: 'error',
-      title: '接口异常',
-      message
+    notification.error({
+      message: '请求错误',
+      description: `${message ||
+        'This is the content of the notification. This is the content of the notification. This is the content of the notification.'}`
     });
   }
 
+  // 错误处理
   handleError = error => {
-    const {
-      data: { message, name, msg },
-      status
-    } = error;
-    if (message === 'SUCCESS' && status === 0) {
-      return;
-    }
+    const { message, status } = error;
     switch (status) {
       case 401:
         break;
       case 404:
-        this.notify('接口地址 404， 请检查接口地址确认接口已发布' || error);
         break;
       case 500:
-        this.notify(name || error);
         break;
       default:
-        this.notify(message || msg || error);
+        this.notify(message || error);
         break;
     }
     return Promise.reject(error);
   };
 
-  filterStatus = data => {
-    const {
-      data: { status }
-    } = data;
-    if (status !== 0) {
-      return Promise.reject(data);
-    }
-    return data;
-  };
-
-  sendRequest(method, path, data = {}) {
-    let { params, options = {} } = data;
-    return this.instance[method](path, params, options)
-      .then(this.filterStatus)
-      .catch(this.handleError);
+  sendRequest(method, data) {
+    let { path, params, options } = data;
+    const _query = options ? { ...options, params } : { params };
+    return this.instance[method](path, _query).catch(this.handleError);
   }
 
   get(path, data = {}) {
@@ -98,20 +72,21 @@ class Request {
   }
 
   post(path, data) {
-    return this.sendRequest('post', path, data);
+    return this.sendRequest('post', { path, ...data });
   }
 
   put(path, data) {
-    return this.sendRequest('put', path, data);
+    return this.sendRequest('put', { path, ...data });
   }
 
   patch(path, data) {
-    return this.sendRequest('patch', path, data);
+    return this.sendRequest('patch', { path, ...data });
   }
 
   delete(path, data) {
-    return this.sendRequest('delete', path, data);
+    return this.sendRequest('delete', { path, ...data });
   }
 }
+const request = new Request();
 
-export default new Request();
+export default request;

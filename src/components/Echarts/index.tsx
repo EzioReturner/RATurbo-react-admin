@@ -4,7 +4,7 @@ import { bind, clear } from 'size-sensor';
 
 interface EchartProps {
   option: object[] | object;
-  theme: string;
+  theme?: string;
   notMerge?: boolean;
   lazyUpdate?: boolean;
   style?: object;
