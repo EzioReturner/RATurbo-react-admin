@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   Form,
   Select,
@@ -15,12 +15,13 @@ import {
   Col,
   Card
 } from 'antd';
+import { FormComponentProps } from 'antd/lib/form/Form';
 import PageWrapper from '@components/PageWrapper';
 import FormatterLocale from '@components/FormatterLocale';
 
 const { Option } = Select;
-class BasicForm extends Component {
-  handleSubmit = e => {
+class BasicForm extends React.Component<FormComponentProps> {
+  handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
@@ -29,13 +30,15 @@ class BasicForm extends Component {
     });
   };
 
-  normFile = e => {
+  // TODO EVENT LACK
+  normFile = (e: any) => {
     console.log('Upload event:', e);
     if (Array.isArray(e)) {
       return e;
     }
     return e && e.fileList;
   };
+
   render() {
     const { getFieldDecorator } = this.props.form;
     const formItemLayout = {
