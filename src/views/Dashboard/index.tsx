@@ -7,7 +7,7 @@ import SaleTable from './SaleTable';
 import GlobalTrends from './GlobalTrends';
 import './dashboard.scss';
 
-const Dashboard = () => (
+const Dashboard: React.FC = () => (
   <div className="dashboard">
     <RowInfoCard />
     <Row gutter={24}>
