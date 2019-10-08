@@ -10,7 +10,7 @@ class DashboardState {
     this.showUnDefined = status;
   }
 
-  @computed get getChartOption(): object {
+  @computed get getChartOption(): any {
     if (this.showUnDefined) {
       return {
         ...analysisOptions
