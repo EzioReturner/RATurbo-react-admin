@@ -4,7 +4,7 @@ import { monitorListOption } from '@assets/chartOption';
 import EchartsReact from '@components/Echarts';
 import FormatterLocale from '@components/FormatterLocale';
 
-const MonitorList = () => {
+const MonitorList: React.FC = () => {
   return (
     <Card
       title={<FormatterLocale id="monitor.rank" defaultMessage="销售排行" />}
