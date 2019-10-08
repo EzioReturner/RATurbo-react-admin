@@ -1,13 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PageWrapper from '@components/PageWrapper';
 import FormatterLocale from '@components/FormatterLocale';
 import { Card, Table, Button, Input, Divider } from 'antd';
 import { getTableData } from '@api/list';
 import styles from './list.module.scss';
 
-const Search = Input.Search;
+interface BasicTableState {
+  tableData: {
+    date: string;
+    domain: string;
+    key: number;
+    no: string;
+    num: number;
+    status: number;
+  }[];
+}
 
-class BasicTable extends Component {
+const Search = Input.Search;
+class BasicTable extends React.Component<BasicTableState> {
   status = ['正常', '维护', '已下线', '异常'];
   styles = ['progress', 'maintain', 'offline', 'error'];
   state = {
@@ -15,14 +25,15 @@ class BasicTable extends Component {
   };
 
   componentDidMount() {
-    getTableData().then(({ data: { data } }) => {
+    getTableData().then((res: any) => {
+      const data = res.data.data;
       this.setState({
         tableData: data
       });
     });
   }
 
-  handleSearch = value => {
+  handleSearch = (value: any) => {
     console.log(value);
   };
 
@@ -57,7 +68,7 @@ class BasicTable extends Component {
       {
         title: '状态',
         dataIndex: 'status',
-        render: text => {
+        render: (text: number) => {
           return (
             <span>
               <span className={`${styles.pointer} ${styles[this.styles[text]]}`} />
