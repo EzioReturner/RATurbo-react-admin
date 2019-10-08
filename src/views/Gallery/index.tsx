@@ -1,9 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Card, Skeleton } from 'antd';
 import './index.scss';
 
+interface GalleryState {
+  data: any[];
+}
+
 const { Meta } = Card;
-class Gallery extends Component {
+class Gallery extends React.Component<{}, GalleryState> {
   state = {
     data: []
   };
@@ -27,8 +31,8 @@ class Gallery extends Component {
     });
   }
 
-  setOnload(index, img) {
-    const { data } = this.state;
+  setOnload(index: number, img: any) {
+    const data: any[] = this.state.data;
     data[index].loading = false;
     data[index].img = img;
     this.setState({
@@ -41,7 +45,7 @@ class Gallery extends Component {
     return (
       <div className="gallery">
         <div className="masonry">
-          {data.map((res, i) => {
+          {data.map((res: any, i: number) => {
             return (
               <div className="item" key={i}>
                 <Card

@@ -3,7 +3,7 @@ import ControllerCard from './ControllerCard';
 import DistributeCard from './DistributeCard';
 import './analysis.scss';
 
-const Dashboard = () => {
+const Dashboard: React.FC = () => {
   return (
     <div className="analysis">
       <ControllerCard />
