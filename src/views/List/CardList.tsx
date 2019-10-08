@@ -19,7 +19,7 @@ interface CardListState {
   list: ListState[];
 }
 
-class CardList extends React.Component<CardListState> {
+class CardList extends React.Component<{}, CardListState> {
   state = {
     list: []
   };

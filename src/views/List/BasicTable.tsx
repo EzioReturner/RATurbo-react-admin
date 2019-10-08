@@ -17,7 +17,7 @@ interface BasicTableState {
 }
 
 const Search = Input.Search;
-class BasicTable extends React.Component<BasicTableState> {
+class BasicTable extends React.Component<{}, BasicTableState> {
   status = ['正常', '维护', '已下线', '异常'];
   styles = ['progress', 'maintain', 'offline', 'error'];
   state = {

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Card, Input, Radio, List, Avatar, Progress, Button } from 'antd';
 import { getListData } from '@api/list';
 import { getContact } from '@api/platform';
@@ -8,7 +8,21 @@ const Search = Input.Search;
 const RadioButton = Radio.Button;
 const RadioGroup = Radio.Group;
 
-class ListTable extends Component {
+interface ListState {
+  date: string;
+  id: string;
+  avatar?: string;
+  progress: number;
+  handler: string;
+  detail: string;
+  title?: string;
+}
+
+interface ListTableState {
+  list: ListState[];
+}
+
+class ListTable extends React.Component<{}, ListTableState> {
   state = {
     list: []
   };
@@ -24,7 +38,8 @@ class ListTable extends Component {
     let {
       data: { data: _data }
     } = await getListData();
-    _data = _data.map((res, index) => {
+
+    _data = _data.map((res: ListState, index: number) => {
       return {
         ...res,
         avatar: results[index].picture.thumbnail
@@ -60,7 +75,7 @@ class ListTable extends Component {
       </div>
     );
 
-    const ListContent = ({ data: { handler, date, progress } }) => (
+    const ListContent = ({ data: { handler, date, progress } }: { data: any }) => (
       <div className={styles.content}>
         <div>
           <span>经办人</span>
@@ -91,7 +106,7 @@ class ListTable extends Component {
           rowKey="id"
           loading={!list.length}
           dataSource={list}
-          renderItem={item => (
+          renderItem={(item: ListState) => (
             <List.Item
               actions={[
                 <Button key="first" type="link">
