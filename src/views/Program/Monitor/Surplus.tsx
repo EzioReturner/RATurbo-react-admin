@@ -2,7 +2,7 @@ import React from 'react';
 import { Card } from 'antd';
 import FormatterLocale from '@components/FormatterLocale';
 
-const Surplus = () => {
+const Surplus: React.FC = () => {
   return (
     <Card
       hoverable
