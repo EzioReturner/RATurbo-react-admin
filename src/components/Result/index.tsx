@@ -8,7 +8,7 @@ interface ResultProps {
   extra?: React.ReactNode;
   actions?: React.ReactNode;
   type: string;
-  style?: object;
+  style?: React.CSSProperties;
 }
 
 const Result: React.FC<ResultProps> = props => {

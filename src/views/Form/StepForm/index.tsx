@@ -1,4 +1,4 @@
-import React, { Component, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import { Card, Steps } from 'antd';
 import PageWrapper from '@components/PageWrapper';
 import Loading from '@components/Loading';
@@ -9,7 +9,7 @@ import formStore from './formStore';
 
 const { Step } = Steps;
 @observer
-class StepForm extends Component {
+class StepForm extends React.Component {
   componentDidMount() {
     formStore.initStep();
   }

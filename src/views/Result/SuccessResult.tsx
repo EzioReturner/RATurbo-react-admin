@@ -7,7 +7,7 @@ import styles from './styles.module.scss';
 
 const Step = Steps.Step;
 const SuccessResult: React.FC = () => {
-  const Desc = ({ name, extra }) => {
+  const Desc = ({ name, extra }: { name: string; extra: React.ReactNode }) => {
     return (
       <div className={styles.desc}>
         <p className={styles.descName}>{name}</p>

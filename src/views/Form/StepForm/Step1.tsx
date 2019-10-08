@@ -1,38 +1,39 @@
-import React, { PureComponent, Fragment } from 'react';
+import React from 'react';
 import { Form, Button, Select, Input, Divider } from 'antd';
+import { FormComponentProps } from 'antd/lib/form';
 import FormatterLocale from '@components/FormatterLocale';
 import StepFormStore from './formStore';
 import styles from './form.module.scss';
 
-const StepForm = props => {
-  const handleSubmit = e => {
-    e.preventDefault();
-    props.form.validateFieldsAndScroll((err, values) => {
-      if (!err) {
-        StepFormStore.setValue(values);
-        StepFormStore.nextStep();
+const Step1: React.FC = () => {
+  const StepForm = (props: FormComponentProps) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      props.form.validateFieldsAndScroll((err, values) => {
+        if (!err) {
+          StepFormStore.setValue(values);
+          StepFormStore.nextStep();
+        }
+      });
+    };
+    const { getFieldDecorator } = props.form;
+    const formItemLayout = {
+      labelCol: { span: 8 },
+      wrapperCol: { span: 16 }
+    };
+    const tailFormItemLayout = {
+      wrapperCol: {
+        xs: {
+          span: 24,
+          offset: 0
+        },
+        sm: {
+          span: 16,
+          offset: 8
+        }
       }
-    });
-  };
-  const { getFieldDecorator } = props.form;
-  const formItemLayout = {
-    labelCol: { span: 8 },
-    wrapperCol: { span: 16 }
-  };
-  const tailFormItemLayout = {
-    wrapperCol: {
-      xs: {
-        span: 24,
-        offset: 0
-      },
-      sm: {
-        span: 16,
-        offset: 8
-      }
-    }
-  };
-  return (
-    <Fragment>
+    };
+    return (
       <Form {...formItemLayout} onSubmit={handleSubmit}>
         <Form.Item label={<FormatterLocale id="step1.title" defaultMessage="起个题目吧" />}>
           {getFieldDecorator('title', {
@@ -63,36 +64,31 @@ const StepForm = props => {
           </Button>
         </Form.Item>
       </Form>
-    </Fragment>
+    );
+  };
+  const FormContainer = Form.create({ name: 'Step1' })(StepForm);
+  return (
+    <div>
+      <div className={styles.step}>
+        <FormContainer />
+      </div>
+      <Divider style={{ margin: '40px 0 24px' }} />
+      <div className={styles.descript}>
+        <h3>
+          <FormatterLocale id="step1.attention" defaultMessage="请注意" />
+        </h3>
+        <h4>
+          <FormatterLocale id="step1.divider" defaultMessage="这里是分割线" />
+        </h4>
+        <p>
+          <FormatterLocale
+            id="step1.nothing"
+            defaultMessage="其实没啥想说的，其实没啥想说的，其实没啥想说的，其实没啥想说的，其实没啥想说的"
+          />
+        </p>
+      </div>
+    </div>
   );
 };
-
-class Step1 extends PureComponent {
-  render() {
-    const FormContainer = Form.create({ name: 'Step1' })(StepForm);
-    return (
-      <div>
-        <div className={styles.step}>
-          <FormContainer />
-        </div>
-        <Divider style={{ margin: '40px 0 24px' }} />
-        <div className={styles.descript}>
-          <h3>
-            <FormatterLocale id="step1.attention" defaultMessage="请注意" />
-          </h3>
-          <h4>
-            <FormatterLocale id="step1.divider" defaultMessage="这里是分割线" />
-          </h4>
-          <p>
-            <FormatterLocale
-              id="step1.nothing"
-              defaultMessage="其实没啥想说的，其实没啥想说的，其实没啥想说的，其实没啥想说的，其实没啥想说的"
-            />
-          </p>
-        </div>
-      </div>
-    );
-  }
-}
 
 export default Step1;

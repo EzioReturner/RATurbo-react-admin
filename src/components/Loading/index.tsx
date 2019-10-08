@@ -12,8 +12,8 @@ import styles from './loading.module.scss';
 interface LoadingProps {
   spinning: boolean;
   fixed?: boolean;
-  collapsed: boolean;
-  style: React.CSSProperties;
+  collapsed?: boolean;
+  style?: React.CSSProperties;
 }
 
 const Loading: React.FC<LoadingProps> = props => {
