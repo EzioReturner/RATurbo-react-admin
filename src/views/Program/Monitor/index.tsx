@@ -7,7 +7,7 @@ import Efficiency from './Efficiency';
 import Surplus from './Surplus';
 import './monitor.scss';
 
-const Monitor = () => (
+const Monitor: React.FC = () => (
   <div className="monitor">
     <Row gutter={24}>
       <Col xl={16} lg={24} md={24} sm={24} xs={24}>

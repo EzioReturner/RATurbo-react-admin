@@ -4,7 +4,7 @@ import EchartsReact from '@components/Echarts';
 import { gaugeOption } from '@assets/chartOption';
 import FormatterLocale from '@components/FormatterLocale';
 
-const Efficiency = () => {
+const Efficiency: React.FC = () => {
   return (
     <Card
       hoverable
