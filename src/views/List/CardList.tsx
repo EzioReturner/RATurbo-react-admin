@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PageWrapper from '@components/PageWrapper';
 import FormatterLocale from '@components/FormatterLocale';
 import { Icon, Card, List, Button } from 'antd';
@@ -6,13 +6,23 @@ import { getListData } from '@api/list';
 import { getContact } from '@api/platform';
 import styles from './list.module.scss';
 
-class CardList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      list: []
-    };
-  }
+interface ListState {
+  date: string;
+  id: string;
+  avatar?: string;
+  progress: number;
+  handler: string;
+  detail: string;
+}
+
+interface CardListState {
+  list: ListState[];
+}
+
+class CardList extends React.Component<CardListState> {
+  state = {
+    list: []
+  };
 
   componentDidMount() {
     this.initData();
@@ -25,7 +35,8 @@ class CardList extends Component {
     let {
       data: { data: _data }
     } = await getListData();
-    _data = _data.map((res, index) => {
+
+    _data = _data.map((res: ListState, index: number) => {
       return {
         ...res,
         avatar: results[index].picture.thumbnail
@@ -70,7 +81,7 @@ class CardList extends Component {
           loading={!list.length}
           grid={{ gutter: 24, lg: 3, md: 2, sm: 1, xs: 1 }}
           dataSource={['', ...list]}
-          renderItem={item =>
+          renderItem={(item: ListState | any) =>
             item ? (
               <List.Item key={item.id}>
                 <Card
