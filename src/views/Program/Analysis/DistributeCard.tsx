@@ -10,6 +10,39 @@ interface DistributeCardInjected extends DistributeCardProps {
   programStore: ProgramStore;
 }
 
+const ChartCard = (props: any) => {
+  const style: React.CSSProperties = {
+    marginBottom: '24px'
+  };
+  const { title, option } = props;
+  const CardTitle = (
+    <div className="titleNanme">
+      {title}
+      <div className="iconBar">
+        <Icon type="redo" />
+        <Icon
+          type="cloud-download"
+          style={{
+            marginLeft: '10px'
+          }}
+        />
+      </div>
+    </div>
+  );
+  return (
+    <Card
+      hoverable
+      title={CardTitle}
+      className="thin-card"
+      bordered={false}
+      style={title !== '省份' ? style : undefined}
+      bodyStyle={{ overflow: 'hidden' }}
+    >
+      <EchartsReact option={option} />
+    </Card>
+  );
+};
+
 const DistributeCard: React.FC<DistributeCardProps> = props => {
   const injected = () => {
     return props as DistributeCardInjected;
@@ -19,39 +52,6 @@ const DistributeCard: React.FC<DistributeCardProps> = props => {
       getChartOption: { circleOption, barOption, cityOption, provinceOption, lineOption }
     }
   } = injected();
-
-  const ChartCard = (props: any) => {
-    const style: React.CSSProperties = {
-      marginBottom: '24px'
-    };
-    const { title, option } = props;
-    const CardTitle = (
-      <div className="titleNanme">
-        {title}
-        <div className="iconBar">
-          <Icon type="redo" />
-          <Icon
-            type="cloud-download"
-            style={{
-              marginLeft: '10px'
-            }}
-          />
-        </div>
-      </div>
-    );
-    return (
-      <Card
-        hoverable
-        title={CardTitle}
-        className="thin-card"
-        bordered={false}
-        style={title !== '省份' ? style : undefined}
-        bodyStyle={{ overflow: 'hidden' }}
-      >
-        <EchartsReact option={option} />
-      </Card>
-    );
-  };
 
   return (
     <Fragment>
@@ -79,4 +79,5 @@ const DistributeCard: React.FC<DistributeCardProps> = props => {
     </Fragment>
   );
 };
+
 export default inject('programStore')(observer(DistributeCard));
