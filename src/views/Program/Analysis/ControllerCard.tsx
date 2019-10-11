@@ -3,14 +3,12 @@ import { Card, Select, Button, DatePicker, Icon, Switch } from 'antd';
 import { observer, inject } from 'mobx-react';
 import ProgramStore from '@store/programStore';
 
-interface ControllerProps {}
-
-interface ControllerInjected extends ControllerProps {
+interface ControllerInjected {
   programStore: ProgramStore;
 }
 
 const { Option } = Select;
-const Controller: React.FC<ControllerProps> = props => {
+const Controller: React.FC = props => {
   const injected = () => {
     return props as ControllerInjected;
   };

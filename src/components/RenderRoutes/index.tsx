@@ -1,9 +1,16 @@
 import React from 'react';
-import { HashRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+import {
+  HashRouter as Router,
+  Route,
+  Redirect,
+  Switch,
+  RouteComponentProps
+} from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
 import Error404 from '@views/Exception/404';
 import AsyncComponent from '../AsyncComponent';
 import LayoutStore from '@store/layoutStore';
+import { RouteConfig } from '@models/index';
 
 /**
  * 路由生成组件
@@ -14,13 +21,27 @@ interface InjectedProps {
   layoutStore: LayoutStore;
 }
 
+interface RouteMiddleProps {
+  path: string;
+  exact?: boolean;
+  strict?: boolean;
+  render: Function;
+  key: string | number;
+}
+
+interface RouteMiddleRouteProps extends RouteMiddleProps, RouteComponentProps {}
+
 const RenderRoutes: React.FC = props => {
   const injected = () => {
     return props as InjectedProps;
   };
 
-  const RouteMiddle = (props: any) => {
-    const { path, exact, strict, render, location, ...rest } = props;
+  const RouteMiddle = (rmProps: RouteMiddleProps) => {
+    const routeInfo = () => {
+      return rmProps as RouteMiddleRouteProps;
+    };
+    const { location } = routeInfo();
+    const { path, exact, strict, render, ...rest } = rmProps;
     return (
       <Route
         path={path}
@@ -31,7 +52,7 @@ const RenderRoutes: React.FC = props => {
       />
     );
   };
-  const generateRoute = (routes: any, switchProps?: any) => {
+  const generateRoute = (routes: RouteConfig[], switchProps?: any) => {
     return routes ? (
       <Switch {...switchProps}>
         {routes.map((route: any, i: number) => {

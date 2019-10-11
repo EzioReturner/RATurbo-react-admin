@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './userLayout.module.scss';
 
-const UserLayout = props => {
+const UserLayout: React.FC = props => {
   const { children } = props;
   return (
     <div className={styles.userLayout}>

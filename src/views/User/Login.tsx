@@ -4,7 +4,7 @@ import LoginForm from './LoginForm';
 import './login.scss';
 import 'animate.css';
 
-const Login: React.FC = props => {
+const Login: React.FC = () => {
   const [apError, setApError] = useState(false);
   const [shake, setShake] = useState(false);
 

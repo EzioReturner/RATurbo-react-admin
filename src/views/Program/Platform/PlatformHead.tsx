@@ -4,13 +4,11 @@ import { inject, observer } from 'mobx-react';
 import UserStore from '@store/userStore';
 const imgUrl = require('@assets/image/userPhoto.jpg');
 
-interface PlatformHeadProps {}
-
-interface PlatformHeadInjected extends PlatformHeadProps {
+interface PlatformHeadInjected {
   userStore: UserStore;
 }
 
-const PlatformHead: React.FC<PlatformHeadProps> = props => {
+const PlatformHead: React.FC = props => {
   const injected = () => {
     return props as PlatformHeadInjected;
   };

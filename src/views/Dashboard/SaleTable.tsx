@@ -170,33 +170,4 @@ const SaleTable: React.FC = () => {
   );
 };
 
-// class SaleTable extends Component {
-//   state = {
-//     tableData: [
-//       {
-//         key: '1',
-//         name: 'John Brown',
-//         amount: '$ 32.77',
-//         progress: 60,
-//         tags: ['nice', 'developer']
-//       },
-//       {
-//         key: '2',
-//         name: 'Jim Green',
-//         amount: '$ 72.11',
-//         progress: 82,
-//         tags: ['loser']
-//       },
-//       {
-//         key: '3',
-//         name: 'Joe Black',
-//         amount: '$ 56.21',
-//         progress: 30,
-//         tags: ['cool', 'teacher']
-//       }
-//     ]
-//   };
-
-// }
-
 export default SaleTable;

@@ -10,13 +10,11 @@ import TeamCard from './TeamCard';
 import UserStore from '@store/userStore';
 import './platform.scss';
 
-interface MonitorProps {}
-
-interface MonitorInjected extends MonitorProps {
+interface MonitorInjected {
   userStore: UserStore;
 }
 
-const Monitor: React.FC<MonitorProps> = props => {
+const Monitor: React.FC = props => {
   const injected = () => {
     return props as MonitorInjected;
   };

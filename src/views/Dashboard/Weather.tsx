@@ -16,9 +16,7 @@ interface WeatherState {
   weekName: string[];
 }
 
-interface WeatherProps {}
-
-class Weather extends React.PureComponent<WeatherProps, WeatherState> {
+class Weather extends React.PureComponent<{}, WeatherState> {
   state: WeatherState = {
     data: [],
     weekName: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
