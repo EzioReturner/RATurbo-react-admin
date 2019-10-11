@@ -9,7 +9,7 @@ class QuickStart extends PureComponent {
   };
 
   componentDidMount() {
-    getContact().then(res => {
+    getContact().then((res: any) => {
       this.setState({
         contact: res.data.results
       });
@@ -26,7 +26,7 @@ class QuickStart extends PureComponent {
         loading={!contact.length}
       >
         <Row className="quick-start">
-          {contact.map((res, index) => {
+          {contact.map((res: any, index: number) => {
             return (
               <Col className="ac" key={index} xl={2} lg={4} md={4} sm={4} xs={6}>
                 <Avatar src={res.picture.thumbnail} />
