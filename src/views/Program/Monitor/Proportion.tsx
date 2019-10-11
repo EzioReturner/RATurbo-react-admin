@@ -1,11 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Card } from 'antd';
 import EchartsReact from '@components/Echarts';
 import getWordCloud from '@api/analysis';
 import { wordCloudChart } from '@assets/chartOption';
 import FormatterLocale from '@components/FormatterLocale';
 
-class Proportion extends Component {
+interface ProportionState {
+  data: any;
+}
+
+class Proportion extends React.Component<{}, ProportionState> {
   state = {
     data: wordCloudChart()
   };
