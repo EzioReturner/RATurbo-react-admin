@@ -110,7 +110,8 @@
     "translate": "node scripts/translate.js",
     "add-locale": "node scripts/addLocale.js",
     "raCreate": "node scripts/tools.js",
-    "test:e2e": "jest -c jest.config.js"
+    "test:e2e": "jest -c e2e/jest.config.js",
+    "test:unit": "jest -c jest.config.js"
   },
   "eslintConfig": {
     "extends": "react-app"
