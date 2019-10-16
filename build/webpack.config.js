@@ -91,6 +91,14 @@ module.exports = function(webpackEnv) {
         )
       });
     }
+    if (preProcessor === 'sass-loader') {
+      loaders.push({
+        loader: 'sass-resources-loader',
+        options: {
+          resources: [_resolve('./src/styles/color.scss'), _resolve('./src/styles/var.scss')]
+        }
+      });
+    }
     return loaders;
   };
 
@@ -290,7 +298,7 @@ module.exports = function(webpackEnv) {
                 sourceMap: isEnvProduction && shouldUseSourceMap,
                 modules: {
                   mode: 'local',
-                  localIdentName: '[name]__[local]--[hash:base64:5]'
+                  localIdentName: '[local]--[hash:base64:5]'
                 }
               })
             },
@@ -315,7 +323,7 @@ module.exports = function(webpackEnv) {
                   sourceMap: isEnvProduction && shouldUseSourceMap,
                   modules: {
                     mode: 'local',
-                    localIdentName: '[name]__[local]--[hash:base64:5]'
+                    localIdentName: '[local]--[hash:base64:5]'
                   }
                 },
                 'sass-loader'
@@ -341,7 +349,7 @@ module.exports = function(webpackEnv) {
                   sourceMap: isEnvProduction && shouldUseSourceMap,
                   modules: {
                     mode: 'local',
-                    localIdentName: '[name]__[local]--[hash:base64:5]'
+                    localIdentName: '[local]--[hash:base64:5]'
                   }
                 },
                 'less-loader'
