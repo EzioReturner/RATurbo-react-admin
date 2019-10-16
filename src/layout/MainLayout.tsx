@@ -65,4 +65,4 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
   );
 };
 
-export default inject('layoutStore')(observer(withRouter(MainLayout)));
+export default inject('layoutStore')(withRouter(observer(MainLayout)));
