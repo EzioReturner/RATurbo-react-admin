@@ -1,0 +1,37 @@
+$font-size-mini: 12px !default;
+$font-size-normal: 14px !default;
+$font-size-title: 16px !default;
+$font-size-large: 24px !default;
+
+$spacing-mini: 4px !default;
+$spacing-small: 8px !default;
+$spacing-normal: 16px !default;
+$spacing-large: 24px !default;
+
+$direction: 'top' 'right' 'bottom' 'left';
+$size: 'mini' 'small' 'normal' 'large';
+
+@for $i from 1 to 5 {
+  $m: 0px;
+  @if $i < 2 {
+    $m: 4px;
+  } @else {
+    $m: ($i - 1) * 8px;
+  }
+  $_size: #{nth($size, $i)};
+  .margin-#{$_size} {
+    margin: $m;
+  }
+  .padding-#{$_size} {
+    padding: $m;
+  }
+  @for $j from 1 to 5 {
+    $_direction: #{nth($direction, $j)};
+    .margin-#{$_direction}-#{$_size} {
+      margin-#{$_direction}: $m;
+    }
+    .padding-#{$_direction}-#{$_size} {
+      padding-#{$_direction}: $m;
+    }
+  }
+}
