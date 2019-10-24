@@ -409,22 +409,20 @@ module.exports = function(webpackEnv) {
         chunks: 'all',
         name: true,
         maxInitialRequests: Infinity,
-        minSize: 30000,
+        minSize: 100000,
         cacheGroups: {
-          // vendor: {
-          //   test: /[\\/]node_modules[\\/]/,
-          //   name(module) {
-          //     // get the name. E.g. node_modules/packageName/not/this/part.js
-          //     // or node_modules/packageName
-          //     const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
-          //     // npm package names are URL-safe, but some servers don't like @ symbols
-          //     return `npm.${packageName.replace('@', '')}`;
-          //   }
-          // },
-          commons: {
+          vendor: {
             test: /[\\/]node_modules[\\/]/,
-            name: 'commons',
-            chunks: 'all'
+            name(module) {
+              const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+              return `npm.${packageName.replace('@', '')}`;
+            }
+          },
+          commons: {
+            test: _resolve('./src/components'),
+            name: 'components',
+            minChunks: 2,
+            reuseExistingChunk: true
           }
         }
       },
