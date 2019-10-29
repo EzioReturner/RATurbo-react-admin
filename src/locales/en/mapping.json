@@ -98,5 +98,6 @@
   "result.failed.tips": "Your submission contains the following error:",
   "result.failed.reason1": "Your application permissions do not match",
   "result.failed.reason2": "Your risk level is too low",
-  "dashboard.perTitle": "Historical performance"
+  "dashboard.perTitle": "Historical performance",
+  "menu.typescript": "typescript"
 }
