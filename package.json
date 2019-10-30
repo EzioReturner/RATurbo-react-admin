@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "animate.css": "^3.7.1",
-    "antd": "^3.19.1",
+    "antd": "3.24.3",
     "axios": "^0.18.0",
     "classnames": "^2.2.6",
     "clean-webpack-plugin": "^3.0.0",
