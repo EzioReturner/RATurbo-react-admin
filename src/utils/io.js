@@ -1,22 +1,16 @@
-import axios from 'axios';
+import Axios from 'axios';
 import { notification } from 'antd';
 
 class Request {
   instance;
 
   constructor() {
-    const baseURL = ['localhost', '0.0.0.0'].includes(window.location.hostname)
-      ? 'http://localhost:8080'
-      : window.location.origin;
-    this.instance = axios.create({
-      baseURL,
-      timeout: 30000
-    });
-    this.initTnterceptors();
+    this.instance = Axios.create();
+    this.initInterceptors();
   }
 
   // 初始化拦截器
-  initTnterceptors() {
+  initInterceptors() {
     this.instance.interceptors.request.use(
       config => {
         return config;
