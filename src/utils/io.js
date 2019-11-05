@@ -5,7 +5,13 @@ class Request {
   instance;
 
   constructor() {
-    this.instance = axios.create();
+    const baseURL = ['localhost', '0.0.0.0'].includes(window.location.hostname)
+      ? 'http://localhost:8080'
+      : window.location.origin;
+    this.instance = axios.create({
+      baseURL,
+      timeout: 30000
+    });
     this.initTnterceptors();
   }
 
@@ -54,12 +60,14 @@ class Request {
 
   sendRequest(method, data) {
     let { path, params, options } = data;
+
     const _query = options ? { ...options, params } : { params };
     return this.instance[method](path, _query).catch(this.handleError);
   }
 
   get(path, data = {}) {
     const { params } = data;
+
     let _path = path;
     if (params) {
       _path += '?';
@@ -68,7 +76,7 @@ class Request {
       });
       _path = _path.replace(/&$/, '');
     }
-    return this.sendRequest('get', _path, data);
+    return this.sendRequest('get', { path: _path, data });
   }
 
   post(path, data) {
