@@ -64,10 +64,13 @@ class Request {
 
     let _path = path;
     if (params) {
-      _path += '?';
-      Object.keys(params).forEach(key => {
-        _path += `${key}=${params[key]}&`;
-      });
+      const keys = Object.keys(params);
+      if (keys.length) {
+        _path += '?';
+        keys.forEach(key => {
+          _path += params[key] ? `${key}=${params[key]}&` : '';
+        });
+      }
       _path = _path.replace(/&$/, '');
     }
     return this.sendRequest('get', { path: _path, data });
