@@ -1,16 +1,16 @@
-import axios from 'axios';
+import Axios from 'axios';
 import { notification } from 'antd';
 
 class Request {
   instance;
 
   constructor() {
-    this.instance = axios.create();
-    this.initTnterceptors();
+    this.instance = Axios.create();
+    this.initInterceptors();
   }
 
   // 初始化拦截器
-  initTnterceptors() {
+  initInterceptors() {
     this.instance.interceptors.request.use(
       config => {
         return config;
@@ -54,21 +54,26 @@ class Request {
 
   sendRequest(method, data) {
     let { path, params, options } = data;
+
     const _query = options ? { ...options, params } : { params };
     return this.instance[method](path, _query).catch(this.handleError);
   }
 
   get(path, data = {}) {
     const { params } = data;
+
     let _path = path;
     if (params) {
-      _path += '?';
-      Object.keys(params).forEach(key => {
-        _path += `${key}=${params[key]}&`;
-      });
+      const keys = Object.keys(params);
+      if (keys.length) {
+        _path += '?';
+        keys.forEach(key => {
+          _path += params[key] ? `${key}=${params[key]}&` : '';
+        });
+      }
       _path = _path.replace(/&$/, '');
     }
-    return this.sendRequest('get', _path, data);
+    return this.sendRequest('get', { path: _path, data });
   }
 
   post(path, data) {
