@@ -28,6 +28,7 @@ export const constantRouteConfig = [
  * @param componet {string[]} 加载组件的项目路径位置，必须为数组，第一项路径，第二项配置组件进入动画class
  * @param hiddeMenu {boolean} 菜单中是否显示
  * @param routes {object[]} 子路由信息
+ * @param rest 可接收 react-router-dom 参数
  */
 
 export const asyncRouteConfig = [
