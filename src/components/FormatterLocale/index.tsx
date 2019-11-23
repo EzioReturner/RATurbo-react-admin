@@ -3,7 +3,7 @@ import { observer, inject } from 'mobx-react';
 import LocaleStore from '@store/localeStore';
 
 interface FormatterProps {
-  id?: string;
+  id: string;
   defaultMessage?: React.ReactNode;
   style?: React.CSSProperties;
   className?: string;
@@ -24,7 +24,7 @@ const FormatterLocale: React.FC<FormatterProps> = props => {
 
   return (
     <span style={style} className={className}>
-      {id ? localeObj[id] : defaultMessage}
+      {localeObj[id] || defaultMessage}
     </span>
   );
 };
