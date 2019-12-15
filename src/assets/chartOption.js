@@ -671,7 +671,11 @@ export const gaugeOption = {
       type: 'gauge',
       axisLine: {
         lineStyle: {
-          color: [[0.09, '#e3e3e3'], [0.82, '#fb4491'], [1, '#71669e']],
+          color: [
+            [0.09, '#e3e3e3'],
+            [0.82, '#fb4491'],
+            [1, '#71669e']
+          ],
           width: 3,
           shadowColor: '#fff', //默认透明
           shadowBlur: 10
