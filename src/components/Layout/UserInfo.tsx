@@ -22,6 +22,7 @@ class UserInfo extends React.Component<RouteComponentProps> {
     const {
       userStore: { userInfo, reloadUserInfo }
     } = this.injected;
+
     if (JSON.stringify(userInfo) === '{}') {
       reloadUserInfo();
     }

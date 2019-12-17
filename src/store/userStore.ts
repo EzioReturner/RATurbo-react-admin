@@ -69,10 +69,10 @@ class UserStore {
     const ls: any = localStorage.getItem('ra-user');
     const au: any = this.getAuthority();
     let ui: object = {};
-    if (ls) {
+    if (ls && ls !== 'undefined') {
       ui = JSON.parse(ls);
     } else {
-      const data = await getUserInfo();
+      const { data } = await getUserInfo();
       ui = data.data[0];
     }
     this.setUserInfo(ui);
