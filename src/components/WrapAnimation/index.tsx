@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { inject, observer } from 'mobx-react';
 import LayoutStore from '@store/layoutStore';
@@ -15,34 +15,25 @@ interface WrapComponentProps {
   animate: string;
 }
 
-interface WrapComponentState {
-  animateIn: boolean;
-}
-
 interface InjectedProps extends WrapComponentProps {
   layoutStore: LayoutStore;
 }
 
-class WrapComponent extends React.Component<WrapComponentProps, WrapComponentState> {
-  get injected() {
-    return this.props as InjectedProps;
+const WrapComponent: React.FC<WrapComponentProps> = props => {
+  function inject() {
+    return props as InjectedProps;
   }
+  const {
+    layoutStore: { stopSpinning }
+  } = inject();
+  const [animateIn, setAnimateIn] = useState(false);
 
-  state = {
-    animateIn: false
-  };
-
-  componentDidMount() {
-    const {
-      layoutStore: { stopSpinning }
-    } = this.injected;
-    this.setState({
-      animateIn: true
-    });
+  useEffect(() => {
+    setAnimateIn(true);
     stopSpinning();
-  }
+  }, []);
 
-  getAnimateWay(animate: string) {
+  function getAnimateWay(animate: string) {
     const [name, useAnimated] = animate.split('-');
     const className = useAnimated
       ? {
@@ -56,21 +47,13 @@ class WrapComponent extends React.Component<WrapComponentProps, WrapComponentSta
     return className;
   }
 
-  render() {
-    const { children, animate } = this.props;
-    const className = animate ? this.getAnimateWay(animate) : 'slide';
-    return (
-      <CSSTransition
-        in={this.state.animateIn}
-        classNames={className}
-        timeout={1000}
-        mountOnEnter
-        unmountOnExit
-      >
-        {children}
-      </CSSTransition>
-    );
-  }
-}
+  const { children, animate } = props;
+  const className = animate ? getAnimateWay(animate) : 'slide';
+  return (
+    <CSSTransition in={animateIn} classNames={className} timeout={1000} mountOnEnter unmountOnExit>
+      {children}
+    </CSSTransition>
+  );
+};
 
 export default inject('layoutStore')(observer(WrapComponent));
