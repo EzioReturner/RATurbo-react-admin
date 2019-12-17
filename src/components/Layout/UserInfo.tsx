@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Icon, Menu, Dropdown, Modal } from 'antd';
 import { inject, observer } from 'mobx-react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
@@ -11,34 +11,31 @@ interface InjectedProps extends RouteComponentProps<any> {
   userStore: UserStore;
 }
 
-@inject('userStore')
-@observer
-class UserInfo extends React.Component<RouteComponentProps> {
-  get injected() {
-    return this.props as InjectedProps;
+const UserInfo: React.FC<RouteComponentProps> = props => {
+  function injected() {
+    return props as InjectedProps;
   }
+  const {
+    userStore: { userInfo, reloadUserInfo, userLogout }
+  } = injected();
 
-  componentDidMount() {
-    const {
-      userStore: { userInfo, reloadUserInfo }
-    } = this.injected;
+  const { history } = props;
 
+  useEffect(() => {
     if (JSON.stringify(userInfo) === '{}') {
       reloadUserInfo();
     }
-  }
+  });
 
-  handleLogout = () => {
+  const handleLogout = () => {
     confirm({
       maskClosable: true,
       title: 'confirm to logout',
       content: 'user info will reset, system cannot auto-login',
       onOk: () => {
         return new Promise(resolve => {
-          const { history } = this.props;
-
           setTimeout(() => {
-            this.injected.userStore.userLogout();
+            userLogout();
             history.push('/user/login');
             resolve();
           }, 800);
@@ -48,40 +45,38 @@ class UserInfo extends React.Component<RouteComponentProps> {
     });
   };
 
-  handleTriggerError = () => {
-    this.props.history.push('/exception/home');
+  const handleTriggerError = () => {
+    history.push('/exception/home');
   };
 
-  getMenu = () => (
+  const getMenu = () => (
     <Menu>
       <Menu.Item>
         <Icon type="user" />
         <span className={styles.menuItem}>user info</span>
       </Menu.Item>
-      <Menu.Item onClick={this.handleTriggerError}>
+      <Menu.Item onClick={handleTriggerError}>
         <Icon type="setting" />
         <span className={styles.menuItem}>trigger error</span>
       </Menu.Item>
       <Menu.Divider />
-      <Menu.Item onClick={this.handleLogout}>
+      <Menu.Item onClick={handleLogout}>
         <Icon type="logout" />
         <span className={styles.menuItem}>logout</span>
       </Menu.Item>
     </Menu>
   );
 
-  render() {
-    return (
-      <div className={styles.userInfo}>
-        <Dropdown overlay={this.getMenu()} className={styles.userDropdown} placement="bottomRight">
-          <div className={styles.userDropdown}>
-            <Icon type="user" className={styles.userIcon} />
-            <span className={styles.text}>{this.injected.userStore.userInfo.name}</span>
-          </div>
-        </Dropdown>
-      </div>
-    );
-  }
-}
+  return (
+    <div className={styles.userInfo}>
+      <Dropdown overlay={getMenu()} className={styles.userDropdown} placement="bottomRight">
+        <div className={styles.userDropdown}>
+          <Icon type="user" className={styles.userIcon} />
+          <span className={styles.text}>{userInfo.name}</span>
+        </div>
+      </Dropdown>
+    </div>
+  );
+};
 
-export default withRouter(UserInfo);
+export default inject('userStore')(withRouter(observer(UserInfo)));

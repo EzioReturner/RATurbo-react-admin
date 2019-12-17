@@ -57,12 +57,12 @@ class UserStore {
   }
 
   // 用户登出，重置信息
-  @action userLogout(): void {
+  @action userLogout = (): void => {
     this.userInfo = {};
     this.authority = [];
     localStorage.removeItem('ra-authority');
     localStorage.removeItem('ra-user');
-  }
+  };
 
   // 重新拉取用户信息
   @action reloadUserInfo = async (): Promise<any> => {
