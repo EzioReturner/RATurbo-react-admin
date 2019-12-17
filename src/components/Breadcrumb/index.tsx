@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { observer, inject } from 'mobx-react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { Icon } from 'antd';
@@ -13,91 +13,71 @@ interface InjectedProps extends RouteComponentProps<any> {
   localeStore: LocaleStore;
 }
 
-@inject('layoutStore', 'localeStore')
-@observer
-class BreadCrumb extends React.Component<RouteComponentProps> {
-  get injected() {
-    return this.props as InjectedProps;
-  }
+const BreadCrumb: React.FC<RouteComponentProps> = props => {
+  const injected = () => {
+    return props as InjectedProps;
+  };
 
-  componentDidMount() {
-    const { layoutStore } = this.injected;
-    const {
-      location: { pathname }
-    } = this.props;
+  const {
+    layoutStore: { breadcrumbList, delBreadcrumb },
+    localeStore: { localeObj }
+  } = injected();
+
+  const {
+    history,
+    location: { pathname }
+  } = props;
+
+  useEffect(() => {
+    const { layoutStore } = injected();
     layoutStore.addBreadcrumb(pathname);
-  }
+  }, []);
 
-  handleDelBreadcrumb(e: React.MouseEvent<HTMLElement>, name: string) {
+  function handleDelBreadcrumb(e: React.MouseEvent<HTMLElement>, name: string) {
     e.stopPropagation();
-    const {
-      history,
-      location: { pathname }
-    } = this.props;
-
-    const {
-      layoutStore: { delBreadcrumb }
-    } = this.injected;
-
     const delSelf = delBreadcrumb(name, pathname);
     if (delSelf) {
       history.push(delSelf.path);
     }
   }
 
-  handleGoBreadPath(path: string) {
-    const {
-      history,
-      location: { pathname }
-    } = this.props;
+  function handleGoBreadPath(path: string) {
     if (pathname === path) {
       return;
     }
     history.push(path);
   }
 
-  checkDisplay(path: string) {
-    const {
-      location: { pathname }
-    } = this.props;
+  function checkDisplay(path: string) {
     return path === pathname;
   }
 
-  render() {
-    const {
-      layoutStore: { breadcrumbList },
-      localeStore: { localeObj }
-    } = this.injected;
-    return (
-      <div className={styles.breadcrumbList}>
-        {breadcrumbList.map((bread: Breadcrumb, index: number) => {
-          const { display, path, name } = bread;
-          const key = path
-            .split('/')
-            .slice(1)
-            .join('.');
+  return (
+    <div className={styles.breadcrumbList}>
+      {breadcrumbList.map((bread: Breadcrumb, index: number) => {
+        const { display, path, name } = bread;
+        const key = path
+          .split('/')
+          .slice(1)
+          .join('.');
 
-          return display ? (
-            <div
-              key={index}
-              className={classNames(
-                styles.breadcrumb,
-                this.checkDisplay(path) ? styles.display : ''
-              )}
-              onClick={() => this.handleGoBreadPath(path)}
-            >
-              {localeObj[`menu.${key}`] || name}
-              <Icon
-                type="close"
-                className={styles.closeIcon}
-                onClick={e => this.handleDelBreadcrumb(e, name)}
-              />
-            </div>
-          ) : null;
-        })}
-      </div>
-    );
-  }
-}
+        return display ? (
+          <div
+            key={index}
+            className={classNames(styles.breadcrumb, checkDisplay(path) ? styles.display : '')}
+            onClick={() => handleGoBreadPath(path)}
+          >
+            {localeObj[`menu.${key}`] || name}
+            <Icon
+              type="close"
+              className={styles.closeIcon}
+              onClick={e => handleDelBreadcrumb(e, name)}
+            />
+          </div>
+        ) : null;
+      })}
+    </div>
+  );
+};
 
-export default withRouter(BreadCrumb);
+export default inject('layoutStore', 'localeStore')(withRouter(observer(BreadCrumb)));
