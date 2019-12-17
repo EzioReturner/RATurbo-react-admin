@@ -22,7 +22,7 @@ interface MainLayoutInjected extends MainLayoutProps {
 }
 
 const MainLayout: React.FC<MainLayoutProps> = props => {
-  const inject = () => {
+  const injected = () => {
     return props as MainLayoutInjected;
   };
   const {
@@ -32,7 +32,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
   } = props;
   const {
     layoutStore: { collapsed, isMobile, toggleCollapsed, spinning, fixed }
-  } = inject();
+  } = injected();
   const routeAuthority: string | string[] = getRouteAuthority(pathname, route.routes);
   return (
     <Authorized unidentified={<Redirect to="/user/login" />}>

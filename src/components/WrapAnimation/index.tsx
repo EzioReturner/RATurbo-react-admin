@@ -20,12 +20,12 @@ interface InjectedProps extends WrapComponentProps {
 }
 
 const WrapComponent: React.FC<WrapComponentProps> = props => {
-  function inject() {
+  function injected() {
     return props as InjectedProps;
   }
   const {
     layoutStore: { stopSpinning }
-  } = inject();
+  } = injected();
   const [animateIn, setAnimateIn] = useState(false);
 
   useEffect(() => {
