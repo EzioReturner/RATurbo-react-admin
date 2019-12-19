@@ -1,0 +1,13 @@
+.footer {
+  color: $color-text-secondary;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.link {
+  color: $color-text-secondary;
+  cursor: pointer;
+  &:hover {
+    color: $color-primary;
+  }
+}

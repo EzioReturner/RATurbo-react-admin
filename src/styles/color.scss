@@ -1,0 +1,41 @@
+// Black
+$color-black: #000 !default;
+
+// White
+$color-white: #fff !default;
+$color-white-dark: #f3f3f3 !default;
+$color-white-dark-extra: darken($color-white, 6.5%) !default;
+$color-white-darker: darken($color-white, 13.5%) !default;
+$color-white-darker-extra: darken($color-white, 20%) !default;
+
+// Gray
+$color-gray-darker: #21262c;
+$color-gray-dark: #353840;
+$color-gray: lighten($color-black, 33.5%) !default;
+$color-gray-light: lighten($color-black, 46.7%) !default;
+$color-gray-lighter: lighten($color-black, 60%) !default;
+
+// Alias Primary
+$color-primary: #fb4491 !default;
+$color-primary-sec: #fc6ca8 !default;
+$color-primary-dark: darken($color-primary, 8%) !default;
+$color-primary-light: lighten($color-primary, 8%) !default;
+$color-primary-lighter: lighten($color-primary, 20%) !default;
+$color-primary-low: lighten($color-primary, 33.5%) !default;
+
+// Secondary color
+$color-secondary: #71669e !default;
+$color-secondary-dark: darken($color-secondary, 5%) !default;
+$color-secondary-light: lighten($color-secondary, 5%) !default;
+
+$menu-item-background: #f3f3f3 !default;
+$border-color: #f2f2f2 !default;
+
+$color-success: #52c41a !default;
+$color-error: #f5222d !default;
+$color-warning: #faad14 !default;
+$color-progress: #308ee0 !default;
+
+$color-text: rgba(0, 0, 0, 0.65) !default;
+$color-text-secondary: rgba(0, 0, 0, 0.45) !default;
+$color-text-dark: rgba(0, 0, 0, 0.85) !default;

@@ -1,0 +1,78 @@
+.warp-flex {
+  display: flex;
+}
+
+.jus-b {
+  justify-content: space-between;
+}
+
+.a-c {
+  align-content: center;
+}
+
+h3 {
+  font-size: 26px;
+  line-height: 30px;
+}
+
+p {
+  font-size: 13px;
+  margin-bottom: 0;
+}
+
+@for $i from 0 to 5 {
+  @if $i < 2 {
+    .p-#{$i} {
+      padding: 4px * $i;
+    }
+    .mb-#{$i} {
+      margin-bottom: 4px * $i;
+    }
+    .mt-#{$i} {
+      margin-top: 4px * $i;
+    }
+    .ml-#{$i} {
+      margin-left: 4px * $i;
+    }
+    .mr-#{$i} {
+      margin-right: 4px * $i;
+    }
+  } @else {
+    $j: $i - 1;
+    .p-#{$i} {
+      padding: 8px * $j;
+    }
+    .mb-#{$i} {
+      margin-bottom: 8px * $j;
+    }
+    .mt-#{$i} {
+      margin-top: 8px * $j;
+    }
+    .ml-#{$i} {
+      margin-left: 8px * $j;
+    }
+    .mr-#{$i} {
+      margin-right: 8px * $j;
+    }
+  }
+}
+
+.text-1 {
+  font-size: 13px;
+}
+
+.text-2 {
+  font-size: 25px;
+}
+
+.text-3 {
+  font-size: 40px;
+}
+
+.text-muted {
+  color: #969696;
+}
+
+.text-default {
+  color: #212529;
+}

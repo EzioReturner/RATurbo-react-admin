@@ -1,0 +1,20 @@
+.langIcon {
+  padding: 0 12px;
+  height: 100%;
+  line-height: 64px;
+  cursor: pointer;
+  transition: all 0.3s;
+  &:hover {
+    background: rgba(0, 0, 0, 0.025);
+    .icon {
+      color: $color-primary;
+    }
+  }
+}
+
+.icon {
+  color: $color-text;
+  margin-top: 4px;
+  font-size: 16px;
+  transition: color 0.3s;
+}

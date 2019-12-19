@@ -1,0 +1,31 @@
+.container {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  .routeContent {
+    position: absolute;
+    left: 255px;
+    top: 0px;
+    bottom: 0;
+    right: 0;
+    background: $color-white-dark;
+    margin-top: 60px;
+    overflow: auto;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    &.collapsed {
+      left: 80px;
+    }
+    &.isMobile {
+      left: 0;
+    }
+    & > .viewBody {
+      width: 100%;
+      padding: 24px;
+      flex: auto;
+    }
+  }
+}

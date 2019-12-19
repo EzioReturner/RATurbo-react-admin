@@ -1,0 +1,38 @@
+.login {
+  .login-form {
+    max-width: 300px;
+  }
+  .login-form-forgot {
+    float: right;
+  }
+  .login-form-button {
+    opacity: 0.8;
+    width: 100%;
+  }
+  .ant-input {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-color: transparent;
+    color: white;
+    &:focus {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  }
+  .ant-input-prefix {
+    .anticon {
+      color: #ffffff;
+    }
+  }
+  .loginTitle {
+    font-size: 18px;
+    margin-bottom: 8px;
+    span {
+      color: $color-primary;
+    }
+    @media screen and (min-width: 1400px) {
+      position: absolute;
+      font-size: 38px;
+      font-weight: bold;
+      left: -400px;
+    }
+  }
+}

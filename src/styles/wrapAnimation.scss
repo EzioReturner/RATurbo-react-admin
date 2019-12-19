@@ -1,0 +1,38 @@
+.slide-enter {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.slide-enter-active {
+  opacity: 1;
+  transform: translateX(0px);
+  transition: all 800ms ease-out;
+}
+
+.slide-exit {
+  opacity: 0;
+  transform: translateX(0px);
+}
+
+.slide-exit-active {
+  opacity: 1;
+  transition: all 800ms ease-out;
+}
+
+.fadeRA-enter {
+  opacity: 0;
+}
+
+.fadeRA-enter-active {
+  opacity: 1;
+  transition: opacity 800ms ease-out;
+}
+
+.fadeRA-exit {
+  opacity: 0;
+}
+
+.fadeRA-exit-active {
+  opacity: 1;
+  transition: opacity 800ms ease-out;
+}

@@ -1,0 +1,25 @@
+.stepTitle {
+  margin-bottom: 24px;
+}
+
+.desc {
+  font-size: 12px;
+  margin-left: 50px;
+  .descName {
+    margin: 8px 0;
+  }
+}
+
+.reason {
+  margin-bottom: 8px;
+  color: $color-text;
+  font-size: 14px;
+  .icon {
+    color: $color-error;
+    vertical-align: middle;
+    margin: -1px 8px 0 0;
+  }
+  .aButton {
+    margin-left: 24px;
+  }
+}

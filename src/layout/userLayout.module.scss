@@ -1,0 +1,47 @@
+.userLayout {
+  overflow: hidden;
+  position: absolute;
+  background-color: gray;
+  background: url('../assets/image/loginBackground.jpg');
+  background-size: cover;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  .titile {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 64px;
+    width: 100%;
+    transform: rotate(-40deg);
+    border-bottom: 20px solid rgba($color: #000000, $alpha: 0.4);
+    position: absolute;
+    top: 35%;
+    left: -15%;
+    img {
+      height: 52px;
+      width: 52px;
+    }
+    p {
+      color: rgba($color: #000000, $alpha: 0.8);
+      margin: 0;
+      font-size: 43px;
+      font-weight: bold;
+    }
+    span {
+      color: $color-primary;
+    }
+  }
+  .userContext {
+    position: absolute;
+    left: 70%;
+    top: 55%;
+    transform: translate(-50%, -50%);
+    @media screen and (max-width: 1400px) {
+      left: 50%;
+      top: 50%;
+    }
+  }
+}

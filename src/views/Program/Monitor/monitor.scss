@@ -1,0 +1,63 @@
+.monitor {
+  .poplar-map-card,
+  .monitor-list-card {
+    margin-bottom: 24px;
+  }
+  #poplar-map {
+    height: 490px;
+    width: 100%;
+    .anchorBL {
+      display: none;
+    }
+  }
+  #list-bar {
+    height: 490px;
+    width: 100%;
+  }
+  #trading-proportion,
+  #resource-surplus,
+  #gaugeChart {
+    height: 200px;
+  }
+  #resource-surplus {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    border: 2px solid $color-primary;
+    background: $color-primary-lighter;
+    position: relative;
+    overflow: hidden;
+    .wave {
+      content: '';
+      position: absolute;
+      height: 400px;
+      width: 400px;
+      top: -25%;
+      left: 50%;
+      margin-left: -200px;
+      margin-top: -200px;
+      border-radius: 35%;
+      background: white;
+      animation: wave 15s infinite linear;
+    }
+    p {
+      color: $color-primary-light;
+      font-size: 30px;
+      margin: 0;
+      font-weight: bold;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+    }
+  }
+  @keyframes wave {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
