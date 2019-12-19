@@ -9,6 +9,8 @@ const setting = require('../src/config/setting');
 const InterpolateHtmlPlugin = require('interpolate-html-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const FilterWarningsPlugin = require('webpack-filter-warnings-plugin');
 
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
@@ -142,6 +144,23 @@ module.exports = function(webpackEnv) {
         },
         {
           oneOf: [
+            {
+              test: /\.(png|jpe?g|gif|webp)(\?.*)?$/,
+              use: [
+                {
+                  loader: 'url-loader',
+                  options: {
+                    limit: 4096,
+                    fallback: {
+                      loader: 'file-loader',
+                      options: {
+                        name: 'static/img/[name].[hash:8].[ext]'
+                      }
+                    }
+                  }
+                }
+              ]
+            },
             {
               test: /\.(svg)(\?.*)?$/,
               use: [
@@ -315,15 +334,9 @@ module.exports = function(webpackEnv) {
     plugins: [
       new webpack.ProgressPlugin(),
 
-      new ForkTsCheckerWebpackPlugin({
-        tslint: false,
-        formatter: 'codeframe',
-        checkSyntacticErrors: false,
-        tsconfig: paths.appTsConfig,
-        watch: paths.appSrc
-      }),
-
       new webpack.NamedModulesPlugin(),
+
+      isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
 
       new HtmlWebpackPlugin(
         Object.assign(
@@ -354,8 +367,28 @@ module.exports = function(webpackEnv) {
       new InterpolateHtmlPlugin({
         NODE_ENV: process.env.NODE_ENV || 'development',
         PUBLIC_URL: publicUrl
-      })
-    ]
+      }),
+
+      new ForkTsCheckerWebpackPlugin({
+        tslint: false,
+        formatter: 'codeframe',
+        checkSyntacticErrors: false,
+        tsconfig: paths.appTsConfig,
+        watch: paths.appSrc
+      }),
+
+      new FilterWarningsPlugin({
+        exclude: /mini-css-extract-plugin[^]*Conflicting order/
+      }),
+
+      isEnvProduction &&
+        new MiniCssExtractPlugin({
+          filename: 'static/css/[name].[contenthash:8].css',
+          chunkFilename: 'static/css/[name].[contenthash:8].chunk.css'
+        }),
+
+      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+    ].filter(Boolean)
   };
   return config;
 };

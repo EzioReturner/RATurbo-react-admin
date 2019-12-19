@@ -9,11 +9,12 @@
   * [国际化](/i18n)
   * [异常处理](/exception)
   * [样式与主题](/cssStyle)
-* 配置相关
-  * [系统配置](/setting)
-  * [Override](/override)
-* 工程
   * [使用typescript](/typescript)
+* 工程
+  * [热替换](/hotReload)
   * [eslint](/eslint)
   * [内置命令](/scripts)
   * [构建与发布](/deploy)
+* 配置相关
+  * [系统配置](/setting)
+  * [Override](/override)

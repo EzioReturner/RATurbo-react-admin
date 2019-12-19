@@ -3,7 +3,6 @@ module.exports = {
   siteName: 'RA-Turbo',
   copyright: ['RA-Turbo admin', 'ezioreturner@gmail.com', 'https://github.com/EzioReturner'],
   menuLinkUrl: 'https://github.com/EzioReturner/RATurbo-react-admin',
-  logoPath: '/logo.png',
   fixedHeader: true,
   i18n: {
     languages: [

@@ -4,7 +4,7 @@ import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
 import { intersection } from 'lodash';
 import classNames from 'classnames';
-import { logoPath, siteName, menuLinkUrl } from '@config/setting';
+import { siteName, menuLinkUrl } from '@config/setting';
 import styles from './siderMenu.module.scss';
 import UserStore from '@store/userStore';
 import LayoutStore from '@store/layoutStore';
@@ -139,7 +139,7 @@ const SiderMenu: React.FC<RouteComponentProps> = props => {
   return (
     <aside className={classNames(styles.navigator, collapsed ? styles.collapsed : '')}>
       <a className={styles.controlBut} href={menuLinkUrl} target="_blank" rel="noopener noreferrer">
-        <img alt="" src={logoPath} className={styles.logo} />
+        <img alt="" src={require('@assets/image/logo.png').default} className={styles.logo} />
         <span className={`ml-2 ${styles.title}`}>{siteName}</span>
       </a>
       <Menu

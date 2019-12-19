@@ -1,5 +1,6 @@
 process.env.NODE_ENV = 'production';
 process.env.BABEL_ENV = 'production';
+process.env.GENERATE_SOURCEMAP = false;
 //node for loading
 const ora = require('ora');
 // rm-rf for node
@@ -11,12 +12,13 @@ const path = require('path');
 //webpack
 const webpack = require('webpack');
 //webpack production setting
-const configFactory = require('../build/webpack.config');
+const configFactory = require('../webpack/webpack.config');
 // fs
 const fs = require('fs');
+
 const fsExtra = require('fs-extra');
 // dll webpack config
-const dllConfig = require('../build/webpack.dll');
+const dllConfig = require('../webpack/webpack.dll');
 // remove file path
 const rmFile = path.resolve(__dirname, '../build/dist');
 //build start loading
@@ -26,13 +28,12 @@ const { original } = JSON.parse(process.env.npm_config_argv);
 const IsUseDll = original.includes('--useDll');
 // get library files name & version
 const { library, libVersion } = require('../package.json');
-const {
-  measureFileSizesBeforeBuild,
-  printFileSizesAfterBuild
-} = require('react-dev-utils/FileSizeReporter');
 
 const lib_version = libVersion ? libVersion.replace(/\./g, '_') : null;
-const paths = require('../build/paths');
+
+const paths = require('../webpack/paths');
+
+const { measureFileSizesBeforeBuild, printFileSizesAfterBuild } = require('./fileReport');
 
 const WARN_AFTER_BUNDLE_GZIP_SIZE = 512 * 1024;
 const WARN_AFTER_CHUNK_GZIP_SIZE = 1024 * 1024;

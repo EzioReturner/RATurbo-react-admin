@@ -52,7 +52,7 @@ class CardList extends React.Component<{}, CardListState> {
 
     const ExtraContent = (
       <div className={styles.extraContent}>
-        <img alt="" src={require('@assets/image/cardlist.png')} />
+        <img alt="" src={require('@assets/image/cardlist.png').default} />
       </div>
     );
 

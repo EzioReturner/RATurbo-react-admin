@@ -26,7 +26,7 @@ const Monitor: React.FC = props => {
   const content = (
     <Col xl={16} lg={16} md={16} sm={24} xs={24}>
       <div className="p-left-part">
-        <img alt="" src={require('@assets/image/userPhoto.jpg')} className="user-photo" />
+        <img alt="" src={require('@assets/image/userPhoto.jpg').default} className="user-photo" />
         <div>
           <p>
             <FormatterLocale id="platform.morning" />, {userInfo.name},{' '}
