@@ -1,3 +1,4 @@
+'use strict';
 const webpack = require('webpack');
 const { DllPlugin } = webpack;
 const path = require('path');
@@ -9,6 +10,12 @@ const lib_version = libVersion ? libVersion.replace(/\./g, '_') : null;
 
 module.exports = {
   entry: library,
+  //   Object.keys(library).reduce((libs, key) => {
+  //   if (library[key].length) {
+  //     libs[key] = library[key];
+  //   }
+  //   return libs;
+  // }, {}),
   output: {
     filename: `[name].${lib_version}.dll.js`,
     path: paths.appBuildDll,

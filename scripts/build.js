@@ -24,9 +24,9 @@ const dllConfig = require('../webpack/webpack.dll');
 const rmFile = path.resolve(__dirname, '../build/dist');
 //build start loading
 const spinner = ora({ color: 'green', text: 'building for production...' });
-// get process arguments
 const { original } = JSON.parse(process.env.npm_config_argv);
-const IsUseDll = original.includes('--useDll');
+const useDll = original.includes('--dll');
+// get process arguments
 // get library files name & version
 const { library, libVersion } = require('../package.json');
 
@@ -41,9 +41,9 @@ const WARN_AFTER_CHUNK_GZIP_SIZE = 1024 * 1024;
 
 const buildDll = () => {
   return new Promise((resolve, reject) => {
-    const existDll = IsUseDll ? checkDllFiles() : false;
+    const existDll = useDll ? checkDllFiles() : false;
 
-    if (!IsUseDll || existDll) {
+    if (!useDll || existDll) {
       resolve();
     } else {
       const _spinner = ora({ color: 'green', text: 'building for dll-vendor...' });
@@ -69,7 +69,11 @@ const checkDllFiles = () => {
     return false;
   } else {
     const files = fs.readdirSync(dllPath);
+    console.log(files);
+
     return Object.keys(library).every(name => {
+      console.log(name, files.includes(`${name}.${lib_version}.dll.js`));
+
       return files.includes(`${name}.${lib_version}.dll.js`);
     });
   }

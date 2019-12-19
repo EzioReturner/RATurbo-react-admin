@@ -49,9 +49,9 @@ function printFileSizesAfterBuild(
     null,
     assets.map(a => stripAnsi(a.sizeLabel).length)
   );
-  const suggestBundleSplitting = false;
+  let suggestBundleSplitting = false;
   assets.forEach(asset => {
-    const sizeLabel = asset.sizeLabel;
+    let sizeLabel = asset.sizeLabel;
     const sizeLength = stripAnsi(sizeLabel).length;
     if (sizeLength < longestSizeLabelLength) {
       const rightPadding = ' '.repeat(longestSizeLabelLength - sizeLength);

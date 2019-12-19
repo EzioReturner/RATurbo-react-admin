@@ -5,7 +5,6 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "build:dll": "node scripts/build.js --dll",
     "translate": "node scripts/translate.js",
     "add-locale": "node scripts/addLocale.js",
     "raCreate": "node scripts/tools.js"
@@ -128,9 +127,21 @@
   },
   "libVersion": "1.0.0",
   "library": {
-    "vuelib": [],
-    "ant": [],
+    "reactLib": [
+      "react",
+      "react-dom",
+      "react-router-dom",
+      "react-transition-group"
+    ],
+    "components": [
+      "antd",
+      "echarts",
+      "mobx",
+      "mobx-react"
+    ],
     "tools": [
+      "mockjs",
+      "animate.css",
       "axios",
       "lodash",
       "moment",

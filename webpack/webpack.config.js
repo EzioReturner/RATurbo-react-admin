@@ -1,3 +1,4 @@
+'use strict';
 const path = require('path');
 const paths = require('./paths');
 const webpack = require('webpack');
@@ -21,9 +22,9 @@ const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
 const lessRegex = /\.less$/;
 const lessModuleRegex = /\.module\.less$/;
-
-const IsAnalyze = process.argv.pop().includes('analyze');
-const IsUseDll = process.argv.pop().includes('analyze');
+const { original } = JSON.parse(process.env.npm_config_argv);
+const useDll = original.includes('--dll');
+const IsAnalyze = original.includes('--analyze');
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 function _resolve(track) {
   return path.join(__dirname, '..', track);
@@ -401,7 +402,7 @@ module.exports = function(webpackEnv) {
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
     ].filter(Boolean)
   };
-  IsUseDll &&
+  useDll &&
     config.plugins.push(
       ...Object.keys(library).map(name => {
         return new webpack.DllReferencePlugin({
