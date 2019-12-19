@@ -1,5 +1,7 @@
 # create-react-app 脚手架 Override
 
+> 注意：2.0版本将不再使用 override 方案来调整webpack配置，3.0中将不再基于CRA构建项目
+
 RA采用的是 `react-app-rewired` + `customize-cra` 的方案来修改 `CRA` 中的配置项。所有项目中的配置项可以在
  `config-overrides.js`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/config-overrides.js) 中找到。
 

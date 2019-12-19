@@ -9,6 +9,8 @@
 
 tsconfig 会声明这是一个 TypeScript 的项目，其中会进行一些配置，详细内容可以看[这里](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)。 tslint 类似 eslint 将会检查你的代码。
 
+> 注意：在2.0之后已全面使用 TypeScript 来编写项目前端部分，使用 eslint 负责校验类型 
+
 ## 常见问题
 
 ### CSS Module

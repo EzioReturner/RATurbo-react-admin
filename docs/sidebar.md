@@ -14,5 +14,6 @@
   * [Override](/override)
 * 工程
   * [使用typescript](/typescript)
+  * [eslint](/eslint)
   * [内置命令](/scripts)
   * [构建与发布](/deploy)
