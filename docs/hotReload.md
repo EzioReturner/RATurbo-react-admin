@@ -33,6 +33,8 @@ module.exports = function(proxy) {
 
 ## 在react中使用
 
+由于在RA中，默认使用了懒加载，所以需要对 export 的模块包裹 hot 组件，同步引入的组件则不需要此项操作。
+
 ```javascript
 import { hot } from 'react-hot-loader';
 const App = () => (
