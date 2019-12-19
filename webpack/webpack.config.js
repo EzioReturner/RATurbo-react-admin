@@ -11,7 +11,10 @@ const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const FilterWarningsPlugin = require('webpack-filter-warnings-plugin');
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 
+const { library, libVersion } = require('../package.json');
+const lib_version = libVersion.replace(/\./g, '_');
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
@@ -19,6 +22,8 @@ const sassModuleRegex = /\.module\.(scss|sass)$/;
 const lessRegex = /\.less$/;
 const lessModuleRegex = /\.module\.less$/;
 
+const IsAnalyze = process.argv.pop().includes('analyze');
+const IsUseDll = process.argv.pop().includes('analyze');
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 function _resolve(track) {
   return path.join(__dirname, '..', track);
@@ -377,6 +382,12 @@ module.exports = function(webpackEnv) {
         watch: paths.appSrc
       }),
 
+      // new ForkTsCheckerNotifierWebpackPlugin({
+      //   title: 'TypeScript',
+      //   excludeWarnings: true,
+      //   skipSuccessful: true
+      // }),
+
       new FilterWarningsPlugin({
         exclude: /mini-css-extract-plugin[^]*Conflicting order/
       }),
@@ -390,5 +401,22 @@ module.exports = function(webpackEnv) {
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
     ].filter(Boolean)
   };
+  IsUseDll &&
+    config.plugins.push(
+      ...Object.keys(library).map(name => {
+        return new webpack.DllReferencePlugin({
+          manifest: require(`./dll/${name}.manifest.json`)
+        });
+      }),
+      new AddAssetHtmlPlugin(
+        Object.keys(library).map(name => {
+          return {
+            filepath: require.resolve(path.resolve(`build/dll/${name}.${lib_version}.dll.js`)),
+            outputPath: 'static/dll',
+            publicPath: './static/dll'
+          };
+        })
+      )
+    );
   return config;
 };

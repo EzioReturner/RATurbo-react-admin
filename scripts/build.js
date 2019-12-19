@@ -1,3 +1,4 @@
+'use strict';
 process.env.NODE_ENV = 'production';
 process.env.BABEL_ENV = 'production';
 process.env.GENERATE_SOURCEMAP = false;
@@ -33,7 +34,7 @@ const lib_version = libVersion ? libVersion.replace(/\./g, '_') : null;
 
 const paths = require('../webpack/paths');
 
-const { measureFileSizesBeforeBuild, printFileSizesAfterBuild } = require('./fileReport');
+const { measureFileSizesBeforeBuild, printFileSizesAfterBuild } = require('./devUtils/fileReport');
 
 const WARN_AFTER_BUNDLE_GZIP_SIZE = 512 * 1024;
 const WARN_AFTER_CHUNK_GZIP_SIZE = 1024 * 1024;

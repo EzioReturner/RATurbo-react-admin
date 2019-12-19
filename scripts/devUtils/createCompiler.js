@@ -1,16 +1,18 @@
 'use strict';
-
 const fs = require('fs');
 const chalk = require('chalk');
-const paths = require('../build/paths');
-const clearConsole = require('react-dev-utils/clearConsole');
+const Webpack = require('webpack');
+const paths = require('../../webpack/paths');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const webpack = require('webpack');
-const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
-const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');
+const typescriptFormatter = require('./typescriptFormatter');
+const formatWebpackMessages = require('./formatWebpackMessages');
 const isInteractive = process.stdout.isTTY;
 
-function printInstructions(appName, urls, statsData) {
+function clearConsole() {
+  process.stdout.write(process.platform === 'win32' ? '\x1B[2J\x1B[0f' : '\x1B[2J\x1B[3J\x1B[H');
+}
+
+function printInstructions(appName, urls) {
   console.log();
   console.log(`Your application ${chalk.bold(appName)} is running at:`);
   console.log();
@@ -29,7 +31,7 @@ const createCompiler = (config, urls, devSocket) => {
   const appName = require(paths.appPackageJson).name;
   const useTypeScript = fs.existsSync(paths.appTsConfig);
 
-  const compiler = webpack(config);
+  const compiler = Webpack(config);
   compiler.hooks.invalid.tap('invalid', () => {
     if (isInteractive) {
       clearConsole();
@@ -138,6 +140,4 @@ const createCompiler = (config, urls, devSocket) => {
   return compiler;
 };
 
-module.exports = {
-  createCompiler
-};
+module.exports = createCompiler;

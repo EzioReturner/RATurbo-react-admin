@@ -1,10 +1,11 @@
-var fs = require('fs');
-var path = require('path');
-var chalk = require('chalk');
-var filesize = require('filesize');
-var recursive = require('recursive-readdir');
-var stripAnsi = require('strip-ansi');
-var gzipSize = require('gzip-size').sync;
+'use strict';
+const fs = require('fs');
+const path = require('path');
+const chalk = require('chalk');
+const filesize = require('filesize');
+const recursive = require('recursive-readdir');
+const stripAnsi = require('strip-ansi');
+const gzipSize = require('gzip-size').sync;
 
 function canReadAsset(asset) {
   return (
@@ -22,18 +23,18 @@ function printFileSizesAfterBuild(
   maxBundleGzipSize,
   maxChunkGzipSize
 ) {
-  var root = previousSizeMap.root;
-  var sizes = previousSizeMap.sizes;
-  var assets = (webpackStats.stats || [webpackStats])
+  const root = previousSizeMap.root;
+  const sizes = previousSizeMap.sizes;
+  const assets = (webpackStats.stats || [webpackStats])
     .map(stats =>
       stats
         .toJson({ all: false, assets: true })
         .assets.filter(asset => canReadAsset(asset.name))
         .map(asset => {
-          var fileContents = fs.readFileSync(path.join(root, asset.name));
-          var size = gzipSize(fileContents);
-          var previousSize = sizes[removeFileNameHash(root, asset.name)];
-          var difference = getDifferenceLabel(size, previousSize);
+          const fileContents = fs.readFileSync(path.join(root, asset.name));
+          const size = gzipSize(fileContents);
+          const previousSize = sizes[removeFileNameHash(root, asset.name)];
+          const difference = getDifferenceLabel(size, previousSize);
           return {
             folder: path.join(path.basename(buildFolder), path.dirname(asset.name)),
             name: path.basename(asset.name),
@@ -44,21 +45,21 @@ function printFileSizesAfterBuild(
     )
     .reduce((single, all) => all.concat(single), []);
   assets.sort((a, b) => b.size - a.size);
-  var longestSizeLabelLength = Math.max.apply(
+  const longestSizeLabelLength = Math.max.apply(
     null,
     assets.map(a => stripAnsi(a.sizeLabel).length)
   );
-  var suggestBundleSplitting = false;
+  const suggestBundleSplitting = false;
   assets.forEach(asset => {
-    var sizeLabel = asset.sizeLabel;
-    var sizeLength = stripAnsi(sizeLabel).length;
+    const sizeLabel = asset.sizeLabel;
+    const sizeLength = stripAnsi(sizeLabel).length;
     if (sizeLength < longestSizeLabelLength) {
-      var rightPadding = ' '.repeat(longestSizeLabelLength - sizeLength);
+      const rightPadding = ' '.repeat(longestSizeLabelLength - sizeLength);
       sizeLabel += rightPadding;
     }
-    var isMainBundle = asset.name.indexOf('main.') === 0;
-    var maxRecommendedSize = isMainBundle ? maxBundleGzipSize : maxChunkGzipSize;
-    var isLarge = maxRecommendedSize && asset.size > maxRecommendedSize;
+    const isMainBundle = asset.name.indexOf('main.') === 0;
+    const maxRecommendedSize = isMainBundle ? maxBundleGzipSize : maxChunkGzipSize;
+    const isLarge = maxRecommendedSize && asset.size > maxRecommendedSize;
     if (isLarge && path.extname(asset.name) === '.js') {
       suggestBundleSplitting = true;
     }
@@ -86,9 +87,9 @@ function removeFileNameHash(buildFolder, fileName) {
 // Input: 1024, 2048
 // Output: "(+1 KB)"
 function getDifferenceLabel(currentSize, previousSize) {
-  var FIFTY_KILOBYTES = 1024 * 50;
-  var difference = currentSize - previousSize;
-  var fileSize = !Number.isNaN(difference) ? filesize(difference) : 0;
+  const FIFTY_KILOBYTES = 1024 * 50;
+  const difference = currentSize - previousSize;
+  const fileSize = !Number.isNaN(difference) ? filesize(difference) : 0;
   if (difference >= FIFTY_KILOBYTES) {
     return chalk.red('+' + fileSize);
   } else if (difference < FIFTY_KILOBYTES && difference > 0) {
@@ -103,11 +104,11 @@ function getDifferenceLabel(currentSize, previousSize) {
 function measureFileSizesBeforeBuild(buildFolder) {
   return new Promise(resolve => {
     recursive(buildFolder, (err, fileNames) => {
-      var sizes;
+      let sizes;
       if (!err && fileNames) {
         sizes = fileNames.filter(canReadAsset).reduce((memo, fileName) => {
-          var contents = fs.readFileSync(fileName);
-          var key = removeFileNameHash(buildFolder, fileName);
+          const contents = fs.readFileSync(fileName);
+          const key = removeFileNameHash(buildFolder, fileName);
           memo[key] = gzipSize(contents);
           return memo;
         }, {});

@@ -4,7 +4,7 @@
  *  APP ID：055c2d71f9a05214
  *  Secret key：ZcpuQxQW3NkQeKVkqrXIKQYXH57g2KuN
  */
-
+'use strict';
 /* eslint-disable */
 const md5 = require('md5');
 const qs = require('qs');

@@ -3,7 +3,7 @@ import ControllerCard from './ControllerCard';
 import DistributeCard from './DistributeCard';
 import './analysis.scss';
 
-const Dashboard: React.FC = () => {
+const Analysis: React.FC = () => {
   return (
     <div className="analysis">
       <ControllerCard />
@@ -12,4 +12,4 @@ const Dashboard: React.FC = () => {
   );
 };
 
-export default Dashboard;
+export default Analysis;
