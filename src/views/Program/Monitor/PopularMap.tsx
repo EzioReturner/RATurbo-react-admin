@@ -1,25 +1,13 @@
 import React, { Component } from 'react';
 import { Card } from 'antd';
-import ET from '@utils/echartTools';
 import { popularOption } from '@assets/chartOption';
 import FormatterLocale from '@components/FormatterLocale';
+import { mapData, topData } from '@assets/popular';
+import EchartsReact from '@components/Echarts';
 
 class PopularMap extends Component {
-  componentDidMount() {
-    this.initChart();
-  }
-
-  async initChart() {
-    const { mapData, topData } = await import('@assets/popular');
-    const option = popularOption(mapData, topData);
-    ET.initChart({ id: 'poplar-map', option });
-  }
-
-  componentWillUnmount() {
-    ET.dispose('poplar-map');
-  }
-
   render() {
+    const option = popularOption(mapData, topData);
     return (
       <Card
         hoverable
@@ -27,7 +15,7 @@ class PopularMap extends Component {
         className="fat-card poplar-map-card"
         title={<FormatterLocale id="monitor.realTime" defaultMessage="实时热点分布" />}
       >
-        <div id="poplar-map" />
+        {/* <EchartsReact option={option} style={{ height: '490px' }} /> */}
       </Card>
     );
   }

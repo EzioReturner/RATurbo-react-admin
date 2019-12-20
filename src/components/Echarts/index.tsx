@@ -26,11 +26,9 @@ class EchartsReact extends Component<EchartProps> {
   }
 
   getInstance() {
-    const { option, theme } = this.props;
+    const { theme } = this.props;
 
-    return (
-      echarts.getInstanceByDom(this.echartsDOM) || echarts.init(this.echartsDOM, theme, option)
-    );
+    return echarts.getInstanceByDom(this.echartsDOM) || echarts.init(this.echartsDOM, theme);
   }
 
   componentDidMount() {

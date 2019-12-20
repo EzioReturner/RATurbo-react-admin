@@ -1,4 +1,3 @@
-'use strict';
 const path = require('path');
 const paths = require('./paths');
 const webpack = require('webpack');
@@ -13,6 +12,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const FilterWarningsPlugin = require('webpack-filter-warnings-plugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const { library, libVersion } = require('../package.json');
 const lib_version = libVersion.replace(/\./g, '_');
@@ -318,21 +318,35 @@ module.exports = function(webpackEnv) {
         chunks: 'all',
         name: true,
         maxInitialRequests: Infinity,
-        minSize: 100000,
         cacheGroups: {
-          vendor: {
+          npmLib: {
             test: /[\\/]node_modules[\\/]/,
+            minSize: 2000000,
             name(module) {
               const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
               return `npm.${packageName.replace('@', '')}`;
-            }
+            },
+            priority: -10
           },
-          commons: {
+          components: {
+            minSize: 100000,
             test: _resolve('./src/components'),
             name: 'components',
             minChunks: 2,
-            reuseExistingChunk: true
+            reuseExistingChunk: true,
+            priority: -11
           }
+          // default: {
+          //   name: 'common',
+          //   chunks: 'initial',
+          //   minChunks: 2,
+          //   priority: -20
+          // }
+          // commons: {
+          //   test: /[\\/]node_modules[\\/]/,
+          //   name: 'commons',
+          //   chunks: 'all'
+          // }
         }
       },
       runtimeChunk: true
@@ -383,12 +397,6 @@ module.exports = function(webpackEnv) {
         watch: paths.appSrc
       }),
 
-      // new ForkTsCheckerNotifierWebpackPlugin({
-      //   title: 'TypeScript',
-      //   excludeWarnings: true,
-      //   skipSuccessful: true
-      // }),
-
       new FilterWarningsPlugin({
         exclude: /mini-css-extract-plugin[^]*Conflicting order/
       }),
@@ -399,7 +407,13 @@ module.exports = function(webpackEnv) {
           chunkFilename: 'static/css/[name].[contenthash:8].chunk.css'
         }),
 
-      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+
+      IsAnalyze &&
+        isEnvProduction &&
+        new BundleAnalyzerPlugin({
+          analyzerPort: 8888
+        })
     ].filter(Boolean)
   };
   useDll &&

@@ -36,7 +36,7 @@ class Proportion extends React.Component<{}, ProportionState> {
         className="fat-card"
         style={{ marginBottom: '24px' }}
       >
-        <EchartsReact option={data} style={{ height: '200px' }} />
+        {/* <EchartsReact option={data} style={{ height: '200px' }} /> */}
       </Card>
     );
   }

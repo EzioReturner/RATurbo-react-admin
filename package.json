@@ -7,7 +7,8 @@
     "build": "node scripts/build.js",
     "translate": "node scripts/translate.js",
     "add-locale": "node scripts/addLocale.js",
-    "raCreate": "node scripts/tools.js"
+    "raCreate": "node scripts/tools.js",
+    "build:dll": "webpack --config webpack/webpack.dll.js --mode production"
   },
   "devDependencies": {
     "@babel/core": "^7.6.0",
@@ -17,6 +18,7 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.6.0",
     "@types/classnames": "^2.2.9",
+    "@types/echarts": "^4.4.2",
     "@types/lodash": "^4.14.149",
     "@types/node": "^12.12.20",
     "@types/nprogress": "^0.2.0",
@@ -74,6 +76,7 @@
     "url": "^0.11.0",
     "url-loader": "^3.0.0",
     "webpack": "^4.40.2",
+    "webpack-bundle-analyzer": "^3.6.0",
     "webpack-cli": "^3.3.8",
     "webpack-dev-server": "^3.8.1",
     "webpack-filter-warnings-plugin": "^1.2.1"
@@ -141,7 +144,6 @@
     ],
     "tools": [
       "mockjs",
-      "animate.css",
       "axios",
       "lodash",
       "moment",

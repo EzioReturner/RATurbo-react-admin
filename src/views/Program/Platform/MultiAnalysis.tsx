@@ -12,7 +12,7 @@ const MultiAnalysis = () => {
       bordered={false}
       title={<FormatterLocale id="platform.MutliAnalysis" />}
     >
-      <EchartsReact option={multiAnalysisOption} />
+      {/* <EchartsReact option={multiAnalysisOption} /> */}
     </Card>
   );
 };

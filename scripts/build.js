@@ -8,8 +8,6 @@ const ora = require('ora');
 const rm = require('rimraf');
 //console for node
 const chalk = require('chalk');
-//path for node
-const path = require('path');
 //webpack
 const webpack = require('webpack');
 //webpack production setting
@@ -20,8 +18,6 @@ const fs = require('fs');
 const fsExtra = require('fs-extra');
 // dll webpack config
 const dllConfig = require('../webpack/webpack.dll');
-// remove file path
-const rmFile = path.resolve(__dirname, '../build/dist');
 //build start loading
 const spinner = ora({ color: 'green', text: 'building for production...' });
 const { original } = JSON.parse(process.env.npm_config_argv);
@@ -39,60 +35,13 @@ const { measureFileSizesBeforeBuild, printFileSizesAfterBuild } = require('./dev
 const WARN_AFTER_BUNDLE_GZIP_SIZE = 512 * 1024;
 const WARN_AFTER_CHUNK_GZIP_SIZE = 1024 * 1024;
 
-const buildDll = () => {
-  return new Promise((resolve, reject) => {
-    const existDll = useDll ? checkDllFiles() : false;
-
-    if (!useDll || existDll) {
-      resolve();
-    } else {
-      const _spinner = ora({ color: 'green', text: 'building for dll-vendor...' });
-
-      _spinner.start();
-      const dllCompiler = webpack(dllConfig);
-
-      dllCompiler.run((err, stats) => {
-        err && reject(err);
-        _spinner.stop();
-        resolve();
-        console.log(chalk.cyan('Build dll-vendor done \n'));
-      });
-    }
-  });
-};
-
-// check dll.js exists
-const checkDllFiles = () => {
-  const dllPath = paths.appBuildDll;
-  const dllDirectory = fs.existsSync(dllPath);
-  if (!dllDirectory) {
-    return false;
-  } else {
-    const files = fs.readdirSync(dllPath);
-    console.log(files);
-
-    return Object.keys(library).every(name => {
-      console.log(name, files.includes(`${name}.${lib_version}.dll.js`));
-
-      return files.includes(`${name}.${lib_version}.dll.js`);
-    });
-  }
-};
-
-const copyPublicFolder = () => {
-  fsExtra.copySync(paths.appPublic, paths.appBuildDist, {
-    dereference: true,
-    filter: file => file !== paths.appHtml
-  });
-};
-
 // build app
-rm(rmFile, function(err) {
+rm(paths.appBuildDist, function(err) {
   if (err) throw err;
   measureFileSizesBeforeBuild(paths.appBuildDist).then(previousFileSizes => {
     buildDll()
       .then(res => {
-        copyPublicFolder();
+        copyPublicFileToFolder();
         spinner.start();
         const config = configFactory('production');
         const compiler = webpack(config);
@@ -106,10 +55,8 @@ rm(rmFile, function(err) {
             WARN_AFTER_BUNDLE_GZIP_SIZE,
             WARN_AFTER_CHUNK_GZIP_SIZE
           );
-          if (stats.hasErrors()) {
-            console.log(chalk.red('  Build failed with errors.\n'));
-            process.exit(1);
-          }
+          checkRunError(stats);
+
           console.log(chalk.cyan('  Build complete.\n'));
         });
       })
@@ -118,3 +65,55 @@ rm(rmFile, function(err) {
       });
   });
 });
+
+function buildDll() {
+  return new Promise((resolve, reject) => {
+    const existDll = useDll ? checkDllFiles() : false;
+
+    if (!useDll || existDll) {
+      resolve();
+    } else {
+      const _spinner = ora({ color: 'green', text: 'building for dll-vendor...' });
+
+      _spinner.start();
+      const dllCompiler = webpack(dllConfig);
+
+      dllCompiler.run((err, stats) => {
+        err && reject(err);
+        checkRunError(stats);
+        _spinner.stop();
+        console.log(chalk.cyan('Build dll-vendor done \n'));
+        resolve();
+      });
+    }
+  });
+}
+
+// check dll.js exists
+function checkDllFiles() {
+  const dllPath = paths.appBuildDll;
+  const dllDirectory = fs.existsSync(dllPath);
+  if (!dllDirectory) {
+    return false;
+  } else {
+    const files = fs.readdirSync(dllPath);
+    return Object.keys(library).every(name => {
+      return files.includes(`${name}.${lib_version}.dll.js`);
+    });
+  }
+}
+
+function copyPublicFileToFolder() {
+  fsExtra.copySync(paths.appPublic, paths.appBuildDist, {
+    dereference: true,
+    filter: file => file !== paths.appHtml
+  });
+}
+
+function checkRunError(stats) {
+  if (stats.hasErrors()) {
+    process.stdout.write(stats.toString() + '\n');
+    console.log(chalk.red('  Build failed with errors.\n'));
+    process.exit(1);
+  }
+}

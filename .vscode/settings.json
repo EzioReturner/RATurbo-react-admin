@@ -1,0 +1,76 @@
+{
+  "window.zoomLevel": 0,
+  "editor.fontSize": 16,
+  "editor.formatOnType": true,
+  "javascript.implicitProjectConfig.experimentalDecorators": true,
+  "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
+  "javascript.format.enable": true,
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": false,
+  "css.validate": true,
+  "scss.validate": true,
+  "workbench.sideBar.location": "left",
+  "workbench.colorTheme": "Atom One Dark",
+  "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontLigatures": false,
+  "vetur.validation.template": true,
+  "editor.tabSize": 2,
+  "workbench.editor.enablePreview": true,
+  "workbench.editor.showTabs": true,
+  "workbench.colorCustomizations": {
+    // 设置guide线高亮颜色
+    "editorIndentGuide.activeBackground": "#55c19f"
+  },
+  "vetur.format.defaultFormatter.html": "prettyhtml",
+  "vetur.format.defaultFormatter.css": "prettier",
+  "vetur.format.defaultFormatter.postcss": "prettier",
+  "vetur.format.defaultFormatter.scss": "prettier",
+  "vetur.format.defaultFormatter.less": "prettier",
+  "vetur.format.defaultFormatter.stylus": "stylus-supremacy",
+  "vetur.format.defaultFormatter.js": "prettier",
+  "vetur.format.defaultFormatter.ts": "prettier",
+  "vetur.format.defaultFormatterOptions": {
+    "prettier": {
+      "proseWrap": "preserve",
+      "tabWidth": 2,
+      "printWidth": 100,
+      "trailingComma": "none",
+      "singleQuote": true,
+      "jsxBracketSameLine": false,
+      "bracketSpacing": true,
+      "endOfLine": "auto"
+    }
+  },
+  "prettier.singleQuote": true, // 用单引号
+  "prettier.semi": true, // 句末加分号
+  "prettier.printWidth": 100, // 换行字符串阈值
+  "prettier.trailingComma": "none", // 最后一个对象元素加逗号
+  "prettier.arrowParens": "avoid", // (x) => {} 是否要有小括号
+  "prettier.proseWrap": "preserve", // 是否要换行
+  "prettier.tabWidth": 2,
+  "prettier.bracketSpacing": true, // 控制对象字面量的空格输出
+  "prettier.endOfLine": "auto",
+  "prettier.jsxBracketSameLine": false, // 如果为 true，则将多行jsx元素的 `>` 放在最后一行的末尾，而不是单独放在下一行
+  "editor.detectIndentation": true,
+  "emmet.syntaxProfiles": {
+    "vue-html": "html",
+    "vue": "html"
+  },
+  "eslint.options": {
+    "extends": ["plugin:vue/essential", "@vue/prettier", "@vue/typescript", "react-app"],
+    "plugins": ["prettier"]
+  },
+  "extensions.ignoreRecommendations": false,
+  "editor.minimap.enabled": true,
+  "search.location": "panel",
+  "explorer.confirmDragAndDrop": false,
+  "workbench.iconTheme": "vscode-icons",
+  "files.associations": {
+    "*.js": "javascript"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "editor.renderWhitespace": "none",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+}

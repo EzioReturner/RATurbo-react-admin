@@ -13,7 +13,7 @@ const GlobalTrends: React.FC = () => {
       bodyStyle={{ overflow: 'hidden' }}
       title={<FormatterLocale id="dashboard.trends" defaultMessage="全球趋势" />}
     >
-      <EchartsReact style={{ height: '350px', width: '100%' }} option={globalTrendsOption} />
+      {/* <EchartsReact style={{ height: '350px', width: '100%' }} option={globalTrendsOption} /> */}
     </Card>
   );
 };
