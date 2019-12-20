@@ -5,7 +5,7 @@
 当项目开发完毕，运行下方命令打包应用：
 
 ```bash
-yarn run build
+yarn build
 ```
 
 打包完成后，将看到如下输出：
@@ -24,14 +24,59 @@ File sizes after gzip:
 ✨  Done in 65.68s.
 ```
 
-`build` 命令会打包所有的资源，包含 JavaScript, CSS, web fonts, images, html 等。你可以在 build/ 目录下找到这些文件。
+`build` 命令会打包所有的资源，包含 JavaScript, CSS, web fonts, images, html 等。你可以在 build/dist 目录下找到这些文件。
+
+### dll构建优化
+
+RA针对项目包含较多不变依赖库的部署情况，提供了 dll 优化方案，运行如下命令：
+
+```bash
+# 你可以选择
+yarn build --dll 
+# 一次性部署完整的dll依赖包以及前端项目
+
+# 或
+yarn build:dll 
+# 只对dll依赖进行打包
+```
+
+dll打包项目以及可编写的对应版本号保存在 `package.json` 中。
+
+```javascript
+...
+"libVersion": "1.0.0",
+"library": {
+  "reactLib": [
+    "react",
+    "react-dom",
+    "react-router-dom",
+    "react-transition-group"
+  ],
+  "components": [
+    "antd",
+    "echarts",
+    "mobx",
+    "mobx-react"
+  ],
+  "tools": [
+    "mockjs",
+    "axios",
+    "lodash",
+    "moment",
+    "nprogress"
+  ]
+}
+...
+```
+
+> 首次运行 `yarn build --dll` 时打包时间会较长，由于区分不同依赖而进行两次打包
 
 ### 分析构建文件体积
 
-这里我们提供了，工具命令 `analyze` 命令构建并分析依赖模块的体积分布，从而优化你的代码。当你的构建文件很大时。
+这里我们提供了，工具命令 `analyze` 命令构建并分析依赖模块的体积分布，从而优化你的代码。
 
 ```bash
-yarn run analyze
+yarn build --analyze
 ```
 
 ## 本地验证

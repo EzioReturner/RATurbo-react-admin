@@ -73,7 +73,7 @@ function buildDll() {
     if (!useDll || existDll) {
       resolve();
     } else {
-      const _spinner = ora({ color: 'green', text: 'building for dll-vendor...' });
+      const _spinner = ora({ color: 'green', text: 'building dll-lib...' });
 
       _spinner.start();
       const dllCompiler = webpack(dllConfig);

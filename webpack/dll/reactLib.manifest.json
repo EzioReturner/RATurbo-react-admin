@@ -1,0 +1,225 @@
+{
+  "name": "_dll_reactLib",
+  "content": {
+    "./node_modules/react/index.js": { "id": 0, "buildMeta": { "providedExports": true } },
+    "./node_modules/prop-types/index.js": { "id": 1, "buildMeta": { "providedExports": true } },
+    "./node_modules/react-dom/index.js": { "id": 11, "buildMeta": { "providedExports": true } },
+    "./node_modules/@babel/runtime/helpers/esm/extends.js": {
+      "id": 52,
+      "buildMeta": { "exportsType": "namespace", "providedExports": ["default"] }
+    },
+    "./node_modules/webpack/buildin/global.js": {
+      "id": 53,
+      "buildMeta": { "providedExports": true }
+    },
+    "./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js": {
+      "id": 64,
+      "buildMeta": { "exportsType": "namespace", "providedExports": ["default"] }
+    },
+    "./node_modules/object-assign/index.js": { "id": 65, "buildMeta": { "providedExports": true } },
+    "./node_modules/react-transition-group/esm/Transition.js": {
+      "id": 72,
+      "buildMeta": {
+        "exportsType": "namespace",
+        "providedExports": ["UNMOUNTED", "EXITED", "ENTERING", "ENTERED", "EXITING", "default"]
+      }
+    },
+    "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js": {
+      "id": 78,
+      "buildMeta": { "exportsType": "namespace", "providedExports": ["default"] }
+    },
+    "./node_modules/tiny-invariant/dist/tiny-invariant.esm.js": {
+      "id": 91,
+      "buildMeta": { "exportsType": "namespace", "providedExports": ["default"] }
+    },
+    "./node_modules/history/esm/history.js": {
+      "id": 100,
+      "buildMeta": {
+        "exportsType": "namespace",
+        "providedExports": [
+          "createBrowserHistory",
+          "createHashHistory",
+          "createMemoryHistory",
+          "createLocation",
+          "locationsAreEqual",
+          "parsePath",
+          "createPath"
+        ]
+      }
+    },
+    "./node_modules/react-transition-group/esm/TransitionGroupContext.js": {
+      "id": 128,
+      "buildMeta": { "exportsType": "namespace", "providedExports": ["default"] }
+    },
+    "./node_modules/react-router/esm/react-router.js": {
+      "id": 149,
+      "buildMeta": {
+        "exportsType": "namespace",
+        "providedExports": [
+          "MemoryRouter",
+          "Prompt",
+          "Redirect",
+          "Route",
+          "Router",
+          "StaticRouter",
+          "Switch",
+          "__RouterContext",
+          "generatePath",
+          "matchPath",
+          "useHistory",
+          "useLocation",
+          "useParams",
+          "useRouteMatch",
+          "withRouter"
+        ]
+      }
+    },
+    "./node_modules/react-is/index.js": { "id": 179, "buildMeta": { "providedExports": true } },
+    "./node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js": {
+      "id": 396,
+      "buildMeta": { "providedExports": true }
+    },
+    "./node_modules/react-transition-group/esm/config.js": {
+      "id": 397,
+      "buildMeta": { "exportsType": "namespace", "providedExports": ["default"] }
+    },
+    "./node_modules/gud/index.js": { "id": 452, "buildMeta": { "providedExports": true } },
+    "./node_modules/react-transition-group/esm/TransitionGroup.js": {
+      "id": 453,
+      "buildMeta": { "exportsType": "namespace", "providedExports": ["default"] }
+    },
+    "./node_modules/react-transition-group/esm/utils/ChildMapping.js": {
+      "id": 512,
+      "buildMeta": {
+        "exportsType": "namespace",
+        "providedExports": [
+          "getChildMapping",
+          "mergeChildMappings",
+          "getInitialChildMapping",
+          "getNextChildMapping"
+        ]
+      }
+    },
+    "./node_modules/react/cjs/react.production.min.js": {
+      "id": 522,
+      "buildMeta": { "providedExports": true }
+    },
+    "./node_modules/react-dom/cjs/react-dom.production.min.js": {
+      "id": 523,
+      "buildMeta": { "providedExports": true }
+    },
+    "./node_modules/react-dom/node_modules/scheduler/index.js": {
+      "id": 524,
+      "buildMeta": { "providedExports": true }
+    },
+    "./node_modules/react-dom/node_modules/scheduler/cjs/scheduler.production.min.js": {
+      "id": 525,
+      "buildMeta": { "providedExports": true }
+    },
+    "./node_modules/prop-types/factoryWithThrowingShims.js": {
+      "id": 526,
+      "buildMeta": { "providedExports": true }
+    },
+    "./node_modules/prop-types/lib/ReactPropTypesSecret.js": {
+      "id": 527,
+      "buildMeta": { "providedExports": true }
+    },
+    "./node_modules/react-is/cjs/react-is.production.min.js": {
+      "id": 528,
+      "buildMeta": { "providedExports": true }
+    },
+    "./node_modules/@babel/runtime/helpers/inheritsLoose.js": {
+      "id": 616,
+      "buildMeta": { "providedExports": true }
+    },
+    "./node_modules/react-router/node_modules/path-to-regexp/index.js": {
+      "id": 617,
+      "buildMeta": { "providedExports": true }
+    },
+    "./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js": {
+      "id": 618,
+      "buildMeta": { "exportsType": "namespace", "providedExports": ["default"] }
+    },
+    "./node_modules/react-transition-group/esm/CSSTransition.js": {
+      "id": 654,
+      "buildMeta": { "exportsType": "namespace", "providedExports": ["default"] }
+    },
+    "./node_modules/react-transition-group/esm/ReplaceTransition.js": {
+      "id": 655,
+      "buildMeta": { "exportsType": "namespace", "providedExports": ["default"] }
+    },
+    "./node_modules/react-transition-group/esm/SwitchTransition.js": {
+      "id": 656,
+      "buildMeta": { "exportsType": "namespace", "providedExports": ["modes", "default"] }
+    },
+    "./node_modules/mini-create-react-context/dist/esm/index.js": {
+      "id": 870,
+      "buildMeta": { "exportsType": "namespace", "providedExports": ["default"] }
+    },
+    "./node_modules/resolve-pathname/esm/resolve-pathname.js": {
+      "id": 871,
+      "buildMeta": { "exportsType": "namespace", "providedExports": ["default"] }
+    },
+    "./node_modules/value-equal/esm/value-equal.js": {
+      "id": 872,
+      "buildMeta": { "exportsType": "namespace", "providedExports": ["default"] }
+    },
+    "./node_modules/dom-helpers/esm/addClass.js": {
+      "id": 873,
+      "buildMeta": { "exportsType": "namespace", "providedExports": ["default"] }
+    },
+    "./node_modules/dom-helpers/esm/hasClass.js": {
+      "id": 874,
+      "buildMeta": { "exportsType": "namespace", "providedExports": ["default"] }
+    },
+    "./node_modules/dom-helpers/esm/removeClass.js": {
+      "id": 875,
+      "buildMeta": { "exportsType": "namespace", "providedExports": ["default"] }
+    },
+    "./node_modules/react-router-dom/esm/react-router-dom.js": {
+      "id": 1079,
+      "buildMeta": {
+        "exportsType": "namespace",
+        "providedExports": [
+          "BrowserRouter",
+          "HashRouter",
+          "Link",
+          "NavLink",
+          "MemoryRouter",
+          "Prompt",
+          "Redirect",
+          "Route",
+          "Router",
+          "StaticRouter",
+          "Switch",
+          "__RouterContext",
+          "generatePath",
+          "matchPath",
+          "useHistory",
+          "useLocation",
+          "useParams",
+          "useRouteMatch",
+          "withRouter"
+        ]
+      }
+    },
+    "./node_modules/react-router/node_modules/isarray/index.js": {
+      "id": 1080,
+      "buildMeta": { "providedExports": true }
+    },
+    "./node_modules/react-transition-group/esm/index.js": {
+      "id": 1081,
+      "buildMeta": {
+        "exportsType": "namespace",
+        "providedExports": [
+          "CSSTransition",
+          "ReplaceTransition",
+          "SwitchTransition",
+          "TransitionGroup",
+          "Transition",
+          "config"
+        ]
+      }
+    }
+  }
+}
