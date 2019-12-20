@@ -12,7 +12,7 @@ const MonitorList: React.FC = () => {
       bordered={false}
       hoverable
     >
-      {/* <EchartsReact style={{ height: '490px' }} option={monitorListOption} /> */}
+      <EchartsReact style={{ height: '490px' }} option={monitorListOption} />
     </Card>
   );
 };

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Menu, Icon } from 'antd';
 import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
-import { intersection } from 'lodash';
+import intersection from 'lodash/intersection';
 import classNames from 'classnames';
 import { siteName, menuLinkUrl } from '@config/setting';
 import styles from './siderMenu.module.scss';

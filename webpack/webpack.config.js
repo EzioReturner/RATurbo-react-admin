@@ -321,12 +321,12 @@ module.exports = function(webpackEnv) {
         cacheGroups: {
           npmLib: {
             test: /[\\/]node_modules[\\/]/,
-            minSize: 2000000,
+            minSize: 4000000,
             name(module) {
               const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
               return `npm.${packageName.replace('@', '')}`;
             },
-            priority: -10
+            priority: -8
           },
           components: {
             minSize: 100000,
@@ -335,18 +335,14 @@ module.exports = function(webpackEnv) {
             minChunks: 2,
             reuseExistingChunk: true,
             priority: -11
+          },
+          commons: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'commons',
+            chunks: 'all',
+            minChunks: 2,
+            priority: -9
           }
-          // default: {
-          //   name: 'common',
-          //   chunks: 'initial',
-          //   minChunks: 2,
-          //   priority: -20
-          // }
-          // commons: {
-          //   test: /[\\/]node_modules[\\/]/,
-          //   name: 'commons',
-          //   chunks: 'all'
-          // }
         }
       },
       runtimeChunk: true

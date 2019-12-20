@@ -13,7 +13,7 @@ const Efficiency: React.FC = () => {
       title={<FormatterLocale id="monitor.gauge" defaultMessage="仪表盘" />}
       style={{ marginBottom: '24px' }}
     >
-      {/* <EchartsReact option={gaugeOption} style={{ height: '200px' }} /> */}
+      <EchartsReact option={gaugeOption} style={{ height: '200px' }} />
     </Card>
   );
 };

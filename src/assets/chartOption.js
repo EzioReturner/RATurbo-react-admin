@@ -375,7 +375,7 @@ export const globalTrendsOption = {
 };
 
 export function popularOption(mapData, topData) {
-  require('echarts/extension/bmap/bmap');
+  require('@components/Echarts/extension/bmap');
   return {
     tooltip: {
       trigger: 'item'

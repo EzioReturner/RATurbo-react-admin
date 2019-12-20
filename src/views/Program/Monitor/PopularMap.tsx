@@ -15,7 +15,7 @@ class PopularMap extends Component {
         className="fat-card poplar-map-card"
         title={<FormatterLocale id="monitor.realTime" defaultMessage="实时热点分布" />}
       >
-        {/* <EchartsReact option={option} style={{ height: '490px' }} /> */}
+        <EchartsReact option={option} style={{ height: '490px' }} />
       </Card>
     );
   }

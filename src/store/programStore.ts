@@ -1,5 +1,5 @@
 import { observable, configure, action, computed } from 'mobx';
-import { cloneDeep } from 'lodash';
+import cloneDeep from 'lodash/cloneDeep';
 import { analysisOptions } from '@/assets/chartOption.js';
 
 configure({ enforceActions: 'always' });

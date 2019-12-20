@@ -38,7 +38,7 @@ const ChartCard = (props: any) => {
       style={title !== '省份' ? style : undefined}
       bodyStyle={{ overflow: 'hidden' }}
     >
-      {/* <EchartsReact option={option} /> */}
+      <EchartsReact option={option} />
     </Card>
   );
 };
