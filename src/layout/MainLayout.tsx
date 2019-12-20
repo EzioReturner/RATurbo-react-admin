@@ -10,6 +10,7 @@ import { observer, inject } from 'mobx-react';
 import styles from './mainLayout.module.scss';
 import LayoutStore from '@store/layoutStore';
 import { RouteConfig } from '@models/index';
+import { hot } from 'react-hot-loader';
 const Exception403 = React.lazy(() => import(/* webpackChunkName: "403" */ '@views/Exception/403'));
 
 interface MainLayoutProps extends RouteComponentProps {
@@ -63,5 +64,5 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
     </Authorized>
   );
 };
-
-export default inject('layoutStore')(withRouter(observer(MainLayout)));
+const Main = process.env.NODE_ENV === 'development' ? hot(module)(MainLayout) : MainLayout;
+export default inject('layoutStore')(withRouter(observer(Main)));
