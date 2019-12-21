@@ -422,7 +422,9 @@ module.exports = function(webpackEnv) {
       new AddAssetHtmlPlugin(
         Object.keys(library).map(name => {
           return {
-            filepath: require.resolve(path.resolve(`build/dll/${name}.${lib_version}.dll.js`)),
+            filepath: require.resolve(
+              path.resolve(`${paths.appBuildDll}/${name}.${lib_version}.dll.js`)
+            ),
             outputPath: 'static/dll',
             publicPath: './static/dll'
           };
