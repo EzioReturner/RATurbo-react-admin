@@ -26,6 +26,7 @@ const { original } = JSON.parse(process.env.npm_config_argv);
 const useDll = original.includes('--dll');
 const IsAnalyze = original.includes('--analyze');
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
+
 function _resolve(track) {
   return path.join(__dirname, '..', track);
 }
@@ -130,7 +131,11 @@ module.exports = function(webpackEnv) {
     externals: {
       BMap: 'BMap'
     },
-    devtool: 'eval-source-map',
+    devtool: isEnvProduction
+      ? shouldUseSourceMap
+        ? 'source-map'
+        : false
+      : isEnvDevelopment && 'cheap-module-source-map',
     module: {
       rules: [
         {

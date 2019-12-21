@@ -1,7 +1,7 @@
 'use strict';
 process.env.NODE_ENV = 'production';
 process.env.BABEL_ENV = 'production';
-process.env.GENERATE_SOURCEMAP = false;
+// process.env.GENERATE_SOURCEMAP = false;
 //node for loading
 const ora = require('ora');
 // rm-rf for node
