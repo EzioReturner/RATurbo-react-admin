@@ -8,6 +8,7 @@ module.exports = {
   dotenv: resolveApp('.env'),
   appPath: resolveApp('.'),
   appBuild: resolveApp('build'),
+  appDllManifest: resolveApp('build/dllManifest'),
   appBuildDist: resolveApp('build/dist'),
   appBuildDll: resolveApp('build/dll'),
   appPublic: resolveApp('public'),

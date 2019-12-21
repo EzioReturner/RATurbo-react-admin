@@ -45,13 +45,14 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin({
-      // 清除之前的dll文件
       cleanOnceBeforeBuildPatterns: paths.appBuildDll
+    }),
+    new CleanWebpackPlugin({
+      cleanOnceBeforeBuildPatterns: paths.appDllManifest
     }),
     new DllPlugin({
       name: '_dll_[name]',
-      // manifest.json 描述动态链接库包含了哪些内容
-      path: path.join(__dirname, './dll', '[name].manifest.json')
+      path: path.join(paths.appDllManifest, '[name].manifest.json')
     })
   ]
 };

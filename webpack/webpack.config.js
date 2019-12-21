@@ -416,7 +416,7 @@ module.exports = function(webpackEnv) {
     config.plugins.push(
       ...Object.keys(library).map(name => {
         return new webpack.DllReferencePlugin({
-          manifest: require(`./dll/${name}.manifest.json`)
+          manifest: require(`${paths.appDllManifest}/${name}.manifest.json`)
         });
       }),
       new AddAssetHtmlPlugin(
