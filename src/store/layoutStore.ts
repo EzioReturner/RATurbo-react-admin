@@ -48,14 +48,13 @@ class LayoutStore {
 
   // 初始化菜单
   @action initMenu(): void {
-    this.routeConfig = constantRouteConfig;
+    this.routeConfig = [constantRouteConfig.app];
     this.setMenu();
   }
 
   // 动态设置路由方法
   @action setMenu(): void {
-    const [user] = constantRouteConfig;
-    const app: any = constantRouteConfig[1];
+    const { app, user } = constantRouteConfig;
     app.routes = asyncRouteConfig;
     this.routeConfig = [user, app];
   }

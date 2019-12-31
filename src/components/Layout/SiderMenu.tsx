@@ -72,7 +72,7 @@ const SiderMenu: React.FC<RouteComponentProps> = props => {
   }
 
   // 递归生成菜单项
-  function getNavMenuItem(menuData: RouteChild[] | RouteConfig[], parentName?: string) {
+  function getNavMenuItem(menuData: RouteChild[], parentName?: string) {
     if (!menuData.length) {
       return [];
     }
