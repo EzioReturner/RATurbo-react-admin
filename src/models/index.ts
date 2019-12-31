@@ -18,16 +18,18 @@ export interface RouteChild {
   icon?: string;
   path: string;
   authority?: string[] | string;
-  component: string[];
+  component?: string[];
   routes?: RouteChild[];
   hideMenu?: boolean;
+  exact?: boolean;
+  redirect?: string;
 }
 
 export interface RouteConfig {
-  path: string;
-  component: string[];
-  authority?: string[] | string;
-  routes?: RouteConfig[];
-  icon?: string;
   name?: string;
+  icon?: string;
+  path?: string;
+  authority?: string[] | string;
+  component?: string[];
+  routes?: RouteChild[];
 }

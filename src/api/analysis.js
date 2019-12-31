@@ -1,4 +1,4 @@
-import request from '@utils/io';
+import io from '@utils/io';
 import Mock from 'mockjs';
 
 const wordCloud = Mock.mock({
@@ -8,7 +8,5 @@ const wordCloud = Mock.mock({
 Mock.mock('/get/wordCloud', wordCloud);
 
 export default function getWordCloud() {
-  return request.sendRequest('get', {
-    path: '/get/wordCloud'
-  });
+  return io.get('/get/wordCloud');
 }

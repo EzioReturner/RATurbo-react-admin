@@ -1,4 +1,4 @@
-import request from '@utils/io';
+import io from '@utils/io';
 import Mock from 'mockjs';
 
 export function randomNumber(min, max) {
@@ -19,13 +19,9 @@ const projectList = Mock.mock({
 Mock.mock('/get/projectList', projectList);
 
 export function getProjectList() {
-  return request.sendRequest('get', {
-    path: '/get/projectList'
-  });
+  return io.get('/get/projectList');
 }
 
 export function getContact(num = 15) {
-  return request.sendRequest('get', {
-    path: `https://randomuser.me/api/?inc=picture,name&results=${num}`
-  });
+  return io.get(`https://randomuser.me/api/?inc=picture,name&results=${num}`);
 }

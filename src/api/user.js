@@ -1,4 +1,4 @@
-import request from '@utils/io';
+import io from '@utils/io';
 import Mock from 'mockjs';
 
 const userInfo = Mock.mock({
@@ -18,9 +18,7 @@ const userInfo = Mock.mock({
 });
 
 Mock.mock('/post/login', req => {
-  const {
-    params: { userName, password }
-  } = JSON.parse(req.body);
+  const { userName, password } = JSON.parse(req.body);
   if ((userName === 'admin' || userName === 'guest') && Number(password) === 123) {
     return {
       message: 'ok',
@@ -36,9 +34,8 @@ Mock.mock('/post/login', req => {
 Mock.mock('/get/userInfo', userInfo);
 
 export function postLogin(userName, password) {
-  return request.sendRequest('post', {
-    path: '/post/login',
-    params: {
+  return io.post('/post/login', {
+    data: {
       userName,
       password
     }
@@ -46,7 +43,5 @@ export function postLogin(userName, password) {
 }
 
 export function getUserInfo() {
-  return request.sendRequest('get', {
-    path: '/get/userInfo'
-  });
+  return io.get('/get/userInfo');
 }

@@ -1,4 +1,4 @@
-import request from '@utils/io';
+import io from '@utils/io';
 import Mock from 'mockjs';
 
 const listData = Mock.mock({
@@ -32,13 +32,9 @@ const tableData = Mock.mock({
 Mock.mock('/get/tableData', tableData);
 
 export function getListData() {
-  return request.sendRequest('get', {
-    path: '/get/listData'
-  });
+  return io.get('get', '/get/listData');
 }
 
 export function getTableData() {
-  return request.sendRequest('get', {
-    path: '/get/tableData'
-  });
+  return io.get('/get/tableData');
 }

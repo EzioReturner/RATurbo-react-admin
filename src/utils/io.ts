@@ -1,8 +1,9 @@
 import Axios from 'axios';
 import { notification } from 'antd';
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse, Method } from 'axios';
 
 class Request {
-  instance;
+  instance: AxiosInstance;
 
   constructor() {
     this.instance = Axios.create();
@@ -12,22 +13,22 @@ class Request {
   // 初始化拦截器
   initInterceptors() {
     this.instance.interceptors.request.use(
-      config => {
+      (config: AxiosRequestConfig) => {
         return config;
       },
-      error => {
+      (error: AxiosResponse) => {
         Promise.reject(error);
       }
     );
   }
 
   // 设置自定义头部
-  setHeader = (key, val) => {
+  setHeader = (key: string, val: string) => {
     this.instance.defaults.headers.common[key] = val;
   };
 
   // 错误notify
-  notify(message) {
+  notify(message: string | number) {
     notification.error({
       message: '请求错误',
       description: `${message ||
@@ -36,7 +37,7 @@ class Request {
   }
 
   // 错误处理
-  handleError = error => {
+  handleError = (error: any) => {
     const { message, status } = error;
     switch (status) {
       case 401:
@@ -52,17 +53,19 @@ class Request {
     return Promise.reject(error);
   };
 
-  sendRequest(method, data) {
-    let { path, params, options } = data;
-
-    const _query = options ? { ...options, params } : { params };
-    return this.instance[method](path, _query).catch(this.handleError);
+  sendRequest(method: Method, url: string, data: AxiosRequestConfig) {
+    return this.instance
+      .request({
+        url,
+        method,
+        ...data
+      })
+      .catch(this.handleError);
   }
 
-  get(path, data = {}) {
-    const { params } = data;
-
-    let _path = path;
+  get(path: string, data: AxiosRequestConfig = {}) {
+    let _path: string = path;
+    const params = data.params;
     if (params) {
       const keys = Object.keys(params);
       if (keys.length) {
@@ -73,23 +76,23 @@ class Request {
       }
       _path = _path.replace(/&$/, '');
     }
-    return this.sendRequest('get', { path: _path, data });
+    return this.sendRequest('get', _path, data);
   }
 
-  post(path, data) {
-    return this.sendRequest('post', { path, ...data });
+  post(path: string, data: AxiosRequestConfig) {
+    return this.sendRequest('post', path, data);
   }
 
-  put(path, data) {
-    return this.sendRequest('put', { path, ...data });
+  put(path: string, data: AxiosRequestConfig) {
+    return this.sendRequest('put', path, data);
   }
 
-  patch(path, data) {
-    return this.sendRequest('patch', { path, ...data });
+  patch(path: string, data: AxiosRequestConfig) {
+    return this.sendRequest('patch', path, data);
   }
 
-  delete(path, data) {
-    return this.sendRequest('delete', { path, ...data });
+  delete(path: string, data: AxiosRequestConfig) {
+    return this.sendRequest('delete', path, data);
   }
 }
 const request = new Request();
