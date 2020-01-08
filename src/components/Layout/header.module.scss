@@ -16,6 +16,10 @@
   justify-content: space-between;
   transition: all 0.3s;
 
+  &.withoutMenu {
+    left: 0;
+  }
+
   &.collapsed {
     left: 80px;
   }

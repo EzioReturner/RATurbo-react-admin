@@ -137,7 +137,7 @@ const SiderMenu: React.FC<RouteComponentProps> = props => {
   const layoutRouterConfig = routeConfig[1].routes || [];
   const menuProps = collapsed ? {} : { openKeys: openKeys };
   return (
-    <aside className={classNames(styles.navigator, collapsed ? styles.collapsed : '')}>
+    <aside className={classNames(styles.navigator, collapsed && styles.collapsed)}>
       <a className={styles.controlBut} href={menuLinkUrl} target="_blank" rel="noopener noreferrer">
         <img alt="" src={require('@assets/image/logo.png').default} className={styles.logo} />
         <span className={`ml-2 ${styles.title}`}>{siteName}</span>

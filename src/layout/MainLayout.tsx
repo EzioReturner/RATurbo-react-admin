@@ -11,6 +11,7 @@ import styles from './mainLayout.module.scss';
 import LayoutStore from '@store/layoutStore';
 import { RouteConfig } from '@models/index';
 import { hot } from 'react-hot-loader';
+import { useMenu, useHeader } from '@config/setting';
 const Exception403 = React.lazy(() => import(/* webpackChunkName: "403" */ '@views/Exception/403'));
 
 interface MainLayoutProps extends RouteComponentProps {
@@ -36,18 +37,26 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
   const routeAuthority: string | string[] = getRouteAuthority(pathname, route.routes);
   return (
     <Authorized unidentified={<Redirect to="/user/login" />}>
-      <div className={styles.container}>
+      <div
+        className={classNames(
+          styles.container,
+          !useMenu && styles.withoutMenu,
+          !useHeader && styles.withoutHeader
+        )}
+      >
         <Loading spinning={spinning} fixed={fixed} collapsed={collapsed} />
-        <Navigator collapsed={collapsed} isMobile={isMobile} toggleCollapsed={toggleCollapsed} />
+        {useMenu && (
+          <Navigator collapsed={collapsed} isMobile={isMobile} toggleCollapsed={toggleCollapsed} />
+        )}
         <div
           id="mainContainer"
           className={classNames(
             styles.routeContent,
-            collapsed ? styles.collapsed : '',
-            isMobile ? styles.isMobile : ''
+            collapsed && styles.collapsed,
+            isMobile && styles.isMobile
           )}
         >
-          <Header />
+          {useHeader && <Header />}
           <Authorized
             routeAuthority={routeAuthority}
             unidentified={
@@ -64,5 +73,6 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
     </Authorized>
   );
 };
-const Main = process.env.NODE_ENV === 'development' ? hot(module)(MainLayout) : MainLayout;
-export default inject('layoutStore')(withRouter(observer(Main)));
+const Main =
+  process.env.NODE_ENV === 'development' ? hot(module)(observer(MainLayout)) : observer(MainLayout);
+export default inject('layoutStore')(withRouter(Main));

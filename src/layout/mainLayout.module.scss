@@ -4,6 +4,19 @@
   left: 0;
   right: 0;
   bottom: 0;
+
+  &.withoutMenu {
+    .routeContent {
+      left: 0px;
+    }
+  }
+
+  &.withoutHeader {
+    .routeContent {
+      margin-top: 0px;
+    }
+  }
+
   .routeContent {
     position: absolute;
     left: 255px;

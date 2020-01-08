@@ -6,6 +6,7 @@ import SelectLang from '../SelectLang';
 import styles from './header.module.scss';
 import UserInfo from './UserInfo';
 import LayoutStore from '@store/layoutStore';
+import { useMenu, useHeader } from '@config/setting';
 interface InjectedProps {
   layoutStore: LayoutStore;
 }
@@ -23,11 +24,16 @@ const Header: React.FC = props => {
     <header
       className={classNames(
         styles.header,
-        collapsed ? styles.collapsed : '',
-        isMobile ? styles.isMobile : ''
+        collapsed && styles.collapsed,
+        isMobile && styles.isMobile,
+        !useMenu && styles.withoutMenu
       )}
     >
-      <Icon type={iconCollapsed} className={styles.foldIcon} onClick={() => toggleCollapsed()} />
+      {useMenu ? (
+        <Icon type={iconCollapsed} className={styles.foldIcon} onClick={() => toggleCollapsed()} />
+      ) : (
+        <span className={styles.foldIcon}></span>
+      )}
       <div className={styles.rightPart}>
         <UserInfo />
         <SelectLang />

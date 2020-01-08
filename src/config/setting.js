@@ -1,6 +1,8 @@
 // @ts-ignore
 module.exports = {
   siteName: 'RA-Turbo',
+  useMenu: true,
+  useHeader: true,
   copyright: ['RA-Turbo admin', 'ezioreturner@gmail.com', 'https://github.com/EzioReturner'],
   menuLinkUrl: 'https://github.com/EzioReturner/RATurbo-react-admin',
   fixedHeader: true,
