@@ -6,7 +6,7 @@ import SelectLang from '../SelectLang';
 import styles from './header.module.scss';
 import UserInfo from './UserInfo';
 import LayoutStore from '@store/layoutStore';
-import { useMenu, useHeader } from '@config/setting';
+import { useMenu } from '@config/setting';
 interface InjectedProps {
   layoutStore: LayoutStore;
 }

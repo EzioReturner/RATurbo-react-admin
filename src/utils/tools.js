@@ -9,7 +9,7 @@ export function debounce(fn, wait = 300) {
   };
 }
 
-// 科学记数法
+// 千分法
 export function scientificNotation(value) {
   if (typeof value === 'undefined' || value === null || isNaN(value)) {
     return value;
