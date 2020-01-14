@@ -10,7 +10,7 @@ export function debounce(fn, wait = 300) {
 }
 
 // 千分法
-export function scientificNotation(value) {
+export function micrometerLevel(value) {
   if (typeof value === 'undefined' || value === null || isNaN(value)) {
     return value;
   }
