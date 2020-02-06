@@ -11,7 +11,7 @@ import styles from './mainLayout.module.scss';
 import LayoutStore from '@store/layoutStore';
 import { RouteConfig } from '@models/index';
 import { hot } from 'react-hot-loader';
-import { useMenu, useHeader } from '@config/setting';
+import { inlineHeader } from '@config/setting';
 const Exception403 = React.lazy(() => import(/* webpackChunkName: "403" */ '@views/Exception/403'));
 
 interface MainLayoutProps extends RouteComponentProps {
@@ -32,43 +32,77 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
     route
   } = props;
   const {
-    layoutStore: { collapsed, isMobile, toggleCollapsed, spinning, fixed }
+    layoutStore: { collapsed, isMobile, toggleCollapsed, spinning, fixed, showMenu, showHeader }
   } = injected();
   const routeAuthority: string | string[] = getRouteAuthority(pathname, route.routes);
+
+  const viewMain = (
+    <Authorized
+      routeAuthority={routeAuthority}
+      unidentified={
+        <Suspense fallback={<Loading spinning />}>
+          <Exception403 />
+        </Suspense>
+      }
+    >
+      <main className={styles.viewBody}>{children}</main>
+    </Authorized>
+  );
+
+  const splitLayout = (
+    <>
+      {showMenu && (
+        <Navigator collapsed={collapsed} isMobile={isMobile} toggleCollapsed={toggleCollapsed} />
+      )}
+      <div
+        id="mainContainer"
+        className={classNames(
+          styles.routeContent,
+          collapsed && styles.collapsed,
+          isMobile && styles.isMobile
+        )}
+      >
+        {showHeader && <Header />}
+        {viewMain}
+        <Footer />
+      </div>
+    </>
+  );
+
+  const inlineLayout = (
+    <>
+      {showHeader && <Header />}
+      <div
+        id="mainContainer"
+        className={classNames(
+          styles.routeContent,
+          collapsed && styles.collapsed,
+          isMobile && styles.isMobile,
+          inlineHeader && styles.inlineHeader
+        )}
+      >
+        {showMenu && (
+          <Navigator collapsed={collapsed} isMobile={isMobile} toggleCollapsed={toggleCollapsed} />
+        )}
+        <div className={styles.inlineContainer}>
+          {viewMain}
+          <Footer />
+        </div>
+      </div>
+    </>
+  );
+
   return (
     <Authorized unidentified={<Redirect to="/user/login" />}>
       <div
         className={classNames(
           styles.container,
-          !useMenu && styles.withoutMenu,
-          !useHeader && styles.withoutHeader
+          !showMenu && styles.withoutMenu,
+          !showHeader && styles.withoutHeader
         )}
       >
         <Loading spinning={spinning} fixed={fixed} collapsed={collapsed} />
-        {useMenu && (
-          <Navigator collapsed={collapsed} isMobile={isMobile} toggleCollapsed={toggleCollapsed} />
-        )}
-        <div
-          id="mainContainer"
-          className={classNames(
-            styles.routeContent,
-            collapsed && styles.collapsed,
-            isMobile && styles.isMobile
-          )}
-        >
-          {useHeader && <Header />}
-          <Authorized
-            routeAuthority={routeAuthority}
-            unidentified={
-              <Suspense fallback={<Loading spinning />}>
-                <Exception403 />
-              </Suspense>
-            }
-          >
-            <main className={styles.viewBody}>{children}</main>
-          </Authorized>
-          <Footer />
-        </div>
+        {inlineHeader ? inlineLayout : splitLayout}
       </div>
     </Authorized>
   );

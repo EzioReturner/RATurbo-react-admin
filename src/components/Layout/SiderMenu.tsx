@@ -4,16 +4,19 @@ import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
 import intersection from 'lodash/intersection';
 import classNames from 'classnames';
-import { siteName, menuLinkUrl } from '@config/setting';
 import styles from './siderMenu.module.scss';
 import UserStore from '@store/userStore';
 import LayoutStore from '@store/layoutStore';
 import LocaleStore from '@store/localeStore';
-import { RouteChild, RouteConfig } from '@models/index';
+import { RouteChild } from '@models/index';
+import SiteDetail from './SiteDetail';
+import { inlineHeader } from '@config/setting';
+
 interface InjectedProps extends RouteComponentProps {
   userStore: UserStore;
   layoutStore: LayoutStore;
   localeStore: LocaleStore;
+  inlineHeader: boolean;
 }
 
 const { SubMenu } = Menu;
@@ -33,6 +36,8 @@ const SiderMenu: React.FC<RouteComponentProps> = props => {
     localeStore: { localeObj }
   } = injected();
 
+  const [, appRoutes] = routeConfig;
+
   useEffect(() => {
     initOpenMenu();
   }, []);
@@ -48,11 +53,11 @@ const SiderMenu: React.FC<RouteComponentProps> = props => {
 
   // 初始化开启的菜单
   function initOpenMenu() {
-    const routes = routeConfig[1].routes;
+    // 缓存匹配到的路由信息
     let cacheRoute: RouteChild;
     const menuOpen = pathname.split('/').reduce((total: string[], path) => {
       if (path) {
-        cacheRoute = checkRoute(cacheRoute || routes, path);
+        cacheRoute = checkRoute(cacheRoute || appRoutes.routes, path);
         cacheRoute && cacheRoute.routes && total.push(cacheRoute.path);
       }
       return total;
@@ -134,24 +139,33 @@ const SiderMenu: React.FC<RouteComponentProps> = props => {
     setOpenKeys(moreThanOne ? [openKeys.pop()] : [...openKeys]);
   };
 
-  const layoutRouterConfig = routeConfig[1].routes || [];
   const menuProps = collapsed ? {} : { openKeys: openKeys };
+  const iconCollapsed = collapsed ? 'menu-unfold' : 'menu-fold';
   return (
-    <aside className={classNames(styles.navigator, collapsed && styles.collapsed)}>
-      <a className={styles.controlBut} href={menuLinkUrl} target="_blank" rel="noopener noreferrer">
-        <img alt="" src={require('@assets/image/logo.png').default} className={styles.logo} />
-        <span className={`ml-2 ${styles.title}`}>{siteName}</span>
-      </a>
+    <aside
+      className={classNames(
+        styles.navigator,
+        collapsed && styles.collapsed,
+        inlineHeader && styles.inlineHeader
+      )}
+    >
+      {!inlineHeader && <SiteDetail />}
       <Menu
         className="myMenu"
         mode="inline"
+        style={{ marginTop: '23px', flex: 1 }}
         inlineCollapsed={collapsed}
         selectedKeys={[pathname]}
         onOpenChange={handleOpenMenu}
         {...menuProps}
       >
-        {getNavMenuItem(layoutRouterConfig)}
+        {getNavMenuItem(appRoutes.routes || [])}
       </Menu>
+      {inlineHeader && (
+        <div className={styles.footerCollapsedIcon} onClick={() => toggleCollapsed()}>
+          <Icon type={iconCollapsed} className={styles.foldIcon} />
+        </div>
+      )}
     </aside>
   );
 };

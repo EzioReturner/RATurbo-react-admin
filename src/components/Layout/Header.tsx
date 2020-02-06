@@ -6,7 +6,8 @@ import SelectLang from '../SelectLang';
 import styles from './header.module.scss';
 import UserInfo from './UserInfo';
 import LayoutStore from '@store/layoutStore';
-import { useMenu } from '@config/setting';
+import SiteDetail from './SiteDetail';
+import { inlineHeader } from '@config/setting';
 interface InjectedProps {
   layoutStore: LayoutStore;
 }
@@ -16,7 +17,7 @@ const Header: React.FC = props => {
     return props as InjectedProps;
   };
   const {
-    layoutStore: { toggleCollapsed, collapsed, isMobile }
+    layoutStore: { toggleCollapsed, collapsed, isMobile, showMenu }
   } = injected();
 
   const iconCollapsed = collapsed ? 'menu-unfold' : 'menu-fold';
@@ -26,13 +27,13 @@ const Header: React.FC = props => {
         styles.header,
         collapsed && styles.collapsed,
         isMobile && styles.isMobile,
-        !useMenu && styles.withoutMenu
+        !showMenu && styles.withoutMenu,
+        inlineHeader && styles.inlineHeader
       )}
     >
-      {useMenu ? (
+      {inlineHeader && <SiteDetail />}
+      {showMenu && !inlineHeader && (
         <Icon type={iconCollapsed} className={styles.foldIcon} onClick={() => toggleCollapsed()} />
-      ) : (
-        <span className={styles.foldIcon}></span>
       )}
       <div className={styles.rightPart}>
         <UserInfo />

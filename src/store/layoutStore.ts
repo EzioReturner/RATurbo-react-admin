@@ -3,6 +3,7 @@ import isMobile from '@utils/isMobile';
 import { debounce } from '@utils/tools';
 import NProgress from 'nprogress';
 import { Breadcrumb, RouteConfig } from '@models/index';
+import { useMenu, useHeader } from '@config/setting';
 import { constantRouteConfig, asyncRouteConfig } from '@config/router.config';
 
 configure({ enforceActions: 'observed' });
@@ -30,6 +31,12 @@ class LayoutStore {
 
   // 路由数据
   @observable routeConfig: Array<RouteConfig> = [];
+
+  // 显示头部
+  @observable showMenu: boolean = useMenu;
+
+  // 显示菜单
+  @observable showHeader: boolean = useHeader;
 
   constructor() {
     this.addWindowEvent();
@@ -140,6 +147,14 @@ class LayoutStore {
   // 设置打开的菜单
   @action setOpenMenus(menus: Array<string>): void {
     this.openMenus = menus;
+  }
+
+  @action setShowHeader(showHeader: boolean) {
+    this.showHeader = showHeader;
+  }
+
+  @action setShowMenu(showMenu: boolean) {
+    this.showMenu = showMenu;
   }
 }
 

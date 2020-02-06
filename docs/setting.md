@@ -26,12 +26,17 @@
 
   左侧菜单顶部点击的弹出窗口url地址。
 
-## fixedHeader
+## fixedHeader `deprecated`
 
 - 类型： `String`
 
   页面滚动时是否固定顶部。
 
+## inlineHeader
+
+- 类型：`boolean`
+
+  头部是否内联
 
 ## i18n
 

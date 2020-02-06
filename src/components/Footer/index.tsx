@@ -1,12 +1,13 @@
 import React from 'react';
 import { Icon } from 'antd';
-import { copyright } from '@config/setting';
+import { copyright, inlineHeader } from '@config/setting';
 import styles from './footer.module.scss';
+import classNames from 'classnames';
 
 const [left, right, href] = copyright;
 
 const Footer: React.FC = () => (
-  <footer className={styles.footer}>
+  <footer className={classNames(styles.footer, inlineHeader && styles.inlineHeader)}>
     {left} <Icon type="copyright" /> 2019 Created by{' '}
     <a href={href} target="_blank" rel="noopener noreferrer" className={styles.link}>
       {right}

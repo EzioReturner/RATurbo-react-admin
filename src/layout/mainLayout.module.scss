@@ -8,6 +8,7 @@
   &.withoutMenu {
     .routeContent {
       left: 0px;
+      padding-left: 0px !important;
     }
   }
 
@@ -29,12 +30,35 @@
     transition: all 0.3s;
     display: flex;
     flex-direction: column;
+
     &.collapsed {
       left: 80px;
     }
+
     &.isMobile {
       left: 0;
     }
+
+    &.inlineHeader {
+      left: 0 !important;
+      padding-left: 255px;
+      overflow: hidden;
+
+      &.collapsed {
+        padding-left: 80px;
+      }
+
+      &.isMobile {
+        padding-left: 0;
+      }
+
+      .inlineContainer {
+        width: 100%;
+        padding: 24px;
+        overflow: auto;
+      }
+    }
+
     & > .viewBody {
       width: 100%;
       padding: 24px;
