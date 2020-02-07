@@ -5,17 +5,13 @@
   right: 0;
   bottom: 0;
 
-  &.withoutMenu {
-    .routeContent {
-      left: 0px;
-      padding-left: 0px !important;
-    }
+  &.withoutMenu .routeContent {
+    left: 0px;
+    padding-left: 0px !important;
   }
 
-  &.withoutHeader {
-    .routeContent {
-      margin-top: 0px;
-    }
+  &.withoutHeader .routeContent {
+    margin-top: 0px;
   }
 
   .routeContent {
