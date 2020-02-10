@@ -2,7 +2,7 @@ import { observable, configure, action } from 'mobx';
 import isMobile from '@utils/isMobile';
 import { debounce } from '@utils/tools';
 import NProgress from 'nprogress';
-import { Breadcrumb, RouteConfig } from '@models/index';
+import { Breadcrumb, RouteConfig, RouteChild } from '@models/index';
 import { useMenu, useHeader } from '@config/setting';
 import { constantRouteConfig, asyncRouteConfig } from '@config/router.config';
 
@@ -130,7 +130,7 @@ class LayoutStore {
   }
 
   // 检查是否已加载过
-  @action checkIsInitial(route: any): void {
+  @action checkIsInitial(route: RouteChild): void {
     const { path, name } = route;
 
     if (!this.readyInitializers.includes(path)) {

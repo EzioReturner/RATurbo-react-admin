@@ -2,7 +2,7 @@
 
 process.env.BABEL_ENV = 'development';
 process.env.NODE_ENV = 'development';
-process.env.PORT = 9009;
+process.env.PORT = 9527;
 
 process.on('unhandledRejection', err => {
   throw err;
@@ -16,7 +16,7 @@ const createCompiler = require('./devUtils/createCompiler');
 const prepareUrls = require('./devUtils/prepareUrls');
 const open = require('open');
 
-const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 9009;
+const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 9527;
 const HOST = process.env.HOST || '0.0.0.0';
 
 (function startClient() {
