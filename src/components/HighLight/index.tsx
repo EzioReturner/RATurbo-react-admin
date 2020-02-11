@@ -26,7 +26,7 @@ const HighLight: React.FC<HighLightProps> = props => {
   useEffect(() => {
     let cacheUnmatch: string[] = [];
     checkText(val, cacheUnmatch);
-  }, [tarVal]);
+  }, [tarVal, val]);
 
   return (
     <>
