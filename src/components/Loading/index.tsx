@@ -5,8 +5,11 @@ import styles from './loading.module.scss';
 
 /**
  * loading组件
- * @param {spinning} boolean 是否启用
- * @param {fixed} boolean 是否fixed覆盖全局
+ * @param {spinning} 是否启用
+ * @param {fixed} 是否fixed覆盖全局
+ * @param {text} 自定义文本
+ * @param {style} 自定义样式
+ * @param {Collapsed} 是否应用框架折叠样式
  */
 
 interface LoadingProps {
@@ -14,10 +17,11 @@ interface LoadingProps {
   fixed?: boolean;
   collapsed?: boolean;
   style?: React.CSSProperties;
+  text?: string | number | React.ReactNode;
 }
 
 const Loading: React.FC<LoadingProps> = props => {
-  const { spinning, fixed, collapsed, style } = props;
+  const { spinning, fixed, collapsed, style, text } = props;
   return (
     <div
       className={classNames(
@@ -30,7 +34,7 @@ const Loading: React.FC<LoadingProps> = props => {
     >
       <div className={styles.content}>
         <div className={styles.circle} />
-        <span>LOADING</span>
+        <span>{text || 'LOADING'}</span>
       </div>
     </div>
   );
