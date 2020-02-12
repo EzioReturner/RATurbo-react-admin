@@ -1,9 +1,16 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect, Fragment, memo } from 'react';
 
 interface HighLightProps {
   val: string;
   tarVal: string;
 }
+
+const isEqual = (prevProps: HighLightProps, nextProps: HighLightProps) => {
+  if (prevProps.val !== nextProps.val || prevProps.tarVal !== nextProps.tarVal) {
+    return false;
+  }
+  return true;
+};
 
 const HighLight: React.FC<HighLightProps> = props => {
   const [unmatchVal, setUnmatchVal] = useState<string[]>([]);
@@ -48,4 +55,4 @@ const HighLight: React.FC<HighLightProps> = props => {
   );
 };
 
-export default HighLight;
+export default memo(HighLight, isEqual);
