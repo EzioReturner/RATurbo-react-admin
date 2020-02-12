@@ -15,7 +15,7 @@ class PlatformProject extends PureComponent {
   componentDidMount() {
     getProjectList().then((res: any) => {
       this.setState({
-        projectList: res.data.data
+        projectList: res.data
       });
     });
   }

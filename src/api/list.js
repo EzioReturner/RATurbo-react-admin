@@ -32,7 +32,7 @@ const tableData = Mock.mock({
 Mock.mock('/get/tableData', tableData);
 
 export function getListData() {
-  return io.get('get', '/get/listData');
+  return io.get('/get/listData');
 }
 
 export function getTableData() {

@@ -20,7 +20,7 @@ class Proportion extends React.Component<{}, ProportionState> {
 
   async loadData() {
     const data = await getWordCloud();
-    const option = wordCloudChart(data.data.data);
+    const option = wordCloudChart(data.data);
     this.setState({
       data: option
     });

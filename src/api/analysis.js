@@ -8,11 +8,5 @@ const wordCloud = Mock.mock({
 Mock.mock('/get/wordCloud', wordCloud);
 
 export default function getWordCloud() {
-  return io.get('/get/wordCloud', {
-    options: {
-      headers: {
-        'Cache-Control': 'max-age=2333'
-      }
-    }
-  });
+  return io.get('/get/wordCloud');
 }
