@@ -24,7 +24,8 @@ export const asyncRouteConfig: RouteChild[] = [
     name: 'dashboard',
     icon: 'pie-chart',
     path: '/dashboard',
-    component: ['/views/Dashboard']
+    component: ['/views/Dashboard'],
+    loading: true
   },
   {
     path: '/',
@@ -41,17 +42,20 @@ export const asyncRouteConfig: RouteChild[] = [
         name: 'analysis',
         path: '/program/analysis',
         component: ['/views/Program/Analysis'],
-        authority: ['admin']
+        authority: ['admin'],
+        loading: true
       },
       {
         name: 'monitor',
         path: '/program/monitor',
-        component: ['/views/Program/Monitor']
+        component: ['/views/Program/Monitor'],
+        loading: true
       },
       {
         name: 'platform',
         path: '/program/platform',
-        component: ['/views/Program/Platform']
+        component: ['/views/Program/Platform'],
+        loading: true
       }
     ]
   },
@@ -64,7 +68,8 @@ export const asyncRouteConfig: RouteChild[] = [
         name: 'basicForm',
         path: '/form/basicForm',
         component: ['/views/Form/BasicForm'],
-        authority: ['admin']
+        authority: ['admin'],
+        loading: true
       },
       {
         name: 'stepForm',
@@ -92,12 +97,14 @@ export const asyncRouteConfig: RouteChild[] = [
       {
         name: 'basicList',
         path: '/list/basicList',
-        component: ['/views/List/BasicList']
+        component: ['/views/List/BasicList'],
+        loading: true
       },
       {
         name: 'cardList',
         path: '/list/cardList',
-        component: ['/views/List/CardList']
+        component: ['/views/List/CardList'],
+        loading: true
       },
       {
         name: 'basicTable',

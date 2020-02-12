@@ -6,14 +6,13 @@ import { Breadcrumb, RouteConfig, RouteChild } from '@models/index';
 import { useMenu, useHeader } from '@config/setting';
 import { constantRouteConfig, asyncRouteConfig } from '@config/router.config';
 
+interface LoadingOptions {
+  fixed?: boolean; // 只覆盖路由可视区域
+  spinning: boolean; // 开启关闭遮罩
+  text?: string | number | React.ReactNode; // 文案
+}
 configure({ enforceActions: 'observed' });
 class LayoutStore {
-  // loading 是否显示
-  @observable spinning: boolean = true;
-
-  // loading 是否覆盖全局
-  @observable fixed: boolean = false;
-
   // 存放已经初始化完毕的页面
   @observable readyInitializers: Array<string> = [];
 
@@ -37,6 +36,9 @@ class LayoutStore {
 
   // 显示菜单
   @observable showHeader: boolean = useHeader;
+
+  // 全局spinning配置信息
+  @observable loadingOptions: LoadingOptions = { spinning: false };
 
   constructor() {
     this.addWindowEvent();
@@ -116,26 +118,26 @@ class LayoutStore {
     return delSelf ? this.breadcrumbList[0] : null;
   };
 
-  // 停止loading
-  @action stopSpinning = (): void => {
-    this.spinning = false;
-    NProgress.done(true);
+  @action ctrlSpinning = (options: LoadingOptions) => {
+    this.loadingOptions = options;
+  };
+
+  @action ctrlProgress = (type: boolean) => {
+    type ? NProgress.start() : NProgress.done(true);
   };
 
   // 记录懒加载模块并开启loading
-  @action addInitializer(initializer: string): void {
+  @action addInitializer(initializer: string, loading: boolean = false): void {
     this.readyInitializers.push(initializer);
-    this.spinning = true;
+    loading && this.ctrlSpinning({ spinning: true });
     NProgress.start();
   }
 
   // 检查是否已加载过
   @action checkIsInitial(route: RouteChild): void {
-    const { path, name } = route;
-
+    const { path, loading } = route;
     if (!this.readyInitializers.includes(path)) {
-      this.addInitializer(path);
-      name && this.initBreadcrumb(name, path);
+      this.addInitializer(path, loading);
     }
   }
 
