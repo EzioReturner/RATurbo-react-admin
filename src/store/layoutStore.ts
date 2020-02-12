@@ -135,9 +135,10 @@ class LayoutStore {
 
   // 检查是否已加载过
   @action checkIsInitial(route: RouteChild): void {
-    const { path, loading } = route;
+    const { path, loading, name } = route;
     if (!this.readyInitializers.includes(path)) {
       this.addInitializer(path, loading);
+      name && this.initBreadcrumb(name, path);
     }
   }
 

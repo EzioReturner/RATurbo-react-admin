@@ -1,13 +1,27 @@
 .pageWrapper {
-  margin: -24px;
+  margin: -$spacing-large;
+  height: calc(100vh - 60px);
+  display: flex;
+  flex-flow: column;
+
   .pageBody {
-    padding: 24px;
+    padding: $spacing-large;
+    flex: 1;
+    overflow: auto;
   }
 }
 
 .pageHeader {
   background: $color-white;
-  padding: 16px 32px 16px;
+  padding: 16px 24px 16px;
+  box-shadow: 4px 4px 6px 0 rgba(0, 0, 0, 0.05);
+
+  &.withoutHeaderBody {
+    background: transparent;
+    box-shadow: none;
+    padding-bottom: 0;
+    margin-bottom: -12px;
+  }
 }
 
 .title {
