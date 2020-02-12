@@ -15,9 +15,25 @@ setHeader = (key, val) => {
 import io from '@utlis/io';
 function getSome() {
   io.setHeader('Cache-Control', 'no-cache');
-  io.sendRequest('get',{url, query});
+  return io.get('/get/wordCloud');
 }
 ```
+
+> 需要注意的是调用 setHeader 方法将会全局的改变请求实例的header配置，因此我们更推荐单独对接口进行配置
+
+```javascript
+export default function getWordCloud() {
+  return io.get('/get/wordCloud', {
+    options: {
+      headers: {
+        'Cache-Control': 'no-cache'
+      }
+    }
+  });
+}
+```
+
+options 接收的参数类型可参考 AxiosRequestConfig [![](/media/link.svg)](https://github.com/axios/axios/blob/master/index.d.ts)
 
 ## 拦截器
 

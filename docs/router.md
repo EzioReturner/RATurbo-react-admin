@@ -1,21 +1,24 @@
 # 路由与菜单
 
-RA中的路由为了方便管理，使用了中心化的方式，在 `router.config.js`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/config/router.config.js) 统一配置和管理。
+RA中的路由为了方便管理，采用中心化方案，在 `router.config.ts`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/config/router.config.ts) 统一配置和管理。
 
 ## 运作模块
 
 RA通过框架中的组件实现了以下几个模块：
-- `路由管理` 按照约定的语法在 `router.config.js` 中配置路由信息。
+- `路由管理` 按照约定的语法在 `router.config.ts` 中配置路由信息。
 - `菜单渲染` RA的菜单组件会根据路由信息生成菜单。
 - `面包屑` 组件 `PageHeader`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/components/PageHeader/Breadcrumb.jsx) 中已完成内置的面包屑组件。
 
 ### 路由
 
-RA中的路由，通过 `router.config.js` 统一进行管理。我们提供了以下几个参数，来辅助生成菜单。其具体实现在 `components/RenderRoutes`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/components/RenderRoutes/index.jsx) 。
+RA中的路由，通过 `router.config.ts` 统一进行管理。我们提供了以下几个参数，来辅助生成菜单。其具体实现在 `components/RenderRoutes`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/components/RenderRoutes/index.jsx) 。
 
 - `name` `icon` 分别对应生成菜单项的文本和图标。图标参数对应着 [ant.design](https://ant.design/components/icon-cn/) 本身的icon type。
 - `hideMenu` 可以在列表中不显示这个菜单项，包括底下的子路由。
 - `authority` 用于配置路由的权限。如果配置了该项那么权限组件 [Authority](/authority) 会对当前用户权限进行验证，并决定是否展示。
+- `loading` 用于异步加载过载时间过长时开启loading遮罩。
+
+> 余下配置项请参考 `src/model/index.ts` 文件
 
 路由配置数据格式如下：
 
@@ -37,9 +40,9 @@ RA中的路由，通过 `router.config.js` 统一进行管理。我们提供了�
 
 ###  菜单
 
-菜单会根据 `router.config.js` 自动生成，具体实现在 `components/Layout/SiderMenu.jsx`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/components/Layout/SiderMenu.jsx) 。
+菜单会根据 `router.config.ts` 自动生成，具体实现在 `components/Layout/SiderMenu.jsx`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/components/Layout/SiderMenu.jsx) 。
 
-> 如果你的项目不需要菜单，你可以在 `src/layout/MainLayout`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/layout/MainLayout.jsx) 中移除 `Navigator` 组件的挂载。
+> 如果你的项目不需要菜单，你可以在 `src/config/setting.js`[![](/media/link.svg)](https://ezioreturner.github.io/RATurbo-react-admin/#/setting) 中设置 `useMenu` 为 `false`
 
 #### 从服务器请求菜单
 
@@ -48,11 +51,11 @@ RA中的路由，通过 `router.config.js` 统一进行管理。我们提供了�
 ```javascript
 // 动态设置路由方法
 @action setMenu(): void {
-  const [user, app] = constantRouteConfig;
+  const {user, app} = constantRouteConfig;
   ...
   获取异步菜单信息 
   ...
-  app.routes = callbackData; // 在此处赋值
+  app.routes = callbackRoutesData; // 在此处赋值
   this.routeConfig = [user, app];
 }
 ```

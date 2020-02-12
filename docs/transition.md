@@ -64,7 +64,22 @@ RA中提供了，两种过渡类组件，分别是 `WrapAnimation` 过渡动画�
 RA提供了可独立使用的 遮罩组件 `loading` ，接收下列两个参数：
 
 - `spining` 控制是否显示遮罩 
-- `fixed` 控制是否覆盖父级全局，该属性只在 `MainLayout` 文件中挂载生效。
+- `fixed` 控制是否覆盖父级全局
 - `style` 向组件添加额外的样式属性
+- `text` 修改loading遮罩文案
+
+> 另外的，我们在 `layoutStore` 中提供了控制全局loading的方法
+
+```javascript
+interface LoadingOptions {
+  fixed?: boolean;  // 只覆盖路由可视区域
+  spinning: boolean; // 开启关闭遮罩
+  text?: string | number | React.ReactNode; // 文案
+}
+
+@action ctrlSpinning = (options: LoadingOptions) => {
+  this.loadingOptions = options;
+};
+```
 
 ![loading](/media/loading.gif)

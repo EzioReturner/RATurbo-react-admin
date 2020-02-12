@@ -8,7 +8,7 @@
 
 ### 控制菜单和路由权限
 
-如需对指定页面进行权限控制，那么只需在路由配置文件 `router.config.js` 中设置 `authority` 参数即可，代表该路由接受的权限，不配置则表示接受所有权限都可进入。RA的 `MainLayout` 布局默认对所有的路由包裹了 `Authorized` 组件。
+如需对指定页面进行权限控制，那么只需在路由配置文件 `router.config.ts` 中设置 `authority` 参数即可，代表该路由接受的权限，不配置则表示接受所有权限都可进入。RA的 `MainLayout` 布局默认对所有的路由包裹了 `Authorized` 组件。
 
 ```javascript
 {

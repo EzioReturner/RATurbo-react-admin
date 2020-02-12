@@ -4,8 +4,7 @@
 
 使用 TypeScript 对 IDE 会更加友好，如果你是用 vscode 开发的，那么你的开发体验将会显著提升。RA 中自带了 TypeScript 所需的配置文件。
 
-- tsconfig.js
-- tslint.json
+- tsconfig.json
 
 tsconfig 会声明这是一个 TypeScript 的项目，其中会进行一些配置，详细内容可以看[这里](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)。 tslint 类似 eslint 将会检查你的代码。
 
