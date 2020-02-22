@@ -2,7 +2,7 @@
 
 const paths = require('./paths');
 
-const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
+const protocol = process.env.HTTPS || 'http';
 const host = process.env.HOST || '0.0.0.0';
 
 module.exports = function(proxy) {
@@ -14,7 +14,7 @@ module.exports = function(proxy) {
     hot: true,
     publicPath: '/',
     quiet: true,
-    // https: protocol === 'https',
+    https: protocol === 'https',
     host,
     open: false,
     overlay: {
