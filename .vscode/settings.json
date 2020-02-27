@@ -37,7 +37,6 @@
   },
   "extensions.ignoreRecommendations": false,
   "editor.minimap.enabled": true,
-  "search.location": "panel",
   "explorer.confirmDragAndDrop": false,
   "workbench.iconTheme": "vscode-icons",
   "files.associations": {

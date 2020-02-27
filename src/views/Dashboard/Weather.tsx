@@ -24,7 +24,7 @@ class Weather extends React.PureComponent<{}, WeatherState> {
 
   componentDidMount() {
     getWeather().then((res: any) => {
-      const { status, forecasts } = res.data;
+      const { status, forecasts } = res;
       if (Number(status) === 1) {
         this.setState({
           data: forecasts[0].casts.map((res: any) => {

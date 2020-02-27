@@ -2,6 +2,11 @@ import Axios from 'axios';
 import { notification } from 'antd';
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, Method } from 'axios';
 
+interface IoOptions extends AxiosRequestConfig {
+  returnConfig?: boolean; // 是否返回req配置项
+  options?: AxiosRequestConfig;
+}
+
 class Request {
   instance: AxiosInstance;
 
@@ -53,17 +58,21 @@ class Request {
     return Promise.reject(error);
   };
 
-  sendRequest(method: Method, url: string, data: AxiosRequestConfig) {
+  sendRequest(method: Method, url: string, details: IoOptions) {
+    const { params, returnConfig, data, options } = details;
     return this.instance
       .request({
         url,
         method,
-        ...data
+        ...params,
+        ...options,
+        data
       })
+      .then(res => (returnConfig ? res : res.data))
       .catch(this.handleError);
   }
 
-  get(path: string, data: AxiosRequestConfig = {}) {
+  get(path: string, data: IoOptions = {}) {
     let _path: string = path;
     const params = data.params;
     if (params) {
@@ -79,19 +88,19 @@ class Request {
     return this.sendRequest('get', _path, data);
   }
 
-  post(path: string, data: AxiosRequestConfig) {
+  post(path: string, data: IoOptions) {
     return this.sendRequest('post', path, data);
   }
 
-  put(path: string, data: AxiosRequestConfig) {
+  put(path: string, data: IoOptions) {
     return this.sendRequest('put', path, data);
   }
 
-  patch(path: string, data: AxiosRequestConfig) {
+  patch(path: string, data: IoOptions) {
     return this.sendRequest('patch', path, data);
   }
 
-  delete(path: string, data: AxiosRequestConfig) {
+  delete(path: string, data: IoOptions) {
     return this.sendRequest('delete', path, data);
   }
 }
