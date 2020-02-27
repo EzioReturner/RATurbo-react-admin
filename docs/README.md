@@ -14,10 +14,6 @@
 
 - [ra-turbo](http://ra-turbo.leanapp.cn)
 
-## 使用文档
-
-- [wiki](https://ezioreturner.github.io/RATurbo-react-admin/#/)
-
 ## 依赖模块
 
 - [react](https://facebook.github.io/react/)(搭积木的必备玩具)

@@ -65,16 +65,19 @@ class Request {
         url,
         method,
         ...params,
-        ...options,
-        data
+        data,
+        ...options
+      })
+      .then(res => {
+        return returnConfig ? res : res.data;
       })
       .then(res => (returnConfig ? res : res.data))
       .catch(this.handleError);
   }
 
   get(path: string, data: IoOptions = {}) {
+    const { params } = data;
     let _path: string = path;
-    const params = data.params;
     if (params) {
       const keys = Object.keys(params);
       if (keys.length) {

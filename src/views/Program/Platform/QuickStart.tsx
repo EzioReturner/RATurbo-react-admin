@@ -11,7 +11,7 @@ class QuickStart extends PureComponent {
   componentDidMount() {
     getContact().then((res: any) => {
       this.setState({
-        contact: res.data.results
+        contact: res.results
       });
     });
   }

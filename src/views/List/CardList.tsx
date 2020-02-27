@@ -29,12 +29,8 @@ class CardList extends React.Component<{}, CardListState> {
   }
 
   async initData() {
-    const {
-      data: { results }
-    } = await getContact();
-    let {
-      data: { data: _data }
-    } = await getListData();
+    const { results } = await getContact();
+    let { data: _data } = await getListData();
 
     _data = _data.map((res: ListState, index: number) => {
       return {

@@ -32,7 +32,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
     route
   } = props;
   const {
-    layoutStore: { collapsed, isMobile, toggleCollapsed, spinning, fixed, showMenu, showHeader }
+    layoutStore: { collapsed, isMobile, toggleCollapsed, loadingOptions, showMenu, showHeader }
   } = injected();
   const routeAuthority: string | string[] = getRouteAuthority(pathname, route.routes);
 
@@ -101,7 +101,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
           !showHeader && styles.withoutHeader
         )}
       >
-        <Loading spinning={spinning} fixed={fixed} collapsed={collapsed} />
+        <Loading {...loadingOptions} collapsed={collapsed} />
         {inlineHeader ? inlineLayout : splitLayout}
       </div>
     </Authorized>

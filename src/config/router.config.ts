@@ -19,22 +19,13 @@ export const constantRouteConfig: { app: RouteConfig; user: RouteConfig } = {
   }
 };
 
-/**
- * 路由配置
- * @param path {string} 路由路径
- * @param name {string} 菜单名称、可以作为key来映射国际化菜单名
- * @param icon {string} 菜单图标
- * @param componet {string[]} 加载组件的项目路径位置，必须为数组，第一项路径，第二项配置组件进入动画class
- * @param hiddeMenu {boolean} 菜单中是否显示
- * @param routes {object[]} 子路由信息
- * @param rest 可接收 react-router-dom 参数
- */
 export const asyncRouteConfig: RouteChild[] = [
   {
     name: 'dashboard',
     icon: 'pie-chart',
     path: '/dashboard',
-    component: ['/views/Dashboard']
+    component: ['/views/Dashboard'],
+    loading: true
   },
   {
     path: '/',
@@ -51,17 +42,20 @@ export const asyncRouteConfig: RouteChild[] = [
         name: 'analysis',
         path: '/program/analysis',
         component: ['/views/Program/Analysis'],
-        authority: ['admin']
+        authority: ['admin'],
+        loading: true
       },
       {
         name: 'monitor',
         path: '/program/monitor',
-        component: ['/views/Program/Monitor']
+        component: ['/views/Program/Monitor'],
+        loading: true
       },
       {
         name: 'platform',
         path: '/program/platform',
-        component: ['/views/Program/Platform']
+        component: ['/views/Program/Platform'],
+        loading: true
       }
     ]
   },
@@ -74,7 +68,8 @@ export const asyncRouteConfig: RouteChild[] = [
         name: 'basicForm',
         path: '/form/basicForm',
         component: ['/views/Form/BasicForm'],
-        authority: ['admin']
+        authority: ['admin'],
+        loading: true
       },
       {
         name: 'stepForm',
@@ -102,12 +97,14 @@ export const asyncRouteConfig: RouteChild[] = [
       {
         name: 'basicList',
         path: '/list/basicList',
-        component: ['/views/List/BasicList']
+        component: ['/views/List/BasicList'],
+        loading: true
       },
       {
         name: 'cardList',
         path: '/list/cardList',
-        component: ['/views/List/CardList']
+        component: ['/views/List/CardList'],
+        loading: true
       },
       {
         name: 'basicTable',

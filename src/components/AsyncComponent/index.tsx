@@ -54,12 +54,13 @@ class AsyncComponent extends React.PureComponent<AsyncProps, AsyncState> {
   render() {
     const { component, animate } = this.state;
     const {
-      layoutStore: { stopSpinning }
+      layoutStore: { ctrlProgress, ctrlSpinning }
     } = this.injected;
     const C: any = component;
 
     if (animate === 'notAnimate') {
-      stopSpinning();
+      ctrlProgress(false);
+      ctrlSpinning({ spinning: false });
       return <C {...this.props} />;
     }
     return C ? (

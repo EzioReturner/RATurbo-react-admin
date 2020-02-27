@@ -24,13 +24,14 @@ const WrapComponent: React.FC<WrapComponentProps> = props => {
     return props as InjectedProps;
   }
   const {
-    layoutStore: { stopSpinning }
+    layoutStore: { ctrlProgress, ctrlSpinning }
   } = injected();
   const [animateIn, setAnimateIn] = useState(false);
 
   useEffect(() => {
     setAnimateIn(true);
-    stopSpinning();
+    ctrlSpinning({ spinning: false });
+    ctrlProgress(false);
   }, []);
 
   function getAnimateWay(animate: string) {

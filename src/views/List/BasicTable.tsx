@@ -26,7 +26,7 @@ class BasicTable extends React.Component<{}, BasicTableState> {
 
   componentDidMount() {
     getTableData().then((res: any) => {
-      const data = res.data.data;
+      const data = res.data;
       this.setState({
         tableData: data
       });
