@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
-import { Icon as LegacyIcon } from '@ant-design/compatible';
 import { Card, Row, Col } from 'antd';
 import EchartsReact from '@components/Echarts';
 import { observer, inject } from 'mobx-react';
 import ProgramStore from '@store/programStore';
+import { RedoOutlined, CloudDownloadOutlined } from '@ant-design/icons';
 
 interface DistributeCardProps {}
 
@@ -20,9 +20,8 @@ const ChartCard = (props: any) => {
     <div className="titleNanme">
       {title}
       <div className="iconBar">
-        <LegacyIcon type="redo" />
-        <LegacyIcon
-          type="cloud-download"
+        <RedoOutlined />
+        <CloudDownloadOutlined
           style={{
             marginLeft: '10px'
           }}
@@ -65,7 +64,7 @@ const DistributeCard: React.FC<DistributeCardProps> = props => {
         </Col>
       </Row>
       <Row>
-        <Col>
+        <Col xl={24}>
           <ChartCard title="渠道" option={lineOption} />
         </Col>
       </Row>

@@ -68,9 +68,6 @@ class Request {
         data,
         ...options
       })
-      .then(res => {
-        return returnConfig ? res : res.data;
-      })
       .then(res => (returnConfig ? res : res.data))
       .catch(this.handleError);
   }

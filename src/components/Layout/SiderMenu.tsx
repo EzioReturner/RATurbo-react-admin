@@ -12,7 +12,7 @@ import LocaleStore from '@store/localeStore';
 import { RouteChild } from '@models/index';
 import SiteDetail from './SiteDetail';
 import { inlineHeader } from '@config/setting';
-
+import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 interface InjectedProps extends RouteComponentProps {
   userStore: UserStore;
   layoutStore: LayoutStore;
@@ -141,7 +141,11 @@ const SiderMenu: React.FC<RouteComponentProps> = props => {
   };
 
   const menuProps = collapsed ? {} : { openKeys: openKeys };
-  const iconCollapsed = collapsed ? 'menu-unfold' : 'menu-fold';
+  const iconCollapsed = collapsed ? (
+    <MenuUnfoldOutlined className={styles.foldIcon} />
+  ) : (
+    <MenuFoldOutlined className={styles.foldIcon} />
+  );
   return (
     <aside
       className={classNames(
@@ -164,7 +168,7 @@ const SiderMenu: React.FC<RouteComponentProps> = props => {
       </Menu>
       {inlineHeader && (
         <div className={styles.footerCollapsedIcon} onClick={() => toggleCollapsed()}>
-          <LegacyIcon type={iconCollapsed} className={styles.foldIcon} />
+          {iconCollapsed}
         </div>
       )}
     </aside>

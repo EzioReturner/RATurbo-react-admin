@@ -1,12 +1,17 @@
 import React from 'react';
 import PageWrapper from '@components/PageWrapper';
 import FormatterLocale from '@components/FormatterLocale';
-import { Icon as LegacyIcon } from '@ant-design/compatible';
 import { Card, List, Button } from 'antd';
 import { getListData } from '@api/list';
 import { getContact } from '@api/platform';
 import styles from './list.module.scss';
-
+import {
+  ThunderboltOutlined,
+  InfoCircleOutlined,
+  SettingOutlined,
+  EditOutlined,
+  PlusOutlined
+} from '@ant-design/icons';
 interface ListState {
   date: string;
   id: string;
@@ -56,11 +61,11 @@ class CardList extends React.Component<{}, CardListState> {
     const Content = (
       <div className={styles.content}>
         <Button type="link">
-          <LegacyIcon type="thunderbolt" />
+          <ThunderboltOutlined />
           快速启动
         </Button>
         <Button type="link">
-          <LegacyIcon type="info-circle" />
+          <InfoCircleOutlined />
           产品简介
         </Button>
       </div>
@@ -85,10 +90,10 @@ class CardList extends React.Component<{}, CardListState> {
                   hoverable
                   actions={[
                     <Button type="link" key={item.id + 1}>
-                      <LegacyIcon type="setting" /> 操作一
+                      <SettingOutlined /> 操作一
                     </Button>,
                     <Button type="link" key={item.id + 2}>
-                      <LegacyIcon type="edit" /> 操作二
+                      <EditOutlined /> 操作二
                     </Button>
                   ]}
                 >
@@ -111,7 +116,7 @@ class CardList extends React.Component<{}, CardListState> {
             ) : (
               <List.Item>
                 <Button type="dashed" className={styles.createButton}>
-                  <LegacyIcon type="plus" /> 新建
+                  <PlusOutlined /> 新建
                 </Button>
               </List.Item>
             )

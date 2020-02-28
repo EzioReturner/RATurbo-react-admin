@@ -107,6 +107,5 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
     </Authorized>
   );
 };
-const Main =
-  process.env.NODE_ENV === 'development' ? hot(module)(observer(MainLayout)) : observer(MainLayout);
-export default inject('layoutStore')(withRouter(Main));
+
+export default inject('layoutStore')(withRouter(observer(MainLayout)));

@@ -1,8 +1,8 @@
 import React from 'react';
-import { Icon as LegacyIcon } from '@ant-design/compatible';
 import { Card, Select, Button, DatePicker, Switch } from 'antd';
 import { observer, inject } from 'mobx-react';
 import ProgramStore from '@store/programStore';
+import { FilterOutlined, QuestionCircleOutlined } from '@ant-design/icons';
 
 interface ControllerInjected {
   programStore: ProgramStore;
@@ -50,7 +50,7 @@ const Controller: React.FC = props => {
 
   const ControlHead = (
     <div className="headerContent">
-      <LegacyIcon type="filter" />
+      <FilterOutlined />
       <span className="headerTextSpan">筛选条件</span>
       <Select placeholder="全部APP" size="small">
         {getOptions()}
@@ -86,7 +86,7 @@ const Controller: React.FC = props => {
       </div>
       <span className="headerTextSpan rightSpace">
         符合当前筛选条件的总用户数为：21,312,393
-        <LegacyIcon type="question-circle" />
+        <QuestionCircleOutlined />
       </span>
     </Card>
   );

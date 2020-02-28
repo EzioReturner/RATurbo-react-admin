@@ -1,5 +1,6 @@
 import React from 'react';
-import { Form, Icon as LegacyIcon } from '@ant-design/compatible';
+import { UploadOutlined, InboxOutlined } from '@ant-design/icons';
+import { Form } from '@ant-design/compatible';
 import '@ant-design/compatible/assets/index.css';
 import {
   Select,
@@ -179,7 +180,7 @@ class BasicForm extends React.Component<FormComponentProps> {
               })(
                 <Upload name="logo" action="/upload.do" listType="picture">
                   <Button>
-                    <LegacyIcon type="upload" />
+                    <UploadOutlined />
                     <span>Click to upload</span>
                   </Button>
                 </Upload>
@@ -194,7 +195,7 @@ class BasicForm extends React.Component<FormComponentProps> {
                 })(
                   <Upload.Dragger name="files" action="/upload.do">
                     <p className="ant-upload-drag-icon">
-                      <LegacyIcon type="inbox" />
+                      <InboxOutlined />
                     </p>
                     <p className="ant-upload-text">Click or drag file to this area to upload</p>
                     <p className="ant-upload-hint">Support for a single or bulk upload.</p>

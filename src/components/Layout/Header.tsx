@@ -1,5 +1,4 @@
 import React from 'react';
-import { Icon as LegacyIcon } from '@ant-design/compatible';
 import { inject, observer } from 'mobx-react';
 import classNames from 'classnames';
 import SelectLang from '../SelectLang';
@@ -8,6 +7,7 @@ import UserInfo from './UserInfo';
 import LayoutStore from '@store/layoutStore';
 import SiteDetail from './SiteDetail';
 import { inlineHeader } from '@config/setting';
+import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 interface InjectedProps {
   layoutStore: LayoutStore;
 }
@@ -20,7 +20,11 @@ const Header: React.FC = props => {
     layoutStore: { toggleCollapsed, collapsed, isMobile, showMenu }
   } = injected();
 
-  const iconCollapsed = collapsed ? 'menu-unfold' : 'menu-fold';
+  const iconCollapsed = collapsed ? (
+    <MenuUnfoldOutlined className={styles.foldIcon} onClick={() => toggleCollapsed()} />
+  ) : (
+    <MenuFoldOutlined className={styles.foldIcon} onClick={() => toggleCollapsed()} />
+  );
   return (
     <header
       className={classNames(
@@ -32,13 +36,7 @@ const Header: React.FC = props => {
       )}
     >
       {inlineHeader && <SiteDetail />}
-      {showMenu && !inlineHeader && (
-        <LegacyIcon
-          type={iconCollapsed}
-          className={styles.foldIcon}
-          onClick={() => toggleCollapsed()}
-        />
-      )}
+      {showMenu && !inlineHeader && iconCollapsed}
       <div className={styles.rightPart}>
         <UserInfo />
         <SelectLang />

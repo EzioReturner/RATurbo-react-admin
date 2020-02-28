@@ -8,7 +8,7 @@ class TeamCard extends PureComponent {
     return (
       <Card
         title={<FormatterLocale id="platform.teamCard" />}
-        className="fat-card"
+        style={{ width: '100%' }}
         bordered={false}
       >
         <div className="team-card">

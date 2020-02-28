@@ -1,7 +1,6 @@
 import React from 'react';
-import { Icon as LegacyIcon } from '@ant-design/compatible';
 import styles from './result.module.scss';
-
+import { CloseCircleFilled, CheckCircleFilled } from '@ant-design/icons';
 interface ResultProps {
   title?: React.ReactNode;
   subtitle?: React.ReactNode;
@@ -15,14 +14,8 @@ const Result: React.FC<ResultProps> = props => {
   const { title, subtitle, extra, actions, type, ...restProps } = props;
 
   const _Icon: any = {
-    failed: (
-      <LegacyIcon
-        className={`${styles.icon} ${styles.failed}`}
-        type="close-circle"
-        theme="filled"
-      />
-    ),
-    successed: <LegacyIcon className={styles.icon} type="check-circle" theme="filled" />
+    failed: <CloseCircleFilled className={`${styles.icon} ${styles.failed}`} />,
+    successed: <CheckCircleFilled className={styles.icon} />
   };
 
   return (

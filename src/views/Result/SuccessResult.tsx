@@ -2,9 +2,9 @@ import React from 'react';
 import Result from '@components/Result';
 import PageWrapper from '@components/PageWrapper';
 import FormatterLocale from '@components/FormatterLocale';
-import { Icon as LegacyIcon } from '@ant-design/compatible';
 import { Card, Button, Steps, Row, Col } from 'antd';
 import styles from './styles.module.scss';
+import { MailOutlined } from '@ant-design/icons';
 
 const Step = Steps.Step;
 const SuccessResult: React.FC = () => {
@@ -42,7 +42,7 @@ const SuccessResult: React.FC = () => {
               name="三傻"
               extra={
                 <Button type="link">
-                  <LegacyIcon type="mail" /> 催一下
+                  <MailOutlined /> 催一下
                 </Button>
               }
             />

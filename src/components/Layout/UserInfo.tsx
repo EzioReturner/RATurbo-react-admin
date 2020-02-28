@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
-import { Icon as LegacyIcon } from '@ant-design/compatible';
 import { Menu, Dropdown, Modal } from 'antd';
 import { inject, observer } from 'mobx-react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import styles from './header.module.scss';
 import UserStore from '@store/userStore';
-
+import { UserOutlined, SettingOutlined, LogoutOutlined } from '@ant-design/icons';
 const confirm = Modal.confirm;
 
 interface InjectedProps extends RouteComponentProps<any> {
@@ -53,16 +52,16 @@ const UserInfo: React.FC<RouteComponentProps> = props => {
   const getMenu = () => (
     <Menu>
       <Menu.Item>
-        <LegacyIcon type="user" />
+        <UserOutlined />
         <span className={styles.menuItem}>user info</span>
       </Menu.Item>
       <Menu.Item onClick={handleTriggerError}>
-        <LegacyIcon type="setting" />
+        <SettingOutlined />
         <span className={styles.menuItem}>trigger error</span>
       </Menu.Item>
       <Menu.Divider />
       <Menu.Item onClick={handleLogout}>
-        <LegacyIcon type="logout" />
+        <LogoutOutlined />
         <span className={styles.menuItem}>logout</span>
       </Menu.Item>
     </Menu>
@@ -72,7 +71,7 @@ const UserInfo: React.FC<RouteComponentProps> = props => {
     <div className={styles.userInfo}>
       <Dropdown overlay={getMenu()} className={styles.userDropdown} placement="bottomRight">
         <div className={styles.userDropdown}>
-          <LegacyIcon type="user" className={styles.userIcon} />
+          <UserOutlined className={styles.userIcon} />
           <span className={styles.text}>{userInfo.name}</span>
         </div>
       </Dropdown>

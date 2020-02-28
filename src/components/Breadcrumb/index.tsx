@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { observer, inject } from 'mobx-react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
-import { Icon as LegacyIcon } from '@ant-design/compatible';
+import { CloseOutlined } from '@ant-design/icons';
 import classNames from 'classnames';
 import styles from './index.module.scss';
 import { Breadcrumb } from '@models/index';
@@ -68,8 +68,7 @@ const BreadCrumb: React.FC<RouteComponentProps> = props => {
             onClick={() => handleGoBreadPath(path)}
           >
             {localeObj[`menu.${key}`] || name}
-            <LegacyIcon
-              type="close"
+            <CloseOutlined
               className={styles.closeIcon}
               onClick={e => handleDelBreadcrumb(e, name)}
             />
