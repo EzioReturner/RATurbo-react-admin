@@ -1,7 +1,8 @@
 import React from 'react';
 import PageWrapper from '@components/PageWrapper';
 import FormatterLocale from '@components/FormatterLocale';
-import { Icon, Card, List, Button } from 'antd';
+import { Icon as LegacyIcon } from '@ant-design/compatible';
+import { Card, List, Button } from 'antd';
 import { getListData } from '@api/list';
 import { getContact } from '@api/platform';
 import styles from './list.module.scss';
@@ -55,11 +56,11 @@ class CardList extends React.Component<{}, CardListState> {
     const Content = (
       <div className={styles.content}>
         <Button type="link">
-          <Icon type="thunderbolt" />
+          <LegacyIcon type="thunderbolt" />
           快速启动
         </Button>
         <Button type="link">
-          <Icon type="info-circle" />
+          <LegacyIcon type="info-circle" />
           产品简介
         </Button>
       </div>
@@ -84,10 +85,10 @@ class CardList extends React.Component<{}, CardListState> {
                   hoverable
                   actions={[
                     <Button type="link" key={item.id + 1}>
-                      <Icon type="setting" /> 操作一
+                      <LegacyIcon type="setting" /> 操作一
                     </Button>,
                     <Button type="link" key={item.id + 2}>
-                      <Icon type="edit" /> 操作二
+                      <LegacyIcon type="edit" /> 操作二
                     </Button>
                   ]}
                 >
@@ -110,7 +111,7 @@ class CardList extends React.Component<{}, CardListState> {
             ) : (
               <List.Item>
                 <Button type="dashed" className={styles.createButton}>
-                  <Icon type="plus" /> 新建
+                  <LegacyIcon type="plus" /> 新建
                 </Button>
               </List.Item>
             )

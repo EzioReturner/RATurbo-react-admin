@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon } from 'antd';
+import { Icon as LegacyIcon } from '@ant-design/compatible';
 import { inject, observer } from 'mobx-react';
 import classNames from 'classnames';
 import SelectLang from '../SelectLang';
@@ -33,7 +33,11 @@ const Header: React.FC = props => {
     >
       {inlineHeader && <SiteDetail />}
       {showMenu && !inlineHeader && (
-        <Icon type={iconCollapsed} className={styles.foldIcon} onClick={() => toggleCollapsed()} />
+        <LegacyIcon
+          type={iconCollapsed}
+          className={styles.foldIcon}
+          onClick={() => toggleCollapsed()}
+        />
       )}
       <div className={styles.rightPart}>
         <UserInfo />

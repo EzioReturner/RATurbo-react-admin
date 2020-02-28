@@ -1,5 +1,6 @@
 import React from 'react';
-import { Dropdown, Icon, Menu } from 'antd';
+import { Icon as LegacyIcon } from '@ant-design/compatible';
+import { Dropdown, Menu } from 'antd';
 import { inject, observer } from 'mobx-react';
 import { i18n } from '@config/setting';
 import styles from './selectlang.module.scss';
@@ -46,7 +47,7 @@ const SelectLang: React.FC = props => {
   return (
     <Dropdown overlay={getMenu()} placement="bottomRight">
       <div className={styles.langIcon}>
-        <Icon type="global" className={styles.icon} />
+        <LegacyIcon type="global" className={styles.icon} />
       </div>
     </Dropdown>
   );

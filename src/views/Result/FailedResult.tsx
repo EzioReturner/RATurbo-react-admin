@@ -2,8 +2,9 @@ import React from 'react';
 import Result from '@components/Result';
 import PageWrapper from '@components/PageWrapper';
 import FormatterLocale from '@components/FormatterLocale';
-import { Card, Button, Icon } from 'antd';
+import { Card, Button } from 'antd';
 import styles from './styles.module.scss';
+import { CloseCircleOutlined } from '@ant-design/icons';
 
 const FailedResult: React.FC = () => {
   const Extra = (
@@ -12,14 +13,14 @@ const FailedResult: React.FC = () => {
         <FormatterLocale id="result.failed.tips" />
       </h2>
       <div className={styles.reason}>
-        <Icon type="close-circle" className={styles.icon} />
+        <CloseCircleOutlined className={styles.icon} />
         <FormatterLocale id="result.failed.reason1" />
         <Button type="link" className={styles.aButton}>
           申请权限
         </Button>
       </div>
       <div className={styles.reason}>
-        <Icon type="close-circle" className={styles.icon} />
+        <CloseCircleOutlined className={styles.icon} />
         <FormatterLocale id="result.failed.reason2" />
         <Button type="link" className={styles.aButton}>
           重新评估

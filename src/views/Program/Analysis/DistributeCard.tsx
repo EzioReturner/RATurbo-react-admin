@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
-import { Card, Row, Col, Icon } from 'antd';
+import { Icon as LegacyIcon } from '@ant-design/compatible';
+import { Card, Row, Col } from 'antd';
 import EchartsReact from '@components/Echarts';
 import { observer, inject } from 'mobx-react';
 import ProgramStore from '@store/programStore';
@@ -19,8 +20,8 @@ const ChartCard = (props: any) => {
     <div className="titleNanme">
       {title}
       <div className="iconBar">
-        <Icon type="redo" />
-        <Icon
+        <LegacyIcon type="redo" />
+        <LegacyIcon
           type="cloud-download"
           style={{
             marginLeft: '10px'

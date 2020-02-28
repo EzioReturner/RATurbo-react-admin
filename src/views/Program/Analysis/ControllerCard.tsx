@@ -1,5 +1,6 @@
 import React from 'react';
-import { Card, Select, Button, DatePicker, Icon, Switch } from 'antd';
+import { Icon as LegacyIcon } from '@ant-design/compatible';
+import { Card, Select, Button, DatePicker, Switch } from 'antd';
 import { observer, inject } from 'mobx-react';
 import ProgramStore from '@store/programStore';
 
@@ -20,7 +21,12 @@ const Controller: React.FC = props => {
       .fill(1)
       .map((res: number, index: number) => {
         return (
-          <Option key={index}>
+          <Option
+            key={index}
+            value={Math.random()
+              .toString(36)
+              .substr(2)}
+          >
             {Math.random()
               .toString(36)
               .substr(2)}
@@ -44,7 +50,7 @@ const Controller: React.FC = props => {
 
   const ControlHead = (
     <div className="headerContent">
-      <Icon type="filter" />
+      <LegacyIcon type="filter" />
       <span className="headerTextSpan">筛选条件</span>
       <Select placeholder="全部APP" size="small">
         {getOptions()}
@@ -80,7 +86,7 @@ const Controller: React.FC = props => {
       </div>
       <span className="headerTextSpan rightSpace">
         符合当前筛选条件的总用户数为：21,312,393
-        <Icon type="question-circle" />
+        <LegacyIcon type="question-circle" />
       </span>
     </Card>
   );

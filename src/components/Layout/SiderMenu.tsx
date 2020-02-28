@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Menu, Icon } from 'antd';
+import { Icon as LegacyIcon } from '@ant-design/compatible';
+import { Menu } from 'antd';
 import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
 import intersection from 'lodash/intersection';
@@ -70,7 +71,7 @@ const SiderMenu: React.FC<RouteComponentProps> = props => {
     const key = parentName ? `menu.${parentName}.${name}` : `menu.${name}`;
     return (
       <span>
-        {iconType && <Icon type={iconType} />}
+        {iconType && <LegacyIcon type={iconType} />}
         <span>{localeObj[key] || name}</span>
       </span>
     );
@@ -124,7 +125,7 @@ const SiderMenu: React.FC<RouteComponentProps> = props => {
           handleClickLink();
         }}
       >
-        {iconType && <Icon type={iconType} />}
+        {iconType && <LegacyIcon type={iconType} />}
         <span>{localeObj[key] || name}</span>
       </Link>
     );
@@ -163,7 +164,7 @@ const SiderMenu: React.FC<RouteComponentProps> = props => {
       </Menu>
       {inlineHeader && (
         <div className={styles.footerCollapsedIcon} onClick={() => toggleCollapsed()}>
-          <Icon type={iconCollapsed} className={styles.foldIcon} />
+          <LegacyIcon type={iconCollapsed} className={styles.foldIcon} />
         </div>
       )}
     </aside>

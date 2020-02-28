@@ -1,10 +1,10 @@
 import React from 'react';
-import { Row, Col, Card, Icon } from 'antd';
-import { CustomIconComponentProps } from 'antd/lib/icon';
+import { Icon as LegacyIcon } from '@ant-design/compatible';
+import { Row, Col, Card } from 'antd';
 import { BoxSvg, EmpolyeesSvg, OrdersSvg, SalesSvg } from '@components/SvgIcon';
 import FormatterLocale from '@components/FormatterLocale';
 interface InfoCardProps {
-  icon: React.FunctionComponent<CustomIconComponentProps | React.SVGProps<SVGSVGElement>>;
+  icon: any;
   tips: string;
   title: string;
   num: string | number;
@@ -48,7 +48,7 @@ const RowInfoCard: React.FC = () => {
     return (
       <Card className="info-card fat-card" bordered={false} hoverable>
         <div className="top">
-          <Icon component={icon} />
+          <LegacyIcon component={icon as any} />
           <div className="right-part">
             <p className="title">
               {<FormatterLocale id={`dashboard.rowInfo${index}.title`} defaultMessage={title} />}
@@ -57,7 +57,7 @@ const RowInfoCard: React.FC = () => {
           </div>
         </div>
         <p className="mb-0 mt-3 text-muted">
-          <Icon type={tipIcon} className="mr-2" />
+          <LegacyIcon type={tipIcon} className="mr-2" />
           {<FormatterLocale id={`dashboard.rowInfo${index}.tips`} defaultMessage={tips} />}
         </p>
       </Card>

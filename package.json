@@ -83,9 +83,10 @@
     "webpack-filter-warnings-plugin": "^1.2.1"
   },
   "dependencies": {
+    "@ant-design/compatible": "0.0.1-rc.0",
     "@hot-loader/react-dom": "^16.11.0",
     "animate.css": "^3.7.2",
-    "antd": "^3.26.3",
+    "antd": "4.0.0",
     "axios": "^0.19.0",
     "classnames": "^2.2.6",
     "core-js": "^3.2.1",

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Alert, Form } from 'antd';
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
+import { Alert } from 'antd';
 import LoginForm from './LoginForm';
 import './login.scss';
 import 'animate.css';

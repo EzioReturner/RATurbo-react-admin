@@ -1,6 +1,9 @@
 import React, { Fragment, useState } from 'react';
-import { Form, Button, Input, Icon, Checkbox } from 'antd';
-import { FormComponentProps } from 'antd/lib/form/Form';
+import { Form } from '@ant-design/compatible';
+import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import '@ant-design/compatible/assets/index.css';
+import { Button, Input, Checkbox } from 'antd';
+import { FormComponentProps } from '@ant-design/compatible/lib/form/Form';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { siteName } from '@config/setting';
 import UserStore from '@store/userStore';
@@ -11,7 +14,6 @@ import 'animate.css';
 interface LoginFormProps extends FormComponentProps, RouteComponentProps {
   handleError: Function;
 }
-
 interface InjectedProps extends LoginFormProps {
   userStore: UserStore;
 }
@@ -73,7 +75,7 @@ const LoginForm: React.FC<LoginFormProps> = props => {
             rules: [{ required: true, message: 'Please input your username!' }]
           })(
             <Input
-              prefix={<Icon type="user" />}
+              prefix={<UserOutlined />}
               placeholder="Username: admin | guest"
               autoComplete="off"
             />
@@ -84,7 +86,7 @@ const LoginForm: React.FC<LoginFormProps> = props => {
             rules: [{ required: true, message: 'Please input your Password!' }]
           })(
             <Input
-              prefix={<Icon type="lock" />}
+              prefix={<LockOutlined />}
               type="password"
               placeholder="Password: 123"
               autoComplete="off"

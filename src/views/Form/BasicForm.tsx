@@ -1,6 +1,7 @@
 import React from 'react';
+import { Form, Icon as LegacyIcon } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
 import {
-  Form,
   Select,
   InputNumber,
   Switch,
@@ -8,14 +9,13 @@ import {
   Slider,
   Button,
   Upload,
-  Icon,
   Rate,
   Checkbox,
   Row,
   Col,
   Card
 } from 'antd';
-import { FormComponentProps } from 'antd/lib/form/Form';
+import { FormComponentProps } from '@ant-design/compatible/lib/form/Form';
 import PageWrapper from '@components/PageWrapper';
 import FormatterLocale from '@components/FormatterLocale';
 
@@ -179,7 +179,7 @@ class BasicForm extends React.Component<FormComponentProps> {
               })(
                 <Upload name="logo" action="/upload.do" listType="picture">
                   <Button>
-                    <Icon type="upload" />
+                    <LegacyIcon type="upload" />
                     <span>Click to upload</span>
                   </Button>
                 </Upload>
@@ -194,7 +194,7 @@ class BasicForm extends React.Component<FormComponentProps> {
                 })(
                   <Upload.Dragger name="files" action="/upload.do">
                     <p className="ant-upload-drag-icon">
-                      <Icon type="inbox" />
+                      <LegacyIcon type="inbox" />
                     </p>
                     <p className="ant-upload-text">Click or drag file to this area to upload</p>
                     <p className="ant-upload-hint">Support for a single or bulk upload.</p>

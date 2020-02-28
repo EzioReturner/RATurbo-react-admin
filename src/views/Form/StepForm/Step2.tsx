@@ -1,5 +1,7 @@
 import React from 'react';
-import { Form, Button } from 'antd';
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
+import { Button } from 'antd';
 import { observer } from 'mobx-react';
 import FormatterLocale from '@components/FormatterLocale';
 import StepFormStore from './formStore';

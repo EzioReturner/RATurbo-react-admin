@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { Icon, Menu, Dropdown, Modal } from 'antd';
+import { Icon as LegacyIcon } from '@ant-design/compatible';
+import { Menu, Dropdown, Modal } from 'antd';
 import { inject, observer } from 'mobx-react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import styles from './header.module.scss';
@@ -52,16 +53,16 @@ const UserInfo: React.FC<RouteComponentProps> = props => {
   const getMenu = () => (
     <Menu>
       <Menu.Item>
-        <Icon type="user" />
+        <LegacyIcon type="user" />
         <span className={styles.menuItem}>user info</span>
       </Menu.Item>
       <Menu.Item onClick={handleTriggerError}>
-        <Icon type="setting" />
+        <LegacyIcon type="setting" />
         <span className={styles.menuItem}>trigger error</span>
       </Menu.Item>
       <Menu.Divider />
       <Menu.Item onClick={handleLogout}>
-        <Icon type="logout" />
+        <LegacyIcon type="logout" />
         <span className={styles.menuItem}>logout</span>
       </Menu.Item>
     </Menu>
@@ -71,7 +72,7 @@ const UserInfo: React.FC<RouteComponentProps> = props => {
     <div className={styles.userInfo}>
       <Dropdown overlay={getMenu()} className={styles.userDropdown} placement="bottomRight">
         <div className={styles.userDropdown}>
-          <Icon type="user" className={styles.userIcon} />
+          <LegacyIcon type="user" className={styles.userIcon} />
           <span className={styles.text}>{userInfo.name}</span>
         </div>
       </Dropdown>

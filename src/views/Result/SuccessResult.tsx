@@ -2,7 +2,8 @@ import React from 'react';
 import Result from '@components/Result';
 import PageWrapper from '@components/PageWrapper';
 import FormatterLocale from '@components/FormatterLocale';
-import { Card, Button, Steps, Row, Col, Icon } from 'antd';
+import { Icon as LegacyIcon } from '@ant-design/compatible';
+import { Card, Button, Steps, Row, Col } from 'antd';
 import styles from './styles.module.scss';
 
 const Step = Steps.Step;
@@ -41,7 +42,7 @@ const SuccessResult: React.FC = () => {
               name="三傻"
               extra={
                 <Button type="link">
-                  <Icon type="mail" /> 催一下
+                  <LegacyIcon type="mail" /> 催一下
                 </Button>
               }
             />

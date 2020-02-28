@@ -1,6 +1,8 @@
 import React from 'react';
-import { Form, Button, Select, Input, Divider } from 'antd';
-import { FormComponentProps } from 'antd/lib/form';
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
+import { Button, Select, Input, Divider } from 'antd';
+import { FormComponentProps } from '@ant-design/compatible/lib/form';
 import FormatterLocale from '@components/FormatterLocale';
 import StepFormStore from './formStore';
 import styles from './form.module.scss';

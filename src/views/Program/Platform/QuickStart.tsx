@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { Icon as LegacyIcon } from '@ant-design/compatible';
 import { Card, Button, Avatar, Row, Col } from 'antd';
 import { getContact } from '@api/platform';
 import FormatterLocale from '@components/FormatterLocale';
@@ -35,7 +36,7 @@ class QuickStart extends PureComponent {
             );
           })}
           <Col className="ac" xl={2} lg={4} md={4} sm={4} xs={6}>
-            <Button type="primary" size="small" icon="plus">
+            <Button type="primary" size="small" icon={<LegacyIcon type="plus" />}>
               add
             </Button>
           </Col>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon } from 'antd';
+import { Icon as LegacyIcon } from '@ant-design/compatible';
 import styles from './result.module.scss';
 
 interface ResultProps {
@@ -16,9 +16,13 @@ const Result: React.FC<ResultProps> = props => {
 
   const _Icon: any = {
     failed: (
-      <Icon className={`${styles.icon} ${styles.failed}`} type="close-circle" theme="filled" />
+      <LegacyIcon
+        className={`${styles.icon} ${styles.failed}`}
+        type="close-circle"
+        theme="filled"
+      />
     ),
-    successed: <Icon className={styles.icon} type="check-circle" theme="filled" />
+    successed: <LegacyIcon className={styles.icon} type="check-circle" theme="filled" />
   };
 
   return (
