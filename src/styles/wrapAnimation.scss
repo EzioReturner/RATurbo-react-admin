@@ -29,10 +29,10 @@
 }
 
 .fadeRA-exit {
-  opacity: 0;
+  opacity: 1;
 }
 
 .fadeRA-exit-active {
-  opacity: 1;
+  opacity: 0;
   transition: opacity 800ms ease-out;
 }
