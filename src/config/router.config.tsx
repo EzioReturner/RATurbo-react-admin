@@ -1,4 +1,15 @@
 import { RouteConfig, RouteChild } from '@models/index';
+import React from 'react';
+import {
+  PieChartOutlined,
+  AppstoreOutlined,
+  FormOutlined,
+  WarningOutlined,
+  OrderedListOutlined,
+  HeatMapOutlined,
+  PictureOutlined,
+  CheckCircleOutlined
+} from '@ant-design/icons';
 export const constantRouteConfig: { app: RouteConfig; user: RouteConfig } = {
   app: {
     path: '/',
@@ -22,7 +33,7 @@ export const constantRouteConfig: { app: RouteConfig; user: RouteConfig } = {
 export const asyncRouteConfig: RouteChild[] = [
   {
     name: 'dashboard',
-    icon: 'pie-chart',
+    icon: <PieChartOutlined />,
     path: '/dashboard',
     component: ['/views/Dashboard'],
     loading: true
@@ -35,7 +46,7 @@ export const asyncRouteConfig: RouteChild[] = [
   },
   {
     name: 'program',
-    icon: 'appstore',
+    icon: <AppstoreOutlined />,
     path: '/program',
     routes: [
       {
@@ -61,7 +72,7 @@ export const asyncRouteConfig: RouteChild[] = [
   },
   {
     name: 'form',
-    icon: 'form',
+    icon: <FormOutlined />,
     path: '/form',
     routes: [
       {
@@ -91,7 +102,7 @@ export const asyncRouteConfig: RouteChild[] = [
   },
   {
     name: 'list',
-    icon: 'ordered-list',
+    icon: <OrderedListOutlined />,
     path: '/list',
     routes: [
       {
@@ -115,21 +126,21 @@ export const asyncRouteConfig: RouteChild[] = [
   },
   {
     name: 'map',
-    icon: 'heat-map',
+    icon: <HeatMapOutlined />,
     path: '/map',
     component: ['/views/Map'],
     authority: ['admin']
   },
   {
     name: 'gallery',
-    icon: 'picture',
+    icon: <PictureOutlined />,
     path: '/gallery',
     component: ['/views/Gallery'],
     authority: ['admin']
   },
   {
     name: 'result',
-    icon: 'check-circle',
+    icon: <CheckCircleOutlined />,
     path: '/result',
     routes: [
       {
@@ -146,7 +157,7 @@ export const asyncRouteConfig: RouteChild[] = [
   },
   {
     name: 'exception',
-    icon: 'warning',
+    icon: <WarningOutlined />,
     path: '/exception',
     routes: [
       {

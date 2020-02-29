@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Icon as LegacyIcon } from '@ant-design/compatible';
 import { Menu } from 'antd';
 import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
@@ -67,11 +66,11 @@ const SiderMenu: React.FC<RouteComponentProps> = props => {
   }
 
   // 获取菜单标题
-  function getMenuTitle(name: string = '', parentName?: string, iconType?: string) {
+  function getMenuTitle(name: string = '', parentName?: string, icon?: React.ReactNode) {
     const key = parentName ? `menu.${parentName}.${name}` : `menu.${name}`;
     return (
       <span>
-        {iconType && <LegacyIcon type={iconType} />}
+        {icon}
         <span>{localeObj[key] || name}</span>
       </span>
     );
@@ -115,7 +114,7 @@ const SiderMenu: React.FC<RouteComponentProps> = props => {
 
   // 生成菜单枝叶
   function getMenuItem(menu: RouteChild, parentName?: string) {
-    const { icon: iconType, name, path } = menu;
+    const { icon, name, path } = menu;
     const key = parentName ? `menu.${parentName}.${name}` : `menu.${name}`;
     return (
       <Link
@@ -125,7 +124,7 @@ const SiderMenu: React.FC<RouteComponentProps> = props => {
           handleClickLink();
         }}
       >
-        {iconType && <LegacyIcon type={iconType} />}
+        {icon}
         <span>{localeObj[key] || name}</span>
       </Link>
     );

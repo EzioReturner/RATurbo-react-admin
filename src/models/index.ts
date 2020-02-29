@@ -38,7 +38,7 @@ export interface PageHeaderProps {
  */
 export interface RouteChild {
   name?: string;
-  icon?: string;
+  icon?: React.ReactNode;
   path: string;
   authority?: string[] | string;
   component?: string[];

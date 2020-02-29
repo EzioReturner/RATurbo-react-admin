@@ -1,14 +1,19 @@
 import React from 'react';
-import { Icon as LegacyIcon } from '@ant-design/compatible';
 import { Row, Col, Card } from 'antd';
 import { BoxSvg, EmpolyeesSvg, OrdersSvg, SalesSvg } from '@components/SvgIcon';
 import FormatterLocale from '@components/FormatterLocale';
+import Icon, {
+  RedoOutlined,
+  FundOutlined,
+  ExclamationCircleOutlined,
+  ShakeOutlined
+} from '@ant-design/icons';
 interface InfoCardProps {
   icon: any;
   tips: string;
   title: string;
   num: string | number;
-  tipIcon: string;
+  tipIcon: React.ReactNode;
   index: string | number;
 }
 
@@ -19,28 +24,28 @@ const RowInfoCard: React.FC = () => {
       tips: '65% lower growth',
       title: 'Total Revenue',
       num: '$65,650',
-      tipIcon: 'exclamation-circle'
+      tipIcon: <ExclamationCircleOutlined className="mr-2" />
     },
     {
       icon: OrdersSvg,
       tips: 'Product-wise sales',
       title: 'Orders',
       num: '3455',
-      tipIcon: 'shake'
+      tipIcon: <ShakeOutlined className="mr-2" />
     },
     {
       icon: SalesSvg,
       tips: 'Weekly Sales',
       title: 'Sales',
       num: '5693',
-      tipIcon: 'fund'
+      tipIcon: <FundOutlined className="mr-2" />
     },
     {
       icon: EmpolyeesSvg,
       tips: 'Product-wise sales',
       title: 'Employees',
       num: '246',
-      tipIcon: 'redo'
+      tipIcon: <RedoOutlined className="mr-2" />
     }
   ];
   const InfoCard = (props: InfoCardProps) => {
@@ -48,7 +53,7 @@ const RowInfoCard: React.FC = () => {
     return (
       <Card className="info-card fat-card" bordered={false} hoverable>
         <div className="top">
-          <LegacyIcon component={icon as any} />
+          <Icon component={icon as any} />
           <div className="right-part">
             <p className="title">
               {<FormatterLocale id={`dashboard.rowInfo${index}.title`} defaultMessage={title} />}
@@ -57,7 +62,7 @@ const RowInfoCard: React.FC = () => {
           </div>
         </div>
         <p className="mb-0 mt-3 text-muted">
-          <LegacyIcon type={tipIcon} className="mr-2" />
+          {tipIcon}
           {<FormatterLocale id={`dashboard.rowInfo${index}.tips`} defaultMessage={tips} />}
         </p>
       </Card>
