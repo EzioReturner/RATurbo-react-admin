@@ -2,7 +2,7 @@ import React from 'react';
 import Breadcrumb from '@components/Breadcrumb';
 import classnames from 'classnames';
 import styles from './pageWrapper.module.scss';
-import { PageHeaderProps } from '@models/index';
+import { PageHeaderProps } from '@/models/layout';
 
 const PageHeader: React.FC<PageHeaderProps> = props => {
   const { hideBreadcrumb, title, subTitle, content, extraContent, logo, withoutHeaderBody } = props;

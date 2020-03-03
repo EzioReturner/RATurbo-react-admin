@@ -8,7 +8,7 @@ import styles from './siderMenu.module.scss';
 import UserStore from '@store/userStore';
 import LayoutStore from '@store/layoutStore';
 import LocaleStore from '@store/localeStore';
-import { RouteChild } from '@models/index';
+import { RouteChild } from '@/models/layout';
 import SiteDetail from './SiteDetail';
 import { inlineHeader } from '@config/setting';
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';

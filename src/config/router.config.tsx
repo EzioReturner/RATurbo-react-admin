@@ -1,4 +1,4 @@
-import { RouteConfig, RouteChild } from '@models/index';
+import { RouteConfig, RouteChild } from '@/models/layout';
 import React from 'react';
 import {
   PieChartOutlined,

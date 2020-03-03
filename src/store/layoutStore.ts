@@ -2,7 +2,7 @@ import { observable, configure, action } from 'mobx';
 import isMobile from '@utils/isMobile';
 import { debounce } from '@utils/tools';
 import NProgress from 'nprogress';
-import { Breadcrumb, RouteConfig, RouteChild } from '@models/index';
+import { Breadcrumb, RouteConfig, RouteChild } from '@/models/layout';
 import { useMenu, useHeader } from '@config/setting';
 import { constantRouteConfig, asyncRouteConfig } from '@config/router.config';
 

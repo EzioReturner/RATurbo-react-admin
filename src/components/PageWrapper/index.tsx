@@ -1,7 +1,7 @@
 import React from 'react';
 import PageHeader from './PageHeader';
 import styles from './pageWrapper.module.scss';
-import { PageHeaderProps } from '@models/index';
+import { PageHeaderProps } from '@/models/layout';
 
 interface PageWrapperProps extends PageHeaderProps {
   hideHeader?: React.ReactNode;

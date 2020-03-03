@@ -9,7 +9,7 @@ import Footer from '@components/Footer';
 import { observer, inject } from 'mobx-react';
 import styles from './mainLayout.module.scss';
 import LayoutStore from '@store/layoutStore';
-import { RouteConfig } from '@models/index';
+import { RouteConfig } from '@/models/layout';
 import { hot } from 'react-hot-loader';
 import { inlineHeader } from '@config/setting';
 const Exception403 = React.lazy(() => import(/* webpackChunkName: "403" */ '@views/Exception/403'));

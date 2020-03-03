@@ -10,7 +10,7 @@ import { inject, observer } from 'mobx-react';
 import Error404 from '@views/Exception/404';
 import AsyncComponent from '../AsyncComponent';
 import LayoutStore from '@store/layoutStore';
-import { RouteConfig } from '@models/index';
+import { RouteConfig } from '@/models/layout';
 
 /**
  * 路由生成组件
