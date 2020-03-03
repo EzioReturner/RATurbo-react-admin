@@ -2,7 +2,7 @@
   overflow: hidden;
   position: absolute;
   background-color: gray;
-  background: url('../assets/image/loginBackground.jpg');
+  // background: url('../assets/image/loginBackground.jpg');
   background-size: cover;
   top: 0;
   right: 0;
@@ -32,16 +32,6 @@
     }
     span {
       color: $color-primary;
-    }
-  }
-  .userContext {
-    position: absolute;
-    left: 70%;
-    top: 55%;
-    transform: translate(-50%, -50%);
-    @media screen and (max-width: 1400px) {
-      left: 50%;
-      top: 50%;
     }
   }
 }

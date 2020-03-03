@@ -93,7 +93,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
   );
 
   return (
-    <Authorized unidentified={<Redirect to="/user/login" />}>
+    <Authorized unidentified={<Redirect to="/user/identifyUser" />}>
       <div
         className={classNames(
           styles.container,
@@ -108,4 +108,6 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
   );
 };
 
-export default inject('layoutStore')(withRouter(observer(MainLayout)));
+const Main =
+  process.env.NODE_ENV === 'development' ? hot(module)(observer(MainLayout)) : observer(MainLayout);
+export default inject('layoutStore')(withRouter(Main));

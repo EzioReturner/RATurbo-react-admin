@@ -25,6 +25,11 @@ export const constantRouteConfig: { app: RouteConfig; user: RouteConfig } = {
         name: 'Login',
         path: '/user/login',
         component: ['/views/User/Login']
+      },
+      {
+        name: 'identifyUser',
+        path: '/user/identifyUser',
+        component: ['/components/Authorized/IdentifyUser', 'fadeRA']
       }
     ]
   }

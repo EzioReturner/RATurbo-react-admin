@@ -68,6 +68,7 @@ const RenderRoutes: React.FC = props => {
             // authority,
             // name
           } = route;
+
           if (redirect) {
             return (
               <Redirect key={key || i} from={path} to={redirect} exact={exact} strict={strict} />

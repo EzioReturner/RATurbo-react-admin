@@ -1,44 +1,46 @@
 import { getUserInfo, postLogin } from '@api/user';
-import { action, autorun, configure, observable } from 'mobx';
+import { action, configure, observable, computed } from 'mobx';
 
 configure({ enforceActions: 'observed' });
 class UserStore {
   @observable userInfo: any = {};
   @observable authority: string[] = [];
 
-  constructor() {
-    autorun(() => {
-      const au: any = this.getAuthority();
-      this.setAuthority(au);
-    });
-  }
+  constructor() {}
 
   // 获取用户权限
-  getAuthority(str?: any): any {
-    const authorityString = typeof str === 'undefined' ? localStorage.getItem('ra-authority') : str;
-    let authority;
-    try {
-      authority = JSON.parse(authorityString);
-    } catch (e) {
-      authority = authorityString;
-    }
-    if (typeof authority === 'string') {
-      return [authority];
-    }
+  getAuthority = (str?: undefined | string): any => {
+    const authorityString: string | null =
+      typeof str === 'undefined' ? localStorage.getItem('ra-authority') : str;
+    let authority: string[];
+
+    authority = authorityString ? JSON.parse(authorityString) : ['unIdentify'];
+
     return authority;
+  };
+
+  // 获取用户权限
+  @computed
+  get identifyPass(): any {
+    if (!this.authority || !this.authority.length) {
+      return 'identifying';
+    }
+    return this.authority[0] !== 'unIdentify';
   }
 
   // 设置用户权限
-  @action setAuthority(authority: any): void {
-    const proAuthority = typeof authority === 'string' ? [authority] : authority;
+  @action
+  setAuthority = (authority: string | string[]): void => {
+    const proAuthority: string[] = typeof authority === 'string' ? [authority] : authority;
     localStorage.setItem('ra-authority', JSON.stringify(proAuthority));
     this.authority = proAuthority;
-  }
+  };
 
   // 用户登录事件
-  @action handleUserLogin(name: string, password: number): Promise<boolean> {
+  @action
+  handleUserLogin(name: string, password: number): Promise<boolean> {
     return postLogin(name, password).then((res: any) => {
-      const { message, userInfo } = res.data;
+      const { message, userInfo } = res;
       if (message === 'ok') {
         const data = userInfo.data[0];
         this.setUserInfo(data);
@@ -51,13 +53,15 @@ class UserStore {
   }
 
   // 设置用户信息
-  @action setUserInfo(userInfo: object): void {
+  @action
+  setUserInfo(userInfo: object): void {
     this.userInfo = userInfo;
     localStorage.setItem('ra-user', JSON.stringify(userInfo));
   }
 
   // 用户登出，重置信息
-  @action userLogout = (): void => {
+  @action
+  userLogout = (): void => {
     this.userInfo = {};
     this.authority = [];
     localStorage.removeItem('ra-authority');
@@ -65,7 +69,8 @@ class UserStore {
   };
 
   // 重新拉取用户信息
-  @action reloadUserInfo = async (): Promise<any> => {
+  @action
+  reloadUserInfo = async (): Promise<any> => {
     const ls: any = localStorage.getItem('ra-user');
     const au: any = this.getAuthority();
     let ui: object = {};
@@ -73,10 +78,13 @@ class UserStore {
       ui = JSON.parse(ls);
     } else {
       const { data } = await getUserInfo();
-      ui = data.data[0];
+      ui = data[0];
     }
     this.setUserInfo(ui);
-    this.setAuthority(au);
+
+    setTimeout(() => {
+      this.setAuthority(au || ['unIdentify']);
+    }, 3000);
   };
 }
 

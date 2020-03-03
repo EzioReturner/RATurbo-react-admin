@@ -1,25 +1,24 @@
 import React, { useEffect } from 'react';
 import { Menu, Dropdown, Modal } from 'antd';
 import { inject, observer } from 'mobx-react';
-import { withRouter, RouteComponentProps } from 'react-router-dom';
 import styles from './header.module.scss';
 import UserStore from '@store/userStore';
 import { UserOutlined, SettingOutlined, LogoutOutlined } from '@ant-design/icons';
 const confirm = Modal.confirm;
-
-interface InjectedProps extends RouteComponentProps<any> {
+import { useHistory } from 'react-router-dom';
+interface InjectedProps {
   userStore: UserStore;
 }
 
-const UserInfo: React.FC<RouteComponentProps> = props => {
+const UserInfo: React.FC = props => {
+  const history = useHistory();
   function injected() {
     return props as InjectedProps;
   }
+
   const {
     userStore: { userInfo, reloadUserInfo, userLogout }
   } = injected();
-
-  const { history } = props;
 
   useEffect(() => {
     if (JSON.stringify(userInfo) === '{}') {
@@ -79,4 +78,4 @@ const UserInfo: React.FC<RouteComponentProps> = props => {
   );
 };
 
-export default inject('userStore')(withRouter(observer(UserInfo)));
+export default inject('userStore')(observer(UserInfo));
