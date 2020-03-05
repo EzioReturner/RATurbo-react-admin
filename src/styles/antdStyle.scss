@@ -141,6 +141,11 @@
 
     & > .ant-menu-item {
       padding-left: 35px !important;
+
+      & > a {
+        display: flex;
+        align-items: center;
+      }
     }
 
     & > .ant-menu-submenu {
