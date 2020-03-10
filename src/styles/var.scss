@@ -36,3 +36,20 @@ $size: 'mini' 'small' 'normal' 'large';
     }
   }
 }
+
+.text-overflow {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.close-Icon {
+  color: $color-gray-lighter;
+  font-size: 12px;
+  transition: color 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    color: $color-gray;
+  }
+}

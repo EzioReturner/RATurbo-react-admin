@@ -35,6 +35,11 @@
       font-size: 18px;
     }
   }
+
+  .subTitleName,
+  .titleName {
+    @extend .text-overflow;
+  }
 }
 
 .siteDetail {

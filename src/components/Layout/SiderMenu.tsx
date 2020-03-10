@@ -68,10 +68,13 @@ const SiderMenu: React.FC<RouteComponentProps> = props => {
   // 获取菜单标题
   function getMenuTitle(name: string = '', parentName?: string, icon?: React.ReactNode) {
     const key = parentName ? `menu.${parentName}.${name}` : `menu.${name}`;
+    const localName = localeObj[key] || name;
     return (
       <span>
         {icon}
-        <span>{localeObj[key] || name}</span>
+        <span className={styles.subTitleName} title={localName}>
+          {localName}
+        </span>
       </span>
     );
   }
@@ -116,6 +119,7 @@ const SiderMenu: React.FC<RouteComponentProps> = props => {
   function getMenuItem(menu: RouteChild, parentName?: string) {
     const { icon, name, path } = menu;
     const key = parentName ? `menu.${parentName}.${name}` : `menu.${name}`;
+    const localName = localeObj[key] || name;
     return (
       <Link
         to={path}
@@ -125,7 +129,9 @@ const SiderMenu: React.FC<RouteComponentProps> = props => {
         }}
       >
         {icon}
-        <span>{localeObj[key] || name}</span>
+        <span className={styles.titleName} title={localName}>
+          {localName}
+        </span>
       </Link>
     );
   }
