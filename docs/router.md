@@ -13,10 +13,12 @@ RA通过框架中的组件实现了以下几个模块：
 
 RA中的路由，通过 `router.config.ts` 统一进行管理。我们提供了以下几个参数，来辅助生成菜单。其具体实现在 `components/RenderRoutes`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/components/RenderRoutes/index.jsx) 。
 
-- `name` `icon` 分别对应生成菜单项的文本和图标。图标参数对应着 [ant.design](https://ant.design/components/icon-cn/) 本身的icon type。
+- `name` 对应生成菜单项的文本
+- `icon` 对应菜单的图标，支持iconfont，请以string类型传入，并在setting中配置您的iconfont地址，或传入svg。
 - `hideMenu` 可以在列表中不显示这个菜单项，包括底下的子路由。
 - `authority` 用于配置路由的权限。如果配置了该项那么权限组件 [Authority](/authority) 会对当前用户权限进行验证，并决定是否展示。
 - `loading` 用于异步加载过载时间过长时开启loading遮罩。
+
 
 > 余下配置项请参考 `src/model/index.ts` 文件
 
