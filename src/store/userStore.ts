@@ -6,7 +6,9 @@ class UserStore {
   @observable userInfo: any = {};
   @observable authority: string[] = [];
 
-  constructor() {}
+  constructor() {
+    this.reloadUserInfo();
+  }
 
   // 获取用户权限
   getAuthority = (str?: undefined | string): any => {
