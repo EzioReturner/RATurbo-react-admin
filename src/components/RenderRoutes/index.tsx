@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   HashRouter as Router,
   Route,
@@ -34,6 +34,18 @@ interface RouteMiddleRouteProps extends RouteMiddleProps, RouteComponentProps {}
 const RenderRoutes: React.FC = props => {
   const injected = () => {
     return props as InjectedProps;
+  };
+
+  useEffect(() => {
+    handleHashChange();
+    window.onhashchange = () => {
+      handleHashChange();
+    };
+  }, []);
+
+  const handleHashChange = () => {
+    const [, url] = window.location.hash.split('#/');
+    url !== 'user/identifyUser' && localStorage.setItem('LUCKYFIND_HASH', url);
   };
 
   const RouteMiddle = (rmProps: RouteMiddleProps) => {
