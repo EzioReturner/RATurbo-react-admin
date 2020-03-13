@@ -93,7 +93,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
   );
 
   return (
-    <Authorized unidentified={<Redirect to="/user/identifyUser" />}>
+    <Authorized unidentified={<Redirect to="/user/login" />}>
       <div
         className={classNames(
           styles.container,
