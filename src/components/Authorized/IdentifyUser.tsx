@@ -24,8 +24,7 @@ const IdentifyUser: React.FC = props => {
       return;
     }
     if (identifyPass) {
-      const hashUrl = localStorage.getItem('RA_HASH');
-      history.push('/' + (hashUrl || ''));
+      history.push('/');
     } else {
       history.push('/user/login');
     }
