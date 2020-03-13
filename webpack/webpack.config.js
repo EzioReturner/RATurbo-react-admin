@@ -175,13 +175,6 @@ module.exports = function(webpackEnv) {
             {
               test: /\.(svg)(\?.*)?$/,
               use: [
-                /* config.module.rule('svg').use('file-loader') */
-                // {
-                //   loader: 'file-loader',
-                //   options: {
-                //     name: 'static/img/[name].[hash:8].[ext]'
-                //   }
-                // }
                 {
                   loader: 'babel-loader'
                 },

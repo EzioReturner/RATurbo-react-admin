@@ -6,7 +6,9 @@ class UserStore {
   @observable userInfo: any = {};
   @observable authority: string[] = [];
 
-  constructor() {}
+  constructor() {
+    this.reloadUserInfo();
+  }
 
   // 获取用户权限
   getAuthority = (str?: undefined | string): any => {
@@ -22,6 +24,8 @@ class UserStore {
   // 获取用户权限
   @computed
   get identifyPass(): any {
+    console.log(this.authority);
+
     if (!this.authority || !this.authority.length) {
       return 'identifying';
     }
