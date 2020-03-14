@@ -51,7 +51,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(svg)(\?.*)?$/,
+        test: /\.(icon\.svg)(\?.*)?$/,
         use: [
           {
             loader: 'babel-loader'
@@ -61,6 +61,17 @@ module.exports = {
             options: {
               babel: false,
               icon: true
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(svg)(\?.*)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'static/img/[name].[hash:8].[ext]'
             }
           }
         ]

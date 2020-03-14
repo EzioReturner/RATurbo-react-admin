@@ -160,8 +160,13 @@ module.exports = function() {
         chunkFilename: 'static/css/[name].[contenthash:8].chunk.css'
       }),
 
-      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
-    ]
+      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+
+      IsAnalyze &&
+        new BundleAnalyzerPlugin({
+          analyzerPort: 8888
+        })
+    ].filter(Boolean)
   });
 
   useDll &&
