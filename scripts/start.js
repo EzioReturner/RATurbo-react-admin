@@ -10,21 +10,17 @@ process.on('unhandledRejection', err => {
 
 const chalk = require('chalk');
 const WebpackDevServer = require('webpack-dev-server');
-const webpackConfigFactory = require('../webpack/webpack.config');
 const createDevServerConfig = require('../webpack/webpackDevServer.config');
 const createCompiler = require('./devUtils/createCompiler');
 const prepareUrls = require('./devUtils/prepareUrls');
 const open = require('open');
-const testConfig = require('../webpack/config.dev');
+const testConfig = require('../webpack/webpack.dev');
 
 const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 9527;
 const HOST = process.env.HOST || '0.0.0.0';
 
 (function startClient() {
-  const config = webpackConfigFactory('development');
   const devServerConfig = createDevServerConfig();
-
-  console.log(testConfig);
 
   const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
   const urls = prepareUrls(protocol, HOST, DEFAULT_PORT);

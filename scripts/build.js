@@ -10,13 +10,13 @@ const chalk = require('chalk');
 //webpack
 const webpack = require('webpack');
 //webpack production setting
-const prodConfigFactory = require('../webpack/config.prod');
+const prodConfigFactory = require('../webpack/webpack.prod');
 // fs
 const fs = require('fs');
 
 const fsExtra = require('fs-extra');
 // dll webpack config
-const dllConfig = require('../webpack/webpack.dll');
+const dllConfig = require('../webpack/dll.config');
 //build start loading
 const spinner = ora({ color: 'green', text: 'building for production...' });
 const { original } = JSON.parse(process.env.npm_config_argv);
@@ -41,6 +41,7 @@ rm(paths.appBuildDist, function(err) {
     buildDll()
       .then(res => {
         copyPublicFileToFolder();
+        console.log(chalk.cyan('  [info]: start to build application...\n'));
         spinner.start();
         const config = prodConfigFactory();
         const compiler = webpack(config);
@@ -56,7 +57,7 @@ rm(paths.appBuildDist, function(err) {
           );
           checkRunError(stats);
 
-          console.log(chalk.cyan('  Build complete.\n'));
+          console.log(chalk.cyan('  [info]: Build complete.\n'));
         });
       })
       .catch(err => {
@@ -68,12 +69,12 @@ rm(paths.appBuildDist, function(err) {
 function buildDll() {
   return new Promise((resolve, reject) => {
     const existDll = useDll ? checkDllFiles() : false;
-    console.log(chalk.cyan('  check dll-lib files.\n'));
+    console.log(chalk.cyan('  [info]: checking dll-lib files...\n'));
     if (!useDll || existDll) {
-      console.log(chalk.cyan('  exist dll-lib files.\n'));
+      console.log(chalk.cyan('  [result]: exist dll-lib files.\n'));
       resolve();
     } else {
-      console.log(chalk.cyan('  start to build dll-lib.\n'));
+      console.log(chalk.cyan('  [info]: start to build dll-lib...\n'));
       const _spinner = ora({ color: 'green', text: 'building dll-lib...' });
 
       _spinner.start();
@@ -83,7 +84,7 @@ function buildDll() {
         err && reject(err);
         checkRunError(stats);
         _spinner.stop();
-        console.log(chalk.cyan('  build dll-vendor finished \n'));
+        console.log(chalk.cyan('  [result]: dll-lib build finished. \n'));
         resolve();
       });
     }
@@ -114,7 +115,7 @@ function copyPublicFileToFolder() {
 function checkRunError(stats) {
   if (stats.hasErrors()) {
     process.stdout.write(stats.toString() + '\n');
-    console.log(chalk.red('  Build failed with errors.\n'));
+    console.log(chalk.red('  [result]: build failed with errors.\n'));
     process.exit(1);
   }
 }
