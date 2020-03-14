@@ -166,8 +166,13 @@
 
     .ant-menu-item .anticon,
     .ant-menu-submenu-title .anticon {
-      margin-right: 18px;
-      font-size: 16px;
+      margin-right: $spacing-normal;
+      font-size: 20px;
+    }
+
+    .ant-menu-submenu > .ant-menu-submenu-title > span {
+      display: flex;
+      align-items: center;
     }
 
     .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {

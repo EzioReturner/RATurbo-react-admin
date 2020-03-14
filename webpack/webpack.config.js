@@ -173,7 +173,7 @@ module.exports = function(webpackEnv) {
               ]
             },
             {
-              test: /\.(svg)(\?.*)?$/,
+              test: /\.(icon\.svg)(\?.*)?$/,
               use: [
                 {
                   loader: 'babel-loader'
@@ -183,6 +183,17 @@ module.exports = function(webpackEnv) {
                   options: {
                     babel: false,
                     icon: true
+                  }
+                }
+              ]
+            },
+            {
+              test: /\.(svg)(\?.*)?$/,
+              use: [
+                {
+                  loader: 'file-loader',
+                  options: {
+                    name: 'static/img/[name].[hash:8].[ext]'
                   }
                 }
               ]

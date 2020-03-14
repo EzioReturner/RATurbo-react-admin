@@ -12,6 +12,9 @@ import { RouteChild } from '@/models/layout';
 import SiteDetail from './SiteDetail';
 import { inlineHeader } from '@config/setting';
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
+import Icon from '@ant-design/icons';
+import Iconfont from '@components/Iconfont';
+
 interface InjectedProps extends RouteComponentProps {
   userStore: UserStore;
   layoutStore: LayoutStore;
@@ -71,7 +74,13 @@ const SiderMenu: React.FC<RouteComponentProps> = props => {
     const localName = localeObj[key] || name;
     return (
       <span>
-        {icon}
+        {typeof icon === 'string' ? (
+          <Iconfont type={icon} />
+        ) : (
+          icon && (
+            <Icon component={icon as React.FunctionComponent<React.SVGProps<SVGSVGElement>>} />
+          )
+        )}
         <span className={styles.subTitleName} title={localName}>
           {localName}
         </span>
@@ -128,7 +137,13 @@ const SiderMenu: React.FC<RouteComponentProps> = props => {
           handleClickLink();
         }}
       >
-        {icon}
+        {typeof icon === 'string' ? (
+          <Iconfont type={icon} />
+        ) : (
+          icon && (
+            <Icon component={icon as React.FunctionComponent<React.SVGProps<SVGSVGElement>>} />
+          )
+        )}
         <span className={styles.titleName} title={localName}>
           {localName}
         </span>
