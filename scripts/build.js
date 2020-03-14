@@ -10,8 +10,7 @@ const chalk = require('chalk');
 //webpack
 const webpack = require('webpack');
 //webpack production setting
-const configFactory = require('../webpack/webpack.config');
-const prodConfig = require('../webpack/config.prod');
+const prodConfigFactory = require('../webpack/config.prod');
 // fs
 const fs = require('fs');
 
@@ -43,7 +42,7 @@ rm(paths.appBuildDist, function(err) {
       .then(res => {
         copyPublicFileToFolder();
         spinner.start();
-        const config = prodConfig('production');
+        const config = prodConfigFactory();
         const compiler = webpack(config);
         compiler.run((err, stats) => {
           spinner.stop();
@@ -69,10 +68,12 @@ rm(paths.appBuildDist, function(err) {
 function buildDll() {
   return new Promise((resolve, reject) => {
     const existDll = useDll ? checkDllFiles() : false;
-
+    console.log(chalk.cyan('  check dll-lib files.\n'));
     if (!useDll || existDll) {
+      console.log(chalk.cyan('  exist dll-lib files.\n'));
       resolve();
     } else {
+      console.log(chalk.cyan('  start to build dll-lib.\n'));
       const _spinner = ora({ color: 'green', text: 'building dll-lib...' });
 
       _spinner.start();
@@ -82,7 +83,7 @@ function buildDll() {
         err && reject(err);
         checkRunError(stats);
         _spinner.stop();
-        console.log(chalk.cyan('Build dll-vendor done \n'));
+        console.log(chalk.cyan('  build dll-vendor finished \n'));
         resolve();
       });
     }
