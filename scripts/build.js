@@ -11,6 +11,7 @@ const chalk = require('chalk');
 const webpack = require('webpack');
 //webpack production setting
 const configFactory = require('../webpack/webpack.config');
+const prodConfig = require('../webpack/config.prod');
 // fs
 const fs = require('fs');
 
@@ -42,7 +43,7 @@ rm(paths.appBuildDist, function(err) {
       .then(res => {
         copyPublicFileToFolder();
         spinner.start();
-        const config = configFactory('production');
+        const config = prodConfig('production');
         const compiler = webpack(config);
         compiler.run((err, stats) => {
           spinner.stop();
