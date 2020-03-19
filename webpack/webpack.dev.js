@@ -55,15 +55,10 @@ module.exports = Object.assign(baseConfig, {
     ...plugins,
     new webpack.HotModuleReplacementPlugin(),
 
-    new HtmlWebpackPlugin(
-      Object.assign(
-        {},
-        {
-          inject: true,
-          template: paths.appHtml
-        }
-      )
-    ),
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: paths.appHtml
+    }),
 
     new InterpolateHtmlPlugin({
       NODE_ENV: 'development',
