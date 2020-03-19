@@ -69,12 +69,12 @@ rm(paths.appBuildDist, function(err) {
 function buildDll() {
   return new Promise((resolve, reject) => {
     const existDll = useDll ? checkDllFiles() : false;
-    console.log(chalk.cyan('  [info]: checking dll-lib files...\n'));
+    useDll && console.log(chalk.cyan('  [info]: checking dll-lib files...\n'));
     if (!useDll || existDll) {
-      console.log(chalk.cyan('  [result]: exist dll-lib files.\n'));
+      existDll && console.log(chalk.cyan('  [result]: exist dll-lib files.\n'));
       resolve();
     } else {
-      console.log(chalk.cyan('  [info]: start to build dll-lib...\n'));
+      console.log(chalk.cyan('  [info]: dll-lib not found, start to build dll-lib...\n'));
       const _spinner = ora({ color: 'green', text: 'building dll-lib...' });
 
       _spinner.start();
