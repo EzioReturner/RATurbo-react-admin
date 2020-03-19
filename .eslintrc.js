@@ -11,6 +11,7 @@ module.exports = {
       version: 'detect'
     }
   },
+  plugins: ['react-hooks'],
   rules: {
     'no-console': 0,
     'prettier/prettier': [
@@ -19,7 +20,9 @@ module.exports = {
         trailingComma: 'none',
         singleQuote: true
       }
-    ]
+    ],
+    'react-hooks/rules-of-hooks': 'warn',
+    'react-hooks/exhaustive-deps': 'warn'
   },
   parserOptions: {
     ecmaVersion: 2019,
