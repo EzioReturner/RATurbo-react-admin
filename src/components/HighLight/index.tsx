@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment, memo } from 'react';
+import React, { useState, useEffect, Fragment, memo, useCallback } from 'react';
 
 interface HighLightProps {
   val: string; // 原始字段
@@ -16,24 +16,27 @@ const HighLight: React.FC<HighLightProps> = props => {
   const [unmatchVal, setUnmatchVal] = useState<string[]>([]);
   const { val, tarVal } = props;
 
-  const checkText = (_val: string, cacheUnmatch: string[]) => {
-    const index = _val.indexOf(tarVal);
+  const checkText = useCallback(
+    (_val: string, cacheUnmatch: string[]) => {
+      const index = _val.indexOf(tarVal);
 
-    if (index < 0 || !tarVal) {
-      setUnmatchVal([...cacheUnmatch, _val]);
-      return;
-    }
-    const queryScope = index + tarVal.length;
-    const head = _val.slice(0, index);
-    const surplus = _val.substr(queryScope);
-    cacheUnmatch.push(head);
-    checkText(surplus, cacheUnmatch);
-  };
+      if (index < 0 || !tarVal) {
+        setUnmatchVal([...cacheUnmatch, _val]);
+        return;
+      }
+      const queryScope = index + tarVal.length;
+      const head = _val.slice(0, index);
+      const surplus = _val.substr(queryScope);
+      cacheUnmatch.push(head);
+      checkText(surplus, cacheUnmatch);
+    },
+    [tarVal]
+  );
 
   useEffect(() => {
     let cacheUnmatch: string[] = [];
     checkText(val, cacheUnmatch);
-  }, [tarVal, val]);
+  }, [tarVal, val, checkText]);
 
   return (
     <>

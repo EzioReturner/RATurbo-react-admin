@@ -26,7 +26,6 @@ const Authorized: React.FC<AuthorizedProps> = props => {
   const currentAuthority: string | string[] = authority;
 
   const dom = CheckPermission(routeAuthority, currentAuthority, _children, unidentified);
-  console.log(identifyPass);
 
   return <>{identifyPass === 'identifying' ? <Loading spinning text="identifying..." /> : dom}</>;
 };

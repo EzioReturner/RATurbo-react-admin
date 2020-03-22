@@ -17,7 +17,7 @@ const IdentifyUser: React.FC = props => {
   useEffect(() => {
     const au = getAuthority();
     setAuthority(au);
-  }, []);
+  }, [getAuthority, setAuthority]);
 
   useEffect(() => {
     if (identifyPass === 'identifying') {
@@ -28,7 +28,7 @@ const IdentifyUser: React.FC = props => {
     } else {
       history.push('/user/login');
     }
-  }, [identifyPass]);
+  }, [history, identifyPass]);
 
   return (
     <section>
