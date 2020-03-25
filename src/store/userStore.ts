@@ -89,5 +89,5 @@ class UserStore {
     }, 3000);
   };
 }
-
+export const userStore = new UserStore();
 export default UserStore;

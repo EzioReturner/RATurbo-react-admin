@@ -1,12 +1,9 @@
-import LayoutStore from './layoutStore';
+import { layoutStore } from './layoutStore';
 import ProgramStore from './programStore';
-import UserStore from './userStore';
-import LocaleStore from './localeStore';
+import { userStore } from './userStore';
+import { localeStore } from './localeStore';
 
-const layoutStore = new LayoutStore();
 const programStore = new ProgramStore();
-const userStore = new UserStore();
-const localeStore = new LocaleStore();
 
 export const Store = {
   programStore,

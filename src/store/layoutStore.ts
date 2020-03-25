@@ -160,5 +160,5 @@ class LayoutStore {
     this.showMenu = showMenu;
   }
 }
-
+export const layoutStore = new LayoutStore();
 export default LayoutStore;

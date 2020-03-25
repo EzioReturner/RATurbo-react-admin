@@ -59,9 +59,9 @@ cd RATurbo-react-admin
 ```bash
 ├── build                   // 打包的文件目录
 ├── public                  // 静态资源目录
-├── node_modules            // 依赖
+├── node_modules            // 黑洞
 ├── scripts                 // 自动化脚本
-├── src                     // 源码目录
+├── src                     // 项目目录
 │    ├── api                // 接口目录
 │    ├── assets             // 静态资源路径
 │    ├── components         // 组件目录
@@ -72,13 +72,12 @@ cd RATurbo-react-admin
 │    ├── style              // 全局样式目录
 │    ├── utlis              // 工具函数目录
 │    ├── view               // 页面组件目录
-│    └── index.js           // 入口文件
-├── .babelrc                // babelrc 配置
-├── .env                    // 环境变量
+│    └── index.tsx          // 入口文件
+├── webpack                 // webpack 配置
+├── .babelrc.js             // babelrc 配置
 ├── .eslintrc.js            // eslint 配置
 ├── .gitignore              // git 忽略项
-├── .jsbeautifyrc           // jsbeautify 配置
-├── jsconfig.json           // js 配置
+├── .prettierignore         // prettier 忽略项
 ├── package.json            // npm 项目及依赖说明
 ├── README.md               // 项目说明
 ├── tsconfig.json           // ts 配置
@@ -90,15 +89,15 @@ cd RATurbo-react-admin
 
 1.进入项目目录
 ```bash
-yarn install Or npm install
+yarn install
 ```
 
 2.启动本地服务器
 ```bash
-yarn start Or npm run start
+yarn start
 ```
 
-> 当看到如下界面，就表示项目已经启动拉。
+> 当看到如下界面，就表示项目已经启动。 tips: 3.0之后的版本已不再实用webpack-dashboard启动项目
 
 ![terminal](/media/terminal.png)
 
