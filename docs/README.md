@@ -41,13 +41,13 @@ cd my-ra
 2. yarn 或者 npm安装相关包文件
 
 ```bash
-yarn install  Or  npm install
+yarn install
 ```
 
 3. 启动项目
 
 ```bash
-yarn start  Or  npm run start
+yarn start
 ```
 
 4. 启动完成后打开浏览器访问 [http://localhost:9527](http://localhost:9527)，如果需要更改启动端口，可在 .env 文件中配置。
@@ -55,7 +55,7 @@ yarn start  Or  npm run start
 5. 打包项目
 
 ```bash
-yarn build or npm run build
+yarn build
 ```
 
 ## 支持环境
