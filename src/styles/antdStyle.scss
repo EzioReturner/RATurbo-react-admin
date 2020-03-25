@@ -137,6 +137,9 @@
   }
 
   .myMenu {
+    margin-top: 23px;
+    flex: 1;
+    overflow: auto;
     border: 0;
 
     & > .ant-menu-item {

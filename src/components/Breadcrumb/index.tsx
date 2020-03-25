@@ -19,7 +19,7 @@ const BreadCrumb: React.FC<RouteComponentProps> = props => {
   };
 
   const {
-    layoutStore: { breadcrumbList, delBreadcrumb },
+    layoutStore: { breadcrumbList, delBreadcrumb, addBreadcrumb },
     localeStore: { localeObj }
   } = injected();
 
@@ -29,9 +29,8 @@ const BreadCrumb: React.FC<RouteComponentProps> = props => {
   } = props;
 
   useEffect(() => {
-    const { layoutStore } = injected();
-    layoutStore.addBreadcrumb(pathname);
-  }, []);
+    addBreadcrumb(pathname);
+  }, [pathname, addBreadcrumb]);
 
   function handleDelBreadcrumb(e: React.MouseEvent<HTMLElement>, name: string) {
     e.stopPropagation();

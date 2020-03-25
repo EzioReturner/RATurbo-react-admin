@@ -21,7 +21,7 @@ createType: ···exampleView··· created
 ...
 ```
 
-之后我们前往 `src/views` 目录下，一个基础的页面 `jsx、scss` 文件已生成，样式默认使用 `CSS Module` ，可参考 [样式与主题](/cssStyle)
+之后我们前往 `src/views` 目录下，一个基础的页面 `tsx、scss` 文件已生成，样式默认使用 `CSS Module` ，可参考 [样式与主题](/cssStyle)
 
 ![addView](/media/addview.png)。
 
@@ -31,15 +31,32 @@ createType: ···exampleView··· created
 import React, { Component } from 'react'; 
 import style from './index.module.scss'; 
 
-class ExampleView extends Component { 
-  render() {
-    return <PageWrapper title={<FormatterLocale defaultMessage="examplePage" />}> 
-      examplePage is at work!
-    </PageWrapper>; 
-  } 
-} 
+class ExampleView extends Component {
+	render() {
+		return <div>ExampleView now is work!</div>;
+	}
+}
 
 export default ExampleView;
+```
+
+> 在指令中添加额外配置项 `-fc`  将生成一个function component
+
+```bash
+yarn raCreate -v exampleFC -fc
+```
+
+```javascript
+import React from 'react';
+import style from './index.module.scss';
+
+interface ExampleFCProps {}
+
+const ExampleFC: React.FC<ExampleFCProps> = props => {
+  return <div>ExampleFC now is work!</div>;
+};
+
+export default ExampleFC;
 ```
 
 > 在指令中添加额外配置项 `-page` 可以生成附带面包屑以及可定制的header的基础page页面，我们在控制台输入如下代码：
@@ -58,13 +75,13 @@ import style from './index.module.scss';
 
 class examplePage extends Component { 
   render() {
-    return <PageWrapper title={<FormatterLocale defaultMessage="examplePage" />}> 
-      examplePage is at work!
+    return <PageWrapper title={<FormatterLocale id="yourId" defaultMessage="examplePage" />}> 
+      ExamplePage is at work!
     </PageWrapper>; 
   } 
 } 
 
-export default examplePage;
+export default ExamplePage;
 ```
 
 >在路由配置项中添加相应的路由信息，配置过程可参考 [路由与菜单](/router)，之后输入对应的url，我们可以看到如下页面，一个附带header头部，body，以及面包屑的基础页面已经生成。

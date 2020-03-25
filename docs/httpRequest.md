@@ -1,6 +1,31 @@
 # Http 请求
 
-RA使用axios提供http请求服务，RA在其基础之上进行了封装，文件位于 `src/utlis/io.js`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/utlis/io.js)。
+RA使用axios提供http请求服务，RA在其基础之上进行了封装，文件位于 `src/utlis/io.ts`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/utils/io.ts)。
+
+## 入参规范
+我们约定在request中传递 `params` 对象将解析成请求params，传递 `data` 将解析成post请求的body内容。
+
+例如:
+```javascript
+export default function getWeather() {
+  return io.get('https://restapi.amap.com/v3/weather/weatherInfo', {
+    params: {
+      key: 'cc24ccab0a88c3ee17eb8dee0e07ba61',
+      city: 350200,
+      extensions: 'all'
+    }
+  });
+}
+export function postLogin(userName, password) {
+  return io.post('/post/login', {
+    data: {
+      userName,
+      password
+    }
+  });
+}
+```
+
 
 ## 自定义Header 
 通过调用 `setHeader` 方法可手动修改Header。

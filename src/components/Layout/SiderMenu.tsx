@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { Menu } from 'antd';
-import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
+import { Link, withRouter, RouteComponentProps, useLocation } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
 import intersection from 'lodash/intersection';
 import classNames from 'classnames';
@@ -23,6 +23,8 @@ interface InjectedProps extends RouteComponentProps {
 }
 
 const { SubMenu } = Menu;
+let isInitMenuOpen = false;
+
 const SiderMenu: React.FC<RouteComponentProps> = props => {
   function injected() {
     return props as InjectedProps;
@@ -33,6 +35,8 @@ const SiderMenu: React.FC<RouteComponentProps> = props => {
     location: { pathname }
   } = props;
 
+  const location = useLocation();
+
   const {
     layoutStore: { routeConfig, isMobile, toggleCollapsed, collapsed },
     userStore: { authority: currentAuthority },
@@ -40,10 +44,6 @@ const SiderMenu: React.FC<RouteComponentProps> = props => {
   } = injected();
 
   const [, appRoutes] = routeConfig;
-
-  useEffect(() => {
-    initOpenMenu();
-  }, []);
 
   // 检查路由是否匹配信息表
   function checkRoute(routeInfo: any, path: string) {
@@ -55,18 +55,26 @@ const SiderMenu: React.FC<RouteComponentProps> = props => {
   }
 
   // 初始化开启的菜单
-  function initOpenMenu() {
+  const initOpenMenu = useCallback(() => {
+    if (isInitMenuOpen) {
+      return;
+    }
     // 缓存匹配到的路由信息
     let cacheRoute: RouteChild;
-    const menuOpen = pathname.split('/').reduce((total: string[], path) => {
+    const menuOpen = location.pathname.split('/').reduce((total: string[], path) => {
       if (path) {
         cacheRoute = checkRoute(cacheRoute || appRoutes.routes, path);
         cacheRoute && cacheRoute.routes && total.push(cacheRoute.path);
       }
       return total;
     }, []);
+    isInitMenuOpen = true;
     setOpenKeys([...menuOpen]);
-  }
+  }, [appRoutes.routes, location]);
+
+  useEffect(() => {
+    initOpenMenu();
+  }, [initOpenMenu]);
 
   // 获取菜单标题
   function getMenuTitle(name: string = '', parentName?: string, icon?: React.ReactNode) {
@@ -178,7 +186,6 @@ const SiderMenu: React.FC<RouteComponentProps> = props => {
       <Menu
         className="myMenu"
         mode="inline"
-        style={{ marginTop: '23px', flex: 1 }}
         inlineCollapsed={collapsed}
         selectedKeys={[pathname]}
         onOpenChange={handleOpenMenu}

@@ -32,7 +32,7 @@ const WrapComponent: React.FC<WrapComponentProps> = props => {
     setAnimateIn(true);
     ctrlSpinning({ spinning: false });
     ctrlProgress(false);
-  }, []);
+  }, [ctrlProgress, ctrlSpinning]);
 
   function getAnimateWay(animate: string) {
     const [name, useAnimated] = animate.split('-');

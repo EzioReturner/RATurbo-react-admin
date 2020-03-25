@@ -10,10 +10,12 @@ RA默认使用sass作为样式语言，建议在使用前或者遇到疑问时�
 
 在样式开发过程中，有两个问题比较突出：
 
-`全局污染`，`选择器复杂` 未解决这两个问题，RA提供了CSS Modules 模块化方案，使用方法如下：
+`全局污染`，`选择器复杂` 为解决这两个问题，RA提供了CSS Modules 模块化方案，使用方法如下：
+
+> 默认webpack只对 `.module.scss` 命名的文件解析为 css modules
 
 ```javascript
-import styles from './style.scss';
+import styles from './style.module.scss';
 
 <div className={styles.title}>{title}</div>
 ```
@@ -61,30 +63,24 @@ $color-white-darker-extra: darken($color-white, 20%) !default;
 ...
 ```
 
-- 边距 字体 对齐方式，可在 `src/style/custom.scss`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/style/custom.scss) 中找到。
+- 边距 字体 对齐方式，可在 `src/style/var.scss`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/style/custom.scss) 中找到。
 
 ```css
 ...
-.warp-flex {
-  display: flex;
-}
-.jus-b {
-  justify-content: space-between;
-}
-.text-1 {
-  font-size: 13px;
-}
-.ml-1 {
-  margin-left: 4px;
-}
-.mr-1 {
-  margin-right: 4px;
-}
-.p-1 {
-  padding: 4px;
-}
+$font-size-mini: 12px !default;
+$font-size-normal: 14px !default;
+$font-size-title: 16px !default;
+$font-size-large: 24px !default;
+
+$spacing-mini: 4px !default;
+$spacing-small: 8px !default;
+$spacing-middle: 12px !default;
+$spacing-normal: 16px !default;
+$spacing-large: 24px !default;
 ...
 ```
+
+> 值得注意的是：RA对公用样式做了全局处理，可以直接在scss文件中使用 `var.scss` 与 `color.scss` 中声明的样式。
 
 ## 主题
 
