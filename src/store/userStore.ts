@@ -46,7 +46,6 @@ class UserStore {
       if (message === 'ok') {
         const data = userInfo.data[0];
         this.setUserInfo(data);
-        // const ui = this.getAuthority(name);
         this.setAuthority(name);
         return true;
       }

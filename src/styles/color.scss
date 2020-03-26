@@ -13,7 +13,7 @@ $color-gray-darker: #21262c;
 $color-gray-dark: #353840;
 $color-gray: lighten($color-black, 33.5%) !default;
 $color-gray-light: lighten($color-black, 46.7%) !default;
-$color-gray-lighter: lighten($color-black, 60%) !default;
+$color-gray-lighter: #e8e8e8 !default;
 
 // Alias Primary
 $color-primary: #fb4491 !default;

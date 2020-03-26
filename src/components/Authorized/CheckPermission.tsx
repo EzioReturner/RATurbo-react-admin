@@ -16,7 +16,7 @@ const CheckPermission = <T, K>(
   Target: T,
   Unidentified: K
 ): T | K | React.ReactNode => {
-  if (!currentAuthority || currentAuthority.length === 0) {
+  if (!currentAuthority || currentAuthority.length === 0 || currentAuthority[0] === 'unIdentify') {
     return Unidentified;
   }
   if (!routeAuthority) {

@@ -1,7 +1,7 @@
 .login {
   position: absolute;
-  left: 70%;
-  top: 55%;
+  left: 67%;
+  top: 50%;
   transform: translate(-50%, -50%);
   @media screen and (max-width: 1400px) {
     left: 50%;
@@ -19,16 +19,13 @@
     width: 100%;
   }
   .ant-input {
-    background-color: rgba(0, 0, 0, 0.3);
     border-color: transparent;
-    color: white;
-    &:focus {
-      background-color: rgba(0, 0, 0, 0.5);
-    }
+    color: $color-gray-light;
+    text-indent: $spacing-small;
   }
   .ant-input-prefix {
     .anticon {
-      color: #ffffff;
+      color: $color-primary;
     }
   }
   .loginTitle {

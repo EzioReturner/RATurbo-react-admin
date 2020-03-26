@@ -1,17 +1,15 @@
 import React, { Fragment, useState } from 'react';
-import { Form } from '@ant-design/compatible';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import '@ant-design/compatible/assets/index.css';
-import { Button, Input, Checkbox, message } from 'antd';
-import { FormComponentProps } from '@ant-design/compatible/lib/form/Form';
-import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { Button, Input, Checkbox, message, Form } from 'antd';
+import { StoreKeyValue } from '@models/index';
 import { siteName } from '@config/setting';
 import UserStore from '@store/userStore';
 import { inject } from 'mobx-react';
+import { useHistory } from 'react-router-dom';
 import './login.scss';
 import 'animate.css';
 
-interface LoginFormProps extends FormComponentProps, RouteComponentProps {
+interface LoginFormProps {
   handleError: Function;
 }
 interface InjectedProps extends LoginFormProps {
@@ -20,46 +18,35 @@ interface InjectedProps extends LoginFormProps {
 
 const LoginForm: React.FC<LoginFormProps> = props => {
   const [loading, setLoading] = useState(false);
-
-  const injected = () => {
-    return props as InjectedProps;
-  };
+  const history = useHistory();
+  const { handleError: propsHandleError, userStore } = props as InjectedProps;
 
   const handleError = () => {
     setLoading(false);
-    props.handleError();
+    propsHandleError();
   };
 
   const handleSuccess = () => {
-    props.history.push('/dashboard');
+    history.push('/dashboard');
   };
 
-  const { userStore } = injected();
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    props.form.validateFields((err: any) => {
-      if (!err) {
-        setLoading(true);
-        const { userName, password } = props.form.getFieldsValue(['userName', 'password']);
-        return new Promise(() => {
-          userStore.handleUserLogin(userName, password).then(res => {
-            if (res) {
-              message.success('login success');
-              setTimeout(() => {
-                handleSuccess();
-              }, 800);
-            } else {
-              message.error('login failed');
-              handleError();
-            }
-          });
-        });
-      }
+  const handleSubmit = (values: StoreKeyValue) => {
+    setLoading(true);
+    const { username, password } = values;
+    return new Promise(() => {
+      userStore.handleUserLogin(username, password).then(res => {
+        if (res) {
+          message.success('login success');
+          setTimeout(() => {
+            handleSuccess();
+          }, 800);
+        } else {
+          handleError();
+        }
+      });
     });
   };
 
-  const { getFieldDecorator } = props.form;
   return (
     <Fragment>
       <div className="loginTitle">
@@ -71,46 +58,48 @@ const LoginForm: React.FC<LoginFormProps> = props => {
           siteName
         )}
       </div>
-      <Form onSubmit={e => handleSubmit(e)} className="login-form">
-        <Form.Item>
-          {getFieldDecorator('userName', {
-            rules: [{ required: true, message: 'Please input your username!' }]
-          })(
-            <Input
-              prefix={<UserOutlined />}
-              placeholder="Username: admin | guest"
-              autoComplete="off"
-            />
-          )}
+      <Form
+        name="normal_login"
+        className="login-form"
+        initialValues={{ remember: true }}
+        onFinish={handleSubmit}
+      >
+        <Form.Item
+          name="username"
+          rules={[{ required: true, message: 'Please input your Username!' }]}
+        >
+          <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+        </Form.Item>
+        <Form.Item
+          name="password"
+          rules={[{ required: true, message: 'Please input your Password!' }]}
+        >
+          <Input
+            prefix={<LockOutlined className="site-form-item-icon" />}
+            type="password"
+            placeholder="Password"
+          />
         </Form.Item>
         <Form.Item>
-          {getFieldDecorator('password', {
-            rules: [{ required: true, message: 'Please input your Password!' }]
-          })(
-            <Input
-              prefix={<LockOutlined />}
-              type="password"
-              placeholder="Password: 123"
-              autoComplete="off"
-            />
-          )}
-        </Form.Item>
-        <Form.Item>
-          {getFieldDecorator('remember', {
-            valuePropName: 'checked',
-            initialValue: true
-          })(<Checkbox>Remember me</Checkbox>)}
-          <a className="login-form-forgot" href="/login">
+          <Form.Item name="remember" valuePropName="checked" noStyle>
+            <Checkbox>Remember me</Checkbox>
+          </Form.Item>
+
+          <a className="login-form-forgot" href="">
             Forgot password
           </a>
+        </Form.Item>
+
+        <Form.Item>
           <Button type="primary" htmlType="submit" className="login-form-button" loading={loading}>
-            <span>Log in</span>
+            Log in
           </Button>
-          Or <a href="/login">register now!</a>
+          <span> Or </span>
+          <a href="">register now!</a>
         </Form.Item>
       </Form>
     </Fragment>
   );
 };
 
-export default inject('userStore')(withRouter(LoginForm));
+export default inject('userStore')(LoginForm);

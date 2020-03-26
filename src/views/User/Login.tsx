@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Form } from '@ant-design/compatible';
 import '@ant-design/compatible/assets/index.css';
 import { Alert } from 'antd';
 import LoginForm from './LoginForm';
@@ -15,7 +14,6 @@ const Login: React.FC = () => {
     setApError(true);
   };
 
-  const WrapForm: any = Form.create({ name: 'login' })(LoginForm);
   return (
     <div className="login">
       {apError && (
@@ -28,7 +26,7 @@ const Login: React.FC = () => {
           />
         </div>
       )}
-      <WrapForm handleError={handleError} />
+      <LoginForm handleError={handleError} />
     </div>
   );
 };
