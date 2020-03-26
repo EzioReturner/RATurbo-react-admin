@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { Form } from '@ant-design/compatible';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import '@ant-design/compatible/assets/index.css';
-import { Button, Input, Checkbox } from 'antd';
+import { Button, Input, Checkbox, message } from 'antd';
 import { FormComponentProps } from '@ant-design/compatible/lib/form/Form';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { siteName } from '@config/setting';
@@ -43,15 +43,17 @@ const LoginForm: React.FC<LoginFormProps> = props => {
         setLoading(true);
         const { userName, password } = props.form.getFieldsValue(['userName', 'password']);
         return new Promise(() => {
-          setTimeout(() => {
-            userStore.handleUserLogin(userName, password).then(res => {
-              if (res) {
+          userStore.handleUserLogin(userName, password).then(res => {
+            if (res) {
+              message.success('login success');
+              setTimeout(() => {
                 handleSuccess();
-              } else {
-                handleError();
-              }
-            });
-          }, 800);
+              }, 800);
+            } else {
+              message.error('login failed');
+              handleError();
+            }
+          });
         });
       }
     });

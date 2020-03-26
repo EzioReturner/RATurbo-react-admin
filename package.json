@@ -1,6 +1,6 @@
 {
   "name": "RA-TURBO",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "license": "MIT",
   "scripts": {
     "start": "node scripts/start.js",
@@ -8,7 +8,9 @@
     "translate": "node scripts/translate.js",
     "add-locale": "node scripts/addLocale.js",
     "raCreate": "node scripts/tools.js",
-    "build:dll": "webpack --config webpack/webpack.dll.js --mode production"
+    "build:dll": "webpack --config webpack/webpack.dll.js --mode production",
+    "test:e2e": "jest -c e2e/jest.config.js",
+    "test:unit": "jest -c jest.config.js"
   },
   "devDependencies": {
     "@babel/core": "^7.6.0",
@@ -21,6 +23,7 @@
     "@svgr/webpack": "^5.2.0",
     "@types/classnames": "^2.2.9",
     "@types/echarts": "^4.4.2",
+    "@types/jest": "^25.1.4",
     "@types/lodash": "^4.14.149",
     "@types/node": "^12.12.20",
     "@types/nprogress": "^0.2.0",
@@ -52,6 +55,8 @@
     "html-webpack-plugin": "^3.2.0",
     "husky": "^3.1.0",
     "interpolate-html-plugin": "^3.0.0",
+    "jest": "^25.2.0",
+    "jest-puppeteer": "^4.4.0",
     "json-format": "^1.0.1",
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
@@ -68,6 +73,7 @@
     "postcss-safe-parser": "^4.0.1",
     "prettier": "^1.19.1",
     "pretty-quick": "^2.0.1",
+    "puppeteer": "^2.1.1",
     "recursive-readdir": "^2.2.2",
     "sass-loader": "^8.0.0",
     "sass-resources-loader": "^2.0.1",

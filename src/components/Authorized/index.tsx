@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { inject, observer } from 'mobx-react';
 import CheckPermission from './CheckPermission';
 import UserStore from '@store/userStore';
@@ -26,6 +26,7 @@ const Authorized: React.FC<AuthorizedProps> = props => {
   const currentAuthority: string | string[] = authority;
 
   const dom = CheckPermission(routeAuthority, currentAuthority, _children, unidentified);
+  console.log(identifyPass);
 
   return <>{identifyPass === 'identifying' ? <Loading spinning text="identifying..." /> : dom}</>;
 };
