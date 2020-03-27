@@ -1,4 +1,4 @@
 module.exports = {
-  testRegex: './*\\.e2e\\.js$',
+  testRegex: '.404/*\\.e2e\\.js$',
   preset: 'jest-puppeteer'
 };

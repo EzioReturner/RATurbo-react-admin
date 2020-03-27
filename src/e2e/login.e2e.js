@@ -8,7 +8,6 @@ describe('login', () => {
   });
 
   beforeEach(async () => {
-    // page = await browser.newPage();
     console.log(`go to ${BASE_URL}/#/user/login`);
     await page.goto(`${BASE_URL}/#/user/login`, {
       waitUntil: 'networkidle2'
@@ -42,6 +41,4 @@ describe('login', () => {
     console.log('wait for selector .ant-message-error');
     await page.waitForSelector('.ant-alert-error');
   });
-
-  // afterAll(() => browser.close());
 });

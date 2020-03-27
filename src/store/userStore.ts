@@ -15,9 +15,7 @@ class UserStore {
     const authorityString: string | null =
       typeof str === 'undefined' ? localStorage.getItem('ra-authority') : str;
     let authority: string[];
-
     authority = authorityString ? JSON.parse(authorityString) : ['unIdentify'];
-
     return authority;
   };
 
@@ -83,9 +81,7 @@ class UserStore {
     }
     this.setUserInfo(ui);
 
-    setTimeout(() => {
-      this.setAuthority(au || ['unIdentify']);
-    }, 3000);
+    this.setAuthority(au || ['unIdentify']);
   };
 }
 export const userStore = new UserStore();
