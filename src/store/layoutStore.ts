@@ -2,7 +2,7 @@ import { observable, configure, action } from 'mobx';
 import isMobile from '@utils/isMobile';
 import { debounce } from '@utils/tools';
 import NProgress from 'nprogress';
-import { Breadcrumb, RouteConfig, RouteChild } from '@/models/layout';
+import { Breadcrumb, RouteConfig, RouteChild } from '@models/layout';
 import { useMenu, useHeader } from '@config/setting';
 import { constantRouteConfig, asyncRouteConfig } from '@config/router.config';
 
@@ -152,13 +152,13 @@ class LayoutStore {
     this.openMenus = menus;
   }
 
-  @action setShowHeader(showHeader: boolean) {
+  @action setShowHeader = (showHeader: boolean) => {
     this.showHeader = showHeader;
-  }
+  };
 
-  @action setShowMenu(showMenu: boolean) {
+  @action setShowMenu = (showMenu: boolean) => {
     this.showMenu = showMenu;
-  }
+  };
 }
 export const layoutStore = new LayoutStore();
 export default LayoutStore;

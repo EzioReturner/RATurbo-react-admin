@@ -61,4 +61,42 @@
       flex: auto;
     }
   }
+
+  .layoutSetting {
+    position: fixed;
+    right: 0px;
+    top: 120px;
+    background: $color-white;
+    padding: $spacing-small;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    box-shadow: $shadow-gray;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    transition: transform 0.3s;
+    transform: translateX(140px);
+
+    &.openSetting {
+      transform: translateX(10px);
+    }
+
+    .settingIcon {
+      cursor: pointer;
+    }
+
+    .layoutSettingPanel {
+      width: 140px;
+      height: 50px;
+      background: $color-white;
+      padding-left: $spacing-normal;
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: space-around;
+
+      label {
+        margin: 0;
+      }
+    }
+  }
 }

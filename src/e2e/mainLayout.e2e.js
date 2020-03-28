@@ -17,6 +17,7 @@ describe('mainLayout', () => {
     await page.type('#normal_login_username', 'admin');
     await page.type('#normal_login_password', '123');
     await page.click('button[type="submit"]');
+    await page.waitFor(2000);
   });
 
   afterEach(async () => {
@@ -40,4 +41,18 @@ describe('mainLayout', () => {
   routes.forEach(route => {
     it(`test pages ${route}`, testPage(route));
   });
+
+  // it('test layout header display', async () => {
+  //   await page.goto(`${BASE_URL}/#/`);
+  //   const havHeader = await page.evaluate(() => document.getElementsByTagName('header').length > 0);
+  //   console.log(havHeader);
+  //   expect(havHeader).toBeFalsy();
+  // });
+
+  // it('test layout menu display', async () => {
+  //   await page.goto(`${BASE_URL}/#/`);
+  //   const havMenu = await page.evaluate(() => document.getElementsByTagName('aside').length > 0);
+  //   console.log(havMenu);
+  //   expect(havMenu).toBeFalsy();
+  // });
 });
