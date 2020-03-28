@@ -91,7 +91,13 @@ const LoginForm: React.FC<LoginFormProps> = props => {
         </Form.Item>
 
         <Form.Item>
-          <Button type="primary" htmlType="submit" className="login-form-button" loading={loading}>
+          <Button
+            id="login_button"
+            type="primary"
+            htmlType="submit"
+            className="login-form-button"
+            loading={loading}
+          >
             Log in
           </Button>
           <span> Or </span>

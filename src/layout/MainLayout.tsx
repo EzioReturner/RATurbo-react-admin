@@ -103,6 +103,31 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
     </>
   );
 
+  const LayoutSetting = (
+    <div className={classNames(styles.layoutSetting, openSetting && styles.openSetting)}>
+      <SettingOutlined
+        className={styles.settingIcon}
+        onClick={() => setOpenSetting(!openSetting)}
+      />
+      <div className={styles.layoutSettingPanel}>
+        <Checkbox
+          id="setting_setShowHeader"
+          defaultChecked
+          onChange={e => setShowHeader(e.target.checked)}
+        >
+          show header
+        </Checkbox>
+        <Checkbox
+          id="setting_setShowMenu"
+          defaultChecked
+          onChange={e => setShowMenu(e.target.checked)}
+        >
+          show menu
+        </Checkbox>
+      </div>
+    </div>
+  );
+
   return (
     <Authorized unidentified={<Redirect to="/user/login" />}>
       <div
@@ -114,28 +139,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
       >
         <Loading {...loadingOptions} collapsed={collapsed} />
         {inlineHeader ? inlineLayout : splitLayout}
-        <div className={classNames(styles.layoutSetting, openSetting && styles.openSetting)}>
-          <SettingOutlined
-            className={styles.settingIcon}
-            onClick={() => setOpenSetting(!openSetting)}
-          />
-          <div className={styles.layoutSettingPanel}>
-            <Checkbox
-              id="setting_setShowHeader"
-              defaultChecked
-              onChange={e => setShowHeader(e.target.checked)}
-            >
-              show header
-            </Checkbox>
-            <Checkbox
-              id="setting_setShowMenu"
-              defaultChecked
-              onChange={e => setShowMenu(e.target.checked)}
-            >
-              show menu
-            </Checkbox>
-          </div>
-        </div>
+        {LayoutSetting}
       </div>
     </Authorized>
   );

@@ -16,8 +16,7 @@ describe('mainLayout', () => {
     await page.goto(`${BASE_URL}/#/user/login`);
     await page.type('#normal_login_username', 'admin');
     await page.type('#normal_login_password', '123');
-    await page.click('button[type="submit"]');
-    await page.waitFor(2000);
+    await page.click('#login_button');
   });
 
   afterEach(async () => {
@@ -42,17 +41,19 @@ describe('mainLayout', () => {
     it(`test pages ${route}`, testPage(route));
   });
 
-  // it('test layout header display', async () => {
-  //   await page.goto(`${BASE_URL}/#/`);
-  //   const havHeader = await page.evaluate(() => document.getElementsByTagName('header').length > 0);
-  //   console.log(havHeader);
-  //   expect(havHeader).toBeFalsy();
-  // });
+  it('test layout header display', async () => {
+    await page.goto(`${BASE_URL}/#/`);
+    await page.waitFor(1000);
+    await page.evaluate(() => document.getElementById('setting_setShowHeader').click());
+    const havHeader = await page.evaluate(() => document.getElementsByTagName('header').length > 0);
+    expect(havHeader).toBeFalsy();
+  });
 
-  // it('test layout menu display', async () => {
-  //   await page.goto(`${BASE_URL}/#/`);
-  //   const havMenu = await page.evaluate(() => document.getElementsByTagName('aside').length > 0);
-  //   console.log(havMenu);
-  //   expect(havMenu).toBeFalsy();
-  // });
+  it('test layout menu display', async () => {
+    await page.goto(`${BASE_URL}/#/`);
+    await page.waitFor(1000);
+    await page.evaluate(() => document.getElementById('setting_setShowMenu').click());
+    const havMenu = await page.evaluate(() => document.getElementsByTagName('aside').length > 0);
+    expect(havMenu).toBeFalsy();
+  });
 });
