@@ -11,6 +11,20 @@ yarn test:e2e
 ```
 
 可见如下输出
+```bash
+yarn run v1.13.0
+$ jest -c src/e2e/jest.config.js
+ PASS  src/e2e/404.e2e.js (8.793s)
+ PASS  src/e2e/login.e2e.js (12.784s)
+ PASS  src/e2e/mainLayout.e2e.js (35.631s)
+
+Test Suites: 3 passed, 3 total
+Tests:       24 passed, 24 total
+Snapshots:   0 total
+Time:        36.894s
+Ran all test suites.
+✨  Done in 40.82s.
+```
 
 
 ## unit单元测试
