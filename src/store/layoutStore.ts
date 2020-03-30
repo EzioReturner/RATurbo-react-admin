@@ -3,7 +3,7 @@ import isMobile from '@utils/isMobile';
 import { debounce } from '@utils/tools';
 import NProgress from 'nprogress';
 import { Breadcrumb, RouteConfig, RouteChild } from '@models/layout';
-import { useMenu, useHeader } from '@config/setting';
+import { useMenu, useHeader, layoutMode } from '@config/setting';
 import { constantRouteConfig, asyncRouteConfig } from '@config/router.config';
 
 interface LoadingOptions {
@@ -36,6 +36,9 @@ class LayoutStore {
 
   // 显示菜单
   @observable showHeader: boolean = useHeader;
+
+  // 布局模式
+  @observable layoutMode: string = layoutMode;
 
   // 全局spinning配置信息
   @observable loadingOptions: LoadingOptions = { spinning: false };

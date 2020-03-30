@@ -6,7 +6,7 @@ module.exports = {
   copyright: ['RA-Turbo admin', 'ezioreturner@gmail.com', 'https://github.com/EzioReturner'],
   menuLinkUrl: 'https://github.com/EzioReturner/RATurbo-react-admin',
   iconfontUrl: '//at.alicdn.com/t/font_842049_rn496ve5nkq.js',
-  inlineHeader: false,
+  layoutMode: 'inlineLayout',
   useSiteIcon: true,
   i18n: {
     languages: [

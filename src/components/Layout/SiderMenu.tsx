@@ -10,7 +10,7 @@ import LayoutStore from '@store/layoutStore';
 import LocaleStore from '@store/localeStore';
 import { RouteChild } from '@/models/layout';
 import SiteDetail from './SiteDetail';
-import { inlineHeader } from '@config/setting';
+import { layoutMode } from '@config/setting';
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 import Icon from '@ant-design/icons';
 import Iconfont from '@components/Iconfont';
@@ -19,7 +19,6 @@ interface InjectedProps extends RouteComponentProps {
   userStore: UserStore;
   layoutStore: LayoutStore;
   localeStore: LocaleStore;
-  inlineHeader: boolean;
 }
 
 const { SubMenu } = Menu;
@@ -30,6 +29,7 @@ const SiderMenu: React.FC<RouteComponentProps> = props => {
     return props as InjectedProps;
   }
   const [openKeys, setOpenKeys] = useState<any[]>([]);
+  const inlineLayout = layoutMode === 'inlineLayout';
 
   const {
     location: { pathname }
@@ -179,10 +179,10 @@ const SiderMenu: React.FC<RouteComponentProps> = props => {
       className={classNames(
         styles.navigator,
         collapsed && styles.collapsed,
-        inlineHeader && styles.inlineHeader
+        inlineLayout && styles.inlineLayout
       )}
     >
-      {!inlineHeader && <SiteDetail />}
+      {!inlineLayout && <SiteDetail />}
       <Menu
         className="myMenu"
         mode="inline"
@@ -193,7 +193,7 @@ const SiderMenu: React.FC<RouteComponentProps> = props => {
       >
         {getNavMenuItem(appRoutes.routes || [])}
       </Menu>
-      {inlineHeader && (
+      {inlineLayout && (
         <div className={styles.footerCollapsedIcon} onClick={() => toggleCollapsed()}>
           {iconCollapsed}
         </div>

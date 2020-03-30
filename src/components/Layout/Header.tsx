@@ -6,7 +6,7 @@ import styles from './header.module.scss';
 import UserInfo from './UserInfo';
 import LayoutStore from '@store/layoutStore';
 import SiteDetail from './SiteDetail';
-import { inlineHeader } from '@config/setting';
+import { layoutMode } from '@config/setting';
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 interface InjectedProps {
   layoutStore: LayoutStore;
@@ -25,6 +25,9 @@ const Header: React.FC = props => {
   ) : (
     <MenuFoldOutlined className={styles.foldIcon} onClick={() => toggleCollapsed()} />
   );
+
+  const inlineLayout = layoutMode === 'inlineLayout';
+
   return (
     <header
       className={classNames(
@@ -32,11 +35,11 @@ const Header: React.FC = props => {
         collapsed && styles.collapsed,
         isMobile && styles.isMobile,
         !showMenu && styles.withoutMenu,
-        inlineHeader && styles.inlineHeader
+        inlineLayout && styles.inlineLayout
       )}
     >
-      {inlineHeader && <SiteDetail />}
-      {showMenu && !inlineHeader && iconCollapsed}
+      {inlineLayout && <SiteDetail />}
+      {showMenu && !inlineLayout && iconCollapsed}
       <div className={styles.rightPart}>
         <UserInfo />
         <SelectLang />

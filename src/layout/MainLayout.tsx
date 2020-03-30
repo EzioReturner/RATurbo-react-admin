@@ -11,7 +11,7 @@ import styles from './mainLayout.module.scss';
 import LayoutStore from '@store/layoutStore';
 import { RouteConfig } from '@/models/layout';
 import { hot } from 'react-hot-loader';
-import { inlineHeader } from '@config/setting';
+import { layoutMode } from '@config/setting';
 import { SettingOutlined } from '@ant-design/icons';
 import { Checkbox } from 'antd';
 
@@ -89,7 +89,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
           styles.routeContent,
           collapsed && styles.collapsed,
           isMobile && styles.isMobile,
-          inlineHeader && styles.inlineHeader
+          styles.inlineLayout
         )}
       >
         {showMenu && (
@@ -138,7 +138,8 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
         )}
       >
         <Loading {...loadingOptions} collapsed={collapsed} />
-        {inlineHeader ? inlineLayout : splitLayout}
+        {layoutMode === 'inlineLayout' && inlineLayout}
+        {layoutMode === 'splitLayout' && splitLayout}
         {LayoutSetting}
       </div>
     </Authorized>

@@ -1,12 +1,15 @@
 import React from 'react';
 import styles from './siderMenu.module.scss';
-import { siteName, menuLinkUrl, useSiteIcon, inlineHeader } from '@config/setting';
+import { siteName, menuLinkUrl, useSiteIcon, layoutMode } from '@config/setting';
 import classNames from 'classnames';
 
 const SiteDetail: React.FC = () => {
   return (
     <a
-      className={classNames(styles.siteDetail, inlineHeader && styles.inlineHeader)}
+      className={classNames(
+        styles.siteDetail,
+        layoutMode === 'inlineLayout' && styles.inlineLayout
+      )}
       href={menuLinkUrl}
       target="_blank"
       rel="noopener noreferrer"
