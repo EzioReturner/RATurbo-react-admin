@@ -32,11 +32,11 @@
 
   页面滚动时是否固定顶部。
 
-## inlineHeader 
+## layoutMode 
 
-- 类型: `boolean`
+- 类型:  `String`: `splitLayout` | `inlineLayout` 
 
-  替换 `fixedHeader` 字段，用于调整layout展示模式。`true` 时，头部header不分割
+  替换 `fixedHeader` 字段，用于调整layout展示模式。
 
 ## i18n
 

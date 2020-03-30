@@ -4,13 +4,13 @@
 
 ## 视图骨架类型
 
-视图骨架提供两种布局方式： 通过配置 `src/config/setting.js` 的 `inlineHeader` 字段来控制。
+视图骨架提供两种布局方式： 通过配置 `src/config/setting.js` 的 `layoutMode` 字段来控制。
 
-> `inlineHeader` 为 `true` 时，布局如下:
+> `layoutMode` 为 `inlineLayout` 时，布局如下:
 
 ![inlineLayout](/media/inlineLayout.png)。
 
-> `inlineHeader` 为 `false` 时，布局如下:
+> `layoutMode` 为 `splitLayout` 时，布局如下:
 
 ![splitLayout](/media/splitLayout.png)。
 
