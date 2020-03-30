@@ -1,7 +1,7 @@
 module.exports = {
   launch: {
     args: ['--disable-gpu', '--disable-dev-shm-usage', '--no-first-run', '--no-zygote'],
-    headless: true,
+    headless: false,
     executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
   }
 };

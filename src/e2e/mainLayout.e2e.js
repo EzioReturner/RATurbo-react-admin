@@ -19,11 +19,10 @@ describe('mainLayout', () => {
   });
 
   afterEach(async () => {
-    await page.waitFor(500);
+    await page.waitFor(1000);
   });
 
   const testPage = path => async () => {
-    console.log(`go to ${BASE_URL}/#${path}`);
     await page.goto(`${BASE_URL}/#${path}`);
     await page.waitForSelector('footer', {
       timeout: 2000
