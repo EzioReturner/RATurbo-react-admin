@@ -10,6 +10,7 @@
   * [国际化](/i18n)
   * [异常处理](/exception)
   * [样式与主题](/cssStyle)
+  * [UI测试](/uiTest)
   * [使用typescript](/typescript)
 * 工程
   * [热替换](/hotReload)

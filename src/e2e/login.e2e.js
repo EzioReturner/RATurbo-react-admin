@@ -12,7 +12,7 @@ describe('login', () => {
   });
 
   afterEach(async () => {
-    await page.waitFor(1500);
+    await page.waitFor(1000);
   });
 
   it('should login with success', async () => {
