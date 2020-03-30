@@ -27,6 +27,7 @@ const HighLight: React.FC<HighLightProps> = props => {
       const queryScope = index + tarVal.length;
       const head = _val.slice(0, index);
       const surplus = _val.substr(queryScope);
+
       cacheUnmatch.push(head);
       checkText(surplus, cacheUnmatch);
     },
@@ -44,7 +45,7 @@ const HighLight: React.FC<HighLightProps> = props => {
         unmatchVal.map((text, index) => {
           return (
             <Fragment key={index}>
-              <span>{text}</span>
+              {text && <span>{text}</span>}
               {index !== unmatchVal.length - 1 ? (
                 <span style={{ color: '#1e90ff' }}>{tarVal}</span>
               ) : null}

@@ -1,5 +1,3 @@
-import 'regenerator-runtime/runtime';
-
 const BASE_URL = `http://localhost:${process.env.PORT || 9527}`;
 
 describe('login', () => {
@@ -15,7 +13,7 @@ describe('login', () => {
   });
 
   afterEach(async () => {
-    await page.waitFor(3000);
+    await page.waitFor(1500);
   });
 
   it('should login with success', async () => {

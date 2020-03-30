@@ -1,4 +1,3 @@
-import 'regenerator-runtime/runtime';
 import { asyncRouteConfig } from '../config/router.config';
 
 const BASE_URL = `http://localhost:${process.env.PORT || 9527}`;
@@ -20,7 +19,7 @@ describe('mainLayout', () => {
   });
 
   afterEach(async () => {
-    await page.waitFor(1500);
+    await page.waitFor(500);
   });
 
   const testPage = path => async () => {

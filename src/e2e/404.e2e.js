@@ -1,5 +1,3 @@
-import 'regenerator-runtime/runtime';
-
 const BASE_URL = `http://localhost:${process.env.PORT || 9527}`;
 
 describe('404', () => {
