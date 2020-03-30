@@ -63,7 +63,7 @@ const Monitor: React.FC = props => {
         <Row gutter={24}>
           <Col xl={16} lg={24} md={24} sm={24} xs={24}>
             <QuickStart />
-            <Row style={{ margin: '24px 0' }}>
+            <Row style={{ marginTop: '24px' }}>
               <PlatformProject />
             </Row>
           </Col>

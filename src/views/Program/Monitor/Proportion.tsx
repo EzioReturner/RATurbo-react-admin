@@ -34,7 +34,6 @@ class Proportion extends React.Component<{}, ProportionState> {
         bordered={false}
         title={<FormatterLocale id="monitor.proportion" defaultMessage="热搜词云" />}
         className="fat-card"
-        style={{ marginBottom: '24px' }}
       >
         <EchartsReact option={data} style={{ height: '200px' }} />
       </Card>

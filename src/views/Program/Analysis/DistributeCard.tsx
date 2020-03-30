@@ -64,7 +64,7 @@ const DistributeCard: React.FC<DistributeCardProps> = props => {
         </Col>
       </Row>
       <Row>
-        <Col xl={24}>
+        <Col xl={24} lg={12} md={24} sm={24} xs={24}>
           <ChartCard title="渠道" option={lineOption} />
         </Col>
       </Row>
