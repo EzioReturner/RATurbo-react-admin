@@ -38,17 +38,24 @@ class AsyncComponent extends React.PureComponent<AsyncProps, AsyncState> {
 
   async componentDidMount() {
     const {
-      componentInfo: [componentPath, animate],
+      componentInfo: [componentOrPath, animate],
       route
     } = this.props;
     const { layoutStore } = this.injected;
     // 检查路径是否已加载 判断是否显示loading
     layoutStore.checkIsInitial(route);
-    const { default: component } = await import(
-      /* webpackChunkName: "[request]" */ `../../../src${componentPath}`
-    );
+    let C: any;
+    if (typeof componentOrPath === 'string') {
+      const { default: component } = await import(
+        /* webpackChunkName: "[request]" */ `../../../src${componentOrPath}`
+      );
+      C = component;
+    } else {
+      C = componentOrPath;
+    }
+
     this.setState({
-      component: component,
+      component: C,
       animate: animate
     });
   }
