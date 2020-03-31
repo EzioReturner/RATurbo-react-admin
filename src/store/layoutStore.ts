@@ -38,7 +38,7 @@ class LayoutStore {
   @observable showHeader: boolean = useHeader;
 
   // 布局模式
-  @observable layoutMode: string = layoutMode;
+  @observable layoutMode: string = layoutMode || 'splitLayout';
 
   // 全局spinning配置信息
   @observable loadingOptions: LoadingOptions = { spinning: false };
@@ -56,6 +56,10 @@ class LayoutStore {
         this.changeStatus();
       })
     );
+  }
+
+  get isInlineLayout() {
+    return this.layoutMode === 'inlineLayout';
   }
 
   // 初始化菜单

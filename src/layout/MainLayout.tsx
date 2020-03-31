@@ -11,7 +11,6 @@ import styles from './mainLayout.module.scss';
 import LayoutStore from '@store/layoutStore';
 import { RouteConfig } from '@/models/layout';
 import { hot } from 'react-hot-loader';
-import { layoutMode } from '@config/setting';
 import { SettingOutlined } from '@ant-design/icons';
 import { Checkbox } from 'antd';
 
@@ -40,7 +39,8 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
       showMenu,
       showHeader,
       setShowHeader,
-      setShowMenu
+      setShowMenu,
+      isInlineLayout
     }
   } = injected();
   const routeAuthority: string | string[] = getRouteAuthority(location.pathname, route.routes);
@@ -57,6 +57,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
       }
     >
       <main className={styles.viewBody}>{children}</main>
+      <Footer />
     </Authorized>
   );
 
@@ -75,7 +76,6 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
       >
         {showHeader && <Header />}
         {viewMain}
-        <Footer />
       </div>
     </>
   );
@@ -95,10 +95,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
         {showMenu && (
           <Navigator collapsed={collapsed} isMobile={isMobile} toggleCollapsed={toggleCollapsed} />
         )}
-        <div className={styles.inlineContainer}>
-          {viewMain}
-          <Footer />
-        </div>
+        <div className={styles.inlineContainer}>{viewMain}</div>
       </div>
     </>
   );
@@ -138,8 +135,8 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
         )}
       >
         <Loading {...loadingOptions} collapsed={collapsed} />
-        {layoutMode === 'inlineLayout' && inlineLayout}
-        {layoutMode === 'splitLayout' && splitLayout}
+        {isInlineLayout && inlineLayout}
+        {!isInlineLayout && splitLayout}
         {LayoutSetting}
       </div>
     </Authorized>

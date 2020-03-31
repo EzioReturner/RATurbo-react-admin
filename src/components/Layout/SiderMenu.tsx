@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { Menu } from 'antd';
-import { Link, withRouter, RouteComponentProps, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
 import intersection from 'lodash/intersection';
 import classNames from 'classnames';
@@ -10,12 +10,11 @@ import LayoutStore from '@store/layoutStore';
 import LocaleStore from '@store/localeStore';
 import { RouteChild } from '@/models/layout';
 import SiteDetail from './SiteDetail';
-import { layoutMode } from '@config/setting';
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 import Icon from '@ant-design/icons';
 import Iconfont from '@components/Iconfont';
 
-interface InjectedProps extends RouteComponentProps {
+interface InjectedProps {
   userStore: UserStore;
   layoutStore: LayoutStore;
   localeStore: LocaleStore;
@@ -24,24 +23,16 @@ interface InjectedProps extends RouteComponentProps {
 const { SubMenu } = Menu;
 let isInitMenuOpen = false;
 
-const SiderMenu: React.FC<RouteComponentProps> = props => {
-  function injected() {
-    return props as InjectedProps;
-  }
+const SiderMenu: React.FC = props => {
   const [openKeys, setOpenKeys] = useState<any[]>([]);
-  const inlineLayout = layoutMode === 'inlineLayout';
-
-  const {
-    location: { pathname }
-  } = props;
 
   const location = useLocation();
 
   const {
-    layoutStore: { routeConfig, isMobile, toggleCollapsed, collapsed },
+    layoutStore: { routeConfig, isMobile, toggleCollapsed, collapsed, isInlineLayout },
     userStore: { authority: currentAuthority },
     localeStore: { localeObj }
-  } = injected();
+  } = props as InjectedProps;
 
   const [, appRoutes] = routeConfig;
 
@@ -179,21 +170,21 @@ const SiderMenu: React.FC<RouteComponentProps> = props => {
       className={classNames(
         styles.navigator,
         collapsed && styles.collapsed,
-        inlineLayout && styles.inlineLayout
+        isInlineLayout && styles.inlineLayout
       )}
     >
-      {!inlineLayout && <SiteDetail />}
+      {!isInlineLayout && <SiteDetail isInlineLayout={isInlineLayout} />}
       <Menu
         className="myMenu"
         mode="inline"
         inlineCollapsed={collapsed}
-        selectedKeys={[pathname]}
+        selectedKeys={[location.pathname]}
         onOpenChange={handleOpenMenu}
         {...menuProps}
       >
         {getNavMenuItem(appRoutes.routes || [])}
       </Menu>
-      {inlineLayout && (
+      {isInlineLayout && (
         <div className={styles.footerCollapsedIcon} onClick={() => toggleCollapsed()}>
           {iconCollapsed}
         </div>
@@ -202,4 +193,4 @@ const SiderMenu: React.FC<RouteComponentProps> = props => {
   );
 };
 
-export default inject('layoutStore', 'userStore', 'localeStore')(withRouter(observer(SiderMenu)));
+export default inject('layoutStore', 'userStore', 'localeStore')(observer(SiderMenu));

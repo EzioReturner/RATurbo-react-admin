@@ -1,13 +1,11 @@
 .pageWrapper {
   margin: -$spacing-large;
-  height: calc(100vh - 60px);
   display: flex;
   flex-flow: column;
 
   .pageBody {
     padding: $spacing-large;
     flex: 1;
-    overflow: auto;
   }
 }
 
