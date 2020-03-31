@@ -48,18 +48,25 @@
         padding-left: 0;
       }
 
-      .inlineContainer {
+      & > .inlineContainer {
         width: 100%;
-        padding: 24px;
+        padding: $spacing-large;
         overflow: auto;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+
+        & > .viewBody {
+          width: 100%;
+          flex: auto;
+        }
       }
     }
 
     & > .viewBody {
       width: 100%;
-      padding: 24px;
+      padding: $spacing-large;
       flex: auto;
-      // overflow: auto;
     }
   }
 

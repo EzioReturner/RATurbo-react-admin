@@ -142,6 +142,9 @@
     overflow: auto;
     overflow-x: hidden;
     border: 0;
+    &::-webkit-scrollbar {
+      display: none !important;
+    }
 
     & > .ant-menu-item {
       padding-left: 35px !important;

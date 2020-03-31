@@ -57,7 +57,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
       }
     >
       <main className={styles.viewBody}>{children}</main>
-      <Footer />
+      <Footer isInlineLayout={isInlineLayout} />
     </Authorized>
   );
 
