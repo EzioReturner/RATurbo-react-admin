@@ -2,9 +2,9 @@
 
 这里的『页面』指业务组件，或是通用组件，通常要新建一个页面，可以手动在目录下创建目录及文件，或使用内置指令一键生成。
 
-## 新增业务组件 
+## 新增业务模块 
 
-按照RA的约定，我们通常将业务组件放置在`src/views`目录下，我们使用下面的指令创建一个新的业务组件：
+按照RA的约定，我们通常将业务组件放置在`src/views`目录下，我们使用下面的指令创建一个新的业务模块 ：
 
 ```bash
 yarn raCreate -v exampleView
@@ -40,7 +40,10 @@ class ExampleView extends Component {
 export default ExampleView;
 ```
 
-> 在指令中添加额外配置项 `-fc`  将生成一个function component
+
+### function component 模式的业务模块
+
+在指令中添加额外配置项 `-fc`  将生成一个function component
 
 ```bash
 yarn raCreate -v exampleFC -fc
@@ -59,7 +62,10 @@ const ExampleFC: React.FC<ExampleFCProps> = props => {
 export default ExampleFC;
 ```
 
-> 在指令中添加额外配置项 `-page` 可以生成附带面包屑以及可定制的header的基础page页面，我们在控制台输入如下代码：
+
+### 定制 page 样式基础模块
+
+在指令中添加额外配置项 `-page` 可以生成附带面包屑以及可定制的header的基础page页面，我们在控制台输入如下代码：
 
 ```bash
 yarn raCreate -v examplePage -page
@@ -96,6 +102,9 @@ export default ExamplePage;
 ```bash
 yarn raCreate -c exampleComponent
 ```
+
+代码执行后文件将生成在 `src/components` 路径下。
+
 
 ## PageWrapper组件
 
