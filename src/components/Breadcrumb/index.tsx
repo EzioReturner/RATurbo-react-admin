@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { observer, inject } from 'mobx-react';
-import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import { CloseOutlined } from '@ant-design/icons';
 import classNames from 'classnames';
 import styles from './index.module.scss';
@@ -8,25 +8,21 @@ import { Breadcrumb } from '@/models/layout';
 import LayoutStore from '@store/layoutStore';
 import LocaleStore from '@store/localeStore';
 
-interface InjectedProps extends RouteComponentProps<any> {
+interface InjectedProps {
   layoutStore: LayoutStore;
   localeStore: LocaleStore;
 }
 
-const BreadCrumb: React.FC<RouteComponentProps> = props => {
-  const injected = () => {
-    return props as InjectedProps;
-  };
+const BreadCrumb: React.FC = props => {
+  let history = useHistory();
+  let location = useLocation();
+
+  const { pathname } = location;
 
   const {
     layoutStore: { breadcrumbList, delBreadcrumb, addBreadcrumb },
     localeStore: { localeObj }
-  } = injected();
-
-  const {
-    history,
-    location: { pathname }
-  } = props;
+  } = props as InjectedProps;
 
   useEffect(() => {
     addBreadcrumb(pathname);
@@ -78,4 +74,4 @@ const BreadCrumb: React.FC<RouteComponentProps> = props => {
   );
 };
 
-export default inject('layoutStore', 'localeStore')(withRouter(observer(BreadCrumb)));
+export default inject('layoutStore', 'localeStore')(observer(BreadCrumb));
