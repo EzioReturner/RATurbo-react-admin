@@ -117,7 +117,8 @@
     "react-router-dom": "^5.1.2",
     "react-transition-group": "^4.3.0",
     "regenerator-runtime": "^0.13.3",
-    "size-sensor": "^0.2.5"
+    "size-sensor": "^0.2.5",
+    "workbox-webpack-plugin": "^5.1.2"
   },
   "prettier": {
     "tabWidth": 2,

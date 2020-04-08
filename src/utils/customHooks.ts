@@ -6,7 +6,7 @@ export function useInterval(callback: Function, delay: number) {
   // 保存新回调
   useEffect(() => {
     savedCallback.current = callback;
-  });
+  }, [callback]);
 
   // 建立 interval
   useEffect(() => {
