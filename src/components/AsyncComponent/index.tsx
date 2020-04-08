@@ -46,9 +46,8 @@ class AsyncComponent extends React.PureComponent<AsyncProps, AsyncState> {
     layoutStore.checkIsInitial(route);
     let C: any;
     if (typeof componentOrPath === 'string') {
-      const { default: component } = await import(
-        /* webpackChunkName: "[request]" */ `../../../src${componentOrPath}`
-      );
+      /* webpackChunkName: "[request]" */
+      const { default: component } = await import(`../../../src${componentOrPath}`);
       C = component;
     } else {
       C = componentOrPath;

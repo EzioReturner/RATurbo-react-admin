@@ -36,6 +36,10 @@
     }
   }
 
+  .subTitleName {
+    margin-left: 35px;
+  }
+
   .subTitleName,
   .titleName {
     @extend .text-overflow;

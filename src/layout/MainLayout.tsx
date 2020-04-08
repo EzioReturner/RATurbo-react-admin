@@ -146,6 +146,4 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
   );
 };
 
-const Main =
-  process.env.NODE_ENV === 'development' ? hot(module)(observer(MainLayout)) : observer(MainLayout);
-export default inject('layoutStore')(Main);
+export default inject('layoutStore')(observer(MainLayout));

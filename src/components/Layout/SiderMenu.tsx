@@ -143,7 +143,7 @@ const SiderMenu: React.FC = props => {
             <Icon component={icon as React.FunctionComponent<React.SVGProps<SVGSVGElement>>} />
           )
         )}
-        <span className={styles.titleName} title={localName}>
+        <span className={parentName ? styles.titleName : styles.subTitleName} title={localName}>
           {localName}
         </span>
       </Link>
