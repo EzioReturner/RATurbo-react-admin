@@ -43,7 +43,10 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
       isInlineLayout
     }
   } = injected();
-  const routeAuthority: string | string[] = getRouteAuthority(location.pathname, route.routes);
+  const routeAuthority: undefined | string | string[] = getRouteAuthority(
+    location.pathname,
+    route.routes
+  );
 
   const [openSetting, setOpenSetting] = useState(false);
 

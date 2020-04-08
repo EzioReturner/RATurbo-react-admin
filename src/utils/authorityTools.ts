@@ -1,12 +1,14 @@
+import { RouteConfig } from '@models/layout';
 /**
  * 获取权限
  * @param {str} string 未处理的权限
  * @return {authority} {Array<string>} 权限结果
  */
-export function getAuthority(str) {
+export function getAuthority(str?: string | string[]) {
   const authorityString = typeof str === 'undefined' ? localStorage.getItem('ra-authority') : str;
   let authority;
   try {
+    // @ts-ignore
     authority = JSON.parse(authorityString);
   } catch (e) {
     authority = authorityString;
@@ -21,7 +23,7 @@ export function getAuthority(str) {
  * 设置权限
  * @param {authority} string|array 权限
  */
-export function setAuthority(authority) {
+export function setAuthority(authority: string | string[]) {
   const proAuthority = typeof authority === 'string' ? [authority] : authority;
   localStorage.setItem('ra-authority', JSON.stringify(proAuthority));
 }
@@ -36,9 +38,9 @@ export function clearAuthority() {
  * @param {pathname} string 路由路径
  * @return {routeAuthority} {string} 路由对应权限
  */
-export function getRouteAuthority(pathname, routes) {
-  let routeAuthority = null;
-  const _getAuthority = (pathname, _routes) => {
+export function getRouteAuthority(pathname: string, routes: RouteConfig[] = []) {
+  let routeAuthority: undefined | string | string[];
+  const _getAuthority = (pathname: string, _routes: RouteConfig[]) => {
     _routes.forEach(_route => {
       if (pathname === _route.path) {
         routeAuthority = _route.authority;

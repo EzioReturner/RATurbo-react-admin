@@ -1,10 +1,12 @@
-import { observable, configure, action } from 'mobx';
+import { observable, configure, action, computed } from 'mobx';
 import isMobile from '@utils/isMobile';
 import { debounce } from '@utils/tools';
 import NProgress from 'nprogress';
 import { Breadcrumb, RouteConfig, RouteChild } from '@models/layout';
 import { useMenu, useHeader, layoutMode } from '@config/setting';
 import { constantRouteConfig, asyncRouteConfig } from '@config/router.config';
+import { userStore } from './userStore';
+import intersection from 'lodash/intersection';
 
 interface LoadingOptions {
   fixed?: boolean; // 只覆盖路由可视区域
@@ -56,6 +58,26 @@ class LayoutStore {
         this.changeStatus();
       })
     );
+  }
+
+  @computed
+  get authPopRoute() {
+    const [, app] = this.routeConfig;
+    const appRoutes = app.routes;
+    if (appRoutes) {
+      let redirectPath = '';
+      for (let index = 0; index < appRoutes.length; index++) {
+        const { redirect, authority: routeAuthority, path } = appRoutes[index];
+        if (redirect || path === '/') continue;
+        const allowed = !routeAuthority || intersection(userStore.authority, routeAuthority);
+        if (allowed) {
+          redirectPath = path;
+          break;
+        }
+      }
+      return redirectPath;
+    }
+    return '';
   }
 
   get isInlineLayout() {

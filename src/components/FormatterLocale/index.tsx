@@ -14,13 +14,13 @@ interface InjectedProps extends FormatterProps {
 }
 
 const FormatterLocale: React.FC<FormatterProps> = props => {
-  const injected = () => {
-    return props as InjectedProps;
-  };
-  const { id, defaultMessage, style, className } = props;
   const {
+    id,
+    defaultMessage,
+    style,
+    className,
     localeStore: { localeObj }
-  } = injected();
+  } = props as InjectedProps;
 
   return (
     <span style={style} className={className}>
