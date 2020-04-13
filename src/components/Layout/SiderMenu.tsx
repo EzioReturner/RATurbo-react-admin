@@ -74,19 +74,26 @@ const SiderMenu: React.FC = props => {
     initOpenMenu();
   }, [initOpenMenu]);
 
+  function createIcon(icon: string | React.ReactNode) {
+    if (!icon) return null;
+    if (typeof icon === 'string') {
+      return icon.indexOf('iconfont-') > 0 ? (
+        <Iconfont type={icon} />
+      ) : (
+        <Icon component={icon as any}></Icon>
+      );
+    } else {
+      return <Icon component={icon as React.FunctionComponent<React.SVGProps<SVGSVGElement>>} />;
+    }
+  }
+
   // 获取菜单标题
   function getMenuTitle(name: string = '', parentName?: string, icon?: React.ReactNode) {
     const key = parentName ? `menu.${parentName}.${name}` : `menu.${name}`;
     const localName = localeObj[key] || name;
     return (
       <span>
-        {typeof icon === 'string' ? (
-          <Iconfont type={icon} />
-        ) : (
-          icon && (
-            <Icon component={icon as React.FunctionComponent<React.SVGProps<SVGSVGElement>>} />
-          )
-        )}
+        {createIcon(icon)}
         <span className={styles.subTitleName} title={localName}>
           {localName}
         </span>
@@ -143,13 +150,7 @@ const SiderMenu: React.FC = props => {
           handleClickLink();
         }}
       >
-        {typeof icon === 'string' ? (
-          <Iconfont type={icon} />
-        ) : (
-          icon && (
-            <Icon component={icon as React.FunctionComponent<React.SVGProps<SVGSVGElement>>} />
-          )
-        )}
+        {createIcon(icon)}
         <span className={parentName ? styles.titleName : styles.subTitleName} title={localName}>
           {localName}
         </span>
