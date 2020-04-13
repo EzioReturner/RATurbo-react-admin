@@ -73,6 +73,8 @@ Ran all test suites.
 ✨  Done in 40.82s.
 ```
 
+> 需要注意的是，执行e2e测试时，需要启动前端服务。
+
 
 ## unit单元测试
 
