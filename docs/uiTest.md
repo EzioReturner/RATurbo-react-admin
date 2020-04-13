@@ -52,7 +52,9 @@ describe('login', () => {
 ```
 
 
-> 运行如下命令将自动执行e2e文件夹下所有测试用例
+### 执行e2e测试
+
+使用以下的命令将统一搜索和执行 `src/e2e` 下 `*.e2e.js` 命名的用例文件。
 
 ```bash
 yarn test:e2e
@@ -105,8 +107,21 @@ describe('Highlight', () => {
 
 ### 执行测试
 
-使用以下的命令将统一搜索和执行 `src` 下 `*.test.js` 格式的用例文件。
+使用以下的命令将统一搜索和执行 `src` 下 `*.test.js` 命名的用例文件。
 
 ```bash
 yarn test:unit
+
+yarn run v1.13.0
+$ jest -c jest.config.js
+ PASS  src/components/HighLight/index.test.js (6.36s)
+  Highlight
+    ✓ highlight text (44ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        6.443s
+Ran all test suites.
+✨  Done in 12.00s.
 ```
