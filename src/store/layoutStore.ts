@@ -3,7 +3,7 @@ import isMobile from '@utils/isMobile';
 import { debounce } from '@utils/tools';
 import NProgress from 'nprogress';
 import { Breadcrumb, RouteConfig, RouteChild } from '@models/layout';
-import { useMenu, useHeader, layoutMode } from '@config/setting';
+import { useMenu, useHeader, layoutMode, navigateMode } from '@config/setting';
 import { constantRouteConfig, asyncRouteConfig } from '@config/router.config';
 import { userStore } from './userStore';
 import intersection from 'lodash/intersection';
@@ -45,6 +45,8 @@ class LayoutStore {
   // 全局spinning配置信息
   @observable loadingOptions: LoadingOptions = { spinning: false };
 
+  @observable navigateMode: string = navigateMode || 'left';
+
   constructor() {
     this.addWindowEvent();
     this.changeStatus();
@@ -84,6 +86,10 @@ class LayoutStore {
     return this.layoutMode === 'inlineLayout';
   }
 
+  get isNavigateLeftMode() {
+    return this.navigateMode === 'left';
+  }
+
   // 初始化菜单
   @action initMenu(): void {
     this.routeConfig = [constantRouteConfig.app];
@@ -108,8 +114,11 @@ class LayoutStore {
     } else {
       this.toggleCollapsed(false);
     }
+    // 移动端模式
     if (clientWidth < 600) {
       this.isMobile = true;
+      this.layoutMode = 'splitMode';
+      this.navigateMode = 'left';
     }
   }
 
@@ -187,6 +196,10 @@ class LayoutStore {
 
   @action setShowMenu = (showMenu: boolean) => {
     this.showMenu = showMenu;
+  };
+
+  @action setNavigateMode = (mode: 'left' | 'top') => {
+    this.navigateMode = mode;
   };
 }
 export const layoutStore = new LayoutStore();

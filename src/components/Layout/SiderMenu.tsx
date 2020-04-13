@@ -29,7 +29,14 @@ const SiderMenu: React.FC = props => {
   const location = useLocation();
 
   const {
-    layoutStore: { routeConfig, isMobile, toggleCollapsed, collapsed, isInlineLayout },
+    layoutStore: {
+      routeConfig,
+      isMobile,
+      toggleCollapsed,
+      collapsed,
+      isInlineLayout,
+      isNavigateLeftMode
+    },
     userStore: { authority: currentAuthority },
     localeStore: { localeObj }
   } = props as InjectedProps;
@@ -165,7 +172,8 @@ const SiderMenu: React.FC = props => {
   ) : (
     <MenuFoldOutlined className={styles.foldIcon} />
   );
-  return (
+
+  const LeftNavigateMode = (
     <aside
       className={classNames(
         styles.navigator,
@@ -191,6 +199,10 @@ const SiderMenu: React.FC = props => {
       )}
     </aside>
   );
+
+  const TopNavigateMode = <div></div>;
+
+  return <>{isNavigateLeftMode ? LeftNavigateMode : TopNavigateMode}</>;
 };
 
 export default inject('layoutStore', 'userStore', 'localeStore')(observer(SiderMenu));

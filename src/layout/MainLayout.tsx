@@ -10,7 +10,6 @@ import { observer, inject } from 'mobx-react';
 import styles from './mainLayout.module.scss';
 import LayoutStore from '@store/layoutStore';
 import { RouteConfig } from '@/models/layout';
-import { hot } from 'react-hot-loader';
 import { SettingOutlined } from '@ant-design/icons';
 import { Checkbox } from 'antd';
 
@@ -40,7 +39,8 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
       showHeader,
       setShowHeader,
       setShowMenu,
-      isInlineLayout
+      isInlineLayout,
+      isNavigateLeftMode
     }
   } = injected();
   const routeAuthority: undefined | string | string[] = getRouteAuthority(
@@ -64,6 +64,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
     </Authorized>
   );
 
+  // 分离模式，菜单切割header
   const splitLayout = (
     <>
       {showMenu && (
@@ -83,6 +84,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
     </>
   );
 
+  // 行内布局模式，菜单不分割header
   const inlineLayout = (
     <>
       {showHeader && <Header />}
@@ -103,6 +105,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
     </>
   );
 
+  // 布局控制panel
   const LayoutSetting = (
     <div className={classNames(styles.layoutSetting, openSetting && styles.openSetting)}>
       <SettingOutlined
@@ -128,20 +131,35 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
     </div>
   );
 
+  // 顶部导航栏模式
+  const TopNavigateMode = (
+    <div id="mainContainer" className={styles.topNavigateContainer}>
+      {showHeader && <Header />}
+      <div className={styles.routeContent}>{viewMain}</div>
+      <Loading {...loadingOptions} />
+    </div>
+  );
+
+  // 左侧导航栏模式
+  const LeftNavigateMode = (
+    <div
+      className={classNames(
+        styles.container,
+        !showMenu && styles.withoutMenu,
+        !showHeader && styles.withoutHeader
+      )}
+    >
+      <Loading {...loadingOptions} collapsed={collapsed} />
+      {isInlineLayout ? inlineLayout : splitLayout}
+    </div>
+  );
+
   return (
     <Authorized unidentified={<Redirect to="/user/login" />}>
-      <div
-        className={classNames(
-          styles.container,
-          !showMenu && styles.withoutMenu,
-          !showHeader && styles.withoutHeader
-        )}
-      >
-        <Loading {...loadingOptions} collapsed={collapsed} />
-        {isInlineLayout && inlineLayout}
-        {!isInlineLayout && splitLayout}
+      <>
+        {isNavigateLeftMode ? LeftNavigateMode : TopNavigateMode}
         {LayoutSetting}
-      </div>
+      </>
     </Authorized>
   );
 };
