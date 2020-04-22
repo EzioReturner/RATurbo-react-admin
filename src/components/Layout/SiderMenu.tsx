@@ -94,7 +94,10 @@ const SiderMenu: React.FC = props => {
     return (
       <span>
         {createIcon(icon)}
-        <span className={styles.subTitleName} title={localName}>
+        <span
+          className={parentName ? styles.childSubTitleName : styles.subTitleName}
+          title={localName}
+        >
           {localName}
         </span>
       </span>
