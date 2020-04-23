@@ -11,7 +11,7 @@ const IdentifyUser: React.FC = props => {
   const history = useHistory();
 
   const {
-    userStore: { identifyPass, getAuthority, setAuthority }
+    userStore: { identifyStatus, getAuthority, setAuthority }
   } = props as IdentifyUserProps;
 
   useEffect(() => {
@@ -20,15 +20,15 @@ const IdentifyUser: React.FC = props => {
   }, [getAuthority, setAuthority]);
 
   useEffect(() => {
-    if (identifyPass === 'identifying') {
+    if (identifyStatus === 'identifying') {
       return;
     }
-    if (identifyPass) {
+    if (identifyStatus === 'identifyPass') {
       history.push('/');
-    } else {
+    } else if (identifyStatus === 'unauthorized') {
       history.push('/user/login');
     }
-  }, [history, identifyPass]);
+  }, [history, identifyStatus]);
 
   return (
     <section>

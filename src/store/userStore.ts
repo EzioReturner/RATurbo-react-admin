@@ -1,66 +1,67 @@
 import { getUserInfo, postLogin } from '@api/user';
 import { action, configure, observable, computed } from 'mobx';
 
+type IdentifyStatus = 'identifying' | 'identifyPass' | 'unauthorized';
+
 configure({ enforceActions: 'observed' });
 class UserStore {
+  // 用户信息
   @observable userInfo: any = {};
+  // 用户权限码
   @observable authority: string[] = [];
+  // 当前的验证状态
+  @observable identifyStatus: IdentifyStatus = 'identifying';
 
   constructor() {
-    this.reloadUserInfo();
+    this.initUserInfo();
   }
 
   // 获取用户权限
-  getAuthority = (str?: undefined | string): any => {
+  getAuthority = (str?: undefined | string): string[] => {
     const authorityString: string | null =
       typeof str === 'undefined' ? localStorage.getItem('ra-authority') : str;
     let authority: string[];
-    authority = authorityString ? JSON.parse(authorityString) : ['unIdentify'];
+    authority = authorityString ? JSON.parse(authorityString) : [];
     return authority;
   };
 
-  // 获取用户权限
-  @computed
-  get identifyPass(): any {
-    if (!this.authority || !this.authority.length) {
-      return 'identifying';
-    }
-    return this.authority[0] !== 'unIdentify';
-  }
-
   // 设置用户权限
-  @action
-  setAuthority = (authority: string | string[]): void => {
-    const proAuthority: string[] = typeof authority === 'string' ? [authority] : authority;
-    localStorage.setItem('ra-authority', JSON.stringify(proAuthority));
-    this.authority = proAuthority;
+  @action setAuthority = (authority: string | string[]): void => {
+    const raAuthority: string[] = typeof authority === 'string' ? [authority] : authority;
+    localStorage.setItem('ra-authority', JSON.stringify(raAuthority));
+    this.authority = raAuthority;
   };
 
   // 用户登录事件
-  @action
-  handleUserLogin(name: string, password: number): Promise<boolean> {
-    return postLogin(name, password).then((res: any) => {
-      const { message, userInfo } = res;
-      if (message === 'ok') {
-        const data = userInfo.data[0];
-        this.setUserInfo(data);
-        this.setAuthority(name);
-        return true;
-      }
-      return false;
-    });
+  @action handleUserLogin(name: string, password: number): Promise<boolean> {
+    this.identifyStatus = 'identifying';
+    return postLogin(name, password)
+      .then((res: any) => {
+        const { message, userInfo } = res;
+        if (message === 'ok') {
+          const data = userInfo.data[0];
+          this.setUserInfo(data);
+          this.setAuthority(name);
+          this.identifyStatus = 'identifyPass';
+          return true;
+        }
+        return false;
+      })
+      .catch(err => {
+        this.identifyStatus = 'unauthorized';
+        this.setAuthority([]);
+        return false;
+      });
   }
 
   // 设置用户信息
-  @action
-  setUserInfo(userInfo: object): void {
+  @action setUserInfo(userInfo: object): void {
     this.userInfo = userInfo;
     localStorage.setItem('ra-user', JSON.stringify(userInfo));
   }
 
   // 用户登出，重置信息
-  @action
-  userLogout = (): void => {
+  @action userLogout = (): void => {
     this.userInfo = {};
     this.authority = [];
     localStorage.removeItem('ra-authority');
@@ -68,20 +69,18 @@ class UserStore {
   };
 
   // 重新拉取用户信息
-  @action
-  reloadUserInfo = async (): Promise<any> => {
-    const ls: any = localStorage.getItem('ra-user');
-    const au: any = this.getAuthority();
-    let ui: object = {};
-    if (ls && ls !== 'undefined') {
-      ui = JSON.parse(ls);
+  @action initUserInfo = async (): Promise<any> => {
+    const localUserInfo: string | null = localStorage.getItem('ra-user');
+    const userAuthority: string[] = this.getAuthority();
+    // 存在权限和用户信息
+    if (userAuthority.length && localUserInfo) {
+      this.setUserInfo(JSON.parse(localUserInfo));
+      this.identifyStatus = 'identifyPass';
+      this.setAuthority(userAuthority);
     } else {
-      const { data } = await getUserInfo();
-      ui = data[0];
+      this.identifyStatus = 'unauthorized';
+      this.setAuthority([]);
     }
-    this.setUserInfo(ui);
-
-    this.setAuthority(au || ['unIdentify']);
   };
 }
 export const userStore = new UserStore();

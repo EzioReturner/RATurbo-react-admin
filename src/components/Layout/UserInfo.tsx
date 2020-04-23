@@ -12,19 +12,10 @@ interface InjectedProps {
 
 const UserInfo: React.FC = props => {
   const history = useHistory();
-  function injected() {
-    return props as InjectedProps;
-  }
 
   const {
-    userStore: { userInfo, reloadUserInfo, userLogout }
-  } = injected();
-
-  useEffect(() => {
-    if (JSON.stringify(userInfo) === '{}') {
-      reloadUserInfo();
-    }
-  });
+    userStore: { userInfo, userLogout }
+  } = props as InjectedProps;
 
   const handleLogout = () => {
     confirm({

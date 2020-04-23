@@ -18,7 +18,7 @@ const Authorized: React.FC<AuthorizedProps> = props => {
     return props as AuthorizedInjected;
   };
   const {
-    userStore: { identifyPass, authority }
+    userStore: { identifyStatus, authority }
   } = inject();
 
   const { children, routeAuthority, unidentified } = props;
@@ -27,7 +27,7 @@ const Authorized: React.FC<AuthorizedProps> = props => {
 
   const dom = CheckPermission(routeAuthority, currentAuthority, _children, unidentified);
 
-  return <>{identifyPass === 'identifying' ? <Loading spinning text="identifying..." /> : dom}</>;
+  return <>{identifyStatus === 'identifying' ? <Loading spinning text="identifying..." /> : dom}</>;
 };
 
 export default inject('userStore')(observer(Authorized));
