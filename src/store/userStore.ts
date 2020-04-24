@@ -1,5 +1,5 @@
-import { getUserInfo, postLogin } from '@api/user';
-import { action, configure, observable, computed } from 'mobx';
+import { postLogin } from '@api/user';
+import { action, configure, observable } from 'mobx';
 
 type IdentifyStatus = 'identifying' | 'identifyPass' | 'unauthorized';
 

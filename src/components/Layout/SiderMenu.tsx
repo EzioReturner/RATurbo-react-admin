@@ -76,6 +76,10 @@ const SiderMenu: React.FC = props => {
 
   function createIcon(icon: string | React.ReactNode) {
     if (!icon) return null;
+    // @ts-ignore
+    if (icon.$$typeof) {
+      return icon;
+    }
     if (typeof icon === 'string') {
       return icon.indexOf('iconfont-') > 0 ? (
         <Iconfont type={icon} />

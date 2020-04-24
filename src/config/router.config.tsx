@@ -1,12 +1,15 @@
+import React from 'react';
 import { RouteConfig, RouteChild } from '@/models/layout';
-import pie from '@assets/image/menu/pie.icon.svg';
-import application from '@assets/image/menu/app.icon.svg';
-import form from '@assets/image/menu/form.icon.svg';
-import list from '@assets/image/menu/list.icon.svg';
-import map from '@assets/image/menu/map.icon.svg';
-import picture from '@assets/image/menu/pic.icon.svg';
-import check from '@assets/image/menu/check.icon.svg';
-import caution from '@assets/image/menu/caution.icon.svg';
+import {
+  PieChartOutlined,
+  AppstoreOutlined,
+  FormOutlined,
+  UnorderedListOutlined,
+  HeatMapOutlined,
+  PictureOutlined,
+  CheckCircleOutlined,
+  InfoCircleOutlined
+} from '@ant-design/icons';
 
 export const constantRouteConfig: { app: RouteConfig; user: RouteConfig } = {
   app: {
@@ -35,21 +38,22 @@ export const constantRouteConfig: { app: RouteConfig; user: RouteConfig } = {
 
 export const asyncRouteConfig: RouteChild[] = [
   {
-    name: 'dashboard',
-    icon: pie,
-    path: '/dashboard',
-    component: ['/views/Dashboard'],
-    loading: true
-  },
-  {
     path: '/',
     exact: true,
     redirect: '/dashboard',
     hideMenu: true
   },
   {
+    name: 'dashboard',
+    icon: <PieChartOutlined />,
+    path: '/dashboard',
+    component: ['/views/Dashboard'],
+    loading: true
+  },
+
+  {
     name: 'program',
-    icon: application,
+    icon: <AppstoreOutlined />,
     path: '/program',
     routes: [
       {
@@ -75,7 +79,7 @@ export const asyncRouteConfig: RouteChild[] = [
   },
   {
     name: 'form',
-    icon: form,
+    icon: <FormOutlined />,
     path: '/form',
     routes: [
       {
@@ -105,7 +109,7 @@ export const asyncRouteConfig: RouteChild[] = [
   },
   {
     name: 'list',
-    icon: list,
+    icon: <UnorderedListOutlined />,
     path: '/list',
     routes: [
       {
@@ -129,21 +133,21 @@ export const asyncRouteConfig: RouteChild[] = [
   },
   {
     name: 'map',
-    icon: map,
+    icon: <HeatMapOutlined />,
     path: '/map',
     component: ['/views/Map'],
     authority: ['admin']
   },
   {
     name: 'gallery',
-    icon: picture,
+    icon: <PictureOutlined />,
     path: '/gallery',
     component: ['/views/Gallery'],
     authority: ['admin']
   },
   {
     name: 'result',
-    icon: check,
+    icon: <CheckCircleOutlined />,
     path: '/result',
     routes: [
       {
@@ -160,7 +164,7 @@ export const asyncRouteConfig: RouteChild[] = [
   },
   {
     name: 'exception',
-    icon: caution,
+    icon: <InfoCircleOutlined />,
     path: '/exception',
     routes: [
       {
