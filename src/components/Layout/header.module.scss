@@ -34,6 +34,26 @@
     left: 0;
   }
 
+  & > .topNavModeHeader {
+    max-width: 1250px;
+    margin: auto;
+    position: relative;
+    display: flex;
+    flex: 1;
+
+    .rightPart {
+      position: relative;
+    }
+
+    .headerNav {
+      flex: 1 1 0%;
+    }
+
+    .siteDetail {
+      justify-self: start;
+    }
+  }
+
   .foldIcon {
     font-size: 18px;
     margin-left: 32px;
@@ -48,6 +68,7 @@
     position: absolute;
     right: 0;
     top: 0;
+    min-width: 180px;
   }
 
   .userInfo {

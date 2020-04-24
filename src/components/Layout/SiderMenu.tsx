@@ -156,6 +156,7 @@ const SiderMenu: React.FC = props => {
         onClick={() => {
           handleClickLink();
         }}
+        className={styles.menuItem}
       >
         {createIcon(icon)}
         <span className={parentName ? styles.titleName : styles.subTitleName} title={localName}>
@@ -175,10 +176,23 @@ const SiderMenu: React.FC = props => {
   };
 
   const menuProps = collapsed ? {} : { openKeys: openKeys };
-  const iconCollapsed = collapsed ? (
+  const IconCollapsed = collapsed ? (
     <MenuUnfoldOutlined className={styles.foldIcon} />
   ) : (
     <MenuFoldOutlined className={styles.foldIcon} />
+  );
+
+  const RAMenu = (
+    <Menu
+      className={classNames('myMenu', styles.RAMenu)}
+      mode={isNavigateLeftMode ? 'inline' : 'horizontal'}
+      inlineCollapsed={collapsed}
+      selectedKeys={[location.pathname]}
+      onOpenChange={handleOpenMenu}
+      {...menuProps}
+    >
+      {getNavMenuItem(appRoutes.routes || [])}
+    </Menu>
   );
 
   const LeftNavigateMode = (
@@ -190,25 +204,16 @@ const SiderMenu: React.FC = props => {
       )}
     >
       {!isInlineLayout && <SiteDetail isInlineLayout={isInlineLayout} />}
-      <Menu
-        className="myMenu"
-        mode="inline"
-        inlineCollapsed={collapsed}
-        selectedKeys={[location.pathname]}
-        onOpenChange={handleOpenMenu}
-        {...menuProps}
-      >
-        {getNavMenuItem(appRoutes.routes || [])}
-      </Menu>
+      {RAMenu}
       {isInlineLayout && (
         <div className={styles.footerCollapsedIcon} onClick={() => toggleCollapsed()}>
-          {iconCollapsed}
+          {IconCollapsed}
         </div>
       )}
     </aside>
   );
 
-  const TopNavigateMode = <div></div>;
+  const TopNavigateMode = <div>{RAMenu}</div>;
 
   return <>{isNavigateLeftMode ? LeftNavigateMode : TopNavigateMode}</>;
 };

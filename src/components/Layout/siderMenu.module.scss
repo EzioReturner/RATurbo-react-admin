@@ -21,6 +21,21 @@
     overflow: hidden;
   }
 
+  .RAMenu {
+    .menuItem {
+      color: red;
+    }
+
+    .subTitleName {
+      margin-left: 35px;
+    }
+
+    .subTitleName,
+    .titleName {
+      @extend .text-overflow;
+    }
+  }
+
   .footerCollapsedIcon {
     height: 28px;
     width: 100%;
@@ -35,15 +50,6 @@
       font-size: 18px;
     }
   }
-
-  .subTitleName {
-    margin-left: 35px;
-  }
-
-  .subTitleName,
-  .titleName {
-    @extend .text-overflow;
-  }
 }
 
 .siteDetail {
@@ -56,6 +62,11 @@
   text-align: center;
   box-shadow: 0 1px 9px -3px rgba(0, 0, 0, 0.2);
   cursor: pointer;
+
+  &.topNavMode {
+    justify-content: unset;
+    min-width: 140px;
+  }
 
   &.inlineLayout {
     width: auto;
