@@ -93,8 +93,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
         className={classNames(
           styles.routeContent,
           collapsed && styles.collapsed,
-          isMobile && styles.isMobile,
-          styles.inlineLayout
+          isMobile && styles.isMobile
         )}
       >
         {showMenu && (
@@ -145,6 +144,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
     <div
       className={classNames(
         styles.container,
+        isInlineLayout ? styles.inlineLayout : styles.splitLayout,
         !showMenu && styles.withoutMenu,
         !showHeader && styles.withoutHeader
       )}

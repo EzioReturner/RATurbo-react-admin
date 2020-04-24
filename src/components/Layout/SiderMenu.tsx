@@ -78,7 +78,8 @@ const SiderMenu: React.FC = props => {
     if (!icon) return null;
     // @ts-ignore
     if (icon.$$typeof) {
-      return icon;
+      // return icon;
+      return <span className={styles.menuIcon}>{icon}</span>;
     }
     if (typeof icon === 'string') {
       return icon.indexOf('iconfont-') > 0 ? (
@@ -96,7 +97,7 @@ const SiderMenu: React.FC = props => {
     const key = parentName ? `menu.${parentName}.${name}` : `menu.${name}`;
     const localName = localeObj[key] || name;
     return (
-      <span>
+      <span className={styles.subMenuItem}>
         {createIcon(icon)}
         <span
           className={parentName ? styles.childSubTitleName : styles.subTitleName}
@@ -132,12 +133,20 @@ const SiderMenu: React.FC = props => {
       // 菜单父级
       const { icon, name, path, routes } = menu;
       return (
-        <SubMenu title={getMenuTitle(name, parentName, icon)} key={path}>
+        <SubMenu
+          title={getMenuTitle(name, parentName, icon)}
+          key={path}
+          className={styles.antdSubMenu}
+        >
           {getNavMenuItem(routes, name)}
         </SubMenu>
       );
     } // 菜单子级枝叶
-    return <Menu.Item key={menu.path}>{getMenuItem(menu, parentName)}</Menu.Item>;
+    return (
+      <Menu.Item key={menu.path} className={styles.antdMenuItem}>
+        {getMenuItem(menu, parentName)}
+      </Menu.Item>
+    );
   }
 
   function handleClickLink() {
@@ -156,7 +165,7 @@ const SiderMenu: React.FC = props => {
         onClick={() => {
           handleClickLink();
         }}
-        className={styles.menuItem}
+        className={styles.leafMenuItem}
       >
         {createIcon(icon)}
         <span className={parentName ? styles.titleName : styles.subTitleName} title={localName}>
@@ -184,7 +193,7 @@ const SiderMenu: React.FC = props => {
 
   const RAMenu = (
     <Menu
-      className={classNames('myMenu', styles.RAMenu)}
+      className={classNames(styles.RAMenu, collapsed && styles.RAMenuCollapsed)}
       mode={isNavigateLeftMode ? 'inline' : 'horizontal'}
       inlineCollapsed={collapsed}
       selectedKeys={[location.pathname]}
@@ -203,7 +212,9 @@ const SiderMenu: React.FC = props => {
         isInlineLayout && styles.inlineLayout
       )}
     >
-      {!isInlineLayout && <SiteDetail isInlineLayout={isInlineLayout} />}
+      {!isInlineLayout && (
+        <SiteDetail isInlineLayout={isInlineLayout} isNavigateLeftMode={isNavigateLeftMode} />
+      )}
       {RAMenu}
       {isInlineLayout && (
         <div className={styles.footerCollapsedIcon} onClick={() => toggleCollapsed()}>

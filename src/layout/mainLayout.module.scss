@@ -5,44 +5,32 @@
   right: 0;
   bottom: 0;
 
-  &.withoutMenu .routeContent {
-    left: 0px;
-    padding-left: 0px !important;
-  }
-
-  &.withoutHeader .routeContent {
-    margin-top: 0px;
-  }
-
-  .routeContent {
-    position: absolute;
-    left: 255px;
-    top: 0px;
-    bottom: 0;
-    right: 0;
-    background: $color-white-dark;
-    margin-top: 60px;
-    overflow: auto;
-    transition: all 0.3s;
+  &.splitLayout {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 
-    &.collapsed {
-      left: 80px;
+    &.withoutHeader .routeContent {
+      padding-top: 0;
     }
 
-    &.isMobile {
-      left: 0;
+    .routeContent {
+      flex: 1 1;
+      padding-top: 60px;
+      position: static;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &.inlineLayout {
+    &.withoutHeader .routeContent {
+      top: 0px !important;
     }
 
-    &.inlineLayout {
-      left: 0 !important;
-      padding-left: 255px;
+    .routeContent {
       overflow: hidden;
-
-      &.collapsed {
-        padding-left: 80px;
-      }
+      top: 60px;
+      flex-direction: row;
 
       &.isMobile {
         padding-left: 0;
@@ -61,6 +49,22 @@
           flex: auto;
         }
       }
+    }
+  }
+
+  .routeContent {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    background: $color-white-dark;
+    overflow: auto;
+    transition: all 0.3s;
+    display: flex;
+    flex: auto;
+
+    &.isMobile {
+      left: 0;
     }
 
     & > .viewBody {

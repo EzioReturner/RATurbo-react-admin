@@ -1,16 +1,21 @@
 .navigator {
-  height: 100%;
-  width: 255px;
+  min-height: 100%;
   background: #ffffff;
-  position: absolute;
-  left: 0;
   box-shadow: 0px 0px 28px $color-primary-low;
   z-index: 3;
   transition: all 0.3s;
   display: flex;
   flex-flow: column;
+  flex: 0 0 255px;
+  max-width: 255px;
+  min-width: 255px;
+  width: 255px;
+  position: relative;
 
   &.collapsed {
+    flex: 0 0 80px;
+    max-width: 80px;
+    min-width: 80px;
     width: 80px;
     .title {
       display: none;
@@ -22,17 +27,65 @@
   }
 
   .RAMenu {
-    .menuItem {
-      color: red;
+    margin-top: 23px;
+    flex: 1;
+    overflow: auto;
+    overflow-x: hidden;
+    border: 0;
+
+    &::-webkit-scrollbar {
+      display: none !important;
+    }
+
+    // 重置，antd menu动画不一致bug
+    .antdSubMenu,
+    .antdMenuItem {
+      transition: color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
+        border-color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
+        background 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+
+    &.RAMenuCollapsed {
+      .subTitleName,
+      .titleName {
+        display: inline-block;
+        max-width: 0;
+        opacity: 0;
+      }
+
+      .menuIcon {
+        display: block;
+        min-width: 14px;
+      }
+    }
+
+    .subMenuItem {
+    }
+
+    .leafMenuItem {
+    }
+
+    .menuIcon {
+      margin-right: $spacing-middle !important;
+      display: inline-block;
+
+      & > span {
+        margin: 0 !important;
+      }
     }
 
     .subTitleName {
-      margin-left: 35px;
     }
 
     .subTitleName,
     .titleName {
       @extend .text-overflow;
+
+      &.collapsed {
+        display: inline-block;
+        max-width: 0;
+        opacity: 0;
+      }
     }
   }
 
