@@ -39,7 +39,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
       setShowHeader,
       setShowMenu,
       isInlineLayout,
-      isNavigateLeftMode
+      isHorizontalMenu
     }
   } = injected();
   const routeAuthority: undefined | string | string[] = getRouteAuthority(
@@ -57,7 +57,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
       }
     >
       <main className={styles.viewBody}>{children}</main>
-      <Footer isInlineLayout={isInlineLayout} />
+      <Footer isInlineLayout={isInlineLayout} isHorizontalMenu={isHorizontalMenu} />
     </Authorized>
   );
 
@@ -102,8 +102,8 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
   );
 
   // 顶部导航栏模式
-  const TopNavigateMode = (
-    <div id="mainContainer" className={styles.topNavigateContainer}>
+  const HorizontalMenuLayout = (
+    <div id="mainContainer" className={styles.horizontalContainer}>
       {showHeader && <Header />}
       <div className={styles.routeContent}>{viewMain}</div>
       <Loading {...loadingOptions} />
@@ -111,7 +111,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
   );
 
   // 左侧导航栏模式
-  const LeftNavigateMode = (
+  const VerticalMenuLayout = (
     <div
       className={classNames(
         styles.container,
@@ -128,7 +128,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
   return (
     <Authorized unidentified={<Redirect to="/user/login" />}>
       <>
-        {isNavigateLeftMode ? LeftNavigateMode : TopNavigateMode}
+        {isHorizontalMenu ? HorizontalMenuLayout : VerticalMenuLayout}
         <LayoutSetting {...{ setShowHeader, setShowMenu }} />
       </>
     </Authorized>

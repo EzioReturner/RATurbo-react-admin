@@ -10,12 +10,12 @@
     flex-direction: row;
 
     &.withoutHeader .routeContent {
-      padding-top: 0;
+      margin-top: 0;
     }
 
     .routeContent {
       flex: 1 1;
-      padding-top: 60px;
+      margin-top: 60px;
       position: static;
       display: flex;
       flex-direction: column;
@@ -75,7 +75,7 @@
   }
 }
 
-.topNavigateContainer {
+.horizontalContainer {
   display: flex;
   flex-flow: column nowrap;
   padding-top: 60px;

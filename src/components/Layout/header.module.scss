@@ -34,23 +34,28 @@
     left: 0;
   }
 
-  & > .topNavModeHeader {
-    max-width: 1250px;
-    margin: auto;
-    position: relative;
-    display: flex;
-    flex: 1;
+  &.horiziontalMenu {
+    left: 0px !important;
 
-    .rightPart {
+    & > .container {
+      max-width: 1250px;
+      margin: auto;
       position: relative;
-    }
+      display: flex;
+      flex: 1;
+      max-height: 60px;
 
-    .headerNav {
-      flex: 1 1 0%;
-    }
+      .rightPart {
+        position: relative;
+      }
 
-    .siteDetail {
-      justify-self: start;
+      .headerNav {
+        flex: 1 1 0%;
+      }
+
+      .siteDetail {
+        justify-self: start;
+      }
     }
   }
 
@@ -93,6 +98,8 @@
       cursor: pointer;
       padding: 0 8px;
       transition: all 0.3s;
+      line-height: 60px;
+
       &:hover {
         background: rgba(0, 0, 0, 0.025);
         color: $color-primary;

@@ -40,12 +40,12 @@ class LayoutStore {
   @observable showHeader: boolean = useHeader;
 
   // 布局模式
-  @observable layoutMode: string = layoutMode || 'splitLayout';
+  @observable layoutMode: string = layoutMode || 'split';
 
   // 全局spinning配置信息
   @observable loadingOptions: LoadingOptions = { spinning: false };
 
-  @observable navigateMode: string = navigateMode || 'left';
+  @observable navigateMode: string = navigateMode || 'vertical';
 
   constructor() {
     this.addWindowEvent();
@@ -83,11 +83,15 @@ class LayoutStore {
   }
 
   get isInlineLayout() {
-    return this.layoutMode === 'inlineLayout';
+    return this.layoutMode === 'inline';
   }
 
-  get isNavigateLeftMode() {
-    return this.navigateMode === 'left';
+  // get isNavigateLeftMode() {
+  //   return this.navigateMode === 'vertical';
+  // }
+
+  get isHorizontalMenu() {
+    return this.navigateMode === 'horizontal';
   }
 
   // 初始化菜单

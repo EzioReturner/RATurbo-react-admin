@@ -35,7 +35,7 @@ const SiderMenu: React.FC = props => {
       toggleCollapsed,
       collapsed,
       isInlineLayout,
-      isNavigateLeftMode
+      isHorizontalMenu
     },
     userStore: { authority: currentAuthority },
     localeStore: { localeObj }
@@ -193,8 +193,12 @@ const SiderMenu: React.FC = props => {
 
   const RAMenu = (
     <Menu
-      className={classNames(styles.RAMenu, collapsed && styles.RAMenuCollapsed)}
-      mode={isNavigateLeftMode ? 'inline' : 'horizontal'}
+      className={classNames(
+        styles.RAMenu,
+        collapsed && styles.RAMenuCollapsed,
+        isHorizontalMenu && styles.horizontal
+      )}
+      mode={isHorizontalMenu ? 'horizontal' : 'inline'}
       inlineCollapsed={collapsed}
       selectedKeys={[location.pathname]}
       onOpenChange={handleOpenMenu}
@@ -204,7 +208,7 @@ const SiderMenu: React.FC = props => {
     </Menu>
   );
 
-  const LeftNavigateMode = (
+  const VerticalMenu = (
     <aside
       className={classNames(
         styles.navigator,
@@ -212,9 +216,7 @@ const SiderMenu: React.FC = props => {
         isInlineLayout && styles.inlineLayout
       )}
     >
-      {!isInlineLayout && (
-        <SiteDetail isInlineLayout={isInlineLayout} isNavigateLeftMode={isNavigateLeftMode} />
-      )}
+      {!isInlineLayout && <SiteDetail isInlineLayout={isInlineLayout} isHorizontalMenu={false} />}
       {RAMenu}
       {isInlineLayout && (
         <div className={styles.footerCollapsedIcon} onClick={() => toggleCollapsed()}>
@@ -224,9 +226,9 @@ const SiderMenu: React.FC = props => {
     </aside>
   );
 
-  const TopNavigateMode = <div>{RAMenu}</div>;
+  const HorizontalMenu = RAMenu;
 
-  return <>{isNavigateLeftMode ? LeftNavigateMode : TopNavigateMode}</>;
+  return <>{isHorizontalMenu ? HorizontalMenu : VerticalMenu}</>;
 };
 
 export default inject('layoutStore', 'userStore', 'localeStore')(observer(SiderMenu));
