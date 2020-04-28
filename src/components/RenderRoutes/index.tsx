@@ -32,15 +32,10 @@ interface RouteMiddleProps {
 interface RouteMiddleRouteProps extends RouteMiddleProps, RouteComponentProps {}
 
 const RenderRoutes: React.FC = props => {
-  const injected = () => {
-    return props as InjectedProps;
-  };
+  const injected = () => props as InjectedProps;
 
   const RouteMiddle = (rmProps: RouteMiddleProps) => {
-    const routeInfo = () => {
-      return rmProps as RouteMiddleRouteProps;
-    };
-    const { location } = routeInfo();
+    const { location } = rmProps as RouteMiddleRouteProps;
     const { path, exact, strict, render, ...rest } = rmProps;
     return (
       <Route
