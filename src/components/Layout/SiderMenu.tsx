@@ -184,7 +184,16 @@ const SiderMenu: React.FC = props => {
     setOpenKeys(moreThanOne ? [openKeys.pop()] : [...openKeys]);
   };
 
-  const menuProps = collapsed ? {} : { openKeys: openKeys };
+  let menuProps: any = {};
+
+  if (!isHorizontalMenu) {
+    menuProps = {
+      ...menuProps,
+      inlineCollapsed: collapsed
+    };
+    !collapsed && (menuProps.openKeys = openKeys);
+  }
+
   const IconCollapsed = collapsed ? (
     <MenuUnfoldOutlined className={styles.foldIcon} />
   ) : (
@@ -199,7 +208,6 @@ const SiderMenu: React.FC = props => {
         isHorizontalMenu && styles.horizontal
       )}
       mode={isHorizontalMenu ? 'horizontal' : 'inline'}
-      inlineCollapsed={collapsed}
       selectedKeys={[location.pathname]}
       onOpenChange={handleOpenMenu}
       {...menuProps}

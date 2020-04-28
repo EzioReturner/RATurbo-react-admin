@@ -93,40 +93,55 @@
   }
 }
 
-.layoutSetting {
-  position: fixed;
+.settingIcon {
+  height: 52px;
+  width: 48px;
+  background-color: $color-white;
+  position: absolute;
   right: 0px;
-  top: 120px;
-  background: $color-white;
-  padding: $spacing-small;
+  top: 220px;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+  font-size: 18px;
+  line-height: 56px;
+  transition: transform 0.3s cubic-bezier(0.7, 0.3, 0.1, 1);
+  z-index: 10000;
+  text-align: center;
+  cursor: pointer;
   box-shadow: $shadow-gray;
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  transition: transform 0.3s;
-  transform: translateX(140px);
 
   &.openSetting {
-    transform: translateX(10px);
+    box-shadow: unset;
+    transform: translateX(-300px);
+  }
+}
+
+.settingDrawer {
+  .settingContent {
+    position: relative;
+    margin-bottom: $spacing-large;
+
+    .settingTitle {
+      margin-bottom: $spacing-middle;
+    }
   }
 
-  .settingIcon {
-    cursor: pointer;
-  }
+  .navigateMode {
+    img {
+      margin-right: $spacing-small;
+      cursor: pointer;
+    }
 
-  .layoutSettingPanel {
-    width: 140px;
-    height: 50px;
-    background: $color-white;
-    padding-left: $spacing-normal;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: space-around;
+    .navigateSelectIcon {
+      color: $color-primary;
+      font-size: 16px;
+      position: absolute;
+      top: 52px;
+      left: 28px;
 
-    label {
-      margin: 0;
+      &.isHorizontalMenu {
+        left: 88px;
+      }
     }
   }
 }

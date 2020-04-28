@@ -1,43 +1,53 @@
 import React, { useState } from 'react';
-import { SettingOutlined } from '@ant-design/icons';
+import { SettingOutlined, CloseOutlined, CheckOutlined } from '@ant-design/icons';
 import styles from './mainLayout.module.scss';
 import classNames from 'classnames';
-import { Checkbox } from 'antd';
+import { Checkbox, Drawer } from 'antd';
+import { observer, inject } from 'mobx-react';
+import LayoutStore from '@store/layoutStore';
+import ReactDOM from 'react-dom';
 
-interface LayoutSettingProps {
-  setShowHeader: Function;
-  setShowMenu: Function;
-}
-
-const LayoutSetting: React.FC<LayoutSettingProps> = props => {
-  const { setShowHeader, setShowMenu } = props;
+const LayoutSetting: React.FC = props => {
+  const {
+    layoutStore: { isHorizontalMenu }
+  } = props as { layoutStore: LayoutStore };
 
   const [openSetting, setOpenSetting] = useState(false);
 
-  return (
-    <div className={classNames(styles.layoutSetting, openSetting && styles.openSetting)}>
-      <SettingOutlined
-        className={styles.settingIcon}
+  const TarIcon = openSetting ? <CloseOutlined /> : <SettingOutlined />;
+
+  return ReactDOM.createPortal(
+    <>
+      <div
+        className={classNames(styles.settingIcon, openSetting && styles.openSetting)}
         onClick={() => setOpenSetting(!openSetting)}
-      />
-      <div className={styles.layoutSettingPanel}>
-        <Checkbox
-          id="setting_setShowHeader"
-          defaultChecked
-          onChange={e => setShowHeader(e.target.checked)}
-        >
-          show header
-        </Checkbox>
-        <Checkbox
-          id="setting_setShowMenu"
-          defaultChecked
-          onChange={e => setShowMenu(e.target.checked)}
-        >
-          show menu
-        </Checkbox>
+      >
+        {TarIcon}
       </div>
-    </div>
+      <Drawer
+        visible={openSetting}
+        onClose={() => setOpenSetting(!openSetting)}
+        width={300}
+        className={styles.settingDrawer}
+      >
+        <div className={classNames(styles.settingContent, styles.navigateMode)}>
+          <div className={styles.settingTitle}>导航风格</div>
+          <img src={require('@assets/image/vertical.svg').default} alt="" />
+          <img src={require('@assets/image/horizontal.svg').default} alt="" />
+          <CheckOutlined
+            className={classNames(
+              styles.navigateSelectIcon,
+              isHorizontalMenu && styles.isHorizontalMenu
+            )}
+          />
+        </div>
+        <div className={styles.settingContent}>
+          <div className={styles.settingTitle}>导航风格</div>
+        </div>
+      </Drawer>
+    </>,
+    document.getElementsByTagName('body')[0]
   );
 };
 
-export default LayoutSetting;
+export default inject('layoutStore')(observer(LayoutSetting));

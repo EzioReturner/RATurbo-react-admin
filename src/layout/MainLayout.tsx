@@ -129,7 +129,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
     <Authorized unidentified={<Redirect to="/user/login" />}>
       <>
         {isHorizontalMenu ? HorizontalMenuLayout : VerticalMenuLayout}
-        <LayoutSetting {...{ setShowHeader, setShowMenu }} />
+        {!isMobile && process.env.NODE_ENV === 'development' && <LayoutSetting />}
       </>
     </Authorized>
   );
