@@ -3,7 +3,13 @@ import isMobile from '@utils/isMobile';
 import { debounce } from '@utils/tools';
 import NProgress from 'nprogress';
 import { Breadcrumb, RouteConfig, RouteChild } from '@models/layout';
-import { useMenu, useHeader, layoutMode, navigateMode } from '@config/setting';
+import {
+  useMenu,
+  useHeader,
+  layoutMode,
+  navigateMode,
+  contentAreaWidthMode
+} from '@config/setting';
 import { constantRouteConfig, asyncRouteConfig } from '@config/router.config';
 import { userStore } from './userStore';
 import intersection from 'lodash/intersection';
@@ -47,6 +53,8 @@ class LayoutStore {
 
   @observable navigateMode: string = navigateMode || 'vertical';
 
+  @observable contentAreaWidthMode: string = contentAreaWidthMode || 'max-width';
+
   constructor() {
     this.addWindowEvent();
     this.changeStatus();
@@ -86,9 +94,9 @@ class LayoutStore {
     return this.layoutMode === 'inline';
   }
 
-  // get isNavigateLeftMode() {
-  //   return this.navigateMode === 'vertical';
-  // }
+  get isContentFlowMode() {
+    return this.contentAreaWidthMode === 'flow';
+  }
 
   get isHorizontalMenu() {
     return this.navigateMode === 'horizontal';
@@ -202,7 +210,11 @@ class LayoutStore {
     this.showMenu = showMenu;
   };
 
-  @action setNavigateMode = (mode: 'left' | 'top') => {
+  @action setLayoutMode = (mode: 'inline' | 'split') => {
+    this.layoutMode = mode;
+  };
+
+  @action setNavigateMode = (mode: 'vertical' | 'horizontal') => {
     this.navigateMode = mode;
   };
 }

@@ -8,6 +8,7 @@ module.exports = {
   iconfontUrl: '//at.alicdn.com/t/font_842049_rn496ve5nkq.js',
   layoutMode: 'split',
   navigateMode: 'horizontal',
+  contentAreaWidthMode: 'flow',
   useSiteIcon: true,
   i18n: {
     languages: [

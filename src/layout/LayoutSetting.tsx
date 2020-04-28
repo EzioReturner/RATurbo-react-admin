@@ -1,20 +1,74 @@
 import React, { useState } from 'react';
 import { SettingOutlined, CloseOutlined, CheckOutlined } from '@ant-design/icons';
-import styles from './mainLayout.module.scss';
+import styles from './layoutSetting.module.scss';
 import classNames from 'classnames';
-import { Checkbox, Drawer } from 'antd';
+import { Checkbox, Drawer, Radio, Tooltip } from 'antd';
 import { observer, inject } from 'mobx-react';
 import LayoutStore from '@store/layoutStore';
 import ReactDOM from 'react-dom';
 
 const LayoutSetting: React.FC = props => {
   const {
-    layoutStore: { isHorizontalMenu }
+    layoutStore: { isHorizontalMenu, setNavigateMode, isInlineLayout, setLayoutMode }
   } = props as { layoutStore: LayoutStore };
 
   const [openSetting, setOpenSetting] = useState(false);
 
   const TarIcon = openSetting ? <CloseOutlined /> : <SettingOutlined />;
+
+  const NavigateMode = (
+    <div className={classNames(styles.settingContent, styles.navigateMode)}>
+      <div className={styles.settingTitle}>导航风格</div>
+      <Tooltip placement="top" title={'左侧导航模式'}>
+        <img
+          onClick={() => setNavigateMode('vertical')}
+          src={require('@assets/image/vertical.svg').default}
+          alt=""
+        />
+      </Tooltip>
+      <Tooltip placement="top" title={'顶部导航模式'}>
+        <img
+          onClick={() => setNavigateMode('horizontal')}
+          src={require('@assets/image/horizontal.svg').default}
+          alt=""
+        />
+      </Tooltip>
+      <CheckOutlined
+        className={classNames(styles.selectedIcon, isHorizontalMenu && styles.rightPlace)}
+      />
+    </div>
+  );
+
+  const LayoutMode = (
+    <div
+      className={classNames(
+        styles.settingContent,
+        styles.layoutMode,
+        isHorizontalMenu && styles.disabled
+      )}
+    >
+      <div className={styles.settingTitle}>布局模式</div>
+      <Tooltip placement="top" title={isHorizontalMenu ? '仅在左侧导航模式下起效' : '分列式布局'}>
+        <img
+          onClick={() => (isHorizontalMenu ? {} : setLayoutMode('split'))}
+          src={require('@assets/image/split.svg').default}
+          alt=""
+        />
+      </Tooltip>
+      <Tooltip placement="top" title={isHorizontalMenu ? '仅在左侧导航模式下起效' : '一体式布局'}>
+        <img
+          onClick={() => (isHorizontalMenu ? {} : setLayoutMode('inline'))}
+          src={require('@assets/image/inline.svg').default}
+          alt=""
+        />
+      </Tooltip>
+      {!isHorizontalMenu && (
+        <CheckOutlined
+          className={classNames(styles.selectedIcon, isInlineLayout && styles.rightPlace)}
+        />
+      )}
+    </div>
+  );
 
   return ReactDOM.createPortal(
     <>
@@ -30,20 +84,8 @@ const LayoutSetting: React.FC = props => {
         width={300}
         className={styles.settingDrawer}
       >
-        <div className={classNames(styles.settingContent, styles.navigateMode)}>
-          <div className={styles.settingTitle}>导航风格</div>
-          <img src={require('@assets/image/vertical.svg').default} alt="" />
-          <img src={require('@assets/image/horizontal.svg').default} alt="" />
-          <CheckOutlined
-            className={classNames(
-              styles.navigateSelectIcon,
-              isHorizontalMenu && styles.isHorizontalMenu
-            )}
-          />
-        </div>
-        <div className={styles.settingContent}>
-          <div className={styles.settingTitle}>导航风格</div>
-        </div>
+        {NavigateMode}
+        {LayoutMode}
       </Drawer>
     </>,
     document.getElementsByTagName('body')[0]

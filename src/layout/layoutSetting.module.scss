@@ -1,0 +1,87 @@
+.settingIcon {
+  height: 52px;
+  width: 48px;
+  background-color: $color-white;
+  position: absolute;
+  right: 0px;
+  top: 220px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  font-size: 18px;
+  line-height: 56px;
+  transition: transform 0.3s cubic-bezier(0.7, 0.3, 0.1, 1);
+  z-index: 10000;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: $shadow-gray;
+
+  &.openSetting {
+    box-shadow: unset;
+    transform: translateX(-300px);
+  }
+}
+
+.settingDrawer {
+  .settingContent {
+    position: relative;
+    margin-bottom: $spacing-large;
+
+    .settingTitle {
+      margin-bottom: $spacing-middle;
+
+      .tip {
+        color: lighten($color-black, 76.7%);
+        font-size: 12px;
+        margin-left: $spacing-small;
+      }
+    }
+  }
+
+  .navigateMode {
+    img {
+      @extend .sampleImg;
+    }
+  }
+
+  .layoutMode {
+    img {
+      @extend .sampleImg;
+      border-radius: 5px;
+      padding: 5px;
+      box-shadow: $shadow-gray;
+    }
+
+    &.disabled {
+      img {
+        cursor: not-allowed;
+      }
+    }
+
+    .selectedIcon {
+      top: 58px !important;
+    }
+  }
+
+  .navigateMode,
+  .layoutMode {
+    .selectedIcon {
+      color: $color-primary;
+      font-size: 16px;
+      position: absolute;
+      pointer-events: none;
+      top: 52px;
+      left: 28px;
+
+      &.rightPlace {
+        left: 88px;
+      }
+    }
+  }
+}
+
+.sampleImg {
+  margin-right: $spacing-normal;
+  cursor: pointer;
+  width: 48px;
+  height: 42px;
+}

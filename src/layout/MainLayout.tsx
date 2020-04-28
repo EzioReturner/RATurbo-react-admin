@@ -36,8 +36,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
       loadingOptions,
       showMenu,
       showHeader,
-      setShowHeader,
-      setShowMenu,
+      isContentFlowMode,
       isInlineLayout,
       isHorizontalMenu
     }
@@ -105,7 +104,9 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
   const HorizontalMenuLayout = (
     <div id="mainContainer" className={styles.horizontalContainer}>
       {showHeader && <Header />}
-      <div className={styles.routeContent}>{viewMain}</div>
+      <div className={classNames(styles.routeContent, isContentFlowMode && styles.flowMode)}>
+        {viewMain}
+      </div>
       <Loading {...loadingOptions} />
     </div>
   );

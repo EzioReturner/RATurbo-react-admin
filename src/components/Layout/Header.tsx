@@ -20,7 +20,8 @@ const Header: React.FC = props => {
       isMobile,
       showMenu,
       isInlineLayout,
-      isHorizontalMenu
+      isHorizontalMenu,
+      isContentFlowMode
     }
   } = props as InjectedProps;
 
@@ -51,7 +52,7 @@ const Header: React.FC = props => {
 
   const HorizontalMenuHeader = (
     <header className={classNames(styles.header, styles.horiziontalMenu)}>
-      <div className={styles.container}>
+      <div className={classNames(styles.container, isContentFlowMode && styles.flowMode)}>
         <SiteDetail isInlineLayout isHorizontalMenu />
         <div className={styles.headerNav}>
           <TopMenu />
