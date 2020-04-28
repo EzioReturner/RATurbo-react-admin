@@ -1,18 +1,19 @@
 import React from 'react';
 import { Button } from 'antd';
-import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import FormatterLocale from '@components/FormatterLocale';
 import styles from './exception.module.scss';
 
-interface ExceptionProps extends RouteComponentProps<any> {
+interface ExceptionProps {
   errorCode: React.ReactNode;
   title: React.ReactNode;
-  subTitle: React.ReactNode;
+  subTitle?: React.ReactNode;
 }
 
 const Exception: React.FC<ExceptionProps> = props => {
+  const history = useHistory();
   const handleGoHome = () => {
-    props.history.push('/dashboard');
+    history.push('/dashboard');
   };
 
   const { errorCode, title, subTitle } = props;
@@ -30,4 +31,4 @@ const Exception: React.FC<ExceptionProps> = props => {
   );
 };
 
-export default withRouter(Exception);
+export default Exception;

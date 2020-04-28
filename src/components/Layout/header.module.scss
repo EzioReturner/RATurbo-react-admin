@@ -34,23 +34,33 @@
     left: 0;
   }
 
-  & > .topNavModeHeader {
-    max-width: 1250px;
-    margin: auto;
-    position: relative;
-    display: flex;
-    flex: 1;
+  &.horiziontalMenu {
+    left: 0px !important;
+    padding-left: $spacing-large;
 
-    .rightPart {
+    & > .container {
+      max-width: 1250px;
+      margin: auto;
       position: relative;
-    }
+      display: flex;
+      flex: 1;
+      max-height: 60px;
 
-    .headerNav {
-      flex: 1 1 0%;
-    }
+      &.flowMode {
+        max-width: unset;
+      }
 
-    .siteDetail {
-      justify-self: start;
+      .rightPart {
+        position: relative;
+      }
+
+      .headerNav {
+        flex: 1 1 0%;
+      }
+
+      .siteDetail {
+        justify-self: start;
+      }
     }
   }
 
@@ -70,77 +80,77 @@
     top: 0;
     min-width: 180px;
   }
-
-  .userInfo {
-    color: $color-text;
-    display: flex;
-    font-size: 14px;
-    height: 100%;
-
-    & > span {
-      font-weight: bold;
-    }
-
-    .userIcon {
-      font-size: 18px;
-      font-weight: bold;
-      margin-right: 8px;
-    }
-
-    .userDropdown {
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-      padding: 0 8px;
-      transition: all 0.3s;
-      &:hover {
-        background: rgba(0, 0, 0, 0.025);
-        color: $color-primary;
-      }
-    }
-
-    .clock .text,
-    .userDropdown .text {
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
-
-    .clock {
-      display: flex;
-      align-items: center;
-      padding: 0 8px;
-
-      .clockIcon {
-        margin-top: -2px;
-      }
-
-      .text {
-        display: inline-block;
-        margin-left: 8px;
-        transition: all 0.3s;
-        width: 110px;
-      }
-
-      .showTime {
-        width: 100px !important;
-      }
-    }
-
-    @media screen and (max-width: 600px) {
-      font-size: 14px;
-      .clock .text {
-        width: 0px;
-        overflow: hidden;
-      }
-      .userDropdown .text {
-        width: 50px;
-      }
-    }
-  }
 }
 
 .menuItem {
   line-height: initial;
   margin-left: 8px;
+}
+
+.userInfo {
+  color: $color-text;
+  display: flex;
+  font-size: 14px;
+  height: 100%;
+
+  & > span {
+    font-weight: bold;
+  }
+
+  .userIcon {
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 8px;
+  }
+
+  .userDropdown {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 0 8px;
+    transition: all 0.3s;
+    line-height: 60px;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.025);
+      color: $color-primary;
+    }
+  }
+
+  .text,
+  .userDropdown .text {
+    @extend .text-overflow;
+  }
+
+  // .clock {
+  //   display: flex;
+  //   align-items: center;
+  //   padding: 0 8px;
+
+  //   .clockIcon {
+  //     margin-top: -2px;
+  //   }
+
+  //   .text {
+  //     display: inline-block;
+  //     margin-left: 8px;
+  //     transition: all 0.3s;
+  //     width: 110px;
+  //   }
+
+  //   .showTime {
+  //     width: 100px !important;
+  //   }
+  // }
+
+  @media screen and (max-width: 600px) {
+    font-size: 14px;
+    .clock .text {
+      width: 0px;
+      overflow: hidden;
+    }
+    .userDropdown .text {
+      width: 50px;
+    }
+  }
 }

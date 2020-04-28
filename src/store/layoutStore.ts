@@ -3,7 +3,13 @@ import isMobile from '@utils/isMobile';
 import { debounce } from '@utils/tools';
 import NProgress from 'nprogress';
 import { Breadcrumb, RouteConfig, RouteChild } from '@models/layout';
-import { useMenu, useHeader, layoutMode, navigateMode } from '@config/setting';
+import {
+  useMenu,
+  useHeader,
+  layoutMode,
+  navigateMode,
+  contentAreaWidthMode
+} from '@config/setting';
 import { constantRouteConfig, asyncRouteConfig } from '@config/router.config';
 import { userStore } from './userStore';
 import intersection from 'lodash/intersection';
@@ -40,12 +46,14 @@ class LayoutStore {
   @observable showHeader: boolean = useHeader;
 
   // 布局模式
-  @observable layoutMode: string = layoutMode || 'splitLayout';
+  @observable layoutMode: string = layoutMode || 'split';
 
   // 全局spinning配置信息
   @observable loadingOptions: LoadingOptions = { spinning: false };
 
-  @observable navigateMode: string = navigateMode || 'left';
+  @observable navigateMode: string = navigateMode || 'vertical';
+
+  @observable contentAreaWidthMode: string = contentAreaWidthMode || 'max-width';
 
   constructor() {
     this.addWindowEvent();
@@ -83,11 +91,15 @@ class LayoutStore {
   }
 
   get isInlineLayout() {
-    return this.layoutMode === 'inlineLayout';
+    return this.layoutMode === 'inline';
   }
 
-  get isNavigateLeftMode() {
-    return this.navigateMode === 'left';
+  get isContentFlowMode() {
+    return this.contentAreaWidthMode === 'flow';
+  }
+
+  get isHorizontalMenu() {
+    return this.navigateMode === 'horizontal';
   }
 
   // 初始化菜单
@@ -198,7 +210,11 @@ class LayoutStore {
     this.showMenu = showMenu;
   };
 
-  @action setNavigateMode = (mode: 'left' | 'top') => {
+  @action setLayoutMode = (mode: 'inline' | 'split') => {
+    this.layoutMode = mode;
+  };
+
+  @action setNavigateMode = (mode: 'vertical' | 'horizontal') => {
     this.navigateMode = mode;
   };
 }

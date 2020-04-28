@@ -93,6 +93,11 @@ module.exports = {
   plugins: [
     new webpack.ProgressPlugin(),
 
+    new webpack.DefinePlugin({
+      NODE_RA_ENV: JSON.stringify(process.env.NODE_LUCKY_ENV),
+      REQUEST_SUCCESS: Number(0)
+    }),
+
     new webpack.NamedModulesPlugin(),
 
     new ForkTsCheckerWebpackPlugin({

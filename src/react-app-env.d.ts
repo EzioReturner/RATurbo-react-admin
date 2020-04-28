@@ -9,6 +9,10 @@ declare namespace NodeJS {
   }
 }
 
+declare const NODE_RA_ENV: string = 'development' | 'production';
+
+declare const REQUEST_SUCCESS: number = 0;
+
 declare module '*.bmp' {
   const src: string;
   export default src;

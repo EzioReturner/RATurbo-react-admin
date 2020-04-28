@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from 'react';
+import React, { Suspense } from 'react';
 import Loading from '@components/Loading';
 import Authorized from '@components/Authorized';
 import { Header, Navigator } from '@components/Layout';
@@ -10,8 +10,7 @@ import { observer, inject } from 'mobx-react';
 import styles from './mainLayout.module.scss';
 import LayoutStore from '@store/layoutStore';
 import { RouteConfig } from '@/models/layout';
-import { SettingOutlined } from '@ant-design/icons';
-import { Checkbox } from 'antd';
+import LayoutSetting from './LayoutSetting';
 
 const Exception403 = React.lazy(() => import(/* webpackChunkName: "403" */ '@views/Exception/403'));
 
@@ -37,18 +36,15 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
       loadingOptions,
       showMenu,
       showHeader,
-      setShowHeader,
-      setShowMenu,
+      isContentFlowMode,
       isInlineLayout,
-      isNavigateLeftMode
+      isHorizontalMenu
     }
   } = injected();
   const routeAuthority: undefined | string | string[] = getRouteAuthority(
     location.pathname,
     route.routes
   );
-
-  const [openSetting, setOpenSetting] = useState(false);
 
   const viewMain = (
     <Authorized
@@ -60,7 +56,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
       }
     >
       <main className={styles.viewBody}>{children}</main>
-      <Footer isInlineLayout={isInlineLayout} />
+      <Footer isInlineLayout={isInlineLayout} isHorizontalMenu={isHorizontalMenu} />
     </Authorized>
   );
 
@@ -104,43 +100,19 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
     </>
   );
 
-  // 布局控制panel
-  const LayoutSetting = (
-    <div className={classNames(styles.layoutSetting, openSetting && styles.openSetting)}>
-      <SettingOutlined
-        className={styles.settingIcon}
-        onClick={() => setOpenSetting(!openSetting)}
-      />
-      <div className={styles.layoutSettingPanel}>
-        <Checkbox
-          id="setting_setShowHeader"
-          defaultChecked
-          onChange={e => setShowHeader(e.target.checked)}
-        >
-          show header
-        </Checkbox>
-        <Checkbox
-          id="setting_setShowMenu"
-          defaultChecked
-          onChange={e => setShowMenu(e.target.checked)}
-        >
-          show menu
-        </Checkbox>
-      </div>
-    </div>
-  );
-
   // 顶部导航栏模式
-  const TopNavigateMode = (
-    <div id="mainContainer" className={styles.topNavigateContainer}>
+  const HorizontalMenuLayout = (
+    <div id="mainContainer" className={styles.horizontalContainer}>
       {showHeader && <Header />}
-      <div className={styles.routeContent}>{viewMain}</div>
+      <div className={classNames(styles.routeContent, isContentFlowMode && styles.flowMode)}>
+        {viewMain}
+      </div>
       <Loading {...loadingOptions} />
     </div>
   );
 
   // 左侧导航栏模式
-  const LeftNavigateMode = (
+  const VerticalMenuLayout = (
     <div
       className={classNames(
         styles.container,
@@ -157,8 +129,8 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
   return (
     <Authorized unidentified={<Redirect to="/user/login" />}>
       <>
-        {isNavigateLeftMode ? LeftNavigateMode : TopNavigateMode}
-        {LayoutSetting}
+        {isHorizontalMenu ? HorizontalMenuLayout : VerticalMenuLayout}
+        {!isMobile && process.env.NODE_ENV === 'development' && <LayoutSetting />}
       </>
     </Authorized>
   );

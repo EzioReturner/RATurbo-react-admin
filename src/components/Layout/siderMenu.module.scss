@@ -26,69 +26,6 @@
     overflow: hidden;
   }
 
-  .RAMenu {
-    margin-top: 23px;
-    flex: 1;
-    overflow: auto;
-    overflow-x: hidden;
-    border: 0;
-
-    &::-webkit-scrollbar {
-      display: none !important;
-    }
-
-    // 重置，antd menu动画不一致bug
-    .antdSubMenu,
-    .antdMenuItem {
-      transition: color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
-        border-color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
-        background 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-    }
-
-    &.RAMenuCollapsed {
-      .subTitleName,
-      .titleName {
-        display: inline-block;
-        max-width: 0;
-        opacity: 0;
-      }
-
-      .menuIcon {
-        display: block;
-        min-width: 14px;
-      }
-    }
-
-    .subMenuItem {
-    }
-
-    .leafMenuItem {
-    }
-
-    .menuIcon {
-      margin-right: $spacing-middle !important;
-      display: inline-block;
-
-      & > span {
-        margin: 0 !important;
-      }
-    }
-
-    .subTitleName {
-    }
-
-    .subTitleName,
-    .titleName {
-      @extend .text-overflow;
-
-      &.collapsed {
-        display: inline-block;
-        max-width: 0;
-        opacity: 0;
-      }
-    }
-  }
-
   .footerCollapsedIcon {
     height: 28px;
     width: 100%;
@@ -105,6 +42,79 @@
   }
 }
 
+.RAMenu {
+  margin-top: 23px;
+  flex: 1;
+  overflow: auto;
+  overflow-x: hidden;
+  border: 0 !important;
+
+  &::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  // 重置，antd menu动画不一致bug
+  .antdSubMenu,
+  .antdMenuItem {
+    transition: color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
+      border-color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
+      background 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+
+  &.horizontal {
+    margin-top: 0;
+    line-height: 60px;
+
+    .antdSubMenu,
+    .antdMenuItem {
+      border: 0;
+      height: 100%;
+      line-height: 60px;
+      top: 0px !important;
+    }
+  }
+
+  &.RAMenuCollapsed {
+    .subTitleName,
+    .titleName {
+      display: inline-block;
+      max-width: 0;
+      opacity: 0;
+    }
+
+    .menuIcon {
+      display: block;
+      min-width: 14px;
+    }
+  }
+
+  .subMenuItem {
+  }
+
+  .leafMenuItem {
+  }
+
+  .menuIcon {
+    margin-right: $spacing-middle !important;
+    display: inline-block;
+
+    & > span {
+      margin: 0 !important;
+    }
+  }
+
+  .subTitleName,
+  .titleName {
+    @extend .text-overflow;
+
+    &.collapsed {
+      display: inline-block;
+      max-width: 0;
+      opacity: 0;
+    }
+  }
+}
+
 .siteDetail {
   width: 100%;
   height: 60px;
@@ -116,9 +126,9 @@
   box-shadow: 0 1px 9px -3px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 
-  &.topNavMode {
+  &.horizontal {
     justify-content: unset;
-    min-width: 140px;
+    min-width: 160px !important;
   }
 
   &.inlineLayout {

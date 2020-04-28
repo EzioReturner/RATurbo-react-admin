@@ -20,7 +20,8 @@ const Header: React.FC = props => {
       isMobile,
       showMenu,
       isInlineLayout,
-      isNavigateLeftMode
+      isHorizontalMenu,
+      isContentFlowMode
     }
   } = props as InjectedProps;
 
@@ -30,25 +31,7 @@ const Header: React.FC = props => {
     <MenuFoldOutlined className={styles.foldIcon} onClick={() => toggleCollapsed()} />
   );
 
-  const HeaderBody = (
-    <>
-      {isInlineLayout && (
-        <SiteDetail isInlineLayout={isInlineLayout} isNavigateLeftMode={isNavigateLeftMode} />
-      )}
-      {showMenu && !isInlineLayout && IconCollapsed}
-      {!isNavigateLeftMode && (
-        <div className={styles.headerNav}>
-          <TopMenu />
-        </div>
-      )}
-      <div className={styles.rightPart}>
-        <UserInfo />
-        <SelectLang />
-      </div>
-    </>
-  );
-
-  return (
+  const VerticalMenuHeader = (
     <header
       className={classNames(
         styles.header,
@@ -58,12 +41,30 @@ const Header: React.FC = props => {
         isInlineLayout && styles.inlineLayout
       )}
     >
-      {isNavigateLeftMode ? (
-        HeaderBody
-      ) : (
-        <div className={styles.topNavModeHeader}>{HeaderBody}</div>
-      )}
+      {isInlineLayout && <SiteDetail isInlineLayout={isInlineLayout} />}
+      {showMenu && !isInlineLayout && IconCollapsed}
+      <div className={styles.rightPart}>
+        <UserInfo />
+        <SelectLang />
+      </div>
     </header>
   );
+
+  const HorizontalMenuHeader = (
+    <header className={classNames(styles.header, styles.horiziontalMenu)}>
+      <div className={classNames(styles.container, isContentFlowMode && styles.flowMode)}>
+        <SiteDetail isInlineLayout isHorizontalMenu />
+        <div className={styles.headerNav}>
+          <TopMenu />
+        </div>
+        <div className={styles.rightPart}>
+          <UserInfo />
+          <SelectLang />
+        </div>
+      </div>
+    </header>
+  );
+
+  return <>{isHorizontalMenu ? HorizontalMenuHeader : VerticalMenuHeader}</>;
 };
 export default inject('layoutStore')(observer(Header));
