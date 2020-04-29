@@ -60,7 +60,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
     </Authorized>
   );
 
-  // 分离模式，菜单切割header
+  // 分割模式，菜单切割header
   const splitLayout = (
     <>
       {showMenu && (
@@ -80,7 +80,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
     </>
   );
 
-  // 行内布局模式，菜单不分割header
+  // 一体布局模式，菜单不分割header
   const inlineLayout = (
     <>
       {showHeader && <Header />}

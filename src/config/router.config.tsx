@@ -50,7 +50,6 @@ export const asyncRouteConfig: RouteChild[] = [
     component: ['/views/Dashboard'],
     loading: true
   },
-
   {
     name: 'program',
     icon: <AppstoreOutlined />,
