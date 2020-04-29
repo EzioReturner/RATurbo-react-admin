@@ -3,25 +3,81 @@
   width: 48px;
   background-color: $color-white;
   position: absolute;
-  right: 0px;
+  right: 300px;
   top: 220px;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   font-size: 18px;
   line-height: 56px;
-  transition: transform 0.3s cubic-bezier(0.7, 0.3, 0.1, 1);
-  z-index: 10000;
   text-align: center;
   cursor: pointer;
   box-shadow: $shadow-gray;
-
-  &.openSetting {
-    box-shadow: unset;
-    transform: translateX(-300px);
-  }
 }
 
 .settingDrawer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 999;
+  height: 100%;
+
+  &.opened {
+    width: 100%;
+
+    .drawerWrapper {
+      transform: translateX(0);
+    }
+
+    .settingIcon {
+      box-shadow: unset;
+    }
+
+    .drawerMask {
+      opacity: 1;
+      width: 100%;
+    }
+  }
+
+  .drawerMask {
+    background-color: $color-text-secondary;
+    opacity: 0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .drawerWrapper {
+    transform: translateX(100%);
+    position: absolute;
+    right: 0;
+    transition: transform 0.3s cubic-bezier(0.7, 0.3, 0.1, 1);
+
+    .drawerBody {
+      height: 100vh;
+      max-height: 100vh;
+      width: 300px;
+      background-color: $color-white;
+      padding: $spacing-large;
+    }
+  }
+
+  .closeIcon {
+    position: absolute;
+    top: $spacing-large;
+    right: $spacing-large;
+    cursor: pointer;
+    font-size: 16px;
+    color: $color-text-secondary;
+    transition: color 0.3s;
+    font-weight: bold;
+    z-index: 998;
+
+    &:hover {
+      color: $color-text;
+    }
+  }
+
   .settingRow {
     position: relative;
     margin-bottom: $spacing-large;

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { SettingOutlined, CloseOutlined, CheckOutlined } from '@ant-design/icons';
 import styles from './layoutSetting.module.scss';
 import classNames from 'classnames';
-import { Drawer, Radio, Tooltip, Select, Switch } from 'antd';
+import { Tooltip, Select, Switch } from 'antd';
 import { observer, inject } from 'mobx-react';
 import LayoutStore from '@store/layoutStore';
 import ReactDOM from 'react-dom';
@@ -20,8 +20,6 @@ const LayoutSetting: React.FC = props => {
   } = props as { layoutStore: LayoutStore };
 
   const [openSetting, setOpenSetting] = useState(false);
-
-  const TarIcon = openSetting ? <CloseOutlined /> : <SettingOutlined />;
 
   const NavigateMode = (
     <div className={classNames(styles.settingRow, styles.navigateMode)}>
@@ -104,31 +102,32 @@ const LayoutSetting: React.FC = props => {
         <div className={styles.settingLabel}>固定 Header</div>
         <Switch defaultChecked onChange={val => {}} />
       </div>
-      <div className={styles.settingItem}>
-        <div className={styles.settingLabel}>固定侧边菜单</div>
-        <Switch defaultChecked onChange={val => {}} />
-      </div>
+      <Tooltip placement="left" title={isHorizontalNavigator ? '仅在左侧导航模式下起效' : ''}>
+        <div className={styles.settingItem}>
+          <div className={styles.settingLabel}>固定侧边菜单</div>
+          <Switch disabled={isHorizontalNavigator} defaultChecked onChange={val => {}} />
+        </div>
+      </Tooltip>
     </div>
   );
 
   return ReactDOM.createPortal(
     <>
-      <div
-        className={classNames(styles.settingIcon, openSetting && styles.openSetting)}
-        onClick={() => setOpenSetting(!openSetting)}
-      >
-        {TarIcon}
+      <div className={classNames(styles.settingDrawer, openSetting && styles.opened)}>
+        <div className={styles.drawerMask} onClick={() => setOpenSetting(false)}></div>
+        <div className={styles.drawerWrapper}>
+          <SettingOutlined
+            className={styles.settingIcon}
+            onClick={() => setOpenSetting(!openSetting)}
+          />
+          <div className={styles.drawerBody}>
+            <CloseOutlined className={styles.closeIcon} onClick={() => setOpenSetting(false)} />
+            {NavigateMode}
+            {ContentSetting}
+            {LayoutMode}
+          </div>
+        </div>
       </div>
-      <Drawer
-        visible={openSetting}
-        onClose={() => setOpenSetting(!openSetting)}
-        width={300}
-        className={styles.settingDrawer}
-      >
-        {NavigateMode}
-        {ContentSetting}
-        {LayoutMode}
-      </Drawer>
     </>,
     document.getElementsByTagName('body')[0]
   );
