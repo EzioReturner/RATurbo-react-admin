@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useMemo } from 'react';
 import Loading from '@components/Loading';
 import Authorized from '@components/Authorized';
 import { Header, Navigator } from '@components/Layout';
@@ -11,6 +11,7 @@ import styles from './mainLayout.module.scss';
 import LayoutStore from '@store/layoutStore';
 import { RouteConfig } from '@/models/layout';
 import LayoutSetting from './LayoutSetting';
+import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 
 const Exception403 = React.lazy(() => import(/* webpackChunkName: "403" */ '@views/Exception/403'));
 
@@ -46,6 +47,11 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
     route.routes
   );
 
+  const RANavigator = useMemo(
+    () => <Navigator collapsed={collapsed} isMobile={isMobile} toggleCollapsed={toggleCollapsed} />,
+    [collapsed, isMobile, toggleCollapsed]
+  );
+
   const viewMain = (
     <Authorized
       routeAuthority={routeAuthority}
@@ -56,16 +62,13 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
       }
     >
       <main className={styles.viewBody}>{children}</main>
-      <Footer isInlineLayout={isInlineLayout} isHorizontalNavigator={isHorizontalNavigator} />
     </Authorized>
   );
 
   // 分割模式，菜单切割header
   const splitLayout = (
     <>
-      {showMenu && (
-        <Navigator collapsed={collapsed} isMobile={isMobile} toggleCollapsed={toggleCollapsed} />
-      )}
+      {showMenu && RANavigator}
       <div
         id="mainContainer"
         className={classNames(
@@ -76,8 +79,15 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
       >
         {showHeader && <Header />}
         {viewMain}
+        <Footer propStyle={{ marginBottom: '16px' }} />
       </div>
     </>
+  );
+
+  const IconCollapsed = collapsed ? (
+    <MenuUnfoldOutlined className={styles.foldIcon} />
+  ) : (
+    <MenuFoldOutlined className={styles.foldIcon} />
   );
 
   // 一体布局模式，菜单不分割header
@@ -92,10 +102,17 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
           isMobile && styles.isMobile
         )}
       >
-        {showMenu && (
-          <Navigator collapsed={collapsed} isMobile={isMobile} toggleCollapsed={toggleCollapsed} />
-        )}
+        {showMenu && RANavigator}
         <div className={styles.inlineContainer}>{viewMain}</div>
+        <div className={styles.inlineFooter}>
+          <div
+            className={classNames(styles.footerCollapsedIcon, collapsed && styles.collapsed)}
+            onClick={() => toggleCollapsed()}
+          >
+            {IconCollapsed}
+          </div>
+          <Footer propStyle={{ alignSelf: 'flex-end' }} />
+        </div>
       </div>
     </>
   );

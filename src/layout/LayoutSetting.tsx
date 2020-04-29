@@ -88,16 +88,6 @@ const LayoutSetting: React.FC = props => {
 
   const ContentSetting = (
     <div className={classNames(styles.settingRow, styles.contentSetting)}>
-      <Tooltip placement="left" title={isHorizontalNavigator ? '仅在左侧导航模式下起效' : ''}>
-        <div className={styles.settingItem}>
-          <div className={styles.settingLabel}>固定侧边菜单</div>
-          <Switch disabled={isHorizontalNavigator} defaultChecked onChange={val => {}} />
-        </div>
-      </Tooltip>
-      <div className={styles.settingItem}>
-        <div className={styles.settingLabel}>固定 Header</div>
-        <Switch defaultChecked onChange={val => {}} />
-      </div>
       <div className={styles.settingItem}>
         <div className={styles.settingLabel}>内容区域宽度</div>
         <Select
@@ -113,6 +103,18 @@ const LayoutSetting: React.FC = props => {
           </Select.Option>
         </Select>
       </div>
+      <Tooltip placement="left" title={isInlineLayout ? '仅在分裂式布局下起效' : ''}>
+        <div className={styles.settingItem}>
+          <div className={styles.settingLabel}>固定 Header</div>
+          <Switch disabled={isInlineLayout} defaultChecked onChange={val => {}} />
+        </div>
+      </Tooltip>
+      <Tooltip placement="left" title={isHorizontalNavigator ? '仅在左侧导航模式下起效' : ''}>
+        <div className={styles.settingItem}>
+          <div className={styles.settingLabel}>固定侧边菜单</div>
+          <Switch disabled={isHorizontalNavigator} defaultChecked onChange={val => {}} />
+        </div>
+      </Tooltip>
     </div>
   );
 
@@ -144,8 +146,8 @@ const LayoutSetting: React.FC = props => {
           <div className={styles.drawerBody}>
             <CloseOutlined className={styles.closeIcon} onClick={() => setOpenSetting(false)} />
             {NavigateMode}
-            {ContentSetting}
             {LayoutMode}
+            {ContentSetting}
           </div>
         </div>
       </div>

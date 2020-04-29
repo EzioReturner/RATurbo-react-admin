@@ -1,12 +1,6 @@
 .footer {
   color: $color-text-secondary;
-  margin-bottom: $spacing-normal;
   text-align: center;
-
-  &.inlineLayout {
-    margin-bottom: -10px;
-    margin-top: $spacing-middle;
-  }
 
   &.horizontal {
     margin-top: $spacing-normal;
