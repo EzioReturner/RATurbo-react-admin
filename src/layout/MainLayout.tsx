@@ -37,6 +37,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
       loadingOptions,
       showMenu,
       showHeader,
+      lockMenuScroll,
       isContentFlowMode,
       isInlineLayout,
       isHorizontalNavigator
@@ -52,7 +53,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
     [collapsed, isMobile, toggleCollapsed]
   );
 
-  const viewMain = (
+  const ViewMain = (
     <Authorized
       routeAuthority={routeAuthority}
       unidentified={
@@ -78,7 +79,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
         )}
       >
         {showHeader && <Header />}
-        {viewMain}
+        {ViewMain}
         <Footer propStyle={{ marginBottom: '16px' }} />
       </div>
     </>
@@ -102,20 +103,21 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
           isMobile && styles.isMobile
         )}
       >
-        <div className={styles.containerWrapper}>
+        <div
+          className={classNames(styles.containerWrapper, lockMenuScroll && styles.lockMenuScroll)}
+        >
           {showMenu && RANavigator}
-          {viewMain}
-          {/* <div className={styles.inlineContainer}></div> */}
-          {/* <div className={styles.inlineFooter}>
-            <div
-              className={classNames(styles.footerCollapsedIcon, collapsed && styles.collapsed)}
-              onClick={() => toggleCollapsed()}
-            >
-              {IconCollapsed}
-            </div>
-            <Footer propStyle={{ alignSelf: 'flex-end' }} />
-          </div> */}
+          {ViewMain}
         </div>
+      </div>
+      <div className={styles.inlineFooter}>
+        <div
+          className={classNames(styles.footerCollapsedIcon, collapsed && styles.collapsed)}
+          onClick={() => toggleCollapsed()}
+        >
+          {IconCollapsed}
+        </div>
+        <Footer propStyle={{ alignSelf: 'flex-end' }} />
       </div>
     </>
   );
@@ -125,7 +127,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
     <div id="mainContainer" className={styles.horizontalContainer}>
       {showHeader && <Header />}
       <div className={classNames(styles.routeContent, isContentFlowMode && styles.flowMode)}>
-        {viewMain}
+        {ViewMain}
       </div>
       <Loading {...loadingOptions} />
     </div>

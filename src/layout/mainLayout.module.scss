@@ -7,28 +7,40 @@
   background: $color-white-dark;
 
   .layoutWrapper {
-    // min-height: 100%;
-    height: calc(100vh - 60px);
+    flex: auto;
     overflow: auto;
     width: 100%;
 
     .containerWrapper {
       display: flex;
 
+      // 固定菜单不跟随滚动
+      &.lockMenuScroll {
+        height: 100%;
+      }
+
+      .fixedMenuContent {
+        overflow: auto;
+      }
+
       .viewBody {
         padding: $spacing-large;
-        flex: 1;
+        flex: auto;
+        // 此处一定要固定X轴禁止滚动，以防菜单缩放时 内容区域扩大无法收回。释放Y轴滚动，以便在固定父级高度时能够开启内容区域滚动
+        overflow-x: hidden;
+        overflow-y: auto;
       }
     }
   }
 
   .inlineFooter {
-    position: fixed;
+    position: relative;
     bottom: 0;
     left: 0;
     width: 100%;
     background-color: $color-white;
     height: 28px;
+    min-height: 28px;
     box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2);
     z-index: 10;
     display: flex;

@@ -51,9 +51,14 @@ class LayoutStore {
   // 全局spinning配置信息
   @observable loadingOptions: LoadingOptions = { spinning: false };
 
+  // 导航风格
   @observable navigateMode: string = navigateMode || 'vertical';
 
+  // 内容区域宽度
   @observable contentAreaWidthMode: string = contentAreaWidthMode || 'max-width';
+
+  // 固定左侧导航
+  @observable lockMenuScroll: boolean = true;
 
   constructor() {
     this.addWindowEvent();
