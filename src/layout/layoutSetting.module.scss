@@ -22,12 +22,14 @@
 }
 
 .settingDrawer {
-  .settingContent {
+  .settingRow {
     position: relative;
     margin-bottom: $spacing-large;
 
     .settingTitle {
       margin-bottom: $spacing-middle;
+      font-size: 14px;
+      font-weight: bold;
 
       .tip {
         color: lighten($color-black, 76.7%);
@@ -74,6 +76,26 @@
 
       &.rightPlace {
         left: 88px;
+      }
+    }
+  }
+
+  .contentSetting {
+    .settingItem {
+      padding: $spacing-middle 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .settingLabel {
+        color: $color-text;
+        font-weight: 400;
+        font-size: 14px;
+      }
+
+      .settingAction {
+        margin: 0;
+        width: 80px !important;
       }
     }
   }

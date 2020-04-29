@@ -6,12 +6,12 @@ import { CopyrightOutlined } from '@ant-design/icons';
 
 const [left, right, href] = copyright;
 
-const Footer: React.FC<{ isInlineLayout: boolean; isHorizontalMenu?: boolean }> = props => (
+const Footer: React.FC<{ isInlineLayout: boolean; isHorizontalNavigator?: boolean }> = props => (
   <footer
     className={classNames(
       styles.footer,
       props.isInlineLayout && styles.inlineLayout,
-      props.isHorizontalMenu && styles.horizontal
+      props.isHorizontalNavigator && styles.horizontal
     )}
   >
     {left} <CopyrightOutlined /> 2019 Created by{' '}

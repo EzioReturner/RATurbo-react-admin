@@ -98,7 +98,7 @@ class LayoutStore {
     return this.contentAreaWidthMode === 'flow';
   }
 
-  get isHorizontalMenu() {
+  get isHorizontalNavigator() {
     return this.navigateMode === 'horizontal';
   }
 
@@ -216,6 +216,11 @@ class LayoutStore {
 
   @action setNavigateMode = (mode: 'vertical' | 'horizontal') => {
     this.navigateMode = mode;
+    this.setContentFlowMode(mode === 'vertical' ? 'flow' : 'max-width');
+  };
+
+  @action setContentFlowMode = (mode: 'flow' | 'max-width') => {
+    this.contentAreaWidthMode = mode;
   };
 }
 export const layoutStore = new LayoutStore();

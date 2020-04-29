@@ -3,13 +3,16 @@ import styles from './siderMenu.module.scss';
 import { siteName, menuLinkUrl, useSiteIcon } from '@config/setting';
 import classNames from 'classnames';
 
-const SiteDetail: React.FC<{ isInlineLayout: boolean; isHorizontalMenu?: boolean }> = props => {
+const SiteDetail: React.FC<{
+  isInlineLayout: boolean;
+  isHorizontalNavigator?: boolean;
+}> = props => {
   return (
     <a
       className={classNames(
         styles.siteDetail,
         props.isInlineLayout && styles.inlineLayout,
-        props.isHorizontalMenu && styles.horizontal
+        props.isHorizontalNavigator && styles.horizontal
       )}
       href={menuLinkUrl}
       target="_blank"

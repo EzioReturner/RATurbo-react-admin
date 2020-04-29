@@ -35,7 +35,7 @@ const SiderMenu: React.FC = props => {
       toggleCollapsed,
       collapsed,
       isInlineLayout,
-      isHorizontalMenu
+      isHorizontalNavigator
     },
     userStore: { authority: currentAuthority },
     localeStore: { localeObj }
@@ -186,7 +186,7 @@ const SiderMenu: React.FC = props => {
 
   let menuProps: any = {};
 
-  if (!isHorizontalMenu) {
+  if (!isHorizontalNavigator) {
     menuProps = {
       ...menuProps,
       inlineCollapsed: collapsed
@@ -205,9 +205,9 @@ const SiderMenu: React.FC = props => {
       className={classNames(
         styles.RAMenu,
         collapsed && styles.RAMenuCollapsed,
-        isHorizontalMenu && styles.horizontal
+        isHorizontalNavigator && styles.horizontal
       )}
-      mode={isHorizontalMenu ? 'horizontal' : 'inline'}
+      mode={isHorizontalNavigator ? 'horizontal' : 'inline'}
       selectedKeys={[location.pathname]}
       onOpenChange={handleOpenMenu}
       {...menuProps}
@@ -224,7 +224,9 @@ const SiderMenu: React.FC = props => {
         isInlineLayout && styles.inlineLayout
       )}
     >
-      {!isInlineLayout && <SiteDetail isInlineLayout={isInlineLayout} isHorizontalMenu={false} />}
+      {!isInlineLayout && (
+        <SiteDetail isInlineLayout={isInlineLayout} isHorizontalNavigator={false} />
+      )}
       {RAMenu}
       {isInlineLayout && (
         <div className={styles.footerCollapsedIcon} onClick={() => toggleCollapsed()}>
@@ -236,7 +238,7 @@ const SiderMenu: React.FC = props => {
 
   const HorizontalMenu = RAMenu;
 
-  return <>{isHorizontalMenu ? HorizontalMenu : VerticalMenu}</>;
+  return <>{isHorizontalNavigator ? HorizontalMenu : VerticalMenu}</>;
 };
 
 export default inject('layoutStore', 'userStore', 'localeStore')(observer(SiderMenu));

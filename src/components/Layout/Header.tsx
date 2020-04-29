@@ -20,7 +20,7 @@ const Header: React.FC = props => {
       isMobile,
       showMenu,
       isInlineLayout,
-      isHorizontalMenu,
+      isHorizontalNavigator,
       isContentFlowMode
     }
   } = props as InjectedProps;
@@ -53,7 +53,7 @@ const Header: React.FC = props => {
   const HorizontalMenuHeader = (
     <header className={classNames(styles.header, styles.horiziontalMenu)}>
       <div className={classNames(styles.container, isContentFlowMode && styles.flowMode)}>
-        <SiteDetail isInlineLayout isHorizontalMenu />
+        <SiteDetail isInlineLayout isHorizontalNavigator />
         <div className={styles.headerNav}>
           <TopMenu />
         </div>
@@ -65,6 +65,6 @@ const Header: React.FC = props => {
     </header>
   );
 
-  return <>{isHorizontalMenu ? HorizontalMenuHeader : VerticalMenuHeader}</>;
+  return <>{isHorizontalNavigator ? HorizontalMenuHeader : VerticalMenuHeader}</>;
 };
 export default inject('layoutStore')(observer(Header));

@@ -38,7 +38,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
       showHeader,
       isContentFlowMode,
       isInlineLayout,
-      isHorizontalMenu
+      isHorizontalNavigator
     }
   } = injected();
   const routeAuthority: undefined | string | string[] = getRouteAuthority(
@@ -56,7 +56,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
       }
     >
       <main className={styles.viewBody}>{children}</main>
-      <Footer isInlineLayout={isInlineLayout} isHorizontalMenu={isHorizontalMenu} />
+      <Footer isInlineLayout={isInlineLayout} isHorizontalNavigator={isHorizontalNavigator} />
     </Authorized>
   );
 
@@ -129,7 +129,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
   return (
     <Authorized unidentified={<Redirect to="/user/login" />}>
       <>
-        {isHorizontalMenu ? HorizontalMenuLayout : VerticalMenuLayout}
+        {isHorizontalNavigator ? HorizontalMenuLayout : VerticalMenuLayout}
         {!isMobile && process.env.NODE_ENV === 'development' && <LayoutSetting />}
       </>
     </Authorized>
