@@ -10,7 +10,6 @@ import LayoutStore from '@store/layoutStore';
 import LocaleStore from '@store/localeStore';
 import { RouteChild } from '@/models/layout';
 import SiteDetail from './SiteDetail';
-// import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 import Icon from '@ant-design/icons';
 import Iconfont from '@components/Iconfont';
 
@@ -193,12 +192,6 @@ const SiderMenu: React.FC = props => {
     };
     !collapsed && (menuProps.openKeys = openKeys);
   }
-
-  // const IconCollapsed = collapsed ? (
-  //   <MenuUnfoldOutlined className={styles.foldIcon} />
-  // ) : (
-  //   <MenuFoldOutlined className={styles.foldIcon} />
-  // );
 
   const RAMenu = (
     <Menu

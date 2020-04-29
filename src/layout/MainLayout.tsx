@@ -97,21 +97,24 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
       <div
         id="mainContainer"
         className={classNames(
-          styles.routeContent,
+          styles.layoutWrapper,
           collapsed && styles.collapsed,
           isMobile && styles.isMobile
         )}
       >
-        {showMenu && RANavigator}
-        <div className={styles.inlineContainer}>{viewMain}</div>
-        <div className={styles.inlineFooter}>
-          <div
-            className={classNames(styles.footerCollapsedIcon, collapsed && styles.collapsed)}
-            onClick={() => toggleCollapsed()}
-          >
-            {IconCollapsed}
-          </div>
-          <Footer propStyle={{ alignSelf: 'flex-end' }} />
+        <div className={styles.containerWrapper}>
+          {showMenu && RANavigator}
+          {viewMain}
+          {/* <div className={styles.inlineContainer}></div> */}
+          {/* <div className={styles.inlineFooter}>
+            <div
+              className={classNames(styles.footerCollapsedIcon, collapsed && styles.collapsed)}
+              onClick={() => toggleCollapsed()}
+            >
+              {IconCollapsed}
+            </div>
+            <Footer propStyle={{ alignSelf: 'flex-end' }} />
+          </div> */}
         </div>
       </div>
     </>
@@ -132,7 +135,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
   const VerticalMenuLayout = (
     <div
       className={classNames(
-        styles.container,
+        styles.raBasicLayout,
         isInlineLayout ? styles.inlineLayout : styles.splitLayout,
         !showMenu && styles.withoutMenu,
         !showHeader && styles.withoutHeader
