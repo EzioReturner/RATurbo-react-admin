@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { SettingOutlined, CloseOutlined, CheckOutlined } from '@ant-design/icons';
 import styles from './layoutSetting.module.scss';
 import classNames from 'classnames';
@@ -8,6 +8,11 @@ import LayoutStore from '@store/layoutStore';
 import ReactDOM from 'react-dom';
 
 const LayoutSetting: React.FC = props => {
+  let maskRef = useRef<HTMLElement>();
+  useEffect(() => {
+    maskRef.current = document.getElementById('raSettingMask') as HTMLElement;
+  }, []);
+
   const {
     layoutStore: {
       isHorizontalNavigator,
@@ -83,6 +88,16 @@ const LayoutSetting: React.FC = props => {
 
   const ContentSetting = (
     <div className={classNames(styles.settingRow, styles.contentSetting)}>
+      <Tooltip placement="left" title={isHorizontalNavigator ? '仅在左侧导航模式下起效' : ''}>
+        <div className={styles.settingItem}>
+          <div className={styles.settingLabel}>固定侧边菜单</div>
+          <Switch disabled={isHorizontalNavigator} defaultChecked onChange={val => {}} />
+        </div>
+      </Tooltip>
+      <div className={styles.settingItem}>
+        <div className={styles.settingLabel}>固定 Header</div>
+        <Switch defaultChecked onChange={val => {}} />
+      </div>
       <div className={styles.settingItem}>
         <div className={styles.settingLabel}>内容区域宽度</div>
         <Select
@@ -98,23 +113,29 @@ const LayoutSetting: React.FC = props => {
           </Select.Option>
         </Select>
       </div>
-      <div className={styles.settingItem}>
-        <div className={styles.settingLabel}>固定 Header</div>
-        <Switch defaultChecked onChange={val => {}} />
-      </div>
-      <Tooltip placement="left" title={isHorizontalNavigator ? '仅在左侧导航模式下起效' : ''}>
-        <div className={styles.settingItem}>
-          <div className={styles.settingLabel}>固定侧边菜单</div>
-          <Switch disabled={isHorizontalNavigator} defaultChecked onChange={val => {}} />
-        </div>
-      </Tooltip>
     </div>
   );
 
+  const handleCloseMask = () => {
+    setOpenSetting(false);
+    if (maskRef.current) {
+      maskRef.current.style.width = '100vw';
+      setTimeout(() => {
+        maskRef.current && (maskRef.current.style.width = '0');
+      }, 400);
+    }
+  };
+
   return ReactDOM.createPortal(
     <>
-      <div className={classNames(styles.settingDrawer, openSetting && styles.opened)}>
-        <div className={styles.drawerMask} onClick={() => setOpenSetting(false)}></div>
+      <div
+        className={classNames(styles.settingDrawer, openSetting && styles.opened)}
+        id="raSettingMask"
+      >
+        <div
+          className={classNames(styles.drawerMask, openSetting && styles.opened)}
+          onClick={() => handleCloseMask()}
+        ></div>
         <div className={styles.drawerWrapper}>
           <SettingOutlined
             className={styles.settingIcon}
