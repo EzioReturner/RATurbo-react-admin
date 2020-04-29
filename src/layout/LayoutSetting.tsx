@@ -90,19 +90,19 @@ const LayoutSetting: React.FC = props => {
     </div>
   );
 
-  const handleSetLockScroll = (val: boolean, type: 'header' | 'menu') => {
-    if (isInlineLayout) {
-      if (type === 'header') {
-        setLockHeaderScroll(val);
-        setLockMenuScroll(val);
-      } else {
-        setLockMenuScroll(val);
-        !lockHeaderScroll && val && setLockHeaderScroll(val);
-      }
-      return;
-    }
-    type === 'header' ? setLockHeaderScroll(val) : setLockMenuScroll(val);
-  };
+  // const handleSetLockScroll = (val: boolean, type: 'header' | 'menu') => {
+  //   if (isInlineLayout) {
+  //     if (type === 'header') {
+  //       setLockHeaderScroll(val);
+  //       setLockMenuScroll(val);
+  //     } else {
+  //       setLockMenuScroll(val);
+  //       !lockHeaderScroll && val && setLockHeaderScroll(val);
+  //     }
+  //     return;
+  //   }
+  //   type === 'header' ? setLockHeaderScroll(val) : setLockMenuScroll(val);
+  // };
 
   const ContentSetting = (
     <div className={classNames(styles.settingRow, styles.contentSetting)}>
@@ -121,13 +121,14 @@ const LayoutSetting: React.FC = props => {
           </Select.Option>
         </Select>
       </div>
-      <Tooltip placement="left" title={isInlineLayout ? '一体式布局将与固定侧边菜单锁定联动' : ''}>
+      <Tooltip placement="left" title={isInlineLayout ? '仅在分裂布局下起效' : ''}>
         <div className={styles.settingItem}>
           <div className={styles.settingLabel}>固定 Header</div>
           <Switch
+            disabled={isInlineLayout}
             checked={lockHeaderScroll}
             defaultChecked
-            onChange={val => handleSetLockScroll(val, 'header')}
+            onChange={setLockHeaderScroll}
           />
         </div>
       </Tooltip>
@@ -138,7 +139,7 @@ const LayoutSetting: React.FC = props => {
             disabled={isHorizontalNavigator}
             checked={lockMenuScroll}
             defaultChecked
-            onChange={val => handleSetLockScroll(val, 'menu')}
+            onChange={setLockMenuScroll}
           />
         </div>
       </Tooltip>
