@@ -21,7 +21,8 @@ const Header: React.FC = props => {
       showMenu,
       isInlineLayout,
       isHorizontalNavigator,
-      isContentFlowMode
+      isContentFlowMode,
+      lockHeaderScroll
     }
   } = props as InjectedProps;
 
@@ -38,7 +39,8 @@ const Header: React.FC = props => {
         collapsed && styles.collapsed,
         isMobile && styles.isMobile,
         !showMenu && styles.withoutMenu,
-        isInlineLayout && styles.inlineLayout
+        isInlineLayout ? styles.inlineLayout : styles.splitLayout,
+        lockHeaderScroll && styles.lockHeaderScroll
       )}
     >
       {isInlineLayout && <SiteDetail isInlineLayout={isInlineLayout} />}

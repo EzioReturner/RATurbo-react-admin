@@ -12,13 +12,16 @@ html,
 body {
   width: 100%;
   height: 100%;
-  overflow: hidden;
   background-color: #fff;
   // font-family: 'Poppins', sans-serif !important;
 }
 
 #root {
   height: 100%;
+}
+
+html {
+  overflow-y: auto;
 }
 
 body {

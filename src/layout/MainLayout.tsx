@@ -38,6 +38,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
       showMenu,
       showHeader,
       lockMenuScroll,
+      lockHeaderScroll,
       isContentFlowMode,
       isInlineLayout,
       isHorizontalNavigator
@@ -66,6 +67,19 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
     </Authorized>
   );
 
+  const LayoutWrapper = (child: any) => (
+    <div
+      id="mainContainer"
+      className={classNames(
+        styles.layoutWrapper,
+        collapsed && styles.collapsed,
+        isMobile && styles.isMobile
+      )}
+    >
+      {child}
+    </div>
+  );
+
   // 分割模式，菜单切割header
   const splitLayout = (
     <>
@@ -73,14 +87,19 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
       <div
         id="mainContainer"
         className={classNames(
-          styles.routeContent,
+          styles.layoutWrapper,
           collapsed && styles.collapsed,
-          isMobile && styles.isMobile
+          isMobile && styles.isMobile,
+          lockHeaderScroll && styles.lockHeaderScroll
         )}
       >
         {showHeader && <Header />}
-        {ViewMain}
-        <Footer propStyle={{ marginBottom: '16px' }} />
+        <div
+          className={classNames(styles.containerWrapper, lockMenuScroll && styles.lockMenuScroll)}
+        >
+          {ViewMain}
+          <Footer propStyle={{ marginBottom: '16px' }} />
+        </div>
       </div>
     </>
   );
@@ -140,7 +159,9 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
         styles.raBasicLayout,
         isInlineLayout ? styles.inlineLayout : styles.splitLayout,
         !showMenu && styles.withoutMenu,
-        !showHeader && styles.withoutHeader
+        !showHeader && styles.withoutHeader,
+        lockMenuScroll && styles.lockMenuScroll,
+        lockHeaderScroll && styles.lockHeaderScroll
       )}
     >
       <Loading {...loadingOptions} collapsed={collapsed} />

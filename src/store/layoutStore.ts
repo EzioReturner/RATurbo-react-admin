@@ -60,6 +60,8 @@ class LayoutStore {
   // 固定左侧导航
   @observable lockMenuScroll: boolean = true;
 
+  @observable lockHeaderScroll: boolean = true;
+
   constructor() {
     this.addWindowEvent();
     this.changeStatus();
@@ -226,6 +228,14 @@ class LayoutStore {
 
   @action setContentFlowMode = (mode: 'flow' | 'max-width') => {
     this.contentAreaWidthMode = mode;
+  };
+
+  @action setLockMenuScroll = (status: boolean) => {
+    this.lockMenuScroll = status;
+  };
+
+  @action setLockHeaderScroll = (status: boolean) => {
+    this.lockHeaderScroll = status;
   };
 }
 export const layoutStore = new LayoutStore();
