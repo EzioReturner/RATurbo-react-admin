@@ -33,12 +33,10 @@
     }
 
     .drawerMask {
+      height: 100%;
       opacity: 1;
-      width: 100%;
-      // height: 100%;
-      // opacity: 1;
-      // transition: none;
-      // animation: antdDrawerFadeIn .3s cubic-bezier(.7,.3,.1,1);
+      transition: none;
+      animation: raDrawerFadeIn 0.3s cubic-bezier(0.7, 0.3, 0.1, 1);
     }
   }
 
@@ -47,19 +45,11 @@
     opacity: 0;
     height: 0;
     position: absolute;
-    width: 0;
-    height: 100%;
+    width: 100%;
+    height: 0;
     top: 0;
     left: 0;
-    transition: opacity 0.3s, width 0.3s;
-    // position: absolute;
-    // top: 0;
-    // left: 0;
-    // width: 100%;
-    // height: 0;
-    // background-color: rgba(0,0,0,.45);
-    // opacity: 0;
-    // transition: opacity .3s linear,height 0s ease .3s;
+    transition: opacity 0.3s linear, height 0s ease 0.3s;
   }
 
   .drawerWrapper {
@@ -179,11 +169,11 @@
   height: 42px;
 }
 
-// @keyframes antdDrawerFadeIn {
-//   0% {
-//     opacity: 0;
-//   }
-//   100% {
-//     opacity: 1;
-//   }
-// }
+@keyframes raDrawerFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
