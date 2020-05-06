@@ -10,7 +10,7 @@ import { observer, inject } from 'mobx-react';
 import styles from './mainLayout.module.scss';
 import LayoutStore from '@store/layoutStore';
 import { RouteConfig } from '@/models/layout';
-import LayoutSetting from './LayoutSetting';
+import LayoutSetting from '@components/LayoutSetting';
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 
 const Exception403 = React.lazy(() => import(/* webpackChunkName: "403" */ '@views/Exception/403'));
