@@ -7,7 +7,7 @@ module.exports = {
   menuLinkUrl: 'https://github.com/EzioReturner/RATurbo-react-admin',
   iconfontUrl: '//at.alicdn.com/t/font_842049_rn496ve5nkq.js',
   layoutMode: 'inline',
-  navigateMode: 'vertical',
+  navigateMode: 'horizontal',
   contentAreaWidthMode: 'max-width',
   useSiteIcon: true,
   i18n: {

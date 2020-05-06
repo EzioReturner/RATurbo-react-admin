@@ -67,19 +67,6 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
     </Authorized>
   );
 
-  const LayoutWrapper = (child: any) => (
-    <div
-      id="mainContainer"
-      className={classNames(
-        styles.layoutWrapper,
-        collapsed && styles.collapsed,
-        isMobile && styles.isMobile
-      )}
-    >
-      {child}
-    </div>
-  );
-
   // 分割模式，菜单切割header
   const splitLayout = (
     <>
@@ -145,8 +132,15 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
   const HorizontalMenuLayout = (
     <div id="mainContainer" className={styles.horizontalContainer}>
       {showHeader && <Header />}
-      <div className={classNames(styles.routeContent, isContentFlowMode && styles.flowMode)}>
+      <div
+        className={classNames(
+          styles.routeContent,
+          isContentFlowMode && styles.flowMode,
+          lockHeaderScroll && styles.lockHeaderScroll
+        )}
+      >
         {ViewMain}
+        <Footer propStyle={{ marginTop: '16px' }} />
       </div>
       <Loading {...loadingOptions} />
     </div>

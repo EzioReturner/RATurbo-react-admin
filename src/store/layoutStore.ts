@@ -63,6 +63,7 @@ class LayoutStore {
   @observable lockHeaderScroll: boolean = true;
 
   constructor() {
+    this.initLayoutMode();
     this.addWindowEvent();
     this.changeStatus();
     this.initMenu();
@@ -107,6 +108,12 @@ class LayoutStore {
 
   get isHorizontalNavigator() {
     return this.navigateMode === 'horizontal';
+  }
+
+  initLayoutMode() {
+    if (this.isHorizontalNavigator) {
+      this.setLayoutMode('split');
+    }
   }
 
   // 初始化菜单

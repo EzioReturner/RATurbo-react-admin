@@ -92,88 +92,20 @@
       }
     }
   }
-
-  // &.splitLayout {
-  //   flex-direction: row;
-
-  //   &.withoutHeader .routeContent {
-  //     margin-top: 0;
-  //   }
-
-  //   .routeContent {
-  //     flex: 1 1;
-  //     margin-top: 60px;
-  //     position: static;
-  //     display: flex;
-  //     flex-direction: column;
-  //   }
-  // }
-
-  // &.inlineLayout {
-  //   &.withoutHeader .routeContent {
-  //     top: 0px !important;
-  //   }
-
-  //   .routeContent {
-  //     overflow: hidden;
-  //     top: 60px;
-  //     flex-direction: row;
-
-  //     .inlineWrapper {
-  //       display: flex;
-  //     }
-
-  //     .inlineContainer {
-  //       width: 100%;
-  //       padding: $spacing-large;
-  //       overflow: auto;
-  //       display: flex;
-  //       flex-direction: column;
-  //       flex: 1;
-  //       padding-bottom: 52px;
-
-  //       & > .viewBody {
-  //         width: 100%;
-  //         flex: auto;
-  //       }
-  //     }
-  //   }
-
-  // }
-
-  // .routeContent {
-  //   position: absolute;
-  //   left: 0px;
-  //   bottom: 0px;
-  //   right: 0px;
-  //   background: $color-white-dark;
-  //   overflow: auto;
-  //   transition: all 0.3s;
-  //   display: flex;
-  //   flex: auto;
-
-  //   &.isMobile {
-  //     left: 0;
-  //   }
-
-  //   & > .viewBody {
-  //     width: 100%;
-  //     padding: $spacing-large;
-  //     flex: auto;
-  //   }
-  // }
 }
 
 .horizontalContainer {
   display: flex;
   flex-flow: column nowrap;
-  padding-top: 60px;
   background: $color-white-dark;
 
   .routeContent {
     padding: $spacing-large;
-    overflow: auto;
-    height: calc(100vh - 60px);
+
+    &.lockHeaderScroll {
+      overflow: auto;
+      height: calc(100vh - 60px);
+    }
 
     &.flowMode {
       .viewBody {

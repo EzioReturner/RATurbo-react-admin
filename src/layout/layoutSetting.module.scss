@@ -82,31 +82,31 @@
       color: $color-text;
     }
   }
+}
 
-  .settingRow {
-    position: relative;
-    margin-bottom: $spacing-large;
+.settingRow {
+  position: relative;
+  margin-bottom: $spacing-large;
 
-    .settingTitle {
-      margin-bottom: $spacing-middle;
-      font-size: 14px;
-      font-weight: bold;
+  .settingTitle {
+    margin-bottom: $spacing-middle;
+    font-size: 14px;
+    font-weight: bold;
 
-      .tip {
-        color: lighten($color-black, 76.7%);
-        font-size: 12px;
-        margin-left: $spacing-small;
-      }
+    .tip {
+      color: lighten($color-black, 76.7%);
+      font-size: 12px;
+      margin-left: $spacing-small;
     }
   }
 
-  .navigateMode {
+  &.navigateMode {
     img {
       @extend .sampleImg;
     }
   }
 
-  .layoutMode {
+  &.layoutMode {
     img {
       @extend .sampleImg;
       border-radius: 5px;
@@ -125,8 +125,8 @@
     }
   }
 
-  .navigateMode,
-  .layoutMode {
+  &.navigateMode,
+  &.layoutMode {
     .selectedIcon {
       color: $color-primary;
       font-size: 16px;
@@ -141,7 +141,8 @@
     }
   }
 
-  .contentSetting {
+  &.contentSetting,
+  &.layoutControl {
     .settingItem {
       padding: $spacing-middle 0;
       display: flex;

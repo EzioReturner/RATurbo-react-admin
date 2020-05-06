@@ -24,7 +24,11 @@ const LayoutSetting: React.FC = props => {
       lockMenuScroll,
       lockHeaderScroll,
       setLockMenuScroll,
-      setLockHeaderScroll
+      setLockHeaderScroll,
+      setShowHeader,
+      setShowMenu,
+      showMenu,
+      showHeader
     }
   } = props as { layoutStore: LayoutStore };
 
@@ -90,20 +94,6 @@ const LayoutSetting: React.FC = props => {
     </div>
   );
 
-  // const handleSetLockScroll = (val: boolean, type: 'header' | 'menu') => {
-  //   if (isInlineLayout) {
-  //     if (type === 'header') {
-  //       setLockHeaderScroll(val);
-  //       setLockMenuScroll(val);
-  //     } else {
-  //       setLockMenuScroll(val);
-  //       !lockHeaderScroll && val && setLockHeaderScroll(val);
-  //     }
-  //     return;
-  //   }
-  //   type === 'header' ? setLockHeaderScroll(val) : setLockMenuScroll(val);
-  // };
-
   const ContentSetting = (
     <div className={classNames(styles.settingRow, styles.contentSetting)}>
       <div className={styles.settingItem}>
@@ -146,6 +136,27 @@ const LayoutSetting: React.FC = props => {
     </div>
   );
 
+  const LayoutControl = (
+    <div className={classNames(styles.settingRow, styles.layoutControl)}>
+      <div className={styles.settingTitle}>布局控制</div>
+      <div className={styles.settingItem}>
+        <div className={styles.settingLabel}>显示头部</div>
+        <Switch checked={showHeader} defaultChecked onChange={setShowHeader} />
+      </div>
+      <Tooltip placement="left" title={isHorizontalNavigator ? '仅在左侧导航模式下起效' : ''}>
+        <div className={styles.settingItem}>
+          <div className={styles.settingLabel}>显示菜单</div>
+          <Switch
+            disabled={isHorizontalNavigator}
+            checked={showMenu}
+            defaultChecked
+            onChange={setShowMenu}
+          />
+        </div>
+      </Tooltip>
+    </div>
+  );
+
   const handleCloseMask = () => {
     setOpenSetting(false);
     if (maskRef.current) {
@@ -176,6 +187,7 @@ const LayoutSetting: React.FC = props => {
             {NavigateMode}
             {LayoutMode}
             {ContentSetting}
+            {LayoutControl}
           </div>
         </div>
       </div>
