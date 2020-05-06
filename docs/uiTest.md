@@ -4,6 +4,8 @@
 
 RA使用 [jest](https://github.com/facebook/jest) + [puppeteer](https://github.com/puppeteer/puppeteer)  的端到端测试方案，配置文件位于 `jest-puppeteer.config.js` 与 `jest.config.js`
 
+> 默认会跳过安装chromium 如果需要安装chromium请运行此命令 `node node_modules/puppeteer/install.js`
+
 ### 写一个 e2e 用例
 
 假设有一个需求，用户在登录页面输入错误的用户名和密码，点击登录后，出现错误提示框。

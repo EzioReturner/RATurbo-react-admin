@@ -3,7 +3,7 @@
   * [新增页面](/addPage)
   * [Http请求](/httpRequest)
   * [路由与菜单](/router)
-  * [骨架](/skeleton)
+  * [骨架&布局](/skeleton)
 * 进阶
   * [权限控制](/authority)
   * [过渡效果](/transition)
