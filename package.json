@@ -96,7 +96,6 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
-    "@ant-design/compatible": "0.0.1-rc.0",
     "@hot-loader/react-dom": "^16.11.0",
     "animate.css": "^3.7.2",
     "antd": "^4.1.4",

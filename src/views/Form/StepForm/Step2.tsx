@@ -1,7 +1,5 @@
 import React from 'react';
-import { Form } from '@ant-design/compatible';
-import '@ant-design/compatible/assets/index.css';
-import { Button } from 'antd';
+import { Button, Form } from 'antd';
 import { observer } from 'mobx-react';
 import FormatterLocale from '@components/FormatterLocale';
 import StepFormStore from './formStore';
@@ -25,8 +23,8 @@ const Step2: React.FC = () => {
       }
     }
   };
-  const StepForm: React.FC = () => (
-    <Form {...formItemLayout}>
+  const FormContainer = (
+    <Form {...formItemLayout} name="step2" onFinish={onSubmit}>
       <Form.Item {...formItemLayout} label={<FormatterLocale id="title" defaultMessage="标题" />}>
         {data.title}
       </Form.Item>
@@ -37,7 +35,7 @@ const Step2: React.FC = () => {
         {data.user}
       </Form.Item>
       <Form.Item {...tailFormItemLayout}>
-        <Button type="primary" onClick={onSubmit} loading={submitting}>
+        <Button type="primary" htmlType="submit" loading={submitting}>
           <FormatterLocale id="button.submit" defaultMessage="提交" />
         </Button>
         <Button
@@ -51,12 +49,7 @@ const Step2: React.FC = () => {
       </Form.Item>
     </Form>
   );
-  const FormContainer = Form.create({ name: 'Step2' })(StepForm);
-  return (
-    <div className={styles.step}>
-      <FormContainer />
-    </div>
-  );
+  return <div className={styles.step}>{FormContainer}</div>;
 };
 
 export default observer(Step2);

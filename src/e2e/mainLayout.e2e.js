@@ -39,19 +39,19 @@ describe('mainLayout', () => {
     it(`test pages ${route}`, testPage(route));
   });
 
-  it('test layout header display', async () => {
-    await page.goto(`${BASE_URL}/#/`);
-    await page.waitFor(1000);
-    await page.evaluate(() => document.getElementById('setting_setShowHeader').click());
-    const havHeader = await page.evaluate(() => document.getElementsByTagName('header').length > 0);
-    expect(havHeader).toBeFalsy();
-  });
+  // it('test layout header display', async () => {
+  //   await page.goto(`${BASE_URL}/#/`);
+  //   await page.waitFor(1000);
+  //   await page.evaluate(() => document.getElementById('setting_setShowHeader').click());
+  //   const havHeader = await page.evaluate(() => document.getElementsByTagName('header').length > 0);
+  //   expect(havHeader).toBeFalsy();
+  // });
 
-  it('test layout menu display', async () => {
-    await page.goto(`${BASE_URL}/#/`);
-    await page.waitFor(1000);
-    await page.evaluate(() => document.getElementById('setting_setShowMenu').click());
-    const havMenu = await page.evaluate(() => document.getElementsByTagName('aside').length > 0);
-    expect(havMenu).toBeFalsy();
-  });
+  // it('test layout menu display', async () => {
+  //   await page.goto(`${BASE_URL}/#/`);
+  //   await page.waitFor(1000);
+  //   await page.evaluate(() => document.getElementById('setting_setShowMenu').click());
+  //   const havMenu = await page.evaluate(() => document.getElementsByTagName('aside').length > 0);
+  //   expect(havMenu).toBeFalsy();
+  // });
 });

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '@ant-design/compatible/assets/index.css';
 import { Alert } from 'antd';
 import LoginForm from './LoginForm';
 import './login.scss';

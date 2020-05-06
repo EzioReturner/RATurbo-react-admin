@@ -1,5 +1,5 @@
 import { postLogin } from '@api/user';
-import { action, configure, observable } from 'mobx';
+import { action, configure, observable, runInAction } from 'mobx';
 
 type IdentifyStatus = 'identifying' | 'identifyPass' | 'unauthorized';
 
@@ -42,13 +42,17 @@ class UserStore {
           const data = userInfo.data[0];
           this.setUserInfo(data);
           this.setAuthority(name);
-          this.identifyStatus = 'identifyPass';
+          runInAction(() => {
+            this.identifyStatus = 'identifyPass';
+          });
           return true;
         }
         return false;
       })
       .catch(err => {
-        this.identifyStatus = 'unauthorized';
+        runInAction(() => {
+          this.identifyStatus = 'unauthorized';
+        });
         this.setAuthority([]);
         return false;
       });
