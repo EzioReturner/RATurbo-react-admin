@@ -103,7 +103,6 @@
     "axios": "^0.19.0",
     "classnames": "^2.2.6",
     "core-js": "^3.2.1",
-    "dynamic-antd-theme": "^0.4.1",
     "echarts": "^4.5.0",
     "echarts-gl": "^1.1.1",
     "echarts-wordcloud": "^1.1.3",

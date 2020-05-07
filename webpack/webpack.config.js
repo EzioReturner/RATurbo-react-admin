@@ -118,7 +118,7 @@ module.exports = {
       antDir: _resolve('./node_modules/antd'),
       stylesDir: _resolve('./src/styles'),
       varFile: _resolve('./src/styles/variables.less'),
-      mainLessFile: _resolve('./src/styles/entry.less'),
+      mainLessFile: _resolve('./src/styles/lessEntry.less'),
       outputFilePath: _resolve('./public/color.less'),
       themeVariables: ['@primary-color'],
       indexFileName: './public/index.html',
