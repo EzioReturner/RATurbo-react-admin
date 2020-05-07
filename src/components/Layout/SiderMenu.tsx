@@ -12,6 +12,7 @@ import { RouteChild } from '@/models/layout';
 import SiteDetail from './SiteDetail';
 import Icon from '@ant-design/icons';
 import Iconfont from '@components/Iconfont';
+import cloneDeep from 'lodash/cloneDeep';
 
 interface InjectedProps {
   userStore: UserStore;
@@ -75,19 +76,22 @@ const SiderMenu: React.FC = props => {
 
   function createIcon(icon: string | React.ReactNode) {
     if (!icon) return null;
+    const cacheIcon = cloneDeep(icon);
     // @ts-ignore
     if (icon.$$typeof) {
       // return icon;
-      return <span className={styles.menuIcon}>{icon}</span>;
+      return <span className={styles.menuIcon}>{cacheIcon}</span>;
     }
-    if (typeof icon === 'string') {
-      return icon.indexOf('iconfont-') > 0 ? (
-        <Iconfont type={icon} />
+    if (typeof cacheIcon === 'string') {
+      return cacheIcon.indexOf('iconfont-') > 0 ? (
+        <Iconfont type={cacheIcon} />
       ) : (
-        <Icon component={icon as any}></Icon>
+        <Icon component={cacheIcon as any}></Icon>
       );
     } else {
-      return <Icon component={icon as React.FunctionComponent<React.SVGProps<SVGSVGElement>>} />;
+      return (
+        <Icon component={cacheIcon as React.FunctionComponent<React.SVGProps<SVGSVGElement>>} />
+      );
     }
   }
 

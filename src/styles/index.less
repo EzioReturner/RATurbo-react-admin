@@ -1,8 +1,5 @@
-@import './custom.scss';
-@import './color.scss';
-@import './antdStyle.scss';
-@import './popStyle.scss';
-@import './nprogress.scss';
+@import './nprogress.less';
+@import './antd.less';
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
@@ -13,7 +10,6 @@ body {
   width: 100%;
   height: 100%;
   background-color: #fff;
-  // font-family: 'Poppins', sans-serif !important;
 }
 
 #root {
@@ -27,7 +23,6 @@ html {
 body {
   margin: 0;
   padding: 0;
-  // font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   --font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
@@ -38,10 +33,5 @@ body {
 
 :root,
 body {
-  // font-family: 'Poppins', sans-serif;
-  --primary: #fb4491;
   font-weight: 500;
-  @include antdStyle;
-  @include popStyle;
-  @include nprogress;
 }

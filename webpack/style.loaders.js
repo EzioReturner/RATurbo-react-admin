@@ -60,8 +60,7 @@ module.exports = function() {
           },
           preProcessor === 'less-loader'
             ? {
-                javascriptEnabled: true,
-                modifyVars: setting.theme
+                javascriptEnabled: true
               }
             : undefined
         )
@@ -71,10 +70,21 @@ module.exports = function() {
       loaders.push({
         loader: 'sass-resources-loader',
         options: {
-          resources: [_resolve('./src/styles/color.scss'), _resolve('./src/styles/var.scss')]
+          resources: [
+            _resolve('./src/styles/backup/color.scss'),
+            _resolve('./src/styles/backup/var.scss')
+          ]
         }
       });
     }
+    // if (preProcessor === 'less-loader') {
+    //   loaders.push({
+    //     loader: 'sass-resources-loader',
+    //     options: {
+    //       resources: [_resolve('./src/styles/variables.less')]
+    //     }
+    //   });
+    // }
     return loaders;
   };
   return [

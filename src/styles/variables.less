@@ -1,0 +1,12 @@
+@import '~antd/lib/style/themes/default.less';
+
+@primary-color: #fb4491;
+
+:root,
+body {
+  --primary: @primary-color;
+  --primary-slider-active: tint(@primary-color, 50%);
+  --primary-slider-focus: tint(@primary-color, 20%);
+  --primary-slider-focus-shadow: fade(@primary-color, 12%);
+  --primary-select-focus-shadow: fade(@primary-color, 20%);
+}

@@ -115,13 +115,13 @@ module.exports = {
     }),
 
     new AntDesignThemePlugin({
-      antDir: _resolve('./node_modules/antd'), //antd包位置
-      stylesDir: _resolve('./src/styles/theme'), //主题文件所在文件夹
-      varFile: _resolve('./src/styles/theme/variables.less'), // 自定义默认的主题色
-      mainLessFile: _resolve('./src/styles/theme/index.less'), // 项目中其他自定义的样式（如果不需要动态修改其他样式，该文件可以为空）
-      outputFilePath: _resolve('./public/color.less'), //提取的less文件输出到什么地方
-      themeVariables: ['@primary-color', '@link-color'], //要改变的主题变量
-      indexFileName: './public/index.html', // index.html所在位置
+      antDir: _resolve('./node_modules/antd'),
+      stylesDir: _resolve('./src/styles'),
+      varFile: _resolve('./src/styles/variables.less'),
+      mainLessFile: _resolve('./src/styles/entry.less'),
+      outputFilePath: _resolve('./public/color.less'),
+      themeVariables: ['@primary-color'],
+      indexFileName: './public/index.html',
       generateOnce: false
     })
   ]
