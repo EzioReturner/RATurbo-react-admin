@@ -13,6 +13,10 @@ declare const NODE_RA_ENV: string = 'development' | 'production';
 
 declare const REQUEST_SUCCESS: number = 0;
 
+interface Window {
+  less: any;
+}
+
 declare module '*.bmp' {
   const src: string;
   export default src;

@@ -39,6 +39,7 @@ body {
 :root,
 body {
   // font-family: 'Poppins', sans-serif;
+  --primary: #fb4491;
   font-weight: 500;
   @include antdStyle;
   @include popStyle;

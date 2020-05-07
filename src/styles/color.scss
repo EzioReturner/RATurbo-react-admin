@@ -18,10 +18,10 @@ $color-gray-lighter: #e8e8e8 !default;
 // Alias Primary
 $color-primary: #fb4491 !default;
 $color-primary-sec: #fc6ca8 !default;
-$color-primary-dark: darken($color-primary, 8%) !default;
-$color-primary-light: lighten($color-primary, 8%) !default;
-$color-primary-lighter: lighten($color-primary, 20%) !default;
-$color-primary-low: lighten($color-primary, 33.5%) !default;
+$color-primary-dark: darken($color-primary-sec, 8%) !default;
+$color-primary-light: lighten($color-primary-sec, 8%) !default;
+$color-primary-lighter: lighten($color-primary-sec, 20%) !default;
+$color-primary-low: lighten($color-primary-sec, 33.5%) !default;
 
 // Secondary color
 $color-secondary: #71669e !default;

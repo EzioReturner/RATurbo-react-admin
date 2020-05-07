@@ -4,6 +4,7 @@
   line-height: 60px;
   cursor: pointer;
   transition: all 0.3s;
+  color: $color-text;
   &:hover {
     background: rgba(0, 0, 0, 0.025);
     .icon {

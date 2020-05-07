@@ -31,6 +31,7 @@
 
   &.isMobile {
     left: 0;
+    width: 100% !important;
   }
 
   &.horiziontalMenu {
@@ -72,6 +73,7 @@
   .rightPart {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     height: 100%;
     position: absolute;
     right: 0;

@@ -167,7 +167,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
     <Authorized unidentified={<Redirect to="/user/login" />}>
       <>
         {isHorizontalNavigator ? HorizontalMenuLayout : VerticalMenuLayout}
-        {!isMobile && process.env.NODE_ENV === 'development' && <LayoutSetting />}
+        {!isMobile && <LayoutSetting />}
       </>
     </Authorized>
   );

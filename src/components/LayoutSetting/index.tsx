@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import ReactDOM from 'react-dom';
 import NavigateMode from './NavigateMode';
 import ContentChange from './ContentChange';
+import ThemeChange from './ThemeChange';
 
 const LayoutSetting: React.FC = props => {
   let maskRef = useRef<HTMLElement>();
@@ -43,6 +44,7 @@ const LayoutSetting: React.FC = props => {
             <CloseOutlined className={styles.closeIcon} onClick={() => setOpenSetting(false)} />
             <NavigateMode />
             <ContentChange />
+            <ThemeChange />
           </div>
         </div>
       </div>
