@@ -11,6 +11,7 @@
   display: flex;
   align-items: center;
   transition: all 0.3s;
+  width: 100%;
 
   &.inlineLayout {
     left: 0 !important;
@@ -44,6 +45,7 @@
       display: flex;
       flex: 1;
       max-height: 60px;
+      width: 100%;
 
       &.flowMode {
         max-width: unset;
@@ -55,6 +57,7 @@
 
       .headerNav {
         flex: 1 1 0%;
+        min-width: 0;
       }
 
       .siteDetail {

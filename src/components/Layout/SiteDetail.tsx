@@ -21,7 +21,7 @@ const SiteDetail: React.FC<{
       {useSiteIcon && (
         <img alt="" src={require('@assets/image/logo.png').default} className={styles.logo} />
       )}
-      <span className={`ml-2 ${styles.title}`}>{siteName}</span>
+      <span className={styles.title}>{siteName}</span>
     </a>
   );
 };

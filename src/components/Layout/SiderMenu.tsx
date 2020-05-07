@@ -100,7 +100,7 @@ const SiderMenu: React.FC = props => {
     const key = parentName ? `menu.${parentName}.${name}` : `menu.${name}`;
     const localName = localeObj[key] || name;
     return (
-      <span className={styles.subMenuItem}>
+      <span>
         {createIcon(icon)}
         <span
           className={parentName ? styles.childSubTitleName : styles.subTitleName}
@@ -168,7 +168,6 @@ const SiderMenu: React.FC = props => {
         onClick={() => {
           handleClickLink();
         }}
-        className={styles.leafMenuItem}
       >
         {createIcon(icon)}
         <span className={parentName ? styles.titleName : styles.subTitleName} title={localName}>
@@ -199,11 +198,7 @@ const SiderMenu: React.FC = props => {
 
   const RAMenu = (
     <Menu
-      className={classNames(
-        styles.RAMenu,
-        collapsed && styles.RAMenuCollapsed,
-        isHorizontalNavigator && styles.horizontal
-      )}
+      className={classNames(styles.RAMenu, isHorizontalNavigator && styles.horizontal)}
       mode={isHorizontalNavigator ? 'horizontal' : 'inline'}
       selectedKeys={[location.pathname]}
       onOpenChange={handleOpenMenu}

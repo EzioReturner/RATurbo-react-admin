@@ -49,6 +49,7 @@
   &.horizontal {
     margin-top: 0;
     line-height: 60px;
+    height: 60px;
 
     .antdSubMenu,
     .antdMenuItem {
@@ -56,6 +57,12 @@
       height: 100%;
       line-height: 60px;
       top: 0px !important;
+    }
+
+    .antdSubMenu {
+      & > div {
+        height: 60px;
+      }
     }
   }
 
@@ -71,12 +78,6 @@
       display: block;
       min-width: 14px;
     }
-  }
-
-  .subMenuItem {
-  }
-
-  .leafMenuItem {
   }
 
   .menuIcon {
@@ -166,5 +167,6 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    margin-left: $spacing-small;
   }
 }
