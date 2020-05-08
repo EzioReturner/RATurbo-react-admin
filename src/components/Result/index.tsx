@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './result.module.scss';
+import styles from './result.module.less';
 import { CloseCircleFilled, CheckCircleFilled } from '@ant-design/icons';
 interface ResultProps {
   title?: React.ReactNode;

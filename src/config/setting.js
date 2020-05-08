@@ -33,7 +33,7 @@ module.exports = {
   themeColors: [
     '#fb4491',
     '#f0b041',
-    '#e65251',
+    '#e33d39',
     '#54bf99',
     '#70c140',
     '#63a7c9',

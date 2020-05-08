@@ -2,7 +2,7 @@ import React from 'react';
 import { Dropdown, Menu } from 'antd';
 import { inject, observer } from 'mobx-react';
 import { i18n } from '@config/setting';
-import styles from './selectlang.module.scss';
+import styles from './selectlang.module.less';
 import LocaleStore from '@store/localeStore';
 import { GlobalOutlined } from '@ant-design/icons';
 interface InjectedProps {

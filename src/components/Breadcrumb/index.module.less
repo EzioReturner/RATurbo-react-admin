@@ -9,11 +9,13 @@
   position: relative;
   padding: 0 10px 0 20px;
   cursor: pointer;
-  color: rgba(0, 0, 0, 0.45);
+  color: @text-color-lighten;
   font-weight: 400;
+
   &.display {
-    color: rgba(0, 0, 0, 0.85);
+    color: @text-color-darken;
   }
+
   &:hover {
     padding: 0 40px 0 25px !important;
     .closeIcon {
@@ -21,6 +23,7 @@
       right: 8px;
     }
   }
+
   &::before {
     content: '';
     border: 1px solid;
@@ -29,16 +32,20 @@
     height: 15px;
     left: 5px;
     top: 1px;
-    color: rgba(0, 0, 0, 0.45);
+    color: @text-color-lighten;
   }
+
   &:last-child {
     padding: 0 20px;
+
     .closeIcon {
       right: 20px;
     }
+
     &:hover {
       padding: 0 55px 0 25px !important;
     }
+
     &::after {
       content: '';
       border: 1px solid;
@@ -47,7 +54,7 @@
       height: 15px;
       right: 5px;
       top: 1px;
-      color: rgba(0, 0, 0, 0.45);
+      color: @text-color-lighten;
     }
   }
 }
@@ -56,7 +63,7 @@
   position: absolute;
   top: 3px;
   right: 20px;
-  color: $color-primary;
+  color: var(--primary);
   opacity: 0;
   transition-delay: 0.1s;
   transition: opacity 0.3s;

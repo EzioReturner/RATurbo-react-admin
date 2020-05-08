@@ -1,7 +1,7 @@
 import React from 'react';
 import Breadcrumb from '@components/Breadcrumb';
 import classnames from 'classnames';
-import styles from './pageWrapper.module.scss';
+import styles from './pageWrapper.module.less';
 import { PageHeaderProps } from '@/models/layout';
 
 const PageHeader: React.FC<PageHeaderProps> = props => {

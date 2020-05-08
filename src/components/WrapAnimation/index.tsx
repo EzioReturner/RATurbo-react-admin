@@ -3,7 +3,7 @@ import { CSSTransition } from 'react-transition-group';
 import { inject, observer } from 'mobx-react';
 import LayoutStore from '@store/layoutStore';
 import 'animate.css';
-import '@styles/backup/wrapAnimation.scss';
+import '@styles/wrapAnimation.less';
 
 /**
  * 动画组件

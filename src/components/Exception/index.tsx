@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from 'antd';
 import { useHistory } from 'react-router-dom';
 import FormatterLocale from '@components/FormatterLocale';
-import styles from './exception.module.scss';
+import styles from './exception.module.less';
 
 interface ExceptionProps {
   errorCode: React.ReactNode;

@@ -9,7 +9,7 @@ const ThemeChange: React.FC = () => {
   const [currentColor, setColor] = useState('#fb4491');
   const handleChangeTheme = (color: string) => {
     setColor(color);
-    message.loading('正在加载主题');
+    message.loading('正在加载主题', 0.8);
     document.body.style.setProperty('--primary', color);
     window.less
       .modifyVars({
