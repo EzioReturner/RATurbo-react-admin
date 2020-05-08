@@ -4,7 +4,7 @@ import PageWrapper from '@components/PageWrapper';
 import Loading from '@components/Loading';
 import FormatterLocale from '@components/FormatterLocale';
 import { observer } from 'mobx-react';
-import styles from './form.module.scss';
+import styles from './form.module.less';
 import formStore from './formStore';
 
 const { Step } = Steps;

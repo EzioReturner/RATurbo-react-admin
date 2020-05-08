@@ -6,7 +6,7 @@ import { siteName } from '@config/setting';
 import UserStore from '@store/userStore';
 import { inject } from 'mobx-react';
 import { useHistory } from 'react-router-dom';
-import './login.scss';
+import './login.less';
 import 'animate.css';
 
 interface LoginFormProps {

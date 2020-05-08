@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Input, Radio, List, Avatar, Progress, Button } from 'antd';
 import { getListData } from '@api/list';
 import { getContact } from '@api/platform';
-import styles from './listTable.module.scss';
+import styles from './listTable.module.less';
 
 const Search = Input.Search;
 const RadioButton = Radio.Button;

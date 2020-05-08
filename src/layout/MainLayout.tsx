@@ -7,7 +7,7 @@ import { getRouteAuthority } from '@utils/authorityTools';
 import classNames from 'classnames';
 import Footer from '@components/Footer';
 import { observer, inject } from 'mobx-react';
-import styles from './mainLayout.module.scss';
+import styles from './mainLayout.module.less';
 import LayoutStore from '@store/layoutStore';
 import { RouteConfig } from '@/models/layout';
 import LayoutSetting from '@components/LayoutSetting';

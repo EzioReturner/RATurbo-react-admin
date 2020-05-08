@@ -3,7 +3,7 @@ import Result from '@components/Result';
 import PageWrapper from '@components/PageWrapper';
 import FormatterLocale from '@components/FormatterLocale';
 import { Card, Button, Steps, Row, Col } from 'antd';
-import styles from './styles.module.scss';
+import styles from './styles.module.less';
 import { MailOutlined } from '@ant-design/icons';
 
 const Step = Steps.Step;

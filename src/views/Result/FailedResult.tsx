@@ -3,7 +3,7 @@ import Result from '@components/Result';
 import PageWrapper from '@components/PageWrapper';
 import FormatterLocale from '@components/FormatterLocale';
 import { Card, Button } from 'antd';
-import styles from './styles.module.scss';
+import styles from './styles.module.less';
 import { CloseCircleOutlined } from '@ant-design/icons';
 
 const FailedResult: React.FC = () => {

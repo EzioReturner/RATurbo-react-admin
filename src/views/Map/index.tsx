@@ -2,7 +2,7 @@ import React from 'react';
 import { Card } from 'antd';
 // @ts-ignore
 import BMap from 'BMap';
-import './myMap.scss';
+import './myMap.less';
 
 class Map extends React.Component {
   componentDidMount() {

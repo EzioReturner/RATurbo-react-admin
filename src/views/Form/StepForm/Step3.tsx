@@ -3,7 +3,7 @@ import Result from '@components/Result';
 import { Button } from 'antd';
 import FormatterLocale from '@components/FormatterLocale';
 import StepFormStore from './formStore';
-import styles from './form.module.scss';
+import styles from './form.module.less';
 
 const Step3: React.FC = () => {
   const { initStep } = StepFormStore;

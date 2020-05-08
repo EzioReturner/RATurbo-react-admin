@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Alert } from 'antd';
 import LoginForm from './LoginForm';
-import './login.scss';
+import './login.less';
 import 'animate.css';
 
 const Login: React.FC = () => {

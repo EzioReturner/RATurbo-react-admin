@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Select, Input, Divider, Form } from 'antd';
 import FormatterLocale from '@components/FormatterLocale';
 import StepFormStore from './formStore';
-import styles from './form.module.scss';
+import styles from './form.module.less';
 import { StoreKeyValue } from '@models/index';
 
 const Step1: React.FC = () => {

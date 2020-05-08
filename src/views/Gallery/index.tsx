@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Skeleton } from 'antd';
-import './index.scss';
+import './index.less';
 
 const { Meta } = Card;
 const Gallery: React.FC = () => {

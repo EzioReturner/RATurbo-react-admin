@@ -5,7 +5,7 @@ import MonitorList from './MonitorList';
 import Proportion from './Proportion';
 import Efficiency from './Efficiency';
 import Surplus from './Surplus';
-import './monitor.scss';
+import './monitor.less';
 
 const Monitor: React.FC = () => (
   <div className="monitor">

@@ -4,7 +4,7 @@ import { inject, observer } from 'mobx-react';
 import PageWrapper from '@components/PageWrapper';
 import FormatterLocale from '@components/FormatterLocale';
 import ListTable from './ListTable';
-import styles from './listTable.module.scss';
+import styles from './listTable.module.less';
 import LayoutStore from '@store/layoutStore';
 
 interface BasicInjected {

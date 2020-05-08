@@ -3,6 +3,7 @@
   left: 67%;
   top: 50%;
   transform: translate(-50%, -50%);
+
   @media screen and (max-width: 1400px) {
     left: 50%;
     top: 50%;
@@ -11,29 +12,36 @@
   .login-form {
     max-width: 300px;
   }
+
   .login-form-forgot {
     float: right;
   }
+
   .login-form-button {
     opacity: 0.8;
     width: 100%;
   }
+
   .ant-input {
     border-color: transparent;
-    color: $color-gray-light;
-    text-indent: $spacing-small;
+    color: @gray-color-lighten;
+    text-indent: @spacing-small;
   }
+
   .ant-input-prefix {
     .anticon {
-      color: $color-primary;
+      color: var(--primary);
     }
   }
+
   .loginTitle {
     font-size: 18px;
     margin-bottom: 8px;
+
     span {
-      color: $color-primary;
+      color: var(--primary);
     }
+
     @media screen and (min-width: 1400px) {
       position: absolute;
       font-size: 38px;

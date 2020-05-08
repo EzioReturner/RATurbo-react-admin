@@ -20,7 +20,7 @@
   }
 
   span.subText {
-    color: $color-text-secondary;
+    color: @text-color-lighten;
     font-weight: normal;
   }
 }
@@ -37,7 +37,7 @@
   }
 
   .numTitle {
-    color: $color-text-secondary;
+    color: @text-color-lighten;
   }
 }
 
@@ -69,8 +69,8 @@
     margin: 0 1%;
 
     &:hover {
-      border: 1px solid $color-primary-lighter;
-      box-shadow: 0 2px 28px rgba($color: $color-primary-lighter, $alpha: 0.29);
+      border: 1px solid var(--primary-lightener);
+      box-shadow: 0 2px 28px rgba(var(--primary-lightener), 0.29);
     }
 
     .top {
@@ -89,12 +89,12 @@
           margin-right: 8px;
           height: 20px;
           width: 20px;
-          background: $color-primary-lighter;
+          background: var(--primary-lightener);
         }
 
         &.triangle::before {
           border-radius: 50%;
-          background: $color-primary;
+          background: var(--primary);
         }
       }
 
@@ -147,7 +147,7 @@
     min-height: 75px;
 
     &:hover {
-      color: $color-primary-light;
+      color: var(--primary-lighten);
 
       .ant-avatar {
         transform: scale(1.2);
@@ -192,7 +192,7 @@
       height: 20px;
       width: 20px;
       border-radius: 4px;
-      background: $color-primary-lighter;
+      background: var(--primary-lightener);
     }
 
     span {

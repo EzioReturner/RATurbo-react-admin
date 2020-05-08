@@ -1,8 +1,7 @@
 .userLayout {
   overflow: hidden;
   position: absolute;
-  background-color: $color-gray-lighter;
-  // background: url('../assets/image/loginBackground.jpg');
+  background-color: @gray-color-lighten;
   background-size: cover;
   top: 0;
   right: 0;
@@ -16,7 +15,7 @@
     margin-top: 64px;
     width: 100%;
     transform: rotate(-40deg);
-    border-bottom: 20px solid rgba($color: #000000, $alpha: 0.4);
+    border-bottom: 20px solid rgba(0, 0, 0, 0.4);
     position: absolute;
     top: 35%;
     left: -15%;
@@ -25,13 +24,13 @@
       width: 52px;
     }
     p {
-      color: rgba($color: #000000, $alpha: 0.8);
+      color: rgba(0, 0, 0, 0.8);
       margin: 0;
       font-size: 43px;
       font-weight: bold;
     }
     span {
-      color: $color-primary;
+      color: var(--primary);
     }
   }
 }

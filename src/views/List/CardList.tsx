@@ -4,7 +4,7 @@ import FormatterLocale from '@components/FormatterLocale';
 import { Card, List, Button } from 'antd';
 import { getListData } from '@api/list';
 import { getContact } from '@api/platform';
-import styles from './list.module.scss';
+import styles from './list.module.less';
 import {
   ThunderboltOutlined,
   InfoCircleOutlined,

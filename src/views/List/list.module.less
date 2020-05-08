@@ -49,21 +49,21 @@
   position: relative;
   margin-right: 8px;
   &.maintain {
-    background: $color-warning;
+    background: @warning-color;
   }
 
   &.error {
-    background: $color-error;
+    background: @error-color;
   }
 
   &.offline {
     background: #d9d9d9;
   }
   &.progress {
-    background: $color-progress;
+    background: @progress-color;
     &::after {
       content: '';
-      background: $color-progress;
+      background: @progress-color;
       top: 0;
       left: 0;
       height: 100%;

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './userLayout.module.scss';
+import styles from './userLayout.module.less';
 import { hot } from 'react-hot-loader';
 
 const UserLayout: React.FC = props => {

@@ -4,7 +4,7 @@
   width: 100%;
   height: auto;
   position: relative;
-  background: $color-white-dark;
+  background: @white-color-darken;
 
   &.splitLayout {
     flex-direction: row;
@@ -52,7 +52,7 @@
   }
 
   .viewBody {
-    padding: $spacing-large;
+    padding: @spacing-large;
     flex: auto;
     // 此处一定要固定X轴禁止滚动，以防菜单缩放时 内容区域扩大无法收回。释放Y轴滚动，以便在固定父级高度时能够开启内容区域滚动
     overflow-x: hidden;
@@ -64,7 +64,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: $color-white;
+    background-color: @white-color;
     height: 28px;
     min-height: 28px;
     box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2);
@@ -73,7 +73,7 @@
     flex-direction: column;
     justify-content: center;
     opacity: 0.8;
-    padding-right: $spacing-large;
+    padding-right: @spacing-large;
 
     .footerCollapsedIcon {
       position: absolute;
@@ -88,7 +88,7 @@
       cursor: pointer;
 
       &:hover {
-        color: $color-primary;
+        color: var(--primary);
       }
 
       &.collapsed {
@@ -101,10 +101,10 @@
 .horizontalContainer {
   display: flex;
   flex-flow: column nowrap;
-  background: $color-white-dark;
+  background: @white-color-darken;
 
   .routeContent {
-    padding: $spacing-large;
+    padding: @spacing-large;
 
     &.lockHeaderScroll {
       overflow: auto;

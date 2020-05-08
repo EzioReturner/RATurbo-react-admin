@@ -3,7 +3,7 @@ import { Button, Form } from 'antd';
 import { observer } from 'mobx-react';
 import FormatterLocale from '@components/FormatterLocale';
 import StepFormStore from './formStore';
-import styles from './form.module.scss';
+import styles from './form.module.less';
 
 const Step2: React.FC = () => {
   const { data, submitting, onSubmit, onPrev } = StepFormStore;

@@ -8,7 +8,7 @@ import QuickStart from './QuickStart';
 import MultiAnalysis from './MultiAnalysis';
 import TeamCard from './TeamCard';
 import UserStore from '@store/userStore';
-import './platform.scss';
+import './platform.less';
 
 interface MonitorInjected {
   userStore: UserStore;

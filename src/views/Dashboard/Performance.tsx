@@ -36,7 +36,7 @@ const Performance = () => {
       <div
         style={{
           marginBottom: '-4px',
-          marginTop: '8px'
+          marginTop: '10px'
         }}
       >
         <div className="jus-b warp-flex">
