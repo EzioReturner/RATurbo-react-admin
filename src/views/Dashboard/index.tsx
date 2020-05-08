@@ -5,7 +5,7 @@ import Weather from './Weather';
 import Performance from './Performance';
 import SaleTable from './SaleTable';
 import GlobalTrends from './GlobalTrends';
-import './dashboard.scss';
+import './dashboard.less';
 
 const Dashboard: React.FC = () => (
   <div className="dashboard">

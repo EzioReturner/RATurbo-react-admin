@@ -2435,8 +2435,8 @@ this.tinycolor = tinycolor;
 body {
   --primary: @primary-color;
   --primary-lighten: lighten(@primary-color, 8%);
-  --primary-lightenr: lighten(@primary-color, 20%);
-  --primary-darken:  darken(@primary-color, 8%);
+  --primary-lightener: lighten(@primary-color, 20%);
+  --primary-darken: darken(@primary-color, 8%);
 
   --antd-slider-active: tint(@primary-color, 50%);
   --antd-slider-focus: tint(@primary-color, 20%);
@@ -2444,48 +2444,10 @@ body {
   --antd-select-focus-shadow: fade(@primary-color, 20%);
 }
 
-:root .ant-slider-dot-active {
-  border-color: var(--antd-slider-active) !important;
-}
-:root .ant-slider-handle:focus {
-  border-color: var(--antd-slider-focus);
-  box-shadow: 0 0 0 5px var(--antd-slider-focus-shadow);
-}
-:root .ant-picker-focused,
-:root .ant-input:focus,
-:root .ant-input-focused,
-:root .ant-select-focused .ant-select-selector {
-  box-shadow: 0 0 0 2px var(--antd-select-focus-shadow) !important;
-}
-#nprogress .bar {
-  background: var(--primary);
-}
-#nprogress .peg {
-  box-shadow: 0 0 10px var(--primary-lighten), 0 0 5px var(--primary-lighten);
-}
-#nprogress .spinner-icon {
-  border: solid 2px transparent;
-  border-top-color: var(--primary-lighten);
-  border-left-color: var(--primary-lighten);
-  border-radius: 50%;
-}
-:root .ant-slider-dot-active {
-  border-color: var(--antd-slider-active) !important;
-}
-:root .ant-slider-handle:focus {
-  border-color: var(--antd-slider-focus);
-  box-shadow: 0 0 0 5px var(--antd-slider-focus-shadow);
-}
-:root .ant-picker-focused,
-:root .ant-input:focus,
-:root .ant-input-focused,
-:root .ant-select-focused .ant-select-selector {
-  box-shadow: 0 0 0 2px var(--antd-select-focus-shadow) !important;
-}
-html,
-body {
-  background-color: #fff;
-}
+
+
+
+
 #nprogress .bar {
   background: var(--primary);
 }

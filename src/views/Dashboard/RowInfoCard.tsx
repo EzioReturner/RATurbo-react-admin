@@ -53,7 +53,7 @@ const RowInfoCard: React.FC = () => {
     return (
       <Card className="info-card fat-card" bordered={false} hoverable>
         <div className="top">
-          <Icon component={icon as any} />
+          <Icon style={{ marginTop: '12px' }} component={icon as any} />
           <div className="right-part">
             <p className="title">
               {<FormatterLocale id={`dashboard.rowInfo${index}.title`} defaultMessage={title} />}
@@ -61,9 +61,15 @@ const RowInfoCard: React.FC = () => {
             <h3 className="num">{num}</h3>
           </div>
         </div>
-        <p className="mb-0 mt-3 text-muted">
+        <p className="tips">
           {tipIcon}
-          {<FormatterLocale id={`dashboard.rowInfo${index}.tips`} defaultMessage={tips} />}
+          {
+            <FormatterLocale
+              style={{ marginLeft: '8px' }}
+              id={`dashboard.rowInfo${index}.tips`}
+              defaultMessage={tips}
+            />
+          }
         </p>
       </Card>
     );

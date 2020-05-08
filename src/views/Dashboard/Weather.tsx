@@ -66,10 +66,10 @@ class Weather extends React.PureComponent<{}, WeatherState> {
     const WeatherItem = data.map((res, index) => {
       const { week, daypower, daytemp, dayweather } = res;
       return (
-        <div className="weakly-weather-item p-3" key={index}>
-          <p className="mb-1">{weekName[Number(week - 1)]}</p>
+        <div className="weakly-weather-item" key={index}>
+          <p>{weekName[Number(week - 1)]}</p>
           {this.getWeatherIcon(dayweather)}
-          <p className="mb-0">{daypower + '℃ - ' + daytemp + '℃'}</p>
+          <p>{daypower + '℃ - ' + daytemp + '℃'}</p>
         </div>
       );
     });

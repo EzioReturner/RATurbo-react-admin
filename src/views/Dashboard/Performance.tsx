@@ -20,7 +20,7 @@ const Performance = () => {
           <p className="text-1 mb-2">
             <FormatterLocale id="dashboard.bestPerformance" defaultMessage="最优表现" />
           </p>
-          <p className="text-3 mb-4">+45.2%</p>
+          <h3 className="text-3 mb-4">+45.2%</h3>
         </div>
         <div>2018</div>
       </div>
@@ -29,13 +29,14 @@ const Performance = () => {
           <p className="text-1 mb-2">
             <FormatterLocale id="dashboard.worstPerformance" defaultMessage="最劣表现" />
           </p>
-          <p className="text-3 mb-4">-35%</p>
+          <h3 className="text-3 mb-4">-35%</h3>
         </div>
         <div>2017</div>
       </div>
       <div
         style={{
-          marginBottom: '-4px'
+          marginBottom: '-4px',
+          marginTop: '8px'
         }}
       >
         <div className="jus-b warp-flex">
