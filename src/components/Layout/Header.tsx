@@ -2,7 +2,7 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 import classNames from 'classnames';
 import SelectLang from '../SelectLang';
-import styles from './header.module.scss';
+import styles from './header.module.less';
 import UserInfo from './UserInfo';
 import LayoutStore from '@store/layoutStore';
 import SiteDetail from './SiteDetail';

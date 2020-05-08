@@ -3,11 +3,13 @@ import classNames from 'classnames';
 import styles from './index.module.less';
 import { CheckOutlined } from '@ant-design/icons';
 import { themeColors } from '@config/setting';
+import { message } from 'antd';
 
 const ThemeChange: React.FC = () => {
   const [currentColor, setColor] = useState('#fb4491');
   const handleChangeTheme = (color: string) => {
     setColor(color);
+    message.loading('正在加载主题');
     document.body.style.setProperty('--primary', color);
     window.less
       .modifyVars({

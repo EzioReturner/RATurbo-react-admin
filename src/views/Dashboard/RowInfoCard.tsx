@@ -65,7 +65,7 @@ const RowInfoCard: React.FC = () => {
           {tipIcon}
           {
             <FormatterLocale
-              style={{ marginLeft: '8px' }}
+              style={{ marginLeft: '8px', fontSize: '13px' }}
               id={`dashboard.rowInfo${index}.tips`}
               defaultMessage={tips}
             />

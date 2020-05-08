@@ -4,6 +4,7 @@
   "menu.program.analysis": "分析页",
   "menu.program.monitor": "监控页",
   "menu.program.platform": "工作台",
+  "menu.program.unit": "组件单元",
   "menu.form": "表单",
   "menu.form.basicForm": "基础表单",
   "menu.form.stepForm": "分步表单",

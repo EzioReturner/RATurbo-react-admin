@@ -24,6 +24,10 @@
     .layoutWrapper.lockHeaderScroll {
       margin-top: 60px;
     }
+
+    &.withoutHeader .layoutWrapper {
+      margin-top: 0 !important;
+    }
   }
 
   &.inlineLayout {

@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
 import intersection from 'lodash/intersection';
 import classNames from 'classnames';
-import styles from './siderMenu.module.scss';
+import styles from './siderMenu.module.less';
 import UserStore from '@store/userStore';
 import LayoutStore from '@store/layoutStore';
 import LocaleStore from '@store/localeStore';

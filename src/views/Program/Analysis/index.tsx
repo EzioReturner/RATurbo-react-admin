@@ -1,7 +1,7 @@
 import React from 'react';
 import ControllerCard from './ControllerCard';
 import DistributeCard from './DistributeCard';
-import './analysis.scss';
+import './analysis.less';
 
 const Analysis: React.FC = () => {
   return (

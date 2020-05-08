@@ -73,6 +73,12 @@ export const asyncRouteConfig: RouteChild[] = [
         path: '/program/platform',
         component: ['/views/Program/Platform'],
         loading: true
+      },
+      {
+        name: 'unit',
+        path: '/program/unit',
+        component: ['/views/Program/Unit'],
+        loading: true
       }
     ]
   },

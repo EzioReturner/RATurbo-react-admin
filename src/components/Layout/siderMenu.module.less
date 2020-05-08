@@ -1,7 +1,7 @@
 .navigator {
   min-height: 100%;
   background: #ffffff;
-  box-shadow: 0px 0px 28px $color-primary-low;
+  box-shadow: 0px 0px 28px var(--primary-lightener-extra);
   z-index: 3;
   transition: all 0.2s;
   display: flex;
@@ -28,7 +28,7 @@
 }
 
 .RAMenu {
-  margin-top: 23px;
+  margin-top: @spacing-large;
   flex: 1;
   overflow: auto;
   overflow-x: hidden;
@@ -85,7 +85,7 @@
   }
 
   .menuIcon {
-    margin-right: $spacing-middle !important;
+    margin-right: @spacing-normal !important;
     display: inline-block;
 
     & > span {
@@ -95,7 +95,7 @@
 
   .subTitleName,
   .titleName {
-    @extend .text-overflow;
+    .text-overflow;
 
     &.collapsed {
       display: inline-block;
@@ -127,38 +127,6 @@
     box-shadow: none;
   }
 
-  .rotateIcon {
-    display: flex;
-    transform: rotate(45deg);
-    border: 3px solid $color-secondary;
-    border-radius: 5px;
-    padding: 1px;
-    box-shadow: -5px 1px 8px -6px rgba(0, 0, 0, 0.2);
-
-    &::after {
-      content: '';
-      background: #ffffff;
-      height: 14px;
-      width: 14px;
-      position: absolute;
-      bottom: -4px;
-      left: -4px;
-    }
-
-    &::before {
-      content: '';
-      height: 10px;
-      width: 10px;
-      position: absolute;
-      bottom: -3px;
-      left: -3px;
-      border-left: 3px solid $color-primary;
-      border-bottom: 3px solid $color-primary;
-      z-index: 2;
-      border-radius: 1px;
-    }
-  }
-
   .logo {
     height: 45px;
   }
@@ -167,10 +135,10 @@
     line-height: 60px;
     font-size: 18px;
     font-weight: 700;
-    color: rgba($color: $color-primary, $alpha: 1);
+    color: var(--primary);
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    margin-left: $spacing-small;
+    margin-left: @spacing-small;
   }
 }

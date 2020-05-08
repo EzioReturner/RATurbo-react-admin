@@ -117,12 +117,14 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
         </div>
       </div>
       <div className={styles.inlineFooter}>
-        <div
-          className={classNames(styles.footerCollapsedIcon, collapsed && styles.collapsed)}
-          onClick={() => toggleCollapsed()}
-        >
-          {IconCollapsed}
-        </div>
+        {showMenu && (
+          <div
+            className={classNames(styles.footerCollapsedIcon, collapsed && styles.collapsed)}
+            onClick={() => toggleCollapsed()}
+          >
+            {IconCollapsed}
+          </div>
+        )}
         <Footer propStyle={{ alignSelf: 'flex-end' }} />
       </div>
     </>

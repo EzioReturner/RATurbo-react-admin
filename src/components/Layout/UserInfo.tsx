@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Menu, Dropdown, Modal } from 'antd';
 import { inject, observer } from 'mobx-react';
-import styles from './header.module.scss';
+import styles from './header.module.less';
 import UserStore from '@store/userStore';
 import { UserOutlined, SettingOutlined, LogoutOutlined } from '@ant-design/icons';
 const confirm = Modal.confirm;

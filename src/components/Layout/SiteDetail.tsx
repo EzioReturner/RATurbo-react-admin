@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './siderMenu.module.scss';
+import styles from './siderMenu.module.less';
 import { siteName, menuLinkUrl, useSiteIcon } from '@config/setting';
 import classNames from 'classnames';
 
