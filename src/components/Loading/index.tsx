@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { observer } from 'mobx-react';
-import styles from './loading.module.scss';
+import styles from './loading.module.less';
 
 /**
  * loading组件

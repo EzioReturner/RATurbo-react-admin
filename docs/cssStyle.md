@@ -96,3 +96,5 @@ theme: {
 }
 ...
 ```
+
+> 约定，不变量less参数，放置在mainColor.less中，动态变量请使用css 变量，放置于variables.less中

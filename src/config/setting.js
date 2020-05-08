@@ -30,10 +30,20 @@ module.exports = {
     ],
     defaultLanguage: 'zh'
   },
-  theme: {
-    '@primary-color': '#fb4491',
-    '@link-color': '#fb4491',
-    '@border-radius-base': '2px',
-    '@font-size-base': '13px'
-  }
+  themeColors: [
+    '#fb4491',
+    '#f0b041',
+    '#e96033',
+    '#54bf99',
+    '#63a7c9',
+    '#4090f7',
+    '#b66dff',
+    '#71669e'
+  ]
+  // theme: {
+  //   '@primary-color': '#fb4491',
+  //   '@link-color': '#fb4491',
+  //   '@border-radius-base': '2px',
+  //   '@font-size-base': '13px'
+  // }
 };

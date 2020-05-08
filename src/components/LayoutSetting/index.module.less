@@ -1,7 +1,7 @@
 .settingIcon {
   height: 52px;
   width: 48px;
-  background-color: $color-white;
+  background-color: @white-color;
   position: absolute;
   right: 300px;
   top: 220px;
@@ -11,7 +11,7 @@
   line-height: 56px;
   text-align: center;
   cursor: pointer;
-  box-shadow: $shadow-gray;
+  box-shadow: @shadow-gray-color;
 }
 
 .settingDrawer {
@@ -41,7 +41,7 @@
   }
 
   .drawerMask {
-    background-color: $color-text-secondary;
+    background-color: @text-color-light;
     opacity: 0;
     height: 0;
     position: absolute;
@@ -62,56 +62,69 @@
       height: 100vh;
       max-height: 100vh;
       width: 300px;
-      background-color: $color-white;
-      padding: $spacing-large;
+      background-color: @white-color;
+      padding: @spacing-large;
     }
   }
 
   .closeIcon {
     position: absolute;
-    top: $spacing-large;
-    right: $spacing-large;
+    top: @spacing-large;
+    right: @spacing-large;
     cursor: pointer;
     font-size: 16px;
-    color: $color-text-secondary;
+    color: @text-color-light;
     transition: color 0.3s;
     font-weight: bold;
     z-index: 998;
 
     &:hover {
-      color: $color-text;
+      color: @text-color;
     }
   }
 }
 
 .settingRow {
   position: relative;
-  margin-bottom: $spacing-large;
+  margin-bottom: @spacing-large;
 
   .settingTitle {
-    margin-bottom: $spacing-middle;
+    margin-bottom: @spacing-middle;
     font-size: 14px;
     font-weight: bold;
 
     .tip {
-      color: lighten($color-black, 76.7%);
+      color: lighten(@black-color, 76.7%);
       font-size: 12px;
-      margin-left: $spacing-small;
+      margin-left: @spacing-small;
     }
   }
 
-  &.navigateMode {
+  &.navigateMode,
+  &.layoutMode {
     img {
-      @extend .sampleImg;
+      .sampleImg;
+    }
+
+    .selectedIcon {
+      color: var(--primary);
+      font-size: 16px;
+      position: absolute;
+      pointer-events: none;
+      top: 58px;
+      left: 28px;
+
+      &.rightPlace {
+        left: 88px;
+      }
     }
   }
 
   &.layoutMode {
     img {
-      @extend .sampleImg;
       border-radius: 5px;
       padding: 5px;
-      box-shadow: $shadow-gray;
+      box-shadow: @shadow-gray-color;
     }
 
     &.disabled {
@@ -121,36 +134,20 @@
     }
 
     .selectedIcon {
-      top: 58px !important;
-    }
-  }
-
-  &.navigateMode,
-  &.layoutMode {
-    .selectedIcon {
-      color: $color-primary;
-      font-size: 16px;
-      position: absolute;
-      pointer-events: none;
-      top: 52px;
-      left: 28px;
-
-      &.rightPlace {
-        left: 88px;
-      }
+      top: 62px !important;
     }
   }
 
   &.contentSetting,
   &.layoutControl {
     .settingItem {
-      padding: $spacing-middle 0;
+      padding: @spacing-middle 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
 
       .settingLabel {
-        color: $color-text;
+        color: @text-color;
         font-weight: 400;
         font-size: 14px;
       }
@@ -168,7 +165,7 @@
 }
 
 .sampleImg {
-  margin-right: $spacing-normal;
+  margin-right: @spacing-normal;
   cursor: pointer;
   width: 48px;
   height: 42px;
@@ -180,5 +177,21 @@
   }
   100% {
     opacity: 1;
+  }
+}
+
+.themeChange {
+  overflow: hidden;
+
+  .colorBlock {
+    float: left;
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 2px;
+    cursor: pointer;
   }
 }

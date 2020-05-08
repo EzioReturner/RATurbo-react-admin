@@ -77,14 +77,17 @@ module.exports = function() {
         }
       });
     }
-    // if (preProcessor === 'less-loader') {
-    //   loaders.push({
-    //     loader: 'sass-resources-loader',
-    //     options: {
-    //       resources: [_resolve('./src/styles/variables.less')]
-    //     }
-    //   });
-    // }
+    if (preProcessor === 'less-loader') {
+      loaders.push({
+        loader: 'sass-resources-loader',
+        options: {
+          resources: [
+            _resolve('./src/styles/mainColor.less'),
+            _resolve('./src/styles/customClass.less')
+          ]
+        }
+      });
+    }
     return loaders;
   };
   return [

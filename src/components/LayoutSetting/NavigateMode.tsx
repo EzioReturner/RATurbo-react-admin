@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './index.module.scss';
+import styles from './index.module.less';
 import classNames from 'classnames';
 import { Tooltip } from 'antd';
 import { CheckOutlined } from '@ant-design/icons';

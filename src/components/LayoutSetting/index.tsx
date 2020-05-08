@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { SettingOutlined, CloseOutlined } from '@ant-design/icons';
-import styles from './index.module.scss';
+import styles from './index.module.less';
 import classNames from 'classnames';
 import ReactDOM from 'react-dom';
 import NavigateMode from './NavigateMode';
 import ContentChange from './ContentChange';
 import ThemeChange from './ThemeChange';
+import { Divider } from 'antd';
 
 const LayoutSetting: React.FC = props => {
   let maskRef = useRef<HTMLElement>();
@@ -42,9 +43,11 @@ const LayoutSetting: React.FC = props => {
           />
           <div className={styles.drawerBody}>
             <CloseOutlined className={styles.closeIcon} onClick={() => setOpenSetting(false)} />
-            <NavigateMode />
-            <ContentChange />
             <ThemeChange />
+            <Divider />
+            <NavigateMode />
+            <Divider />
+            <ContentChange />
           </div>
         </div>
       </div>

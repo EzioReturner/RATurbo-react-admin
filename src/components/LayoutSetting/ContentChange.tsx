@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './index.module.scss';
+import styles from './index.module.less';
 import classNames from 'classnames';
 import { Tooltip, Select, Switch } from 'antd';
 import LayoutStore from '@/store/layoutStore';
