@@ -1,12 +1,11 @@
 import React from 'react';
 import { Button, notification } from 'antd';
-import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
-interface ExceptionHomeProps extends RouteComponentProps {}
-
-const ExceptionHome: React.FC<ExceptionHomeProps> = props => {
+const ExceptionHome: React.FC = props => {
+  const history = useHistory();
   const handleTriggerError = ({ code, description }: { code: number; description: string }) => {
-    props.history.push(`/exception/${code}`);
+    history.push(`/exception/${code}`);
     notification.error({
       message: `请求错误 ${code}`,
       description
@@ -55,4 +54,4 @@ const ExceptionHome: React.FC<ExceptionHomeProps> = props => {
   );
 };
 
-export default withRouter(ExceptionHome);
+export default ExceptionHome;

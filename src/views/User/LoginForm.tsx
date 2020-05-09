@@ -1,7 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { Button, Input, Checkbox, message, Form } from 'antd';
-import { StoreKeyValue } from '@models/index';
 import { siteName } from '@config/setting';
 import UserStore from '@store/userStore';
 import { inject } from 'mobx-react';
