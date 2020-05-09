@@ -82,7 +82,7 @@ module.exports = function() {
         loader: 'sass-resources-loader',
         options: {
           resources: [
-            _resolve('./src/styles/mainColor.less'),
+            _resolve('./src/styles/mainVars.less'),
             _resolve('./src/styles/customClass.less')
           ]
         }

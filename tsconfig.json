@@ -30,7 +30,8 @@
       "@models/*": ["./src/models/*"],
       "@assets/*": ["./src/assets/*"]
     },
-    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
+    "typeRoots": ["./node_modules/@types", "./src/models"]
   },
   "include": ["./src/**/*.ts", "./src/**/*.tsx"],
   "exclude": ["node_modules", "tests/*"]

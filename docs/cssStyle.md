@@ -2,9 +2,9 @@
 
 ## 样式
 
-### Sass
+### Less
 
-RA默认使用sass作为样式语言，建议在使用前或者遇到疑问时学习一下 [sass](https://www.sass.hk/) 的相关特性。
+RA使用 less 作为样式语言，建议在使用前或者遇到疑问时学习一下 [less](http://lesscss.cn/) 的相关特性。
 
 ### CSS Modules
 
@@ -15,7 +15,7 @@ RA默认使用sass作为样式语言，建议在使用前或者遇到疑问时�
 > 默认webpack只对 `.module.scss` 命名的文件解析为 css modules
 
 ```javascript
-import styles from './style.module.scss';
+import styles from './style.module.less';
 
 <div className={styles.title}>{title}</div>
 ```
@@ -45,46 +45,42 @@ import styles from './style.module.scss';
 
 ### Antd样式覆盖
 
-我们在 `src/style/antdStyle.scss`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/style/antdStyle.scss) 中对部分 `antd` 的样式进行了重写，使其更贴近RA的整体风格，如需调整可在该文件中修改。
+我们在 `src/style/antdStyle.less`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/style/antdStyle.scss) 中对部分 `antd` 的样式进行了重写，使其更贴近RA的整体风格，如需调整可在该文件中修改。
 
 ### RA样式
 
-RA中提供了一些全局生效的css样式。例如：
+RA中提供了一套全局生效的css样式。可在 `src/style/mainVars.less`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/style/color.scss) 中找到，例如：
 
-- 颜色值，可在 `src/style/color.scss`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/style/color.scss) 中找到
-
-```css
-...
-$color-white:              #fff !default;
-$color-white-dark:         #f3f3f3 !default;
-$color-white-dark-extra:   darken($color-white, 6.5%) !default;
-$color-white-darker:       darken($color-white, 13.5%) !default;
-$color-white-darker-extra: darken($color-white, 20%) !default;
-...
-```
-
-- 边距 字体 对齐方式，可在 `src/style/var.scss`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/style/custom.scss) 中找到。
+- 颜色值
 
 ```css
 ...
-$font-size-mini: 12px !default;
-$font-size-normal: 14px !default;
-$font-size-title: 16px !default;
-$font-size-large: 24px !default;
+@text-color: rgba(0, 0, 0, 0.65);
+@text-color-lighten: rgba(0, 0, 0, 0.45);
+@text-color-darken: rgba(0, 0, 0, 0.85);
 
-$spacing-mini: 4px !default;
-$spacing-small: 8px !default;
-$spacing-middle: 12px !default;
-$spacing-normal: 16px !default;
-$spacing-large: 24px !default;
+@shadow-gray-color: 0 3px 8px 0 rgba(189, 189, 189, 0.6);
 ...
 ```
 
-> 值得注意的是：RA对公用样式做了全局处理，可以直接在scss文件中使用 `var.scss` 与 `color.scss` 中声明的样式。
+- 边距 字体 对齐方式
+
+```css
+...
+@spacing-mini: 4px;
+@spacing-small: 8px;
+@spacing-normal: 12px;
+@spacing-middle: 16px;
+@spacing-large: 24px;
+@spacing-huge: 36px;
+...
+```
+
+> 值得注意的是：RA利用了 `sass-resources-loader`[![](/media/link.svg)](https://github.com/shakacode/sass-resources-loader) 插件，方便直接在less文件中使用 `mainVars.less` 与 `customClass.less` 中声明的样式。
 
 ## 主题
 
-我们基于 Ant Design React 进行开发，完全支持官方提供的 less 变量定制功能. 你可以在 `src/config/setting.js`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/config/setting.js) 中对主题进行配置。
+RA基于 Ant Design React V4 进行开发，完全支持官方提供的 less 变量定制功能. 你可以在 `src/config/setting.js`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/config/setting.js) 中对主题进行配置。
 
 ```javascript
 ...
