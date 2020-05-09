@@ -3,13 +3,13 @@
   * [新增页面](/addPage)
   * [Http请求](/httpRequest)
   * [路由与菜单](/router)
-  * [骨架&布局](/skeleton)
+  * [样式与主题](/cssStyle)
 * 进阶
+  * [骨架&布局](/skeleton)
   * [权限控制](/authority)
   * [过渡效果](/transition)
   * [国际化](/i18n)
   * [异常处理](/exception)
-  * [样式与主题](/cssStyle)
   * [UI测试](/uiTest)
   * [使用typescript](/typescript)
 * 工程

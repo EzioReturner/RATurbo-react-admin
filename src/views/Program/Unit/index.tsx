@@ -2,7 +2,11 @@ import React from 'react';
 import Styles from './index.module.less';
 import ButtonUnit from './ButtonUnit';
 import IconUnit from './IconUnit';
-import { Pagination, Steps } from 'antd';
+import CheckboxUnit from './CheckboxUnit';
+import RadioUnit from './RadioUnit';
+import SwitchUnit from './SwitchUnit';
+import SliderUnit from './SliderUnit';
+import { Pagination, Steps, Divider, Progress, Alert } from 'antd';
 
 const { Step } = Steps;
 const Unit: React.FC = () => {
@@ -13,12 +17,20 @@ const Unit: React.FC = () => {
         <ButtonUnit />
       </div>
       <div>
-        <p className={Styles.title}>Icon</p>
-        <IconUnit />
+        <p className={Styles.title}>CheckBox</p>
+        <CheckboxUnit />
       </div>
       <div>
-        <p className={Styles.title}>Pagination</p>
-        <Pagination defaultCurrent={6} total={500} />
+        <p className={Styles.title}>Switch</p>
+        <SwitchUnit />
+      </div>
+      <div>
+        <p className={Styles.title}>Slider</p>
+        <SliderUnit />
+      </div>
+      <div>
+        <p className={Styles.title}>Radio</p>
+        <RadioUnit />
       </div>
       <div>
         <p className={Styles.title}>Step</p>
@@ -28,6 +40,23 @@ const Unit: React.FC = () => {
           <Step title="Waiting" description="This is a description." />
         </Steps>
       </div>
+      <div>
+        <p className={Styles.title}>Progress</p>
+        <Progress percent={30} />
+        <Progress percent={50} status="active" />
+        <Progress percent={70} status="exception" />
+        <Progress percent={100} />
+        <Progress percent={50} showInfo={false} />
+      </div>
+      <div>
+        <p className={Styles.title}>Icon</p>
+        <IconUnit />
+      </div>
+      <div>
+        <p className={Styles.title}>Pagination</p>
+        <Pagination defaultCurrent={6} total={500} />
+      </div>
+      <Divider />
     </div>
   );
 };

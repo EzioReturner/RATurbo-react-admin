@@ -2,7 +2,6 @@ const path = require('path');
 const setting = require('../src/config/setting');
 const postcssNormalize = require('postcss-normalize');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const setting = require('../src/config/setting');
 
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;

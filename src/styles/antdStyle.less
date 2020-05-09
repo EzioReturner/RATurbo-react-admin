@@ -139,9 +139,8 @@
   }
 
   .ant-progress {
-    .ant-progress-bg,
-    *.normal .ant-progress-bg {
-      background-color: @progress-color;
+    &.normal .ant-progress-bg {
+      background-color: @processing-color;
     }
 
     &.success .ant-progress-bg {

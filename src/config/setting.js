@@ -45,6 +45,10 @@ module.exports = {
     '@primary-color': '#fb4491',
     '@link-color': '#fb4491',
     '@border-radius-base': '2px',
-    '@font-size-base': '13px'
+    '@font-size-base': '13px',
+    '@success-color': '#00ce68',
+    '@warning-color': '#ffaf00',
+    '@error-color': '#e65251',
+    '@processing-color': '#308ee0'
   }
 };
