@@ -1,9 +1,3 @@
-declare interface StoreKeyValue {
-  [name: string]: StoreValue;
-}
-
-declare type StoreValue = any;
-
 /// <reference types="node" />
 /// <reference types="react" />
 /// <reference types="react-dom" />
@@ -14,6 +8,12 @@ declare namespace NodeJS {
     readonly PUBLIC_URL: string;
   }
 }
+
+declare interface StoreKeyValue {
+  [name: string]: StoreValue;
+}
+
+declare type StoreValue = any;
 
 declare const NODE_RA_ENV: string = 'development' | 'production';
 

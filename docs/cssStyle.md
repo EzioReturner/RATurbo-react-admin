@@ -45,11 +45,11 @@ import styles from './style.module.less';
 
 ### Antd样式覆盖
 
-我们在 `src/style/antdStyle.less`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/style/antdStyle.scss) 中对部分 `antd` 的样式进行了重写，使其更贴近RA的整体风格，如需调整可在该文件中修改。
+我们在 `src/styles/antdStyle.less` 中对部分 `antd` 的样式进行了重写，使其更贴近RA的整体风格，如需调整可在该文件中修改。
 
 ### RA样式
 
-RA中提供了一套全局生效的css样式。可在 `src/style/mainVars.less`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/style/color.scss) 中找到，例如：
+RA中提供了一套全局生效的css样式。可在 `src/styles/mainVars.less` 中找到，例如：
 
 - 颜色值
 
@@ -76,21 +76,87 @@ RA中提供了一套全局生效的css样式。可在 `src/style/mainVars.less`[
 ...
 ```
 
-> 值得注意的是：RA利用了 `sass-resources-loader`[![](/media/link.svg)](https://github.com/shakacode/sass-resources-loader) 插件，方便直接在less文件中使用 `mainVars.less` 与 `customClass.less` 中声明的样式。
+> 值得注意的是：RA利用了 `sass-resources-loader`[![](/media/link.svg)](https://github.com/shakacode/sass-resources-loader) 插件，方便直接在 less 文件中使用 `mainVars.less` 与 `customClass.less` 中声明的样式。
 
 ## 主题
 
-RA基于 Ant Design React V4 进行开发，完全支持官方提供的 less 变量定制功能. 你可以在 `src/config/setting.js`[![](/media/link.svg)](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/src/config/setting.js) 中对主题进行配置。
+RA基于 Ant Design React V4 进行开发，完全支持官方提供的 less 变量定制功能. 你可以在 `src/config/setting.js` 中对主题进行配置。需要注意的是
+由于RA借用了less的浏览器编译能力支持动态调整主题色，故 `@primary-color` 字段会被动态替换详见下文。
 
 ```javascript
 ...
 theme: {
-  'primary-color': '#fb4491',
-  'link-color': '#fb4491',
-  'border-radius-base': '2px',
-  'font-size-base': '13px'
+  '@primary-color': '#fb4491',
+  '@link-color': '#fb4491',
+  '@border-radius-base': '2px',
+  '@font-size-base': '13px'
 }
 ...
 ```
 
-> 约定，不变量less参数，放置在mainColor.less中，动态变量请使用css 变量，放置于variables.less中
+### 动态主题色
+
+RA借助 css 变量以及 less 的能力实现动态主题色变化，antd 组件部分使用 `antd-theme-webpack-plugin`[![](/media/link.svg)](https://github.com/mzohaibqc/antd-theme-webpack-plugin) 插件进行替换。
+
+为了方便用户使用我们约定，不变量 less 参数，放置在 `src/styles/mainVars.less` 中，动态变量请使用 css 变量，放置于 `src/styles/variables.less` 中。
+
+- [mainVars.less](/cssStyle?id=ra样式) 
+
+- variables.less
+
+```css
+...
+@import '~antd/lib/style/themes/default.less';
+
+@primary-color: #fb4491;
+
+:root,
+body {
+  --primary: @primary-color;
+  --primary-lighten: lighten(@primary-color, 8%);
+  --primary-lightener: lighten(@primary-color, 20%);
+  --primary-lightener-extra: lighten(@primary-color, 33.5%);
+  --primary-darken: darken(@primary-color, 8%);
+
+  --antd-slider-active: tint(@primary-color, 50%);
+  --antd-slider-focus: tint(@primary-color, 20%);
+  --antd-slider-focus-shadow: fade(@primary-color, 12%);
+  --antd-select-focus-shadow: fade(@primary-color, 20%);
+}
+...
+```
+
+- 如何使用？
+
+直接在 css 文件中调用 `var(--primary)` 即可。
+
+```css
+...
+.yourClass {
+  color: var(--primary);
+  font-size: 20px;
+}
+...
+```
+
+> 另外， `antd-theme-webpack-plugin` 插件并不能完全替换所有的样式。遗漏部分已在 `styles/antdStyles.less` 中补充。
+
+```css
+...
+.ant-slider-dot-active {
+  border-color: var(--antd-slider-active) !important;
+}
+
+.ant-slider-handle:focus {
+  border-color: var(--antd-slider-focus);
+  box-shadow: 0 0 0 5px var(--antd-slider-focus-shadow);
+}
+
+.ant-picker-focused,
+.ant-input:focus,
+.ant-input-focused,
+.ant-select-focused .ant-select-selector {
+  box-shadow: 0 0 0 2px var(--antd-select-focus-shadow) !important;
+}
+...
+```

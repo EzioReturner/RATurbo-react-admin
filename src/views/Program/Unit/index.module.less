@@ -1,0 +1,20 @@
+.unit {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+
+  & > div {
+    margin-bottom: @spacing-large;
+  }
+
+  .title {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: @spacing-normal;
+  }
+}
+
+.iconUnit {
+  color: var(--primary);
+  font-size: 20px;
+}

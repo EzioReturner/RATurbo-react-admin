@@ -40,11 +40,11 @@ module.exports = {
     '#4090f7',
     '#b66dff',
     '#71669e'
-  ]
-  // theme: {
-  //   '@primary-color': '#fb4491',
-  //   '@link-color': '#fb4491',
-  //   '@border-radius-base': '2px',
-  //   '@font-size-base': '13px'
-  // }
+  ],
+  theme: {
+    '@primary-color': '#fb4491',
+    '@link-color': '#fb4491',
+    '@border-radius-base': '2px',
+    '@font-size-base': '13px'
+  }
 };
