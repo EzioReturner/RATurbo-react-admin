@@ -60,7 +60,10 @@ class LayoutStore {
   // 固定左侧导航
   @observable lockMenuScroll: boolean = true;
 
+  // 固定顶部header
   @observable lockHeaderScroll: boolean = true;
+
+  @observable visionTheme: string = 'light';
 
   constructor() {
     this.initLayoutMode();
@@ -108,6 +111,10 @@ class LayoutStore {
 
   get isHorizontalNavigator() {
     return this.navigateMode === 'horizontal';
+  }
+
+  get isDarkTheme() {
+    return this.visionTheme === 'dark';
   }
 
   initLayoutMode() {
@@ -243,6 +250,10 @@ class LayoutStore {
 
   @action setLockHeaderScroll = (status: boolean) => {
     this.lockHeaderScroll = status;
+  };
+
+  @action setVisionTheme = (theme: 'light' | 'dark') => {
+    this.visionTheme = theme;
   };
 }
 export const layoutStore = new LayoutStore();

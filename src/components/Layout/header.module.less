@@ -1,7 +1,7 @@
 .header {
   color: @white-color;
   height: 60px;
-  background: @white-color;
+  background: var(--navigator-background);
   border-bottom: 1px solid #f5f5f5;
   position: relative;
   box-sizing: border-box;
@@ -43,6 +43,7 @@
 
   &.horiziontalMenu {
     left: 0px !important;
+    border: 0;
 
     & > .container {
       max-width: 1250px;
@@ -97,7 +98,7 @@
 }
 
 .userInfo {
-  color: @text-color;
+  color: var(--text-color);
   display: flex;
   font-size: 14px;
   height: 100%;

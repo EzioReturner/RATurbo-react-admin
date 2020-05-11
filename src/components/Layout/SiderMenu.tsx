@@ -35,7 +35,8 @@ const SiderMenu: React.FC = props => {
       toggleCollapsed,
       collapsed,
       isInlineLayout,
-      isHorizontalNavigator
+      isHorizontalNavigator,
+      isDarkTheme
     },
     userStore: { authority: currentAuthority },
     localeStore: { localeObj }
@@ -198,7 +199,11 @@ const SiderMenu: React.FC = props => {
 
   const RAMenu = (
     <Menu
-      className={classNames(styles.RAMenu, isHorizontalNavigator && styles.horizontal)}
+      className={classNames(
+        styles.RAMenu,
+        isHorizontalNavigator && styles.horizontal,
+        isDarkTheme && styles.darkTheme
+      )}
       mode={isHorizontalNavigator ? 'horizontal' : 'inline'}
       selectedKeys={[location.pathname]}
       onOpenChange={handleOpenMenu}

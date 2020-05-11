@@ -125,7 +125,10 @@ module.exports = {
         '@heading-color',
         '@text-color',
         '@text-color-secondary',
-        '@disabled-color'
+        '@disabled-color',
+        '@component-background',
+        '@border-color-base',
+        '@border-color-split'
       ],
       indexFileName: './public/index.html',
       generateOnce: false

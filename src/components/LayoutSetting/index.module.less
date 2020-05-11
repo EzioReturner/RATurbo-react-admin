@@ -1,7 +1,7 @@
 .settingIcon {
   height: 52px;
   width: 48px;
-  background-color: @white-color;
+  background-color: var(--navigator-background);
   position: absolute;
   right: 300px;
   top: 220px;
@@ -11,7 +11,7 @@
   line-height: 56px;
   text-align: center;
   cursor: pointer;
-  box-shadow: @shadow-gray-color;
+  box-shadow: var(--shadow-color);
   color: var(--primary) !important;
 }
 
@@ -42,7 +42,7 @@
   }
 
   .drawerMask {
-    background-color: @text-color-lighten;
+    background-color: rgba(0, 0, 0, 0.45);
     opacity: 0;
     height: 0;
     position: absolute;
@@ -63,7 +63,7 @@
       height: 100vh;
       max-height: 100vh;
       width: 300px;
-      background-color: @white-color;
+      background-color: var(--navigator-background);
       padding: @spacing-large;
     }
   }
@@ -74,13 +74,13 @@
     right: @spacing-large;
     cursor: pointer;
     font-size: 16px;
-    color: @text-color-lighten;
+    color: var(--text-color-secondary);
     transition: color 0.3s;
     font-weight: bold;
     z-index: 998;
 
     &:hover {
-      color: @text-color;
+      color: var(--text-color);
     }
   }
 }
@@ -126,7 +126,7 @@
     img {
       border-radius: 5px;
       padding: 5px;
-      box-shadow: @shadow-gray-color;
+      box-shadow: var(--shadow-color);
     }
 
     &.disabled {
@@ -149,7 +149,7 @@
       justify-content: space-between;
 
       .settingLabel {
-        color: @text-color;
+        color: var(--text-color);
         font-weight: 400;
         font-size: 14px;
       }
