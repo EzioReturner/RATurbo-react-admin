@@ -8,7 +8,7 @@ import { observer, inject } from 'mobx-react';
 
 const NavigateMode: React.FC = props => {
   const {
-    layoutStore: { setNavigateMode, isHorizontalNavigator, setLayoutMode, isInlineLayout }
+    layoutStore: { isHorizontalNavigator, isInlineLayout, changeLayoutStatus }
   } = props as { layoutStore: LayoutStore };
   return (
     <>
@@ -16,14 +16,14 @@ const NavigateMode: React.FC = props => {
         <div className={styles.settingTitle}>导航风格</div>
         <Tooltip placement="top" title={'左侧导航模式'}>
           <img
-            onClick={() => setNavigateMode('vertical')}
+            onClick={() => changeLayoutStatus('navigateMode', 'vertical')}
             src={require('@assets/image/setting/vertical.svg').default}
             alt=""
           />
         </Tooltip>
         <Tooltip placement="top" title={'顶部导航模式'}>
           <img
-            onClick={() => setNavigateMode('horizontal')}
+            onClick={() => changeLayoutStatus('navigateMode', 'horizontal')}
             src={require('@assets/image/setting/horizontal.svg').default}
             alt=""
           />
@@ -45,7 +45,7 @@ const NavigateMode: React.FC = props => {
           title={isHorizontalNavigator ? '仅在左侧导航模式下起效' : '分列式布局'}
         >
           <img
-            onClick={() => (isHorizontalNavigator ? {} : setLayoutMode('split'))}
+            onClick={() => (isHorizontalNavigator ? {} : changeLayoutStatus('layoutMode', 'split'))}
             src={require('@assets/image/setting/split.svg').default}
             alt=""
           />
@@ -55,7 +55,9 @@ const NavigateMode: React.FC = props => {
           title={isHorizontalNavigator ? '仅在左侧导航模式下起效' : '一体式布局'}
         >
           <img
-            onClick={() => (isHorizontalNavigator ? {} : setLayoutMode('inline'))}
+            onClick={() =>
+              isHorizontalNavigator ? {} : changeLayoutStatus('layoutMode', 'inline')
+            }
             src={require('@assets/image/setting/inline.svg').default}
             alt=""
           />

@@ -19,6 +19,17 @@ interface LoadingOptions {
   spinning: boolean; // 开启关闭遮罩
   text?: string | number | React.ReactNode; // 文案
 }
+
+type statusKey =
+  | 'showMenu'
+  | 'showHeader'
+  | 'layoutMode'
+  | 'navigateMode'
+  | 'contentAreaWidthMode'
+  | 'lockMenuScroll'
+  | 'lockHeaderScroll'
+  | 'visionTheme';
+
 configure({ enforceActions: 'observed' });
 class LayoutStore {
   // 存放已经初始化完毕的页面
@@ -119,7 +130,7 @@ class LayoutStore {
 
   initLayoutMode() {
     if (this.isHorizontalNavigator) {
-      this.setLayoutMode('split');
+      this.changeLayoutStatus('layoutMode', 'split');
     }
   }
 
@@ -218,27 +229,18 @@ class LayoutStore {
     this.collapsed = [true, false].includes(collapsed) ? collapsed : !this.collapsed;
   };
 
+  @action changeLayoutStatus = (key: statusKey, value: any) => {
+    if (key === 'navigateMode') {
+      this.contentAreaWidthMode = value === 'vertical' ? 'flow' : 'max-width';
+    }
+    // @ts-ignore
+    this[key] = value;
+  };
+
   // 设置打开的菜单
   @action setOpenMenus(menus: Array<string>): void {
     this.openMenus = menus;
   }
-
-  @action setShowHeader = (showHeader: boolean) => {
-    this.showHeader = showHeader;
-  };
-
-  @action setShowMenu = (showMenu: boolean) => {
-    this.showMenu = showMenu;
-  };
-
-  @action setLayoutMode = (mode: 'inline' | 'split') => {
-    this.layoutMode = mode;
-  };
-
-  @action setNavigateMode = (mode: 'vertical' | 'horizontal') => {
-    this.navigateMode = mode;
-    this.setContentFlowMode(mode === 'vertical' ? 'flow' : 'max-width');
-  };
 
   @action setContentFlowMode = (mode: 'flow' | 'max-width') => {
     this.contentAreaWidthMode = mode;

@@ -17,9 +17,8 @@ const ContentChange: React.FC = props => {
       lockMenuScroll,
       setLockMenuScroll,
       showHeader,
-      setShowHeader,
-      showMenu,
-      setShowMenu
+      changeLayoutStatus,
+      showMenu
     }
   } = props as { layoutStore: LayoutStore };
 
@@ -70,7 +69,11 @@ const ContentChange: React.FC = props => {
       <div className={styles.settingTitle}>内容控制</div>
       <div className={styles.settingItem}>
         <div className={styles.settingLabel}>显示 header</div>
-        <Switch checked={showHeader} defaultChecked onChange={setShowHeader} />
+        <Switch
+          checked={showHeader}
+          defaultChecked
+          onChange={val => changeLayoutStatus('showHeader', val)}
+        />
       </div>
       <Tooltip placement="left" title={isHorizontalNavigator ? '仅在左侧导航模式下起效' : ''}>
         <div className={styles.settingItem}>
@@ -79,7 +82,7 @@ const ContentChange: React.FC = props => {
             disabled={isHorizontalNavigator}
             checked={showMenu}
             defaultChecked
-            onChange={setShowMenu}
+            onChange={val => changeLayoutStatus('showMenu', val)}
           />
         </div>
       </Tooltip>

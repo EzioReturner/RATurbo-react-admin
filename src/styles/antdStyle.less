@@ -15,6 +15,13 @@
     box-shadow: 0 0 0 2px var(--antd-select-focus-shadow) !important;
   }
 
+  .darkTheme {
+    .ant-select-item-option-selected:not(.ant-select-item-option-disabled),
+    .ant-select-item-option-active:not(.ant-select-item-option-disabled) {
+      color: rgba(0, 0, 0, 0.65) !important;
+    }
+  }
+
   .ant-dropdown-menu-item {
     padding: 5px 12px;
     min-width: 140px;

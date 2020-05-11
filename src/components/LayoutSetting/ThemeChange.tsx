@@ -6,6 +6,7 @@ import { themeColors } from '@config/setting';
 import { message, Tooltip } from 'antd';
 import LayoutStore from '@/store/layoutStore';
 import { observer, inject } from 'mobx-react';
+import cloneDeep from 'lodash/cloneDeep';
 
 const ThemeChange: React.FC = props => {
   const [currentColor, setColor] = useState('#fb4491');
@@ -40,6 +41,14 @@ const ThemeChange: React.FC = props => {
       '--shadow-color',
       theme === 'dark' ? 'rgba(0, 0, 0, 0.45)' : 'rgba(189, 189, 189, 0.6)'
     );
+    const _className = ['darkThem', 'lightTheme'].reduce((total: string, key: string) => {
+      if (total.indexOf(key) >= 0) {
+        total.replace(key, '');
+      }
+      return total;
+    }, cloneDeep(document.body.className));
+
+    document.body.className = (_className + ` ${theme}Theme`).trim();
 
     const _theme =
       theme === 'dark'
@@ -50,8 +59,12 @@ const ThemeChange: React.FC = props => {
             '@text-color-inverse': '@white',
             '@icon-color-hover': 'fade(@white, 75%)',
             '@heading-color': 'fade(@white, 85%)',
+            '@disabled-color': 'fade(@white, 30%)',
             '@border-color-base': '#434343',
-            '@border-color-split': '#303030'
+            '@border-color-split': '#303030',
+            '@popover-background': '#1f1f1f',
+            '@popover-customize-border-color': '#3a3a3a',
+            '@select-selection-item-bg': 'hsv(0, 0, 96%)'
           }
         : {
             '@component-background': '#ffffff',
@@ -60,8 +73,12 @@ const ThemeChange: React.FC = props => {
             '@text-color-inverse': '@black',
             '@icon-color-hover': 'fade(@black, 75%)',
             '@heading-color': 'fade(@black, 85%)',
+            '@disabled-color': 'fade(#000000, 30%)',
             '@border-color-base': 'hsv(0, 0, 85%)',
-            '@border-color-split': 'hsv(0, 0, 94%)'
+            '@border-color-split': 'hsv(0, 0, 94%)',
+            '@popover-background': '#ffffff',
+            '@popover-customize-border-color': 'hsv(0, 0, 94%)',
+            '@select-selection-item-bg': 'fade(@white, 8)'
           };
     setTheme(_theme);
     window.less
