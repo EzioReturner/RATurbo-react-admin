@@ -25,7 +25,7 @@
       margin-top: 60px;
     }
 
-    &.withoutHeader .layoutWrapper {
+    &.hideHeader .layoutWrapper {
       margin-top: 0 !important;
     }
   }
@@ -102,6 +102,12 @@
   display: flex;
   flex-flow: column nowrap;
   background-color: var(--body-background);
+
+  &.hideHeader {
+    .routeContent {
+      height: auto !important;
+    }
+  }
 
   .routeContent {
     padding: @spacing-large;

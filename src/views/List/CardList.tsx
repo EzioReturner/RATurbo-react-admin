@@ -81,7 +81,7 @@ class CardList extends React.Component<{}, CardListState> {
         <List
           rowKey="id"
           loading={!list.length}
-          grid={{ gutter: 24, lg: 3, md: 2, sm: 1, xs: 1 }}
+          grid={{ gutter: 24, xxl: 3, xl: 3, lg: 3, md: 2, sm: 1, xs: 1 }}
           dataSource={['', ...list]}
           renderItem={(item: ListState | any) =>
             item ? (

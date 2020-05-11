@@ -16,9 +16,17 @@
   }
 
   .darkTheme {
-    .ant-select-item-option-selected:not(.ant-select-item-option-disabled),
-    .ant-select-item-option-active:not(.ant-select-item-option-disabled) {
+    .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
       color: rgba(0, 0, 0, 0.65) !important;
+    }
+
+    .ant-card-hoverable:hover {
+      box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.64), 0 3px 6px 0 rgba(0, 0, 0, 0.48),
+        0 5px 12px 4px rgba(0, 0, 0, 0.36) !important;
+    }
+
+    .ant-table-tbody > tr.ant-table-row:hover > td {
+      background: #262626;
     }
   }
 

@@ -31,7 +31,7 @@ const ThemeChange: React.FC = props => {
   const handleChangeVision = (theme: 'light' | 'dark') => {
     setVisionTheme(theme);
     message.loading('正在应用视觉风格', 0.8);
-    document.body.style.setProperty('--body-background', theme === 'dark' ? '#000000' : '#f3f3f3');
+    document.body.style.setProperty('--body-background', theme === 'dark' ? '#121212' : '#f3f3f3');
     document.body.style.setProperty(
       '--navigator-background',
       theme === 'dark' ? '#1f1f1f' : '#ffffff'
@@ -41,10 +41,11 @@ const ThemeChange: React.FC = props => {
       '--shadow-color',
       theme === 'dark' ? 'rgba(0, 0, 0, 0.45)' : 'rgba(189, 189, 189, 0.6)'
     );
-    const _className = ['darkThem', 'lightTheme'].reduce((total: string, key: string) => {
+    const _className = ['darkTheme', 'lightTheme'].reduce((total: string, key: string) => {
       if (total.indexOf(key) >= 0) {
-        total.replace(key, '');
+        total = total.replace(key, '');
       }
+
       return total;
     }, cloneDeep(document.body.className));
 
@@ -64,7 +65,10 @@ const ThemeChange: React.FC = props => {
             '@border-color-split': '#303030',
             '@popover-background': '#1f1f1f',
             '@popover-customize-border-color': '#3a3a3a',
-            '@select-selection-item-bg': 'hsv(0, 0, 96%)'
+            '@select-selection-item-bg': 'hsv(0, 0, 96%)',
+            '@item-hover-bg': 'fade(@white, 8%)',
+            '@background-color-light': 'fade(@white, 4%)',
+            '@background-color-base': 'fade(@white, 8%)'
           }
         : {
             '@component-background': '#ffffff',
@@ -78,7 +82,10 @@ const ThemeChange: React.FC = props => {
             '@border-color-split': 'hsv(0, 0, 94%)',
             '@popover-background': '#ffffff',
             '@popover-customize-border-color': 'hsv(0, 0, 94%)',
-            '@select-selection-item-bg': 'fade(@white, 8)'
+            '@select-selection-item-bg': 'fade(@white, 8)',
+            '@item-hover-bg': '#f5f5f5',
+            '@background-color-light': 'hsv(0, 0, 98%)',
+            '@background-color-base': 'hsv(0, 0, 96%)'
           };
     setTheme(_theme);
     window.less

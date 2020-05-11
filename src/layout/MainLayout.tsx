@@ -132,7 +132,10 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
 
   // 顶部导航栏模式
   const HorizontalMenuLayout = (
-    <div id="mainContainer" className={styles.horizontalContainer}>
+    <div
+      id="mainContainer"
+      className={classNames(styles.horizontalContainer, !showHeader && styles.hideHeader)}
+    >
       {showHeader && <Header />}
       <div
         className={classNames(
@@ -154,8 +157,8 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
       className={classNames(
         styles.raBasicLayout,
         isInlineLayout ? styles.inlineLayout : styles.splitLayout,
-        !showMenu && styles.withoutMenu,
-        !showHeader && styles.withoutHeader,
+        !showMenu && styles.hideMenu,
+        !showHeader && styles.hideHeader,
         lockMenuScroll && styles.lockMenuScroll,
         lockHeaderScroll && styles.lockHeaderScroll
       )}

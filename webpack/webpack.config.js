@@ -131,7 +131,10 @@ module.exports = {
         '@border-color-split',
         '@popover-background',
         '@popover-customize-border-color',
-        '@select-selection-item-bg'
+        '@select-selection-item-bg',
+        '@item-hover-bg',
+        '@background-color-light',
+        '@background-color-base'
       ],
       indexFileName: './public/index.html',
       generateOnce: false
