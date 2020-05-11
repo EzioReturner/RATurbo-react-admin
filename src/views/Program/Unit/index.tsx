@@ -6,7 +6,7 @@ import CheckboxUnit from './CheckboxUnit';
 import RadioUnit from './RadioUnit';
 import SwitchUnit from './SwitchUnit';
 import SliderUnit from './SliderUnit';
-import { Pagination, Steps, Divider, Progress, Alert } from 'antd';
+import { Pagination, Steps, Divider, Progress } from 'antd';
 
 const { Step } = Steps;
 const Unit: React.FC = () => {

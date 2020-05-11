@@ -120,7 +120,13 @@ module.exports = {
       varFile: _resolve('./src/styles/variables.less'),
       mainLessFile: _resolve('./src/styles/mainVars.less'),
       outputFilePath: _resolve('./public/color.less'),
-      themeVariables: ['@primary-color'],
+      themeVariables: [
+        '@primary-color',
+        '@heading-color',
+        '@text-color',
+        '@text-color-secondary',
+        '@disabled-color'
+      ],
       indexFileName: './public/index.html',
       generateOnce: false
     })

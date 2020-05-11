@@ -17,14 +17,14 @@ const NavigateMode: React.FC = props => {
         <Tooltip placement="top" title={'左侧导航模式'}>
           <img
             onClick={() => setNavigateMode('vertical')}
-            src={require('@assets/image/vertical.svg').default}
+            src={require('@assets/image/setting/vertical.svg').default}
             alt=""
           />
         </Tooltip>
         <Tooltip placement="top" title={'顶部导航模式'}>
           <img
             onClick={() => setNavigateMode('horizontal')}
-            src={require('@assets/image/horizontal.svg').default}
+            src={require('@assets/image/setting/horizontal.svg').default}
             alt=""
           />
         </Tooltip>
@@ -46,7 +46,7 @@ const NavigateMode: React.FC = props => {
         >
           <img
             onClick={() => (isHorizontalNavigator ? {} : setLayoutMode('split'))}
-            src={require('@assets/image/split.svg').default}
+            src={require('@assets/image/setting/split.svg').default}
             alt=""
           />
         </Tooltip>
@@ -56,7 +56,7 @@ const NavigateMode: React.FC = props => {
         >
           <img
             onClick={() => (isHorizontalNavigator ? {} : setLayoutMode('inline'))}
-            src={require('@assets/image/inline.svg').default}
+            src={require('@assets/image/setting/inline.svg').default}
             alt=""
           />
         </Tooltip>
