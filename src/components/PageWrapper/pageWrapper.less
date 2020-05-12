@@ -1,0 +1,74 @@
+.RA-pageWrapper {
+  margin: -@spacing-large;
+  display: flex;
+  flex-flow: column;
+
+  .RA-pageWrapper-body {
+    padding: @spacing-large;
+    flex: 1;
+  }
+
+  .RA-pageWrapper-header {
+    background: var(--popover-background);
+    padding: 16px 24px 16px;
+    box-shadow: 4px 4px 6px 0 rgba(0, 0, 0, 0.05);
+    position: relative;
+
+    &.RA-pageWrapper-header-withoutBody {
+      background: transparent;
+      box-shadow: none;
+      padding-bottom: 0;
+      margin-bottom: -12px;
+    }
+
+    .RA-pageWrapper-header-title {
+      margin-bottom: 0px;
+      color: var(--heading-color);
+      font-weight: 500;
+      font-size: 20px;
+    }
+
+    .RA-pageWrapper-header-subTitle {
+      color: var(--text-color);
+      font-size: 14px;
+      font-weight: 400;
+      margin-top: 16px;
+    }
+
+    .RA-pageWrapper-header-row {
+      display: flex;
+      width: 100%;
+      flex-flow: row wrap;
+      align-items: center;
+    }
+
+    .RA-pageWrapper-header-title,
+    .RA-pageWrapper-header-content {
+      flex: auto;
+    }
+
+    .RA-pageWrapper-header-title,
+    .RA-pageWrapper-header-subTitle {
+      flex: 1 0 100%;
+    }
+
+    .RA-pageWrapper-header-extraContent,
+    .RA-pageWrapper-header-main {
+      flex: 0 1 auto;
+    }
+
+    .RA-pageWrapper-header-extraContent {
+      margin-left: 88px;
+      min-width: 282px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .RA-pageWrapper-header-row {
+        display: block;
+      }
+      .RA-pageWrapper-header-extraContent {
+        margin-left: 16px;
+      }
+    }
+  }
+}

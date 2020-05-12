@@ -2,7 +2,6 @@ import React from 'react';
 import { Dropdown, Menu } from 'antd';
 import { inject, observer } from 'mobx-react';
 import { i18n } from '@config/setting';
-import styles from './selectlang.module.less';
 import LocaleStore from '@store/localeStore';
 import { GlobalOutlined } from '@ant-design/icons';
 interface InjectedProps {
@@ -45,8 +44,8 @@ const SelectLang: React.FC = props => {
 
   return (
     <Dropdown overlay={getMenu()} placement="bottomRight">
-      <div className={styles.langIcon}>
-        <GlobalOutlined className={styles.icon} />
+      <div className="RA-selectLang-iconContainer">
+        <GlobalOutlined className="RA-selectLang-icon" />
       </div>
     </Dropdown>
   );

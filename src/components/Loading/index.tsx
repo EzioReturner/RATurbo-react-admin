@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { observer } from 'mobx-react';
-import styles from './loading.module.less';
+import './loading.less';
 
 /**
  * loading组件
@@ -25,15 +25,15 @@ const Loading: React.FC<LoadingProps> = props => {
   return (
     <div
       className={classNames(
-        styles.loading,
-        !spinning ? styles.hide : '',
-        fixed ? styles.fixed : '',
-        collapsed ? styles.collapsed : ''
+        'RA-loading',
+        !spinning && 'RA-loading-hide',
+        fixed && 'RA-loading-fixed',
+        collapsed && 'RA-loading-collapsed'
       )}
       style={style}
     >
-      <div className={styles.content}>
-        <div className={styles.circle} />
+      <div className="RA-loading-content">
+        <div className="RA-loading-content-circle" />
         <span>{text || 'LOADING'}</span>
       </div>
     </div>

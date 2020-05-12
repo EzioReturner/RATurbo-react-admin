@@ -1,7 +1,7 @@
 import React from 'react';
 import PageHeader from './PageHeader';
-import styles from './pageWrapper.module.less';
 import { PageHeaderProps } from '@/models/layout';
+import './pageWrapper.less';
 
 interface PageWrapperProps extends PageHeaderProps {
   hideHeader?: React.ReactNode;
@@ -10,9 +10,9 @@ interface PageWrapperProps extends PageHeaderProps {
 const PageWrapper: React.FC<PageWrapperProps> = props => {
   const { hideHeader, children, ...restProps } = props;
   return (
-    <div className={styles.pageWrapper}>
+    <div className="RA-pageWrapper">
       {!hideHeader && <PageHeader {...restProps} />}
-      <div className={styles.pageBody}>{children}</div>
+      <div className="RA-pageWrapper-body">{children}</div>
     </div>
   );
 };

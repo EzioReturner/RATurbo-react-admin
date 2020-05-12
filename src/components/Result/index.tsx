@@ -1,6 +1,7 @@
 import React from 'react';
-import styles from './result.module.less';
 import { CloseCircleFilled, CheckCircleFilled } from '@ant-design/icons';
+import './result.less';
+
 interface ResultProps {
   title?: React.ReactNode;
   subtitle?: React.ReactNode;
@@ -14,17 +15,17 @@ const Result: React.FC<ResultProps> = props => {
   const { title, subtitle, extra, actions, type, ...restProps } = props;
 
   const _Icon: any = {
-    failed: <CloseCircleFilled className={`${styles.icon} ${styles.failed}`} />,
-    successed: <CheckCircleFilled className={styles.icon} />
+    failed: <CloseCircleFilled className="RA-result-icon RA-result-icon-failed" />,
+    successed: <CheckCircleFilled className="RA-result-icon" />
   };
 
   return (
-    <div className={styles.result} {...restProps}>
+    <div className="RA-result" {...restProps}>
       {_Icon[type]}
-      <p className={styles.title}>{title}</p>
-      <p className={styles.subTitle}>{subtitle}</p>
-      {extra && <div className={styles.extra}>{extra}</div>}
-      {actions && <div className={styles.actions}>{actions}</div>}
+      <p className="RA-result-title">{title}</p>
+      <p className="RA-result-subTitle">{subtitle}</p>
+      {extra && <div className="RA-result-extra">{extra}</div>}
+      {actions && <div className="RA-result-actions">{actions}</div>}
     </div>
   );
 };

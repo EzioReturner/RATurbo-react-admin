@@ -1,25 +1,31 @@
 import React from 'react';
 import Breadcrumb from '@components/Breadcrumb';
 import classnames from 'classnames';
-import styles from './pageWrapper.module.less';
 import { PageHeaderProps } from '@/models/layout';
 
 const PageHeader: React.FC<PageHeaderProps> = props => {
   const { hideBreadcrumb, title, subTitle, content, extraContent, logo, withoutHeaderBody } = props;
   return (
-    <div className={classnames(styles.pageHeader, withoutHeaderBody && styles.withoutHeaderBody)}>
+    <div
+      className={classnames(
+        'RA-pageWrapper-header',
+        withoutHeaderBody && 'RA-pageWrapper-header-withoutBody'
+      )}
+    >
       {!hideBreadcrumb && <Breadcrumb />}
       {!withoutHeaderBody && (
         <>
-          {logo && <div className={styles.logo}>{logo}</div>}
-          <div className={styles.main}>
-            <div className={styles.row}>
-              {title && <h1 className={styles.title}>{title}</h1>}
-              {subTitle && <div className={styles.subTitle}>{subTitle}</div>}
+          {logo && <div>{logo}</div>}
+          <div className="RA-pageWrapper-header-main">
+            <div className="RA-pageWrapper-header-row">
+              {title && <h1 className="RA-pageWrapper-header-title">{title}</h1>}
+              {subTitle && <div className="RA-pageWrapper-header-subTitle">{subTitle}</div>}
             </div>
-            <div className={styles.row}>
-              {content && <div className={styles.content}>{content}</div>}
-              {extraContent && <div className={styles.extraContent}>{extraContent}</div>}
+            <div className="RA-pageWrapper-header-row">
+              {content && <div className="RA-pageWrapper-header-content">{content}</div>}
+              {extraContent && (
+                <div className="RA-pageWrapper-header-extraContent">{extraContent}</div>
+              )}
             </div>
           </div>
         </>
