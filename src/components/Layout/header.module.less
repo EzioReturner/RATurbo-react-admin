@@ -12,25 +12,31 @@
   transition: all 0.3s;
   width: 100%;
 
-  &.inlineLayout {
-    left: 0 !important;
-    justify-content: unset;
-    box-shadow: 4px 4px 6px 0 rgba(0, 0, 0, 0.05);
-    z-index: 4;
-  }
-
-  &.splitLayout {
-    &.withoutMenu {
-      width: 100% !important;
+  &.verticalMenu {
+    &.darkTheme {
+      background-color: var(--component-background);
     }
 
-    &.lockHeaderScroll {
-      position: fixed;
-      width: calc(100% - 255px);
-      top: 0;
-      right: 0;
-      &.collapsed {
-        width: calc(100% - 80px);
+    &.inlineLayout {
+      left: 0 !important;
+      justify-content: unset;
+      box-shadow: 4px 4px 6px 0 rgba(0, 0, 0, 0.05);
+      z-index: 4;
+    }
+
+    &.splitLayout {
+      &.withoutMenu {
+        width: 100% !important;
+      }
+
+      &.lockHeaderScroll {
+        position: fixed;
+        width: calc(100% - 255px);
+        top: 0;
+        right: 0;
+        &.collapsed {
+          width: calc(100% - 80px);
+        }
       }
     }
   }
