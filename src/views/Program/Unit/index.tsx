@@ -6,6 +6,8 @@ import CheckboxUnit from './CheckboxUnit';
 import RadioUnit from './RadioUnit';
 import SwitchUnit from './SwitchUnit';
 import SliderUnit from './SliderUnit';
+import InputUnit from './InputUnit';
+import SelectUnit from './SelectUnit';
 import { Pagination, Steps, Divider, Progress } from 'antd';
 
 const { Step } = Steps;
@@ -33,12 +35,8 @@ const Unit: React.FC = () => {
         <RadioUnit />
       </div>
       <div>
-        <p className={Styles.title}>Step</p>
-        <Steps current={1}>
-          <Step title="Finished" description="This is a description." />
-          <Step title="In Progress" subTitle="Left 00:00:08" description="This is a description." />
-          <Step title="Waiting" description="This is a description." />
-        </Steps>
+        <p className={Styles.title}>Select</p>
+        <SelectUnit />
       </div>
       <div>
         <p className={Styles.title}>Progress</p>
@@ -51,6 +49,18 @@ const Unit: React.FC = () => {
       <div>
         <p className={Styles.title}>Icon</p>
         <IconUnit />
+      </div>
+      <div>
+        <p className={Styles.title}>Input</p>
+        <InputUnit />
+      </div>
+      <div>
+        <p className={Styles.title}>Step</p>
+        <Steps current={1}>
+          <Step title="Finished" description="This is a description." />
+          <Step title="In Progress" subTitle="Left 00:00:08" description="This is a description." />
+          <Step title="Waiting" description="This is a description." />
+        </Steps>
       </div>
       <div>
         <p className={Styles.title}>Pagination</p>

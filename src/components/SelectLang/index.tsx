@@ -4,6 +4,8 @@ import { inject, observer } from 'mobx-react';
 import { i18n } from '@config/setting';
 import LocaleStore from '@store/localeStore';
 import { GlobalOutlined } from '@ant-design/icons';
+import './selectLang.less';
+
 interface InjectedProps {
   localeStore: LocaleStore;
 }

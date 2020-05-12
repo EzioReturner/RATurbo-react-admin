@@ -1,12 +1,12 @@
 import React from 'react';
-import styles from './userLayout.module.less';
 import { hot } from 'react-hot-loader';
+import './userLayout.less';
 
 const UserLayout: React.FC = props => {
   const { children } = props;
   return (
-    <div className={styles.userLayout}>
-      <div className={styles.userContext}>{children}</div>
+    <div className="RA-userLayout">
+      <div>{children}</div>
     </div>
   );
 };

@@ -67,7 +67,10 @@ const LoginForm: React.FC<LoginFormProps> = props => {
           name="username"
           rules={[{ required: true, message: 'Please input your Username!' }]}
         >
-          <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+          <Input
+            prefix={<UserOutlined className="site-form-item-icon" />}
+            placeholder="Username: admin | guest"
+          />
         </Form.Item>
         <Form.Item
           name="password"
@@ -76,7 +79,7 @@ const LoginForm: React.FC<LoginFormProps> = props => {
           <Input
             prefix={<LockOutlined className="site-form-item-icon" />}
             type="password"
-            placeholder="Password"
+            placeholder="Password: 123"
           />
         </Form.Item>
         <Form.Item>

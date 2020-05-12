@@ -12,6 +12,7 @@ import LayoutStore from '@store/layoutStore';
 import { RouteConfig } from '@/models/layout';
 import LayoutSetting from '@components/LayoutSetting';
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
+import './mainLayout.less';
 
 const Exception403 = React.lazy(() => import(/* webpackChunkName: "403" */ '@views/Exception/403'));
 
