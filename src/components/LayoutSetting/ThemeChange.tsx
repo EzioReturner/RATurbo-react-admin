@@ -31,10 +31,14 @@ const ThemeChange: React.FC = props => {
   const handleChangeVision = (theme: 'light' | 'dark') => {
     setVisionTheme(theme);
     message.loading('正在应用视觉风格', 0.8);
-    document.body.style.setProperty('--body-background', theme === 'dark' ? '#0d0d0d' : '#f3f3f3');
+    document.body.style.setProperty('--body-background', theme === 'dark' ? '#0a0a0a' : '#f3f3f3');
     document.body.style.setProperty(
       '--navigator-background',
       theme === 'dark' ? '#222222' : '#ffffff'
+    );
+    document.body.style.setProperty(
+      '--popover-background',
+      theme === 'dark' ? '#141414' : '#ffffff'
     );
     document.body.style.setProperty('--border-color', theme === 'dark' ? '#434343' : '#f2f2f2');
     document.body.style.setProperty(
@@ -54,7 +58,7 @@ const ThemeChange: React.FC = props => {
     const _theme =
       theme === 'dark'
         ? {
-            '@component-background': '#141414',
+            '@component-background': '#1d1d1d',
             '@text-color': 'fade(@white, 65%)',
             '@text-color-secondary': 'fade(@white, 45%)',
             '@text-color-inverse': '@white',
