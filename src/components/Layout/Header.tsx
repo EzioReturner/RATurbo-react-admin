@@ -46,7 +46,7 @@ const Header: React.FC = props => {
         isDarkTheme && styles.darkTheme
       )}
     >
-      {isInlineLayout && <SiteDetail isInlineLayout={isInlineLayout} />}
+      {isInlineLayout && <SiteDetail inlineLayout={isInlineLayout} />}
       {showMenu && !isInlineLayout && IconCollapsed}
       <div className={styles.rightPart}>
         <UserInfo />
@@ -58,7 +58,7 @@ const Header: React.FC = props => {
   const HorizontalMenuHeader = (
     <header className={classNames(styles.header, styles.horiziontalMenu)}>
       <div className={classNames(styles.container, isContentFlowMode && styles.flowMode)}>
-        <SiteDetail isInlineLayout isHorizontalNavigator />
+        <SiteDetail inlineLayout horizontalNavigator />
         <div className={styles.headerNav}>
           <TopMenu />
         </div>

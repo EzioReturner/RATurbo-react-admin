@@ -4,7 +4,6 @@ import { Link, useLocation } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
 import intersection from 'lodash/intersection';
 import classNames from 'classnames';
-import styles from './siderMenu.module.less';
 import UserStore from '@store/userStore';
 import LayoutStore from '@store/layoutStore';
 import LocaleStore from '@store/localeStore';
@@ -13,6 +12,7 @@ import SiteDetail from './SiteDetail';
 import Icon from '@ant-design/icons';
 import Iconfont from '@components/Iconfont';
 import cloneDeep from 'lodash/cloneDeep';
+import './siderMenu.less';
 
 interface InjectedProps {
   userStore: UserStore;
@@ -81,7 +81,7 @@ const SiderMenu: React.FC = props => {
     // @ts-ignore
     if (icon.$$typeof) {
       // return icon;
-      return <span className={styles.menuIcon}>{cacheIcon}</span>;
+      return <span className="RA-menuIcon">{cacheIcon}</span>;
     }
     if (typeof cacheIcon === 'string') {
       return cacheIcon.indexOf('iconfont-') > 0 ? (
@@ -103,10 +103,7 @@ const SiderMenu: React.FC = props => {
     return (
       <span>
         {createIcon(icon)}
-        <span
-          className={parentName ? styles.childSubTitleName : styles.subTitleName}
-          title={localName}
-        >
+        <span className={!parentName ? 'RA-antd-subMenu-title' : ''} title={localName}>
           {localName}
         </span>
       </span>
@@ -140,14 +137,14 @@ const SiderMenu: React.FC = props => {
         <SubMenu
           title={getMenuTitle(name, parentName, icon)}
           key={path}
-          className={styles.antdSubMenu}
+          className="RA-antd-subMenu"
         >
           {getNavMenuItem(routes, name)}
         </SubMenu>
       );
     } // 菜单子级枝叶
     return (
-      <Menu.Item key={menu.path} className={styles.antdMenuItem}>
+      <Menu.Item key={menu.path} className="RA-antd-menuItem">
         {getMenuItem(menu, parentName)}
       </Menu.Item>
     );
@@ -171,7 +168,10 @@ const SiderMenu: React.FC = props => {
         }}
       >
         {createIcon(icon)}
-        <span className={parentName ? styles.titleName : styles.subTitleName} title={localName}>
+        <span
+          className={parentName ? 'RA-antd-menuItem-title' : 'RA-antd-subMenu-title'}
+          title={localName}
+        >
           {localName}
         </span>
       </Link>
@@ -200,9 +200,10 @@ const SiderMenu: React.FC = props => {
   const RAMenu = (
     <Menu
       className={classNames(
-        styles.RAMenu,
-        isHorizontalNavigator && styles.horizontal,
-        isDarkTheme && styles.darkTheme
+        'RA-menu',
+        isHorizontalNavigator && 'RA-menu-horizontal',
+        isDarkTheme && 'RA-menu-darkTheme',
+        collapsed && 'RA-menu-collapsed'
       )}
       mode={isHorizontalNavigator ? 'horizontal' : 'inline'}
       selectedKeys={[location.pathname]}
@@ -216,17 +217,18 @@ const SiderMenu: React.FC = props => {
   const VerticalMenu = (
     <aside
       className={classNames(
-        styles.navigator,
-        collapsed && styles.collapsed,
-        isInlineLayout && styles.inlineLayout,
-        isDarkTheme && styles.darkTheme
+        'RA-navigator',
+        collapsed && 'RA-navigator-collapsed',
+        isInlineLayout && 'RA-navigator-inlineLayout',
+        isDarkTheme && 'RA-navigator-darkTheme'
       )}
     >
       {!isInlineLayout && (
         <SiteDetail
-          isInlineLayout={isInlineLayout}
-          isHorizontalNavigator={false}
-          isDarkTheme={isDarkTheme}
+          inlineLayout={isInlineLayout}
+          horizontalNavigator={false}
+          darkTheme={isDarkTheme}
+          collapsed={collapsed}
         />
       )}
       {RAMenu}

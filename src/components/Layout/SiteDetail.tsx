@@ -1,29 +1,35 @@
 import React from 'react';
-import styles from './siderMenu.module.less';
 import { siteName, menuLinkUrl, useSiteIcon } from '@config/setting';
 import classNames from 'classnames';
+import './siteDetail.less';
 
 const SiteDetail: React.FC<{
-  isInlineLayout: boolean;
-  isHorizontalNavigator?: boolean;
-  isDarkTheme?: boolean;
+  inlineLayout: boolean;
+  horizontalNavigator?: boolean;
+  darkTheme?: boolean;
+  collapsed?: boolean;
 }> = props => {
   return (
     <a
       className={classNames(
-        styles.siteDetail,
-        props.isInlineLayout && styles.inlineLayout,
-        props.isHorizontalNavigator && styles.horizontal,
-        props.isDarkTheme && styles.darkTheme
+        'RA-siteDetail',
+        props.inlineLayout && 'RA-siteDetail-inlineLayout',
+        props.horizontalNavigator && 'RA-siteDetail-horizontal',
+        props.darkTheme && 'RA-siteDetail-darkTheme',
+        props.collapsed && 'RA-siteDetail-collapsed'
       )}
       href={menuLinkUrl}
       target="_blank"
       rel="noopener noreferrer"
     >
       {useSiteIcon && (
-        <img alt="" src={require('@assets/image/logo.png').default} className={styles.logo} />
+        <img
+          alt=""
+          src={require('@assets/image/logo.png').default}
+          className="RA-siteDetail-logo"
+        />
       )}
-      <span className={styles.title}>{siteName}</span>
+      <span className="RA-siteDetail-title">{siteName}</span>
     </a>
   );
 };
