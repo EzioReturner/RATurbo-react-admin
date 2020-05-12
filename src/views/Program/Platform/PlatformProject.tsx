@@ -27,6 +27,7 @@ class PlatformProject extends PureComponent {
         title={<FormatterLocale id="platform.projectList" />}
         className="fat-card"
         bordered={false}
+        hoverable
         bodyStyle={{
           padding: '14px'
         }}

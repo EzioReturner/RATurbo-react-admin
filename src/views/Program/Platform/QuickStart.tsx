@@ -23,6 +23,7 @@ class QuickStart extends PureComponent {
       <Card
         title={<FormatterLocale id="platform.quickContact" />}
         bordered={false}
+        hoverable
         loading={!contact.length}
       >
         <Row className="quick-start">

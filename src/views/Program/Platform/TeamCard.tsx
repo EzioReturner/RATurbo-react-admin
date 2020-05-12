@@ -9,6 +9,7 @@ class TeamCard extends PureComponent {
       <Card
         title={<FormatterLocale id="platform.teamCard" />}
         style={{ width: '100%' }}
+        hoverable
         bordered={false}
       >
         <div className="team-card">
