@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from 'antd';
 import { useHistory } from 'react-router-dom';
 import FormatterLocale from '@components/FormatterLocale';
-import styles from './exception.module.less';
+import './exception.less';
 
 interface ExceptionProps {
   errorCode: React.ReactNode;
@@ -18,7 +18,7 @@ const Exception: React.FC<ExceptionProps> = props => {
 
   const { errorCode, title, subTitle } = props;
   return (
-    <div className={styles.exception}>
+    <div className="RA-exception">
       <h1>{errorCode}</h1>
       <p>{title}</p>
       <div>

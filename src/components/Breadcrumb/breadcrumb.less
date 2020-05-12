@@ -1,10 +1,10 @@
-.breadcrumbList {
+.RA-breadcrumbList {
   display: flex;
   flex-flow: row;
   margin-bottom: 16px;
 }
 
-.breadcrumb {
+.RA-breadcrumb {
   transition: all 0.3s;
   position: relative;
   padding: 0 10px 0 20px;
@@ -12,13 +12,13 @@
   color: var(--text-color-secondary);
   font-weight: 400;
 
-  &.display {
+  &.RA-breadcrumb-display {
     color: var(--heading-color);
   }
 
   &:hover {
     padding: 0 40px 0 25px !important;
-    .closeIcon {
+    .RA-breadcrumb-closeIcon {
       opacity: 1;
       right: 8px;
     }
@@ -38,7 +38,7 @@
   &:last-child {
     padding: 0 20px;
 
-    .closeIcon {
+    .RA-breadcrumb-closeIcon {
       right: 20px;
     }
 
@@ -59,7 +59,7 @@
   }
 }
 
-.closeIcon {
+.RA-breadcrumb-closeIcon {
   position: absolute;
   top: 3px;
   right: 20px;

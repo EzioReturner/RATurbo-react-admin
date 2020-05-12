@@ -3,10 +3,10 @@ import { observer, inject } from 'mobx-react';
 import { useLocation, useHistory } from 'react-router-dom';
 import { CloseOutlined } from '@ant-design/icons';
 import classNames from 'classnames';
-import styles from './index.module.less';
 import { Breadcrumb } from '@/models/layout';
 import LayoutStore from '@store/layoutStore';
 import LocaleStore from '@store/localeStore';
+import './breadcrumb.less';
 
 interface InjectedProps {
   layoutStore: LayoutStore;
@@ -48,7 +48,7 @@ const BreadCrumb: React.FC = props => {
   }
 
   return (
-    <div className={styles.breadcrumbList}>
+    <div className="RA-breadcrumbList">
       {breadcrumbList.map((bread: Breadcrumb, index: number) => {
         const { display, path, name } = bread;
         const key = path
@@ -59,12 +59,12 @@ const BreadCrumb: React.FC = props => {
         return display ? (
           <div
             key={index}
-            className={classNames(styles.breadcrumb, checkDisplay(path) ? styles.display : '')}
+            className={classNames('RA-breadcrumb', checkDisplay(path) && 'RA-breadcrumb-display')}
             onClick={() => handleGoBreadPath(path)}
           >
             {localeObj[`menu.${key}`] || name}
             <CloseOutlined
-              className={styles.closeIcon}
+              className="RA-breadcrumb-closeIcon"
               onClick={e => handleDelBreadcrumb(e, name)}
             />
           </div>
