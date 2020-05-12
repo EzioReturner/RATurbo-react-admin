@@ -2,7 +2,6 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 import classNames from 'classnames';
 import SelectLang from '../SelectLang';
-import styles from './header.module.less';
 import UserInfo from './UserInfo';
 import LayoutStore from '@store/layoutStore';
 import SiteDetail from './SiteDetail';
@@ -28,27 +27,27 @@ const Header: React.FC = props => {
   } = props as InjectedProps;
 
   const IconCollapsed = collapsed ? (
-    <MenuUnfoldOutlined className={styles.foldIcon} onClick={() => toggleCollapsed()} />
+    <MenuUnfoldOutlined className="RA-header-foldIcon" onClick={() => toggleCollapsed()} />
   ) : (
-    <MenuFoldOutlined className={styles.foldIcon} onClick={() => toggleCollapsed()} />
+    <MenuFoldOutlined className="RA-header-foldIcon" onClick={() => toggleCollapsed()} />
   );
 
   const VerticalMenuHeader = (
     <header
       className={classNames(
-        styles.header,
-        styles.verticalMenu,
-        collapsed && styles.collapsed,
-        isMobile && styles.isMobile,
-        !showMenu && styles.withoutMenu,
-        isInlineLayout ? styles.inlineLayout : styles.splitLayout,
-        lockHeaderScroll && styles.lockHeaderScroll,
-        isDarkTheme && styles.darkTheme
+        'RA-header',
+        'RA-header-vertical',
+        collapsed && 'RA-header-collapsed',
+        isMobile && 'RA-header-isMobile',
+        !showMenu && 'RA-header-withoutMenu',
+        isInlineLayout ? 'RA-header-inlineLayout' : 'RA-header-splitLayout',
+        lockHeaderScroll && 'RA-header-lockHeaderScroll',
+        isDarkTheme && 'RA-header-darkTheme'
       )}
     >
       {isInlineLayout && <SiteDetail inlineLayout={isInlineLayout} />}
       {showMenu && !isInlineLayout && IconCollapsed}
-      <div className={styles.rightPart}>
+      <div className="RA-header-rightPlace">
         <UserInfo />
         <SelectLang />
       </div>
@@ -56,13 +55,18 @@ const Header: React.FC = props => {
   );
 
   const HorizontalMenuHeader = (
-    <header className={classNames(styles.header, styles.horiziontalMenu)}>
-      <div className={classNames(styles.container, isContentFlowMode && styles.flowMode)}>
+    <header className={classNames('RA-header', 'RA-header-horizontal')}>
+      <div
+        className={classNames(
+          'RA-header-container',
+          isContentFlowMode && 'RA-header-container-flowMode'
+        )}
+      >
         <SiteDetail inlineLayout horizontalNavigator />
-        <div className={styles.headerNav}>
+        <div className="RA-header-headerNav">
           <TopMenu />
         </div>
-        <div className={styles.rightPart}>
+        <div className="RA-header-rightPlace">
           <UserInfo />
           <SelectLang />
         </div>

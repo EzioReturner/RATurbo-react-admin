@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './index.module.less';
 import classNames from 'classnames';
 import { Tooltip } from 'antd';
 import { CheckOutlined } from '@ant-design/icons';
@@ -12,8 +11,8 @@ const NavigateMode: React.FC = props => {
   } = props as { layoutStore: LayoutStore };
   return (
     <>
-      <div className={classNames(styles.settingRow, styles.navigateMode)}>
-        <div className={styles.settingTitle}>导航风格</div>
+      <div className={classNames('RA-setting-Row', 'RA-setting-haveSelectedIcon')}>
+        <div className="RA-setting-title">导航风格</div>
         <Tooltip placement="top" title={'左侧导航模式'}>
           <img
             onClick={() => changeLayoutStatus('navigateMode', 'vertical')}
@@ -29,17 +28,21 @@ const NavigateMode: React.FC = props => {
           />
         </Tooltip>
         <CheckOutlined
-          className={classNames(styles.selectedIcon, isHorizontalNavigator && styles.rightPlace)}
+          className={classNames(
+            'RA-setting-selectedIcon',
+            isHorizontalNavigator && 'RA-setting-selectedIcon-rightPlace'
+          )}
         />
       </div>
       <div
         className={classNames(
-          styles.settingRow,
-          styles.layoutMode,
-          isHorizontalNavigator && styles.disabled
+          'RA-setting-Row',
+          'RA-setting-layoutMode',
+          'RA-setting-haveSelectedIcon',
+          isHorizontalNavigator && 'RA-setting-layoutMode-disabled'
         )}
       >
-        <div className={styles.settingTitle}>布局模式</div>
+        <div className="RA-setting-title">布局模式</div>
         <Tooltip
           placement="top"
           title={isHorizontalNavigator ? '仅在左侧导航模式下起效' : '分列式布局'}
@@ -64,7 +67,10 @@ const NavigateMode: React.FC = props => {
         </Tooltip>
         {!isHorizontalNavigator && (
           <CheckOutlined
-            className={classNames(styles.selectedIcon, isInlineLayout && styles.rightPlace)}
+            className={classNames(
+              'RA-setting-selectedIcon',
+              isInlineLayout && 'RA-setting-selectedIcon-rightPlace'
+            )}
           />
         )}
       </div>

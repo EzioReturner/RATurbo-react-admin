@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
-import styles from './index.module.less';
 import { CheckOutlined } from '@ant-design/icons';
 import { themeColors } from '@config/setting';
 import { message, Tooltip } from 'antd';
@@ -104,8 +103,8 @@ const ThemeChange: React.FC = props => {
 
   return (
     <>
-      <div className={classNames(styles.settingRow, styles.globalStyle)}>
-        <div className={styles.settingTitle}>整体色彩模式</div>
+      <div className={classNames('RA-setting-Row', 'RA-setting-haveSelectedIcon')}>
+        <div className="RA-setting-title">整体色彩模式</div>
         <Tooltip placement="top" title={'亮色模式'}>
           <img
             src={require('@assets/image/setting/light.svg').default}
@@ -121,16 +120,19 @@ const ThemeChange: React.FC = props => {
           />
         </Tooltip>
         <CheckOutlined
-          className={classNames(styles.selectedIcon, isDarkTheme && styles.rightPlace)}
+          className={classNames(
+            'RA-setting-selectedIcon',
+            isDarkTheme && 'RA-setting-selectedIcon-rightPlace'
+          )}
         />
       </div>
-      <div className={classNames(styles.settingRow, styles.themeChange)}>
-        <div className={styles.settingTitle}>色彩风格</div>
+      <div className={classNames('RA-setting-Row', 'RA-setting-themeChange')}>
+        <div className="RA-setting-title">色彩风格</div>
         {themeColors?.map(c => (
           <div
             key={c}
             style={{ backgroundColor: c }}
-            className={styles.colorBlock}
+            className="RA-setting-themeChange-colorBlock"
             onClick={() => handleChangeTheme(c)}
           >
             {currentColor === c && <CheckOutlined />}

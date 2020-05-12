@@ -1,0 +1,97 @@
+.RA-header {
+  color: @white-color;
+  height: 60px;
+  background: var(--component-background);
+  position: relative;
+  box-sizing: border-box;
+  text-align: left;
+  box-shadow: 4px 4px 40px 0 rgba(0, 0, 0, 0.05);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s;
+  width: 100%;
+
+  &.RA-header-isMobile {
+    left: 0;
+    width: 100% !important;
+  }
+
+  .RA-header-foldIcon {
+    font-size: 18px;
+    margin-left: 32px;
+    color: #666;
+    cursor: pointer;
+  }
+
+  .RA-header-rightPlace {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    min-width: 180px;
+  }
+}
+
+.RA-header.RA-header-vertical {
+  &.RA-header-darkTheme {
+    box-shadow: 4px 4px 40px 0 rgba(0, 0, 0, 1) !important;
+  }
+
+  &.RA-header-inlineLayout {
+    left: 0 !important;
+    justify-content: unset;
+    box-shadow: 4px 4px 6px 0 rgba(0, 0, 0, 0.05);
+    z-index: 4;
+  }
+
+  &.RA-header-splitLayout {
+    &.RA-header-withoutMenu {
+      width: 100% !important;
+    }
+
+    &.RA-header-lockHeaderScroll {
+      position: fixed;
+      width: calc(100% - 255px);
+      top: 0;
+      right: 0;
+      &.RA-header-collapsed {
+        width: calc(100% - 80px);
+      }
+    }
+  }
+}
+
+.RA-header.RA-header-horizontal {
+  left: 0px !important;
+
+  & > .RA-header-container {
+    max-width: 1250px;
+    margin: auto;
+    position: relative;
+    display: flex;
+    flex: 1;
+    max-height: 60px;
+    width: 100%;
+
+    &.RA-header-container-flowMode {
+      max-width: unset;
+    }
+
+    .RA-header-rightPlace {
+      position: relative;
+    }
+
+    .RA-header-headerNav {
+      flex: 1 1 0%;
+      min-width: 0;
+    }
+
+    .siteDetail {
+      justify-self: start;
+    }
+  }
+}

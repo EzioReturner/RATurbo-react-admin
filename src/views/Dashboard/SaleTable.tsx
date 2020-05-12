@@ -82,7 +82,7 @@ const SaleTable: React.FC = () => {
           color = 'error';
         }
         if (tag === 'waiting') {
-          return <Tag color="default">{tag.toUpperCase()}</Tag>;
+          color = 'default';
         }
         return (
           <Tag color={color} key={tag}>

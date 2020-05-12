@@ -1,0 +1,43 @@
+.RA-userInfo {
+  color: var(--text-color);
+  display: flex;
+  font-size: 14px;
+  height: 100%;
+
+  & > span {
+    font-weight: bold;
+  }
+
+  .RA-userInfo-menuItem {
+    line-height: initial;
+    margin-left: 8px;
+  }
+
+  .RA-userInfo-icon {
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 8px;
+  }
+
+  .RA-userInfo-dropdown {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 0 8px;
+    transition: all 0.3s;
+    line-height: 60px;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.025);
+      color: var(--primary);
+    }
+  }
+
+  .RA-userInfo-userName {
+    .text-overflow;
+
+    @media screen and (max-width: 600px) {
+      width: 50px;
+    }
+  }
+}

@@ -1,0 +1,147 @@
+@import './ContenteChange.less';
+@import './navigateMode.less';
+@import './themeChange.less';
+
+.RA-setting-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 999;
+  height: 100%;
+
+  &.RA-setting-drawe-opened {
+    width: 100% !important;
+
+    .RA-setting-drawer-mask {
+      height: 100%;
+      opacity: 1;
+      transition: none;
+      animation: raDrawerFadeIn 0.3s cubic-bezier(0.7, 0.3, 0.1, 1);
+    }
+
+    .RA-setting-drawer-wrapper {
+      transform: translateX(0);
+    }
+
+    .RA-setting-icon {
+      box-shadow: unset;
+    }
+  }
+
+  .RA-setting-icon {
+    height: 52px;
+    width: 48px;
+    background-color: var(--navigator-background);
+    position: absolute;
+    right: 300px;
+    top: 220px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    font-size: 18px;
+    line-height: 56px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 3px 8px 0 var(--shadow-color);
+    color: var(--primary) !important;
+  }
+
+  .RA-setting-drawer-mask {
+    background-color: rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    height: 0;
+    position: absolute;
+    width: 100%;
+    height: 0;
+    top: 0;
+    left: 0;
+    transition: opacity 0.3s linear, height 0s ease 0.3s;
+  }
+
+  .RA-setting-drawer-wrapper {
+    transform: translateX(100%);
+    position: absolute;
+    right: 0;
+    transition: transform 0.3s cubic-bezier(0.7, 0.3, 0.1, 1);
+
+    .RA-setting-drawer-body {
+      height: 100vh;
+      max-height: 100vh;
+      width: 300px;
+      background-color: var(--navigator-background);
+      padding: @spacing-large;
+      overflow-y: auto;
+    }
+
+    .RA-setting-drawer-closeIcon {
+      position: absolute;
+      top: @spacing-large;
+      right: @spacing-large;
+      cursor: pointer;
+      font-size: 16px;
+      color: var(--text-color-secondary);
+      transition: color 0.3s;
+      font-weight: bold;
+      z-index: 998;
+
+      &:hover {
+        color: var(--text-color);
+      }
+    }
+  }
+}
+
+@keyframes raDrawerFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.RA-setting-Row {
+  position: relative;
+  margin-bottom: @spacing-large;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .RA-setting-title {
+    margin-bottom: @spacing-middle;
+    font-size: 14px;
+    font-weight: bold;
+
+    .RA-setting-title-tip {
+      color: lighten(@black-color, 76.7%);
+      font-size: 12px;
+      margin-left: @spacing-small;
+    }
+  }
+
+  &.RA-setting-haveSelectedIcon {
+    img {
+      .Ra-setting-sampleImg;
+    }
+
+    .RA-setting-selectedIcon {
+      color: var(--primary);
+      font-size: 16px;
+      position: absolute;
+      pointer-events: none;
+      top: 58px;
+      left: 28px;
+
+      &.RA-setting-selectedIcon-rightPlace {
+        left: 88px;
+      }
+    }
+  }
+}
+
+.Ra-setting-sampleImg {
+  margin-right: @spacing-normal;
+  cursor: pointer;
+  width: 48px;
+  height: 42px;
+}

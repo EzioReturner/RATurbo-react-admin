@@ -1,7 +1,6 @@
 import React from 'react';
 import { siteName, menuLinkUrl, useSiteIcon } from '@config/setting';
 import classNames from 'classnames';
-import './siteDetail.less';
 
 const SiteDetail: React.FC<{
   inlineLayout: boolean;

@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './index.module.less';
 import classNames from 'classnames';
 import { Tooltip, Select, Switch } from 'antd';
 import LayoutStore from '@/store/layoutStore';
@@ -23,11 +22,11 @@ const ContentChange: React.FC = props => {
   } = props as { layoutStore: LayoutStore };
 
   const ContentBlock = (
-    <div className={classNames(styles.settingRow, styles.contentSetting)}>
-      <div className={styles.settingItem}>
-        <div className={styles.settingLabel}>内容区域宽度</div>
+    <div className={classNames('RA-setting-Row', 'RA-setting-contentControl')}>
+      <div className="RA-setting-settingItem">
+        <div className="RA-setting-settingItem-Label">内容区域宽度</div>
         <Select
-          className={styles.settingAction}
+          className="RA-setting-settingAction"
           value={contentAreaWidthMode}
           style={{ width: 120 }}
           size="small"
@@ -40,8 +39,8 @@ const ContentChange: React.FC = props => {
         </Select>
       </div>
       <Tooltip placement="left" title={isInlineLayout ? '仅在分裂布局下起效' : ''}>
-        <div className={styles.settingItem}>
-          <div className={styles.settingLabel}>固定 Header</div>
+        <div className="RA-setting-settingItem">
+          <div className="RA-setting-settingItem-Label">固定 Header</div>
           <Switch
             disabled={isInlineLayout}
             checked={lockHeaderScroll}
@@ -51,8 +50,8 @@ const ContentChange: React.FC = props => {
         </div>
       </Tooltip>
       <Tooltip placement="left" title={isHorizontalNavigator ? '仅在左侧导航模式下起效' : ''}>
-        <div className={styles.settingItem}>
-          <div className={styles.settingLabel}>固定侧边菜单</div>
+        <div className="RA-setting-settingItem">
+          <div className="RA-setting-settingItem-Label">固定侧边菜单</div>
           <Switch
             disabled={isHorizontalNavigator}
             checked={lockMenuScroll}
@@ -65,10 +64,13 @@ const ContentChange: React.FC = props => {
   );
 
   const DisplayBlock = (
-    <div className={classNames(styles.settingRow, styles.layoutControl)}>
-      <div className={styles.settingTitle}>内容控制</div>
-      <div className={styles.settingItem}>
-        <div className={styles.settingLabel}>显示 header</div>
+    <div
+      className={classNames('RA-setting-Row', 'RA-setting-layoutControl')}
+      style={{ marginBottom: 0 }}
+    >
+      <div className="RA-setting-title">内容控制</div>
+      <div className="RA-setting-settingItem">
+        <div className="RA-setting-settingItem-Label">显示 header</div>
         <Switch
           checked={showHeader}
           defaultChecked
@@ -76,8 +78,8 @@ const ContentChange: React.FC = props => {
         />
       </div>
       <Tooltip placement="left" title={isHorizontalNavigator ? '仅在左侧导航模式下起效' : ''}>
-        <div className={styles.settingItem}>
-          <div className={styles.settingLabel}>显示侧边菜单</div>
+        <div className="RA-setting-settingItem">
+          <div className="RA-setting-settingItem-Label">显示侧边菜单</div>
           <Switch
             disabled={isHorizontalNavigator}
             checked={showMenu}

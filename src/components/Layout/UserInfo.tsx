@@ -1,7 +1,6 @@
 import React from 'react';
 import { Menu, Dropdown, Modal } from 'antd';
 import { inject, observer } from 'mobx-react';
-import styles from './header.module.less';
 import UserStore from '@store/userStore';
 import { UserOutlined, SettingOutlined, LogoutOutlined } from '@ant-design/icons';
 const confirm = Modal.confirm;
@@ -43,26 +42,26 @@ const UserInfo: React.FC = props => {
     <Menu>
       <Menu.Item>
         <UserOutlined />
-        <span className={styles.menuItem}>user info</span>
+        <span className="RA-userInfo-menuItem">user info</span>
       </Menu.Item>
       <Menu.Item onClick={handleTriggerError}>
         <SettingOutlined />
-        <span className={styles.menuItem}>trigger error</span>
+        <span className="RA-userInfo-menuItem">trigger error</span>
       </Menu.Item>
       <Menu.Divider />
       <Menu.Item onClick={handleLogout}>
         <LogoutOutlined />
-        <span className={styles.menuItem}>logout</span>
+        <span className="RA-userInfo-menuItem">logout</span>
       </Menu.Item>
     </Menu>
   );
 
   return (
-    <div className={styles.userInfo}>
-      <Dropdown overlay={getMenu()} className={styles.userDropdown} placement="bottomRight">
-        <div className={styles.userDropdown}>
-          <UserOutlined className={styles.userIcon} />
-          <span className={styles.text}>{userInfo.name}</span>
+    <div className="RA-userInfo">
+      <Dropdown overlay={getMenu()} className="RA-userInfo" placement="bottomRight">
+        <div className="RA-userInfo-dropdown">
+          <UserOutlined className="RA-userInfo-icon" />
+          <span className="RA-userInfo-userName">{userInfo.name}</span>
         </div>
       </Dropdown>
     </div>

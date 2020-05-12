@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { SettingOutlined, CloseOutlined } from '@ant-design/icons';
-import styles from './index.module.less';
 import classNames from 'classnames';
 import ReactDOM from 'react-dom';
 import NavigateMode from './NavigateMode';
 import ContentChange from './ContentChange';
 import ThemeChange from './ThemeChange';
 import { Divider } from 'antd';
+import './styles/index.less';
 
 const LayoutSetting: React.FC = props => {
   let maskRef = useRef<HTMLElement>();
@@ -29,20 +29,20 @@ const LayoutSetting: React.FC = props => {
   return ReactDOM.createPortal(
     <>
       <div
-        className={classNames(styles.settingDrawer, openSetting && styles.opened)}
+        className={classNames('RA-setting-drawer', openSetting && 'RA-setting-drawe-opened')}
         id="raSettingMask"
       >
-        <div
-          className={classNames(styles.drawerMask, openSetting && styles.opened)}
-          onClick={() => handleCloseMask()}
-        ></div>
-        <div className={styles.drawerWrapper}>
+        <div className="RA-setting-drawer-mask" onClick={() => handleCloseMask()}></div>
+        <div className="RA-setting-drawer-wrapper">
           <SettingOutlined
-            className={styles.settingIcon}
+            className="RA-setting-icon"
             onClick={() => setOpenSetting(!openSetting)}
           />
-          <div className={styles.drawerBody}>
-            <CloseOutlined className={styles.closeIcon} onClick={() => setOpenSetting(false)} />
+          <div className="RA-setting-drawer-body">
+            <CloseOutlined
+              className="RA-setting-drawer-closeIcon"
+              onClick={() => setOpenSetting(false)}
+            />
             <ThemeChange />
             <Divider />
             <NavigateMode />
