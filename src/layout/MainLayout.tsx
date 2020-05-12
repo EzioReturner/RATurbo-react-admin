@@ -41,7 +41,8 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
       lockHeaderScroll,
       isContentFlowMode,
       isInlineLayout,
-      isHorizontalNavigator
+      isHorizontalNavigator,
+      isDarkTheme
     }
   } = injected();
   const routeAuthority: undefined | string | string[] = getRouteAuthority(
@@ -116,7 +117,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
           {ViewMain}
         </div>
       </div>
-      <div className={styles.inlineFooter}>
+      <div className={classNames(styles.inlineFooter, isDarkTheme && styles.darkTheme)}>
         {showMenu && (
           <div
             className={classNames(styles.footerCollapsedIcon, collapsed && styles.collapsed)}
