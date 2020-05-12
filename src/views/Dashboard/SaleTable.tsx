@@ -26,7 +26,7 @@ const SaleTable: React.FC = () => {
       name: 'Jim Green',
       amount: '$ 72.11',
       progress: 82,
-      tags: ['loser']
+      tags: ['loser', 'waiting']
     },
     {
       key: '3',
@@ -77,9 +77,12 @@ const SaleTable: React.FC = () => {
   const _renderTags = (tags: string[]) => (
     <span>
       {tags.map(tag => {
-        let color = tag.length > 5 ? 'geekblue' : 'green';
+        let color = tag.length > 5 ? 'processing' : 'success';
         if (tag === 'loser') {
-          color = 'volcano';
+          color = 'error';
+        }
+        if (tag === 'waiting') {
+          return <Tag color="default">{tag.toUpperCase()}</Tag>;
         }
         return (
           <Tag color={color} key={tag}>

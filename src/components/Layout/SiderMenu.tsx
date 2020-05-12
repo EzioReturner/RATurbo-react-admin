@@ -223,7 +223,11 @@ const SiderMenu: React.FC = props => {
       )}
     >
       {!isInlineLayout && (
-        <SiteDetail isInlineLayout={isInlineLayout} isHorizontalNavigator={false} />
+        <SiteDetail
+          isInlineLayout={isInlineLayout}
+          isHorizontalNavigator={false}
+          isDarkTheme={isDarkTheme}
+        />
       )}
       {RAMenu}
     </aside>

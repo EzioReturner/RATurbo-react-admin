@@ -6,13 +6,15 @@ import classNames from 'classnames';
 const SiteDetail: React.FC<{
   isInlineLayout: boolean;
   isHorizontalNavigator?: boolean;
+  isDarkTheme?: boolean;
 }> = props => {
   return (
     <a
       className={classNames(
         styles.siteDetail,
         props.isInlineLayout && styles.inlineLayout,
-        props.isHorizontalNavigator && styles.horizontal
+        props.isHorizontalNavigator && styles.horizontal,
+        props.isDarkTheme && styles.darkTheme
       )}
       href={menuLinkUrl}
       target="_blank"
