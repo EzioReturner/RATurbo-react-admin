@@ -169,6 +169,8 @@ class LayoutStore {
       this.layoutStatus.isMobile = true;
       this.layoutStatus.layoutMode = 'split';
       this.layoutStatus.navigateMode = 'vertical';
+      this.layoutStatus.fixHeader = true;
+      this.layoutStatus.fixSiderBar = true;
     }
   }
 
