@@ -20,3 +20,5 @@ yarn-error.log*
 
 build/dll
 build/dllManifest
+
+public/color.less
