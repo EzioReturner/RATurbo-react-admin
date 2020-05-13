@@ -55,6 +55,9 @@ const Header: React.FC = props => {
           isInlineLayout ? 'RA-header-inlineLayout' : 'RA-header-splitLayout',
           isDarkTheme && 'RA-header-darkTheme'
         )}
+        style={{
+          opacity: !fixHeader ? 1 : 0
+        }}
       >
         {!fixHeader && VerticalMenuHeaderBody}
       </header>
@@ -70,7 +73,7 @@ const Header: React.FC = props => {
           isDarkTheme && 'RA-header-darkTheme'
         )}
         style={{
-          zIndex: !fixHeader ? -1 : 12
+          zIndex: !fixHeader ? -1 : 4
         }}
       >
         {fixHeader && VerticalMenuHeaderBody}

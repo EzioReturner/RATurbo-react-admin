@@ -220,7 +220,7 @@ const SiderMenu: React.FC = props => {
         'RA-navigator',
         fixSiderBar && 'RA-navigator-fixSiderBar',
         collapsed && 'RA-navigator-collapsed',
-        isInlineLayout && 'RA-navigator-inlineLayout',
+        isInlineLayout ? 'RA-inlineLayout-navigator' : 'RA-splitLayout-navigator',
         isDarkTheme && 'RA-navigator-darkTheme'
       )}
     >

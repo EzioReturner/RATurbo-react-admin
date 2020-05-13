@@ -77,8 +77,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
         id="mainContainer"
         className={classNames(
           'RA-basicLayout-wrapper',
-          collapsed && 'RA-basicLayout-wrapper-collapsed',
-          isMobile && 'RA-basicLayout-wrapper-isMobile'
+          collapsed && 'RA-basicLayout-wrapper-collapsed'
         )}
       >
         {showHeader && <Header />}
@@ -103,20 +102,25 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
       <div
         id="mainContainer"
         className={classNames(
-          styles.layoutWrapper,
-          collapsed && styles.collapsed,
-          isMobile && styles.isMobile
+          'RA-basicLayout-wrapper',
+          collapsed && 'RA-basicLayout-wrapper-collapsed'
         )}
       >
-        <div className={classNames(styles.containerWrapper, fixSiderBar && styles.fixSiderBar)}>
-          {showMenu && RANavigator}
-          {ViewMain}
-        </div>
+        {showMenu && RANavigator}
+        {ViewMain}
       </div>
-      <div className={classNames(styles.inlineFooter, isDarkTheme && styles.darkTheme)}>
+      <div
+        className={classNames(
+          'RA-basicLayout-inlineMode-footer',
+          isDarkTheme && 'RA-basicLayout-inlineMode-footer-dark'
+        )}
+      >
         {showMenu && (
           <div
-            className={classNames(styles.footerCollapsedIcon, collapsed && styles.collapsed)}
+            className={classNames(
+              'RA-basicLayout-inlineMode-footer-icon',
+              collapsed && 'RA-basicLayout-inlineMode-footer-collapsed'
+            )}
             onClick={() => toggleCollapsed()}
           >
             {IconCollapsed}

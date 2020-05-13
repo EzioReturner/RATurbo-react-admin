@@ -7,9 +7,16 @@
   background-color: var(--body-background);
 
   &.RA-basicLayout-inlineMode {
+    flex-direction: column;
+
+    .RA-basicLayout-wrapper {
+      flex-direction: row;
+      padding-bottom: 28px;
+    }
   }
 
-  &.RA-basicLayout-splitMode {
+  &.RA-basicLayout-splitMode,
+  &.RA-basicLayout-inlineMode {
     &.RA-basicLayout-fixSiderBar {
       .RA-basicLayout-wrapper {
         padding-left: 255px;
@@ -19,6 +26,9 @@
         }
       }
     }
+  }
+
+  &.RA-basicLayout-splitMode {
   }
 
   .RA-basicLayout-wrapper {
@@ -40,5 +50,47 @@
     padding: @spacing-large;
     flex: auto;
     overflow-y: auto;
+  }
+
+  .RA-basicLayout-inlineMode-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--component-background);
+    height: 28px;
+    min-height: 28px;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 0.8;
+    padding-right: @spacing-large;
+
+    &.RA-basicLayout-inlineMode-footer-dark {
+      box-shadow: 0px -4px 40px 0 #000000 !important;
+    }
+
+    .RA-basicLayout-inlineMode-footer-icon {
+      position: absolute;
+      height: 28px;
+      width: 255px;
+      top: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: width 0.3s, color 0.3s;
+      cursor: pointer;
+
+      &:hover {
+        color: var(--primary);
+      }
+
+      &.RA-basicLayout-inlineMode-footer-collapsed {
+        width: 80px;
+      }
+    }
   }
 }
