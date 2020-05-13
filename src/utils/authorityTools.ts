@@ -5,7 +5,7 @@ import { RouteConfig } from '@models/layout';
  * @return {authority} {Array<string>} 权限结果
  */
 export function getAuthority(str?: string | string[]) {
-  const authorityString = typeof str === 'undefined' ? localStorage.getItem('ra-authority') : str;
+  const authorityString = typeof str === 'undefined' ? localStorage.getItem('RA-authority') : str;
   let authority;
   try {
     // @ts-ignore
@@ -25,12 +25,12 @@ export function getAuthority(str?: string | string[]) {
  */
 export function setAuthority(authority: string | string[]) {
   const proAuthority = typeof authority === 'string' ? [authority] : authority;
-  localStorage.setItem('ra-authority', JSON.stringify(proAuthority));
+  localStorage.setItem('RA-authority', JSON.stringify(proAuthority));
 }
 
 // 清除权限
 export function clearAuthority() {
-  localStorage.removeItem('ra-authority');
+  localStorage.removeItem('RA-authority');
 }
 
 /**

@@ -50,5 +50,39 @@ module.exports = {
     '@warning-color': '#ffaf00',
     '@error-color': '#e65251',
     '@processing-color': '#308ee0'
+  },
+  defaultDarkTheme: {
+    '@component-background': '#1d1d1d',
+    '@text-color': 'fade(@white, 65%)',
+    '@text-color-secondary': 'fade(@white, 45%)',
+    '@text-color-inverse': '@white',
+    '@icon-color-hover': 'fade(@white, 75%)',
+    '@heading-color': 'fade(@white, 85%)',
+    '@disabled-color': 'fade(@white, 30%)',
+    '@border-color-base': '#434343',
+    '@border-color-split': '#303030',
+    '@popover-background': '#1d1d1d',
+    '@popover-customize-border-color': '#3a3a3a',
+    '@select-selection-item-bg': 'hsv(0, 0, 96%)',
+    '@item-hover-bg': 'fade(@white, 8%)',
+    '@background-color-light': 'fade(@white, 4%)',
+    '@background-color-base': 'fade(@white, 8%)'
+  },
+  defaultLightTheme: {
+    '@component-background': '#ffffff',
+    '@text-color': 'fade(@black, 65%)',
+    '@text-color-secondary': 'fade(@black, 45%)',
+    '@text-color-inverse': '@black',
+    '@icon-color-hover': 'fade(@black, 75%)',
+    '@heading-color': 'fade(@black, 85%)',
+    '@disabled-color': 'fade(#000000, 30%)',
+    '@border-color-base': 'hsv(0, 0, 85%)',
+    '@border-color-split': 'hsv(0, 0, 94%)',
+    '@popover-background': '#ffffff',
+    '@popover-customize-border-color': 'hsv(0, 0, 94%)',
+    '@select-selection-item-bg': 'fade(@white, 8)',
+    '@item-hover-bg': '#f5f5f5',
+    '@background-color-light': 'hsv(0, 0, 98%)',
+    '@background-color-base': 'hsv(0, 0, 96%)'
   }
 };

@@ -2,7 +2,7 @@ import { observable, configure, action } from 'mobx';
 
 configure({ enforceActions: 'observed' });
 class LocaleStore {
-  @observable locale: string = localStorage.getItem('ra-locale') || 'zh';
+  @observable locale: string = localStorage.getItem('RA-locale') || 'zh';
   @observable localeObj: any = {};
   constructor() {
     this.initLocaleList();
@@ -15,7 +15,7 @@ class LocaleStore {
 
   @action setLocale(key: string): void {
     this.locale = key;
-    localStorage.setItem('ra-locale', key);
+    localStorage.setItem('RA-locale', key);
     window.location.reload();
   }
 

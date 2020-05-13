@@ -8,11 +8,15 @@ import {
   useHeader,
   layoutMode,
   navigateMode,
-  contentAreaWidthMode
+  contentAreaWidthMode,
+  defaultDarkTheme,
+  defaultLightTheme
 } from '@config/setting';
 import { constantRouteConfig, asyncRouteConfig } from '@config/router.config';
 import { userStore } from './userStore';
 import intersection from 'lodash/intersection';
+import cloneDeep from 'lodash/cloneDeep';
+import { message } from 'antd';
 
 interface LoadingOptions {
   fixed?: boolean; // 只覆盖路由可视区域
@@ -31,8 +35,8 @@ interface LayoutStatus extends StoreKeyValue {
   visionTheme: 'light' | 'dark';
   collapsed: boolean;
   isMobile: boolean;
+  currentColor: string;
 }
-
 configure({ enforceActions: 'observed' });
 class LayoutStore {
   // 存放已经初始化完毕的页面
@@ -60,11 +64,12 @@ class LayoutStore {
     fixHeader: true, // 固定顶部header
     visionTheme: 'light', // 视觉主题
     collapsed: false,
-    isMobile: false
+    isMobile: false,
+    currentColor: '#fb4491'
   };
 
   constructor() {
-    this.initLayoutMode();
+    this.initLayoutStatus();
     this.addWindowEvent();
     this.changeStatus();
     this.initMenu();
@@ -115,9 +120,23 @@ class LayoutStore {
     return this.layoutStatus.visionTheme === 'dark';
   }
 
-  initLayoutMode() {
+  @action initLayoutStatus() {
+    const status = localStorage.getItem('RA-layoutStatus');
+    if (status) {
+      const _status = JSON.parse(status);
+      if (
+        _status.visionTheme !== this.layoutStatus.visionTheme ||
+        _status.currentColor !== this.layoutStatus.currentColor
+      ) {
+        setTimeout(() => {
+          message.loading('正在应用视觉风格', 3);
+          this.changeLayoutVision();
+        }, 0);
+      }
+      this.layoutStatus = _status;
+    }
     if (this.isHorizontalNavigator) {
-      this.changeLayoutStatus('layoutMode', 'split');
+      this.layoutStatus.layoutMode = 'split';
     }
   }
 
@@ -218,12 +237,65 @@ class LayoutStore {
       : !this.layoutStatus.collapsed;
   };
 
+  // 调整status
   @action changeLayoutStatus = (key: keyof LayoutStatus, value: any) => {
     if (key === 'navigateMode') {
       this.layoutStatus.contentAreaWidthMode = value === 'vertical' ? 'flow' : 'max-width';
     }
     this.layoutStatus[key] = value;
-    console.log(this.layoutStatus);
+    if (key === 'currentColor' || key === 'visionTheme') {
+      setTimeout(() => {
+        this.changeLayoutVision();
+      }, 0);
+    }
+    localStorage.setItem('RA-layoutStatus', JSON.stringify(this.layoutStatus));
+  };
+
+  // 调整视觉风格
+  @action changeLayoutVision = () => {
+    const { visionTheme, currentColor } = this.layoutStatus;
+    document.body.style.setProperty(
+      '--body-background',
+      visionTheme === 'dark' ? '#0a0a0a' : '#f3f3f3'
+    );
+    document.body.style.setProperty(
+      '--navigator-background',
+      visionTheme === 'dark' ? '#222222' : '#ffffff'
+    );
+    document.body.style.setProperty(
+      '--popover-background',
+      visionTheme === 'dark' ? '#141414' : '#ffffff'
+    );
+    document.body.style.setProperty(
+      '--border-color',
+      visionTheme === 'dark' ? '#434343' : '#f2f2f2'
+    );
+    document.body.style.setProperty(
+      '--shadow-color',
+      visionTheme === 'dark' ? 'rgba(0, 0, 0, 0.45)' : 'rgba(189, 189, 189, 0.6)'
+    );
+    const _className = ['darkTheme', 'lightTheme'].reduce((total: string, _key: string) => {
+      if (total.indexOf(_key) >= 0) {
+        total = total.replace(_key, '');
+      }
+      return total;
+    }, cloneDeep(document.body.className));
+
+    document.body.className = (_className + ` ${visionTheme}Theme`).trim();
+
+    window.less
+      .modifyVars(
+        Object.assign(
+          {
+            '@primary-color': currentColor
+          },
+          visionTheme === 'dark' ? defaultDarkTheme : defaultLightTheme
+        )
+      )
+      .then(() => {
+        console.log('sussess');
+      });
+    // }
   };
 
   // 设置打开的菜单
