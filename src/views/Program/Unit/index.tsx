@@ -8,6 +8,10 @@ import SwitchUnit from './SwitchUnit';
 import SliderUnit from './SliderUnit';
 import InputUnit from './InputUnit';
 import SelectUnit from './SelectUnit';
+import DateUnit from './DateUnit';
+import AutoCompleteUnit from './AutoComplete';
+import CascaderUnit from './Cascader';
+import TreeSelectUnit from './TreeSelect';
 import { Pagination, Steps, Divider, Progress } from 'antd';
 
 const { Step } = Steps;
@@ -55,6 +59,22 @@ const Unit: React.FC = () => {
         <InputUnit />
       </div>
       <div>
+        <p className={Styles.title}>Date</p>
+        <DateUnit />
+      </div>
+      <div>
+        <p className={Styles.title}>AutoComplete</p>
+        <AutoCompleteUnit />
+      </div>
+      <div>
+        <p className={Styles.title}>Cascader</p>
+        <CascaderUnit />
+      </div>
+      <div>
+        <p className={Styles.title}>TreeSelect</p>
+        <TreeSelectUnit />
+      </div>
+      <div>
         <p className={Styles.title}>Step</p>
         <Steps current={1}>
           <Step title="Finished" description="This is a description." />
@@ -66,6 +86,7 @@ const Unit: React.FC = () => {
         <p className={Styles.title}>Pagination</p>
         <Pagination defaultCurrent={6} total={500} />
       </div>
+
       <Divider />
     </div>
   );

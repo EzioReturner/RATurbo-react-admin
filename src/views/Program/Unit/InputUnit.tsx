@@ -1,8 +1,8 @@
 import React from 'react';
-import { Input } from 'antd';
+import { Input, InputNumber } from 'antd';
 import { AudioOutlined } from '@ant-design/icons';
 
-const { Search } = Input;
+const { Search, TextArea } = Input;
 
 const suffix = (
   <AudioOutlined
@@ -15,23 +15,13 @@ const suffix = (
 
 const InputUnit = () => (
   <>
+    <Input placeholder="Basic usage" />
+    <br />
     <Search
       placeholder="input search text"
       onSearch={value => console.log(value)}
       style={{ width: 200 }}
     />
-    <br />
-    <br />
-    <Search placeholder="input search text" onSearch={value => console.log(value)} enterButton />
-    <br />
-    <br />
-    <Search
-      placeholder="input search text"
-      enterButton="Search"
-      size="large"
-      onSearch={value => console.log(value)}
-    />
-    <br />
     <br />
     <Search
       placeholder="input search text"
@@ -40,6 +30,10 @@ const InputUnit = () => (
       suffix={suffix}
       onSearch={value => console.log(value)}
     />
+    <br />
+    <InputNumber min={1} max={10} defaultValue={3} />
+    <br />
+    <TextArea rows={4} />
   </>
 );
 

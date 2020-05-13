@@ -8,7 +8,11 @@
       0 5px 12px 4px rgba(0, 0, 0, 1) !important;
   }
 
-  .ant-table-tbody > tr.ant-table-row:hover > td {
+  .ant-table-tbody > tr.ant-table-row:hover > td,
+  .ant-table-thead th.ant-table-column-has-sorters:hover,
+  .ant-table-filter-trigger-container-open,
+  .ant-table-filter-trigger-container:hover,
+  .ant-table-thead th.ant-table-column-has-sorters:hover .ant-table-filter-trigger-container:hover {
     background: #262626;
   }
 
@@ -18,6 +22,15 @@
     & > a {
       color: #ffffff !important;
     }
+  }
+
+  // darktheme popver-background
+  .ant-table-filter-dropdown,
+  .ant-dropdown-menu,
+  .ant-picker-panel-container,
+  .ant-cascader-menus,
+  .ant-select-dropdown {
+    background: #141414;
   }
 
   .weather-body {
