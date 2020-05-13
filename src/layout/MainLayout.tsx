@@ -150,7 +150,8 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
         !showMenu && 'RA-basicLayout-hideMenu',
         !showHeader && 'RA-basicLayout-hideHeader',
         fixHeader && 'RA-basicLayout-fixHeader',
-        fixSiderBar && 'RA-basicLayout-fixSiderBar'
+        fixSiderBar && 'RA-basicLayout-fixSiderBar',
+        isMobile && 'RA-basicLayout-mobile'
       )}
     >
       <Loading {...loadingOptions} collapsed={collapsed} />

@@ -12,11 +12,11 @@
 
 ## 在线预览
 
-- [ra-turbo](http://ra-turbo.leanapp.cn)
+- [ra-turbo](https://ezioreturner.github.io/RATurbo-dist/dist/index.html)
 
 ## 使用文档
 
-- [wiki](https://ezioreturner.github.io/RATurbo-react-admin/#/)
+- [wiki](https://ezioreturner.github.io/RATurbo-docs/#/)
 
 ## 依赖模块
 
