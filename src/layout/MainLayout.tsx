@@ -38,8 +38,8 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
       loadingOptions,
       showMenu,
       showHeader,
-      lockMenuScroll,
-      lockHeaderScroll,
+      fixSiderBar,
+      fixHeader,
       isContentFlowMode,
       isInlineLayout,
       isHorizontalNavigator,
@@ -65,27 +65,24 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
         </Suspense>
       }
     >
-      <main className={styles.viewBody}>{children}</main>
+      <main className="RA-basicLayout-wrapper-viewMain">{children}</main>
     </Authorized>
   );
 
   // 分割模式，菜单切割header
-  const splitLayout = (
+  const splitModeLayout = (
     <>
       {showMenu && RANavigator}
       <div
         id="mainContainer"
         className={classNames(
-          styles.layoutWrapper,
-          collapsed && styles.collapsed,
-          isMobile && styles.isMobile,
-          lockHeaderScroll && styles.lockHeaderScroll
+          'RA-basicLayout-wrapper',
+          collapsed && 'RA-basicLayout-wrapper-collapsed',
+          isMobile && 'RA-basicLayout-wrapper-isMobile'
         )}
       >
         {showHeader && <Header />}
-        <div
-          className={classNames(styles.containerWrapper, lockMenuScroll && styles.lockMenuScroll)}
-        >
+        <div className="RA-basicLayout-wrapper-content">
           {ViewMain}
           <Footer propStyle={{ marginBottom: '16px' }} />
         </div>
@@ -100,7 +97,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
   );
 
   // 一体布局模式，菜单不分割header
-  const inlineLayout = (
+  const inlineModeLayout = (
     <>
       {showHeader && <Header />}
       <div
@@ -111,9 +108,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
           isMobile && styles.isMobile
         )}
       >
-        <div
-          className={classNames(styles.containerWrapper, lockMenuScroll && styles.lockMenuScroll)}
-        >
+        <div className={classNames(styles.containerWrapper, fixSiderBar && styles.fixSiderBar)}>
           {showMenu && RANavigator}
           {ViewMain}
         </div>
@@ -143,7 +138,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
         className={classNames(
           styles.routeContent,
           isContentFlowMode && styles.flowMode,
-          lockHeaderScroll && styles.lockHeaderScroll
+          fixHeader && styles.fixHeader
         )}
       >
         {ViewMain}
@@ -157,16 +152,16 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
   const VerticalMenuLayout = (
     <div
       className={classNames(
-        styles.raBasicLayout,
-        isInlineLayout ? styles.inlineLayout : styles.splitLayout,
-        !showMenu && styles.hideMenu,
-        !showHeader && styles.hideHeader,
-        lockMenuScroll && styles.lockMenuScroll,
-        lockHeaderScroll && styles.lockHeaderScroll
+        'RA-basicLayout',
+        isInlineLayout ? 'RA-basicLayout-inlineMode' : 'RA-basicLayout-splitMode',
+        !showMenu && 'RA-basicLayout-hideMenu',
+        !showHeader && 'RA-basicLayout-hideHeader',
+        fixHeader && 'RA-basicLayout-fixHeader',
+        fixSiderBar && 'RA-basicLayout-fixSiderBar'
       )}
     >
       <Loading {...loadingOptions} collapsed={collapsed} />
-      {isInlineLayout ? inlineLayout : splitLayout}
+      {isInlineLayout ? inlineModeLayout : splitModeLayout}
     </div>
   );
 

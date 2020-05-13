@@ -5,12 +5,13 @@
   height: auto;
   position: relative;
   background-color: var(--body-background);
+  min-height: 100%;
 
   &.splitLayout {
     flex-direction: row;
 
-    &.lockMenuScroll {
-      height: 100vh;
+    &.fixSiderBar {
+      // height: 100vh;
     }
 
     .containerWrapper {
@@ -21,7 +22,7 @@
       height: 60px;
     }
 
-    .layoutWrapper.lockHeaderScroll {
+    .layoutWrapper.fixHeader {
       margin-top: 60px;
     }
 
@@ -31,19 +32,19 @@
   }
 
   &.inlineLayout {
-    &.lockHeaderScroll {
-      height: 100vh;
+    &.fixHeader {
+      // height: 100vh;
     }
 
     // 固定菜单不跟随滚动
-    .containerWrapper.lockMenuScroll {
+    .containerWrapper.fixSiderBar {
       height: 100%;
     }
   }
 
   .layoutWrapper {
     flex: auto;
-    overflow: auto;
+    // overflow: auto;
     width: 100%;
 
     .containerWrapper {
@@ -116,7 +117,7 @@
   .routeContent {
     padding: @spacing-large;
 
-    &.lockHeaderScroll {
+    &.fixHeader {
       overflow: auto;
       height: calc(100vh - 60px);
     }

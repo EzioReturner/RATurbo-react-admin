@@ -16,7 +16,7 @@ const Footer: React.FC<{
     className={classNames('RA-footer', props.isHorizontalNavigator && 'RA-footer-horizontal')}
     style={props.propStyle}
   >
-    {left} <CopyrightOutlined /> 2019 Created by{' '}
+    {left} <CopyrightOutlined /> 2020 Created by{' '}
     <a href={href} target="_blank" rel="noopener noreferrer" className="RA-footer-link">
       {right}
     </a>

@@ -1,0 +1,44 @@
+.RA-basicLayout {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  min-height: 100%;
+  position: relative;
+  background-color: var(--body-background);
+
+  &.RA-basicLayout-inlineMode {
+  }
+
+  &.RA-basicLayout-splitMode {
+    &.RA-basicLayout-fixSiderBar {
+      .RA-basicLayout-wrapper {
+        padding-left: 255px;
+
+        &.RA-basicLayout-wrapper-collapsed {
+          padding-left: 80px;
+        }
+      }
+    }
+  }
+
+  .RA-basicLayout-wrapper {
+    flex: auto;
+    width: 100%;
+    transition: padding 0.3s;
+    display: flex;
+    flex-direction: column;
+    // 此处一定要固定X轴禁止滚动，以防菜单缩放时 内容区域扩大无法收回。释放Y轴滚动，以便在固定父级高度时能够开启内容区域滚动
+    overflow-x: hidden;
+
+    .RA-basicLayout-wrapper-content {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .RA-basicLayout-wrapper-viewMain {
+    padding: @spacing-large;
+    flex: auto;
+    overflow-y: auto;
+  }
+}

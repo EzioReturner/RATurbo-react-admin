@@ -35,7 +35,8 @@ const SiderMenu: React.FC = props => {
       collapsed,
       isInlineLayout,
       isHorizontalNavigator,
-      isDarkTheme
+      isDarkTheme,
+      fixSiderBar
     },
     userStore: { authority: currentAuthority },
     localeStore: { localeObj }
@@ -217,6 +218,7 @@ const SiderMenu: React.FC = props => {
     <aside
       className={classNames(
         'RA-navigator',
+        fixSiderBar && 'RA-navigator-fixSiderBar',
         collapsed && 'RA-navigator-collapsed',
         isInlineLayout && 'RA-navigator-inlineLayout',
         isDarkTheme && 'RA-navigator-darkTheme'

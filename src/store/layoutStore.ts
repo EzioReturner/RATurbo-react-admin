@@ -26,8 +26,8 @@ type statusKey =
   | 'layoutMode'
   | 'navigateMode'
   | 'contentAreaWidthMode'
-  | 'lockMenuScroll'
-  | 'lockHeaderScroll'
+  | 'fixSiderBar'
+  | 'fixHeader'
   | 'visionTheme';
 
 configure({ enforceActions: 'observed' });
@@ -69,10 +69,10 @@ class LayoutStore {
   @observable contentAreaWidthMode: string = contentAreaWidthMode || 'max-width';
 
   // 固定左侧导航
-  @observable lockMenuScroll: boolean = true;
+  @observable fixSiderBar: boolean = true;
 
   // 固定顶部header
-  @observable lockHeaderScroll: boolean = true;
+  @observable fixHeader: boolean = true;
 
   @observable visionTheme: string = 'light';
 
@@ -247,11 +247,11 @@ class LayoutStore {
   };
 
   @action setLockMenuScroll = (status: boolean) => {
-    this.lockMenuScroll = status;
+    this.fixSiderBar = status;
   };
 
   @action setLockHeaderScroll = (status: boolean) => {
-    this.lockHeaderScroll = status;
+    this.fixHeader = status;
   };
 
   @action setVisionTheme = (theme: 'light' | 'dark') => {

@@ -21,7 +21,7 @@ const Header: React.FC = props => {
       isInlineLayout,
       isHorizontalNavigator,
       isContentFlowMode,
-      lockHeaderScroll,
+      fixHeader,
       isDarkTheme
     }
   } = props as InjectedProps;
@@ -32,26 +32,50 @@ const Header: React.FC = props => {
     <MenuFoldOutlined className="RA-header-foldIcon" onClick={() => toggleCollapsed()} />
   );
 
-  const VerticalMenuHeader = (
-    <header
-      className={classNames(
-        'RA-header',
-        'RA-header-vertical',
-        collapsed && 'RA-header-collapsed',
-        isMobile && 'RA-header-isMobile',
-        !showMenu && 'RA-header-withoutMenu',
-        isInlineLayout ? 'RA-header-inlineLayout' : 'RA-header-splitLayout',
-        lockHeaderScroll && 'RA-header-lockHeaderScroll',
-        isDarkTheme && 'RA-header-darkTheme'
-      )}
-    >
+  const VerticalMenuHeaderBody = (
+    <>
       {isInlineLayout && <SiteDetail inlineLayout={isInlineLayout} />}
       {showMenu && !isInlineLayout && IconCollapsed}
       <div className="RA-header-rightPlace">
         <UserInfo />
         <SelectLang />
       </div>
-    </header>
+    </>
+  );
+
+  const VerticalMenuHeader = (
+    <>
+      <header
+        className={classNames(
+          'RA-header',
+          'RA-header-vertical',
+          collapsed && 'RA-header-collapsed',
+          isMobile && 'RA-header-isMobile',
+          !showMenu && 'RA-header-withoutMenu',
+          isInlineLayout ? 'RA-header-inlineLayout' : 'RA-header-splitLayout',
+          isDarkTheme && 'RA-header-darkTheme'
+        )}
+      >
+        {!fixHeader && VerticalMenuHeaderBody}
+      </header>
+      <header
+        className={classNames(
+          'RA-header',
+          'RA-header-fixHeader',
+          'RA-header-vertical',
+          collapsed && 'RA-header-collapsed',
+          isMobile && 'RA-header-isMobile',
+          !showMenu && 'RA-header-withoutMenu',
+          isInlineLayout ? 'RA-header-inlineLayout' : 'RA-header-splitLayout',
+          isDarkTheme && 'RA-header-darkTheme'
+        )}
+        style={{
+          zIndex: !fixHeader ? -1 : 12
+        }}
+      >
+        {fixHeader && VerticalMenuHeaderBody}
+      </header>
+    </>
   );
 
   const HorizontalMenuHeader = (

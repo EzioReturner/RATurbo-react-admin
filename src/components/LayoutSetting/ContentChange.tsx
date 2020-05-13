@@ -11,9 +11,9 @@ const ContentChange: React.FC = props => {
       isHorizontalNavigator,
       setContentFlowMode,
       isInlineLayout,
-      lockHeaderScroll,
+      fixHeader,
       setLockHeaderScroll,
-      lockMenuScroll,
+      fixSiderBar,
       setLockMenuScroll,
       showHeader,
       changeLayoutStatus,
@@ -43,7 +43,7 @@ const ContentChange: React.FC = props => {
           <div className="RA-setting-settingItem-Label">固定 Header</div>
           <Switch
             disabled={isInlineLayout}
-            checked={lockHeaderScroll}
+            checked={fixHeader}
             defaultChecked
             onChange={setLockHeaderScroll}
           />
@@ -54,7 +54,7 @@ const ContentChange: React.FC = props => {
           <div className="RA-setting-settingItem-Label">固定侧边菜单</div>
           <Switch
             disabled={isHorizontalNavigator}
-            checked={lockMenuScroll}
+            checked={fixSiderBar}
             defaultChecked
             onChange={setLockMenuScroll}
           />
