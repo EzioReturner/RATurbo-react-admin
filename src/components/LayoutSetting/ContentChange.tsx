@@ -7,17 +7,10 @@ import { observer, inject } from 'mobx-react';
 const ContentChange: React.FC = props => {
   const {
     layoutStore: {
-      contentAreaWidthMode,
       isHorizontalNavigator,
-      setContentFlowMode,
       isInlineLayout,
-      fixHeader,
-      setLockHeaderScroll,
-      fixSiderBar,
-      setLockMenuScroll,
-      showHeader,
       changeLayoutStatus,
-      showMenu
+      layoutStatus: { showMenu, showHeader, fixSiderBar, fixHeader, contentAreaWidthMode }
     }
   } = props as { layoutStore: LayoutStore };
 
@@ -30,7 +23,7 @@ const ContentChange: React.FC = props => {
           value={contentAreaWidthMode}
           style={{ width: 120 }}
           size="small"
-          onChange={val => setContentFlowMode(val as 'flow' | 'max-width')}
+          onChange={val => changeLayoutStatus('contentAreaWidthMode', val as 'flow' | 'max-width')}
         >
           <Select.Option value="flow">流式</Select.Option>
           <Select.Option value="max-width" disabled={!isHorizontalNavigator}>
@@ -45,7 +38,7 @@ const ContentChange: React.FC = props => {
             disabled={isInlineLayout}
             checked={fixHeader}
             defaultChecked
-            onChange={setLockHeaderScroll}
+            onChange={val => changeLayoutStatus('fixHeader', val)}
           />
         </div>
       </Tooltip>
@@ -56,7 +49,7 @@ const ContentChange: React.FC = props => {
             disabled={isHorizontalNavigator}
             checked={fixSiderBar}
             defaultChecked
-            onChange={setLockMenuScroll}
+            onChange={val => changeLayoutStatus('fixSiderBar', val)}
           />
         </div>
       </Tooltip>

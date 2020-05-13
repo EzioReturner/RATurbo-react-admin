@@ -15,13 +15,10 @@ const Header: React.FC = props => {
   const {
     layoutStore: {
       toggleCollapsed,
-      collapsed,
-      isMobile,
-      showMenu,
       isInlineLayout,
       isHorizontalNavigator,
       isContentFlowMode,
-      fixHeader,
+      layoutStatus: { showMenu, fixHeader, collapsed, isMobile },
       isDarkTheme
     }
   } = props as InjectedProps;

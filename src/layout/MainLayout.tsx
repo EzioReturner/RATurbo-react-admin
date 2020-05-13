@@ -31,14 +31,9 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
   const { children, route } = props;
   const {
     layoutStore: {
-      collapsed,
-      isMobile,
+      layoutStatus: { collapsed, isMobile, showMenu, showHeader, fixSiderBar, fixHeader },
       toggleCollapsed,
       loadingOptions,
-      showMenu,
-      showHeader,
-      fixSiderBar,
-      fixHeader,
       isContentFlowMode,
       isInlineLayout,
       isHorizontalNavigator,

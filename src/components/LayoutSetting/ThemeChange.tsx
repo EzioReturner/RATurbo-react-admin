@@ -11,7 +11,7 @@ const ThemeChange: React.FC = props => {
   const [currentColor, setColor] = useState('#fb4491');
   const [currentTheme, setTheme] = useState<any>({});
   const {
-    layoutStore: { isDarkTheme, setVisionTheme }
+    layoutStore: { isDarkTheme, changeLayoutStatus }
   } = props as { layoutStore: LayoutStore };
 
   const handleChangeTheme = (color: string) => {
@@ -28,7 +28,7 @@ const ThemeChange: React.FC = props => {
   };
 
   const handleChangeVision = (theme: 'light' | 'dark') => {
-    setVisionTheme(theme);
+    changeLayoutStatus('visionTheme', theme);
     message.loading('正在应用视觉风格', 0.8);
     document.body.style.setProperty('--body-background', theme === 'dark' ? '#0a0a0a' : '#f3f3f3');
     document.body.style.setProperty(

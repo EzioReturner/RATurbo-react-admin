@@ -20,29 +20,26 @@ interface LoadingOptions {
   text?: string | number | React.ReactNode; // 文案
 }
 
-type statusKey =
-  | 'showMenu'
-  | 'showHeader'
-  | 'layoutMode'
-  | 'navigateMode'
-  | 'contentAreaWidthMode'
-  | 'fixSiderBar'
-  | 'fixHeader'
-  | 'visionTheme';
+interface LayoutStatus extends StoreKeyValue {
+  showMenu: boolean;
+  showHeader: boolean;
+  layoutMode: 'split' | 'inline';
+  navigateMode: 'vertical' | 'horizontal';
+  contentAreaWidthMode: 'max-width' | 'flow';
+  fixSiderBar: boolean;
+  fixHeader: boolean;
+  visionTheme: 'light' | 'dark';
+  collapsed: boolean;
+  isMobile: boolean;
+}
 
 configure({ enforceActions: 'observed' });
 class LayoutStore {
   // 存放已经初始化完毕的页面
   @observable readyInitializers: Array<string> = [];
 
-  // 菜单栏是否展开
-  @observable collapsed: boolean = false;
-
   // 开启的菜单
   @observable openMenus: Array<string> = [];
-
-  // 是否是手机浏览器
-  @observable isMobile: boolean = false;
 
   // 面包屑列表
   @observable breadcrumbList: Array<Breadcrumb> = [];
@@ -50,31 +47,21 @@ class LayoutStore {
   // 路由数据
   @observable routeConfig: Array<RouteConfig> = [];
 
-  // 显示头部
-  @observable showMenu: boolean = useMenu;
-
-  // 显示菜单
-  @observable showHeader: boolean = useHeader;
-
-  // 布局模式
-  @observable layoutMode: string = layoutMode || 'split';
-
   // 全局spinning配置信息
   @observable loadingOptions: LoadingOptions = { spinning: false };
 
-  // 导航风格
-  @observable navigateMode: string = navigateMode || 'vertical';
-
-  // 内容区域宽度
-  @observable contentAreaWidthMode: string = contentAreaWidthMode || 'max-width';
-
-  // 固定左侧导航
-  @observable fixSiderBar: boolean = true;
-
-  // 固定顶部header
-  @observable fixHeader: boolean = true;
-
-  @observable visionTheme: string = 'light';
+  @observable layoutStatus: LayoutStatus = {
+    showMenu: useMenu, // 显示头部
+    showHeader: useHeader, // 显示菜单
+    layoutMode: (layoutMode as 'split' | 'inline') || 'split', // 布局模式
+    navigateMode: (navigateMode as 'vertical' | 'horizontal') || 'vertical', // 导航风格
+    contentAreaWidthMode: (contentAreaWidthMode as 'max-width' | 'flow') || 'max-width', // 内容区域宽度
+    fixSiderBar: true, // 固定左侧导航
+    fixHeader: true, // 固定顶部header
+    visionTheme: 'light', // 视觉主题
+    collapsed: false,
+    isMobile: false
+  };
 
   constructor() {
     this.initLayoutMode();
@@ -113,19 +100,19 @@ class LayoutStore {
   }
 
   get isInlineLayout() {
-    return this.layoutMode === 'inline';
+    return this.layoutStatus.layoutMode === 'inline';
   }
 
   get isContentFlowMode() {
-    return this.contentAreaWidthMode === 'flow';
+    return this.layoutStatus.contentAreaWidthMode === 'flow';
   }
 
   get isHorizontalNavigator() {
-    return this.navigateMode === 'horizontal';
+    return this.layoutStatus.navigateMode === 'horizontal';
   }
 
   get isDarkTheme() {
-    return this.visionTheme === 'dark';
+    return this.layoutStatus.visionTheme === 'dark';
   }
 
   initLayoutMode() {
@@ -150,8 +137,8 @@ class LayoutStore {
   // 响应分辨率
   @action changeStatus(): void {
     const info: any = isMobile(navigator.userAgent);
-    this.isMobile = info.any;
-    this.isMobile && this.toggleCollapsed(true);
+    this.layoutStatus.isMobile = info.any;
+    this.layoutStatus.isMobile && this.toggleCollapsed(true);
     const clientWidth = document.body.clientWidth;
     if (clientWidth < 1000) {
       this.toggleCollapsed(true);
@@ -160,9 +147,9 @@ class LayoutStore {
     }
     // 移动端模式
     if (clientWidth < 600) {
-      this.isMobile = true;
-      this.layoutMode = 'splitMode';
-      this.navigateMode = 'left';
+      this.layoutStatus.isMobile = true;
+      this.layoutStatus.layoutMode = 'split';
+      this.layoutStatus.navigateMode = 'vertical';
     }
   }
 
@@ -226,37 +213,23 @@ class LayoutStore {
 
   // 切换collapsed
   @action toggleCollapsed = (collapsed?: any): void => {
-    this.collapsed = [true, false].includes(collapsed) ? collapsed : !this.collapsed;
+    this.layoutStatus.collapsed = [true, false].includes(collapsed)
+      ? collapsed
+      : !this.layoutStatus.collapsed;
   };
 
-  @action changeLayoutStatus = (key: statusKey, value: any) => {
+  @action changeLayoutStatus = (key: keyof LayoutStatus, value: any) => {
     if (key === 'navigateMode') {
-      this.contentAreaWidthMode = value === 'vertical' ? 'flow' : 'max-width';
+      this.layoutStatus.contentAreaWidthMode = value === 'vertical' ? 'flow' : 'max-width';
     }
-    // @ts-ignore
-    this[key] = value;
+    this.layoutStatus[key] = value;
+    console.log(this.layoutStatus);
   };
 
   // 设置打开的菜单
   @action setOpenMenus(menus: Array<string>): void {
     this.openMenus = menus;
   }
-
-  @action setContentFlowMode = (mode: 'flow' | 'max-width') => {
-    this.contentAreaWidthMode = mode;
-  };
-
-  @action setLockMenuScroll = (status: boolean) => {
-    this.fixSiderBar = status;
-  };
-
-  @action setLockHeaderScroll = (status: boolean) => {
-    this.fixHeader = status;
-  };
-
-  @action setVisionTheme = (theme: 'light' | 'dark') => {
-    this.visionTheme = theme;
-  };
 }
 export const layoutStore = new LayoutStore();
 export default LayoutStore;

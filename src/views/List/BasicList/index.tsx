@@ -47,7 +47,9 @@ const BasicList: React.FC<BasicInjected> = props => {
     </Card>
   );
 
-  const { isMobile } = props.layoutStore;
+  const {
+    layoutStatus: { isMobile }
+  } = props.layoutStore;
   return (
     <PageWrapper title={<FormatterLocale id="basicList.title" />}>
       <RowInfo />

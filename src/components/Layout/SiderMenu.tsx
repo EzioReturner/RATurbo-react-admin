@@ -30,13 +30,11 @@ const SiderMenu: React.FC = props => {
   const {
     layoutStore: {
       routeConfig,
-      isMobile,
       toggleCollapsed,
-      collapsed,
       isInlineLayout,
       isHorizontalNavigator,
       isDarkTheme,
-      fixSiderBar
+      layoutStatus: { fixSiderBar, collapsed, isMobile }
     },
     userStore: { authority: currentAuthority },
     localeStore: { localeObj }
