@@ -7,7 +7,6 @@ import { getRouteAuthority } from '@utils/authorityTools';
 import classNames from 'classnames';
 import Footer from '@components/Footer';
 import { observer, inject } from 'mobx-react';
-import styles from './mainLayout.module.less';
 import LayoutStore from '@store/layoutStore';
 import { RouteConfig } from '@/models/layout';
 import LayoutSetting from '@components/LayoutSetting';
@@ -89,11 +88,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
     </>
   );
 
-  const IconCollapsed = collapsed ? (
-    <MenuUnfoldOutlined className={styles.foldIcon} />
-  ) : (
-    <MenuFoldOutlined className={styles.foldIcon} />
-  );
+  const IconCollapsed = collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />;
 
   // 一体布局模式，菜单不分割header
   const inlineModeLayout = (
@@ -135,16 +130,15 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
   const HorizontalMenuLayout = (
     <div
       id="mainContainer"
-      className={classNames(styles.horizontalContainer, !showHeader && styles.hideHeader)}
+      className={classNames(
+        'RA-basicLayout-horizontal',
+        !showHeader && 'RA-basicLayout-horizontal-hideHeader',
+        isContentFlowMode && 'RA-basicLayout-horizontal-contentFlow',
+        fixHeader && 'RA-basicLayout-horizontal-fixHeader'
+      )}
     >
       {showHeader && <Header />}
-      <div
-        className={classNames(
-          styles.routeContent,
-          isContentFlowMode && styles.flowMode,
-          fixHeader && styles.fixHeader
-        )}
-      >
+      <div className="RA-basicLayout-horizontal-wrapper">
         {ViewMain}
         <Footer propStyle={{ marginTop: '16px' }} />
       </div>

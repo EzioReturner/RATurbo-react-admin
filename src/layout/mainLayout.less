@@ -6,6 +6,12 @@
   position: relative;
   background-color: var(--body-background);
 
+  &.RA-basicLayout-hideMenu {
+    .RA-basicLayout-wrapper {
+      padding-left: 0 !important;
+    }
+  }
+
   &.RA-basicLayout-inlineMode {
     flex-direction: column;
 
@@ -26,9 +32,6 @@
         }
       }
     }
-  }
-
-  &.RA-basicLayout-splitMode {
   }
 
   .RA-basicLayout-wrapper {
@@ -91,6 +94,46 @@
       &.RA-basicLayout-inlineMode-footer-collapsed {
         width: 80px;
       }
+    }
+  }
+}
+
+.RA-basicLayout-horizontal {
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: var(--body-background);
+  min-height: 100%;
+
+  &.RA-basicLayout-horizontal-hideHeader {
+    .RA-basicLayout-horizontal-wrapper {
+      padding-top: @spacing-large !important;
+    }
+  }
+
+  &.RA-basicLayout-horizontal-fixHeader {
+    .RA-header.RA-header-horizontal {
+      position: fixed;
+    }
+    .RA-basicLayout-horizontal-wrapper {
+      padding-top: 60px + @spacing-large;
+    }
+  }
+
+  &.RA-basicLayout-horizontal-contentFlow {
+    .RA-header.RA-header-horizontal {
+      padding-left: @spacing-large;
+    }
+    .RA-basicLayout-wrapper-viewMain {
+      max-width: unset !important;
+    }
+  }
+
+  .RA-basicLayout-horizontal-wrapper {
+    padding: @spacing-large;
+
+    .RA-basicLayout-wrapper-viewMain {
+      margin: 0 auto;
+      max-width: 1250px;
     }
   }
 }
