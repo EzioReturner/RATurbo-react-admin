@@ -16,9 +16,20 @@ const LayoutSetting: React.FC = props => {
 
   const [openSetting, setOpenSetting] = useState(false);
 
-  const handleCloseMask = () => {
+  const handleCloseSetting = () => {
     setOpenSetting(false);
     if (maskRef.current) {
+      maskRef.current.style.width = '100vw';
+      setTimeout(() => {
+        maskRef.current && (maskRef.current.style.width = '0');
+      }, 400);
+    }
+  };
+
+  const handleOpenSetting = (status: boolean) => {
+    document.body.style.setProperty('overflow', status ? 'hidden' : 'unset');
+    setOpenSetting(status);
+    if (maskRef.current && !status) {
       maskRef.current.style.width = '100vw';
       setTimeout(() => {
         maskRef.current && (maskRef.current.style.width = '0');
@@ -32,16 +43,16 @@ const LayoutSetting: React.FC = props => {
         className={classNames('RA-setting-drawer', openSetting && 'RA-setting-drawe-opened')}
         id="raSettingMask"
       >
-        <div className="RA-setting-drawer-mask" onClick={() => handleCloseMask()}></div>
+        <div className="RA-setting-drawer-mask" onClick={() => handleOpenSetting(false)}></div>
         <div className="RA-setting-drawer-wrapper">
           <SettingOutlined
             className="RA-setting-icon"
-            onClick={() => setOpenSetting(!openSetting)}
+            onClick={() => handleOpenSetting(!openSetting)}
           />
           <div className="RA-setting-drawer-body">
             <CloseOutlined
               className="RA-setting-drawer-closeIcon"
-              onClick={() => setOpenSetting(false)}
+              onClick={() => handleOpenSetting(false)}
             />
             <ThemeChange />
             <Divider />

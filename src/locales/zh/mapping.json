@@ -114,5 +114,24 @@
   "button.nextStep": "下一步",
   "button.submit": "提交",
   "button.prevStep": "上一步",
-  "button.backHome": "返回首页"
+  "button.backHome": "返回首页",
+
+  "layoutSetting.navMode": "导航模式",
+  "layoutSetting.verticalNav": "左侧导航模式",
+  "layoutSetting.horizontalNav": "顶部导航模式",
+  "layoutSetting.layoutMode": "布局模式",
+  "layoutSetting.verticalNavOnly": "仅在左侧导航模式下起效",
+  "layoutSetting.splitMode": "分列式布局",
+  "layoutSetting.inlineMode": "一体式布局",
+  "layoutSetting.visionTheme": "整体色彩模式",
+  "layoutSetting.lightTheme": "亮色模式",
+  "layoutSetting.darkTheme": "暗黑模式",
+  "layoutSetting.colorStyle": "色彩风格",
+  "layoutSetting.contentWidth": "内容区域宽度",
+  "layoutSetting.flowContent": "流式",
+  "layoutSetting.maxWidth": "定宽",
+  "layoutSetting.splitModeOnly": "仅在分列布局下起效",
+  "layoutSetting.fixHeader": "固定 Header",
+  "layoutSetting.fixSiderBar": "固定侧边菜单",
+  "layoutSetting.showMenu": "显示侧边菜单"
 }

@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { Tooltip, Select, Switch } from 'antd';
 import LayoutStore from '@/store/layoutStore';
 import { observer, inject } from 'mobx-react';
+import LocaleStore from '@store/localeStore';
 
 const ContentChange: React.FC = props => {
   const {
@@ -11,13 +12,16 @@ const ContentChange: React.FC = props => {
       isInlineLayout,
       changeLayoutStatus,
       layoutStatus: { showMenu, showHeader, fixSiderBar, fixHeader, contentAreaWidthMode }
-    }
-  } = props as { layoutStore: LayoutStore };
+    },
+    localeStore: { localeObj }
+  } = props as { layoutStore: LayoutStore; localeStore: LocaleStore };
 
   const ContentBlock = (
     <div className={classNames('RA-setting-Row', 'RA-setting-contentControl')}>
       <div className="RA-setting-settingItem">
-        <div className="RA-setting-settingItem-Label">内容区域宽度</div>
+        <div className="RA-setting-settingItem-Label">
+          {localeObj['layoutSetting.contentWidth'] || '内容区域宽度'}
+        </div>
         <Select
           className="RA-setting-settingAction"
           value={contentAreaWidthMode}
@@ -25,15 +29,24 @@ const ContentChange: React.FC = props => {
           size="small"
           onChange={val => changeLayoutStatus('contentAreaWidthMode', val as 'flow' | 'max-width')}
         >
-          <Select.Option value="flow">流式</Select.Option>
+          <Select.Option value="flow">
+            {localeObj['layoutSetting.flowContent'] || '流式'}
+          </Select.Option>
           <Select.Option value="max-width" disabled={!isHorizontalNavigator}>
-            定宽
+            {localeObj['layoutSetting.maxWidth'] || '定宽'}
           </Select.Option>
         </Select>
       </div>
-      <Tooltip placement="left" title={isInlineLayout ? '仅在分裂布局下起效' : ''}>
+      <Tooltip
+        placement="left"
+        title={
+          isInlineLayout ? localeObj['layoutSetting.splitModeOnly'] || '仅在分列布局下起效' : ''
+        }
+      >
         <div className="RA-setting-settingItem">
-          <div className="RA-setting-settingItem-Label">固定 Header</div>
+          <div className="RA-setting-settingItem-Label">
+            {localeObj['layoutSetting.fixHeader'] || '固定 Header'}
+          </div>
           <Switch
             disabled={isInlineLayout}
             checked={fixHeader}
@@ -42,9 +55,18 @@ const ContentChange: React.FC = props => {
           />
         </div>
       </Tooltip>
-      <Tooltip placement="left" title={isHorizontalNavigator ? '仅在左侧导航模式下起效' : ''}>
+      <Tooltip
+        placement="left"
+        title={
+          isHorizontalNavigator
+            ? localeObj['layoutSetting.verticalNavOnly'] || '仅在左侧导航模式下起效'
+            : ''
+        }
+      >
         <div className="RA-setting-settingItem">
-          <div className="RA-setting-settingItem-Label">固定侧边菜单</div>
+          <div className="RA-setting-settingItem-Label">
+            {localeObj['layoutSetting.fixSiderBar'] || '固定侧边菜单'}
+          </div>
           <Switch
             disabled={isHorizontalNavigator}
             checked={fixSiderBar}
@@ -63,16 +85,27 @@ const ContentChange: React.FC = props => {
     >
       <div className="RA-setting-title">内容控制</div>
       <div className="RA-setting-settingItem">
-        <div className="RA-setting-settingItem-Label">显示 header</div>
+        <div className="RA-setting-settingItem-Label">
+          {localeObj['layoutSetting.showHeader'] || '显示 header'}
+        </div>
         <Switch
           checked={showHeader}
           defaultChecked
           onChange={val => changeLayoutStatus('showHeader', val)}
         />
       </div>
-      <Tooltip placement="left" title={isHorizontalNavigator ? '仅在左侧导航模式下起效' : ''}>
+      <Tooltip
+        placement="left"
+        title={
+          isHorizontalNavigator
+            ? localeObj['layoutSetting.verticalNavOnly'] || '仅在左侧导航模式下起效'
+            : ''
+        }
+      >
         <div className="RA-setting-settingItem">
-          <div className="RA-setting-settingItem-Label">显示侧边菜单</div>
+          <div className="RA-setting-settingItem-Label">
+            {localeObj['layoutSetting.showMenu'] || '显示侧边菜单'}
+          </div>
           <Switch
             disabled={isHorizontalNavigator}
             checked={showMenu}
@@ -92,4 +125,4 @@ const ContentChange: React.FC = props => {
   );
 };
 
-export default inject('layoutStore')(observer(ContentChange));
+export default inject('layoutStore', 'localeStore')(observer(ContentChange));

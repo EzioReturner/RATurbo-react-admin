@@ -4,23 +4,25 @@ import { Tooltip } from 'antd';
 import { CheckOutlined } from '@ant-design/icons';
 import LayoutStore from '@/store/layoutStore';
 import { observer, inject } from 'mobx-react';
+import LocaleStore from '@store/localeStore';
 
 const NavigateMode: React.FC = props => {
   const {
-    layoutStore: { isHorizontalNavigator, isInlineLayout, changeLayoutStatus }
-  } = props as { layoutStore: LayoutStore };
+    layoutStore: { isHorizontalNavigator, isInlineLayout, changeLayoutStatus },
+    localeStore: { localeObj }
+  } = props as { layoutStore: LayoutStore; localeStore: LocaleStore };
   return (
     <>
       <div className={classNames('RA-setting-Row', 'RA-setting-haveSelectedIcon')}>
-        <div className="RA-setting-title">导航风格</div>
-        <Tooltip placement="top" title={'左侧导航模式'}>
+        <div className="RA-setting-title">{localeObj['layoutSetting.navMode'] || '导航风格'}</div>
+        <Tooltip placement="top" title={localeObj['layoutSetting.verticalNav'] || '左侧导航模式'}>
           <img
             onClick={() => changeLayoutStatus('navigateMode', 'vertical')}
             src={require('@assets/image/setting/vertical.svg').default}
             alt=""
           />
         </Tooltip>
-        <Tooltip placement="top" title={'顶部导航模式'}>
+        <Tooltip placement="top" title={localeObj['layoutSetting.horizontalNav'] || '顶部导航模式'}>
           <img
             onClick={() => changeLayoutStatus('navigateMode', 'horizontal')}
             src={require('@assets/image/setting/horizontal.svg').default}
@@ -42,10 +44,16 @@ const NavigateMode: React.FC = props => {
           isHorizontalNavigator && 'RA-setting-layoutMode-disabled'
         )}
       >
-        <div className="RA-setting-title">布局模式</div>
+        <div className="RA-setting-title">
+          {localeObj['layoutSetting.layoutMode'] || '布局模式'}
+        </div>
         <Tooltip
           placement="top"
-          title={isHorizontalNavigator ? '仅在左侧导航模式下起效' : '分列式布局'}
+          title={
+            isHorizontalNavigator
+              ? localeObj['layoutSetting.verticalNavOnly'] || '仅在左侧导航模式下起效'
+              : localeObj['layoutSetting.splitMode'] || '分列式布局'
+          }
         >
           <img
             onClick={() => (isHorizontalNavigator ? {} : changeLayoutStatus('layoutMode', 'split'))}
@@ -55,7 +63,11 @@ const NavigateMode: React.FC = props => {
         </Tooltip>
         <Tooltip
           placement="top"
-          title={isHorizontalNavigator ? '仅在左侧导航模式下起效' : '一体式布局'}
+          title={
+            isHorizontalNavigator
+              ? localeObj['layoutSetting.verticalNavOnly'] || '仅在左侧导航模式下起效'
+              : localeObj['layoutSetting.inlineMode'] || '一体式布局'
+          }
         >
           <img
             onClick={() =>
@@ -78,4 +90,4 @@ const NavigateMode: React.FC = props => {
   );
 };
 
-export default inject('layoutStore')(observer(NavigateMode));
+export default inject('layoutStore', 'localeStore')(observer(NavigateMode));

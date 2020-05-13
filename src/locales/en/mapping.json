@@ -99,5 +99,19 @@
   "result.failed.reason1": "Your application permissions do not match",
   "result.failed.reason2": "Your risk level is too low",
   "dashboard.perTitle": "Historical performance",
-  "menu.typescript": "typescript"
+  "menu.typescript": "typescript",
+  "menu.program.unit": "unit",
+  "step1.me": "I ah",
+  "step1.noOne": "Who also don't say",
+  "layoutSetting.navMode": "Navigation mode",
+  "layoutSetting.verticalNav": "Left navigation mode",
+  "layoutSetting.horizontalNav": "Top navigation mode",
+  "layoutSetting.layoutMode": "pattern",
+  "layoutSetting.verticalNavOnly": "Only works in left navigation mode",
+  "layoutSetting.splitMode": "March-past layout",
+  "layoutSetting.inlineMode": "One piece layout",
+  "layoutSetting.visionTheme": "Overall color pattern",
+  "layoutSetting.lightTheme": "Bright color pattern",
+  "layoutSetting.darkTheme": "Diablo mode",
+  "layoutSetting.colorStyle": "Color style"
 }
