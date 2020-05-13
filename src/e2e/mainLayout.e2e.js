@@ -50,7 +50,7 @@ describe('mainLayout', () => {
   // it('test layout menu display', async () => {
   //   await page.goto(`${BASE_URL}/#/`);
   //   await page.waitFor(1000);
-  //   await page.evaluate(() => document.getElementById('setting_setShowMenu').click());
+  //   await page.evaluate(() => document.getElementById('setting_setshowSiderBar').click());
   //   const havMenu = await page.evaluate(() => document.getElementsByTagName('aside').length > 0);
   //   expect(havMenu).toBeFalsy();
   // });

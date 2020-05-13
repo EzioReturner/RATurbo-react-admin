@@ -113,5 +113,14 @@
   "layoutSetting.visionTheme": "Overall color pattern",
   "layoutSetting.lightTheme": "Bright color pattern",
   "layoutSetting.darkTheme": "Diablo mode",
-  "layoutSetting.colorStyle": "Color style"
+  "layoutSetting.colorStyle": "Color style",
+  "layoutSetting.contentWidth": "Content area width",
+  "layoutSetting.flowContent": "streaming",
+  "layoutSetting.maxWidth": "Fixed width",
+  "layoutSetting.splitModeOnly": "Only works in a column layout",
+  "layoutSetting.fixHeader": "Fixed the Header",
+  "layoutSetting.fixSiderBar": "Fixed side menu",
+  "layoutSetting.showSiderBar": "Displays the side menu",
+  "layoutSetting.showHeader": "According to the header",
+  "layoutSetting.contentSetting": "Content control"
 }

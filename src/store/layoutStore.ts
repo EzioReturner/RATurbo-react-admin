@@ -25,7 +25,7 @@ interface LoadingOptions {
 }
 
 interface LayoutStatus extends StoreKeyValue {
-  showMenu: boolean;
+  showSiderBar: boolean;
   showHeader: boolean;
   layoutMode: 'split' | 'inline';
   navigateMode: 'vertical' | 'horizontal';
@@ -55,7 +55,7 @@ class LayoutStore {
   @observable loadingOptions: LoadingOptions = { spinning: false };
 
   @observable layoutStatus: LayoutStatus = {
-    showMenu: useMenu, // 显示头部
+    showSiderBar: useMenu, // 显示头部
     showHeader: useHeader, // 显示菜单
     layoutMode: (layoutMode as 'split' | 'inline') || 'split', // 布局模式
     navigateMode: (navigateMode as 'vertical' | 'horizontal') || 'vertical', // 导航风格

@@ -31,7 +31,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
   const { children, route } = props;
   const {
     layoutStore: {
-      layoutStatus: { collapsed, isMobile, showMenu, showHeader, fixSiderBar, fixHeader },
+      layoutStatus: { collapsed, isMobile, showSiderBar, showHeader, fixSiderBar, fixHeader },
       toggleCollapsed,
       loadingOptions,
       isContentFlowMode,
@@ -66,7 +66,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
   // 分割模式，菜单切割header
   const splitModeLayout = (
     <>
-      {showMenu && RANavigator}
+      {showSiderBar && RANavigator}
       <div
         id="mainContainer"
         className={classNames(
@@ -96,7 +96,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
           collapsed && 'RA-basicLayout-wrapper-collapsed'
         )}
       >
-        {showMenu && RANavigator}
+        {showSiderBar && RANavigator}
         {ViewMain}
       </div>
       <div
@@ -105,7 +105,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
           isDarkTheme && 'RA-basicLayout-inlineMode-footer-dark'
         )}
       >
-        {showMenu && (
+        {showSiderBar && (
           <div
             className={classNames(
               'RA-basicLayout-inlineMode-footer-icon',
@@ -147,7 +147,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
       className={classNames(
         'RA-basicLayout',
         isInlineLayout ? 'RA-basicLayout-inlineMode' : 'RA-basicLayout-splitMode',
-        !showMenu && 'RA-basicLayout-hideMenu',
+        !showSiderBar && 'RA-basicLayout-hideMenu',
         !showHeader && 'RA-basicLayout-hideHeader',
         fixHeader && 'RA-basicLayout-fixHeader',
         fixSiderBar && 'RA-basicLayout-fixSiderBar',

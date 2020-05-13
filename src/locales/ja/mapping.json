@@ -113,5 +113,14 @@
   "layoutSetting.visionTheme": "全体的なカラーパターン",
   "layoutSetting.lightTheme": "明るい色のモード",
   "layoutSetting.darkTheme": "暗黒モード",
-  "layoutSetting.colorStyle": "カラースタイル"
+  "layoutSetting.colorStyle": "カラースタイル",
+  "layoutSetting.contentWidth": "コンテンツ領域幅",
+  "layoutSetting.flowContent": "facs",
+  "layoutSetting.maxWidth": "定幅",
+  "layoutSetting.splitModeOnly": "分列配置でのみ効果が現れる",
+  "layoutSetting.fixHeader": "固定ヘッダ",
+  "layoutSetting.fixSiderBar": "サイドメニューを固定する",
+  "layoutSetting.showSiderBar": "サイドメニューを表示する",
+  "layoutSetting.showHeader": "表示ヘッダ",
+  "layoutSetting.contentSetting": "コンテンツ制御"
 }

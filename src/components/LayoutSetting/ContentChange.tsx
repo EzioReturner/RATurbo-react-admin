@@ -11,7 +11,7 @@ const ContentChange: React.FC = props => {
       isHorizontalNavigator,
       isInlineLayout,
       changeLayoutStatus,
-      layoutStatus: { showMenu, showHeader, fixSiderBar, fixHeader, contentAreaWidthMode }
+      layoutStatus: { showSiderBar, showHeader, fixSiderBar, fixHeader, contentAreaWidthMode }
     },
     localeStore: { localeObj }
   } = props as { layoutStore: LayoutStore; localeStore: LocaleStore };
@@ -83,7 +83,9 @@ const ContentChange: React.FC = props => {
       className={classNames('RA-setting-Row', 'RA-setting-layoutControl')}
       style={{ marginBottom: 0 }}
     >
-      <div className="RA-setting-title">内容控制</div>
+      <div className="RA-setting-title">
+        {localeObj['layoutSetting.contentSetting'] || '内容控制'}
+      </div>
       <div className="RA-setting-settingItem">
         <div className="RA-setting-settingItem-Label">
           {localeObj['layoutSetting.showHeader'] || '显示 header'}
@@ -104,13 +106,13 @@ const ContentChange: React.FC = props => {
       >
         <div className="RA-setting-settingItem">
           <div className="RA-setting-settingItem-Label">
-            {localeObj['layoutSetting.showMenu'] || '显示侧边菜单'}
+            {localeObj['layoutSetting.showSiderBar'] || '显示侧边菜单'}
           </div>
           <Switch
             disabled={isHorizontalNavigator}
-            checked={showMenu}
+            checked={showSiderBar}
             defaultChecked
-            onChange={val => changeLayoutStatus('showMenu', val)}
+            onChange={val => changeLayoutStatus('showSiderBar', val)}
           />
         </div>
       </Tooltip>

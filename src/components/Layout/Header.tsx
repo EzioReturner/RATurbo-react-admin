@@ -18,7 +18,7 @@ const Header: React.FC = props => {
       isInlineLayout,
       isHorizontalNavigator,
       isContentFlowMode,
-      layoutStatus: { showMenu, fixHeader, collapsed, isMobile },
+      layoutStatus: { showSiderBar, fixHeader, collapsed, isMobile },
       isDarkTheme
     }
   } = props as InjectedProps;
@@ -32,7 +32,7 @@ const Header: React.FC = props => {
   const VerticalMenuHeaderBody = (
     <>
       {isInlineLayout && <SiteDetail inlineLayout={isInlineLayout} />}
-      {showMenu && !isInlineLayout && IconCollapsed}
+      {showSiderBar && !isInlineLayout && IconCollapsed}
       <div className="RA-header-rightPlace">
         <UserInfo />
         <SelectLang />
@@ -48,7 +48,7 @@ const Header: React.FC = props => {
           'RA-header-vertical',
           collapsed && 'RA-header-collapsed',
           isMobile && 'RA-header-isMobile',
-          !showMenu && 'RA-header-withoutMenu',
+          !showSiderBar && 'RA-header-withoutMenu',
           isInlineLayout ? 'RA-header-inlineLayout' : 'RA-header-splitLayout',
           isDarkTheme && 'RA-header-darkTheme'
         )}
@@ -65,7 +65,7 @@ const Header: React.FC = props => {
           'RA-header-vertical',
           collapsed && 'RA-header-collapsed',
           isMobile && 'RA-header-isMobile',
-          !showMenu && 'RA-header-withoutMenu',
+          !showSiderBar && 'RA-header-withoutMenu',
           isInlineLayout ? 'RA-header-inlineLayout' : 'RA-header-splitLayout',
           isDarkTheme && 'RA-header-darkTheme'
         )}
