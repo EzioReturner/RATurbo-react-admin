@@ -84,7 +84,9 @@ const LoginForm: React.FC<LoginFormProps> = props => {
         </Form.Item>
         <Form.Item>
           <Form.Item name="remember" valuePropName="checked" noStyle>
-            <Checkbox>Remember me</Checkbox>
+            <Checkbox>
+              <span>Remember me</span>
+            </Checkbox>
           </Form.Item>
 
           <a className="login-form-forgot" href="">
