@@ -147,13 +147,8 @@
   },
   "libVersion": "1.0.0",
   "library": {
-    "reactLib": [
-      "react",
-      "react-dom",
-      "react-router-dom",
-      "react-transition-group"
-    ],
-    "components": [
+    "componentLib": [
+      "@ant-design/icons",
       "antd",
       "echarts",
       "mobx",
