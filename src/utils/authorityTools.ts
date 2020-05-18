@@ -1,4 +1,3 @@
-import { RouteConfig } from '@models/layout';
 /**
  * 获取权限
  * @param {str} string 未处理的权限

@@ -1,9 +1,8 @@
 import React from 'react';
 import Authorized from '@components/Authorized';
-import { Redirect, useLocation } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
 import LayoutStore from '@store/layoutStore';
-import { RouteConfig } from '@/models/layout';
 import LayoutSetting from '@components/LayoutSetting';
 import './basicLayout.less';
 import HorizontalMode from './HorizontalMode';
