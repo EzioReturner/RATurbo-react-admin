@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, notification } from 'antd';
 import { useHistory } from 'react-router-dom';
 
-const ExceptionHome: React.FC = props => {
+const ExceptionHome: React.FC = () => {
   const history = useHistory();
   const handleTriggerError = ({ code, description }: { code: number; description: string }) => {
     history.push(`/exception/${code}`);
@@ -19,7 +19,7 @@ const ExceptionHome: React.FC = props => {
         onClick={() =>
           handleTriggerError({
             code: 403,
-            description: '用户已授权,但是没有访问页面的权限哦~'
+            description: '用户已授权,但是没有访问页面的权限'
           })
         }
       >
@@ -44,7 +44,7 @@ const ExceptionHome: React.FC = props => {
         onClick={() =>
           handleTriggerError({
             code: 500,
-            description: '服务器出错了哦'
+            description: '服务器出错了'
           })
         }
       >

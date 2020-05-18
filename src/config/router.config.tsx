@@ -14,7 +14,7 @@ import {
 export const constantRouteConfig: { app: RouteConfig; user: RouteConfig } = {
   app: {
     path: '/',
-    component: ['/layout/MainLayout', 'fadeRA'],
+    component: ['/layout/BasicLayout', 'fadeRA'],
     authority: ['admin', 'guest'],
     routes: []
   },

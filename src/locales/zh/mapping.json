@@ -101,7 +101,7 @@
 
   "exception.backHome": "回首页看看吧~",
   "exception.403": "抱歉~你无权访问该页面",
-  "exception.404": "好像找不到你要访问的页面哦~",
+  "exception.404": "好像找不到你要访问的页面~",
   "exception.500": "抱歉~服务器好像炸了~",
 
   "action.success": "操作成功",

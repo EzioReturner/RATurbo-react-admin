@@ -1,66 +1,28 @@
-import React, { Suspense, useMemo } from 'react';
-import Loading from '@components/Loading';
-import Authorized from '@components/Authorized';
-import { Header, Navigator } from '@components/Layout';
-import { Redirect, useLocation } from 'react-router-dom';
-import { getRouteAuthority } from '@utils/authorityTools';
+import React, { useMemo } from 'react';
 import classNames from 'classnames';
-import Footer from '@components/Footer';
+import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 import { observer, inject } from 'mobx-react';
 import LayoutStore from '@store/layoutStore';
-import { RouteConfig } from '@/models/layout';
-import LayoutSetting from '@components/LayoutSetting';
-import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
-import './mainLayout.less';
+import { Header, Navigator } from '@components/Layout';
+import Loading from '@components/Loading';
+import Footer from '@components/Footer';
+import ViewContent from './ViewContent';
 
-const Exception403 = React.lazy(() => import(/* webpackChunkName: "403" */ '@views/Exception/403'));
-
-interface MainLayoutProps {
-  route: RouteConfig;
-}
-
-interface MainLayoutInjected extends MainLayoutProps {
-  layoutStore: LayoutStore;
-}
-
-const MainLayout: React.FC<MainLayoutProps> = props => {
-  let location = useLocation();
-  const injected = () => {
-    return props as MainLayoutInjected;
-  };
-  const { children, route } = props;
+// 左侧导航栏模式
+const VerticalMode: React.FC<{ route: RouteConfig }> = props => {
   const {
     layoutStore: {
       layoutStatus: { collapsed, isMobile, showSiderBar, showHeader, fixSiderBar, fixHeader },
       toggleCollapsed,
       loadingOptions,
-      isContentFlowMode,
       isInlineLayout,
-      isHorizontalNavigator,
       isDarkTheme
     }
-  } = injected();
-  const routeAuthority: undefined | string | string[] = getRouteAuthority(
-    location.pathname,
-    route.routes
-  );
+  } = props as { layoutStore: LayoutStore; route: RouteConfig };
 
   const RANavigator = useMemo(
     () => <Navigator collapsed={collapsed} isMobile={isMobile} toggleCollapsed={toggleCollapsed} />,
     [collapsed, isMobile, toggleCollapsed]
-  );
-
-  const ViewMain = (
-    <Authorized
-      routeAuthority={routeAuthority}
-      unidentified={
-        <Suspense fallback={<Loading spinning />}>
-          <Exception403 />
-        </Suspense>
-      }
-    >
-      <main className="RA-basicLayout-wrapper-viewMain">{children}</main>
-    </Authorized>
   );
 
   // 分割模式，菜单切割header
@@ -76,7 +38,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
       >
         {showHeader && <Header />}
         <div className="RA-basicLayout-wrapper-content">
-          {ViewMain}
+          <ViewContent {...props} />
           <Footer propStyle={{ marginBottom: '16px' }} />
         </div>
       </div>
@@ -97,7 +59,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
         )}
       >
         {showSiderBar && RANavigator}
-        {ViewMain}
+        <ViewContent {...props} />
       </div>
       <div
         className={classNames(
@@ -121,28 +83,7 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
     </>
   );
 
-  // 顶部导航栏模式
-  const HorizontalMenuLayout = (
-    <div
-      id="mainContainer"
-      className={classNames(
-        'RA-basicLayout-horizontal',
-        !showHeader && 'RA-basicLayout-horizontal-hideHeader',
-        isContentFlowMode && 'RA-basicLayout-horizontal-contentFlow',
-        fixHeader && 'RA-basicLayout-horizontal-fixHeader'
-      )}
-    >
-      {showHeader && <Header />}
-      <div className="RA-basicLayout-horizontal-wrapper">
-        {ViewMain}
-        <Footer propStyle={{ marginTop: '16px' }} />
-      </div>
-      <Loading {...loadingOptions} />
-    </div>
-  );
-
-  // 左侧导航栏模式
-  const VerticalMenuLayout = (
+  return (
     <div
       className={classNames(
         'RA-basicLayout',
@@ -158,15 +99,6 @@ const MainLayout: React.FC<MainLayoutProps> = props => {
       {isInlineLayout ? inlineModeLayout : splitModeLayout}
     </div>
   );
-
-  return (
-    <Authorized unidentified={<Redirect to="/user/login" />}>
-      <>
-        {isHorizontalNavigator ? HorizontalMenuLayout : VerticalMenuLayout}
-        {!isMobile && <LayoutSetting />}
-      </>
-    </Authorized>
-  );
 };
 
-export default inject('layoutStore')(observer(MainLayout));
+export default inject('layoutStore')(observer(VerticalMode));
