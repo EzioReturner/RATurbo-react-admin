@@ -22,6 +22,27 @@ interface LoadingProps {
 
 const Loading: React.FC<LoadingProps> = props => {
   const { spinning, fixed, collapsed, style, text } = props;
+
+  const CycleLoading = (
+    <>
+      <div id="RA-loading-content-circle" />
+      <p className="RA-loading-content-text">{text || 'LOADING...'}</p>
+    </>
+  );
+
+  // const AngleLoading
+
+  const BarLoading = (
+    <div id="RA-loading-content-bar">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <p className="RA-loading-content-text">{text || 'LOADING...'}</p>
+    </div>
+  );
+
   return (
     <div
       className={classNames(
@@ -32,10 +53,7 @@ const Loading: React.FC<LoadingProps> = props => {
       )}
       style={style}
     >
-      <div className="RA-loading-content">
-        <div className="RA-loading-content-circle" />
-        <span>{text || 'LOADING'}</span>
-      </div>
+      <div className="RA-loading-content">{BarLoading}</div>
     </div>
   );
 };
