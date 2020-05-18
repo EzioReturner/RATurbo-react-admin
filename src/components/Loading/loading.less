@@ -106,12 +106,14 @@
   width: 120px;
   justify-content: space-between;
   align-items: center;
+  transform: translate3d(0, 0, 0);
 
   span {
     height: 40px;
     width: 12px;
     margin: 0;
     background-color: var(--primary);
+    will-change: transform;
 
     .loop(6);
     .loop(@n, @i: 1) when (@i < @n) {
