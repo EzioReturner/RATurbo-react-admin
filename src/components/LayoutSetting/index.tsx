@@ -16,16 +16,6 @@ const LayoutSetting: React.FC = props => {
 
   const [openSetting, setOpenSetting] = useState(false);
 
-  const handleCloseSetting = () => {
-    setOpenSetting(false);
-    if (maskRef.current) {
-      maskRef.current.style.width = '100vw';
-      setTimeout(() => {
-        maskRef.current && (maskRef.current.style.width = '0');
-      }, 400);
-    }
-  };
-
   const handleOpenSetting = (status: boolean) => {
     document.body.style.setProperty('overflow', status ? 'hidden' : 'unset');
     setOpenSetting(status);

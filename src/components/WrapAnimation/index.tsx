@@ -30,7 +30,7 @@ const WrapComponent: React.FC<WrapComponentProps> = props => {
 
   useEffect(() => {
     setAnimateIn(true);
-    ctrlSpinning({ spinning: false });
+    // ctrlSpinning({ spinning: false });
     ctrlProgress(false);
   }, [ctrlProgress, ctrlSpinning]);
 
