@@ -57,7 +57,7 @@ const Loading: React.FC<LoadingProps> = props => {
       style={style}
     >
       <div className="RA-loading-content">
-        {AngleLoading}
+        {BarLoading}
         <p className="RA-loading-content-text">{text || 'LOADING...'}</p>
       </div>
     </div>
