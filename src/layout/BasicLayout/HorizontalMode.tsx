@@ -8,14 +8,14 @@ import Footer from '@components/Footer';
 import ViewContent from './ViewContent';
 
 // 顶部导航栏模式
-const HorizontalMode: React.FC<{ route: RouteConfig }> = props => {
+const HorizontalMode: React.FC<{ route: RouteRoot }> = props => {
   const {
     layoutStore: {
       layoutStatus: { showHeader, fixHeader },
       loadingOptions,
       isContentFlowMode
     }
-  } = props as { layoutStore: LayoutStore; route: RouteConfig };
+  } = props as { layoutStore: LayoutStore; route: RouteRoot };
 
   return (
     <div

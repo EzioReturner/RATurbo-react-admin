@@ -51,6 +51,33 @@ module.exports = Object.assign(baseConfig, {
       }
     ]
   },
+  optimization: {
+    splitChunks: {
+      chunks: 'async',
+      name: true,
+      maxInitialRequests: Infinity,
+      cacheGroups: {
+        vendors: {
+          chunks: 'all',
+          test: /(react|react-dom|react-dom-router|babel-polyfill|mobx)/,
+          priority: 100,
+          name: 'vendors'
+        },
+        'async-commons': {
+          chunks: 'async',
+          minChunks: 2,
+          name: 'async-commons',
+          priority: 90
+        },
+        commons: {
+          chunks: 'all',
+          minChunks: 2,
+          name: 'commons',
+          priority: 80
+        }
+      }
+    }
+  },
   plugins: [
     ...plugins,
     new webpack.HotModuleReplacementPlugin(),

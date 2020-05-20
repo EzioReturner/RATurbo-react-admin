@@ -50,7 +50,7 @@ export interface RouteChild {
   loading?: boolean;
 }
 
-export interface RouteConfig {
+export interface RouteRoot {
   name?: string;
   icon?: React.ReactNode | string;
   path?: string;

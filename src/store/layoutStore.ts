@@ -48,7 +48,7 @@ class LayoutStore {
   @observable breadcrumbList: Array<Breadcrumb> = [];
 
   // 路由数据
-  @observable routeConfig: Array<RouteConfig> = [];
+  @observable routeConfig: Array<RouteRoot> = [];
 
   // 全局spinning配置信息
   @observable loadingOptions: LoadingOptions = { spinning: false };

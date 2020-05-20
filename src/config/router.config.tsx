@@ -10,7 +10,7 @@ import {
   InfoCircleOutlined
 } from '@ant-design/icons';
 
-export const constantRouteConfig: { app: RouteConfig; user: RouteConfig } = {
+export const constantRouteConfig: { app: RouteRoot; user: RouteRoot } = {
   app: {
     path: '/',
     component: ['/layout/BasicLayout', 'fadeRA'],

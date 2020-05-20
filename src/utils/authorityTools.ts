@@ -37,9 +37,9 @@ export function clearAuthority() {
  * @param {pathname} string 路由路径
  * @return {routeAuthority} {string} 路由对应权限
  */
-export function getRouteAuthority(pathname: string, routes: RouteConfig[] = []) {
+export function getRouteAuthority(pathname: string, routes: RouteRoot[] = []) {
   let routeAuthority: undefined | string | string[];
-  const _getAuthority = (pathname: string, _routes: RouteConfig[]) => {
+  const _getAuthority = (pathname: string, _routes: RouteRoot[]) => {
     _routes.forEach(_route => {
       if (pathname === _route.path) {
         routeAuthority = _route.authority;

@@ -7,7 +7,6 @@ import classNames from 'classnames';
 import UserStore from '@store/userStore';
 import LayoutStore from '@store/layoutStore';
 import LocaleStore from '@store/localeStore';
-import { RouteChild } from '@/models/layout';
 import SiteDetail from './SiteDetail';
 import Icon from '@ant-design/icons';
 import Iconfont from '@components/Iconfont';

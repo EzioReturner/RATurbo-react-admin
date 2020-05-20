@@ -11,7 +11,9 @@ function _resolve(track) {
 
 const isEnvProduction = process.env.NODE_ENV === 'production';
 module.exports = {
-  entry: [paths.appIndexJs],
+  entry: {
+    RAEntry: paths.appIndexJs
+  },
   resolve: {
     modules: ['node_modules'],
     extensions: ['.tsx', '.ts', '.js', '.jsx', '.json'],
@@ -34,6 +36,7 @@ module.exports = {
     BMap: 'BMap'
   },
   module: {
+    noParse: /jquery|lodash|moment/,
     rules: [
       {
         test: /\.(png|jpe?g|gif|webp)(\?.*)?$/,
@@ -80,7 +83,7 @@ module.exports = {
       },
       {
         test: /\.(js|mjs|jsx|ts|tsx)$/,
-        exclude: /node_modules/,
+        exclude: [/node_modules/],
         use: {
           loader: 'babel-loader',
           options: {

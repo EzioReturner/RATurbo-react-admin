@@ -82,15 +82,6 @@ declare module '*.module.less' {
   export default classes;
 }
 
-declare interface RouteConfig {
-  name?: string;
-  icon?: React.ReactNode | string;
-  path?: string;
-  authority?: string[] | string;
-  component?: string[];
-  routes?: RouteChild[];
-}
-
 declare interface Breadcrumb {
   name: string;
   path: string;
@@ -134,7 +125,7 @@ declare interface RouteChild {
   icon?: React.ReactNode | string;
   path: string;
   authority?: string[] | string;
-  component?: string[];
+  component?: [string | React.ReactNode, string] | [string | React.ReactNode];
   routes?: RouteChild[];
   hideMenu?: boolean;
   exact?: boolean;
@@ -143,11 +134,11 @@ declare interface RouteChild {
   loading?: boolean;
 }
 
-declare interface RouteConfig {
+declare interface RouteRoot {
   name?: string;
   icon?: React.ReactNode | string;
   path?: string;
   authority?: string[] | string;
-  component?: string[];
+  component?: [string | React.ReactNode, string] | [string | React.ReactNode];
   routes?: RouteChild[];
 }

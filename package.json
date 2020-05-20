@@ -9,7 +9,7 @@
     "add-locale": "node scripts/addLocale.js",
     "raCreate": "node scripts/tools.js",
     "build:dll": "webpack --config webpack/webpack.dll.js --mode production",
-    "test:e2e": "jest -c src/e2e/jest.config.js",
+    "test:e2e": "jest -c e2e/jest.config.js",
     "test:unit": "jest -c jest.config.js"
   },
   "devDependencies": {
@@ -24,6 +24,7 @@
     "@types/classnames": "^2.2.9",
     "@types/echarts": "^4.4.2",
     "@types/jest": "^25.1.4",
+    "@types/loadable__component": "^5.10.0",
     "@types/lodash": "^4.14.149",
     "@types/node": "^12.12.20",
     "@types/nprogress": "^0.2.0",
@@ -97,6 +98,7 @@
   "dependencies": {
     "@ant-design/icons": "^4.1.0",
     "@hot-loader/react-dom": "^16.11.0",
+    "@loadable/component": "^5.12.0",
     "animate.css": "^3.7.2",
     "antd": "^4.2.0",
     "antd-theme-webpack-plugin": "^1.3.4",
@@ -147,12 +149,18 @@
   },
   "libVersion": "1.0.0",
   "library": {
-    "componentLib": [
-      "@ant-design/icons",
-      "antd",
-      "echarts",
+    "vendors": [
+      "react",
+      "react-dom",
+      "react-router-dom",
+      "react-transition-group",
       "mobx",
       "mobx-react"
+    ],
+    "lib": [
+      "@ant-design/icons",
+      "antd",
+      "echarts"
     ],
     "tools": [
       "mockjs",

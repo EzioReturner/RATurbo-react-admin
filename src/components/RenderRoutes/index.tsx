@@ -46,7 +46,7 @@ const RenderRoutes: React.FC = props => {
       />
     );
   };
-  const generateRoute = (routes: RouteConfig[], switchProps?: any) => {
+  const generateRoute = (routes: RouteRoot[], switchProps?: any) => {
     return routes ? (
       <Switch {...switchProps}>
         {routes.map((route: any, i: number) => {

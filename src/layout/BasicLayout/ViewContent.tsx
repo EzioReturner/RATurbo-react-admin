@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 
 const Exception403 = React.lazy(() => import(/* webpackChunkName: "403" */ '@views/Exception/403'));
 
-const ViewContent: React.FC<{ route: RouteConfig }> = props => {
+const ViewContent: React.FC<{ route: RouteRoot }> = props => {
   let location = useLocation();
   const { route, children } = props;
   const routeAuthority: undefined | string | string[] = getRouteAuthority(

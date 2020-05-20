@@ -30,17 +30,17 @@ class FormStore {
       {
         id: 'form.stepTitle1',
         title: '填写信息',
-        component: React.lazy(() => import(/* webpackChunkName: "Step1" */ './Step1'))
+        component: React.lazy(() => import('./Step1'))
       },
       {
         id: 'form.stepTitle2',
         title: '确认报告',
-        component: React.lazy(() => import(/* webpackChunkName: "Step2" */ './Step2'))
+        component: React.lazy(() => import('./Step2'))
       },
       {
         id: 'form.stepTitle3',
         title: '完成',
-        component: React.lazy(() => import(/* webpackChunkName: "Step3" */ './Step3'))
+        component: React.lazy(() => import('./Step3'))
       }
     ];
   }

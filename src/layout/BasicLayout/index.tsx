@@ -9,7 +9,7 @@ import HorizontalMode from './HorizontalMode';
 import VerticalMode from './VerticalMode';
 
 interface MainLayoutProps {
-  route: RouteConfig;
+  route: RouteRoot;
 }
 
 interface MainLayoutInjected extends MainLayoutProps {

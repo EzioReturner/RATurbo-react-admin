@@ -2,6 +2,7 @@ import React from 'react';
 import WrapAnimation from '@components/WrapAnimation';
 import { inject } from 'mobx-react';
 import LayoutStore from '@store/layoutStore';
+
 interface AsyncProps {
   componentInfo: any;
   route: any;
@@ -72,6 +73,7 @@ class AsyncComponent extends React.PureComponent<AsyncProps, AsyncState> {
       ctrlSpinning({ spinning: false });
       return <C {...this.props} />;
     }
+
     return C ? (
       <WrapAnimation animate={animate}>
         <C {...this.props} />

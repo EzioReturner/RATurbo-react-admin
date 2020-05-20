@@ -9,7 +9,7 @@ import Footer from '@components/Footer';
 import ViewContent from './ViewContent';
 
 // 左侧导航栏模式
-const VerticalMode: React.FC<{ route: RouteConfig }> = props => {
+const VerticalMode: React.FC<{ route: RouteRoot }> = props => {
   const {
     layoutStore: {
       layoutStatus: { collapsed, isMobile, showSiderBar, showHeader, fixSiderBar, fixHeader },
@@ -18,7 +18,7 @@ const VerticalMode: React.FC<{ route: RouteConfig }> = props => {
       isInlineLayout,
       isDarkTheme
     }
-  } = props as { layoutStore: LayoutStore; route: RouteConfig };
+  } = props as { layoutStore: LayoutStore; route: RouteRoot };
 
   const RANavigator = useMemo(
     () => <Navigator collapsed={collapsed} isMobile={isMobile} toggleCollapsed={toggleCollapsed} />,

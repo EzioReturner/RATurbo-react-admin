@@ -91,34 +91,45 @@ module.exports = function() {
         })
       ],
       splitChunks: {
-        chunks: 'all',
+        chunks: 'async',
         name: true,
         maxInitialRequests: Infinity,
         cacheGroups: {
           npmLib: {
             test: /[\\/]node_modules[\\/]/,
-            minSize: 4000000,
+            chunks: 'all',
             name(module) {
               const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
               return `npm.${packageName.replace('@', '')}`;
             },
-            priority: -8
-          },
-          components: {
-            minSize: 100000,
-            test: _resolve('./src/components'),
-            name: 'components',
-            minChunks: 2,
-            reuseExistingChunk: true,
-            priority: -11
+            minSize: 4000000,
+            priority: 120,
+            reuseExistingChunk: true
           },
           commons: {
-            test: /[\\/]node_modules[\\/]/,
-            name: 'commons',
             chunks: 'all',
+            test: /[\\/]node_modules[\\/]/,
             minChunks: 2,
-            priority: -9
+            name: 'commons',
+            priority: 110,
+            reuseExistingChunk: true
           }
+
+          // components: {
+          //   minSize: 100000,
+          //   test: _resolve('./src/components'),
+          //   name: 'components',
+          //   minChunks: 2,
+          //   reuseExistingChunk: true,
+          //   priority: -11
+          // },
+          // commons: {
+          //   test: /[\\/]node_modules[\\/]/,
+          //   name: 'commons',
+          //   chunks: 'all',
+          //   minChunks: 2,
+          //   priority: -9
+          // }
         }
       },
       runtimeChunk: true
