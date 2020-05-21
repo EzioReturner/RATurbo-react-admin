@@ -11,6 +11,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const safePostCssParser = require('postcss-safe-parser');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const InlineSourcePlugin = require('html-webpack-inline-source-plugin');
 
 const { module: _module, plugins } = baseConfig;
 
@@ -103,7 +104,7 @@ module.exports = function() {
         })
       ],
       splitChunks: {
-        chunks: 'initial',
+        chunks: 'initial', // 默认只对入口文件进行split chunks，使用 all 时会引起路由懒加载拆出过多子组件，增加请求数
         name: true,
         cacheGroups: {
           // 体积较大的chunk单独打包
@@ -125,10 +126,10 @@ module.exports = function() {
             name: 'vendors'
           },
           // 异步共享chunks
-          'async-commons': {
+          'async-vendors': {
             chunks: 'async',
             test: /[\\/]node_modules[\\/]/,
-            name: 'async-commons',
+            name: 'async-vendors',
             priority: 5
           },
           // RA组件chunks
@@ -161,8 +162,12 @@ module.exports = function() {
           minifyJS: true,
           minifyCSS: true,
           minifyURLs: true
-        }
+        },
+        // 内联runtimeChunk
+        inlineSource: 'runtime~.+\\.js'
       }),
+
+      new InlineSourcePlugin(),
 
       new InterpolateHtmlPlugin({
         NODE_ENV: 'production',
