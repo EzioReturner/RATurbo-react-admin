@@ -9,7 +9,6 @@ function _resolve(track) {
   return path.join(__dirname, '..', track);
 }
 
-const isEnvProduction = process.env.NODE_ENV === 'production';
 module.exports = {
   entry: {
     RAEntry: paths.appIndexJs

@@ -67,19 +67,12 @@ module.exports = Object.assign(baseConfig, {
     splitChunks: {
       chunks: 'async',
       name: true,
-      maxInitialRequests: Infinity,
       cacheGroups: {
         vendors: {
           chunks: 'all',
           test: /(react|react-dom|react-dom-router|babel-polyfill|mobx)/,
           priority: 100,
           name: 'vendors'
-        },
-        commons: {
-          chunks: 'all',
-          minChunks: 2,
-          name: 'commons',
-          priority: 80
         }
       }
     }
