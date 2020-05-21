@@ -41,6 +41,18 @@ module.exports = function() {
             ..._module.rules,
             ...styleLoaders(),
             {
+              test: /\.(js|mjs|jsx|ts|tsx)$/,
+              exclude: [/node_modules/, /\.test.js$/],
+              use: {
+                loader: 'babel-loader',
+                options: {
+                  cacheDirectory: true,
+                  cacheCompression: true,
+                  compact: true
+                }
+              }
+            },
+            {
               loader: require.resolve('file-loader'),
               exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
               options: {
@@ -91,45 +103,43 @@ module.exports = function() {
         })
       ],
       splitChunks: {
-        chunks: 'async',
+        chunks: 'initial',
         name: true,
-        maxInitialRequests: Infinity,
         cacheGroups: {
+          // 体积较大的chunk单独打包
           npmLib: {
+            chunks: 'async',
             test: /[\\/]node_modules[\\/]/,
-            chunks: 'all',
             name(module) {
               const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
               return `npm.${packageName.replace('@', '')}`;
             },
             minSize: 4000000,
-            priority: 120,
-            reuseExistingChunk: true
+            priority: 20
           },
-          commons: {
-            chunks: 'all',
+          // 入口共享chunks
+          vendors: {
+            chunks: 'initial',
             test: /[\\/]node_modules[\\/]/,
+            priority: 10,
+            name: 'vendors'
+          },
+          // 异步共享chunks
+          'async-commons': {
+            chunks: 'async',
+            test: /[\\/]node_modules[\\/]/,
+            name: 'async-commons',
+            priority: 5
+          },
+          // RA组件chunks
+          components: {
+            chunks: 'all',
+            test: _resolve('./src/components'),
+            name: 'components',
             minChunks: 2,
-            name: 'commons',
-            priority: 110,
-            reuseExistingChunk: true
+            reuseExistingChunk: true,
+            priority: 15
           }
-
-          // components: {
-          //   minSize: 100000,
-          //   test: _resolve('./src/components'),
-          //   name: 'components',
-          //   minChunks: 2,
-          //   reuseExistingChunk: true,
-          //   priority: -11
-          // },
-          // commons: {
-          //   test: /[\\/]node_modules[\\/]/,
-          //   name: 'commons',
-          //   chunks: 'all',
-          //   minChunks: 2,
-          //   priority: -9
-          // }
         }
       },
       runtimeChunk: true

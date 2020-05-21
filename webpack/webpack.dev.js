@@ -41,6 +41,18 @@ module.exports = Object.assign(baseConfig, {
           ..._module.rules,
           ...styleLoaders(),
           {
+            test: /\.(js|mjs|jsx|ts|tsx)$/,
+            exclude: /node_modules/,
+            use: {
+              loader: 'babel-loader',
+              options: {
+                cacheDirectory: true,
+                cacheCompression: false,
+                compact: false
+              }
+            }
+          },
+          {
             loader: require.resolve('file-loader'),
             exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
             options: {
@@ -62,12 +74,6 @@ module.exports = Object.assign(baseConfig, {
           test: /(react|react-dom|react-dom-router|babel-polyfill|mobx)/,
           priority: 100,
           name: 'vendors'
-        },
-        'async-commons': {
-          chunks: 'async',
-          minChunks: 2,
-          name: 'async-commons',
-          priority: 90
         },
         commons: {
           chunks: 'all',

@@ -80,18 +80,6 @@ module.exports = {
             }
           }
         ]
-      },
-      {
-        test: /\.(js|mjs|jsx|ts|tsx)$/,
-        exclude: [/node_modules/],
-        use: {
-          loader: 'babel-loader',
-          options: {
-            cacheDirectory: true,
-            cacheCompression: isEnvProduction,
-            compact: isEnvProduction
-          }
-        }
       }
     ]
   },
