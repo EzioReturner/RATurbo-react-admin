@@ -3,7 +3,7 @@ import cloneDeep from 'lodash/cloneDeep';
 import { analysisOptions } from '@/assets/chartOption.js';
 
 configure({ enforceActions: 'always' });
-class DashboardState {
+class ProgramStore {
   @observable showUnDefined: boolean = true;
 
   @action changeShowUnDefined(status: boolean): void {
@@ -51,5 +51,5 @@ class DashboardState {
     return property;
   }
 }
-
-export default DashboardState;
+export const programStore = new ProgramStore();
+export default ProgramStore;

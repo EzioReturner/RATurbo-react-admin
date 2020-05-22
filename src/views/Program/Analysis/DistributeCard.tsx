@@ -1,15 +1,9 @@
 import React, { Fragment } from 'react';
 import { Card, Row, Col } from 'antd';
 import EchartsReact from '@components/Echarts';
-import { observer, inject } from 'mobx-react';
-import ProgramStore from '@store/programStore';
+import { observer } from 'mobx-react';
 import { RedoOutlined, CloudDownloadOutlined } from '@ant-design/icons';
-
-interface DistributeCardProps {}
-
-interface DistributeCardInjected extends DistributeCardProps {
-  programStore: ProgramStore;
-}
+import { programStore } from './programStore';
 
 const ChartCard = (props: any) => {
   const style: React.CSSProperties = {
@@ -43,15 +37,10 @@ const ChartCard = (props: any) => {
   );
 };
 
-const DistributeCard: React.FC<DistributeCardProps> = props => {
-  const injected = () => {
-    return props as DistributeCardInjected;
-  };
+const DistributeCard: React.FC = () => {
   const {
-    programStore: {
-      getChartOption: { circleOption, barOption, cityOption, provinceOption, lineOption }
-    }
-  } = injected();
+    getChartOption: { circleOption, barOption, cityOption, provinceOption, lineOption }
+  } = programStore;
 
   return (
     <Fragment>
@@ -80,4 +69,4 @@ const DistributeCard: React.FC<DistributeCardProps> = props => {
   );
 };
 
-export default inject('programStore')(observer(DistributeCard));
+export default observer(DistributeCard);

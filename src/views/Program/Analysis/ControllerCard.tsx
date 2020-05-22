@@ -1,21 +1,11 @@
 import React from 'react';
 import { Card, Select, Button, DatePicker, Switch } from 'antd';
-import { observer, inject } from 'mobx-react';
-import ProgramStore from '@store/programStore';
+import { observer } from 'mobx-react';
 import { FilterOutlined, QuestionCircleOutlined } from '@ant-design/icons';
-
-interface ControllerInjected {
-  programStore: ProgramStore;
-}
+import { programStore } from './programStore';
 
 const { Option } = Select;
-const Controller: React.FC = props => {
-  const injected = () => {
-    return props as ControllerInjected;
-  };
-
-  const { programStore } = injected();
-
+const Controller: React.FC = () => {
   const getOptions = () => {
     return Array(5)
       .fill(1)
@@ -92,4 +82,4 @@ const Controller: React.FC = props => {
   );
 };
 
-export default inject('programStore')(observer(Controller));
+export default observer(Controller);
