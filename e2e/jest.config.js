@@ -1,5 +1,5 @@
 const path = require('path');
-const config = require('../../jest.config');
+const config = require('../jest.config');
 
 module.exports = Object.assign({}, config, {
   rootDir: path.resolve(__dirname, '../../'),
