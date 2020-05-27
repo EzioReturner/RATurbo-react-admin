@@ -70,7 +70,7 @@ class LayoutStore {
   constructor() {
     this.initLayoutStatus();
     this.addWindowEvent();
-    this.changeStatus();
+    this.changeViewport();
     this.initMenu();
   }
 
@@ -78,13 +78,13 @@ class LayoutStore {
     window.addEventListener(
       'resize',
       debounce(() => {
-        this.changeStatus();
+        this.changeViewport();
       })
     );
   }
 
   @computed
-  get authPopRoute() {
+  get authRedirect() {
     const [, app] = this.routeConfig;
     const appRoutes = app.routes;
     if (appRoutes) {
@@ -141,19 +141,18 @@ class LayoutStore {
 
   // 初始化菜单
   @action initMenu(): void {
-    this.routeConfig = [constantRouteConfig.app];
-    this.setMenu();
-  }
-
-  // 动态设置路由方法
-  @action setMenu(): void {
     const { app, user } = constantRouteConfig;
     app.routes = asyncRouteConfig;
     this.routeConfig = [user, app];
   }
 
+  // 动态设置路由方法
+  @action setMenu(menu: Array<RouteRoot>): void {
+    this.routeConfig = menu;
+  }
+
   // 响应分辨率
-  @action changeStatus(): void {
+  @action changeViewport(): void {
     const info: any = isMobile(navigator.userAgent);
     this.layoutStatus.isMobile = info.any;
     this.layoutStatus.isMobile && this.toggleCollapsed(true);
@@ -255,35 +254,6 @@ class LayoutStore {
   // 调整视觉风格
   @action changeLayoutVision = () => {
     const { visionTheme, currentColor } = this.layoutStatus;
-    document.body.style.setProperty(
-      '--body-background',
-      visionTheme === 'dark' ? '#0a0a0a' : '#f3f3f3'
-    );
-    document.body.style.setProperty(
-      '--navigator-background',
-      visionTheme === 'dark' ? '#222222' : '#ffffff'
-    );
-    document.body.style.setProperty(
-      '--popover-background',
-      visionTheme === 'dark' ? '#141414' : '#ffffff'
-    );
-    document.body.style.setProperty(
-      '--border-color',
-      visionTheme === 'dark' ? '#434343' : '#f2f2f2'
-    );
-    document.body.style.setProperty(
-      '--shadow-color',
-      visionTheme === 'dark' ? 'rgba(0, 0, 0, 0.45)' : 'rgba(189, 189, 189, 0.6)'
-    );
-    const _className = ['darkTheme', 'lightTheme'].reduce((total: string, _key: string) => {
-      if (total.indexOf(_key) >= 0) {
-        total = total.replace(_key, '');
-      }
-      return total;
-    }, cloneDeep(document.body.className));
-
-    document.body.className = (_className + ` ${visionTheme}Theme`).trim();
-
     window.less
       .modifyVars(
         Object.assign(
@@ -294,6 +264,34 @@ class LayoutStore {
         )
       )
       .then(() => {
+        document.body.style.setProperty(
+          '--body-background',
+          visionTheme === 'dark' ? '#0a0a0a' : '#f3f3f3'
+        );
+        document.body.style.setProperty(
+          '--navigator-background',
+          visionTheme === 'dark' ? '#222222' : '#ffffff'
+        );
+        document.body.style.setProperty(
+          '--popover-background',
+          visionTheme === 'dark' ? '#141414' : '#ffffff'
+        );
+        document.body.style.setProperty(
+          '--border-color',
+          visionTheme === 'dark' ? '#434343' : '#f2f2f2'
+        );
+        document.body.style.setProperty(
+          '--shadow-color',
+          visionTheme === 'dark' ? 'rgba(0, 0, 0, 0.45)' : 'rgba(189, 189, 189, 0.6)'
+        );
+        const _className = ['darkTheme', 'lightTheme'].reduce((total: string, _key: string) => {
+          if (total.indexOf(_key) >= 0) {
+            total = total.replace(_key, '');
+          }
+          return total;
+        }, cloneDeep(document.body.className));
+
+        document.body.className = (_className + ` ${visionTheme}Theme`).trim();
         console.log('sussess');
       });
     // }

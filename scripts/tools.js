@@ -12,20 +12,22 @@ const ExternalTemplate = {
     `import React, { Component } from 'react';\n` +
     `import PageWrapper from '@components/PageWrapper';\n` +
     `import FormatterLocale from '@components/FormatterLocale';\n` +
-    `import style from './index.module.scss';\n` +
+    `import style from './index.module.less';\n` +
     '\n' +
     `class ${upperName} extends Component {\n` +
-    '\t render() {\n' +
-    `\t\t return (<PageWrapper title={<FormatterLocale id="yourId" defaultMessage="${upperName}" />}>\n` +
-    `\t\t\t ${upperName} is at work\n` +
-    '\t\t </PageWrapper>);\n' +
-    '\t }\n' +
+    '\trender() {\n' +
+    '\t\treturn (\n' +
+    `\t\t<PageWrapper title={<FormatterLocale id="yourId" defaultMessage="${upperName}" />}>\n` +
+    `\t\t\t${upperName} is at work\n` +
+    '\t\t</PageWrapper>\n' +
+    '\t);\n' +
+    '\t}\n' +
     '}\n' +
     '\n' +
     `export default ${upperName};\n`,
   '-fc': upperName =>
     `import React from 'react';\n` +
-    `import style from './index.module.scss';\n` +
+    `import style from './index.module.less';\n` +
     '\n' +
     `interface ${upperName}Props {}\n` +
     '\n' +
@@ -41,7 +43,7 @@ function getTemplate(fileName, externalAction) {
   return ExternalTemplate[externalAction]
     ? ExternalTemplate[externalAction](fileName)
     : `import React, { Component } from 'react';\n` +
-        `import style from './index.module.scss';\n` +
+        `import style from './index.module.less';\n` +
         '\n' +
         `class ${upperName} extends Component {\n` +
         '\trender() {\n' +
@@ -63,7 +65,7 @@ async function createFile(createType, fileName, externalAction) {
     } else {
       await fs.mkdir(_path, () => {});
       await fs.writeFileSync(`${_path}/index.tsx`, getTemplate(upperName, externalAction));
-      await fs.writeFileSync(`${_path}/index.module.scss`, '');
+      await fs.writeFileSync(`${_path}/index.module.less`, '');
       console.log(`createType: ···${upperName}··· create finished`);
     }
   });

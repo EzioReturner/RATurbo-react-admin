@@ -5,12 +5,13 @@ import './pageWrapper.less';
 
 interface PageWrapperProps extends PageHeaderProps {
   hideHeader?: React.ReactNode;
+  style?: React.CSSProperties;
 }
 
 const PageWrapper: React.FC<PageWrapperProps> = props => {
-  const { hideHeader, children, ...restProps } = props;
+  const { hideHeader, children, style, ...restProps } = props;
   return (
-    <div className="RA-pageWrapper">
+    <div className="RA-pageWrapper" style={style}>
       {!hideHeader && <PageHeader {...restProps} />}
       <div className="RA-pageWrapper-body">{children}</div>
     </div>
