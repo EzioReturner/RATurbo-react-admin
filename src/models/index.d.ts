@@ -67,17 +67,3 @@ declare module '*.module.less' {
   const classes: { readonly [key: string]: string };
   export default classes;
 }
-
-declare interface StoreKeyValue {
-  [name: string]: StoreValue;
-}
-
-declare type StoreValue = any;
-
-declare const NODE_RA_ENV: string = 'development' | 'production';
-
-declare const REQUEST_SUCCESS: number = 0;
-
-declare interface Window {
-  less: any;
-}
