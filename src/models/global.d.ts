@@ -1,4 +1,18 @@
-export interface Breadcrumb {
+declare interface StoreKeyValue {
+  [name: string]: StoreValue;
+}
+
+declare type StoreValue = any;
+
+declare const NODE_RA_ENV: string = 'development' | 'production';
+
+declare const REQUEST_SUCCESS: number = 0;
+
+declare interface Window {
+  less: any;
+}
+
+declare interface Breadcrumb {
   name: string;
   path: string;
   display: boolean;
@@ -13,7 +27,7 @@ export interface Breadcrumb {
  * @extraContent 右侧额外内容
  * @logo logo
  */
-export interface PageHeaderProps {
+declare interface PageHeaderProps {
   hideBreadcrumb?: boolean;
   withoutHeaderBody?: boolean;
   title?: React.ReactNode;
@@ -21,6 +35,11 @@ export interface PageHeaderProps {
   content?: React.ReactNode;
   extraContent?: React.ReactNode;
   logo?: React.ReactNode;
+}
+
+declare interface PageWrapperProps extends PageHeaderProps {
+  hideHeader?: React.ReactNode;
+  style?: React.CSSProperties;
 }
 
 /**
@@ -36,12 +55,12 @@ export interface PageHeaderProps {
  * @meta 元信息
  * @loading 异步加载时间过长开启loading
  */
-export interface RouteChild {
+declare interface RouteChild {
   name?: string;
   icon?: React.ReactNode | string;
   path: string;
   authority?: string[] | string;
-  component?: string[];
+  component?: [string | React.ReactNode, string] | [string | React.ReactNode];
   routes?: RouteChild[];
   hideMenu?: boolean;
   exact?: boolean;
@@ -50,11 +69,11 @@ export interface RouteChild {
   loading?: boolean;
 }
 
-export interface RouteRoot {
+declare interface RouteRoot {
   name?: string;
   icon?: React.ReactNode | string;
   path?: string;
   authority?: string[] | string;
-  component?: string[];
+  component?: [string | React.ReactNode, string] | [string | React.ReactNode];
   routes?: RouteChild[];
 }

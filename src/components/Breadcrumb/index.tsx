@@ -3,7 +3,6 @@ import { observer, inject } from 'mobx-react';
 import { useLocation, useHistory } from 'react-router-dom';
 import { CloseOutlined } from '@ant-design/icons';
 import classNames from 'classnames';
-import { Breadcrumb } from '@/models/layout';
 import LayoutStore from '@store/layoutStore';
 import LocaleStore from '@store/localeStore';
 import './breadcrumb.less';
