@@ -19,3 +19,21 @@ export function useInterval(callback: Function, delay: number) {
     }
   }, [delay]);
 }
+
+// 截取当前路由的query
+// 传入key则读取指定key，查询不到返回null
+export function useLocationQuery(search: string, key?: string): string | StoreKeyValue | null {
+  if (key) {
+    return new URLSearchParams(search).get(key);
+  } else {
+    let _back: StoreKeyValue = {};
+    search
+      .replace(/^\?/, '')
+      .split('&')
+      .forEach(query => {
+        const [key, value] = query.split('=');
+        _back[key] = value;
+      });
+    return _back;
+  }
+}

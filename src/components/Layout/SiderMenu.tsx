@@ -153,12 +153,12 @@ const SiderMenu: React.FC = props => {
 
   // 生成菜单枝叶
   function getMenuItem(menu: RouteChild, parentName?: string) {
-    const { icon, name, path } = menu;
+    const { icon, name, path, search } = menu;
     const key = parentName ? `menu.${parentName}.${name}` : `menu.${name}`;
     const localName = localeObj[key] || name;
     return (
       <Link
-        to={path}
+        to={{ pathname: path, search }}
         replace
         onClick={() => {
           handleClickLink();

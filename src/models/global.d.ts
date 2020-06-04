@@ -67,6 +67,7 @@ declare interface RouteChild {
   redirect?: string;
   meta?: any;
   loading?: boolean;
+  search?: string;
 }
 
 declare interface RouteRoot {
