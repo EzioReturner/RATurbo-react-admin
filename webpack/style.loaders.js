@@ -5,8 +5,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
-const sassRegex = /\.(scss|sass)$/;
-const sassModuleRegex = /\.module\.(scss|sass)$/;
+// const sassRegex = /\.(scss|sass)$/;
+// const sassModuleRegex = /\.module\.(scss|sass)$/;
 const lessRegex = /\.less$/;
 const lessModuleRegex = /\.module\.less$/;
 const paths = require('./paths');
@@ -67,17 +67,6 @@ module.exports = function() {
         )
       });
     }
-    if (preProcessor === 'sass-loader') {
-      loaders.push({
-        loader: 'sass-resources-loader',
-        options: {
-          resources: [
-            _resolve('./src/styles/backup/color.scss'),
-            _resolve('./src/styles/backup/var.scss')
-          ]
-        }
-      });
-    }
     if (preProcessor === 'less-loader') {
       loaders.push({
         loader: 'sass-resources-loader',
@@ -112,32 +101,32 @@ module.exports = function() {
         }
       })
     },
-    {
-      test: sassRegex,
-      exclude: sassModuleRegex,
-      use: getStyleLoaders(
-        {
-          importLoaders: 2,
-          sourceMap: false
-        },
-        'sass-loader'
-      ),
-      sideEffects: true
-    },
-    {
-      test: sassModuleRegex,
-      use: getStyleLoaders(
-        {
-          importLoaders: 2,
-          sourceMap: false,
-          modules: {
-            mode: 'local',
-            localIdentName: '[local]--[hash:base64:5]'
-          }
-        },
-        'sass-loader'
-      )
-    },
+    // {
+    //   test: sassRegex,
+    //   exclude: sassModuleRegex,
+    //   use: getStyleLoaders(
+    //     {
+    //       importLoaders: 2,
+    //       sourceMap: false
+    //     },
+    //     'sass-loader'
+    //   ),
+    //   sideEffects: true
+    // },
+    // {
+    //   test: sassModuleRegex,
+    //   use: getStyleLoaders(
+    //     {
+    //       importLoaders: 2,
+    //       sourceMap: false,
+    //       modules: {
+    //         mode: 'local',
+    //         localIdentName: '[local]--[hash:base64:5]'
+    //       }
+    //     },
+    //     'sass-loader'
+    //   )
+    // },
     {
       test: lessRegex,
       exclude: lessModuleRegex,
