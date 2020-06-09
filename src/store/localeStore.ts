@@ -1,11 +1,12 @@
 import { observable, configure, action } from 'mobx';
+import { usei18n } from '@config/setting';
 
 configure({ enforceActions: 'observed' });
 class LocaleStore {
   @observable locale: string = localStorage.getItem('RA-locale') || 'zh';
   @observable localeObj: any = {};
   constructor() {
-    this.initLocaleList();
+    usei18n && this.initLocaleList();
   }
 
   async initLocaleList(): Promise<any> {
