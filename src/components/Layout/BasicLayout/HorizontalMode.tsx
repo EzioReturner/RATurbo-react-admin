@@ -33,7 +33,7 @@ const HorizontalMode: React.FC<LayoutProps> = props => {
       {showHeader && (_headr || <Header {...rest} />)}
       <div className="RA-basicLayout-horizontal-wrapper">
         {props.children}
-        {copyright.length > 0 && <Footer propStyle={{ marginTop: '16px' }} />}
+        {copyright && <Footer propStyle={{ marginTop: '16px' }} />}
       </div>
       <Loading {...loadingOptions} />
     </div>

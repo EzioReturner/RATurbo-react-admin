@@ -4,7 +4,6 @@ import { Redirect, useLocation } from 'react-router-dom';
 import LayoutSetting from '@components/LayoutSetting';
 import { observer, inject } from 'mobx-react';
 import LayoutStore from '@store/layoutStore';
-import { useLayoutSetting } from '@config/setting';
 import BasicLayout from '@components/Layout/BasicLayout';
 import { getRouteAuthority } from '@utils/authorityTools';
 import Loading from '@components/Loading';
@@ -59,7 +58,7 @@ const MainSkeleton: React.FC<MainSkeletonProps> = props => {
           {Content}
         </BasicLayout>
       </main>
-      {!isMobile && useLayoutSetting && <LayoutSetting />}
+      {!isMobile && <LayoutSetting />}
     </Authorized>
   );
 };

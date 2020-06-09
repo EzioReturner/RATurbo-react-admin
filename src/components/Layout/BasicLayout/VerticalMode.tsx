@@ -49,7 +49,7 @@ const VerticalMode: React.FC<LayoutProps> = props => {
         {showHeader && (_headr || <Header />)}
         <div className="RA-basicLayout-wrapper-content">
           {props.children}
-          {copyright.length > 0 && <Footer propStyle={{ margin: '16px 0' }} />}
+          {copyright && <Footer propStyle={{ margin: '16px 0' }} />}
         </div>
       </div>
     </>
@@ -88,7 +88,7 @@ const VerticalMode: React.FC<LayoutProps> = props => {
             {IconCollapsed}
           </div>
         )}
-        {copyright.length > 0 && <Footer propStyle={{ alignSelf: 'flex-end' }} />}
+        {copyright && <Footer propStyle={{ alignSelf: 'flex-end' }} />}
       </div>
     </>
   );
