@@ -1,4 +1,4 @@
-import { asyncRouteConfig } from '../config/router.config';
+import { asyncRouteConfig } from '../src/config/router.config';
 
 const BASE_URL = `http://localhost:${process.env.PORT || 9527}`;
 
@@ -38,20 +38,4 @@ describe('mainLayout', () => {
   routes.forEach(route => {
     it(`test pages ${route}`, testPage(route));
   });
-
-  // it('test layout header display', async () => {
-  //   await page.goto(`${BASE_URL}/#/`);
-  //   await page.waitFor(1000);
-  //   await page.evaluate(() => document.getElementById('setting_setShowHeader').click());
-  //   const havHeader = await page.evaluate(() => document.getElementsByTagName('header').length > 0);
-  //   expect(havHeader).toBeFalsy();
-  // });
-
-  // it('test layout menu display', async () => {
-  //   await page.goto(`${BASE_URL}/#/`);
-  //   await page.waitFor(1000);
-  //   await page.evaluate(() => document.getElementById('setting_setshowSiderBar').click());
-  //   const havMenu = await page.evaluate(() => document.getElementsByTagName('aside').length > 0);
-  //   expect(havMenu).toBeFalsy();
-  // });
 });
