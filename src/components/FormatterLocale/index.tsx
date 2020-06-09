@@ -5,7 +5,7 @@ import LocaleStore from '@store/localeStore';
 interface FormatterProps {
   id: string;
   defaultMessage?: React.ReactNode;
-  style?: React.CSSProperties;
+  propStyle?: React.CSSProperties;
   className?: string;
 }
 
@@ -17,13 +17,13 @@ const FormatterLocale: React.FC<FormatterProps> = props => {
   const {
     id,
     defaultMessage,
-    style,
+    propStyle,
     className,
     localeStore: { localeObj }
   } = props as InjectedProps;
 
   return (
-    <span style={style} className={className}>
+    <span style={propStyle} className={className}>
       {localeObj[id] || defaultMessage}
     </span>
   );

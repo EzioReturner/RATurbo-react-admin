@@ -13,13 +13,13 @@ import {
 export const constantRouteConfig: { app: RouteRoot; user: RouteRoot } = {
   app: {
     path: '/',
-    component: ['/layout/BasicLayout', 'fadeRA'],
+    component: ['/skeleton/Main', 'fadeRA'],
     authority: ['admin', 'guest'],
     routes: []
   },
   user: {
     path: '/user',
-    component: ['/layout/UserLayout', 'fadeRA'],
+    component: ['/skeleton/User', 'fadeRA'],
     routes: [
       {
         name: 'Login',

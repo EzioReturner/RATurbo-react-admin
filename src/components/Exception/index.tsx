@@ -8,6 +8,7 @@ interface ExceptionProps {
   errorCode: React.ReactNode;
   title: React.ReactNode;
   subTitle?: React.ReactNode;
+  propStyle?: React.CSSProperties;
 }
 
 const Exception: React.FC<ExceptionProps> = props => {
@@ -16,9 +17,9 @@ const Exception: React.FC<ExceptionProps> = props => {
     history.push('/dashboard');
   };
 
-  const { errorCode, title, subTitle } = props;
+  const { errorCode, title, subTitle, propStyle } = props;
   return (
-    <div className="RA-exception">
+    <div className="RA-exception" style={propStyle}>
       <h1>{errorCode}</h1>
       <p>{title}</p>
       <div>

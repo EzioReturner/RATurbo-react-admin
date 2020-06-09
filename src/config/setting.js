@@ -9,6 +9,7 @@ module.exports = {
   layoutMode: 'split',
   navigateMode: 'vertical',
   contentAreaWidthMode: 'max-width',
+  useLayoutSetting: true,
   usei18n: true,
   useSiteIcon: true,
   i18n: {

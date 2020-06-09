@@ -1,15 +1,16 @@
 import React from 'react';
 import { Drawer } from 'antd';
 import SiderMenu from './SiderMenu';
+import { LayoutProps } from '../types';
 
-interface NavigaterProps {
+interface NavigaterProps extends LayoutProps {
   isMobile: boolean;
   collapsed: boolean;
   toggleCollapsed: Function;
 }
 
 const Navigater: React.FC<NavigaterProps> = props => {
-  const { isMobile, collapsed, toggleCollapsed } = props;
+  const { isMobile, collapsed, toggleCollapsed, ...rest } = props;
   return isMobile ? (
     <Drawer
       visible={!collapsed}
@@ -24,10 +25,10 @@ const Navigater: React.FC<NavigaterProps> = props => {
         padding: 0
       }}
     >
-      <SiderMenu />
+      <SiderMenu {...rest} />
     </Drawer>
   ) : (
-    <SiderMenu />
+    <SiderMenu {...rest} />
   );
 };
 

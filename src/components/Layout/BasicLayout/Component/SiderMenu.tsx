@@ -21,7 +21,7 @@ interface InjectedProps {
 const { SubMenu } = Menu;
 let isInitMenuOpen = false;
 
-const SiderMenu: React.FC = props => {
+const SiderMenu: React.FC<{ siderBar?: React.ReactNode; siteLogo?: React.ReactNode }> = props => {
   const [openKeys, setOpenKeys] = useState<any[]>([]);
 
   const location = useLocation();
@@ -194,7 +194,7 @@ const SiderMenu: React.FC = props => {
     !collapsed && (menuProps.openKeys = openKeys);
   }
 
-  const RAMenu = (
+  const RAMenu = props.siderBar || (
     <Menu
       className={classNames(
         'RA-menu',
@@ -221,14 +221,15 @@ const SiderMenu: React.FC = props => {
         isDarkTheme && 'RA-navigator-darkTheme'
       )}
     >
-      {!isInlineLayout && (
-        <SiteDetail
-          inlineLayout={isInlineLayout}
-          horizontalNavigator={false}
-          darkTheme={isDarkTheme}
-          collapsed={collapsed}
-        />
-      )}
+      {!isInlineLayout &&
+        (props.siteLogo || (
+          <SiteDetail
+            inlineLayout={isInlineLayout}
+            horizontalNavigator={false}
+            darkTheme={isDarkTheme}
+            collapsed={collapsed}
+          />
+        ))}
       {RAMenu}
     </aside>
   );
