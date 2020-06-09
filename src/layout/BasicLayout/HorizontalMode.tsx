@@ -6,6 +6,7 @@ import classNames from 'classnames';
 import { Header } from '@components/Layout';
 import Footer from '@components/Footer';
 import ViewContent from './ViewContent';
+import { copyright } from '@config/setting';
 
 // 顶部导航栏模式
 const HorizontalMode: React.FC<{ route: RouteRoot }> = props => {
@@ -30,7 +31,7 @@ const HorizontalMode: React.FC<{ route: RouteRoot }> = props => {
       {showHeader && <Header />}
       <div className="RA-basicLayout-horizontal-wrapper">
         <ViewContent {...props} />
-        <Footer propStyle={{ marginTop: '16px' }} />
+        {copyright.length > 0 && <Footer propStyle={{ marginTop: '16px' }} />}
       </div>
       <Loading {...loadingOptions} />
     </div>

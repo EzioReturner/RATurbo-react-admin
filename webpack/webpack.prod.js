@@ -12,6 +12,7 @@ const safePostCssParser = require('postcss-safe-parser');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const InlineSourcePlugin = require('html-webpack-inline-source-plugin');
+const setting = require('../src/config/setting');
 
 const { module: _module, plugins } = baseConfig;
 
@@ -171,7 +172,8 @@ module.exports = function() {
 
       new InterpolateHtmlPlugin({
         NODE_ENV: 'production',
-        PUBLIC_URL: paths.servedPath.slice(0, -1)
+        PUBLIC_URL: paths.servedPath.slice(0, -1),
+        SITE_NAME: setting.siteName
       }),
 
       new MiniCssExtractPlugin({

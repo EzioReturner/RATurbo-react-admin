@@ -5,6 +5,7 @@ const baseConfig = require('./webpack.config');
 const styleLoaders = require('./style.loaders');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const InterpolateHtmlPlugin = require('interpolate-html-plugin');
+const setting = require('../src/config/setting');
 
 const { module: _module, plugins } = baseConfig;
 function _resolve(track) {
@@ -88,7 +89,8 @@ module.exports = Object.assign(baseConfig, {
 
     new InterpolateHtmlPlugin({
       NODE_ENV: 'development',
-      PUBLIC_URL: ''
+      PUBLIC_URL: '',
+      SITE_NAME: setting.siteName
     })
   ]
 });

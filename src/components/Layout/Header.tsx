@@ -7,6 +7,8 @@ import LayoutStore from '@store/layoutStore';
 import SiteDetail from './SiteDetail';
 import TopMenu from './SiderMenu';
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
+import { usei18n } from '@config/setting';
+
 interface InjectedProps {
   layoutStore: LayoutStore;
 }
@@ -35,7 +37,7 @@ const Header: React.FC = props => {
       {showSiderBar && !isInlineLayout && IconCollapsed}
       <div className="RA-header-rightPlace">
         <UserInfo />
-        <SelectLang />
+        {usei18n && <SelectLang />}
       </div>
     </>
   );
@@ -92,7 +94,7 @@ const Header: React.FC = props => {
         </div>
         <div className="RA-header-rightPlace">
           <UserInfo />
-          <SelectLang />
+          {usei18n && <SelectLang />}
         </div>
       </div>
     </header>

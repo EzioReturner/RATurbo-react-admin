@@ -7,6 +7,7 @@ import { Header, Navigator } from '@components/Layout';
 import Loading from '@components/Loading';
 import Footer from '@components/Footer';
 import ViewContent from './ViewContent';
+import { copyright } from '@config/setting';
 
 // 左侧导航栏模式
 const VerticalMode: React.FC<{ route: RouteRoot }> = props => {
@@ -39,7 +40,7 @@ const VerticalMode: React.FC<{ route: RouteRoot }> = props => {
         {showHeader && <Header />}
         <div className="RA-basicLayout-wrapper-content">
           <ViewContent {...props} />
-          <Footer propStyle={{ marginBottom: '16px' }} />
+          {copyright.length > 0 && <Footer propStyle={{ marginBottom: '16px' }} />}
         </div>
       </div>
     </>
@@ -78,7 +79,7 @@ const VerticalMode: React.FC<{ route: RouteRoot }> = props => {
             {IconCollapsed}
           </div>
         )}
-        <Footer propStyle={{ alignSelf: 'flex-end' }} />
+        {copyright.length > 0 && <Footer propStyle={{ alignSelf: 'flex-end' }} />}
       </div>
     </>
   );
