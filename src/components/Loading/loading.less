@@ -28,14 +28,14 @@
 
   &.RA-loading-fixed {
     left: 220px;
-    top: 60px;
+    top: @layout-header-height;
     bottom: 0;
     right: 0;
     position: fixed;
 
     &.RA-loading-collapsed {
       transition: none;
-      left: 80px;
+      left: @layout-menu-collapsed-width;
     }
   }
 
@@ -60,8 +60,8 @@
 }
 
 #RA-loading-content-circle {
-  height: 80px;
-  width: 80px;
+  height: @layout-menu-collapsed-width;
+  width: @layout-menu-collapsed-width;
   background-image: linear-gradient(to right, var(--primary-lightener) 25%, var(--primary-darken));
   border-radius: 50%;
   padding: 5px;
@@ -125,7 +125,7 @@
   }
 
   .RA-loading-content-text {
-    width: 80px;
+    width: @layout-menu-collapsed-width;
     font-size: 14px;
   }
 }

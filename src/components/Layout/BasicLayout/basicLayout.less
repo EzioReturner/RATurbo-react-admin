@@ -25,10 +25,10 @@
   &.RA-basicLayout-inlineMode {
     &.RA-basicLayout-fixSiderBar {
       .RA-basicLayout-wrapper {
-        padding-left: 255px;
+        padding-left: @layout-menu-width;
 
         &.RA-basicLayout-wrapper-collapsed {
-          padding-left: 80px;
+          padding-left: @layout-menu-collapsed-width;
         }
 
         // &.RA-basicLayout-wrapper-customSiderBar {
@@ -60,7 +60,7 @@
   }
 
   .RA-basicLayout-wrapper-viewMain {
-    padding: @spacing-large;
+    padding: @layout-padding;
     flex: auto;
     overflow-y: auto;
   }
@@ -88,7 +88,7 @@
     .RA-basicLayout-inlineMode-footer-icon {
       position: absolute;
       height: 28px;
-      width: 255px;
+      width: @layout-menu-width;
       top: 0;
       left: 0;
       display: flex;
@@ -102,7 +102,7 @@
       }
 
       &.RA-basicLayout-inlineMode-footer-collapsed {
-        width: 80px;
+        width: @layout-menu-collapsed-width;
       }
     }
   }
@@ -125,7 +125,7 @@
       position: fixed;
     }
     .RA-basicLayout-horizontal-wrapper {
-      padding-top: 60px + @spacing-large;
+      padding-top: @layout-header-height + @spacing-large;
     }
   }
 
@@ -139,11 +139,11 @@
   }
 
   .RA-basicLayout-horizontal-wrapper {
-    padding: @spacing-large;
+    padding: @layout-padding;
 
     .RA-basicLayout-wrapper-viewMain {
       margin: 0 auto;
-      max-width: 1250px;
+      max-width: @layout-content-max-width;
     }
   }
 }

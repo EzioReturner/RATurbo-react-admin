@@ -6,10 +6,10 @@
   transition: all 0.2s;
   display: flex;
   flex-flow: column;
-  flex: 0 0 255px;
-  max-width: 255px;
-  min-width: 255px;
-  width: 255px;
+  flex: 0 0 @layout-menu-width;
+  max-width: @layout-menu-width;
+  min-width: @layout-menu-width;
+  width: @layout-menu-width;
   position: relative;
   overflow: hidden;
 
@@ -21,15 +21,15 @@
   }
 
   &.RA-navigator-collapsed {
-    flex: 0 0 80px;
-    max-width: 80px;
-    min-width: 80px;
-    width: 80px;
+    flex: 0 0 @layout-menu-collapsed-width;
+    max-width: @layout-menu-collapsed-width;
+    min-width: @layout-menu-collapsed-width;
+    width: @layout-menu-collapsed-width;
   }
 
   &.RA-inlineLayout-navigator {
     &.RA-navigator-fixSiderBar {
-      top: 60px;
+      top: @layout-header-height;
       height: calc(100vh - 88px);
       min-height: unset;
     }
@@ -62,14 +62,14 @@
 
   &.RA-menu-horizontal {
     margin-top: 0;
-    line-height: 60px;
-    height: 60px;
+    line-height: @layout-header-height;
+    height: @layout-header-height;
 
     .RA-antd-subMenu-title,
     .RA-antd-menuItem-title {
       border: 0 !important;
       height: 100%;
-      line-height: 60px;
+      line-height: @layout-header-height;
       top: 0px !important;
     }
 
@@ -79,7 +79,7 @@
 
     .RA-antd-subMenu-title {
       & > div {
-        height: 60px;
+        height: @layout-header-height;
       }
     }
   }

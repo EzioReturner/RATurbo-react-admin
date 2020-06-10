@@ -220,7 +220,7 @@ class LayoutStore {
   @action addInitializer(initializer: string, loading: boolean = false): void {
     this.readyInitializers.push(initializer);
     loading && this.ctrlSpinning({ spinning: true });
-    NProgress.start();
+    this.ctrlProgress(true);
   }
 
   // 检查是否已加载过
