@@ -120,7 +120,7 @@ class LayoutStore {
   }
 
   @action initLayoutStatus() {
-    const status = localStorage.getItem('RA-layoutStatus');
+    const status = window.localStorage.getItem('RA-layoutStatus');
     if (status) {
       const _status = JSON.parse(status);
       if (
@@ -153,6 +153,8 @@ class LayoutStore {
 
   // 响应分辨率
   @action changeViewport(): void {
+    if (navigator.userAgent.indexOf('jsdom') >= 0) return;
+
     const info: any = isMobile(navigator.userAgent);
     this.layoutStatus.isMobile = info.any;
     this.layoutStatus.isMobile && this.toggleCollapsed(true);
@@ -248,7 +250,7 @@ class LayoutStore {
         this.changeLayoutVision();
       }, 0);
     }
-    localStorage.setItem('RA-layoutStatus', JSON.stringify(this.layoutStatus));
+    window.localStorage.setItem('RA-layoutStatus', JSON.stringify(this.layoutStatus));
   };
 
   // 调整视觉风格

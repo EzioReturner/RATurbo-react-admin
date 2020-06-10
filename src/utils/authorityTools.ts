@@ -4,7 +4,8 @@
  * @return {authority} {Array<string>} 权限结果
  */
 export function getAuthority(str?: string | string[]) {
-  const authorityString = typeof str === 'undefined' ? localStorage.getItem('RA-authority') : str;
+  const authorityString =
+    typeof str === 'undefined' ? window.localStorage.getItem('RA-authority') : str;
   let authority;
   try {
     // @ts-ignore
@@ -24,12 +25,12 @@ export function getAuthority(str?: string | string[]) {
  */
 export function setAuthority(authority: string | string[]) {
   const proAuthority = typeof authority === 'string' ? [authority] : authority;
-  localStorage.setItem('RA-authority', JSON.stringify(proAuthority));
+  window.localStorage.setItem('RA-authority', JSON.stringify(proAuthority));
 }
 
 // 清除权限
 export function clearAuthority() {
-  localStorage.removeItem('RA-authority');
+  window.localStorage.removeItem('RA-authority');
 }
 
 /**

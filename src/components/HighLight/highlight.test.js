@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import HighLight from '../HighLight';
+import HighLight from './index';
 
 describe('Highlight', () => {
   const Element =

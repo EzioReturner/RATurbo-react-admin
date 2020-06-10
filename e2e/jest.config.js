@@ -3,5 +3,5 @@ const config = require('../jest.config');
 
 module.exports = Object.assign({}, config, {
   rootDir: path.resolve(__dirname, '../'),
-  testRegex: './highlight\\.test\\.js$'
+  testRegex: './*\\.e2e\\.js$'
 });

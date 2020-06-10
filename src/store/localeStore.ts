@@ -3,7 +3,7 @@ import { usei18n } from '@config/setting';
 
 configure({ enforceActions: 'observed' });
 class LocaleStore {
-  @observable locale: string = localStorage.getItem('RA-locale') || 'zh';
+  @observable locale: string = window.localStorage.getItem('RA-locale') || 'zh';
   @observable localeObj: any = {};
   constructor() {
     usei18n && this.initLocaleList();
@@ -16,7 +16,7 @@ class LocaleStore {
 
   @action setLocale(key: string): void {
     this.locale = key;
-    localStorage.setItem('RA-locale', key);
+    window.localStorage.setItem('RA-locale', key);
     window.location.reload();
   }
 

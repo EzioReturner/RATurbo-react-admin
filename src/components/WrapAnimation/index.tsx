@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import { inject, observer } from 'mobx-react';
-import LayoutStore from '@store/layoutStore';
 import 'animate.css';
 import '@styles/wrapAnimation.less';
 
@@ -15,24 +13,12 @@ interface WrapComponentProps {
   animate: string;
 }
 
-interface InjectedProps extends WrapComponentProps {
-  layoutStore: LayoutStore;
-}
-
 const WrapComponent: React.FC<WrapComponentProps> = props => {
-  function injected() {
-    return props as InjectedProps;
-  }
-  const {
-    layoutStore: { ctrlProgress, ctrlSpinning }
-  } = injected();
   const [animateIn, setAnimateIn] = useState(false);
 
   useEffect(() => {
     setAnimateIn(true);
-    ctrlSpinning({ spinning: false });
-    ctrlProgress(false);
-  }, [ctrlProgress, ctrlSpinning]);
+  }, []);
 
   function getAnimateWay(animate: string) {
     const [name, useAnimated] = animate.split('-');
@@ -57,4 +43,4 @@ const WrapComponent: React.FC<WrapComponentProps> = props => {
   );
 };
 
-export default inject('layoutStore')(observer(WrapComponent));
+export default WrapComponent;

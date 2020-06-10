@@ -1,4 +1,9 @@
 module.exports = {
+  env: {
+    development: {
+      plugins: [['import', { libraryName: 'antd', libraryDirectory: 'es', style: true }]]
+    }
+  },
   plugins: [
     '@babel/plugin-proposal-optional-chaining',
     [
@@ -8,8 +13,7 @@ module.exports = {
       }
     ],
     ['@babel/plugin-proposal-class-properties', { loose: true }],
-    'react-hot-loader/babel',
-    ['import', { libraryName: 'antd', libraryDirectory: 'es', style: true }]
+    'react-hot-loader/babel'
   ],
   presets: [
     ['@babel/preset-env', { targets: { browsers: 'last 2 versions' } }],
