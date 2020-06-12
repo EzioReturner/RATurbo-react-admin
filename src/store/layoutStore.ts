@@ -16,6 +16,7 @@ import { userStore } from './userStore';
 import intersection from 'lodash/intersection';
 import cloneDeep from 'lodash/cloneDeep';
 import { message } from 'antd';
+import { hex2rgb, rgb2hsl } from '@utils/tools';
 
 interface LoadingOptions {
   fixed?: boolean; // 只覆盖路由可视区域
@@ -256,36 +257,22 @@ class LayoutStore {
   // 调整视觉风格
   @action changeLayoutVision = () => {
     const { visionTheme, currentColor } = this.layoutStatus;
+
+    console.log(currentColor, hex2rgb(currentColor, 'number'));
+    let primaryColor = rgb2hsl(hex2rgb(currentColor, 'number') as number[]);
+
     window.less
       .modifyVars(
         Object.assign(
           {
-            '@primary-color': currentColor
+            '@primary-color': primaryColor
           },
           visionTheme === 'dark' ? defaultDarkTheme : defaultLightTheme
         )
       )
       .then(() => {
-        document.body.style.setProperty(
-          '--body-background',
-          visionTheme === 'dark' ? '#0a0a0a' : '#f3f3f3'
-        );
-        document.body.style.setProperty(
-          '--navigator-background',
-          visionTheme === 'dark' ? '#222222' : '#ffffff'
-        );
-        document.body.style.setProperty(
-          '--popover-background',
-          visionTheme === 'dark' ? '#141414' : '#ffffff'
-        );
-        document.body.style.setProperty(
-          '--border-color',
-          visionTheme === 'dark' ? '#434343' : '#f2f2f2'
-        );
-        document.body.style.setProperty(
-          '--shadow-color',
-          visionTheme === 'dark' ? 'rgba(0, 0, 0, 0.45)' : 'rgba(189, 189, 189, 0.6)'
-        );
+        document.body.style.setProperty('--primary', currentColor);
+
         const _className = ['darkTheme', 'lightTheme'].reduce((total: string, _key: string) => {
           if (total.indexOf(_key) >= 0) {
             total = total.replace(_key, '');

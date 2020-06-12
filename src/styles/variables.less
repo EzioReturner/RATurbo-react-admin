@@ -1,9 +1,6 @@
 @import '~antd/lib/style/themes/default.less';
 
 @primary-color: #fb4491;
-@heading-color: rgba(0, 0, 0, 0.85); // 标题色
-@text-color: rgba(0, 0, 0, 0.65); // 主文本色
-@text-color-secondary: rgba(0, 0, 0, 0.45); // 次文本色
 @disabled-color: rgba(0, 0, 0, 0.25); // 失效色
 @component-background: #ffffff; // 组件背景色
 @border-color-base: hsv(0, 0, 85%); // base border outline a component
@@ -15,21 +12,7 @@
 @background-color-light: hsv(0, 0, 98%);
 @background-color-base: hsv(0, 0, 96%);
 
-:root,
 body {
-  --body-background: #f3f3f3;
-  --navigator-background: #ffffff;
-  --popover-background: #ffffff;
-  --component-background: @component-background;
-
-  --text-color: @text-color;
-  --text-color-secondary: @text-color-secondary;
-  --heading-color: @heading-color;
-
-  --border-color: #f2f2f2;
-  --shadow-color: rgba(189, 189, 189, 0.6);
-
-  --primary: @primary-color;
   --primary-lighten: lighten(@primary-color, 8%);
   --primary-lightener: lighten(@primary-color, 20%);
   --primary-lightener-extra: lighten(@primary-color, 33.5%);

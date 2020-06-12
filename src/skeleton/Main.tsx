@@ -7,6 +7,7 @@ import LayoutStore from '@store/layoutStore';
 import BasicLayout from '@components/Layout/BasicLayout';
 import { getRouteAuthority } from '@utils/authorityTools';
 import Loading from '@components/Loading';
+import { hot } from 'react-hot-loader';
 
 const Exception403 = React.lazy(() => import(/* webpackChunkName: "403" */ '@views/Exception/403'));
 

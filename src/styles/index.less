@@ -13,6 +13,11 @@ body,
   height: 100%;
 }
 
+:root,
+body {
+  font-weight: 500;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -22,11 +27,29 @@ body {
     Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
     monospace;
-}
 
-:root,
-body {
-  font-weight: 500;
+  --primary: #fb4491;
+  --component-background: #ffffff;
+  --body-background: #f3f3f3;
+  --navigator-background: #ffffff;
+  --popover-background: #ffffff;
+  --text-color: rgba(0, 0, 0, 0.65);
+  --text-color-secondary: rgba(0, 0, 0, 0.45);
+  --heading-color: rgba(0, 0, 0, 0.85);
+  --border-color: #f2f2f2;
+  --shadow-color: rgba(189, 189, 189, 0.6);
+
+  &.darkTheme {
+    --text-color: rgba(255, 255, 255, 0.65);
+    --text-color-secondary: rgba(255, 255, 255, 0.45);
+    --heading-color: rgba(255, 255, 255, 0.85);
+    --body-background: #0c0c0c;
+    --navigator-background: #222222;
+    --popover-background: #2a2a2a;
+    --component-background: #1d1d1d;
+    --border-color: #434343;
+    --shadow-color: rgba(0, 0, 0, 0.45);
+  }
 }
 
 ul,
