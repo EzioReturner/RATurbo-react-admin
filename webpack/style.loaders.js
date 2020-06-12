@@ -1,5 +1,4 @@
 const path = require('path');
-const setting = require('../src/config/setting');
 const postcssNormalize = require('postcss-normalize');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -61,7 +60,9 @@ module.exports = function() {
           preProcessor === 'less-loader'
             ? {
                 javascriptEnabled: true,
-                modifyVars: setting.theme
+                modifyVars: {
+                  '@font-size-base': '13px'
+                }
               }
             : undefined
         )
@@ -73,7 +74,8 @@ module.exports = function() {
         options: {
           resources: [
             _resolve('./src/styles/mainVars.less'),
-            _resolve('./src/styles/customClass.less')
+            _resolve('./src/styles/customClass.less'),
+            _resolve('./src/styles/variables.less')
           ]
         }
       });

@@ -124,7 +124,12 @@ module.exports = {
         '@select-selection-item-bg',
         '@item-hover-bg',
         '@background-color-light',
-        '@background-color-base'
+        '@background-color-base',
+        '@border-radius-base',
+        '@success-color',
+        '@warning-color',
+        '@error-color',
+        '@processing-color'
       ],
       indexFileName: './public/index.html',
       generateOnce: false

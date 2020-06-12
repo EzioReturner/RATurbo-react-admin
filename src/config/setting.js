@@ -42,16 +42,6 @@ module.exports = {
     '#b66dff',
     '#71669e'
   ],
-  theme: {
-    '@primary-color': '#fb4491',
-    '@link-color': '#fb4491',
-    '@border-radius-base': '2px',
-    '@font-size-base': '13px',
-    '@success-color': '#00ce68',
-    '@warning-color': '#ffaf00',
-    '@error-color': '#e65251',
-    '@processing-color': '#308ee0'
-  },
   defaultDarkTheme: {
     '@component-background': '#1d1d1d',
     '@text-color': 'fade(@white, 65%)',

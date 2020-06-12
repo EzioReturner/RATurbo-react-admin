@@ -7,16 +7,13 @@ import {
   useHeader,
   layoutMode,
   navigateMode,
-  contentAreaWidthMode,
-  defaultDarkTheme,
-  defaultLightTheme
+  contentAreaWidthMode
 } from '@config/setting';
 import { constantRouteConfig, asyncRouteConfig } from '@config/router.config';
 import { userStore } from './userStore';
 import intersection from 'lodash/intersection';
-import cloneDeep from 'lodash/cloneDeep';
 import { message } from 'antd';
-import { hex2rgb, rgb2hsl } from '@utils/tools';
+import { changeTheme } from '@utils/theme';
 
 interface LoadingOptions {
   fixed?: boolean; // 只覆盖路由可视区域
@@ -257,33 +254,7 @@ class LayoutStore {
   // 调整视觉风格
   @action changeLayoutVision = () => {
     const { visionTheme, currentColor } = this.layoutStatus;
-
-    console.log(currentColor, hex2rgb(currentColor, 'number'));
-    let primaryColor = rgb2hsl(hex2rgb(currentColor, 'number') as number[]);
-
-    window.less
-      .modifyVars(
-        Object.assign(
-          {
-            '@primary-color': primaryColor
-          },
-          visionTheme === 'dark' ? defaultDarkTheme : defaultLightTheme
-        )
-      )
-      .then(() => {
-        document.body.style.setProperty('--primary', currentColor);
-
-        const _className = ['darkTheme', 'lightTheme'].reduce((total: string, _key: string) => {
-          if (total.indexOf(_key) >= 0) {
-            total = total.replace(_key, '');
-          }
-          return total;
-        }, cloneDeep(document.body.className));
-
-        document.body.className = (_className + ` ${visionTheme}Theme`).trim();
-        console.log('sussess');
-      });
-    // }
+    changeTheme(visionTheme, currentColor);
   };
 
   // 设置打开的菜单

@@ -163,7 +163,7 @@ export function rgb2hsl(rgb: number[], type: 'format' | 'number' = 'format') {
  */
 export function hsl2lighten(hsl: number[], amount: number) {
   const [h, s, l] = hsl;
-  return [h, s, Math.round(l + amount)];
+  return `hsl(${h}, ${s}%, ${Math.round(l + amount)}%)`;
 }
 
 /**
@@ -173,5 +173,5 @@ export function hsl2lighten(hsl: number[], amount: number) {
  */
 export function hsl2darken(hsl: number[], amount: number) {
   const [h, s, l] = hsl;
-  return [h, s, Math.round(l - amount)];
+  return `hsl(${h}, ${s}%, ${Math.round(l - amount)}%)`;
 }
