@@ -157,7 +157,7 @@ export function rgb2hsl(rgb: number[], type: 'format' | 'number' = 'format') {
 }
 
 /**
- * hsl 增加
+ * hsl 增加亮度
  * @param hsl 颜色值
  * @param amount 亮度值
  */
@@ -174,4 +174,44 @@ export function hsl2lighten(hsl: number[], amount: number) {
 export function hsl2darken(hsl: number[], amount: number) {
   const [h, s, l] = hsl;
   return `hsl(${h}, ${s}%, ${Math.round(l - amount)}%)`;
+}
+
+/**
+ * hsl 改变透明度
+ * @param hsl 颜色值
+ * @param amount 透明度度值
+ */
+export function hsl2fade(hsl: number[], amount: number) {
+  const [h, s, l] = hsl;
+  return `hsla(${h}, ${s}%, ${l}%, ${amount})`;
+}
+
+export function color2tint(color: number[], amount: number = 0.5) {
+  return color2mix([255, 255, 255], color, amount);
+}
+
+/**
+ * 颜色混合
+ * @param color1 第一个颜色rgb值
+ * @param color2 第二个颜色rgb值
+ * @param amount 第一个颜色的占比值 默认50%，0.5
+ */
+export function color2mix(color1: number[], color2: number[], amount: number = 0.5) {
+  let weight = 1 - amount;
+  let [r1, g1, b1, alpha1] = color1;
+  let [r2, g2, b2, alpha2] = color2;
+
+  let alpha;
+  if (alpha1 || alpha2) {
+    alpha = alpha1 * amount + alpha2 * weight;
+  }
+  let r = Math.floor(r1 * amount + r2 * weight),
+    g = Math.floor(g1 * amount + g2 * weight),
+    b = Math.floor(b1 * amount + b2 * weight);
+
+  if (alpha) {
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+  } else {
+    return `rgb(${r}, ${g}, ${b})`;
+  }
 }
