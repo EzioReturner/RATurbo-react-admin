@@ -28,14 +28,14 @@
 
   &.RA-loading-fixed {
     left: 220px;
-    top: @layout-header-height;
+    top: @RA-layout-header-height;
     bottom: 0;
     right: 0;
     position: fixed;
 
     &.RA-loading-collapsed {
       transition: none;
-      left: @layout-menu-collapsed-width;
+      left: @RA-layout-menu-collapsed-width;
     }
   }
 
@@ -60,8 +60,8 @@
 }
 
 #RA-loading-content-circle {
-  height: @layout-menu-collapsed-width;
-  width: @layout-menu-collapsed-width;
+  height: @RA-layout-menu-collapsed-width;
+  width: @RA-layout-menu-collapsed-width;
   background-image: linear-gradient(to right, var(--primary-lightener) 25%, var(--primary-darken));
   border-radius: 50%;
   padding: 5px;
@@ -125,7 +125,7 @@
   }
 
   .RA-loading-content-text {
-    width: @layout-menu-collapsed-width;
+    width: @RA-layout-menu-collapsed-width;
     font-size: 14px;
   }
 }

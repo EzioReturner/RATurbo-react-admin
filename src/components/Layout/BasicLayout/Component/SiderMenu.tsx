@@ -221,15 +221,7 @@ const SiderMenu: React.FC<{ siderBar?: React.ReactNode; siteLogo?: React.ReactNo
         isDarkTheme && 'RA-navigator-darkTheme'
       )}
     >
-      {!isInlineLayout &&
-        (props.siteLogo || (
-          <SiteDetail
-            inlineLayout={isInlineLayout}
-            horizontalNavigator={false}
-            darkTheme={isDarkTheme}
-            collapsed={collapsed}
-          />
-        ))}
+      {!isInlineLayout && (props.siteLogo || <SiteDetail />)}
       {RAMenu}
     </aside>
   );

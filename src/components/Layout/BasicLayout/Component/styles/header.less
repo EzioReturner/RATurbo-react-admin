@@ -1,5 +1,5 @@
 .RA-header {
-  height: @layout-header-height;
+  height: @RA-layout-header-height;
   background: var(--component-background);
   position: relative;
   box-sizing: border-box;
@@ -61,11 +61,11 @@
 
     &.RA-header-fixHeader {
       position: fixed;
-      width: calc(100% - @layout-menu-width);
+      width: calc(100% - @RA-layout-menu-width);
       top: 0;
       right: 0;
       &.RA-header-collapsed {
-        width: calc(100% - @layout-menu-collapsed-width);
+        width: calc(100% - @RA-layout-menu-collapsed-width);
       }
     }
   }
@@ -75,12 +75,12 @@
   left: 0px !important;
 
   & > .RA-header-container {
-    max-width: @layout-content-max-width;
+    max-width: @RA-layout-content-max-width;
     margin: auto;
     position: relative;
     display: flex;
     flex: 1;
-    max-height: @layout-header-height;
+    max-height: @RA-layout-header-height;
     width: 100%;
 
     &.RA-header-container-flowMode {

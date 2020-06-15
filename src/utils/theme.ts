@@ -1,12 +1,4 @@
-import {
-  hex2rgb,
-  rgb2hsl,
-  hsl2lighten,
-  hsl2darken,
-  hsl2fade,
-  color2tint,
-  rgb2hex
-} from '@utils/tools';
+import { hex2rgb, rgb2hsl, hsl2lighten, hsl2darken, hsl2fade, color2tint } from '@utils/tools';
 import { defaultDarkTheme, defaultLightTheme } from '@config/setting';
 import cloneDeep from 'lodash/cloneDeep';
 

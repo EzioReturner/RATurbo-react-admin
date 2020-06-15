@@ -13,6 +13,7 @@ import AutoCompleteUnit from './AutoComplete';
 import CascaderUnit from './Cascader';
 import TreeSelectUnit from './TreeSelect';
 import TableUnit from './TableUnit';
+import { RLogo } from '@components/SvgIcon';
 import { Pagination, Steps, Divider, Progress } from 'antd';
 
 const { Step } = Steps;
@@ -43,6 +44,7 @@ const Unit: React.FC = () => {
         <p className={Styles.title}>Select</p>
         <SelectUnit />
       </div>
+      <div>{RLogo('#54bf99')}</div>
       <div>
         <p className={Styles.title}>Progress</p>
         <Progress percent={30} />

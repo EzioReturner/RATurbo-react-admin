@@ -6,10 +6,10 @@
   transition: all 0.2s;
   display: flex;
   flex-flow: column;
-  flex: 0 0 @layout-menu-width;
-  max-width: @layout-menu-width;
-  min-width: @layout-menu-width;
-  width: @layout-menu-width;
+  flex: 0 0 @RA-layout-menu-width;
+  max-width: @RA-layout-menu-width;
+  min-width: @RA-layout-menu-width;
+  width: @RA-layout-menu-width;
   position: relative;
   overflow: hidden;
 
@@ -21,15 +21,15 @@
   }
 
   &.RA-navigator-collapsed {
-    flex: 0 0 @layout-menu-collapsed-width;
-    max-width: @layout-menu-collapsed-width;
-    min-width: @layout-menu-collapsed-width;
-    width: @layout-menu-collapsed-width;
+    flex: 0 0 @RA-layout-menu-collapsed-width;
+    max-width: @RA-layout-menu-collapsed-width;
+    min-width: @RA-layout-menu-collapsed-width;
+    width: @RA-layout-menu-collapsed-width;
   }
 
   &.RA-inlineLayout-navigator {
     &.RA-navigator-fixSiderBar {
-      top: @layout-header-height;
+      top: @RA-layout-header-height;
       height: calc(100vh - 88px);
       min-height: unset;
     }
@@ -41,7 +41,7 @@
 }
 
 .RA-menu {
-  margin-top: @layout-padding;
+  margin-top: @RA-layout-padding;
   flex: 1;
   overflow: auto;
   overflow-x: hidden;
@@ -62,14 +62,14 @@
 
   &.RA-menu-horizontal {
     margin-top: 0;
-    line-height: @layout-header-height;
-    height: @layout-header-height;
+    line-height: @RA-layout-header-height;
+    height: @RA-layout-header-height;
 
     .RA-antd-subMenu-title,
     .RA-antd-menuItem-title {
       border: 0 !important;
       height: 100%;
-      line-height: @layout-header-height;
+      line-height: @RA-layout-header-height;
       top: 0px !important;
     }
 
@@ -79,7 +79,7 @@
 
     .RA-antd-subMenu-title {
       & > div {
-        height: @layout-header-height;
+        height: @RA-layout-header-height;
       }
     }
   }

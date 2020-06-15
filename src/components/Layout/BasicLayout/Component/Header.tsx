@@ -36,7 +36,7 @@ const Header: React.FC<LayoutProps> = props => {
 
   const VerticalMenuHeaderBody = (
     <>
-      {isInlineLayout && (_siteLogo || <SiteDetail inlineLayout={isInlineLayout} />)}
+      {isInlineLayout && (_siteLogo || <SiteDetail />)}
       {showSiderBar && !isInlineLayout && IconCollapsed}
       <div className="RA-header-rightPlace">
         <UserInfo />
@@ -91,7 +91,7 @@ const Header: React.FC<LayoutProps> = props => {
           isContentFlowMode && 'RA-header-container-flowMode'
         )}
       >
-        {_siteLogo || <SiteDetail inlineLayout horizontalNavigator />}
+        {_siteLogo || <SiteDetail />}
         <div className="RA-header-headerNav">{<TopMenu siderBar={_siderBar} />}</div>
         <div className="RA-header-rightPlace">
           <UserInfo />
