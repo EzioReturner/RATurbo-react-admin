@@ -30,7 +30,7 @@ const LayoutSetting: React.FC = props => {
   return ReactDOM.createPortal(
     <>
       <div
-        className={classNames('RA-setting-drawer', openSetting && 'RA-setting-drawe-opened')}
+        className={classNames('RA-setting-drawer', openSetting && 'RA-setting-drawer-opened')}
         id="raSettingMask"
       >
         <div className="RA-setting-drawer-mask" onClick={() => handleOpenSetting(false)}></div>
