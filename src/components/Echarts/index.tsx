@@ -3,11 +3,11 @@ import echarts from './lib';
 import { bind, clear } from 'size-sensor';
 
 interface EchartProps {
-  option: object[] | object;
+  option: StoreKeyValue[] | StoreKeyValue;
   theme?: string;
   notMerge?: boolean;
   lazyUpdate?: boolean;
-  style?: object;
+  style?: React.CSSProperties;
   className?: string;
 }
 
@@ -27,7 +27,6 @@ class EchartsReact extends Component<EchartProps> {
 
   getInstance() {
     const { theme } = this.props;
-
     return echarts.getInstanceByDom(this.echartsDOM) || echarts.init(this.echartsDOM, theme);
   }
 
@@ -49,8 +48,9 @@ class EchartsReact extends Component<EchartProps> {
     let { option } = this.props;
     const { notMerge, lazyUpdate } = this.props;
     const _option: Object[] = Array.isArray(option) ? option : [option];
-    chartObj.setOption(_option[0] || {}, notMerge || false, lazyUpdate || false);
-    _option[1] && chartObj.setOption(_option[1]);
+    _option.forEach(op => chartObj.setOption(op || {}, notMerge || false, lazyUpdate || false));
+    // chartObj.setOption(_option[0] || {}, notMerge || false, lazyUpdate || false);
+    // _option[1] && chartObj.setOption(_option[1]);
     return chartObj;
   }
 
