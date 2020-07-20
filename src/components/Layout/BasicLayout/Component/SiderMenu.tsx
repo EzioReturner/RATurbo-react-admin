@@ -153,9 +153,8 @@ const SiderMenu: React.FC<{ siderBar?: React.ReactNode; siteLogo?: React.ReactNo
 
   // 生成菜单枝叶
   function getMenuItem(menu: RouteChild, parentName?: string) {
-    const { icon, name, path, search } = menu;
-    const key = parentName ? `menu.${parentName}.${name}` : `menu.${name}`;
-    const localName = localeObj[key] || name;
+    const { icon, name, path, search, localeKey } = menu;
+    const localName = localeKey ? localeObj[localeKey] : name;
     return (
       <Link
         to={{ pathname: path, search }}

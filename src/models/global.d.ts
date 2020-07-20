@@ -54,6 +54,9 @@ declare interface PageWrapperProps extends PageHeaderProps {
  * @redirect 重定向路由
  * @meta 元信息
  * @loading 异步加载时间过长开启loading
+ * @search 用于匹配携带query的路由
+ * @type 路由类型 normal 正常， micro 微应用路由
+ * @localeKey 国际化key
  */
 declare interface RouteChild {
   name?: string;
@@ -68,6 +71,8 @@ declare interface RouteChild {
   meta?: any;
   loading?: boolean;
   search?: string;
+  type?: 'normal' | 'micro';
+  localeKey?: string;
 }
 
 declare interface RouteRoot {

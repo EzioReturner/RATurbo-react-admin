@@ -47,37 +47,43 @@ export const asyncRouteConfig: RouteChild[] = [
     icon: <PieChartOutlined />,
     path: '/dashboard',
     component: ['/views/Dashboard'],
-    loading: true
+    loading: true,
+    localeKey: 'menu.dashboard'
   },
   {
     name: 'program',
     icon: <AppstoreOutlined />,
     path: '/program',
+    localeKey: 'program',
     routes: [
       {
         name: 'analysis',
         path: '/program/analysis',
         component: ['/views/Program/Analysis'],
         authority: ['admin'],
-        loading: true
+        loading: true,
+        localeKey: 'menu.program.analysis'
       },
       {
         name: 'monitor',
         path: '/program/monitor',
         component: ['/views/Program/Monitor'],
-        loading: true
+        loading: true,
+        localeKey: 'menu.program.monitor'
       },
       {
         name: 'platform',
         path: '/program/platform',
         component: ['/views/Program/Platform'],
-        loading: true
+        loading: true,
+        localeKey: 'menu.program.platform'
       },
       {
         name: 'unit',
         path: '/program/unit',
         component: ['/views/Program/Unit'],
-        loading: true
+        loading: true,
+        localeKey: 'menu.program.unit'
       }
     ]
   },
@@ -85,18 +91,21 @@ export const asyncRouteConfig: RouteChild[] = [
     name: 'form',
     icon: <FormOutlined />,
     path: '/form',
+    localeKey: 'menu.form',
     routes: [
       {
         name: 'basicForm',
         path: '/form/basicForm',
         component: ['/views/Form/BasicForm'],
         authority: ['admin'],
-        loading: true
+        loading: true,
+        localeKey: 'menu.form.basicForm'
       },
       {
         name: 'stepForm',
         path: '/form/stepForm',
-        component: ['/views/Form/StepForm']
+        component: ['/views/Form/StepForm'],
+        localeKey: 'menu.form.stepForm'
       },
       {
         name: '三级菜单',
@@ -115,23 +124,27 @@ export const asyncRouteConfig: RouteChild[] = [
     name: 'list',
     icon: <UnorderedListOutlined />,
     path: '/list',
+    localeKey: 'menu.list',
     routes: [
       {
         name: 'basicList',
         path: '/list/basicList',
         component: ['/views/List/BasicList'],
-        loading: true
+        loading: true,
+        localeKey: 'menu.list.basicList'
       },
       {
         name: 'cardList',
         path: '/list/cardList',
         component: ['/views/List/CardList'],
-        loading: true
+        loading: true,
+        localeKey: 'menu.list.cardList'
       },
       {
         name: 'basicTable',
         path: '/list/basicTable',
-        component: ['/views/List/BasicTable']
+        component: ['/views/List/BasicTable'],
+        localeKey: 'menu.list.basicTable'
       }
     ]
   },
@@ -140,29 +153,34 @@ export const asyncRouteConfig: RouteChild[] = [
     icon: <HeatMapOutlined />,
     path: '/map',
     component: ['/views/Map'],
-    authority: ['admin']
+    authority: ['admin'],
+    localeKey: 'menu.map'
   },
   {
     name: 'gallery',
     icon: <PictureOutlined />,
     path: '/gallery',
     component: ['/views/Gallery'],
-    authority: ['admin']
+    authority: ['admin'],
+    localeKey: 'menu.gallery'
   },
   {
     name: 'result',
     icon: <CheckCircleOutlined />,
     path: '/result',
+    localeKey: 'menu.result',
     routes: [
       {
         name: 'successResult',
         path: '/result/successResult',
-        component: ['/views/Result/SuccessResult']
+        component: ['/views/Result/SuccessResult'],
+        localeKey: 'menu.result.successResult'
       },
       {
         name: 'failedResult',
         path: '/result/failedResult',
-        component: ['/views/Result/FailedResult']
+        component: ['/views/Result/FailedResult'],
+        localeKey: 'menu.result.failedResult'
       }
     ]
   },
@@ -170,21 +188,25 @@ export const asyncRouteConfig: RouteChild[] = [
     name: 'exception',
     icon: <InfoCircleOutlined />,
     path: '/exception',
+    localeKey: 'menu.exception',
     routes: [
       {
         name: '403',
         path: '/exception/403',
-        component: ['/views/Exception/403', 'bounceIn-animated']
+        component: ['/views/Exception/403', 'bounceIn-animated'],
+        localeKey: 'menu.exception.403'
       },
       {
         name: '404',
         path: '/exception/404',
-        component: ['/views/Exception/404']
+        component: ['/views/Exception/404'],
+        localeKey: 'menu.exception.404'
       },
       {
         name: '500',
         path: '/exception/500',
-        component: ['/views/Exception/500']
+        component: ['/views/Exception/500'],
+        localeKey: 'menu.exception.500'
       },
       {
         name: 'index',
