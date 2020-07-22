@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/EzioReturner/ra-turbo">
-    <img alt="RATurbo-admin" height="64" src="https://github.com/EzioReturner/RATurbo-react-admin/blob/master/public/favicon.ico">
+    <img alt="RATurbo-admin" height="64" src="./public/favicon.ico">
   </a>
 </p>
 
