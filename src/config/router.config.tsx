@@ -193,20 +193,17 @@ export const asyncRouteConfig: RouteChild[] = [
       {
         name: '403',
         path: '/exception/403',
-        component: ['/views/Exception/403', 'bounceIn-animated'],
-        localeKey: 'menu.exception.403'
+        component: ['/views/Exception/403', 'bounceIn-animated']
       },
       {
         name: '404',
         path: '/exception/404',
-        component: ['/views/Exception/404'],
-        localeKey: 'menu.exception.404'
+        component: ['/views/Exception/404']
       },
       {
         name: '500',
         path: '/exception/500',
-        component: ['/views/Exception/500'],
-        localeKey: 'menu.exception.500'
+        component: ['/views/Exception/500']
       },
       {
         name: 'index',
