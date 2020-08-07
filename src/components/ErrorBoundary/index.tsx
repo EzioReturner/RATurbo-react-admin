@@ -3,7 +3,11 @@ import { BugOutlined } from '@ant-design/icons';
 import './index.less';
 
 class ErrorBoundary extends React.Component<
-  { propStyle?: React.CSSProperties },
+  {
+    propStyle?: React.CSSProperties;
+    contentStyle?: React.CSSProperties;
+    info?: any;
+  },
   { hasError: boolean }
 > {
   constructor(props: any) {
@@ -23,11 +27,13 @@ class ErrorBoundary extends React.Component<
 
   render() {
     if (this.state.hasError) {
-      // 你可以自定义降级后的 UI 并渲染
       return (
         <div className="error-boundary" style={{ ...this.props.propStyle }}>
-          <BugOutlined className="error-boundary-icon" />
-          <span className="error-boundary-text">出错了...</span>
+          <span className="error-boundary-name">{this.props.info?.name}</span>
+          <div className="error-boundary-content" style={{ ...this.props.contentStyle }}>
+            <BugOutlined className="error-boundary-icon" />
+            <span className="error-boundary-text">出错了...</span>
+          </div>
         </div>
       );
     }
