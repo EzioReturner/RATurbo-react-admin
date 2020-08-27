@@ -3,20 +3,39 @@ import classnames from 'classnames';
 import ReactDOM from 'react-dom';
 import './drawer.less';
 
-interface LKDrawerProps {
+interface RADrawerProps {
   open: boolean;
   openChange: (open: boolean) => void;
+  direction?: 'up' | 'left' | 'down' | 'right';
   wrapperStyle?: React.CSSProperties;
   maskStyle?: React.CSSProperties;
   drawerStyle?: React.CSSProperties;
   wrapperClose?: boolean | Function;
 }
 
-const LKDrawer: React.FC<LKDrawerProps> = props => {
-  const { open, children, openChange, wrapperStyle, maskStyle, drawerStyle, wrapperClose } = props;
+const RADrawer: React.FC<RADrawerProps> = props => {
+  const {
+    open,
+    children,
+    openChange,
+    wrapperStyle,
+    maskStyle,
+    drawerStyle,
+    wrapperClose,
+    direction
+  } = props;
+
+  let _direction = direction || 'up';
 
   return ReactDOM.createPortal(
-    <div className={classnames('RA-drawer', open && 'RA-drawer-opened')} style={{ ...drawerStyle }}>
+    <div
+      className={classnames(
+        'RA-drawer',
+        open && 'RA-drawer-opened',
+        `RA-drawer-direction-${_direction}`
+      )}
+      style={{ ...drawerStyle }}
+    >
       <div
         className="RA-drawer-mask"
         style={{ ...maskStyle }}
@@ -41,4 +60,4 @@ const LKDrawer: React.FC<LKDrawerProps> = props => {
   );
 };
 
-export default LKDrawer;
+export default RADrawer;

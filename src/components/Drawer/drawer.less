@@ -5,6 +5,46 @@
   z-index: 999;
   width: 100%;
 
+  &.RA-drawer-direction-up {
+    .RA-drawer-wrapper {
+      transform: translate3d(0, 100%, 0);
+    }
+
+    &.RA-drawer-opened .RA-drawer-wrapper {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  &.RA-drawer-direction-left {
+    .RA-drawer-wrapper {
+      transform: translate3d(100%, 0, 0);
+    }
+
+    &.RA-drawer-opened .RA-drawer-wrapper {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  &.RA-drawer-direction-down {
+    .RA-drawer-wrapper {
+      transform: translate3d(0, -100%, 0);
+    }
+
+    &.RA-drawer-opened .RA-drawer-wrapper {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  &.RA-drawer-direction-right {
+    .RA-drawer-wrapper {
+      transform: translate3d(-100%, 0, 0);
+    }
+
+    &.RA-drawer-opened .RA-drawer-wrapper {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
   &.RA-drawer-opened {
     height: 100% !important;
 
@@ -12,11 +52,7 @@
       height: 100%;
       opacity: 1;
       transition: none;
-      animation: raDrawerFadeIn 0.4s ease;
-    }
-
-    .RA-drawer-wrapper {
-      transform: translate3d(0, 0, 0);
+      animation: RADrawerFadeIn 0.4s ease;
     }
   }
 
@@ -33,7 +69,6 @@
   }
 
   .RA-drawer-wrapper {
-    transform: translate3d(0, 100%, 0);
     min-height: 100vh;
     position: absolute;
     right: 0;
@@ -42,7 +77,7 @@
   }
 }
 
-@keyframes raDrawerFadeIn {
+@keyframes RADrawerFadeIn {
   0% {
     opacity: 0;
   }
