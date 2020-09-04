@@ -1,6 +1,5 @@
 import React from 'react';
 import { copyright } from '@config/setting';
-import styles from './footer.module.less';
 import classNames from 'classnames';
 import { CopyrightOutlined } from '@ant-design/icons';
 import './footer.less';
