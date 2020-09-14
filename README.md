@@ -20,62 +20,44 @@
 
 ## dependencies
 
-- [react](https://facebook.github.io/react/)(搭积木的必备玩具)
-- [react-router](https://react-guide.github.io/react-router-cn/)(<span style="color: rgb(243,121,52);">react路由, 5.x的版本</span>)
-- [react-hot-loader](https://github.com/gaearon/react-hot-loader)(react热替换工具)
-- [mobx](https://github.com/mobxjs/mobx)(Mobx是一个功能强大,上手非常容易的状态管理工具)
-- [antd](https://ant.design/index-cn)(<span style="color: rgb(243,121,52);">蚂蚁金服开源的react ui组件框架, 4.x+版本</span>)
-- [axios](https://github.com/mzabriskie/axios)(<span style="color: rgb(243,121,52);">http请求模块</span>)
-- [less](http://lesscss.cn/)(<span style="color: rgb(243,121,52);">CSS预处理工具</span>)
-- [echarts](https://github.com/apache/incubator-echarts)(<span style="color: rgb(243,121,52);">百度开源可视化图表工具</span>)
-- [nprogress](https://github.com/rstacruz/nprogress)(<span style="color: rgb(243,121,52);">顶部加载条</span>)
-- [animate.css](https://daneden.github.io/animate.css/)(<span style="color: rgb(243,121,52);">css动画库</span>)
-- [moment](http://momentjs.cn/)(<span style="color: rgb(243,121,52);">时间工具库</span>)
-- [lodash](https://www.lodashjs.com/)(<span style="color: rgb(243,121,52);">是一个一致性、模块化、高性能的 JavaScript 实用工具库。</span>)
-- 其余省略
+- [react](https://facebook.github.io/react/)
+- [react-router](https://react-guide.github.io/react-router-cn/)
+- [react-hot-loader](https://github.com/gaearon/react-hot-loader)(react hot-reload module)
+- [mobx](https://github.com/mobxjs/mobx)(Simple, scalable state management)
+- [antd](https://ant.design/index-cn)(<span style="color: rgb(243,121,52);">ant-desigen react ui component, 4.x+ version</span>)
+- [axios](https://github.com/mzabriskie/axios)(<span style="color: rgb(243,121,52);">http request module</span>)
+- [less](http://lesscss.cn/)(<span style="color: rgb(243,121,52);">css preprocess</span>)
+- [echarts](https://github.com/apache/incubator-echarts)(<span style="color: rgb(243,121,52);">Baidu visual chart tool</span>)
+- [nprogress](https://github.com/rstacruz/nprogress)(<span style="color: rgb(243,121,52);">top loading bar</span>)
+- [animate.css](https://daneden.github.io/animate.css/)(<span style="color: rgb(243,121,52);">css animation library</span>)
+- [moment](http://momentjs.cn/)(<span style="color: rgb(243,121,52);">time tool library</span>)
+- [lodash](https://www.lodashjs.com/)(<span style="color: rgb(243,121,52);">js function tools library</span>)
+- rest omit
 
 ## function modules
 
-- 布局
-    - 分列式布局
-    - 一体式布局
-- 导航菜单
-    - 顶部导航
-    - 左侧菜单
-      - 菜单伸缩
-- 组件
-    - 路由
-      - route 权限校验
-      - 异常处理
-      - 路由配置渲染route
-      - 路由配置渲染菜单
-    - 布局配置看板
-    - 过渡动画
-    - 基础页面布局
-    - 异步懒加载模块
-    - loading遮罩模块
-    - i18n 国际化
-      - 支持多语言翻译
-    - echarts组件
-- UI组件
-    - 场景
-      - 分析页
-      - 工作台
-      - 监控台
-    - 画廊
-    - 表单页 
-    - 列表页
-    - 详情页 (施工中)
-    - 结果页
-    - 异常页
-    - 个人页 (施工中)
-- 图表
-    - echarts图表
-- 页面
-    - 登录页面
-    - 第三方登录 (施工中)
-- 多分辨率 & 移动端适配 
-- 支持TypeScript
+- layout
+- navigator
+- components
+    - router
+    - layout setting
+    - transition hoc
+    - async loader
+    - loading 
+    - i18n
+- UI component
+    - program
+    - gallery
+    - form page
+    - list page
+    - result page
+    - exception page
+- visual chart
+- view
+    - sign in
+    - dashboard
+- scalable & mobile support 
+- base on TypeScript
 
 ## how to start
 
