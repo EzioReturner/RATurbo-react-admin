@@ -82,7 +82,7 @@ yarn start
 
 4. open browser access [http://localhost:9527](http://localhost:9527)
 
-5. 打包项目
+5. build program
 
 ```bash
 yarn build or npm run build
