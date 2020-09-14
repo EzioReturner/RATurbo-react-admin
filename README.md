@@ -10,15 +10,15 @@
   A front-end solution for web applications.
 </div>
 
-## 在线预览
+## preview
 
 - [ra-turbo](https://ezioreturner.github.io/RATurbo-dist/dist/index.html)
 
-## 使用文档
+## docs
 
 - [wiki](https://ezioreturner.github.io/RATurbo-docs/#/)
 
-## 依赖模块
+## dependencies
 
 - [react](https://facebook.github.io/react/)(搭积木的必备玩具)
 - [react-router](https://react-guide.github.io/react-router-cn/)(<span style="color: rgb(243,121,52);">react路由, 5.x的版本</span>)
@@ -34,7 +34,7 @@
 - [lodash](https://www.lodashjs.com/)(<span style="color: rgb(243,121,52);">是一个一致性、模块化、高性能的 JavaScript 实用工具库。</span>)
 - 其余省略
 
-## 功能模块
+## function modules
 
 - 布局
     - 分列式布局
@@ -77,28 +77,28 @@
 - 多分辨率 & 移动端适配 
 - 支持TypeScript
 
-## 如何启动
+## how to start
 
-1. 下载或克隆项目源码
+1. download or clone code
 
 ```bash
 git clone https://github.com/EzioReturner/RATurbo-react-admin.git my-ra
 cd my-ra
 ```
 
-2. yarn 或者 npm安装相关包文件
+2. instal by yarn or npm
 
 ```bash
 yarn install
 ```
 
-3. 启动项目
+3. start program
 
 ```bash
 yarn start
 ```
 
-4. 启动完成后打开浏览器访问 [http://localhost:9527](http://localhost:9527)，如果需要更改启动端口，可在 .env 文件中配置。
+4. open browser access [http://localhost:9527](http://localhost:9527)
 
 5. 打包项目
 
@@ -106,9 +106,9 @@ yarn start
 yarn build or npm run build
 ```
 
-## 支持环境
+## support environment
 
-现代浏览器。
+modern browser.
 
 | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>IE / Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Safari | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png" alt="Opera" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Opera |
 | --------- | --------- | --------- | --------- | --------- | 
