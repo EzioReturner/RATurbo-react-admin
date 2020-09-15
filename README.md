@@ -10,6 +10,8 @@
   A front-end solution for web applications.
 </div>
 
+English | [简体中文](https://github.com/EzioReturner/RATurbo-react-admin/blob/master/README-zh_CN.md)
+
 ## preview
 
 - [ra-turbo](https://ezioreturner.github.io/RATurbo-dist/dist/index.html)
@@ -22,8 +24,8 @@
 
 - [react](https://facebook.github.io/react/)
 - [react-router](https://react-guide.github.io/react-router-cn/)
-- [react-hot-loader](https://github.com/gaearon/react-hot-loader)(react hot-reload module)
-- [mobx](https://github.com/mobxjs/mobx)(Simple, scalable state management)
+- [react-hot-loader](https://github.com/gaearon/react-hot-loader)(<span style="color: rgb(243,121,52);">react hot-reload module</span>)
+- [mobx](https://github.com/mobxjs/mobx)(<span style="color: rgb(243,121,52);">Simple, scalable state management</span>)
 - [antd](https://ant.design/index-cn)(<span style="color: rgb(243,121,52);">ant-desigen react ui component, 4.x+ version</span>)
 - [axios](https://github.com/mzabriskie/axios)(<span style="color: rgb(243,121,52);">http request module</span>)
 - [less](http://lesscss.cn/)(<span style="color: rgb(243,121,52);">css preprocess</span>)
@@ -80,7 +82,7 @@ yarn install
 yarn start
 ```
 
-4. open browser access [http://localhost:9527](http://localhost:9527)
+4. open a browser and visit [http://localhost:9527](http://localhost:9527). if you need to change the startup port, you can configure it in the .env file.
 
 5. build program
 
