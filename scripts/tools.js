@@ -59,16 +59,14 @@ async function createFile(createType, fileName, externalAction) {
   console.log(upperName);
 
   const _path = path.resolve(__dirname, `../src/${TypeSrc[createType]}/${upperName}`);
-  fs.exists(_path, async function(exists) {
-    if (exists) {
-      throw Error('file path had existed');
-    } else {
-      await fs.mkdir(_path, () => {});
-      await fs.writeFileSync(`${_path}/index.tsx`, getTemplate(upperName, externalAction));
-      await fs.writeFileSync(`${_path}/index.module.less`, '');
-      console.log(`createType: ···${upperName}··· create finished`);
-    }
-  });
+  if (fs.existsSync(_path)) {
+    throw Error('The file path already exists');
+  } else {
+    await fs.mkdir(_path, () => {});
+    await fs.writeFileSync(`${_path}/index.tsx`, getTemplate(upperName, externalAction));
+    await fs.writeFileSync(`${_path}/index.module.less`, '');
+    console.log(`result: ···${upperName}··· has been created`);
+  }
 }
 
 (async () => {
