@@ -4,12 +4,13 @@ const webpack = require('webpack');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const FilterWarningsPlugin = require('webpack-filter-warnings-plugin');
 const AntDesignThemePlugin = require('antd-theme-webpack-plugin');
+const setting = require('../src/config/setting');
 
 function _resolve(track) {
   return path.join(__dirname, '..', track);
 }
 
-module.exports = {
+const baseConfig = {
   entry: {
     RAEntry: paths.appIndexJs
   },
@@ -90,8 +91,6 @@ module.exports = {
       REQUEST_SUCCESS: Number(0)
     }),
 
-    new webpack.NamedModulesPlugin(),
-
     new ForkTsCheckerWebpackPlugin({
       tslint: false,
       formatter: 'codeframe',
@@ -102,8 +101,12 @@ module.exports = {
 
     new FilterWarningsPlugin({
       exclude: /mini-css-extract-plugin[^]*Conflicting order/
-    }),
+    })
+  ]
+};
 
+if (setting.useSetting) {
+  baseConfig.plugins.push(
     new AntDesignThemePlugin({
       antDir: _resolve('./node_modules/antd'),
       stylesDir: _resolve('./src/styles'),
@@ -124,15 +127,12 @@ module.exports = {
         '@select-selection-item-bg',
         '@item-hover-bg',
         '@background-color-light',
-        '@background-color-base',
-        '@border-radius-base',
-        '@success-color',
-        '@warning-color',
-        '@error-color',
-        '@processing-color'
+        '@background-color-base'
       ],
       indexFileName: './public/index.html',
       generateOnce: false
     })
-  ]
-};
+  );
+}
+
+module.exports = baseConfig;

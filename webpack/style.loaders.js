@@ -61,6 +61,7 @@ module.exports = function() {
             ? {
                 javascriptEnabled: true,
                 modifyVars: {
+                  '@primary-color': '#fb4491',
                   '@font-size-base': '13px'
                 }
               }

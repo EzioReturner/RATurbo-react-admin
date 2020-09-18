@@ -1,10 +1,11 @@
-import { observable, configure, action, computed } from 'mobx';
+import { observable, configure, action, computed, runInAction } from 'mobx';
 import isMobile from '@utils/isMobile';
 import { debounce } from '@utils/tools';
 import NProgress from 'nprogress';
 import {
   useMenu,
   useHeader,
+  useSetting,
   layoutMode,
   navigateMode,
   contentAreaWidthMode
@@ -50,6 +51,8 @@ class LayoutStore {
 
   // 全局spinning配置信息
   @observable loadingOptions: LoadingOptions = { spinning: false };
+
+  @observable firstInit: boolean = true;
 
   @observable layoutStatus: LayoutStatus = {
     showSiderBar: useMenu, // 显示头部
@@ -117,23 +120,57 @@ class LayoutStore {
     return this.layoutStatus.visionTheme === 'dark';
   }
 
+  async createLessScriptAndLink() {
+    const body = document.body;
+
+    // 生成link标签
+    let link = document.createElement('link');
+
+    link.setAttribute('rel', 'stylesheet/less');
+    link.setAttribute('type', 'text/css');
+    link.setAttribute('href', './color.less');
+
+    body.prepend(link);
+
+    // 生成script标签
+    let script = document.createElement('script');
+
+    script.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js');
+    script.setAttribute('type', 'text/javascript');
+
+    script.onload = () => {
+      runInAction(() => {
+        const status = localStorage.getItem('RA-layoutStatus');
+        // 判断是否需要变更主题
+        if (status) {
+          const _status = JSON.parse(status);
+          if (
+            _status.visionTheme !== this.layoutStatus.visionTheme ||
+            _status.currentColor !== this.layoutStatus.currentColor
+          ) {
+            message.loading('正在应用视觉风格', 3);
+            setTimeout(() => {
+              this.changeLayoutVision();
+            }, 0);
+          }
+          this.layoutStatus = _status;
+        } else {
+          this.firstInit = false;
+        }
+        if (this.isHorizontalNavigator) {
+          this.layoutStatus.layoutMode = 'split';
+        }
+      });
+    };
+
+    body.appendChild(script);
+  }
+
   @action initLayoutStatus() {
-    const status = window.localStorage.getItem('RA-layoutStatus');
-    if (status) {
-      const _status = JSON.parse(status);
-      if (
-        _status.visionTheme !== this.layoutStatus.visionTheme ||
-        _status.currentColor !== this.layoutStatus.currentColor
-      ) {
-        setTimeout(() => {
-          message.loading('正在应用视觉风格', 3);
-          this.changeLayoutVision();
-        }, 0);
-      }
-      this.layoutStatus = _status;
-    }
-    if (this.isHorizontalNavigator) {
-      this.layoutStatus.layoutMode = 'split';
+    if (useSetting) {
+      this.createLessScriptAndLink();
+    } else {
+      this.firstInit = false;
     }
   }
 
@@ -254,7 +291,13 @@ class LayoutStore {
   // 调整视觉风格
   @action changeLayoutVision = () => {
     const { visionTheme, currentColor } = this.layoutStatus;
-    changeTheme(visionTheme, currentColor);
+    changeTheme(visionTheme, currentColor, () => {
+      setTimeout(() => {
+        runInAction(() => {
+          this.firstInit = false;
+        });
+      }, 500);
+    });
   };
 
   // 设置打开的菜单

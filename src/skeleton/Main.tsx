@@ -7,7 +7,7 @@ import LayoutStore from '@store/layoutStore';
 import BasicLayout from '@components/Layout/BasicLayout';
 import { getRouteAuthority } from '@utils/authorityTools';
 import Loading from '@components/Loading';
-import { hot } from 'react-hot-loader';
+import { useSetting } from '@config/setting';
 
 const Exception403 = React.lazy(() => import(/* webpackChunkName: "403" */ '@views/Exception/403'));
 
@@ -22,6 +22,7 @@ interface InjectProps extends MainSkeletonProps {
 const MainSkeleton: React.FC<MainSkeletonProps> = props => {
   const {
     layoutStore: {
+      firstInit,
       layoutStatus: { isMobile },
       isHorizontalNavigator
     }
@@ -50,6 +51,7 @@ const MainSkeleton: React.FC<MainSkeletonProps> = props => {
 
   return (
     <Authorized unidentified={<Redirect to="/user/login" />}>
+      <Loading spinning={firstInit} />
       <main style={{ height: '100%' }}>
         <BasicLayout
           {...{
@@ -59,7 +61,7 @@ const MainSkeleton: React.FC<MainSkeletonProps> = props => {
           {Content}
         </BasicLayout>
       </main>
-      {!isMobile && <LayoutSetting />}
+      {!isMobile && useSetting && <LayoutSetting />}
     </Authorized>
   );
 };
