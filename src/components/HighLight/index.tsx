@@ -46,8 +46,6 @@ const HighLight: React.FC<HighLightProps> = props => {
     [tarVal, matchAll]
   );
 
-  console.log('unmatchVal', unmatchVal);
-
   useEffect(() => {
     let cacheUnmatch: string[] = [];
     checkText(val, cacheUnmatch);
