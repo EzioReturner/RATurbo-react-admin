@@ -5,6 +5,7 @@ import NProgress from 'nprogress';
 import {
   useMenu,
   useHeader,
+  useTheme,
   useSetting,
   layoutMode,
   navigateMode,
@@ -167,7 +168,7 @@ class LayoutStore {
   }
 
   @action initLayoutStatus() {
-    if (useSetting) {
+    if (useTheme) {
       this.createLessScriptAndLink();
     } else {
       this.firstInit = false;

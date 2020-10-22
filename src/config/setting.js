@@ -10,6 +10,7 @@ module.exports = {
   navigateMode: 'vertical',
   contentAreaWidthMode: 'max-width',
   useSetting: true,
+  useTheme: true,
   usei18n: true,
   useSiteIcon: false,
   i18n: {

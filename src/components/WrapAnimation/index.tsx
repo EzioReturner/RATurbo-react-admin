@@ -13,7 +13,7 @@ interface WrapComponentProps {
   animate: string;
 }
 
-const WrapComponent: React.FC<WrapComponentProps> = props => {
+const WrapAnimation: React.FC<WrapComponentProps> = props => {
   const [animateIn, setAnimateIn] = useState(false);
 
   useEffect(() => {
@@ -43,4 +43,4 @@ const WrapComponent: React.FC<WrapComponentProps> = props => {
   );
 };
 
-export default WrapComponent;
+export default WrapAnimation;
