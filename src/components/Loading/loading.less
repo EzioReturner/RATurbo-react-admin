@@ -33,6 +33,12 @@
     right: 0;
     position: fixed;
 
+    .RA-loading-content {
+      position: absolute;
+      top: 50vh;
+      left: 50vw;
+    }
+
     &.RA-loading-collapsed {
       transition: none;
       left: @RA-layout-menu-collapsed-width;
@@ -41,7 +47,7 @@
 
   .RA-loading-content {
     position: absolute;
-    top: 50vh;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
