@@ -35,7 +35,7 @@ const SiteDetail: React.FC = props => {
       ) : (
         <div className="RA-siteLogo">
           <div className="RA-siteLogo-border"></div>
-          <div className="RA-siteLogo-logo">{RLogo(currentColor)}</div>
+          <div className="RA-siteLogo-logo">{RLogo()}</div>
         </div>
       )}
       <span className="RA-siteDetail-title">{siteName}</span>

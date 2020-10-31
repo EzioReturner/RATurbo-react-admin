@@ -10,18 +10,22 @@ import './loading.less';
  * @param {text} 自定义文本
  * @param {style} 自定义样式
  * @param {Collapsed} 是否应用框架折叠样式
+ * @param {content} loading内容替换
+ * @param {parentRelative} 基于父级定位 top 50%
  */
 
 interface LoadingProps {
   spinning: boolean;
   fixed?: boolean;
-  collapsed?: boolean;
-  style?: React.CSSProperties;
   text?: string | number | React.ReactNode;
+  style?: React.CSSProperties;
+  collapsed?: boolean;
+  content?: React.ReactNode;
+  parentRelative?: boolean;
 }
 
 const Loading: React.FC<LoadingProps> = props => {
-  const { spinning, fixed, collapsed, style, text } = props;
+  const { spinning, content, fixed, collapsed, style, text, parentRelative } = props;
 
   const CycleLoading = <div id="RA-loading-content-circle" />;
 
@@ -56,8 +60,8 @@ const Loading: React.FC<LoadingProps> = props => {
       )}
       style={style}
     >
-      <div className="RA-loading-content">
-        {BarLoading}
+      <div className={classNames('RA-loading-content', parentRelative && 'parent-relative')}>
+        {content || BarLoading}
         <p className="RA-loading-content-text">{text || 'LOADING...'}</p>
       </div>
     </div>

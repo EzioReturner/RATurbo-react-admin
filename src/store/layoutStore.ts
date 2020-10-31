@@ -53,8 +53,6 @@ class LayoutStore {
   // 全局spinning配置信息
   @observable loadingOptions: LoadingOptions = { spinning: false };
 
-  @observable firstInit: boolean = true;
-
   @observable layoutStatus: LayoutStatus = {
     showSiderBar: useMenu, // 显示头部
     showHeader: useHeader, // 显示菜单
@@ -155,8 +153,6 @@ class LayoutStore {
             }, 0);
           }
           this.layoutStatus = _status;
-        } else {
-          this.firstInit = false;
         }
         if (this.isHorizontalNavigator) {
           this.layoutStatus.layoutMode = 'split';
@@ -170,8 +166,6 @@ class LayoutStore {
   @action initLayoutStatus() {
     if (useTheme) {
       this.createLessScriptAndLink();
-    } else {
-      this.firstInit = false;
     }
   }
 
@@ -292,13 +286,7 @@ class LayoutStore {
   // 调整视觉风格
   @action changeLayoutVision = () => {
     const { visionTheme, currentColor } = this.layoutStatus;
-    changeTheme(visionTheme, currentColor, () => {
-      setTimeout(() => {
-        runInAction(() => {
-          this.firstInit = false;
-        });
-      }, 500);
-    });
+    changeTheme(visionTheme, currentColor);
   };
 
   // 设置打开的菜单

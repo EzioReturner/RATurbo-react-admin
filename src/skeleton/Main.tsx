@@ -22,7 +22,6 @@ interface InjectProps extends MainSkeletonProps {
 const MainSkeleton: React.FC<MainSkeletonProps> = props => {
   const {
     layoutStore: {
-      firstInit,
       layoutStatus: { isMobile },
       isHorizontalNavigator
     }
@@ -51,7 +50,6 @@ const MainSkeleton: React.FC<MainSkeletonProps> = props => {
 
   return (
     <Authorized unidentified={<Redirect to="/user/login" />}>
-      <Loading spinning={firstInit} />
       <main style={{ height: '100%' }}>
         <BasicLayout
           {...{

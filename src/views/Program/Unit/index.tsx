@@ -44,7 +44,7 @@ const Unit: React.FC = () => {
         <p className={Styles.title}>Select</p>
         <SelectUnit />
       </div>
-      <div>{RLogo('#54bf99')}</div>
+      <div>{RLogo()}</div>
       <div>
         <p className={Styles.title}>Progress</p>
         <Progress percent={30} />

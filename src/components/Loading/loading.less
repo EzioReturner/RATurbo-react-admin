@@ -47,12 +47,16 @@
 
   .RA-loading-content {
     position: absolute;
-    top: 50%;
+    top: 50vh;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
     flex-flow: column;
     align-items: center;
+
+    &.parent-relative {
+      top: 50%;
+    }
 
     .RA-loading-content-text {
       display: block;
