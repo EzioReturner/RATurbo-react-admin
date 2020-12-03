@@ -116,7 +116,7 @@ module.exports = function() {
               const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
               return `npm.${packageName.replace('@', '')}`;
             },
-            minSize: 4000000,
+            minSize: 20 * 1000 * 1000,
             priority: 20
           },
           // 入口共享chunks
