@@ -27,7 +27,7 @@ interface InjectProps extends AsyncProps {
  */
 
 @inject('layoutStore')
-class AsyncComponent extends React.PureComponent<AsyncProps, AsyncState> {
+class AsyncComponent extends React.Component<AsyncProps, AsyncState> {
   get injected() {
     return this.props as InjectProps;
   }
@@ -59,14 +59,12 @@ class AsyncComponent extends React.PureComponent<AsyncProps, AsyncState> {
       component: C,
       animate: animate
     });
+  }
 
-    setTimeout(
-      () => {
-        layoutStore.ctrlProgress(false);
-        layoutStore.ctrlSpinning({ spinning: false });
-      },
-      animate ? 500 : 0
-    );
+  componentDidUpdate() {
+    const { layoutStore } = this.injected;
+    layoutStore.ctrlProgress(false);
+    layoutStore.ctrlSpinning({ spinning: false });
   }
 
   render() {

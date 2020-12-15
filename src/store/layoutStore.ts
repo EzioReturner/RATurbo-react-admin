@@ -247,9 +247,8 @@ class LayoutStore {
   };
 
   // 记录懒加载模块并开启loading
-  @action addInitializer(initializer: string, loading: boolean = false): void {
+  @action addInitializer(initializer: string): void {
     this.readyInitializers.push(initializer);
-    loading && this.ctrlSpinning({ spinning: true });
     this.ctrlProgress(true);
   }
 
@@ -257,7 +256,8 @@ class LayoutStore {
   @action checkIsInitial(route: RouteChild): void {
     const { path, loading, name } = route;
     if (!this.readyInitializers.includes(path)) {
-      this.addInitializer(path, loading);
+      this.addInitializer(path);
+      loading && this.ctrlSpinning({ spinning: true });
       name && this.initBreadcrumb(name, path);
     }
   }
