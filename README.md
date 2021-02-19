@@ -14,7 +14,7 @@ English | [简体中文](https://github.com/EzioReturner/RATurbo-react-admin/blo
 
 ## preview
 
-- [ra-turbo](https://ezioreturner.github.io/RATurbo-dist/dist/index.html)
+- [ra-turbo](http://preview.raturbo.com/dist/index.html)
 
 ## docs
 
