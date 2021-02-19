@@ -18,7 +18,7 @@ English | [简体中文](https://github.com/EzioReturner/RATurbo-react-admin/blo
 
 ## docs
 
-- [wiki](https://ezioreturner.github.io/RATurbo-docs/#/)
+- [wiki](http://docs.raturbo.com)
 
 ## dependencies
 
