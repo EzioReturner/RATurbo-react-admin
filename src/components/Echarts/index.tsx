@@ -1,6 +1,39 @@
 import React, { Component } from 'react';
-import echarts from './lib';
 import { bind, clear } from 'size-sensor';
+import * as echarts from 'echarts/core';
+import {
+  BarChart,
+  LineChart,
+  PieChart,
+  RadarChart,
+  ScatterChart,
+  GaugeChart,
+  EffectScatterChart
+} from 'echarts/charts';
+import {
+  TitleComponent,
+  TooltipComponent,
+  GridComponent,
+  LegendComponent,
+  DatasetComponent
+} from 'echarts/components';
+import { CanvasRenderer } from 'echarts/renderers';
+
+echarts.use([
+  TitleComponent,
+  TooltipComponent,
+  GridComponent,
+  BarChart,
+  LineChart,
+  PieChart,
+  RadarChart,
+  ScatterChart,
+  GaugeChart,
+  EffectScatterChart,
+  CanvasRenderer,
+  LegendComponent,
+  DatasetComponent
+]);
 
 interface EchartProps {
   option: StoreKeyValue[] | StoreKeyValue;
@@ -47,7 +80,7 @@ class EchartsReact extends Component<EchartProps> {
     const chartObj = this.getInstance();
     let { option } = this.props;
     const { notMerge, lazyUpdate } = this.props;
-    const _option: Object[] = Array.isArray(option) ? option : [option];
+    const _option: StoreKeyValue[] = Array.isArray(option) ? option : [option];
     _option.forEach(op => chartObj.setOption(op || {}, notMerge || false, lazyUpdate || false));
     // chartObj.setOption(_option[0] || {}, notMerge || false, lazyUpdate || false);
     // _option[1] && chartObj.setOption(_option[1]);
