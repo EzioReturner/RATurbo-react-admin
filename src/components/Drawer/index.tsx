@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import ReactDOM from 'react-dom';
 import './drawer.less';
 
-interface LKDrawerProps {
+interface RADrawerProps {
   open: boolean;
   openChange: (open: boolean) => void;
   direction?: 'up' | 'left' | 'down' | 'right';
@@ -13,7 +13,7 @@ interface LKDrawerProps {
   targetContainer?: any;
 }
 
-const LKDrawer: React.FC<LKDrawerProps> = props => {
+const RADrawer: React.FC<RADrawerProps> = props => {
   const {
     open,
     children,
@@ -82,4 +82,4 @@ const LKDrawer: React.FC<LKDrawerProps> = props => {
   return portal;
 };
 
-export default LKDrawer;
+export default RADrawer;
