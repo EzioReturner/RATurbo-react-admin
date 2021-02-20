@@ -2,6 +2,8 @@ declare interface StoreKeyValue {
   [name: string]: StoreValue;
 }
 
+declare const GetObjectKey: <T extends object, K extends keyof T>(o: T, k: K) => T[K];
+
 declare type StoreValue = any;
 
 declare const NODE_RA_ENV: string = 'development' | 'production';

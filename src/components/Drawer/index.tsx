@@ -1,19 +1,19 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import classnames from 'classnames';
 import ReactDOM from 'react-dom';
 import './drawer.less';
 
-interface RADrawerProps {
+interface LKDrawerProps {
   open: boolean;
   openChange: (open: boolean) => void;
   direction?: 'up' | 'left' | 'down' | 'right';
   wrapperStyle?: React.CSSProperties;
   maskStyle?: React.CSSProperties;
   drawerStyle?: React.CSSProperties;
-  wrapperClose?: boolean | Function;
+  targetContainer?: any;
 }
 
-const RADrawer: React.FC<RADrawerProps> = props => {
+const LKDrawer: React.FC<LKDrawerProps> = props => {
   const {
     open,
     children,
@@ -21,8 +21,8 @@ const RADrawer: React.FC<RADrawerProps> = props => {
     wrapperStyle,
     maskStyle,
     drawerStyle,
-    wrapperClose,
-    direction
+    direction,
+    targetContainer
   } = props;
 
   const drawerRef = useRef<HTMLDivElement>(null);
@@ -35,7 +35,9 @@ const RADrawer: React.FC<RADrawerProps> = props => {
         if (open) {
           drawerRef.current.className = drawerRef.current.className + ' RA-drawer-opened';
         } else {
-          drawerRef.current.className = drawerRef.current.className.replace('RA-drawer-opened', '');
+          drawerRef.current.className = drawerRef.current.className
+            .replace('RA-drawer-opened', '')
+            .trim();
         }
       }
     }, 10);
@@ -43,40 +45,41 @@ const RADrawer: React.FC<RADrawerProps> = props => {
 
   let portal = null;
 
-  if (drawerRef.current || open) {
-    portal = ReactDOM.createPortal(
+  const DrawerDom = (
+    <div
+      className={classnames(
+        'RA-drawer',
+        // open && 'RA-drawer-opened',
+        `RA-drawer-direction-${_direction}`,
+        targetContainer === false && 'RA-drawer-in-parent'
+      )}
+      style={{ ...drawerStyle }}
+      ref={drawerRef}
+    >
       <div
-        className={classnames(
-          'RA-drawer',
-          // open && 'RA-drawer-opened',
-          `RA-drawer-direction-${_direction}`
-        )}
-        style={{ ...drawerStyle }}
-        ref={drawerRef}
-      >
-        <div
-          className="RA-drawer-mask"
-          style={{ ...maskStyle }}
-          onClick={() => {
-            openChange(false);
-          }}
-        ></div>
-        <div
-          className="RA-drawer-wrapper"
-          style={{ ...wrapperStyle }}
-          onClick={e => {
-            if (wrapperClose && e.target === e.currentTarget) {
-              openChange(false);
-              typeof wrapperClose === 'function' && wrapperClose();
-            }
-          }}
-        >
-          {children}
-        </div>
-      </div>,
-      document.getElementsByTagName('body')[0]
-    );
+        className="RA-drawer-mask"
+        style={{ ...maskStyle }}
+        onClick={() => {
+          openChange(false);
+        }}
+      ></div>
+      <div className="RA-drawer-wrapper" style={{ ...wrapperStyle }}>
+        {children}
+      </div>
+    </div>
+  );
+
+  if (drawerRef.current || open) {
+    portal =
+      targetContainer === false
+        ? DrawerDom
+        : ReactDOM.createPortal(
+            DrawerDom,
+            targetContainer || document.getElementsByTagName('body')[0]
+          );
   }
+
   return portal;
 };
-export default RADrawer;
+
+export default LKDrawer;
