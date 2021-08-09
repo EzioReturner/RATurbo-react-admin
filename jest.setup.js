@@ -1,5 +1,5 @@
 import Enzyme from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import Adapter from 'enzyme-adapter-react-17-updated';
 import jsdom from 'jsdom';
 import 'regenerator-runtime/runtime';
 

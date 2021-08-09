@@ -11,7 +11,9 @@ describe('Highlight', () => {
   });
 
   it('highlight text', async () => {
-    const wrapper = mount(<HighLight val="2333woasd2333" tarVal="2333" />);
+    const wrapper = mount(
+      <HighLight val="2333woasd2333" tarVal="2333" matchAll />
+    );
     expect(wrapper.html()).toEqual(Element);
   });
 });
