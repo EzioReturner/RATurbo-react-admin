@@ -113,6 +113,8 @@ const createCompiler = (config, urls, devSocket) => {
         devSocket.warnings(messages.warnings);
       }
 
+      console.log('isInteractive', isInteractive);
+
       if (isInteractive) {
         clearConsole();
       }

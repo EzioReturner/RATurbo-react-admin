@@ -55,16 +55,13 @@ class AsyncComponent extends React.Component<AsyncProps, AsyncState> {
       C = componentOrPath;
     }
 
+    layoutStore.ctrlProgress(false);
+    layoutStore.ctrlSpinning({ spinning: false });
+
     this.setState({
       component: C,
       animate: animate
     });
-  }
-
-  componentDidUpdate() {
-    const { layoutStore } = this.injected;
-    layoutStore.ctrlProgress(false);
-    layoutStore.ctrlSpinning({ spinning: false });
   }
 
   render() {
