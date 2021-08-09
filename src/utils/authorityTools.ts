@@ -5,7 +5,9 @@
  */
 export function getAuthority(str?: string | string[]) {
   const authorityString =
-    typeof str === 'undefined' ? window.localStorage.getItem('RA-authority') : str;
+    typeof str === 'undefined'
+      ? window.localStorage.getItem('RA-authority')
+      : str;
   let authority;
   try {
     // @ts-ignore

@@ -19,7 +19,10 @@ const userInfo = Mock.mock({
 
 Mock.mock('/post/login', req => {
   const { userName, password } = JSON.parse(req.body);
-  if ((userName === 'admin' || userName === 'guest') && Number(password) === 123) {
+  if (
+    (userName === 'admin' || userName === 'guest') &&
+    Number(password) === 123
+  ) {
     return {
       message: 'ok',
       userInfo

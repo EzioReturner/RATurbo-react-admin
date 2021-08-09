@@ -37,7 +37,13 @@ const WrapAnimation: React.FC<WrapComponentProps> = props => {
   const { children, animate } = props;
   const className = animate ? getAnimateWay(animate) : 'slide';
   return (
-    <CSSTransition in={animateIn} classNames={className} timeout={1000} mountOnEnter unmountOnExit>
+    <CSSTransition
+      in={animateIn}
+      classNames={className}
+      timeout={1000}
+      mountOnEnter
+      unmountOnExit
+    >
       {children}
     </CSSTransition>
   );

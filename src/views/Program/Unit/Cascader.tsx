@@ -41,7 +41,13 @@ function onChange(value: any) {
 }
 
 const CascaderUnit = () => {
-  return <Cascader options={options} onChange={onChange} placeholder="Please select" />;
+  return (
+    <Cascader
+      options={options}
+      onChange={onChange}
+      placeholder="Please select"
+    />
+  );
 };
 
 export default CascaderUnit;

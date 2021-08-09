@@ -11,7 +11,13 @@ const ContentChange: React.FC = props => {
       isHorizontalNavigator,
       isInlineLayout,
       changeLayoutStatus,
-      layoutStatus: { showSiderBar, showHeader, fixSiderBar, fixHeader, contentAreaWidthMode }
+      layoutStatus: {
+        showSiderBar,
+        showHeader,
+        fixSiderBar,
+        fixHeader,
+        contentAreaWidthMode
+      }
     },
     localeStore: { localeObj }
   } = props as { layoutStore: LayoutStore; localeStore: LocaleStore };
@@ -27,7 +33,12 @@ const ContentChange: React.FC = props => {
           value={contentAreaWidthMode}
           style={{ width: 120 }}
           size="small"
-          onChange={val => changeLayoutStatus('contentAreaWidthMode', val as 'flow' | 'max-width')}
+          onChange={val =>
+            changeLayoutStatus(
+              'contentAreaWidthMode',
+              val as 'flow' | 'max-width'
+            )
+          }
         >
           <Select.Option value="flow">
             {localeObj['layoutSetting.flowContent'] || '流式'}
@@ -40,7 +51,9 @@ const ContentChange: React.FC = props => {
       <Tooltip
         placement="left"
         title={
-          isInlineLayout ? localeObj['layoutSetting.splitModeOnly'] || '仅在分列布局下起效' : ''
+          isInlineLayout
+            ? localeObj['layoutSetting.splitModeOnly'] || '仅在分列布局下起效'
+            : ''
         }
       >
         <div className="RA-setting-settingItem">
@@ -59,7 +72,8 @@ const ContentChange: React.FC = props => {
         placement="left"
         title={
           isHorizontalNavigator
-            ? localeObj['layoutSetting.verticalNavOnly'] || '仅在左侧导航模式下起效'
+            ? localeObj['layoutSetting.verticalNavOnly'] ||
+              '仅在左侧导航模式下起效'
             : ''
         }
       >
@@ -100,7 +114,8 @@ const ContentChange: React.FC = props => {
         placement="left"
         title={
           isHorizontalNavigator
-            ? localeObj['layoutSetting.verticalNavOnly'] || '仅在左侧导航模式下起效'
+            ? localeObj['layoutSetting.verticalNavOnly'] ||
+              '仅在左侧导航模式下起效'
             : ''
         }
       >

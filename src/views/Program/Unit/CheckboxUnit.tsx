@@ -16,7 +16,8 @@ class CheckboxUnit extends React.Component {
   onChange = (checkedList: any) => {
     this.setState({
       checkedList,
-      indeterminate: !!checkedList.length && checkedList.length < plainOptions.length,
+      indeterminate:
+        !!checkedList.length && checkedList.length < plainOptions.length,
       checkAll: checkedList.length === plainOptions.length
     });
   };

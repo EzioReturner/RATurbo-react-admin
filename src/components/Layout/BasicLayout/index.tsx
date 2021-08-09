@@ -6,7 +6,15 @@ import { SkeletonProps } from './types';
 
 const BasicLayout: React.FC<SkeletonProps> = props => {
   const { isHorizontalNavigator, ...rest } = props;
-  return <>{isHorizontalNavigator ? <HorizontalMode {...rest} /> : <VerticalMode {...rest} />}</>;
+  return (
+    <>
+      {isHorizontalNavigator ? (
+        <HorizontalMode {...rest} />
+      ) : (
+        <VerticalMode {...rest} />
+      )}
+    </>
+  );
 };
 
 export default BasicLayout;

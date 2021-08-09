@@ -6,15 +6,15 @@ function v2Equal(a, b) {
 
 var _default = echarts.extendComponentModel({
   type: 'bmap',
-  getBMap: function() {
+  getBMap: function () {
     // __bmap is injected when creating BMapCoordSys
     return this.__bmap;
   },
-  setCenterAndZoom: function(center, zoom) {
+  setCenterAndZoom: function (center, zoom) {
     this.option.center = center;
     this.option.zoom = zoom;
   },
-  centerOrZoomChanged: function(center, zoom) {
+  centerOrZoomChanged: function (center, zoom) {
     var option = this.option;
     return !(v2Equal(center, option.center) && zoom === option.zoom);
   },

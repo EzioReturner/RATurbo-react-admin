@@ -21,7 +21,10 @@ interface InjectedProps {
 const { SubMenu } = Menu;
 let isInitMenuOpen = false;
 
-const SiderMenu: React.FC<{ siderBar?: React.ReactNode; siteLogo?: React.ReactNode }> = props => {
+const SiderMenu: React.FC<{
+  siderBar?: React.ReactNode;
+  siteLogo?: React.ReactNode;
+}> = props => {
   const [openKeys, setOpenKeys] = useState<any[]>([]);
 
   const location = useLocation();
@@ -46,7 +49,8 @@ const SiderMenu: React.FC<{ siderBar?: React.ReactNode; siteLogo?: React.ReactNo
     const isArr = Array.isArray(routeInfo);
     const arr = isArr ? routeInfo : routeInfo.routes;
     return arr.find(
-      (route: RouteChild) => route.path === (isArr ? '' : routeInfo.path) + '/' + path
+      (route: RouteChild) =>
+        route.path === (isArr ? '' : routeInfo.path) + '/' + path
     );
   }
 
@@ -57,13 +61,15 @@ const SiderMenu: React.FC<{ siderBar?: React.ReactNode; siteLogo?: React.ReactNo
     }
     // 缓存匹配到的路由信息
     let cacheRoute: RouteChild;
-    const menuOpen = location.pathname.split('/').reduce((total: string[], path) => {
-      if (path) {
-        cacheRoute = checkRoute(cacheRoute || appRoutes.routes, path);
-        cacheRoute && cacheRoute.routes && total.push(cacheRoute.path);
-      }
-      return total;
-    }, []);
+    const menuOpen = location.pathname
+      .split('/')
+      .reduce((total: string[], path) => {
+        if (path) {
+          cacheRoute = checkRoute(cacheRoute || appRoutes.routes, path);
+          cacheRoute && cacheRoute.routes && total.push(cacheRoute.path);
+        }
+        return total;
+      }, []);
     isInitMenuOpen = true;
     setOpenKeys([...menuOpen]);
   }, [appRoutes.routes, location]);
@@ -88,19 +94,30 @@ const SiderMenu: React.FC<{ siderBar?: React.ReactNode; siteLogo?: React.ReactNo
       );
     } else {
       return (
-        <Icon component={cacheIcon as React.FunctionComponent<React.SVGProps<SVGSVGElement>>} />
+        <Icon
+          component={
+            cacheIcon as React.FunctionComponent<React.SVGProps<SVGSVGElement>>
+          }
+        />
       );
     }
   }
 
   // 获取菜单标题
-  function getMenuTitle(name: string = '', parentName?: string, icon?: React.ReactNode) {
+  function getMenuTitle(
+    name: string = '',
+    parentName?: string,
+    icon?: React.ReactNode
+  ) {
     const key = parentName ? `menu.${parentName}.${name}` : `menu.${name}`;
     const localName = localeObj[key] || name;
     return (
       <span>
         {createIcon(icon)}
-        <span className={!parentName ? 'RA-antd-subMenu-title' : ''} title={localName}>
+        <span
+          className={!parentName ? 'RA-antd-subMenu-title' : ''}
+          title={localName}
+        >
           {localName}
         </span>
       </span>
@@ -127,7 +144,11 @@ const SiderMenu: React.FC<{ siderBar?: React.ReactNode; siteLogo?: React.ReactNo
 
   // 初始化子级菜单或者菜单枝叶
   function getSubMenuOrItem(menu: RouteChild, parentName?: string) {
-    if (menu.routes && !menu.hideMenu && menu.routes.some((child: RouteChild) => child.name)) {
+    if (
+      menu.routes &&
+      !menu.hideMenu &&
+      menu.routes.some((child: RouteChild) => child.name)
+    ) {
       // 菜单父级
       const { icon, name, path, routes } = menu;
       return (
@@ -165,7 +186,9 @@ const SiderMenu: React.FC<{ siderBar?: React.ReactNode; siteLogo?: React.ReactNo
       >
         {createIcon(icon)}
         <span
-          className={parentName ? 'RA-antd-menuItem-title' : 'RA-antd-subMenu-title'}
+          className={
+            parentName ? 'RA-antd-menuItem-title' : 'RA-antd-subMenu-title'
+          }
           title={localName}
         >
           {localName}
@@ -176,7 +199,8 @@ const SiderMenu: React.FC<{ siderBar?: React.ReactNode; siteLogo?: React.ReactNo
 
   const handleOpenMenu = (openKeys: string[]) => {
     const moreThanOne =
-      openKeys.filter(key => routeConfig.some(route => route.path === key)).length > 1;
+      openKeys.filter(key => routeConfig.some(route => route.path === key))
+        .length > 1;
     if (collapsed && !openKeys.length) {
       return;
     }
@@ -216,7 +240,9 @@ const SiderMenu: React.FC<{ siderBar?: React.ReactNode; siteLogo?: React.ReactNo
         'RA-navigator',
         fixSiderBar && 'RA-navigator-fixSiderBar',
         collapsed && 'RA-navigator-collapsed',
-        isInlineLayout ? 'RA-inlineLayout-navigator' : 'RA-splitLayout-navigator',
+        isInlineLayout
+          ? 'RA-inlineLayout-navigator'
+          : 'RA-splitLayout-navigator',
         isDarkTheme && 'RA-navigator-darkTheme'
       )}
     >
@@ -230,4 +256,8 @@ const SiderMenu: React.FC<{ siderBar?: React.ReactNode; siteLogo?: React.ReactNo
   return <>{isHorizontalNavigator ? HorizontalMenu : VerticalMenu}</>;
 };
 
-export default inject('layoutStore', 'userStore', 'localeStore')(observer(SiderMenu));
+export default inject(
+  'layoutStore',
+  'userStore',
+  'localeStore'
+)(observer(SiderMenu));

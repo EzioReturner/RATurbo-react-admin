@@ -21,5 +21,14 @@ module.exports = {
     '^.+\\.(tsx|js|ts|jsx)?$': 'babel-jest',
     '^.+\\.svg$': 'jest-svg-transformer'
   },
-  moduleFileExtensions: ['js', 'json', 'es6', 'ts', 'tsx', 'jsx', 'json', 'node']
+  moduleFileExtensions: [
+    'js',
+    'json',
+    'es6',
+    'ts',
+    'tsx',
+    'jsx',
+    'json',
+    'node'
+  ]
 };

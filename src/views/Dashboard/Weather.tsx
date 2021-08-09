@@ -2,7 +2,13 @@ import React from 'react';
 import { Card } from 'antd';
 import getWeather from '@api/dashboard';
 import Moment from 'moment';
-import { RainSvg, CloudySvg, OvercastSvg, ThunderSvg, SunSvg } from '@components/SvgIcon';
+import {
+  RainSvg,
+  CloudySvg,
+  OvercastSvg,
+  ThunderSvg,
+  SunSvg
+} from '@components/SvgIcon';
 
 interface StateData {
   daypower: string;
@@ -75,14 +81,23 @@ class Weather extends React.PureComponent<{}, WeatherState> {
     });
 
     return (
-      <Card bordered={false} className="weather-card" bodyStyle={bodyStyle} hoverable>
+      <Card
+        bordered={false}
+        className="weather-card"
+        bodyStyle={bodyStyle}
+        hoverable
+      >
         <div className="weather-body">
           <div className="weather-date-location">
             <h2>{Moment().format('dddd')}</h2>
-            <p className="text-muted">{Moment().format('DD MMMM, YYYY')} Amoy, China</p>
+            <p className="text-muted">
+              {Moment().format('DD MMMM, YYYY')} Amoy, China
+            </p>
           </div>
           <div className="weather-data">
-            <h1>{data[0] ? data[0].daypower + '℃ - ' + data[0].daytemp + '℃' : ''}</h1>
+            <h1>
+              {data[0] ? data[0].daypower + '℃ - ' + data[0].daytemp + '℃' : ''}
+            </h1>
           </div>
         </div>
         <div className="weakly-weather">{WeatherItem}</div>

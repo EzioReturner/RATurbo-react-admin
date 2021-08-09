@@ -17,8 +17,8 @@ echarts.registerAction(
     event: 'bmapRoam',
     update: 'updateLayout'
   },
-  function(payload, ecModel) {
-    ecModel.eachComponent('bmap', function(bMapModel) {
+  function (payload, ecModel) {
+    ecModel.eachComponent('bmap', function (bMapModel) {
       var bmap = bMapModel.getBMap();
       var center = bmap.getCenter();
       bMapModel.setCenterAndZoom([center.lng, center.lat], bmap.getZoom());

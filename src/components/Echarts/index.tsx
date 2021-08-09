@@ -60,7 +60,10 @@ class EchartsReact extends Component<EchartProps> {
 
   getInstance() {
     const { theme } = this.props;
-    return echarts.getInstanceByDom(this.echartsDOM) || echarts.init(this.echartsDOM, theme);
+    return (
+      echarts.getInstanceByDom(this.echartsDOM) ||
+      echarts.init(this.echartsDOM, theme)
+    );
   }
 
   componentDidMount() {
@@ -81,7 +84,9 @@ class EchartsReact extends Component<EchartProps> {
     let { option } = this.props;
     const { notMerge, lazyUpdate } = this.props;
     const _option: StoreKeyValue[] = Array.isArray(option) ? option : [option];
-    _option.forEach(op => chartObj.setOption(op || {}, notMerge || false, lazyUpdate || false));
+    _option.forEach(op =>
+      chartObj.setOption(op || {}, notMerge || false, lazyUpdate || false)
+    );
     // chartObj.setOption(_option[0] || {}, notMerge || false, lazyUpdate || false);
     // _option[1] && chartObj.setOption(_option[1]);
     return chartObj;

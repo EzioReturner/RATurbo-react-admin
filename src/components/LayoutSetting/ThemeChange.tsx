@@ -29,18 +29,26 @@ const ThemeChange: React.FC = props => {
 
   return (
     <>
-      <div className={classNames('RA-setting-Row', 'RA-setting-haveSelectedIcon')}>
+      <div
+        className={classNames('RA-setting-Row', 'RA-setting-haveSelectedIcon')}
+      >
         <div className="RA-setting-title">
           {localeObj['layoutSetting.visionTheme'] || '整体色彩模式'}
         </div>
-        <Tooltip placement="top" title={localeObj['layoutSetting.lightTheme'] || '亮色模式'}>
+        <Tooltip
+          placement="top"
+          title={localeObj['layoutSetting.lightTheme'] || '亮色模式'}
+        >
           <img
             src={require('@assets/image/setting/light.svg').default}
             alt=""
             onClick={() => handleChangeVision('light')}
           />
         </Tooltip>
-        <Tooltip placement="top" title={localeObj['layoutSetting.darkTheme'] || '暗黑模式'}>
+        <Tooltip
+          placement="top"
+          title={localeObj['layoutSetting.darkTheme'] || '暗黑模式'}
+        >
           <img
             src={require('@assets/image/setting/dark.svg').default}
             alt=""

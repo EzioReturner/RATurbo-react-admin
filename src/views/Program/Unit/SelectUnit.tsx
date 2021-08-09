@@ -8,9 +8,7 @@ const children: any = [];
 for (let i = 10; i < 36; i++) {
   children.push(
     <Option
-      value={Math.random()
-        .toString(36)
-        .substr(2)}
+      value={Math.random().toString(36).substr(2)}
       key={i.toString(36) + i}
     >
       {i.toString(36) + i}
@@ -44,7 +42,12 @@ class SelectSizesDemo extends React.Component {
         </Radio.Group>
         <br />
         <br />
-        <Select size={size} defaultValue="a1" onChange={handleChange} style={{ width: 200 }}>
+        <Select
+          size={size}
+          defaultValue="a1"
+          onChange={handleChange}
+          style={{ width: 200 }}
+        >
           {children}
         </Select>
         <br />

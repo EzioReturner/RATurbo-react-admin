@@ -16,7 +16,10 @@ const Login: React.FC = () => {
   return (
     <div className="login">
       {apError && (
-        <div className={shake ? 'animated shake' : ''} onAnimationEnd={() => setShake(false)}>
+        <div
+          className={shake ? 'animated shake' : ''}
+          onAnimationEnd={() => setShake(false)}
+        >
           <Alert
             message="账户或者密码错误 a:ra  p:123"
             type="error"

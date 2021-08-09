@@ -20,13 +20,19 @@ describe('test CheckPermissions', () => {
     expect(checkPermissions('admin', 'user', target, error)).toEqual('error');
   });
   it('Correct Array permission authentication', () => {
-    expect(checkPermissions(['user', 'admin'], 'user', target, error)).toEqual('ok');
+    expect(checkPermissions(['user', 'admin'], 'user', target, error)).toEqual(
+      'ok'
+    );
   });
   it('Wrong Array permission authentication,currentAuthority error', () => {
-    expect(checkPermissions(['user', 'admin'], 'user,admin', target, error)).toEqual('error');
+    expect(
+      checkPermissions(['user', 'admin'], 'user,admin', target, error)
+    ).toEqual('error');
   });
   it('Wrong Array permission authentication', () => {
-    expect(checkPermissions(['user', 'admin'], 'guest', target, error)).toEqual('error');
+    expect(checkPermissions(['user', 'admin'], 'guest', target, error)).toEqual(
+      'error'
+    );
   });
   // it('Wrong Function permission authentication', () => {
   //   expect(checkPermissions(() => false, 'guest', target, error)).toEqual('error');
@@ -38,10 +44,14 @@ describe('test CheckPermissions', () => {
     expect(checkPermissions('user', ['user'], target, error)).toEqual('ok');
   });
   it('authority is string, currentAuthority is array, return ok', () => {
-    expect(checkPermissions('user', ['user', 'admin'], target, error)).toEqual('ok');
+    expect(checkPermissions('user', ['user', 'admin'], target, error)).toEqual(
+      'ok'
+    );
   });
   it('authority is array, currentAuthority is array, return ok', () => {
-    expect(checkPermissions(['user', 'admin'], ['user', 'admin'], target, error)).toEqual('ok');
+    expect(
+      checkPermissions(['user', 'admin'], ['user', 'admin'], target, error)
+    ).toEqual('ok');
   });
   // it('Wrong Function permission authentication', () => {
   //   expect(checkPermissions(() => false, ['user'], target, error)).toEqual('error');

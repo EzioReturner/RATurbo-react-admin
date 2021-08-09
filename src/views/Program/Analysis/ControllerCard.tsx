@@ -11,15 +11,8 @@ const Controller: React.FC = () => {
       .fill(1)
       .map((res: number, index: number) => {
         return (
-          <Option
-            key={index}
-            value={Math.random()
-              .toString(36)
-              .substr(2)}
-          >
-            {Math.random()
-              .toString(36)
-              .substr(2)}
+          <Option key={index} value={Math.random().toString(36).substr(2)}>
+            {Math.random().toString(36).substr(2)}
           </Option>
         );
       });
@@ -71,7 +64,11 @@ const Controller: React.FC = () => {
       }}
     >
       <div style={{ flex: 1, marginLeft: '16px' }}>
-        <Switch defaultChecked={showUnDefined} style={marginRight.et} onChange={handleSwitch} />
+        <Switch
+          defaultChecked={showUnDefined}
+          style={marginRight.et}
+          onChange={handleSwitch}
+        />
         <span className="headerTextSpan">未识别</span>
       </div>
       <span className="headerTextSpan rightSpace">

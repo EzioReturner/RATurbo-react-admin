@@ -33,7 +33,8 @@ const RADrawer: React.FC<RADrawerProps> = props => {
     setTimeout(() => {
       if (drawerRef.current) {
         if (open) {
-          drawerRef.current.className = drawerRef.current.className + ' RA-drawer-opened';
+          drawerRef.current.className =
+            drawerRef.current.className + ' RA-drawer-opened';
         } else {
           drawerRef.current.className = drawerRef.current.className
             .replace('RA-drawer-opened', '')

@@ -32,7 +32,9 @@ class Proportion extends React.Component<{}, ProportionState> {
       <Card
         hoverable
         bordered={false}
-        title={<FormatterLocale id="monitor.proportion" defaultMessage="热搜词云" />}
+        title={
+          <FormatterLocale id="monitor.proportion" defaultMessage="热搜词云" />
+        }
         className="fat-card"
       >
         <EchartsReact option={data} style={{ height: '200px' }} />

@@ -22,7 +22,10 @@ export function useInterval(callback: Function, delay: number) {
 
 // 截取当前路由的query
 // 传入key则读取指定key，查询不到返回null
-export function useLocationQuery(search: string, key?: string): string | StoreKeyValue | null {
+export function useLocationQuery(
+  search: string,
+  key?: string
+): string | StoreKeyValue | null {
   if (key) {
     return new URLSearchParams(search).get(key);
   } else {

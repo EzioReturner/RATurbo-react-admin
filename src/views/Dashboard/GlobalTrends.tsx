@@ -11,9 +11,14 @@ const GlobalTrends: React.FC = () => {
       bordered={false}
       className="fat-card global-trends"
       bodyStyle={{ overflow: 'hidden' }}
-      title={<FormatterLocale id="dashboard.trends" defaultMessage="全球趋势" />}
+      title={
+        <FormatterLocale id="dashboard.trends" defaultMessage="全球趋势" />
+      }
     >
-      <EchartsReact style={{ height: '350px', width: '100%' }} option={globalTrendsOption} />
+      <EchartsReact
+        style={{ height: '350px', width: '100%' }}
+        option={globalTrendsOption}
+      />
     </Card>
   );
 };

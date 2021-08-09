@@ -14,7 +14,11 @@ class TsExample extends Component {
       return <h1 className={style.title}>{title}</h1>;
     };
     return (
-      <PageWrapper title={<FormatterLocale id="typescript" defaultMessage="TypeScript样例" />}>
+      <PageWrapper
+        title={
+          <FormatterLocale id="typescript" defaultMessage="TypeScript样例" />
+        }
+      >
         <Title title="ts-Example is at work!" />
       </PageWrapper>
     );

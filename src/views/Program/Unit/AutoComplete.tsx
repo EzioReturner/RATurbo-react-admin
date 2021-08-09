@@ -11,7 +11,9 @@ const Complete: React.FC = () => {
   const [options, setOptions] = useState<{ value: string }[]>([]);
   const onSearch = (searchText: string) => {
     setOptions(
-      !searchText ? [] : [mockVal(searchText), mockVal(searchText, 2), mockVal(searchText, 3)]
+      !searchText
+        ? []
+        : [mockVal(searchText), mockVal(searchText, 2), mockVal(searchText, 3)]
     );
   };
   const onSelect = (data: string) => {

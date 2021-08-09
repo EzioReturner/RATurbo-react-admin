@@ -1,14 +1,14 @@
 const path = require('path');
 const postcssNormalize = require('postcss-normalize');
+const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const paths = require('./paths');
 
+// style files regexes
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
-// const sassRegex = /\.(scss|sass)$/;
-// const sassModuleRegex = /\.module\.(scss|sass)$/;
 const lessRegex = /\.less$/;
 const lessModuleRegex = /\.module\.less$/;
-const paths = require('./paths');
 
 function _resolve(track) {
   return path.join(__dirname, '..', track);
@@ -22,21 +22,22 @@ module.exports = function() {
     ? paths.servedPath
     : isEnvDevelopment && '/';
 
-  const getStyleLoaders = (cssOption, preProcessor) => {
+  const getStyleLoaders = (cssOptions, preProcessor) => {
     const loaders = [
       isEnvDevelopment && require.resolve('style-loader'),
       isEnvProduction && {
         loader: MiniCssExtractPlugin.loader,
-        options: publicPath === './' ? { publicPath: '../../' } : {}
+        options: {
+          options: publicPath === './' ? { publicPath: '../../' } : {}
+        }
       },
       {
         loader: require.resolve('css-loader'),
-        options: cssOption
+        options: cssOptions
       },
       {
         loader: require.resolve('postcss-loader'),
         options: {
-          sourceMap: isEnvProduction && shouldUseSourceMap,
           ident: 'postcss',
           plugins: () => [
             require('postcss-flexbugs-fixes'),
@@ -47,30 +48,42 @@ module.exports = function() {
               stage: 3
             }),
             postcssNormalize()
-          ]
+          ],
+          sourceMap: isEnvProduction ? shouldUseSourceMap : isEnvDevelopment
         }
       }
     ].filter(Boolean);
     if (preProcessor) {
-      loaders.push({
-        loader: require.resolve(preProcessor),
-        options: Object.assign(
-          {},
-          {
-            sourceMap: isEnvProduction && shouldUseSourceMap
-          },
-          preProcessor === 'less-loader'
-            ? {
-                javascriptEnabled: true,
-                modifyVars: {
-                  '@primary-color': '#fb4491',
-                  '@font-size-base': '13px'
+      loaders.push(
+        {
+          loader: require.resolve('resolve-url-loader'),
+          options: {
+            sourceMap: isEnvProduction ? shouldUseSourceMap : isEnvDevelopment,
+            root: paths.appSrc
+          }
+        },
+        {
+          loader: require.resolve(preProcessor),
+          options: Object.assign(
+            {},
+            {
+              sourceMap: isEnvProduction && shouldUseSourceMap
+            },
+            preProcessor === 'less-loader'
+              ? {
+                  javascriptEnabled: true,
+                  modifyVars: {
+                    '@primary-color': '#536ec2',
+                    '@font-size-base': '13px',
+                    'brand-primary': '#586fbc'
+                  }
                 }
-              }
-            : undefined
-        )
-      });
+              : undefined
+          )
+        }
+      );
     }
+
     if (preProcessor === 'less-loader') {
       loaders.push({
         loader: 'sass-resources-loader',
@@ -85,73 +98,47 @@ module.exports = function() {
     }
     return loaders;
   };
+
   return [
     {
       test: cssRegex,
       exclude: cssModuleRegex,
       use: getStyleLoaders({
         importLoaders: 1,
-        sourceMap: false
+        sourceMap: isEnvProduction ? shouldUseSourceMap : isEnvDevelopment
       }),
       sideEffects: true
     },
     {
       test: cssModuleRegex,
       use: getStyleLoaders({
-        importLoaders: 2,
-        sourceMap: shouldUseSourceMap,
+        importLoaders: 1,
+        sourceMap: isEnvProduction ? shouldUseSourceMap : isEnvDevelopment,
         modules: {
-          mode: 'local',
-          localIdentName: '[local]--[hash:base64:5]'
+          getLocalIdent: getCSSModuleLocalIdent
         }
       })
     },
-    // {
-    //   test: sassRegex,
-    //   exclude: sassModuleRegex,
-    //   use: getStyleLoaders(
-    //     {
-    //       importLoaders: 2,
-    //       sourceMap: false
-    //     },
-    //     'sass-loader'
-    //   ),
-    //   sideEffects: true
-    // },
-    // {
-    //   test: sassModuleRegex,
-    //   use: getStyleLoaders(
-    //     {
-    //       importLoaders: 2,
-    //       sourceMap: false,
-    //       modules: {
-    //         mode: 'local',
-    //         localIdentName: '[local]--[hash:base64:5]'
-    //       }
-    //     },
-    //     'sass-loader'
-    //   )
-    // },
     {
       test: lessRegex,
       exclude: lessModuleRegex,
       use: getStyleLoaders(
         {
-          sourceMap: false,
-          importLoaders: 2
+          importLoaders: 3,
+          sourceMap: isEnvProduction ? shouldUseSourceMap : isEnvDevelopment
         },
         'less-loader'
-      )
+      ),
+      sideEffects: true
     },
     {
       test: lessModuleRegex,
       use: getStyleLoaders(
         {
-          importLoaders: 2,
-          sourceMap: false,
+          importLoaders: 3,
+          sourceMap: isEnvProduction ? shouldUseSourceMap : isEnvDevelopment,
           modules: {
-            mode: 'local',
-            localIdentName: '[local]--[hash:base64:5]'
+            getLocalIdent: getCSSModuleLocalIdent
           }
         },
         'less-loader'

@@ -7,7 +7,7 @@
 //   }
 // });
 // @ts-ignore
-Array.prototype.forEachAsync = async function(callback: Function, thisArg) {
+Array.prototype.forEachAsync = async function (callback: Function, thisArg) {
   for (let [index, item] of Object.entries(this)) {
     await callback(item, index, this);
   }
@@ -26,7 +26,9 @@ export async function _promiseAll(requestArr: Promise<any>[]) {
 
   // @ts-ignore
   await requestArr.forEachAsync(async (req: Promise<any>) => {
-    const [data, error] = await req.then(res => [res, null]).catch(err => [null, err]);
+    const [data, error] = await req
+      .then(res => [res, null])
+      .catch(err => [null, err]);
     results.push([data, error]);
   });
 

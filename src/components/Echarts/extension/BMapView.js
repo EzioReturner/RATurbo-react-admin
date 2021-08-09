@@ -2,13 +2,13 @@ var echarts = require('echarts/lib/echarts');
 
 var _default = echarts.extendComponentView({
   type: 'bmap',
-  render: function(bMapModel, ecModel, api) {
+  render: function (bMapModel, ecModel, api) {
     var rendering = true;
     var bmap = bMapModel.getBMap();
     var viewportRoot = api.getZr().painter.getViewportRoot();
     var coordSys = bMapModel.coordinateSystem;
 
-    var moveHandler = function(type, target) {
+    var moveHandler = function (type, target) {
       if (rendering) {
         return;
       }

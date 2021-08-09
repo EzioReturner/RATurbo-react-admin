@@ -7,7 +7,10 @@ interface HighLightProps {
 }
 
 const isEqual = (prevProps: HighLightProps, nextProps: HighLightProps) => {
-  if (prevProps.val !== nextProps.val || prevProps.tarVal !== nextProps.tarVal) {
+  if (
+    prevProps.val !== nextProps.val ||
+    prevProps.tarVal !== nextProps.tarVal
+  ) {
     return false;
   }
   return true;

@@ -56,7 +56,12 @@ const RowInfoCard: React.FC = () => {
           <Icon style={{ marginTop: '12px' }} component={icon as any} />
           <div className="right-part">
             <p className="title">
-              {<FormatterLocale id={`dashboard.rowInfo${index}.title`} defaultMessage={title} />}
+              {
+                <FormatterLocale
+                  id={`dashboard.rowInfo${index}.title`}
+                  defaultMessage={title}
+                />
+              }
             </p>
             <h3 className="num">{num}</h3>
           </div>
@@ -77,7 +82,15 @@ const RowInfoCard: React.FC = () => {
   return (
     <Row gutter={24} className="rowInfo-card">
       {details.map((dl, index) => (
-        <Col xl={6} lg={12} md={12} sm={24} xs={24} key={index} style={{ marginBottom: '24px' }}>
+        <Col
+          xl={6}
+          lg={12}
+          md={12}
+          sm={24}
+          xs={24}
+          key={index}
+          style={{ marginBottom: '24px' }}
+        >
           <InfoCard {...dl} index={index} />
         </Col>
       ))}

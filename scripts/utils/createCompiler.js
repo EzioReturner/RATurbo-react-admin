@@ -4,12 +4,14 @@ const chalk = require('chalk');
 const Webpack = require('webpack');
 const paths = require('../../webpack/paths');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const typescriptFormatter = require('./typescriptFormatter');
-const formatWebpackMessages = require('./formatWebpackMessages');
+const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
+const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');
 const isInteractive = process.stdout.isTTY;
 
 function clearConsole() {
-  process.stdout.write(process.platform === 'win32' ? '\x1B[2J\x1B[0f' : '\x1B[2J\x1B[3J\x1B[H');
+  process.stdout.write(
+    process.platform === 'win32' ? '\x1B[2J\x1B[0f' : '\x1B[2J\x1B[3J\x1B[H'
+  );
 }
 
 function printInstructions(appName, urls) {
@@ -18,8 +20,16 @@ function printInstructions(appName, urls) {
   console.log();
 
   if (urls.lanUrlForTerminal) {
-    console.log(`  ${chalk.bold('Local:')}            ${chalk.cyan(urls.localUrlForTerminal)}`);
-    console.log(`  ${chalk.bold('On Your Network:')}  ${chalk.cyan(urls.lanUrlForTerminal)}`);
+    console.log(
+      `  ${chalk.bold('Local:')}            ${chalk.cyan(
+        urls.localUrlForTerminal
+      )}`
+    );
+    console.log(
+      `  ${chalk.bold('On Your Network:')}  ${chalk.cyan(
+        urls.lanUrlForTerminal
+      )}`
+    );
   } else {
     console.log(`  ${urls.localUrlForTerminal}`);
   }
@@ -54,11 +64,14 @@ const createCompiler = (config, urls, devSocket) => {
       'afterTypeScriptCheck',
       (diagnostics, lints) => {
         const allMsgs = [...diagnostics, ...lints];
-        const format = message => `${message.file}\n${typescriptFormatter(message, true)}`;
+        const format = message =>
+          `${message.file}\n${typescriptFormatter(message, true)}`;
 
         tsMessagesResolver({
           errors: allMsgs.filter(msg => msg.severity === 'error').map(format),
-          warnings: allMsgs.filter(msg => msg.severity === 'warning').map(format)
+          warnings: allMsgs
+            .filter(msg => msg.severity === 'warning')
+            .map(format)
         });
       }
     );
@@ -77,7 +90,11 @@ const createCompiler = (config, urls, devSocket) => {
 
     if (useTypeScript && statsData.errors.length === 0) {
       const delayedMsg = setTimeout(() => {
-        console.log(chalk.yellow('Files successfully emitted, waiting for typecheck results...'));
+        console.log(
+          chalk.yellow(
+            'Files successfully emitted, waiting for typecheck results...'
+          )
+        );
       }, 100);
 
       const messages = await tsMessagesPromise;

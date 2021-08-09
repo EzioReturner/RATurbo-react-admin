@@ -1,10 +1,19 @@
-const webpack = require('webpack');
+'use strict';
+
 const path = require('path');
-const paths = require('./paths');
-const baseConfig = require('./webpack.config');
-const styleLoaders = require('./style.loaders');
+const webpack = require('webpack');
+const resolve = require('resolve');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
+const paths = require('./paths');
+const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const InterpolateHtmlPlugin = require('interpolate-html-plugin');
+const appPackageJson = require(paths.appPackageJson);
+
 const setting = require('../src/config/setting');
 
 const webpackDevClientEntry = require.resolve(
@@ -46,75 +55,20 @@ module.exports = Object.assign(baseConfig, {
     ]
   },
   output: {
-    path: paths.appBuildDist,
+    path: undefined,
+    pathinfo: true,
     publicPath: '/',
     filename: 'static/js/bundle.js',
-    chunkFilename: 'static/js/[name].chunk.js'
-  },
-  devtool: 'cheap-module-source-map',
-  module: {
-    rules: [
-      {
-        test: /\.(js|mjs|jsx|ts|tsx)$/,
-        enforce: 'pre',
-        use: [
-          {
-            options: {
-              formatter: require.resolve('eslint-friendly-formatter'),
-              eslintPath: require.resolve('eslint'),
-              resolvePluginsRelativeTo: __dirname
-            },
-            loader: require.resolve('eslint-loader')
-          }
-        ],
-        include: _resolve('./src')
-      },
-      {
-        oneOf: [
-          ..._module.rules,
-          ...styleLoaders(),
-          {
-            test: /\.(js|mjs|jsx|ts|tsx)$/,
-            exclude: /node_modules/,
-            use: {
-              loader: 'babel-loader',
-              options: {
-                cacheDirectory: true,
-                cacheCompression: false,
-                compact: false
-              }
-            }
-          },
-          {
-            loader: require.resolve('file-loader'),
-            exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
-            options: {
-              name: 'static/media/[name].[hash:8].[ext]'
-            }
-          }
-        ]
-      }
-    ]
-  },
-  optimization: {
-    splitChunks: {
-      chunks: 'async',
-      name: true,
-      cacheGroups: {
-        vendors: {
-          chunks: 'all',
-          test: /(react|react-dom|react-dom-router|babel-polyfill|mobx)/,
-          priority: 100,
-          name: 'vendors'
-        }
-      }
-    }
+    chunkFilename: 'static/js/[name].chunk.js',
+    jsonpFunction: `webpackJsonp${appPackageJson.name}`,
+    globalObject: 'this',
+    devtoolModuleFilenameTemplate: info =>
+      path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')
   },
   plugins: [
     ...plugins,
-    new webpack.HotModuleReplacementPlugin(),
-
     new HtmlWebpackPlugin({
+      filename: 'index.html',
       inject: true,
       template: paths.appHtml
     }),
@@ -123,6 +77,52 @@ module.exports = Object.assign(baseConfig, {
       NODE_ENV: 'development',
       PUBLIC_URL: '',
       SITE_NAME: setting.siteName
+    }),
+
+    new webpack.HotModuleReplacementPlugin(),
+
+    new ReactRefreshWebpackPlugin({
+      overlay: {
+        entry: webpackDevClientEntry,
+        module: reactRefreshOverlayEntry,
+        sockIntegration: false
+      }
+    }),
+
+    new CaseSensitivePathsPlugin(),
+
+    new WatchMissingNodeModulesPlugin(paths.appNodeModules),
+
+    new ForkTsCheckerWebpackPlugin({
+      typescript: resolve.sync('typescript', {
+        basedir: paths.appNodeModules
+      }),
+      async: true,
+      checkSyntacticErrors: true,
+      tsconfig: paths.appTsConfig,
+      reportFiles: ['../**/src/**/*.{ts,tsx}', '**/src/**/*.{ts,tsx}'],
+      silent: true,
+      formatter: undefined
+    }),
+
+    new ESLintPlugin({
+      extensions: ['js', 'mjs', 'jsx', 'ts', 'tsx'],
+      formatter: require.resolve('react-dev-utils/eslintFormatter'),
+      eslintPath: require.resolve('eslint'),
+      failOnError: false,
+      context: paths.appSrc,
+      cache: true,
+      cacheLocation: path.resolve(paths.appNodeModules, '.cache/.eslintcache'),
+      cwd: paths.appPath,
+      resolvePluginsRelativeTo: __dirname,
+      baseConfig: {
+        extends: [require.resolve('eslint-config-react-app/base')],
+        rules: {
+          ...(!hasJsxRuntime && {
+            'react/react-in-jsx-scope': 'error'
+          })
+        }
+      }
     })
   ]
 });

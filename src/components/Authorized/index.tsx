@@ -22,12 +22,26 @@ const Authorized: React.FC<AuthorizedProps> = props => {
   } = inject();
 
   const { children, routeAuthority, unidentified } = props;
-  const _children: React.ReactNode = typeof children === 'undefined' ? null : children;
+  const _children: React.ReactNode =
+    typeof children === 'undefined' ? null : children;
   const currentAuthority: string | string[] = authority;
 
-  const dom = CheckPermission(routeAuthority, currentAuthority, _children, unidentified);
+  const dom = CheckPermission(
+    routeAuthority,
+    currentAuthority,
+    _children,
+    unidentified
+  );
 
-  return <>{identifyStatus === 'identifying' ? <Loading spinning text="identifying..." /> : dom}</>;
+  return (
+    <>
+      {identifyStatus === 'identifying' ? (
+        <Loading spinning text="identifying..." />
+      ) : (
+        dom
+      )}
+    </>
+  );
 };
 
 export default inject('userStore')(observer(Authorized));

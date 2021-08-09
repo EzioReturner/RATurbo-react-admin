@@ -19,7 +19,9 @@ class UserStore {
   // 获取用户权限
   getAuthority = (str?: undefined | string): string[] => {
     const authorityString: string | null =
-      typeof str === 'undefined' ? window.localStorage.getItem('RA-authority') : str;
+      typeof str === 'undefined'
+        ? window.localStorage.getItem('RA-authority')
+        : str;
     let authority: string[];
     authority = authorityString ? JSON.parse(authorityString) : [];
     return authority;
@@ -27,7 +29,8 @@ class UserStore {
 
   // 设置用户权限
   @action setAuthority = (authority: string | string[]): void => {
-    const raAuthority: string[] = typeof authority === 'string' ? [authority] : authority;
+    const raAuthority: string[] =
+      typeof authority === 'string' ? [authority] : authority;
     window.localStorage.setItem('RA-authority', JSON.stringify(raAuthority));
     this.authority = raAuthority;
   };

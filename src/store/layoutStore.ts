@@ -58,7 +58,8 @@ class LayoutStore {
     showHeader: useHeader, // 显示菜单
     layoutMode: (layoutMode as 'split' | 'inline') || 'split', // 布局模式
     navigateMode: (navigateMode as 'vertical' | 'horizontal') || 'vertical', // 导航风格
-    contentAreaWidthMode: (contentAreaWidthMode as 'max-width' | 'flow') || 'max-width', // 内容区域宽度
+    contentAreaWidthMode:
+      (contentAreaWidthMode as 'max-width' | 'flow') || 'max-width', // 内容区域宽度
     fixSiderBar: true, // 固定左侧导航
     fixHeader: true, // 固定顶部header
     visionTheme: 'light', // 视觉主题
@@ -92,7 +93,8 @@ class LayoutStore {
       for (let index = 0; index < appRoutes.length; index++) {
         const { redirect, authority: routeAuthority, path } = appRoutes[index];
         if (redirect || path === '/') continue;
-        const allowed = !routeAuthority || intersection(userStore.authority, routeAuthority);
+        const allowed =
+          !routeAuthority || intersection(userStore.authority, routeAuthority);
         if (allowed) {
           redirectPath = path;
           break;
@@ -134,7 +136,10 @@ class LayoutStore {
     // 生成script标签
     let script = document.createElement('script');
 
-    script.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js');
+    script.setAttribute(
+      'src',
+      'https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js'
+    );
     script.setAttribute('type', 'text/javascript');
 
     script.onload = () => {
@@ -272,7 +277,8 @@ class LayoutStore {
   // 调整status
   @action changeLayoutStatus = (key: keyof LayoutStatus, value: any) => {
     if (key === 'navigateMode') {
-      this.layoutStatus.contentAreaWidthMode = value === 'vertical' ? 'flow' : 'max-width';
+      this.layoutStatus.contentAreaWidthMode =
+        value === 'vertical' ? 'flow' : 'max-width';
     }
     this.layoutStatus[key] = value;
     if (key === 'currentColor' || key === 'visionTheme') {
@@ -280,7 +286,10 @@ class LayoutStore {
         this.changeLayoutVision();
       }, 0);
     }
-    window.localStorage.setItem('RA-layoutStatus', JSON.stringify(this.layoutStatus));
+    window.localStorage.setItem(
+      'RA-layoutStatus',
+      JSON.stringify(this.layoutStatus)
+    );
   };
 
   // 调整视觉风格

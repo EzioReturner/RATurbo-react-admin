@@ -10,5 +10,6 @@ const UserLayout: React.FC = props => {
     </div>
   );
 };
-const User = process.env.NODE_ENV === 'development' ? hot(module)(UserLayout) : UserLayout;
+const User =
+  process.env.NODE_ENV === 'development' ? hot(module)(UserLayout) : UserLayout;
 export default User;

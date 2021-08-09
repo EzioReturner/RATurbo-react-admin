@@ -39,7 +39,13 @@ const ChartCard = (props: any) => {
 
 const DistributeCard: React.FC = () => {
   const {
-    getChartOption: { circleOption, barOption, cityOption, provinceOption, lineOption }
+    getChartOption: {
+      circleOption,
+      barOption,
+      cityOption,
+      provinceOption,
+      lineOption
+    }
   } = programStore;
 
   return (

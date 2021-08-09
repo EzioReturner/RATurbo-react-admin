@@ -87,7 +87,7 @@ const baseConfig = {
     new webpack.ProgressPlugin(),
 
     new webpack.DefinePlugin({
-      NODE_RA_ENV: JSON.stringify(process.env.NODE_LUCKY_ENV),
+      NODE_RA_ENV: JSON.stringify(process.env.NODE_ENV),
       REQUEST_SUCCESS: Number(0)
     }),
 

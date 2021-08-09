@@ -14,13 +14,7 @@ module.exports = {
   plugins: ['react-hooks'],
   rules: {
     'no-console': 0,
-    'prettier/prettier': [
-      'error',
-      {
-        trailingComma: 'none',
-        singleQuote: true
-      }
-    ],
+    'prettier/prettier': 'error',
     'react-hooks/rules-of-hooks': 'warn',
     'react-hooks/exhaustive-deps': 'warn'
   },

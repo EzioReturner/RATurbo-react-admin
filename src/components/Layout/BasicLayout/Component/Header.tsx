@@ -29,9 +29,15 @@ const Header: React.FC<LayoutProps> = props => {
   const { siderBar: _siderBar, siteLogo: _siteLogo } = props;
 
   const IconCollapsed = collapsed ? (
-    <MenuUnfoldOutlined className="RA-header-foldIcon" onClick={() => toggleCollapsed()} />
+    <MenuUnfoldOutlined
+      className="RA-header-foldIcon"
+      onClick={() => toggleCollapsed()}
+    />
   ) : (
-    <MenuFoldOutlined className="RA-header-foldIcon" onClick={() => toggleCollapsed()} />
+    <MenuFoldOutlined
+      className="RA-header-foldIcon"
+      onClick={() => toggleCollapsed()}
+    />
   );
 
   const VerticalMenuHeaderBody = (
@@ -92,7 +98,9 @@ const Header: React.FC<LayoutProps> = props => {
         )}
       >
         {_siteLogo || <SiteDetail />}
-        <div className="RA-header-headerNav">{<TopMenu siderBar={_siderBar} />}</div>
+        <div className="RA-header-headerNav">
+          {<TopMenu siderBar={_siderBar} />}
+        </div>
         <div className="RA-header-rightPlace">
           <UserInfo />
           {usei18n && <SelectLang />}
@@ -101,6 +109,8 @@ const Header: React.FC<LayoutProps> = props => {
     </header>
   );
 
-  return <>{isHorizontalNavigator ? HorizontalMenuHeader : VerticalMenuHeader}</>;
+  return (
+    <>{isHorizontalNavigator ? HorizontalMenuHeader : VerticalMenuHeader}</>
+  );
 };
 export default inject('layoutStore')(observer(Header));

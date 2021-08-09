@@ -2,7 +2,10 @@ declare interface StoreKeyValue {
   [name: string]: StoreValue;
 }
 
-declare const GetObjectKey: <T extends object, K extends keyof T>(o: T, k: K) => T[K];
+declare const GetObjectKey: <T extends object, K extends keyof T>(
+  o: T,
+  k: K
+) => T[K];
 
 declare type StoreValue = any;
 

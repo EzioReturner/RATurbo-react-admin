@@ -18,7 +18,10 @@ const Performance = () => {
       <div className="jus-b warp-flex">
         <div>
           <p className="text-1 mb-2">
-            <FormatterLocale id="dashboard.bestPerformance" defaultMessage="最优表现" />
+            <FormatterLocale
+              id="dashboard.bestPerformance"
+              defaultMessage="最优表现"
+            />
           </p>
           <h3 className="text-3 mb-4">+45.2%</h3>
         </div>
@@ -27,7 +30,10 @@ const Performance = () => {
       <div className="jus-b warp-flex">
         <div>
           <p className="text-1 mb-2">
-            <FormatterLocale id="dashboard.worstPerformance" defaultMessage="最劣表现" />
+            <FormatterLocale
+              id="dashboard.worstPerformance"
+              defaultMessage="最劣表现"
+            />
           </p>
           <h3 className="text-3 mb-4">-35%</h3>
         </div>
@@ -71,7 +77,12 @@ const Performance = () => {
           </p>
         </div>
         <div>
-          <Progress showInfo={false} percent={56} status="active" className="success" />
+          <Progress
+            showInfo={false}
+            percent={56}
+            status="active"
+            className="success"
+          />
         </div>
       </div>
     </Card>

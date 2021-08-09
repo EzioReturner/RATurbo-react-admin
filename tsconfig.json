@@ -1,23 +1,25 @@
 {
   "compilerOptions": {
-    "strict": true,
-    "baseUrl": ".",
     "target": "es5",
-    "module": "esnext",
-    "sourceMap": true,
-    "importHelpers": true,
-    "strictPropertyInitialization": false,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": true,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "react",
+    "experimentalDecorators": true,
     "noEmit": true,
+    "jsx": "react-jsx",
     "paths": {
       "@/*": ["./src/*"],
       "@components/*": ["./src/components/*"],
@@ -30,7 +32,6 @@
       "@models/*": ["./src/models/*"],
       "@assets/*": ["./src/assets/*"]
     },
-    "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
     "typeRoots": ["./node_modules/@types", "./src/models/*"]
   },
   "include": ["./src/**/*.ts", "./src/**/*.tsx"],

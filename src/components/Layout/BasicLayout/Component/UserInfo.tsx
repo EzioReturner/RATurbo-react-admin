@@ -2,7 +2,11 @@ import React from 'react';
 import { Menu, Dropdown, Modal } from 'antd';
 import { inject, observer } from 'mobx-react';
 import UserStore from '@store/userStore';
-import { UserOutlined, SettingOutlined, LogoutOutlined } from '@ant-design/icons';
+import {
+  UserOutlined,
+  SettingOutlined,
+  LogoutOutlined
+} from '@ant-design/icons';
 const confirm = Modal.confirm;
 import { useHistory } from 'react-router-dom';
 interface InjectedProps {
@@ -26,7 +30,7 @@ const UserInfo: React.FC = props => {
           setTimeout(() => {
             userLogout();
             history.push('/user/login');
-            resolve();
+            resolve(1);
           }, 800);
         }).catch(() => console.log('Oops errors!'));
       },
@@ -58,7 +62,11 @@ const UserInfo: React.FC = props => {
 
   return (
     <div className="RA-userInfo">
-      <Dropdown overlay={getMenu()} className="RA-userInfo" placement="bottomRight">
+      <Dropdown
+        overlay={getMenu()}
+        className="RA-userInfo"
+        placement="bottomRight"
+      >
         <div className="RA-userInfo-dropdown">
           <UserOutlined className="RA-userInfo-icon" />
           <span className="RA-userInfo-userName">{userInfo.name}</span>

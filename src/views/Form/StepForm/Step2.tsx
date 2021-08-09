@@ -25,13 +25,22 @@ const Step2: React.FC = () => {
   };
   const FormContainer = (
     <Form {...formItemLayout} name="step2" onFinish={onSubmit}>
-      <Form.Item {...formItemLayout} label={<FormatterLocale id="title" defaultMessage="标题" />}>
+      <Form.Item
+        {...formItemLayout}
+        label={<FormatterLocale id="title" defaultMessage="标题" />}
+      >
         {data.title}
       </Form.Item>
-      <Form.Item {...formItemLayout} label={<FormatterLocale id="detail" defaultMessage="详情" />}>
+      <Form.Item
+        {...formItemLayout}
+        label={<FormatterLocale id="detail" defaultMessage="详情" />}
+      >
         {data.detail}
       </Form.Item>
-      <Form.Item {...formItemLayout} label={<FormatterLocale id="person" defaultMessage="任务" />}>
+      <Form.Item
+        {...formItemLayout}
+        label={<FormatterLocale id="person" defaultMessage="任务" />}
+      >
         {data.user}
       </Form.Item>
       <Form.Item {...tailFormItemLayout}>

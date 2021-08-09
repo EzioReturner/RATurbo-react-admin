@@ -4,7 +4,13 @@ import { useHistory } from 'react-router-dom';
 
 const ExceptionHome: React.FC = () => {
   const history = useHistory();
-  const handleTriggerError = ({ code, description }: { code: number; description: string }) => {
+  const handleTriggerError = ({
+    code,
+    description
+  }: {
+    code: number;
+    description: string;
+  }) => {
     history.push(`/exception/${code}`);
     notification.error({
       message: `请求错误 ${code}`,

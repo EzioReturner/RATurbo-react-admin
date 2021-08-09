@@ -9,7 +9,9 @@ import { getRouteAuthority } from '@utils/authorityTools';
 import Loading from '@components/Loading';
 import { useSetting } from '@config/setting';
 
-const Exception403 = React.lazy(() => import(/* webpackChunkName: "403" */ '@views/Exception/403'));
+const Exception403 = React.lazy(
+  () => import(/* webpackChunkName: "403" */ '@views/Exception/403')
+);
 
 interface MainSkeletonProps {
   route: RouteRoot;

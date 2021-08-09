@@ -15,7 +15,9 @@ const Result: React.FC<ResultProps> = props => {
   const { title, subtitle, extra, actions, type, ...restProps } = props;
 
   const _Icon: any = {
-    failed: <CloseCircleFilled className="RA-result-icon RA-result-icon-failed" />,
+    failed: (
+      <CloseCircleFilled className="RA-result-icon RA-result-icon-failed" />
+    ),
     successed: <CheckCircleFilled className="RA-result-icon" />
   };
 

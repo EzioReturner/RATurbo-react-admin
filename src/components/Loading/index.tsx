@@ -25,7 +25,8 @@ interface LoadingProps {
 }
 
 const Loading: React.FC<LoadingProps> = props => {
-  const { spinning, content, fixed, collapsed, style, text, parentRelative } = props;
+  const { spinning, content, fixed, collapsed, style, text, parentRelative } =
+    props;
 
   const CycleLoading = <div id="RA-loading-content-circle" />;
 
@@ -60,7 +61,12 @@ const Loading: React.FC<LoadingProps> = props => {
       )}
       style={style}
     >
-      <div className={classNames('RA-loading-content', parentRelative && 'parent-relative')}>
+      <div
+        className={classNames(
+          'RA-loading-content',
+          parentRelative && 'parent-relative'
+        )}
+      >
         {content || BarLoading}
         <p className="RA-loading-content-text">{text || 'LOADING...'}</p>
       </div>

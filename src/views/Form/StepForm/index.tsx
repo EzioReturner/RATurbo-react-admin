@@ -19,7 +19,9 @@ class StepForm extends React.Component {
     const Child = getStepChild();
     return (
       <PageWrapper
-        title={<FormatterLocale id="form.stepFormTitle" defaultMessage="分步表单" />}
+        title={
+          <FormatterLocale id="form.stepFormTitle" defaultMessage="分步表单" />
+        }
         subTitle={
           <FormatterLocale
             id="form.stepSubtitle"
@@ -33,7 +35,9 @@ class StepForm extends React.Component {
               {steps.map(item => (
                 <Step
                   key={item.id}
-                  title={<FormatterLocale id={item.id} defaultMessage={item.title} />}
+                  title={
+                    <FormatterLocale id={item.id} defaultMessage={item.title} />
+                  }
                 />
               ))}
             </Steps>

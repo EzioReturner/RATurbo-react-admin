@@ -384,12 +384,12 @@ const geoCoordMap = {
 };
 
 const _data = data
-  .sort(function(a, b) {
+  .sort(function (a, b) {
     return b.value - a.value;
   })
   .slice(0, 6);
 
-const convertData = function(data) {
+const convertData = function (data) {
   let res = [];
   for (let i = 0; i < data.length; i++) {
     let geoCoord = geoCoordMap[data[i].name];

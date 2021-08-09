@@ -37,7 +37,12 @@ class BasicTable extends React.Component<{}, BasicTableState> {
     });
   }
 
-  getFilterDropdown = ({ setSelectedKeys, selectedKeys, confirm, clearFilters }: any) => (
+  getFilterDropdown = ({
+    setSelectedKeys,
+    selectedKeys,
+    confirm,
+    clearFilters
+  }: any) => (
     <div style={{ padding: 8 }}>
       <Input
         ref={node => {
@@ -58,7 +63,11 @@ class BasicTable extends React.Component<{}, BasicTableState> {
         >
           Search
         </Button>
-        <Button onClick={() => this.handleReset(clearFilters)} size="small" style={{ width: 90 }}>
+        <Button
+          onClick={() => this.handleReset(clearFilters)}
+          size="small"
+          style={{ width: 90 }}
+        >
           Reset
         </Button>
       </Space>
@@ -167,7 +176,12 @@ class BasicTable extends React.Component<{}, BasicTableState> {
           bordered={false}
           extra={Extra}
         >
-          <Table className="no-head-border" bordered columns={columns} dataSource={tableData} />
+          <Table
+            className="no-head-border"
+            bordered
+            columns={columns}
+            dataSource={tableData}
+          />
         </Card>
       </PageWrapper>
     );

@@ -7,9 +7,12 @@ Enzyme.configure({ adapter: new Adapter() });
 
 const { JSDOM } = jsdom;
 if (typeof document === 'undefined') {
-  const dom = new JSDOM('<!doctype html><html><head></head><body></body></html>', {
-    url: 'https://localhost'
-  });
+  const dom = new JSDOM(
+    '<!doctype html><html><head></head><body></body></html>',
+    {
+      url: 'https://localhost'
+    }
+  );
   global.window = dom.window;
   global.document = global.window.document;
   global.navigator = global.window.navigator;

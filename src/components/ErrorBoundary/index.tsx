@@ -30,7 +30,10 @@ class ErrorBoundary extends React.Component<
       return (
         <div className="error-boundary" style={{ ...this.props.propStyle }}>
           <span className="error-boundary-name">{this.props.info?.name}</span>
-          <div className="error-boundary-content" style={{ ...this.props.contentStyle }}>
+          <div
+            className="error-boundary-content"
+            style={{ ...this.props.contentStyle }}
+          >
             <BugOutlined className="error-boundary-icon" />
             <span className="error-boundary-text">出错了...</span>
           </div>

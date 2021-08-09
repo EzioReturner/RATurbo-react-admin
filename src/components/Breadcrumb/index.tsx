@@ -50,15 +50,15 @@ const BreadCrumb: React.FC = props => {
     <div className="RA-breadcrumbList">
       {breadcrumbList.map((bread: Breadcrumb, index: number) => {
         const { display, path, name } = bread;
-        const key = path
-          .split('/')
-          .slice(1)
-          .join('.');
+        const key = path.split('/').slice(1).join('.');
 
         return display ? (
           <div
             key={index}
-            className={classNames('RA-breadcrumb', checkDisplay(path) && 'RA-breadcrumb-display')}
+            className={classNames(
+              'RA-breadcrumb',
+              checkDisplay(path) && 'RA-breadcrumb-display'
+            )}
             onClick={() => handleGoBreadPath(path)}
           >
             {localeObj[`menu.${key}`] || name}

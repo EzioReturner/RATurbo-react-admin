@@ -36,6 +36,9 @@ const isEnvDevelopment = process.env.NODE_ENV === 'development';
 
 const baseConfig = {
   devtool: 'cheap-module-source-map',
+  externals: {
+    BMap: 'BMap'
+  },
   resolve: {
     modules: ['node_modules'],
     extensions: paths.moduleFileExtensions.map(ext => `.${ext}`),

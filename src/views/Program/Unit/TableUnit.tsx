@@ -154,8 +154,11 @@ class TableDemo extends React.Component {
       // @ts-ignore
       scroll.x = '100vw';
     }
-    // @ts-ignore
-    const tableColumns = columns.map(item => ({ ...item, ellipsis: state.ellipsis }));
+    const tableColumns = columns.map(item => ({
+      ...item,
+      // @ts-ignore
+      ellipsis: state.ellipsis
+    }));
     if (xScroll === 'fixed') {
       // @ts-ignore
       tableColumns[0].fixed = true;
@@ -171,31 +174,52 @@ class TableDemo extends React.Component {
           style={{ marginBottom: 16 }}
         >
           <Form.Item label="Bordered">
-            <Switch checked={state.bordered} onChange={this.handleToggle('bordered')} />
+            <Switch
+              checked={state.bordered}
+              onChange={this.handleToggle('bordered')}
+            />
           </Form.Item>
           <Form.Item label="loading">
-            <Switch checked={state.loading} onChange={this.handleToggle('loading')} />
+            <Switch
+              checked={state.loading}
+              onChange={this.handleToggle('loading')}
+            />
           </Form.Item>
           <Form.Item label="Title">
             <Switch checked={!!state.title} onChange={this.handleTitleChange} />
           </Form.Item>
           <Form.Item label="Column Header">
-            <Switch checked={!!state.showHeader} onChange={this.handleHeaderChange} />
+            <Switch
+              checked={!!state.showHeader}
+              onChange={this.handleHeaderChange}
+            />
           </Form.Item>
           <Form.Item label="Footer">
-            <Switch checked={!!state.footer} onChange={this.handleFooterChange} />
+            <Switch
+              checked={!!state.footer}
+              onChange={this.handleFooterChange}
+            />
           </Form.Item>
           <Form.Item label="Expandable">
-            <Switch checked={!!state.expandable} onChange={this.handleExpandChange} />
+            <Switch
+              checked={!!state.expandable}
+              onChange={this.handleExpandChange}
+            />
           </Form.Item>
           <Form.Item label="Checkbox">
-            <Switch checked={!!state.rowSelection} onChange={this.handleRowSelectionChange} />
+            <Switch
+              checked={!!state.rowSelection}
+              onChange={this.handleRowSelectionChange}
+            />
           </Form.Item>
           <Form.Item label="Fixed Header">
             <Switch checked={!!yScroll} onChange={this.handleYScrollChange} />
           </Form.Item>
           <Form.Item label="Has Data">
-            <Switch checked={!!state.hasData} onChange={this.handleDataChange} />
+            <Switch
+              checked={!!state.hasData}
+              onChange={this.handleDataChange}
+            />
           </Form.Item>
           <Form.Item label="Ellipsis">
             <Switch
@@ -221,7 +245,10 @@ class TableDemo extends React.Component {
             </Radio.Group>
           </Form.Item>
           <Form.Item label="Table Layout">
-            <Radio.Group value={state.tableLayout} onChange={this.handleTableLayoutChange}>
+            <Radio.Group
+              value={state.tableLayout}
+              onChange={this.handleTableLayoutChange}
+            >
               <Radio.Button value={undefined}>Unset</Radio.Button>
               <Radio.Button value="fixed">Fixed</Radio.Button>
             </Radio.Group>

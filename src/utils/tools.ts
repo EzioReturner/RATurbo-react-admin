@@ -1,7 +1,7 @@
 // 防抖
 export function debounce(fn: Function, wait: number = 300) {
   let timeout: null | NodeJS.Timeout = null;
-  return function() {
+  return function () {
     timeout && clearTimeout(timeout);
     timeout = setTimeout(() => {
       // @ts-ignore
@@ -68,7 +68,9 @@ export function hex2rgb(color: string, type: 'format' | 'number' = 'format') {
     for (let i = 1; i < 7; i += 2) {
       sColorChange.push(parseInt('0x' + sColor.slice(i, i + 2)));
     }
-    return type === 'format' ? 'rgb(' + sColorChange.join(',') + ')' : sColorChange;
+    return type === 'format'
+      ? 'rgb(' + sColorChange.join(',') + ')'
+      : sColorChange;
   }
   return sColor;
 }
@@ -196,7 +198,11 @@ export function color2tint(color: number[], amount: number = 0.5) {
  * @param color2 第二个颜色rgb值
  * @param amount 第一个颜色的占比值 默认50%，0.5
  */
-export function color2mix(color1: number[], color2: number[], amount: number = 0.5) {
+export function color2mix(
+  color1: number[],
+  color2: number[],
+  amount: number = 0.5
+) {
   let weight = 1 - amount;
   let [r1, g1, b1, alpha1] = color1;
   let [r2, g2, b2, alpha2] = color2;

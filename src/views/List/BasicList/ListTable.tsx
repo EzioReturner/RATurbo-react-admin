@@ -71,7 +71,11 @@ class ListTable extends React.Component<{}, ListTableState> {
       </div>
     );
 
-    const ListContent = ({ data: { handler, date, progress } }: { data: any }) => (
+    const ListContent = ({
+      data: { handler, date, progress }
+    }: {
+      data: any;
+    }) => (
       <div className={styles.content}>
         <div>
           <span>经办人</span>
@@ -84,7 +88,9 @@ class ListTable extends React.Component<{}, ListTableState> {
         <Progress
           showInfo={false}
           percent={progress}
-          className={`${styles.progress} ${progress < 40 ? 'warning' : 'success'}`}
+          className={`${styles.progress} ${
+            progress < 40 ? 'warning' : 'success'
+          }`}
         />
         <span>{progress}%</span>
       </div>
@@ -114,7 +120,9 @@ class ListTable extends React.Component<{}, ListTableState> {
               ]}
             >
               <List.Item.Meta
-                avatar={<Avatar src={item.avatar} shape="square" size="large" />}
+                avatar={
+                  <Avatar src={item.avatar} shape="square" size="large" />
+                }
                 title={<Button type="link">{item.title}</Button>}
                 description={<div className={styles.detail}>{item.detail}</div>}
               />

@@ -39,7 +39,9 @@ const WrappedNormalLoginForm: React.FC = () => {
 
   return (
     <PageWrapper
-      title={<FormatterLocale id="form.basicFormTitle" defaultMessage="基础表单" />}
+      title={
+        <FormatterLocale id="form.basicFormTitle" defaultMessage="基础表单" />
+      }
       subTitle={
         <FormatterLocale
           id="form.basicSubtitle"
@@ -77,10 +79,17 @@ const WrappedNormalLoginForm: React.FC = () => {
             name="select-multiple"
             label="Select[multiple]"
             rules={[
-              { required: true, message: 'Please select your favourite colors!', type: 'array' }
+              {
+                required: true,
+                message: 'Please select your favourite colors!',
+                type: 'array'
+              }
             ]}
           >
-            <Select mode="multiple" placeholder="Please select favourite colors">
+            <Select
+              mode="multiple"
+              placeholder="Please select favourite colors"
+            >
               <Option value="red">Red</Option>
               <Option value="green">Green</Option>
               <Option value="blue">Blue</Option>
@@ -183,13 +192,22 @@ const WrappedNormalLoginForm: React.FC = () => {
           </Form.Item>
 
           <Form.Item label="Dragger">
-            <Form.Item name="dragger" valuePropName="fileList" getValueFromEvent={normFile} noStyle>
+            <Form.Item
+              name="dragger"
+              valuePropName="fileList"
+              getValueFromEvent={normFile}
+              noStyle
+            >
               <Upload.Dragger name="files" action="/upload.do">
                 <p className="ant-upload-drag-icon">
                   <InboxOutlined />
                 </p>
-                <p className="ant-upload-text">Click or drag file to this area to upload</p>
-                <p className="ant-upload-hint">Support for a single or bulk upload.</p>
+                <p className="ant-upload-text">
+                  Click or drag file to this area to upload
+                </p>
+                <p className="ant-upload-hint">
+                  Support for a single or bulk upload.
+                </p>
               </Upload.Dragger>
             </Form.Item>
           </Form.Item>

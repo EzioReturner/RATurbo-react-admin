@@ -29,8 +29,16 @@ const Gallery: React.FC = () => {
                 <Card
                   hoverable
                   cover={
-                    <Skeleton loading={urlList[i + 1] ? false : true} active avatar>
-                      <img alt="example" src={urlList[i + 1]} style={{ minHeight: '250px' }} />
+                    <Skeleton
+                      loading={urlList[i + 1] ? false : true}
+                      active
+                      avatar
+                    >
+                      <img
+                        alt="example"
+                        src={urlList[i + 1]}
+                        style={{ minHeight: '250px' }}
+                      />
                     </Skeleton>
                   }
                 >

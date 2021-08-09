@@ -5,21 +5,81 @@ const RLogo = () => (
     <defs>
       <style type="text/css" />
     </defs>
-    <path d="M593.1 535.7L512 582.5l81.7 46.9 80.6-46.9z" fill="currentColor" p-id="1314" />
-    <path d="M674.7 770l-81.2-46.9L512 582.5l81.7 46.9z" fill="currentColor" p-id="1315" />
-    <path d="M674.3 582.5l81.6 140.6-81.2 46.9-81-140.6z" fill="currentColor" p-id="1316" />
-    <path d="M593 440.1L349.2 582.5l81.7 46.9 243.2-142.5z" fill="currentColor" p-id="1317" />
-    <path d="M430.3 723.1l-81.1-46.9v-93.7l81.7 46.9z" fill="currentColor" p-id="1318" />
-    <path d="M674.1 486.9v93.8L430.3 723.1l0.6-93.7z" fill="currentColor" p-id="1319" />
-    <path d="M674.1 112.9L593 159.7l81.7 46.9 80.6-46.9z" fill="currentColor" p-id="1320" />
-    <path d="M674.1 488.3L593 441.4V159.7l81.7 46.9z" fill="currentColor" p-id="1321" />
-    <path d="M755.3 159.7v281.7l-81.2 46.9 0.6-281.7z" fill="currentColor" p-id="1322" />
-    <path d="M593 64.3L349.2 206.8l81.7 46.8 243.2-142.4z" fill="currentColor" p-id="1323" />
-    <path d="M430.3 347.4l-81.1-46.9v-93.7l81.7 46.8z" fill="currentColor" p-id="1324" />
-    <path d="M674.1 111.2v93.7L430.3 347.4l0.6-93.8z" fill="currentColor" p-id="1325" />
-    <path d="M349.3 299.1l-81.2 46.8 81.8 46.9 80.6-46.9z" fill="currentColor" p-id="1326" />
-    <path d="M349.3 959.7l-81.2-46.9V345.9l81.8 46.9z" fill="currentColor" p-id="1327" />
-    <path d="M430.5 345.9v566.9l-81.2 46.9 0.6-566.9z" fill="currentColor" p-id="1328" />
+    <path
+      d="M593.1 535.7L512 582.5l81.7 46.9 80.6-46.9z"
+      fill="currentColor"
+      p-id="1314"
+    />
+    <path
+      d="M674.7 770l-81.2-46.9L512 582.5l81.7 46.9z"
+      fill="currentColor"
+      p-id="1315"
+    />
+    <path
+      d="M674.3 582.5l81.6 140.6-81.2 46.9-81-140.6z"
+      fill="currentColor"
+      p-id="1316"
+    />
+    <path
+      d="M593 440.1L349.2 582.5l81.7 46.9 243.2-142.5z"
+      fill="currentColor"
+      p-id="1317"
+    />
+    <path
+      d="M430.3 723.1l-81.1-46.9v-93.7l81.7 46.9z"
+      fill="currentColor"
+      p-id="1318"
+    />
+    <path
+      d="M674.1 486.9v93.8L430.3 723.1l0.6-93.7z"
+      fill="currentColor"
+      p-id="1319"
+    />
+    <path
+      d="M674.1 112.9L593 159.7l81.7 46.9 80.6-46.9z"
+      fill="currentColor"
+      p-id="1320"
+    />
+    <path
+      d="M674.1 488.3L593 441.4V159.7l81.7 46.9z"
+      fill="currentColor"
+      p-id="1321"
+    />
+    <path
+      d="M755.3 159.7v281.7l-81.2 46.9 0.6-281.7z"
+      fill="currentColor"
+      p-id="1322"
+    />
+    <path
+      d="M593 64.3L349.2 206.8l81.7 46.8 243.2-142.4z"
+      fill="currentColor"
+      p-id="1323"
+    />
+    <path
+      d="M430.3 347.4l-81.1-46.9v-93.7l81.7 46.8z"
+      fill="currentColor"
+      p-id="1324"
+    />
+    <path
+      d="M674.1 111.2v93.7L430.3 347.4l0.6-93.8z"
+      fill="currentColor"
+      p-id="1325"
+    />
+    <path
+      d="M349.3 299.1l-81.2 46.8 81.8 46.9 80.6-46.9z"
+      fill="currentColor"
+      p-id="1326"
+    />
+    <path
+      d="M349.3 959.7l-81.2-46.9V345.9l81.8 46.9z"
+      fill="currentColor"
+      p-id="1327"
+    />
+    <path
+      d="M430.5 345.9v566.9l-81.2 46.9 0.6-566.9z"
+      fill="currentColor"
+      p-id="1328"
+    />
   </svg>
 );
 
@@ -121,8 +181,16 @@ const SnowSvg = () => (
       fill="#212529"
       p-id="1086"
     />
-    <path d="M288 764m-32 0a32 32 0 1 0 64 0 32 32 0 1 0-64 0Z" fill="#212529" p-id="1087" />
-    <path d="M752 764m-32 0a32 32 0 1 0 64 0 32 32 0 1 0-64 0Z" fill="#212529" p-id="1088" />
+    <path
+      d="M288 764m-32 0a32 32 0 1 0 64 0 32 32 0 1 0-64 0Z"
+      fill="#212529"
+      p-id="1087"
+    />
+    <path
+      d="M752 764m-32 0a32 32 0 1 0 64 0 32 32 0 1 0-64 0Z"
+      fill="#212529"
+      p-id="1088"
+    />
     <path
       d="M752 380h-2.12C734.24 262.6 633.71 172 512 172s-222.24 90.6-237.88 208H272c-114.88 0-208 93.12-208 208s93.12 208 208 208h16v-64h-16a144 144 0 1 1 144-144 32 32 0 0 0 64 0c0-92.06-59.81-170.14-142.69-197.53A176 176 0 0 1 688 412v2.63a31.88 31.88 0 0 0 37.57 31.8 144.8 144.8 0 0 1 24.3-2.43H752a144 144 0 0 1 0 288v64c114.88 0 208-93.12 208-208s-93.12-208-208-208z"
       fill="#212529"
@@ -187,7 +255,11 @@ const ThunderSvg = () => (
       fill="#212529"
       p-id="1216"
     />
-    <path d="M528 795.81m-32 0a32 32 0 1 0 64 0 32 32 0 1 0-64 0Z" fill="#212529" p-id="1217" />
+    <path
+      d="M528 795.81m-32 0a32 32 0 1 0 64 0 32 32 0 1 0-64 0Z"
+      fill="#212529"
+      p-id="1217"
+    />
   </svg>
 );
 

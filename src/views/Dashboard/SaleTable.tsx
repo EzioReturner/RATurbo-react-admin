@@ -53,7 +53,7 @@ const SaleTable: React.FC = () => {
             } else {
               handleDelete(record);
             }
-            resolve();
+            resolve(1);
           }, 2000);
         }).catch(() => console.log('Oops errors!'));
       },

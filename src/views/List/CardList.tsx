@@ -98,7 +98,9 @@ class CardList extends React.Component<{}, CardListState> {
                   ]}
                 >
                   <Card.Meta
-                    avatar={<img className={styles.images} alt="" src={item.avatar} />}
+                    avatar={
+                      <img className={styles.images} alt="" src={item.avatar} />
+                    }
                     title={
                       <Button
                         type="link"
@@ -109,7 +111,9 @@ class CardList extends React.Component<{}, CardListState> {
                         {item.title}
                       </Button>
                     }
-                    description={<div className={styles.description}>{item.detail}</div>}
+                    description={
+                      <div className={styles.description}>{item.detail}</div>
+                    }
                   />
                 </Card>
               </List.Item>

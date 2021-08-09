@@ -15,23 +15,25 @@ function BMapCoordSys(bmap, api) {
 
 BMapCoordSys.prototype.dimensions = ['lng', 'lat'];
 
-BMapCoordSys.prototype.setZoom = function(zoom) {
+BMapCoordSys.prototype.setZoom = function (zoom) {
   this._zoom = zoom;
 };
 
-BMapCoordSys.prototype.setCenter = function(center) {
-  this._center = this._projection.lngLatToPoint(new BMap.Point(center[0], center[1]));
+BMapCoordSys.prototype.setCenter = function (center) {
+  this._center = this._projection.lngLatToPoint(
+    new BMap.Point(center[0], center[1])
+  );
 };
 
-BMapCoordSys.prototype.setMapOffset = function(mapOffset) {
+BMapCoordSys.prototype.setMapOffset = function (mapOffset) {
   this._mapOffset = mapOffset;
 };
 
-BMapCoordSys.prototype.getBMap = function() {
+BMapCoordSys.prototype.getBMap = function () {
   return this._bmap;
 };
 
-BMapCoordSys.prototype.dataToPoint = function(data) {
+BMapCoordSys.prototype.dataToPoint = function (data) {
   var point = new BMap.Point(data[0], data[1]); // TODO mercator projection is toooooooo slow
   // var mercatorPoint = this._projection.lngLatToPoint(point);
   // var width = this._api.getZr().getWidth();
@@ -48,7 +50,7 @@ BMapCoordSys.prototype.dataToPoint = function(data) {
   return [px.x - mapOffset[0], px.y - mapOffset[1]];
 };
 
-BMapCoordSys.prototype.pointToData = function(pt) {
+BMapCoordSys.prototype.pointToData = function (pt) {
   var mapOffset = this._mapOffset;
 
   var pt = this._bmap.overlayPixelToPoint({
@@ -59,16 +61,16 @@ BMapCoordSys.prototype.pointToData = function(pt) {
   return [pt.lng, pt.lat];
 };
 
-BMapCoordSys.prototype.getViewRect = function() {
+BMapCoordSys.prototype.getViewRect = function () {
   var api = this._api;
   return new graphic.BoundingRect(0, 0, api.getWidth(), api.getHeight());
 };
 
-BMapCoordSys.prototype.getRoamTransform = function() {
+BMapCoordSys.prototype.getRoamTransform = function () {
   return matrix.create();
 };
 
-BMapCoordSys.prototype.prepareCustoms = function(data) {
+BMapCoordSys.prototype.prepareCustoms = function (data) {
   var rect = this.getViewRect();
   return {
     coordSys: {
@@ -90,7 +92,7 @@ function dataToCoordSize(dataSize, dataItem) {
   dataItem = dataItem || [0, 0];
   return zrUtil.map(
     [0, 1],
-    function(dimIdx) {
+    function (dimIdx) {
       var val = dataItem[dimIdx];
       var halfSize = dataSize[dimIdx] / 2;
       var p1 = [];
@@ -98,7 +100,9 @@ function dataToCoordSize(dataSize, dataItem) {
       p1[dimIdx] = val - halfSize;
       p2[dimIdx] = val + halfSize;
       p1[1 - dimIdx] = p2[1 - dimIdx] = dataItem[1 - dimIdx];
-      return Math.abs(this.dataToPoint(p1)[dimIdx] - this.dataToPoint(p2)[dimIdx]);
+      return Math.abs(
+        this.dataToPoint(p1)[dimIdx] - this.dataToPoint(p2)[dimIdx]
+      );
     },
     this
   );
@@ -121,7 +125,7 @@ function createOverlayCtor() {
    * @override
    */
 
-  Overlay.prototype.initialize = function(map) {
+  Overlay.prototype.initialize = function (map) {
     map.getPanes().labelPane.appendChild(this._root);
     return this._root;
   };
@@ -129,16 +133,16 @@ function createOverlayCtor() {
    * @override
    */
 
-  Overlay.prototype.draw = function() {};
+  Overlay.prototype.draw = function () {};
 
   return Overlay;
 }
 
-BMapCoordSys.create = function(ecModel, api) {
+BMapCoordSys.create = function (ecModel, api) {
   var bmapCoordSys;
   var root = api.getDom(); // TODO Dispose
 
-  ecModel.eachComponent('bmap', function(bmapModel) {
+  ecModel.eachComponent('bmap', function (bmapModel) {
     var painter = api.getZr().painter;
     var viewportRoot = painter.getViewportRoot();
 
@@ -173,7 +177,7 @@ BMapCoordSys.create = function(ecModel, api) {
       var overlay = new Overlay(viewportRoot);
       bmap.addOverlay(overlay); // Override
 
-      painter.getViewportRootOffset = function() {
+      painter.getViewportRootOffset = function () {
         return {
           offsetLeft: 0,
           offsetTop: 0
@@ -198,7 +202,7 @@ BMapCoordSys.create = function(ecModel, api) {
     bmapCoordSys.setCenter(center);
     bmapModel.coordinateSystem = bmapCoordSys;
   });
-  ecModel.eachSeries(function(seriesModel) {
+  ecModel.eachSeries(function (seriesModel) {
     if (seriesModel.get('coordinateSystem') === 'bmap') {
       seriesModel.coordinateSystem = bmapCoordSys;
     }

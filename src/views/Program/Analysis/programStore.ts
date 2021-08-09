@@ -29,7 +29,8 @@ class ProgramStore {
     for (let op in _obj) {
       const chartOption: any = _obj[op];
       this.propertyList.forEach(res => {
-        chartOption[res] && (chartOption[res] = this.filterProperty(chartOption[res]));
+        chartOption[res] &&
+          (chartOption[res] = this.filterProperty(chartOption[res]));
       });
     }
     return _obj;

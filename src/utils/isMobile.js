@@ -19,7 +19,8 @@ function match(regex, userAgent) {
 }
 
 export default function isMobile(userAgent) {
-  var ua = userAgent || (typeof navigator !== 'undefined' ? navigator.userAgent : '');
+  var ua =
+    userAgent || (typeof navigator !== 'undefined' ? navigator.userAgent : '');
 
   // Facebook mobile app's integrated browser adds a bunch of strings that
   // match everything. Strip it out if it exists.
@@ -40,9 +41,14 @@ export default function isMobile(userAgent) {
     apple: {
       phone: match(apple_phone, ua) && !match(windows_phone, ua),
       ipod: match(apple_ipod, ua),
-      tablet: !match(apple_phone, ua) && match(apple_tablet, ua) && !match(windows_phone, ua),
+      tablet:
+        !match(apple_phone, ua) &&
+        match(apple_tablet, ua) &&
+        !match(windows_phone, ua),
       device:
-        (match(apple_phone, ua) || match(apple_ipod, ua) || match(apple_tablet, ua)) &&
+        (match(apple_phone, ua) ||
+          match(apple_ipod, ua) ||
+          match(apple_tablet, ua)) &&
         !match(windows_phone, ua)
     },
     amazon: {
@@ -87,10 +93,15 @@ export default function isMobile(userAgent) {
     }
   };
   (result.any =
-    result.apple.device || result.android.device || result.windows.device || result.other.device),
+    result.apple.device ||
+    result.android.device ||
+    result.windows.device ||
+    result.other.device),
     // excludes 'other' devices and ipods, targeting touchscreen phones
-    (result.phone = result.apple.phone || result.android.phone || result.windows.phone),
-    (result.tablet = result.apple.tablet || result.android.tablet || result.windows.tablet);
+    (result.phone =
+      result.apple.phone || result.android.phone || result.windows.phone),
+    (result.tablet =
+      result.apple.tablet || result.android.tablet || result.windows.tablet);
 
   return result;
 }

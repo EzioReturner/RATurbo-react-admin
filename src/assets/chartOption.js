@@ -508,7 +508,7 @@ export function popularOption(mapData, topData) {
         type: 'scatter',
         coordinateSystem: 'bmap',
         data: mapData,
-        symbolSize: function(val) {
+        symbolSize: function (val) {
           return val[2] / 10;
         },
         label: {
@@ -532,7 +532,7 @@ export function popularOption(mapData, topData) {
         type: 'effectScatter',
         coordinateSystem: 'bmap',
         data: topData,
-        symbolSize: function(val) {
+        symbolSize: function (val) {
           return val[2] / 10;
         },
         showEffectOn: 'render',

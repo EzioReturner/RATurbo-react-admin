@@ -11,8 +11,15 @@ const Step3: React.FC = () => {
     <div className={styles.step}>
       <Result
         type="successed"
-        title={<FormatterLocale id="action.success" defaultMessage="操作成功" />}
-        subtitle={<FormatterLocale id="step3.soon" defaultMessage="已收到消息，将尽快处理~" />}
+        title={
+          <FormatterLocale id="action.success" defaultMessage="操作成功" />
+        }
+        subtitle={
+          <FormatterLocale
+            id="step3.soon"
+            defaultMessage="已收到消息，将尽快处理~"
+          />
+        }
       />
       <div className={styles.buttonGroup}>
         <Button type="primary" onClick={initStep}>

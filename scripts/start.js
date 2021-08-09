@@ -11,10 +11,10 @@ process.on('unhandledRejection', err => {
 const chalk = require('chalk');
 const WebpackDevServer = require('webpack-dev-server');
 const createDevServerConfig = require('../webpack/webpackDevServer.config');
-const createCompiler = require('./devUtils/createCompiler');
-const prepareUrls = require('./devUtils/prepareUrls');
-const open = require('open');
-const testConfig = require('../webpack/webpack.dev');
+const createCompiler = require('./utils/createCompiler');
+const devConfig = require('../webpack/webpack.dev');
+const { prepareUrls } = require('react-dev-utils/WebpackDevServerUtils');
+const openBrowser = require('react-dev-utils/openBrowser');
 
 const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 9527;
 const HOST = process.env.HOST || '0.0.0.0';
@@ -31,7 +31,7 @@ const HOST = process.env.HOST || '0.0.0.0';
     errors: errors => devServer.sockWrite(devServer.sockets, 'errors', errors)
   };
 
-  const compiler = createCompiler(testConfig, urls, devSocket);
+  const compiler = createCompiler(devConfig, urls, devSocket);
   const devServer = new WebpackDevServer(compiler, devServerConfig);
 
   devServer.listen(DEFAULT_PORT, HOST, err => {
@@ -40,6 +40,6 @@ const HOST = process.env.HOST || '0.0.0.0';
     }
     console.log(chalk.cyan('\nStarting the development server...\n'));
 
-    open(urls.localUrlForBrowser);
+    openBrowser(urls.localUrlForBrowser);
   });
 })();

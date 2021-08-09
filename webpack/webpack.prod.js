@@ -1,22 +1,28 @@
-const webpack = require('webpack');
+'use strict';
+
 const path = require('path');
-const paths = require('./paths');
-const baseConfig = require('./webpack.config');
+const webpack = require('webpack');
+// const resolve = require('resolve');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const InterpolateHtmlPlugin = require('interpolate-html-plugin');
-const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-  .BundleAnalyzerPlugin;
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const safePostCssParser = require('postcss-safe-parser');
+const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const InlineSourcePlugin = require('html-webpack-inline-source-plugin');
+const safePostCssParser = require('postcss-safe-parser');
+const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
+// const ESLintPlugin = require('eslint-webpack-plugin');
+// const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
+// const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
+const InterpolateHtmlPlugin = require('interpolate-html-plugin');
+const paths = require('./paths');
+
+const appPackageJson = require(paths.appPackageJson);
+const baseConfig = require('./webpack.base');
 const setting = require('../src/config/setting');
 
-const { module: _module, plugins } = baseConfig;
-
+// Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
+
 const { original } = JSON.parse(process.env.npm_config_argv);
 const useDll = original.includes('--dll');
 const IsAnalyze = original.includes('--analyze');
@@ -41,14 +47,15 @@ const { plugins, resolve: _resolve } = baseConfig;
 // })();
 
 module.exports = function() {
-  function _resolve(track) {
-    return path.join(__dirname, '..', track);
-  }
   const config = Object.assign(baseConfig, {
     mode: 'production',
+    bail: true,
+    devtool: 'cheap-module-source-map',
+    entry: paths.appIndexJs,
     output: {
       publicPath: paths.servedPath,
       path: paths.appBuildDist,
+      pathinfo: false,
       filename: 'static/js/[name].[contenthash:8].js',
       chunkFilename: 'static/js/[name].[contenthash:8].chunk.js',
       futureEmitAssets: true,
@@ -91,9 +98,7 @@ module.exports = function() {
               ascii_only: true
             }
           },
-          cache: true,
-          sourceMap: shouldUseSourceMap,
-          parallel: true
+          sourceMap: shouldUseSourceMap
         }),
         new OptimizeCSSAssetsPlugin({
           cssProcessorOptions: {
@@ -104,6 +109,9 @@ module.exports = function() {
                   annotation: true
                 }
               : false
+          },
+          cssProcessorPluginOptions: {
+            preset: ['default', { minifyFontValues: { removeQuotes: false } }]
           }
         })
       ],
@@ -127,21 +135,34 @@ module.exports = function() {
           },
           echarts: {
             chunks: 'async',
-            test: /[\\/]node_modules[\\/]/,
+            test(module) {
+              return /echarts/.test(module.context);
+            },
             name(module) {
               const packageName = module.context.match(
                 /[\\/]node_modules[\\/](.*?)([\\/]|$)/
               )[1];
               return `npm.${packageName.replace('@', '')}`;
             },
-            minSize: 20 * 1000 * 1000,
             priority: 20
           },
+          // npmLib: {
+          //   chunks: 'async',
+          //   test: /[\\/]node_modules[\\/]/,
+          //   name(module) {
+          //     const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+          //     return `npm.${packageName.replace('@', '')}`;
+          //   },
+          //   minSize: 10 * 1000 * 1000,
+          //   reuseExistingChunk: true,
+          //   priority: 20
+          // },
           // 入口共享chunks
           vendors: {
             chunks: 'initial',
             test: /[\\/]node_modules[\\/]/,
             priority: 10,
+            reuseExistingChunk: true,
             name: 'vendors'
           },
           // 异步共享chunks
@@ -149,25 +170,29 @@ module.exports = function() {
             chunks: 'async',
             test: /[\\/]node_modules[\\/]/,
             name: 'async-vendors',
+            reuseExistingChunk: true,
             priority: 5
           },
           // RA组件chunks
           components: {
             chunks: 'all',
-            test: _resolve('./src/components'),
+            test: path.join(__dirname, '..', './src/components'),
             name: 'components',
             minChunks: 2,
             reuseExistingChunk: true,
-            priority: 15
+            priority: 7
           }
         }
       },
-      runtimeChunk: true
+      runtimeChunk: {
+        name: entrypoint => `runtime-${entrypoint.name}`
+      }
     },
+
     plugins: [
       ...plugins,
-
       new HtmlWebpackPlugin({
+        filename: '../view/index.html',
         inject: true,
         template: paths.appHtml,
         minify: {
@@ -181,12 +206,8 @@ module.exports = function() {
           minifyJS: true,
           minifyCSS: true,
           minifyURLs: true
-        },
-        // 内联runtimeChunk
-        inlineSource: 'runtime~.+\\.js'
+        }
       }),
-
-      new InlineSourcePlugin(),
 
       new InterpolateHtmlPlugin({
         NODE_ENV: 'production',
@@ -194,12 +215,48 @@ module.exports = function() {
         SITE_NAME: setting.siteName
       }),
 
+      new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime-.+[.]js/]),
+
       new MiniCssExtractPlugin({
         filename: 'static/css/[name].[contenthash:8].css',
         chunkFilename: 'static/css/[name].[contenthash:8].chunk.css'
       }),
 
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+
+      // new ForkTsCheckerWebpackPlugin({
+      //   typescript: resolve.sync('typescript', {
+      //     basedir: paths.appNodeModules
+      //   }),
+      //   async: false,
+      //   checkSyntacticErrors: true,
+      //   tsconfig: paths.appTsConfig,
+      //   reportFiles: ['../**/src/**/*.{ts,tsx}', '**/src/**/*.{ts,tsx}'],
+      //   silent: true,
+      //   formatter: typescriptFormatter
+      // })
+      // new ESLintPlugin({
+      //   extensions: ['js', 'mjs', 'jsx', 'ts', 'tsx'],
+      //   formatter: require.resolve('react-dev-utils/eslintFormatter'),
+      //   eslintPath: require.resolve('eslint'),
+      //   failOnError: false,
+      //   context: paths.appSrc,
+      //   cache: true,
+      //   cacheLocation: path.resolve(
+      //     paths.appNodeModules,
+      //     '.cache/.eslintcache'
+      //   ),
+      //   cwd: paths.appPath,
+      //   resolvePluginsRelativeTo: __dirname,
+      //   baseConfig: {
+      //     extends: [require.resolve('eslint-config-react-app/base')],
+      //     rules: {
+      //       ...(!hasJsxRuntime && {
+      //         'react/react-in-jsx-scope': 'error'
+      //       })
+      //     }
+      //   }
+      // })
     ]
   });
 

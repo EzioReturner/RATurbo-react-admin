@@ -1,6 +1,11 @@
 import Axios from 'axios';
 import { notification } from 'antd';
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse, Method } from 'axios';
+import {
+  AxiosInstance,
+  AxiosRequestConfig,
+  AxiosResponse,
+  Method
+} from 'axios';
 
 interface IoOptions extends AxiosRequestConfig {
   returnConfig?: boolean; // 是否返回req配置项
@@ -36,8 +41,10 @@ class Request {
   notify(message: string | number) {
     notification.error({
       message: '请求错误',
-      description: `${message ||
-        'This is the content of the notification. This is the content of the notification. This is the content of the notification.'}`
+      description: `${
+        message ||
+        'This is the content of the notification. This is the content of the notification. This is the content of the notification.'
+      }`
     });
   }
 

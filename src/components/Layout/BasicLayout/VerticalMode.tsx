@@ -13,7 +13,14 @@ import { LayoutProps } from './types';
 const VerticalMode: React.FC<LayoutProps> = props => {
   const {
     layoutStore: {
-      layoutStatus: { collapsed, isMobile, showSiderBar, showHeader, fixSiderBar, fixHeader },
+      layoutStatus: {
+        collapsed,
+        isMobile,
+        showSiderBar,
+        showHeader,
+        fixSiderBar,
+        fixHeader
+      },
       toggleCollapsed,
       loadingOptions,
       isInlineLayout,
@@ -55,7 +62,11 @@ const VerticalMode: React.FC<LayoutProps> = props => {
     </>
   );
 
-  const IconCollapsed = collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />;
+  const IconCollapsed = collapsed ? (
+    <MenuUnfoldOutlined />
+  ) : (
+    <MenuFoldOutlined />
+  );
 
   // 一体布局模式，菜单不分割header
   const inlineModeLayout = (
@@ -97,7 +108,9 @@ const VerticalMode: React.FC<LayoutProps> = props => {
     <div
       className={classNames(
         'RA-basicLayout',
-        isInlineLayout ? 'RA-basicLayout-inlineMode' : 'RA-basicLayout-splitMode',
+        isInlineLayout
+          ? 'RA-basicLayout-inlineMode'
+          : 'RA-basicLayout-splitMode',
         !showSiderBar && 'RA-basicLayout-hideMenu',
         !showHeader && 'RA-basicLayout-hideHeader',
         fixHeader && 'RA-basicLayout-fixHeader',
