@@ -18,7 +18,9 @@ module.exports = function() {
   const isEnvDevelopment = process.env.NODE_ENV === 'development';
   const isEnvProduction = process.env.NODE_ENV === 'production';
   const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
-  const publicPath = isEnvProduction ? paths.servedPath : isEnvDevelopment && '/';
+  const publicPath = isEnvProduction
+    ? paths.servedPath
+    : isEnvDevelopment && '/';
 
   const getStyleLoaders = (cssOption, preProcessor) => {
     const loaders = [

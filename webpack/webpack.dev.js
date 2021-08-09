@@ -7,12 +7,44 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const InterpolateHtmlPlugin = require('interpolate-html-plugin');
 const setting = require('../src/config/setting');
 
-const { module: _module, plugins } = baseConfig;
-function _resolve(track) {
-  return path.join(__dirname, '..', track);
-}
+const webpackDevClientEntry = require.resolve(
+  'react-dev-utils/webpackHotDevClient'
+);
+
+const reactRefreshOverlayEntry = require.resolve(
+  'react-dev-utils/refreshOverlayInterop'
+);
+
+const baseConfig = require('./webpack.base');
+
+const { plugins, resolve: _resolve } = baseConfig;
+
+const hasJsxRuntime = (() => {
+  if (process.env.DISABLE_NEW_JSX_TRANSFORM === 'true') {
+    return false;
+  }
+
+  try {
+    require.resolve('react/jsx-runtime');
+    return true;
+  } catch (e) {
+    return false;
+  }
+})();
+
 module.exports = Object.assign(baseConfig, {
   mode: 'development',
+  bail: false,
+  entry: [webpackDevClientEntry, paths.appIndexJs],
+  resolve: {
+    ..._resolve,
+    plugins: [
+      new ModuleScopePlugin(paths.appSrc, [
+        paths.appPackageJson,
+        reactRefreshOverlayEntry
+      ])
+    ]
+  },
   output: {
     path: paths.appBuildDist,
     publicPath: '/',

@@ -2,11 +2,11 @@ const webpack = require('webpack');
 const path = require('path');
 const paths = require('./paths');
 const baseConfig = require('./webpack.config');
-const styleLoaders = require('./style.loaders');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const InterpolateHtmlPlugin = require('interpolate-html-plugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const safePostCssParser = require('postcss-safe-parser');
 const TerserPlugin = require('terser-webpack-plugin');
@@ -20,8 +20,25 @@ const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 const { original } = JSON.parse(process.env.npm_config_argv);
 const useDll = original.includes('--dll');
 const IsAnalyze = original.includes('--analyze');
-const { library, libVersion } = require('../package.json');
-const lib_version = libVersion.replace(/\./g, '_');
+
+const reactRefreshOverlayEntry = require.resolve(
+  'react-dev-utils/refreshOverlayInterop'
+);
+
+const { plugins, resolve: _resolve } = baseConfig;
+
+// const hasJsxRuntime = (() => {
+//   if (process.env.DISABLE_NEW_JSX_TRANSFORM === 'true') {
+//     return false;
+//   }
+
+//   try {
+//     require.resolve('react/jsx-runtime');
+//     return true;
+//   } catch (e) {
+//     return false;
+//   }
+// })();
 
 module.exports = function() {
   function _resolve(track) {
@@ -33,36 +50,22 @@ module.exports = function() {
       publicPath: paths.servedPath,
       path: paths.appBuildDist,
       filename: 'static/js/[name].[contenthash:8].js',
-      chunkFilename: 'static/js/[name].[contenthash:8].chunk.js'
+      chunkFilename: 'static/js/[name].[contenthash:8].chunk.js',
+      futureEmitAssets: true,
+      devtoolModuleFilenameTemplate: info =>
+        path
+          .relative(paths.appSrc, info.absoluteResourcePath)
+          .replace(/\\/g, '/'),
+      jsonpFunction: `webpackJsonp${appPackageJson.name}`,
+      globalObject: 'this'
     },
-    devtool: shouldUseSourceMap ? 'source-map' : false,
-    module: {
-      rules: [
-        {
-          oneOf: [
-            ..._module.rules,
-            ...styleLoaders(),
-            {
-              test: /\.(js|mjs|jsx|ts|tsx)$/,
-              exclude: [/node_modules/, /\.test.js$/],
-              use: {
-                loader: 'babel-loader',
-                options: {
-                  cacheDirectory: true,
-                  cacheCompression: true,
-                  compact: true
-                }
-              }
-            },
-            {
-              loader: require.resolve('file-loader'),
-              exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
-              options: {
-                name: 'static/media/[name].[hash:8].[ext]'
-              }
-            }
-          ]
-        }
+    resolve: {
+      ..._resolve,
+      plugins: [
+        new ModuleScopePlugin(paths.appSrc, [
+          paths.appPackageJson,
+          reactRefreshOverlayEntry
+        ])
       ]
     },
     optimization: {
@@ -109,11 +112,26 @@ module.exports = function() {
         name: true,
         cacheGroups: {
           // 体积较大的chunk单独打包
-          npmLib: {
+          modelEditorLib: {
+            chunks: 'async',
+            test(module) {
+              return /(highlight|react-color|antd)/.test(module.context);
+            },
+            name(module) {
+              const packageName = module.context.match(
+                /[\\/]node_modules[\\/](.*?)([\\/]|$)/
+              )[1];
+              return `npm.${packageName.replace('@', '')}`;
+            },
+            priority: 25
+          },
+          echarts: {
             chunks: 'async',
             test: /[\\/]node_modules[\\/]/,
             name(module) {
-              const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+              const packageName = module.context.match(
+                /[\\/]node_modules[\\/](.*?)([\\/]|$)/
+              )[1];
               return `npm.${packageName.replace('@', '')}`;
             },
             minSize: 20 * 1000 * 1000,
