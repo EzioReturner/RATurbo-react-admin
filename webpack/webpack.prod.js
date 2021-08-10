@@ -192,7 +192,6 @@ module.exports = function() {
     plugins: [
       ...plugins,
       new HtmlWebpackPlugin({
-        filename: '../view/index.html',
         inject: true,
         template: paths.appHtml,
         minify: {
@@ -206,7 +205,9 @@ module.exports = function() {
           minifyJS: true,
           minifyCSS: true,
           minifyURLs: true
-        }
+        },
+        // 内联runtimeChunk
+        inlineSource: 'runtime~.+\\.js'
       }),
 
       new InterpolateHtmlPlugin({

@@ -28,8 +28,12 @@ const { library, libVersion } = require('../package.json');
 const lib_version = libVersion ? libVersion.replace(/\./g, '_') : null;
 
 const paths = require('../webpack/paths');
+const FileSizeReporter = require('react-dev-utils/FileSizeReporter');
 
-const { measureFileSizesBeforeBuild, printFileSizesAfterBuild } = require('./devUtils/fileReport');
+const {
+  measureFileSizesBeforeBuild,
+  printFileSizesAfterBuild
+} = FileSizeReporter;
 
 const WARN_AFTER_BUNDLE_GZIP_SIZE = 512 * 1024;
 const WARN_AFTER_CHUNK_GZIP_SIZE = 1024 * 1024;
@@ -41,7 +45,7 @@ rm(paths.appBuildDist, function(err) {
     buildDll()
       .then(res => {
         copyPublicFileToFolder();
-        console.log(chalk.cyan('  [info]: start to build application...\n'));
+        console.log(chalk.cyan('start to build application...\n'));
         spinner.start();
         const config = prodConfigFactory();
         const compiler = webpack(config);
@@ -74,7 +78,9 @@ function buildDll() {
       existDll && console.log(chalk.cyan('  [result]: exist dll-lib files.\n'));
       resolve();
     } else {
-      console.log(chalk.cyan('  [info]: dll-lib not found, start to build dll-lib...\n'));
+      console.log(
+        chalk.cyan('  [info]: dll-lib not found, start to build dll-lib...\n')
+      );
       const _spinner = ora({ color: 'green', text: 'building dll-lib...' });
 
       _spinner.start();

@@ -44,12 +44,12 @@ const resolveModule = (resolveFn, filePath) => {
 
 // config after eject: we're in ./config/
 module.exports = {
-  appBuildDist: resolveApp('app/public'),
   dotenv: resolveApp('.env'),
   appPath: resolveApp('.'),
   appBuild: resolveApp(buildPath),
-  appBuildDll: resolveApp('webpack/dll'),
-  appDllManifest: resolveApp('webpack/dllManifest'),
+  appBuildDll: resolveApp('build/dll'),
+  appDllManifest: resolveApp('build/dllManifest'),
+  appBuildDist: resolveApp('build/dist'),
   appPublic: resolveApp('public'),
   appHtml: resolveApp('public/index.html'),
   appIndexJs: resolveModule(resolveApp, 'src/index'),
