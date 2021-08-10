@@ -30,8 +30,6 @@ const VerticalMode: React.FC<LayoutProps> = props => {
 
   const { header: _headr, ...rest } = props;
 
-  console.log('loadingOptions', JSON.parse(JSON.stringify(loadingOptions)));
-
   const RANavigator = useMemo(
     () => (
       <Navigator

@@ -244,8 +244,6 @@ class LayoutStore {
   };
 
   @action ctrlSpinning = (options: LoadingOptions) => {
-    console.log('options', JSON.parse(JSON.stringify(options)));
-
     this.loadingOptions = options;
   };
 
@@ -262,15 +260,9 @@ class LayoutStore {
   // 检查是否已加载过
   @action checkIsInitial(route: RouteChild): void {
     const { path, loading, name } = route;
-    console.log(
-      'this.readyInitializers.includes(path)',
-      this.readyInitializers.includes(path)
-    );
 
     if (!this.readyInitializers.includes(path)) {
       this.addInitializer(path);
-      console.log('loading', loading);
-
       loading && this.ctrlSpinning({ spinning: true });
       name && this.initBreadcrumb(name, path);
     }
