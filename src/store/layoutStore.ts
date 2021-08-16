@@ -280,6 +280,7 @@ class LayoutStore {
     if (key === 'navigateMode') {
       this.layoutStatus.contentAreaWidthMode =
         value === 'vertical' ? 'flow' : 'max-width';
+      this.layoutStatus.collapsed = false;
     }
     this.layoutStatus[key] = value;
     if (key === 'currentColor' || key === 'visionTheme') {

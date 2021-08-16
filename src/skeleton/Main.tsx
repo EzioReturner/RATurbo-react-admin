@@ -31,13 +31,13 @@ const MainSkeleton: React.FC<MainSkeletonProps> = props => {
       layoutStatus: {
         isMobile,
         collapsed,
-        toggleCollapsed,
         fixSiderBar,
         fixHeader,
         navigateMode,
         layoutMode,
         contentAreaWidthMode
-      }
+      },
+      toggleCollapsed
     }
   } = props as InjectProps;
 

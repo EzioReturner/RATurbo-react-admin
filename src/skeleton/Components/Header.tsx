@@ -43,7 +43,7 @@ const Header: React.FC<LayoutProps> = props => {
   const VerticalMenuHeaderBody = (
     <>
       {isInlineLayout && (_siteLogo || <SiteDetail />)}
-      {showSiderBar && !isInlineLayout && IconCollapsed}
+      {/* {showSiderBar && !isInlineLayout && IconCollapsed} */}
       <div className="RA-header-rightPlace">
         <UserInfo />
         {usei18n && <SelectLang />}
@@ -52,45 +52,11 @@ const Header: React.FC<LayoutProps> = props => {
   );
 
   const VerticalMenuHeader = (
-    <>
-      <header
-        className={classNames(
-          'RA-header',
-          'RA-header-vertical',
-          collapsed && 'RA-header-collapsed',
-          isMobile && 'RA-header-isMobile',
-          !showSiderBar && 'RA-header-withoutMenu',
-          isInlineLayout ? 'RA-header-inlineLayout' : 'RA-header-splitLayout',
-          isDarkTheme && 'RA-header-darkTheme'
-        )}
-        style={{
-          opacity: !fixHeader ? 1 : 0
-        }}
-      >
-        {!fixHeader && VerticalMenuHeaderBody}
-      </header>
-      <header
-        className={classNames(
-          'RA-header',
-          'RA-header-fixHeader',
-          'RA-header-vertical',
-          collapsed && 'RA-header-collapsed',
-          isMobile && 'RA-header-isMobile',
-          !showSiderBar && 'RA-header-withoutMenu',
-          isInlineLayout ? 'RA-header-inlineLayout' : 'RA-header-splitLayout',
-          isDarkTheme && 'RA-header-darkTheme'
-        )}
-        style={{
-          zIndex: !fixHeader ? -1 : 4
-        }}
-      >
-        {fixHeader && VerticalMenuHeaderBody}
-      </header>
-    </>
+    <div className="RA-header">{VerticalMenuHeaderBody}</div>
   );
 
   const HorizontalMenuHeader = (
-    <header className={classNames('RA-header', 'RA-header-horizontal')}>
+    <div className={classNames('RA-header', 'RA-header-horizontal')}>
       <div
         className={classNames(
           'RA-header-container',
@@ -106,7 +72,7 @@ const Header: React.FC<LayoutProps> = props => {
           {usei18n && <SelectLang />}
         </div>
       </div>
-    </header>
+    </div>
   );
 
   return (
