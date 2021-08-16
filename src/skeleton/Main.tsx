@@ -10,7 +10,7 @@ import { useSetting } from '@config/setting';
 import { Layout } from 'raturbo-components';
 import Navigator from './Components/Navigator';
 import Header from './Components/Header';
-import './Component1/styles/index.less';
+import './Components/styles/index.less';
 import './main.less';
 
 const Exception403 = React.lazy(
@@ -84,13 +84,6 @@ const MainSkeleton: React.FC<MainSkeletonProps> = props => {
         >
           {Content}
         </Layout>
-        {/* <BasicLayout
-          {...{
-            isHorizontalNavigator
-          }}
-        >
-          {Content}
-        </BasicLayout> */}
       </main>
       {!isMobile && useSetting && <LayoutSetting />}
     </Authorized>
