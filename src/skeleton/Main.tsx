@@ -8,8 +8,8 @@ import { getRouteAuthority } from '@utils/authorityTools';
 import Loading from '@components/Loading';
 import { useSetting } from '@config/setting';
 import { Layout } from 'raturbo-components';
-import Navigator from './Component1/Navigator';
-import Header from './Component1/Header';
+import Navigator from './Components/Navigator';
+import Header from './Components/Header';
 import './Component1/styles/index.less';
 import './main.less';
 
