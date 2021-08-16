@@ -8,7 +8,7 @@ import SiteDetail from './SiteDetail';
 import TopMenu from './SiderMenu';
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 import { usei18n } from '@config/setting';
-import { LayoutProps } from '../types';
+import { LayoutProps } from './types';
 
 interface InjectedProps {
   layoutStore: LayoutStore;

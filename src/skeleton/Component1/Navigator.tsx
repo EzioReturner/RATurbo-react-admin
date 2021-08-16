@@ -1,7 +1,7 @@
 import React from 'react';
 import { Drawer } from 'antd';
 import SiderMenu from './SiderMenu';
-import { LayoutProps } from '../types';
+import { LayoutProps } from './types';
 
 interface NavigaterProps extends LayoutProps {
   isMobile: boolean;

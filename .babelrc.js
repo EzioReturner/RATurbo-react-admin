@@ -17,7 +17,15 @@ module.exports = {
       },
       'antd'
     ],
-    ['import', { libraryName: 'antd-mobile', style: true }, 'antd-mobile']
+    [
+      "import",
+      {
+        libraryName: "raturbo-components",
+        libraryDirectory: 'lib',
+        style: true // or 'css'
+      },
+      "raturbo-components"
+    ]
   ],
   presets: [
     ['@babel/env', { targets: { browsers: 'last 2 versions' } }],
