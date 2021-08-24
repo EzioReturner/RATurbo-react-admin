@@ -6,7 +6,6 @@ import {
   useMenu,
   useHeader,
   useTheme,
-  useSetting,
   layoutMode,
   navigateMode,
   contentAreaWidthMode
