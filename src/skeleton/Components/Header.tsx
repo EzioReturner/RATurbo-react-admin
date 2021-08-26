@@ -1,7 +1,7 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 import classNames from 'classnames';
-import SelectLang from '@components/SelectLang';
+import SelectLang from './SelectLang';
 import UserInfo from './UserInfo';
 import LayoutStore from '@store/layoutStore';
 import SiteDetail from './SiteDetail';
