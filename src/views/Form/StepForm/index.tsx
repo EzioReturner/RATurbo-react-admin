@@ -1,11 +1,11 @@
 import React, { Suspense } from 'react';
 import { Card, Steps } from 'antd';
 import PageWrapper from '@components/PageWrapper';
-import Loading from '@components/Loading';
 import FormatterLocale from '@components/FormatterLocale';
 import { observer } from 'mobx-react';
 import styles from './form.module.less';
 import formStore from './formStore';
+import { Spin } from 'raturbo-components';
 
 const { Step } = Steps;
 @observer
@@ -42,7 +42,7 @@ class StepForm extends React.Component {
               ))}
             </Steps>
           </div>
-          <Suspense fallback={<Loading spinning />}>
+          <Suspense fallback={<Spin spinning />}>
             <Child />
           </Suspense>
         </Card>

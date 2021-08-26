@@ -10278,10 +10278,10 @@ range-parser@^1.2.1, range-parser@~1.2.1:
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
   integrity sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==
 
-raturbo-components@^0.1.6:
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/raturbo-components/-/raturbo-components-0.1.6.tgz#14ae3f9bd08883a2d37786cbbf29fb1ad62b5bb2"
-  integrity sha512-KW92vNqLRJ0w9GnkQoUUqFJl46fQrMzoJslgW1m2WjrdRcxorJgYngQiEdz/SWAhDYgITcEE+LrH8jswKgLYKQ==
+raturbo-components@^0.1.7:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/raturbo-components/-/raturbo-components-0.1.7.tgz#5c6cc75f802724fc52746f9ddc7b394bc751c5d1"
+  integrity sha512-szRY4ch/2XCLggOQBBNURfg3sE/VfLugZ1NGFz1YFVMkFwe48flkJqayIInNHq0ptIKHxcA7ZsARhT8SIlPSnw==
   dependencies:
     classnames "^2.2.6"
     prop-types "^15.7.2"

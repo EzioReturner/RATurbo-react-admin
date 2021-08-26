@@ -2,7 +2,7 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 import CheckPermission from './CheckPermission';
 import UserStore from '@store/userStore';
-import Loading from '@components/Loading';
+import { Spin } from 'raturbo-components';
 
 interface AuthorizedProps {
   routeAuthority?: string[] | string | undefined;
@@ -36,7 +36,7 @@ const Authorized: React.FC<AuthorizedProps> = props => {
   return (
     <>
       {identifyStatus === 'identifying' ? (
-        <Loading spinning text="identifying..." />
+        <Spin spinning text="identifying..." />
       ) : (
         dom
       )}

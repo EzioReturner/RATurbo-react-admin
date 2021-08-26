@@ -11,6 +11,7 @@ interface RADrawerProps {
   maskStyle?: React.CSSProperties;
   drawerStyle?: React.CSSProperties;
   targetContainer?: any;
+  forceRender?: boolean;
 }
 
 const RADrawer: React.FC<RADrawerProps> = props => {
@@ -22,7 +23,8 @@ const RADrawer: React.FC<RADrawerProps> = props => {
     maskStyle,
     drawerStyle,
     direction,
-    targetContainer
+    targetContainer,
+    forceRender
   } = props;
 
   const drawerRef = useRef<HTMLDivElement>(null);
@@ -70,7 +72,7 @@ const RADrawer: React.FC<RADrawerProps> = props => {
     </div>
   );
 
-  if (drawerRef.current || open) {
+  if (drawerRef.current || open || forceRender) {
     portal =
       targetContainer === false
         ? DrawerDom

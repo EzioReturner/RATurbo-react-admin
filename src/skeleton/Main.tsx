@@ -5,7 +5,7 @@ import LayoutSetting from '@components/LayoutSetting';
 import { observer, inject } from 'mobx-react';
 import LayoutStore from '@store/layoutStore';
 import { getRouteAuthority } from '@utils/authorityTools';
-import Loading from '@components/Loading';
+import { Spin } from 'raturbo-components';
 import { useSetting } from '@config/setting';
 import { Layout } from 'raturbo-components';
 import Navigator from './Components/Navigator';
@@ -53,7 +53,7 @@ const MainSkeleton: React.FC<MainSkeletonProps> = props => {
     <Authorized
       routeAuthority={routeAuthority}
       unidentified={
-        <Suspense fallback={<Loading spinning />}>
+        <Suspense fallback={<Spin spinning />}>
           <Exception403 />
         </Suspense>
       }
