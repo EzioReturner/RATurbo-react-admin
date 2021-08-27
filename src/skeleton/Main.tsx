@@ -10,6 +10,7 @@ import { useSetting } from '@config/setting';
 import { Layout } from 'raturbo-components';
 import Navigator from './Components/Navigator';
 import Header from './Components/Header';
+import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 import './Components/styles/index.less';
 import './main.less';
 
@@ -73,6 +74,15 @@ const MainSkeleton: React.FC<MainSkeletonProps> = props => {
           mode={navigateMode}
           isContentFlowMode={contentAreaWidthMode === 'flow'}
           verticalType={layoutMode}
+          collapseIcon={origin => (
+            <div onClick={() => toggleCollapsed()}>
+              {collapsed ? (
+                <MenuUnfoldOutlined className="RA-header-foldIcon" />
+              ) : (
+                <MenuFoldOutlined className="RA-header-foldIcon" />
+              )}
+            </div>
+          )}
           sider={
             <Navigator
               collapsed={collapsed}

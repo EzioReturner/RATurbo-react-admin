@@ -16,34 +16,14 @@ interface InjectedProps {
 
 const Header: React.FC<LayoutProps> = props => {
   const {
-    layoutStore: {
-      toggleCollapsed,
-      isInlineLayout,
-      isHorizontalNavigator,
-      isContentFlowMode,
-      layoutStatus: { showSiderBar, fixHeader, collapsed, isMobile },
-      isDarkTheme
-    }
+    layoutStore: { isInlineLayout, isHorizontalNavigator, isContentFlowMode }
   } = props as InjectedProps;
 
   const { siderBar: _siderBar, siteLogo: _siteLogo } = props;
 
-  const IconCollapsed = collapsed ? (
-    <MenuUnfoldOutlined
-      className="RA-header-foldIcon"
-      onClick={() => toggleCollapsed()}
-    />
-  ) : (
-    <MenuFoldOutlined
-      className="RA-header-foldIcon"
-      onClick={() => toggleCollapsed()}
-    />
-  );
-
   const VerticalMenuHeaderBody = (
     <>
       {isInlineLayout && (_siteLogo || <SiteDetail />)}
-      {/* {showSiderBar && !isInlineLayout && IconCollapsed} */}
       <div className="RA-header-rightPlace">
         <UserInfo />
         {usei18n && <SelectLang />}
