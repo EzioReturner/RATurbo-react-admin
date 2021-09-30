@@ -1,0 +1,15 @@
+import React from 'react';
+import { {{pascalCase name}}Props } from './interface';
+{{#if independentStyle}}
+import './style/index.less';
+{{else}}
+import './index.less';
+{{/if}}
+
+const prefixCls = '{{camelCase name}}';
+
+const {{pascalCase name}}: React.FC<{{pascalCase name}}Props> = props => {
+  return <section className={prefixCls}>{{pascalCase name}}</section>;
+};
+
+export default {{pascalCase name}};

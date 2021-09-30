@@ -11,6 +11,7 @@
     "build:dll": "webpack --config webpack/webpack.dll.js --mode production",
     "test:e2e": "jest -c e2e/jest.config.js",
     "test:unit": "jest -c jest.config.js",
+    "new": "plop --plopfile ./scripts/plopfile.ts && prettier --write src/**/*.{tsx,ts,js}",
     "lint-fix": "prettier --write 'src/**/*.{tsx,ts,js}' && eslint --fix 'src/**/*.{tsx,ts,js}'"
   },
   "dependencies": {
@@ -116,6 +117,7 @@
     "jsdom": "^16.2.2",
     "json-format": "^1.0.1",
     "lint-staged": "^9.5.0",
+    "plop": "^2.7.4",
     "prettier": "^2.3.0",
     "puppeteer": "^2.1.1",
     "webpack-bundle-analyzer": "^3.6.0",
