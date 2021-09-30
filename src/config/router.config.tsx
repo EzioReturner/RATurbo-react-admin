@@ -213,4 +213,5 @@ export const asyncRouteConfig: RouteChild[] = [
       }
     ]
   }
+  // ...async routes anchor [do not remove this code]
 ];
