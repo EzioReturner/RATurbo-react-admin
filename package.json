@@ -7,7 +7,6 @@
     "build": "node scripts/build.js",
     "translate": "node scripts/translate.js",
     "add-locale": "node scripts/addLocale.js",
-    "raCreate": "node scripts/tools.js",
     "build:dll": "webpack --config webpack/webpack.dll.js --mode production",
     "test:e2e": "jest -c e2e/jest.config.js",
     "test:unit": "jest -c jest.config.js",
