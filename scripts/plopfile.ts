@@ -1,5 +1,6 @@
 import { NodePlopAPI } from 'plop';
 import path from 'path';
+import { Observable } from 'rxjs';
 
 const validateFn = (value: any) => {
   if (!value) {
@@ -8,24 +9,72 @@ const validateFn = (value: any) => {
   return true;
 };
 
+const basePrompts = Observable.create((obs: any) => {
+  obs.next({
+    type: 'input',
+    name: 'name',
+    message: '请输入组件名称（多个单词使用短横线隔开式命名，如：my-name）',
+    validate: validateFn
+  });
+
+  obs.next({ type: 'input', name: 'path', message: '请输入组件所属src路径', validate: validateFn });
+
+  obs.next({ type: 'confirm', name: 'independentStyle', message: '是否需要创建样式文件夹' });
+
+  obs.next({
+    type: 'confirm',
+    name: 'needRouter',
+    message: '是否需要添加路由信息(请确保路由文件动态添加锚点存在)'
+  });
+
+  obs.complete();
+});
+
+const routerPrompts = Observable.create((obs: any) => {
+  obs.next({
+    type: 'input',
+    name: 'routeName',
+    message: '请输入路由菜单名称',
+    validate: validateFn
+  });
+
+  obs.next({
+    type: 'input',
+    name: 'routePath',
+    message: '请输入路由URL',
+    validate: validateFn
+  });
+
+  obs.next({
+    type: 'confirm',
+    name: 'hideMenu',
+    message: '是否需要隐藏菜单'
+  });
+
+  obs.next({
+    type: 'confirm',
+    name: 'loading',
+    message: '是否需要懒加载loading'
+  });
+
+  obs.complete();
+});
+
 export default function (plop: NodePlopAPI) {
   plop.setGenerator('component', {
     description: '创建一个新组件',
-    prompts: [
-      {
-        type: 'input',
-        name: 'name',
-        message: '请输入组件名称（多个单词使用短横线隔开式命名，如：my-name）',
-        validate: validateFn
-      },
-      { type: 'input', name: 'path', message: '请输入组件所属src路径', validate: validateFn },
-      { type: 'confirm', name: 'independentStyle', message: '是否需要创建样式文件夹' },
-      {
-        type: 'confirm',
-        name: 'needRouter',
-        message: '是否需要添加路由信息(请确保路由文件动态添加锚点存在)'
+    prompts: async inquirer => {
+      const baseData: any = await inquirer.prompt(basePrompts);
+
+      const { needRouter } = baseData;
+
+      if (needRouter) {
+        const routerData: any = await inquirer.prompt(routerPrompts);
+        return { ...routerData, ...baseData };
       }
-    ],
+
+      return baseData;
+    },
     actions: function (data) {
       const { independentStyle, needRouter } = data as any;
 
@@ -57,12 +106,22 @@ export default function (plop: NodePlopAPI) {
       }
 
       if (needRouter) {
+        const { routeName, routePath, hideMenu, loading } = data as any;
+        const routeInfo = {
+          name: routeName,
+          path: routePath,
+          component: ['/{{path}}/{{pascalCase name}}'],
+          hideMenu,
+          loading
+        };
+
         _actions.push({
           type: 'modify',
           path: path.resolve(__dirname, '../src/config/router.config.tsx'),
           pattern: /(\/\/ \.\.\.async routes anchor \[do not remove this code\])/,
-          template:
-            ",{ \nname: '{{pascalCase name}}',\nicon: <PieChartOutlined />,\npath: '{{pascalCase name}}',\ncomponent: ['/{{path}}/{{pascalCase name}}'],\nloading: true\n}\n// ...async routes anchor [do not remove this code]"
+          template: `,${JSON.stringify(
+            routeInfo
+          )}\n// ...async routes anchor [do not remove this code]`
         });
       }
 
