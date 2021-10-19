@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/EzioReturner/ra-turbo">
-    <img alt="antd-admin" height="64" src="./media/favicon.ico">
+    <img alt="RATurbo-admin" height="64" src="./public/favicon.ico">
   </a>
 </p>
 
@@ -16,6 +16,11 @@
 
 - [ra-turbo](https://ezioreturner.github.io/RATurbo-dist/dist/index.html#/dashboard)
 
+## 文档
+
+- [wiki](http://docs.raturbo.com)
+
+
 ## 依赖模块
 
 - [react](https://facebook.github.io/react/)(<span style="color: rgb(243,121,52);">搭积木的必备玩具)
@@ -30,6 +35,31 @@
 - [moment](http://momentjs.cn/)(<span style="color: rgb(243,121,52);">时间工具库</span>)
 - [lodash](https://www.lodashjs.com/)(<span style="color: rgb(243,121,52);">是一个一致性、模块化、高性能的 JavaScript 实用工具库。</span>)
 - 其余省略
+
+## 功能模块
+
+- layout
+- navigator
+- components
+    - router
+    - layout setting
+    - transition hoc
+    - async loader
+    - loading 
+    - i18n
+- UI component
+    - program
+    - gallery
+    - form page
+    - list page
+    - result page
+    - exception page
+- visual chart
+- view
+    - sign in
+    - dashboard
+- scalable & mobile support 
+- base on TypeScript
 
 ## 如何启动
 
