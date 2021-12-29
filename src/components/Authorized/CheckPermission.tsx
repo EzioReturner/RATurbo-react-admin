@@ -12,7 +12,7 @@ export type IAuthorityType = undefined | string | string[];
 
 const CheckPermission = <T, K>(
   routeAuthority: IAuthorityType,
-  currentAuthority: string | string[],
+  currentAuthority?: string | string[],
   Target: T,
   Unidentified: K
 ): T | K | React.ReactNode => {

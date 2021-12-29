@@ -48,7 +48,7 @@ const SiderMenu: React.FC<{
   function checkRoute(routeInfo: any, path: string) {
     const isArr = Array.isArray(routeInfo);
     const arr = isArr ? routeInfo : routeInfo.routes;
-    return arr.find(
+    return arr?.find(
       (route: RouteChild) =>
         route.path === (isArr ? '' : routeInfo.path) + '/' + path
     );

@@ -1,3 +1,4 @@
+
 declare interface StoreKeyValue {
   [name: string]: StoreValue;
 }
