@@ -51,7 +51,7 @@
     "mobx": "^5.15.1",
     "mobx-react": "^6.1.4",
     "mockjs": "^1.1.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "nprogress": "^0.2.0",
     "optimize-css-assets-webpack-plugin": "5.0.4",
     "ora": "^5.4.0",
